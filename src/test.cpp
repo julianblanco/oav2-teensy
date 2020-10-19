@@ -394,7 +394,12 @@ void loopRate(int freq) {
   }
 }
 
-
+void readComputer(){
+    
+}
+void sendComputer(){
+    
+}
 void getIMUdata() {
   //DESCRIPTION: Request full dataset from IMU and LP filter gyro and accelerometer data
   /*
@@ -805,25 +810,48 @@ void setup() {
   // digitalWrite(LED_PIN, LOW);
   portBASE_TYPE s0, s1, s2;
   delay(2000);
-  Serial.begin(9600);
+
+  if(!HITL){
+  Serial.begin(57600);
   Serial.println("Start");
   IMUinit();
   delay(100);
   calculate_IMU_error();
   calibrateAttitude(); //helps to warm up IMU and Madgwick filter
-
-
-
   Serial.println("I2C start");
+  
   // initialize semaphore
   sem = xSemaphoreCreateCounting(1, 0);
-  s2 = xTaskCreate(getSensorData, NULL, configMINIMAL_STACK_SIZE, NULL, 3, & Handle_monitorTask);
+  s4 = xTaskCreate(getSensorData , NULL, configMINIMAL_STACK_SIZE, NULL, 5, & Handle_commsTask);
+  s3 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, & Handle_monitorTask);
 
+  s2 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 3, & Handle_monitorTask);
   // create task at priority two
-  s1 = xTaskCreate(Thread1, NULL, configMINIMAL_STACK_SIZE, NULL, 2, & Handle_commsTask);
-
+  s1 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 2, & Handle_commsTask);
   // create task at priority one
-  s0 = xTaskCreate(Thread2, NULL, configMINIMAL_STACK_SIZE, NULL, 1, & Handle_lidarTask);
+  s0 = xTaskCreate(actuarorsThread, NULL, configMINIMAL_STACK_SIZE, NULL, 1, & Handle_lidarTask);
+  }
+  else
+  { 
+  Serial.begin(2000000);
+  Serial.println("Start");
+  // initialize semaphore
+  sem = xSemaphoreCreateCounting(1, 0);
+  s5 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 6, & Handle_monitorTask);
+
+  s4 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 5, & Handle_monitorTask);
+  // create task at priority two
+  s3 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, & Handle_commsTask);
+  s2 = xTaskCreate(readComputer, NULL, configMINIMAL_STACK_SIZE, NULL, 3, & Handle_monitorTask);
+  // create task at priority two
+  s1 = xTaskCreate(sendComputer, NULL, configMINIMAL_STACK_SIZE, NULL, 2, & Handle_commsTask);
+  // create task at priority one
+  s0 = xTaskCreate(readComputer, NULL, configMINIMAL_STACK_SIZE, NULL, 1, & Handle_lidarTask);
+  }
+  
+
+
+
 
   // check for creation errors
   if (sem== NULL || s0 != pdPASS || s1 != pdPASS || s2 != pdPASS ) {
