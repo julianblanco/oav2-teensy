@@ -56,7 +56,7 @@
 #error "FreeRTOS-Addons require C++ Strings if you are using exceptions"
 #endif
 #endif
-#include "FreeRTOS.h"
+#include <FreeRTOS_TEENSY4.h>
 #include "semphr.h"
 
 
