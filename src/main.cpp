@@ -12,7 +12,10 @@
 #include "SBUS.h"
 #include "read_write_lock.hpp"
 #include "mavlink.h"
+#include "SparkFun_BNO080_Arduino_Library.h"
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
+BNO080 bno080imu;
+
 // #include <stlport.h>
 // #include <Eigen30.h>
 #define GPSSerial Serial2
@@ -22,15 +25,18 @@ uint8_t buf[MAVLINK_MAX_PACKET_LEN];
 uint8_t buf0[MAVLINK_MAX_PACKET_LEN];
 uint16_t channels[16];
 
-bool vechicle_type=0;//0quadcopter,1plane,2car
+int highPWMmotor = 1450;
+
+bool vechicle_type = 0; //0quadcopter,1plane,2car
 int RCThrottle;
 int RCYaw;
 int RCRoll;
 int RCPitch;
 int RCArm;
 int RCMode;
-bool mpu6050 = 0;
-bool bno055 = 1;
+bool mpu6050 = 1;
+bool bno055 = 0;
+bool bno080 = 0;
 int currentMode = 0;
 bool failSafe;
 bool lostFrame;
@@ -50,15 +56,17 @@ SBUS x8r(Serial1);
 #define downKi 0
 #define downKd 0
 
-#define yawKp 5
+#define yawKp -.1
 #define yawKi 0
 #define yawKd 0
-#define rollKp 20
+
+#define rollKp 4
 #define rollKi 0
-#define rollKd 0
-#define pitchKp 20
+#define rollKd 4
+
+#define pitchKp 4
 #define pitchKi 0
-#define pitchKd 0
+#define pitchKd 4
 
 #define throtKp 10
 #define throtKi 0
@@ -115,7 +123,7 @@ float headingOffset = 0;
 float desiredYaw = 0;
 float desiredRoll = 0;
 float desiredPitch = 0;
-float desiredThrottle = 0;
+float desiredThrottle = 200;
 
 float currentRangeSensorHeight = 0;
 float heightOffset = 0;
@@ -572,24 +580,24 @@ static void telemetry(void *pvParameters)
     // memset(buf, 0xFF, sizeof(buf));
 
     // time1 = micros();
-    Serial.print(currentYaw);
+    Serial.print(currentYaw, 3);
     Serial.print(',');
-    Serial.print(currentRoll);
+    Serial.print(currentRoll, 3);
     Serial.print(',');
-    Serial.print(currentPitch);
+    Serial.print(currentPitch, 3);
     Serial.print(',');
-    Serial.print(desiredYaw);
+    Serial.print(desiredYaw, 3);
     Serial.print(',');
-    Serial.print(currentEast);
+    Serial.print(desiredRoll, 3);
     Serial.print(',');
-    Serial.print(yawSignal);
+    Serial.print(desiredPitch, 3);
     Serial.print(',');
-    Serial.print(throttleSignal);
+    Serial.print(desiredThrottle, 3);
     Serial.print(',');
     Serial.print(currentMode);
     Serial.print(',');
     Serial.println(flag_armed);
-    // time2=time1;
+    time2 = time1;
     vTaskDelay(1000L * (configTICK_RATE_HZ) / 1000L);
 
   } //end while1
@@ -919,15 +927,16 @@ void sbusParse()
     // Serial.print(channels[14]);Serial.print(",");
     // Serial.print(channels[15]);Serial.print(",");
     // Serial.println(channels[16]);
-    RCThrottle = channels[0]; //172-1811 mid950
-    RCRoll = channels[1];     //985-1664 mid844
-    RCPitch = channels[2];    //172-1811mid985
-    RCYaw = channels[3];      //198-1811mid1020
-    RCArm = channels[4];      //down 1811 Up992
-    RCMode = channels[5];     //down1811 up 992
-    if (channels[16] == 0)
+    RCThrottle = channels[0]; //172-1811 1017
+    RCRoll = channels[1];     //172-1811 mid988
+    RCPitch = channels[2];    //172-1811 985
+    RCYaw = channels[3];      //172-1811 1000
+    RCMode = channels[4];     //down 992 Up172
+    RCArm = channels[5];      //down 992 Up172
+
+    if (channels[0] > 0) //if no signal.... needs to be verified across radis
     {
-      if (RCArm < 1000)
+      if (RCArm > 500)
       {
         flag_armed = 1;
       }
@@ -936,7 +945,7 @@ void sbusParse()
         flag_armed = 0;
       }
 
-      if (RCMode < 1000)
+      if (RCMode < 500)
       {
         currentMode = 1;
       }
@@ -946,6 +955,7 @@ void sbusParse()
       }
       if (currentMode == 1)
       {
+
         if (RCYaw > 1040) //(1021-1811)
         {
           desiredYaw = correct_heading_wrap(desiredYaw + (.0001 * pow(map(RCYaw, 1021, 1811, 0, 100), 2)));
@@ -954,8 +964,11 @@ void sbusParse()
         {
           desiredYaw = correct_heading_wrap(desiredYaw - (.0001 * pow(map(RCYaw, 170, 1021, 0, 100), 2)));
         }
+        desiredYaw = 0;
 
         desiredThrottle = map(RCThrottle, 172, 1811, 0, 300); //172-1811
+        desiredRoll = map(RCRoll, 172, 1811, -20, 20);
+        desiredPitch = map(RCPitch, 172, 1811, -20, 20);
       }
     }
     else //no rc signal -- failsafe
@@ -965,13 +978,23 @@ void sbusParse()
     }
   }
 }
-void getbnodata()
+void getbno055data()
 {
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
   currentYaw = correct_heading_wrap(euler.x() - headingOffset);
   currentPitch = -1 * euler.y();
   //rollInput=fmod((euler.z()+(360+90)), 360)-180;
   currentRoll = euler.z();
+}
+
+void getbno080data()
+{
+  if (bno080imu.dataAvailable() == true)
+  {
+    currentRoll = (bno080imu.getRoll()) * 180.0 / PI;   // Convert roll to degrees
+    currentPitch = (bno080imu.getPitch()) * 180.0 / PI; // Convert pitch to degrees
+    currentYaw = (bno080imu.getYaw()) * 180.0 / PI;     // Convert yaw / heading to degrees
+  }
 }
 void getSensorData(void *arg)
 {
@@ -984,11 +1007,22 @@ void getSensorData(void *arg)
     {
       getIMUdata();
       Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt); //updates roll_IMU, pitch_IMU, and yaw_IMU (degrees)
+      currentRoll = pitch_IMU;
+      currentPitch = -roll_IMU;
+      currentYaw = -yaw_IMU;
+      // Serial.print("a");
     }
     if (bno055)
-      getbnodata();
+    {
+      getbno055data();
+    }
+    if (bno080)
+    {
+      getbno080data();
+    }
 
     sbusParse();
+    // Serial.println("a");
     vTaskDelay((configTICK_RATE_HZ) / 1000L); //1000hz
                                               // Serial.println(dt);
   }
@@ -1105,6 +1139,10 @@ static void attitudeControl(void *pvParameters)
   {
     if (flag_armed)
     {
+
+      rollErrorLast = rollError;
+      pitchErrorLast = pitchError;
+      yawErrorLast = yawError;
       sensor_rwlock.ReaderLock();
       yawError = angular_diff(currentYaw, desiredYaw);
       rollError = currentRoll - desiredRoll;
@@ -1120,35 +1158,49 @@ static void attitudeControl(void *pvParameters)
       iRollResponse += rollError * rollKi;
       iPitchResponse += pitchError * pitchKi;
 
-      dYawResponse = yawKd * (yawError - yawErrorLast) / 10;
-      dRollResponse = rollKd * (rollError - rollErrorLast) / 10;
-      dPitchResponse = pitchKd * (pitchError - pitchErrorLast) / 10;
+      dYawResponse = yawKd * (yawError - yawErrorLast) / 100; //10microseconds
+      dRollResponse = rollKd * (rollError - rollErrorLast) / 100;
+      dPitchResponse = pitchKd * (pitchError - pitchErrorLast) / 100;
 
-      yawResponse = pYawResponse + iYawResponse + dYawResponse;
-      rollResponse = pRollResponse + iRollResponse + dRollResponse;
-      pitchResponse = pPitchResponse + iPitchResponse + dPitchResponse;
+      yawResponse = pYawResponse + iYawResponse - dYawResponse;
+      rollResponse = pRollResponse + iRollResponse - dRollResponse;
+      pitchResponse = pPitchResponse + iPitchResponse - dPitchResponse;
 
       throtResponse = desiredThrottle;
       if (!HITL)
       {
         if (vechicle_type == 0)
         {
-          backRightMotorSignal = throttleIdle + throtResponse - rollResponse + pitchResponse + yawResponse;
-          backLeftMotorSignal = throttleIdle + throtResponse + rollResponse + pitchResponse - yawResponse;
-          frontRightMotorSignal = throttleIdle + throtResponse - rollResponse - pitchResponse - yawResponse;
-          frontLeftMotorSignal = throttleIdle + throtResponse + rollResponse - pitchResponse + yawResponse;
+          if (throtResponse < 75)
+          {
+            frontLeftMotorSignal = 1000;
+            frontRightMotorSignal = 1000;
+            backLeftMotorSignal = 1000;
+            backRightMotorSignal = 1000;
+          }
+          else
+          {
+            frontLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse + pitchResponse - yawResponse);
+            frontRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse + pitchResponse + yawResponse);
+            backLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse - pitchResponse + yawResponse);
+            backRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse - pitchResponse - yawResponse);
+          }
+
+          // Serial.println(backRightMotorSignal);
         }
-        if (vechicle_type)
+        if (vechicle_type == 1)
         {
           yawSignal = 1500 + yawResponse;
           throttleSignal = 1500 + throtResponse;
         }
-        yawSignal = saturate(yawSignal, 2000, 1000);
-        throttleSignal = saturate(throttleSignal, 2000, 1000);
-        backRightMotorSignal = saturate(backRightMotorSignal, 2000, 1000);
-        backLeftMotorSignal = saturate(backLeftMotorSignal, 2000, 1000);
-        frontRightMotorSignal = saturate(frontRightMotorSignal, 2000, 1000);
-        frontLeftMotorSignal = saturate(frontLeftMotorSignal, 2000, 1000);
+
+        yawSignal = saturate(yawSignal, highPWMmotor, 1000);
+        throttleSignal = saturate(throttleSignal, highPWMmotor, 1000);
+        backRightMotorSignal = saturate(backRightMotorSignal, highPWMmotor, 1000);
+        backLeftMotorSignal = saturate(backLeftMotorSignal, highPWMmotor, 1000);
+        frontRightMotorSignal = saturate(frontRightMotorSignal, highPWMmotor, 1000);
+        frontLeftMotorSignal = saturate(frontLeftMotorSignal, highPWMmotor, 1000);
+        // Serial.println(backRightMotorSignal);
       }
       else
       {
@@ -1274,24 +1326,36 @@ static void actuarorsThread(void *pvParameters)
     {
       if (flag_armed)
       {
-        yawMotor.writeMicroseconds(yawSignal);
-        throttle.writeMicroseconds(throttleSignal);
-        frontRightMotor.writeMicroseconds(frontRightMotorSignal);
-        frontLeftMotor.writeMicroseconds(frontLeftMotorSignal);
-        backRightMotor.writeMicroseconds(backLeftMotorSignal);
-        backLeftMotor.writeMicroseconds(backRightMotorSignal);
+        if (vechicle_type == 1)
+        {
+          yawMotor.writeMicroseconds(yawSignal);
+          throttle.writeMicroseconds(throttleSignal);
+        }
+        if (vechicle_type == 0)
+        {
+          frontRightMotor.writeMicroseconds(frontRightMotorSignal);
+          frontLeftMotor.writeMicroseconds(frontLeftMotorSignal);
+          backRightMotor.writeMicroseconds(backRightMotorSignal);
+          backLeftMotor.writeMicroseconds(backLeftMotorSignal);
+        }
       }
       else
       {
-        yawMotor.writeMicroseconds(1500);
-        throttle.writeMicroseconds(1500);
-        frontRightMotor.writeMicroseconds(1000);
-        frontLeftMotor.writeMicroseconds(1000);
-        backRightMotor.writeMicroseconds(1000);
-        backLeftMotor.writeMicroseconds(1000);
+        if (vechicle_type == 1)
+        {
+          yawMotor.writeMicroseconds(1500);
+          throttle.writeMicroseconds(1500);
+        }
+        if (vechicle_type == 0)
+        {
+          frontRightMotor.writeMicroseconds(1000);
+          frontLeftMotor.writeMicroseconds(1000);
+          backRightMotor.writeMicroseconds(1000);
+          backLeftMotor.writeMicroseconds(1000);
+        }
       }
     }
-    vTaskDelay(500L * (configTICK_RATE_HZ) / 1000L);
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
   }
 }
 
@@ -1302,12 +1366,23 @@ void setup()
   // digitalWrite(LED_PIN, LOW);
   portBASE_TYPE s0, s1, s2, s3, s4, s5;
 
-  delay(2000);
+  delay(500);
 
   if (!HITL)
   {
-    throttle.attach(2);
-    yawMotor.attach(3);
+    // throttle.attach(2);
+    // yawMotor.attach(3);
+    frontLeftMotor.attach(3);
+    frontRightMotor.attach(4);
+    backLeftMotor.attach(5);
+    backRightMotor.attach(6);
+
+    frontLeftMotor.writeMicroseconds(1000);
+    frontRightMotor.writeMicroseconds(1000);
+    backLeftMotor.writeMicroseconds(1000);
+    backRightMotor.writeMicroseconds(1000);
+    delay(3000);
+
     yawMotor.writeMicroseconds(1500);
     throttle.writeMicroseconds(1500);
     x8r.begin();
@@ -1333,6 +1408,19 @@ void setup()
 
       bno.setExtCrystalUse(true);
     }
+    if (bno080)
+    {
+      if (bno080imu.begin() == false)
+      {
+        Serial.println("BNO080 not detected at default I2C address. Check your jumpers and the hookup guide. Freezing...");
+        while (1)
+          ;
+      }
+
+      Wire.setClock(400000); //Increase I2C data rate to 400kHz
+
+      bno080imu.enableRotationVector(1); //Send data update every 50ms
+    }
     Serial.println("I2C start");
 
     // TaskHandle_t Handle_gyroTask;
@@ -1347,12 +1435,12 @@ void setup()
     // initialize semaphore
     sem = xSemaphoreCreateCounting(1, 0);
     s5 = xTaskCreate(telemetry, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
-    s4 = xTaskCreate(getSensorData, NULL, configMINIMAL_STACK_SIZE, NULL, 5, &Handle_commsTask);
-    s3 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, &Handle_monitorTask);
+    s4 = xTaskCreate(getSensorData, NULL, configMINIMAL_STACK_SIZE, NULL, 5, &Handle_monitorTask);
+    s3 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, &Handle_desiredAttitudeTask);
 
-    s2 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 3, &Handle_monitorTask);
+    s2 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 3, &Handle_navigationTask);
     // create task at priority two
-    s1 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 2, &Handle_commsTask);
+    s1 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 2, &Handle_attitudeTask);
     // create task at priority one
     s0 = xTaskCreate(actuarorsThread, NULL, configMINIMAL_STACK_SIZE, NULL, 1, &Handle_acutatorsTask);
 
