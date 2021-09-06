@@ -13,6 +13,7 @@
 #include "read_write_lock.hpp"
 #include "mavlink.h"
 #include "SparkFun_BNO080_Arduino_Library.h"
+
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 BNO080 bno080imu;
 
@@ -37,6 +38,8 @@ int RCMode;
 bool mpu6050 = 1;
 bool bno055 = 0;
 bool bno080 = 0;
+#define SDLogging 
+
 int currentMode = 0;
 bool failSafe;
 bool lostFrame;
