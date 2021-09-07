@@ -13,6 +13,8 @@
 #include "read_write_lock.hpp"
 #include "mavlink.h"
 #include "SparkFun_BNO080_Arduino_Library.h"
+#include <SdFat.h>
+
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 BNO080 bno080imu;
 
@@ -180,6 +182,75 @@ float q2 = 0.0f;
 float q3 = 0.0f;
 // Eigen::Matrix<double,1,3> eulerPQR;
 
+// Use SDIO for SD transfer
+#define CONFIG_SD_USE_SDIO                 1
+// SD Card FAT File System Type
+#define CONFIG_SD_FAT_TYPE                 3
+// Network Heap Size
+#define CONFIG_NETWORK_HEAP_SIZE           (1024*120)
+// Watchdog warning timeout (seconds, 1->128)
+#define CONFIG_WATCHDOG_WARNING_TIMEOUT    30
+// Watchdog reset timeout (seconds, 1->128, greater than warning)
+#define CONFIG_WATCHDOG_RESET_TIMEOUT      60
+// Serial baud rate
+#define CONFIG_SERIAL_BAUD                 9600
+// LED used to indicate sampling
+#define CONFIG_LED                         LED_BUILTIN
+// Length of time to sample (milliseconds)
+#define CONFIG_RECORDING_LENGTH               5000
+// Length of time to sleep between sampling (milliseconds)
+#define CONFIG_HOLD_LENGTH                 25000
+
+// Size of the audio queue buffer
+#define CONFIG_AUDIO_BUFFER_SIZE           256
+// Roll off old recordings when SD card is full
+#define CONFIG_SD_CARD_ROLLOFF             0
+// Whether to use Ethernet/FTP
+#define CONFIG_DISABLE_NETWORK             1
+
+#if CONFIG_SD_USE_SDIO
+// FIFO is faster than DMA according to documentation
+#  define CONFIG_SD                        SdioConfig(FIFO_SDIO)
+#else
+// SD Card SS Pin is defined by the board in some cases
+#  ifndef SDCARD_SS_PIN
+#    define CONFIG_SD_CS_PIN               SS
+#  else
+#    define CONFIG_SD_CS_PIN               SDCARD_SS_PIN
+#  endif
+// SPI Clock Frequency
+#  define CONFIG_SPI_CLOCK                 SD_SCK_MHZ(50)
+// Arguments to begin()
+#  define CONFIG_SD                        SdSpiConfig(CONFIG_SD_CS_PIN, DEDICATED_SPI, CONFIG_SPI_CLOCK)
+#endif
+
+/*********************************************************
+ The following blocks utilize the above configuration to
+ verify some basic format or value constraints and build
+ more complex configurations from the above basic configs.
+*********************************************************/
+
+#if CONFIG_SD_FAT_TYPE == 0
+#define CONFIG_SD_CONTROLLER                      SdFat
+#define CONFIG_SD_FILE                            FsFile
+#elif CONFIG_SD_FAT_TYPE == 1
+#define CONFIG_SD_CONTROLLER                      SdFat32
+#define CONFIG_SD_FILE                            FsFile32
+#elif CONFIG_SD_FAT_TYPE == 2
+#define CONFIG_SD_CONTROLLER                      SdExFat
+#define CONFIG_SD_FILE                            ExFile
+#elif CONFIG_SD_FAT_TYPE == 3
+#define CONFIG_SD_CONTROLLER                      SdFs
+#define CONFIG_SD_FILE                            FsFile
+#else
+#error invalid sd fat type
+#endif
+
+CONFIG_SD_CONTROLLER m_sd;
+CONFIG_SD_FILE file;
+CONFIG_SD_FILE datafile;
+  unsigned long m_next_recording;
+  unsigned long m_first_recording;
 //**************************************************************************
 //helper functions s
 //**************************************************************************
@@ -442,9 +513,8 @@ void Madgwick(float gx, float gy, float gz, float ax, float ay, float az, float 
   //   eulerPQR = derive_ang_velocity(const Eigen::Ref<const Eigen::Matrix<double,1,3>>& e_)
 }
 
-static void telemetry(void *pvParameters)
+int mavlink_send_and_recieve(void)
 {
-
   uint8_t system_type = MAV_TYPE_GROUND_ROVER;    //MAV_TYPE_HELICOPTER;//MAV_TYPE_FIXED_WING;
   uint8_t autopilot_type = MAV_AUTOPILOT_GENERIC; //MAV_AUTOPILOT_ARDUPILOTMEGA
   uint8_t system_mode = MAV_MODE_MANUAL_DISARMED; //MAV_MODE_MANUAL_ARMED; //MAV_MODE_GUIDED_ARMED //MAV_MODE_GUIDED_DISARMED
@@ -487,118 +557,351 @@ static void telemetry(void *pvParameters)
   int data = 0;
   mavlink_message_t receivedMsg;
   mavlink_status_t mav_status;
-  while (1)
+
+  currentTime = micros();
+  memset(buf, 0xFF, sizeof(buf));
+  mavlink_system.sysid = 1;
+  mavlink_system.compid = MAV_COMP_ID_AUTOPILOT1;
+  heartbeat.system_status = MAV_STATE_ACTIVE;
+  heartbeat.custom_mode = 65536;
+  heartbeat.base_mode = 81;
+
+  // // Pack the message
+  mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &heartbeatMsg, 2, 12, heartbeat.base_mode, heartbeat.custom_mode, heartbeat.system_status);
+  // // Copy the message to send buffer
+  uint16_t len = mavlink_msg_to_send_buffer(buf, &heartbeatMsg);
+  // Serial2.println("Heartbeat");
+  // //Write Message
+  Serial2.write(buf, len);
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_gps_raw_int_pack(mavlink_system.sysid, mavlink_system.compid, &global_position_intMsg, currentTime, 3, 392919390, -772862310, 10, 0xFFFF, 0xFFFF, Velocity, 0xFFFF, 7, 0, 0, 0, 0, 0); //fix_type must be 3 for some odd reason
+  // /// Copy the message to send buffer
+  len = mavlink_msg_to_send_buffer(buf, &global_position_intMsg);
+  //Write Message
+  Serial2.write(buf, len);
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_altitude_pack(mavlink_system.sysid, mavlink_system.compid, &altMsg, currentTime, 12, 13, 14, 15, 16, 17);
+  len = mavlink_msg_to_send_buffer(buf, &altMsg);
+  //Write Message
+  Serial2.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_local_position_ned_pack(mavlink_system.sysid, mavlink_system.compid, &local_position_nedMsg, 1, 1, 2, 3, 0, 0, 0);
+  len = mavlink_msg_to_send_buffer(buf, &local_position_nedMsg);
+  //Write Message
+  Serial2.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_attitude_pack(mavlink_system.sysid, mavlink_system.compid, &attitudeMsg, currentTime, currentRoll * 3.14 / 180, currentPitch * 3.14 / 180, currentYaw * 3.14 / 180, 4, 5, 6);
+  len = mavlink_msg_to_send_buffer(buf, &attitudeMsg);
+  //Write Message
+  Serial2.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_highres_imu_pack(mavlink_system.sysid, mavlink_system.compid, &highres_imuMsg, currentTime, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);
+  len = mavlink_msg_to_send_buffer(buf, &highres_imuMsg);
+  //Write Message
+  Serial2.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_sys_status_pack(mavlink_system.sysid, mavlink_system.compid, &sys_statusMsg, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);
+  len = mavlink_msg_to_send_buffer(buf, &sys_statusMsg);
+  //Write Message
+  Serial2.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+  // mavlink_msg_ping_pack(mavlink_system.sysid, mavlink_system.compid, &pingMsg, currentTime, 0, 0, 0);
+  // len = mavlink_msg_to_send_buffer(buf, &pingMsg);
+  // //Write Message
+  // Serial2.write(buf, len);
+  // //Reset Buffer
+  // memset(buf, 0xFF, sizeof(buf));
+
+  // time1 = micros();
+
+  //   //Read Message
+  if (Serial2.available())
+
   {
-    currentTime = micros();
-    memset(buf, 0xFF, sizeof(buf));
-    mavlink_system.sysid = 1;
-    mavlink_system.compid = MAV_COMP_ID_AUTOPILOT1;
-    heartbeat.system_status = MAV_STATE_ACTIVE;
-    heartbeat.custom_mode = 65536;
-    heartbeat.base_mode = 81;
+    data = Serial2.read();
 
-    // // Pack the message
-    mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &heartbeatMsg, 2, 12, heartbeat.base_mode, heartbeat.custom_mode, heartbeat.system_status);
-    // // Copy the message to send buffer
-    uint16_t len = mavlink_msg_to_send_buffer(buf, &heartbeatMsg);
-    // Serial2.println("Heartbeat");
-    // //Write Message
-    Serial2.write(buf, len);
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_gps_raw_int_pack(mavlink_system.sysid, mavlink_system.compid, &global_position_intMsg, currentTime, 3, 392919390, -772862310, 10, 0xFFFF, 0xFFFF, Velocity, 0xFFFF, 7, 0, 0, 0, 0, 0); //fix_type must be 3 for some odd reason
-    // /// Copy the message to send buffer
-    len = mavlink_msg_to_send_buffer(buf, &global_position_intMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_altitude_pack(mavlink_system.sysid, mavlink_system.compid, &altMsg, currentTime, 12, 13, 14, 15, 16, 17);
-    len = mavlink_msg_to_send_buffer(buf, &altMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_local_position_ned_pack(mavlink_system.sysid, mavlink_system.compid, &local_position_nedMsg, 1, 1, 2, 3, 0, 0, 0);
-    len = mavlink_msg_to_send_buffer(buf, &local_position_nedMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_attitude_pack(mavlink_system.sysid, mavlink_system.compid, &attitudeMsg, currentTime, currentRoll * 3.14 / 180, currentPitch * 3.14 / 180, currentYaw * 3.14 / 180, 4, 5, 6);
-    len = mavlink_msg_to_send_buffer(buf, &attitudeMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_highres_imu_pack(mavlink_system.sysid, mavlink_system.compid, &highres_imuMsg, currentTime, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);
-    len = mavlink_msg_to_send_buffer(buf, &highres_imuMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_sys_status_pack(mavlink_system.sysid, mavlink_system.compid, &sys_statusMsg, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);
-    len = mavlink_msg_to_send_buffer(buf, &sys_statusMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    //   //Read Message
-    if (Serial2.available())
-
+    if (mavlink_parse_char(MAVLINK_COMM_0, data, &receivedMsg, &mav_status))
     {
-      data = Serial2.read();
+      parsed = micros();
+      timebetweenparsed = parsed - lastparsed;
+      lastparsed = parsed;
+      // Serial.print(1000000/timebetweenparsed);Serial.println(" hz");
+      Serial.print("  Sys ID: ");
+      Serial.print(receivedMsg.sysid, DEC);
+      Serial.print("  Comp ID: ");
+      Serial.print(receivedMsg.compid, DEC);
+      Serial.print("  Len ID: ");
+      Serial.print(receivedMsg.len, DEC);
+      Serial.print("  Msg ID: ");
+      Serial.print(receivedMsg.msgid, DEC);
+      Serial.print("\n");
+    }
+  }
+}
+void serial_debug()
 
-      if (mavlink_parse_char(MAVLINK_COMM_0, data, &receivedMsg, &mav_status))
+{
+  Serial.print(currentYaw, 3);
+  Serial.print(',');
+  Serial.print(currentRoll, 3);
+  Serial.print(',');
+  Serial.print(currentPitch, 3);
+  Serial.print(',');
+  Serial.print(desiredYaw, 3);
+  Serial.print(',');
+  Serial.print(desiredRoll, 3);
+  Serial.print(',');
+  Serial.print(desiredPitch, 3);
+  Serial.print(',');
+  Serial.print(desiredThrottle, 3);
+  Serial.print(',');
+  Serial.print(currentMode);
+  Serial.print(',');
+  Serial.println(flag_armed);
+}
+
+int init_sdcard()
+{
+
+  while (!m_sd.begin(CONFIG_SD))
+  {
+
+    delay(1000);
+  }
+
+  // We track the recording file. If drop off is disabled, then this never changes.
+  if (m_sd.exists("/first_recording"))
+  {
+    char buffer[64];
+    CONFIG_SD_FILE file = m_sd.open("/first_recording", O_RDONLY);
+    file.read(buffer, 64);
+    file.close();
+
+    m_first_recording = atoi(buffer);
+  }
+  else
+  {
+    m_first_recording = 0;
+    // Touch the marker file
+    CONFIG_SD_FILE file = m_sd.open("/first_recording", O_WRONLY | O_CREAT);
+    file.write("0\n", 2);
+    file.close();
+  }
+
+  // This is updated after every recording, and helps start up times when the SD card
+  // has a lot of recordings (e.g. >1k).
+  if (m_sd.exists("/next_recording"))
+  {
+    char buffer[64];
+    CONFIG_SD_FILE file = m_sd.open("/next_recording", O_RDONLY);
+    file.read(buffer, 64);
+    file.close();
+
+    m_next_recording = atoi(buffer);
+  }
+  else
+  {
+    m_next_recording = 0;
+    CONFIG_SD_FILE file = m_sd.open("/next_recording", O_WRONLY | O_CREAT);
+    file.write("0\n", 2);
+    file.close();
+  }
+
+  return 0;
+}
+#define CONFIG_RECORDING_DIRECTORY         "/rec%d"
+// Number of samples to collect to meet recording length (floor'd)
+#define CONFIG_RECORDING_SAMPLE_COUNT ((size_t)( ((CONFIG_RECORDING_LENGTH / 1000) * 44100) / 256 ))
+#define CONFIG_RECORDING_TOTAL_BLOCKS ((1 * (CONFIG_RECORDING_SAMPLE_COUNT*256) * 2) / 512)
+int generate_new_dir(char *recording_dir, size_t length)
+{
+  size_t needed;
+  size_t blocks_left = m_sd.freeClusterCount() * m_sd.sectorsPerCluster();
+
+  // Check if we have enough for this recording + 2 blocks for accounting information
+  while (blocks_left < (CONFIG_RECORDING_TOTAL_BLOCKS + 2))
+  {
+#if CONFIG_SD_CARD_ROLLOFF
+    char channel_path[256];
+
+    for (int id = m_first_recording;; id++)
+    {
+      // Produce a new folder path
+      needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
+
+      // Ignore non-existent entries
+      if (!m_sd.exists(recording_dir))
+        continue;
+
+      // Remove channel data
+      for (int ch = 0;; ch++)
       {
-        parsed = micros();
-        timebetweenparsed = parsed - lastparsed;
-        lastparsed = parsed;
-        // Serial.print(1000000/timebetweenparsed);Serial.println(" hz");
-        Serial.print("  Sys ID: ");
-        Serial.print(receivedMsg.sysid, DEC);
-        Serial.print("  Comp ID: ");
-        Serial.print(receivedMsg.compid, DEC);
-        Serial.print("  Len ID: ");
-        Serial.print(receivedMsg.len, DEC);
-        Serial.print("  Msg ID: ");
-        Serial.print(receivedMsg.msgid, DEC);
-        Serial.print("\n");
+        snprintf(channel_path, 256, CONFIG_CHANNEL_PATH, recording_dir, ch);
+        if (!m_sd.exists(channel_path))
+          break;
+        m_sd.remove(channel_path);
       }
+
+      // Remove the recording directory
+      m_sd.rmdir(recording_dir);
+
+      // Update first recording ID
+      m_first_recording = id + 1;
+
+      // Update first recording tracker on disk
+      CONFIG_SD_FILE file = m_sd.open("/first_recording", O_WRONLY);
+      char buffer[64];
+      size_t len = snprintf(buffer, 64, "%ld\n", m_first_recording);
+      file.write(buffer, len);
+      file.close();
+
+      break;
+    }
+#else
+    
+    //
+#endif
+  }
+
+  for (int id = m_next_recording;; id++)
+  {
+    // Produce a new folder path
+    needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
+
+    // Could we fit it in our buffer?
+    if (needed > length)
+    {
+      return 1;
     }
 
-    // mavlink_msg_ping_pack(mavlink_system.sysid, mavlink_system.compid, &pingMsg, currentTime, 0, 0, 0);
-    // len = mavlink_msg_to_send_buffer(buf, &pingMsg);
-    // //Write Message
-    // Serial2.write(buf, len);
-    // //Reset Buffer
-    // memset(buf, 0xFF, sizeof(buf));
+    // Does it exist?
+    if (!m_sd.exists(recording_dir))
+    {
+      // Create the new directory
+      m_sd.mkdir(recording_dir);
+      // Increment counter
+      m_next_recording = id + 1;
 
-    // time1 = micros();
-    Serial.print(currentYaw, 3);
-    Serial.print(',');
-    Serial.print(currentRoll, 3);
-    Serial.print(',');
-    Serial.print(currentPitch, 3);
-    Serial.print(',');
-    Serial.print(desiredYaw, 3);
-    Serial.print(',');
-    Serial.print(desiredRoll, 3);
-    Serial.print(',');
-    Serial.print(desiredPitch, 3);
-    Serial.print(',');
-    Serial.print(desiredThrottle, 3);
-    Serial.print(',');
-    Serial.print(currentMode);
-    Serial.print(',');
-    Serial.println(flag_armed);
-    time2 = time1;
-    vTaskDelay(1000L * (configTICK_RATE_HZ) / 1000L);
+      // Update the next recording tracker on disk
+      CONFIG_SD_FILE file = m_sd.open("/next_recording", O_WRONLY);
+      char buffer[64];
+      size_t len = snprintf(buffer, 64, "%ld\n", m_next_recording);
+      file.write(buffer, len);
+      file.close();
+
+      return 0;
+    }
+  }
+}
+
+void start_sd_logging(char* recording_dir, size_t length, CONFIG_SD_FILE* data_file)
+{
+  char channel_path[256];
+
+  // Generate a new recording directory
+  if( generate_new_dir(recording_dir, 256) != 0 ) {
+    Serial.print("break");
+  }
+
+
+
+  // this->log("[+] beginning recording period for: %s\n", recording_dir);
+
+  // Visual indicator of sampling period
+  // digitalWrite(CONFIG_LED, HIGH);
+
+
+    // if( ! data_file[ch].open(channel_path, FILE_WRITE) ) {
+    //   // this->panic("failed to open channel file", -1);
+    // }
+    datafile.open(channel_path,FILE_WRITE);
+  }
+
+
+void stop_sd_logging(const char* recording_dir)
+{
+  datafile.close();
+}
+
+void log_it()
+{
+  datafile.print(currentYaw, 3);
+  datafile.print(',');
+  datafile.print(currentRoll, 3);
+  datafile.print(',');
+  datafile.print(currentPitch, 3);
+  datafile.print(',');
+  datafile.print(desiredYaw, 3);
+  datafile.print(',');
+  datafile.print(desiredRoll, 3);
+  datafile.print(',');
+  datafile.print(desiredPitch, 3);
+  datafile.print(',');
+  datafile.print(frontLeftMotorSignal, 3);
+  datafile.print(',');
+  datafile.print(frontRightMotorSignal, 3);
+  datafile.print(',');
+  datafile.print(backLeftMotorSignal, 3);
+  datafile.print(',');
+  datafile.print(backRightMotorSignal, 3);
+  datafile.print(',');
+  datafile.print(currentMode);
+  datafile.print(',');
+  datafile.println(flag_armed);
+}
+
+static void telemetry_and_logging(void *pvParameters)
+{
+
+  int counter = 0;
+
+  #ifdef logging
+  {
+    int sdwrites=0;
+    init_sdcard();
+    start_sd_logging();
+  }
+  #endif
+  while (1)
+  {
+
+    if ((counter % 250) == 0)
+      mavlink_send_and_recieve();
+    if ((counter % 500) == 0)
+      serial_debug();
+
+    #ifdef sdlog
+    if ((counter % 500) == 0)
+    {
+      sdwrites++;
+      log_it();
+      if (sdwrites==2000)
+      {
+      sdwrites=0;
+      stop_sd_logging();
+      start_sd_logging();
+      }
+    }
+    #endif
+
+    
+    counter++;
+    if (counter == 1001)
+    {
+      counter = 0;
+    }
+    vTaskDelay((configTICK_RATE_HZ) / 1000L); //1000hz
 
   } //end while1
 }
@@ -1326,11 +1629,7 @@ static void actuarorsThread(void *pvParameters)
     {
       if (flag_armed)
       {
-        if (vechicle_type == 1)
-        {
-          yawMotor.writeMicroseconds(yawSignal);
-          throttle.writeMicroseconds(throttleSignal);
-        }
+
         if (vechicle_type == 0)
         {
           frontRightMotor.writeMicroseconds(frontRightMotorSignal);
@@ -1338,20 +1637,25 @@ static void actuarorsThread(void *pvParameters)
           backRightMotor.writeMicroseconds(backRightMotorSignal);
           backLeftMotor.writeMicroseconds(backLeftMotorSignal);
         }
+        if (vechicle_type == 1)
+        {
+          yawMotor.writeMicroseconds(yawSignal);
+          throttle.writeMicroseconds(throttleSignal);
+        }
       }
       else
       {
-        if (vechicle_type == 1)
-        {
-          yawMotor.writeMicroseconds(1500);
-          throttle.writeMicroseconds(1500);
-        }
         if (vechicle_type == 0)
         {
           frontRightMotor.writeMicroseconds(1000);
           frontLeftMotor.writeMicroseconds(1000);
           backRightMotor.writeMicroseconds(1000);
           backLeftMotor.writeMicroseconds(1000);
+        }
+        if (vechicle_type == 1)
+        {
+          yawMotor.writeMicroseconds(1500);
+          throttle.writeMicroseconds(1000);
         }
       }
     }
@@ -1434,7 +1738,7 @@ void setup()
 
     // initialize semaphore
     sem = xSemaphoreCreateCounting(1, 0);
-    s5 = xTaskCreate(telemetry, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
+    s5 = xTaskCreate(telemetry_and_logging, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
     s4 = xTaskCreate(getSensorData, NULL, configMINIMAL_STACK_SIZE, NULL, 5, &Handle_monitorTask);
     s3 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, &Handle_desiredAttitudeTask);
 
@@ -1460,7 +1764,7 @@ void setup()
 
     // initialize semaphore
     sem = xSemaphoreCreateCounting(1, 0);
-    s5 = xTaskCreate(telemetry, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
+    s5 = xTaskCreate(telemetry_and_logging, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
 
     s4 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 5, &Handle_navigationTask);
     //   // create task at priority two
