@@ -129,6 +129,8 @@ private:
 
 // Private internal variables used directly by our flightcontroller
 private:
+Adafruit_BNO055 bno055imu = Adafruit_BNO055(55);
+BNO080 bno080imu;
   CONFIG_SD_CONTROLLER m_sd;
   unsigned long m_next_recording;
   unsigned long m_first_recording;

@@ -4,18 +4,15 @@
 
 #include <FreeRTOS_TEENSY4.h>
 #include <Wire.h> //I2c communication
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
+
 #include <Adafruit_GPS.h>
 #include <utility/imumaths.h>
 #include <Servo.h>
 #include "SBUS.h"
 #include "read_write_lock.hpp"
 #include "mavlink.h"
-#include "SparkFun_BNO080_Arduino_Library.h"
 
-Adafruit_BNO055 bno = Adafruit_BNO055(55);
-BNO080 bno080imu;
+
 
 // #include <stlport.h>
 // #include <Eigen30.h>
@@ -208,41 +205,8 @@ void setup()
     Serial2.begin(57600);
     init_motors();
     init_radios();
+    init_imu();
    
-    if (mpu6050)
-    {
-      IMUinit();
-      delay(100);
-      calculate_IMU_error();
-      calibrateAttitude(); //helps to warm up IMU and Madgwick filter
-    }
-    if (bno055)
-    {
-      if (!bno.begin())
-      {
-        /* There was a problem detecting the BNO055 ... check your connections */
-        Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-        while (1)
-          ;
-      }
-
-      bno.setExtCrystalUse(true);
-    }
-    if (bno080)
-    {
-      if (bno080imu.begin() == false)
-      {
-        Serial.println("BNO080 not detected at default I2C address. Check your jumpers and the hookup guide. Freezing...");
-        while (1)
-          ;
-      }
-
-      Wire.setClock(400000); //Increase I2C data rate to 400kHz
-
-      bno080imu.enableRotationVector(1); //Send data update every 50ms
-    }
-    Serial.println("I2C start");
-
     // TaskHandle_t Handle_gyroTask;
     // TaskHandle_t Handle_desiredAttitudeTask;
     // TaskHandle_t Handle_attitudeTask;
@@ -281,11 +245,9 @@ void setup()
     // initialize semaphore
     sem = xSemaphoreCreateCounting(1, 0);
     s5 = xTaskCreate(telemetry, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
-
     s4 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 5, &Handle_navigationTask);
     //   // create task at priority two
     s3 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, &Handle_desiredAttitudeTask);
-
     s2 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 3, &Handle_attitudeTask);
     // create task at priority two
     s1 = xTaskCreate(actuarorsThread, NULL, configMINIMAL_STACK_SIZE, NULL, 2, &Handle_acutatorsTask);

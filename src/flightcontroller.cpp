@@ -9,7 +9,7 @@ flightcontroller::~flightcontroller() { }
 
 void flightcontroller::getsensordata()
 
-void imuLoop(void *arg)
+void flightcontroller::imuLoop(void *arg)
 {
   while (1)
   {
@@ -203,22 +203,14 @@ int flightcontroller::init_imu()
 
  if (mpu6050)
     {
-      IMUinit();
+      mpu6050init();
       delay(100);
       calculate_IMU_error();
       calibrateAttitude(); //helps to warm up IMU and Madgwick filter
     }
     if (bno055)
     {
-      if (!bno.begin())
-      {
-        /* There was a problem detecting the BNO055 ... check your connections */
-        Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-        while (1)
-          ;
-      }
-
-      bno.setExtCrystalUse(true);
+      bno050init();
     }
     if (bno080)
     {
