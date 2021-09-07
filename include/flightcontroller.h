@@ -99,12 +99,9 @@ private:
    * on success. Non-zero return values triggger a panic().
    */
   int init_sdcard();
-  int init_watchdog();
-  int init_serial();
-  int init_audio();
-#if ! CONFIG_DISABLE_NETWORK
-  int init_ethernet();
-#endif
+  int init_imu();
+  int init_radio();
+  int init_motors();
 
   /**
    * Display a panic message and error code and halt the processor.

@@ -7,77 +7,95 @@ flightcontroller::flightcontroller()
 { }
 flightcontroller::~flightcontroller() { }
 
+void flightcontroller::getsensordata()
 
-void flightcontroller::run()
+void imuLoop(void *arg)
 {
-
-  char recording_dir[256]; // path to the recording directory
-  CONFIG_SD_FILE data_file[CONFIG_CHANNEL_COUNT]; // Open SD card file object
-  byte sd_buffer[512];
-  size_t collected_buffers = 0;
-  unsigned long time_stopped;
-
-  // Initialize recording directory and data files and start
-  // audio sampling queues.
-  this->start_logging(recording_dir, 256, data_file);
-
-  while( 1 )
+  while (1)
   {
-    m_watchdog.feed();
-
-    // Sample all channels and write to disk
-    for(int ch = 0; ch < CONFIG_CHANNEL_COUNT; ch++) {
-      while( m_audio_queue[ch].available() < 2 );
-
-      // Grab two blocks at a time to line up with SD write sizes and maximize
-      // write efficiency.
-      for(int i = 0; i < 2; ++i) {
-        memcpy(sd_buffer + i*256, m_audio_queue[ch].readBuffer(), 256);
-        m_audio_queue[ch].freeBuffer();
-      }
-
-      data_file[ch].write(sd_buffer, 512);
+    
+    if (mpu6050)
+    {
+      prev_time = current_time;
+      current_time = micros();
+      dt = (current_time - prev_time) / 1000000.0; // convert from microseconds to seconds
+      getIMUdata();
+      Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt); //updates roll_IMU, pitch_IMU, and yaw_IMU (degrees)
+      currentRoll = pitch_IMU;
+      currentPitch = -roll_IMU;
+      currentYaw = -yaw_IMU;
+      // Serial.print("a");
+    }
+    if (bno055)
+    {
+      getbno055data();
+    }
+    if (bno080)
+    {
+      getbno080data();
     }
 
-    collected_buffers += 1;
-
-    // Collected enough samples to meet recording length
-    if( collected_buffers >= CONFIG_RECORDING_SAMPLE_COUNT ) {
-
-      // Record the time we should have stopped, since upload may take a couple seconds
-      // if network latency is high.
-      time_stopped = millis();
-
-      // Close files; we are done writing
-      for(int ch = 0; ch < CONFIG_CHANNEL_COUNT; ++ch) {
-        data_file[ch].close();
-      }
-
-      // Stop the sampling process and flush queues
-      this->stop_logging(recording_dir);
-
-      unsigned long ellapsed = millis() - time_stopped;
-      this->log("[+] upload complete after %dms\n", ellapsed);
-
-      // Sleep for the remaining hold time
-      if( ellapsed < CONFIG_HOLD_LENGTH ) {
-        this->log("[+] sleep for %dms\n", CONFIG_HOLD_LENGTH-ellapsed);
-        delay(CONFIG_HOLD_LENGTH - ellapsed);
-      } else {
-        this->log("[+] foregoing sleep due to lengthy upload\n");
-      }
-
-      // Restart recording
-      this->start_logging(recording_dir, 256, data_file);
-
-      // Reset number of collected buffers
-      collected_buffers = 0;
-    }
-
+    
+    // Serial.println("a");
+    vTaskDelay((configTICK_RATE_HZ) / 1000L); //1000hz
+                                              // Serial.println(dt);
   }
+}
+
+int flightcontroller::slow_sensorsloop()
+{
+    GPS.read();
+    gpsSample(GPS);
+    sbusParse();
+    //updatebarometer;
+    //updatelidar();
 
 }
 
+int flightcontroller::generatetrajectoryloop()
+{
+
+}
+
+int flightcontroller::updatemotors()
+{
+  
+//*****************************************************************
+// Actuators Thread 100HZ
+//*****************************************************************
+static void actuarorsThread(void *pvParameters)
+{
+
+  while (1)
+  {
+
+    if (HITL)
+    {
+      sendHITLmotorcommands();
+    }
+
+    else
+    {
+      if (flag_armed)
+      {
+        updatemotors();
+      }
+      else
+      {
+        stopmotors();
+      }
+    }
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+  }
+}
+
+
+}
+
+int flightcontroller::telemetry_and_logging()
+{}
+
+  
 int flightcontroller::setup()
 {
   int code = 0;
@@ -91,16 +109,12 @@ int flightcontroller::setup()
   code = this->init_sdcard();
   if( code != 0 ) this->panic("sdcard initialization failed", code);
 
-#if ! CONFIG_DISABLE_NETWORK
-  code = this->init_ethernet();
-  if( code != 0 ) this->panic("ethernet initialization failed", code);
-#endif
+   code = this->init_imu();
+  if( code != 0 ) this->panic("serial initialization failed", code);
 
-  code = this->init_audio();
-  if( code != 0 ) this->panic("audio initialization failed", code);
+  
 
-  code = this->init_watchdog();
-  if( code != 0 ) this->panic("watchdog initialization failed", code);
+
 
   return 0;
 }
@@ -177,156 +191,47 @@ int flightcontroller::generate_new_dir(char* recording_dir, size_t length)
   }
 }
 
-void flightcontroller::start_sample(char* recording_dir, size_t length, CONFIG_SD_FILE* data_file)
-{
-  char channel_path[256];
-
-  // Generate a new recording directory
-  if( this->generate_new_dir(recording_dir, 256) != 0 ) {
-    this->panic("recording path buffer overflow (clean out sd card?)", -1);
-  }
-
-  this->log("[+] beginning recording period for: %s\n", recording_dir);
-
-  // Visual indicator of sampling period
-  digitalWrite(CONFIG_LED, HIGH);
-
-  // Initialize separately so they happen as close to the same time as possible
-  for(int ch = 0; ch < CONFIG_CHANNEL_COUNT; ch++){
-    m_audio_queue[ch].begin();
-  }
-
-  // Open each channel file
-  for( int ch = 0; ch < CONFIG_CHANNEL_COUNT; ch++ ) {
-    // Open the channel output file
-    snprintf(channel_path, 256, CONFIG_CHANNEL_PATH, recording_dir, ch);
-    if( ! data_file[ch].open(channel_path, FILE_WRITE) ) {
-      this->panic("failed to open channel file", -1);
-    }
-  }
-}
-
-void flightcontroller::stop_sample(const char* recording_dir)
-{
-  CONFIG_SD_FILE channel;
-#if ! CONFIG_DISABLE_NETWORK
-  char channel_path[256];
-  char buffer[512];
-  int code;
-#endif
-
-  this->log("[+] recording period complete; uploading to: %s\n", recording_dir);
-
-  // Visual indicator of sampling period
-  digitalWrite(CONFIG_LED, LOW);
-
-  // Ensure we don't reset
-  m_watchdog.feed();
-
-  // Complete each sampling first in order to stop all sampling at approximately the same time
-  for(int ch = 0; ch < CONFIG_CHANNEL_COUNT; ch++){
-    m_audio_queue[ch].end();
-    m_audio_queue[ch].clear();
-  }
 
 #if ! CONFIG_DISABLE_NETWORK
 
-  // Connect to the FTP server
-  code = m_ftp.connect(CONFIG_FTP_ADDRESS, CONFIG_FTP_PORT);
-  if( code != 0 ) {
-    this->log("[!] failed to connect to ftp server: %d\n", code);
-    return;
-  }
-
-  // Authenticate to FTP server
-  code = m_ftp.auth(CONFIG_FTP_USER, CONFIG_FTP_PASSWORD);
-  if( code != 0 ) {
-    m_ftp.disconnect();
-    this->log("[!] ftp authentication failed: %d\n", code);
-    return;
-  }
-
-  // Ensure the directory exists in the FTP server
-  m_ftp.mkdir(recording_dir);
-
-  // Now, upload the data
-  for(int ch = 0; ch < CONFIG_CHANNEL_COUNT; ch++) {
-
-    // Upload the file to the FTP server
-    snprintf(channel_path, 256, CONFIG_CHANNEL_PATH, recording_dir, ch);
-
-
-    // Open local data file
-    channel = m_sd.open(channel_path, FILE_READ);
-    if( !channel ) {
-      this->log("[!] failed to open sample data: %s\n", channel_path);
-      continue;
-    }
-
-    // Open remote FTP destination
-    code = m_ftp.open(channel_path, FTP_MODE_WRITE);
-    if( code != 0 ) {
-      channel.close();
-      this->log("[!] failed to open remote sample data: %s (%d)\n", channel_path, code);
-      continue;
-    }
-
-    // Transfer data
-    for( size_t count = channel.read(buffer, 512); count != 0; count = channel.read(buffer, 512) ){
-      m_ftp.write(buffer, count);
-    }
-
-    channel.close();
-
-    // Ensure upload is reported as successful
-    code = m_ftp.close();
-    if( code != 0 ) {
-      this->log("[!] failed to upload sample data: %s (%d)\n", channel_path, code);
-      continue;
-    }
-  }
-
-  // FTP no longer needed
-  m_ftp.disconnect();
-
-#endif /* ! CONFIG_DISABLE_NETWORK */
+int init_bnO055()
+{
 
 }
-
-#if ! CONFIG_DISABLE_NETWORK
-
-int flightcontroller::init_ethernet()
+int flightcontroller::init_imu()
 {
-  const char* const animation = "\\|/-";
-  int frame = 0;
-  uint8_t mac[] = CONFIG_MAC_ADDRESS;
 
-  // Instruct internal fnet library to use our buffer as a heap
-  Ethernet.setStackHeap(this->m_network_heap, CONFIG_NETWORK_HEAP_SIZE);
+ if (mpu6050)
+    {
+      IMUinit();
+      delay(100);
+      calculate_IMU_error();
+      calibrateAttitude(); //helps to warm up IMU and Madgwick filter
+    }
+    if (bno055)
+    {
+      if (!bno.begin())
+      {
+        /* There was a problem detecting the BNO055 ... check your connections */
+        Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+        while (1)
+          ;
+      }
 
-  // Initialize self IP and MAC addresses
-  Ethernet.begin(mac, CONFIG_SELF_ADDRESS, CONFIG_DNS_ADDRESS);
+      bno.setExtCrystalUse(true);
+    }
+    if (bno080)
+    {
+      if (bno080imu.begin() == false)
+      {
+        Serial.println("BNO080 not detected at default I2C address. Check your jumpers and the hookup guide. Freezing...");
+        while (1)
+          ;
+      }
+      Wire.setClock(400000); //Increase I2C data rate to 400kHz
 
-  // We need a ethernet driver or this obviously won't work
-  if( Ethernet.hardwareStatus() == EthernetNoHardware ) return -1;
-
-  // Ensure we have link
-  this->log("[-] waiting for ethernet link...");
-  while( Ethernet.linkStatus() != LinkON ) {
-    // Silly, but erases previous message, allows us to give a lil spinny-boi
-    this->log("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
-    this->log("[%c] waiting for ethernet link...", animation[frame]);
-    frame = (frame + 1) % 4;
-    delay(1000);
-  }
-
-  // Again, silly, but I like it, okay?
-  this->log("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
-  this->log("                                ");
-  this->log("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
-  this->log("[+] initialized ethernet\n");
-
-  return 0;
+      bno080imu.enableRotationVector(1); //Send data update every 50ms
+    }
 }
 
 #endif
@@ -390,67 +295,38 @@ int flightcontroller::init_sdcard()
   return 0;
 }
 
-/**
- * This function is called for the warning message. It has no access to the flightcontroller
- * object and is just used to print a warning via serial.
- */
-void watchdog_callback()
+int flightcontroller::init_radio()
 {
-  Serial.println("[!] watchdog warning timeout exceeded");
-}
+  x8r.begin();
 
-int flightcontroller::init_watchdog()
-{
-  WDT_timings_t config;
 
-  // Configure reset and warning timeouts
-  config.trigger = CONFIG_WATCHDOG_WARNING_TIMEOUT;
-  config.timeout = CONFIG_WATCHDOG_RESET_TIMEOUT;
-  // This function will dump a warning to serial after the warning timeout
-  config.callback = watchdog_callback;
-
-  // Start the watchdog
-  m_watchdog.begin(config);
-
-  this->log("[+] initialized watchdog\n");
+  this->log("[+] initialized radios\n");
 
   return 0;
 }
 
-int flightcontroller::init_serial()
+int flightcontroller::init_motors()
 {
-  Serial.begin(CONFIG_SERIAL_BAUD);
+    frontLeftMotor.attach(3);
+    frontRightMotor.attach(4);
+    backLeftMotor.attach(5);
+    backRightMotor.attach(6);
 
-  this->log("[+] initialized serial\n");
+    frontLeftMotor.writeMicroseconds(1000);
+    frontRightMotor.writeMicroseconds(1000);
+    backLeftMotor.writeMicroseconds(1000);
+    backRightMotor.writeMicroseconds(1000);
+    delay(3000);
 
-  return 0;
-}
-
-int flightcontroller::init_audio()
-{
-
-  // [Beef Stroganof](https://github.com/PaulStoffregen) does `AudioMemory` which is
-  // idiotically a non-captialized preprocessor macro. So we decided not to be stupid.
-  AudioStream::initialize_memory(
-    flightcontroller::m_audio_queue_buffer,
-    CONFIG_AUDIO_BUFFER_SIZE
-  );
-
-  if( ! m_audio_control.enable() ){
-    return -1;
-  }
-
-  // Enable differential mode
-  m_audio_control.adcDifferentialMode();
-
-  // Set codec input and output levels
-  m_audio_control.volume(1);
-  m_audio_control.inputLevel(15.85);
+    yawMotor.writeMicroseconds(1500);
+    throttle.writeMicroseconds(1500);
 
   this->log("[+] initialized audio controller\n");
 
   return 0;
 }
+
+
 
 [[noreturn]] void flightcontroller::panic(const char* message, int code) const
 {
