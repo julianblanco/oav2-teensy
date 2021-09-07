@@ -1,3 +1,4 @@
+#include "helper.h"
 void loopRate(int freq)
 {
   //DESCRIPTION: Regulate main loop rate to specified frequency in Hz

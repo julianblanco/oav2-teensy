@@ -10,7 +10,7 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <SparkFun_BNO080_Arduino_Library.h>
-
+#include <utility/imumaths.h>
 class imu
 {
 // Public interface methods
@@ -38,10 +38,35 @@ public:
    * This will begin sampling and uploading results as needed/available.
   */
   void run();
+    void getmpu6050data();
+  void  getbno080data();
+ void  getbno055data();
 
 // Private internal methods
 private:
-
+const int MPU = 0x68; //MPU6050 I2C address -- pins 19 = SCL & 18 = SDA
+//DECLARE GLOBAL VARIABLES
+//General stuff
+float dt;
+unsigned long current_time, prev_time;
+unsigned long print_counter, serial_counter;
+unsigned long blink_counter, blink_delay;
+bool blinkAlternate;
+//IMU:
+float AccX, AccY, AccZ;
+float AccX_prev, AccY_prev, AccZ_prev;
+float GyroX, GyroY, GyroZ;
+float GyroX_prev, GyroY_prev, GyroZ_prev;
+float roll_IMU, pitch_IMU, yaw_IMU;
+float roll_IMU_prev, pitch_IMU_prev;
+float AccErrorX, AccErrorY, AccErrorZ, GyroErrorX, GyroErrorY, GyroErrorZ;
+float roll_correction, pitch_correction;
+float beta = 0.04; //madgwick filter parameter
+float q0 = 1.0f;   //initialize quaternion for madgwick filter
+float q1 = 0.0f;
+float q2 = 0.0f;
+float q3 = 0.0f;
+// Eigen::Matrix<double,1,3> eulerPQR;
   /**
    * Calibrate mpu6050 offset
    *
@@ -86,10 +111,8 @@ private:
    * @param data_file Open handles to SD files which are being sampled to
    */
   void calculate_mpu6050_IMU_error();
+void requestdatafrompu6050();
 
-  void getmpu6050data();
-  void  getbno080data();
- void  getbno055data();
 
   /**
    * The following initialization routines are called by setup().

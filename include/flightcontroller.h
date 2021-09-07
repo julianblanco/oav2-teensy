@@ -39,9 +39,19 @@ public:
   */
   void run();
 
+
+bool flag_armed = 0;
 // Private internal methods
 private:
-
+float currentYaw = 0;
+float currentRoll = 0;
+float currentPitch = 0;
+float headingOffset = 0;
+float desiredYaw = 0;
+float desiredRoll = 0;
+float desiredPitch = 0;
+float desiredThrottle = 200;
+int currentMode = 0;
   /**
    * Upload a file from the local SD card to the FTP server
    *

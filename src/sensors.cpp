@@ -1,3 +1,4 @@
+#include gps.h
 void gpsSample(Adafruit_GPS &gpsobject)
 {
   int Fix = 0;

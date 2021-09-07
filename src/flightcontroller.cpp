@@ -16,14 +16,7 @@ void flightcontroller::imuLoop(void *arg)
     
     if (mpu6050)
     {
-      prev_time = current_time;
-      current_time = micros();
-      dt = (current_time - prev_time) / 1000000.0; // convert from microseconds to seconds
-      getIMUdata();
-      Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt); //updates roll_IMU, pitch_IMU, and yaw_IMU (degrees)
-      currentRoll = pitch_IMU;
-      currentPitch = -roll_IMU;
-      currentYaw = -yaw_IMU;
+      getmpu6050data();
       // Serial.print("a");
     }
     if (bno055)
