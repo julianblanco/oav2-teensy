@@ -4,8 +4,13 @@
 */
 #ifndef _navigation_H_
 #define _navigation_H_
-
-
+#include "task.h"
+class NAVIGATION : public Task
+{
+  // Public interface methods
+public:
+  NAVIGATION();
+  ~NAVIGATION();
 #define waypointmindistance 2
 
 float currentNorth = 0;
@@ -37,5 +42,5 @@ float desiredLong = 0;
 
 float homeLat = 0;
 float homeLong = 0;
-
+};
 #endif

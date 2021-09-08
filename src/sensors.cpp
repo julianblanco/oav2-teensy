@@ -2,37 +2,44 @@
 /*
  * Record and Push imu for Laphable
 */
-#ifndef _sensors_H_
-#define _sesnors_H_
-#endif
+#include "sensors.h"
+SENSORS::SENSORS()
+    :
+{
+}
+SENSORS::~SENSORS() {}
 
-#include gps.h
+int SENSORS::setup()
+{
+//
+#ifdef MPU6050
+  mpu6050init();
+#endif
+#ifdef BNO055
+//shit
+#endif
+  Task::setup("sensors", 1);
+}
+
+int SENSORS::start()
+{
+  while (1)
+  {
+
+     vTaskDelay((configTICK_RATE_HZ) / 1000L);
+  }
+}
+
+
 void gpsSample(Adafruit_GPS &gpsobject)
 {
-  int Fix = 0;
-  int new_GPS_data = 0;
-  float GpsSpeed = 0;
-  float Gpsheading = 0;
-  float GpsAltitude = 0;
-  float GpsSat = 0;
-  float Hour = 0;
-  float Minute = 0;
-  float Seconds = 0;
   if (gpsobject.newNMEAreceived())
   {
     if (gpsobject.parse(gpsobject.lastNMEA())) // this also sets the newNMEAreceived() flag to false
     {
-      Fix = 1;
-      new_GPS_data = 1;
-      currentLat = gpsobject.latitudeDegrees;
-      currentLong = gpsobject.longitudeDegrees;
-      GpsSpeed = gpsobject.speed;
-      Gpsheading = gpsobject.angle;
-      GpsAltitude = gpsobject.altitude;
-      GpsSat = gpsobject.satellites;
-      Hour = gpsobject.hour;
-      Minute = gpsobject.minute;
-      Seconds = gpsobject.seconds;
+      g_sensors.GPS_fix = 1;
+      g_sensors.new_GPS_data = 1;
+     
     }
   }
 }

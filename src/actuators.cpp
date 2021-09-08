@@ -1,4 +1,24 @@
 #include "actuators.h"
+
+ACTUATORS::ACTUATORS()
+    :
+{
+}
+ACTUATORS::~ACTUATORS() {}
+
+int ACTUATORS::setup()
+{
+  Task::setup("actuators", 1);
+}
+
+int ACTUATORS::start()
+{
+  while (1)
+  {
+    //getdata
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+  }
+}
 void sendHITLmotorcommands()
 {
       Serial.print(frontRightMotorSignal);

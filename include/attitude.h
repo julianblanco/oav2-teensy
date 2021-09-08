@@ -5,6 +5,31 @@
 */
 #ifndef _attitude_H_
 #define _attitude_H_
+#include "task.h"
+class ATTITUDE : public Task
+{
+  // Public interface methods
+public:
+  ATTITUDE();
+  ~ATTITUDE();
+  float yaw;
+  float roll;
+  float pitch;
+  cpp_freertos::ReadWriteLockPreferWriter lock;
+
+  
+  /**
+   * Setup the imu
+   *
+   * This method will initialize all needed IMUs including, but not
+   * limited to:
+   * - BNO055
+   * - BNO080
+   * - MPU6050
+   * - 
+   */
+  int setup();
+  int start();
 
 
 #define northKp 10
@@ -32,6 +57,6 @@
 #define throtKp 10
 #define throtKi 0
 #define throtKd 0
-
-
+};
+extern ATTITUDE g_attiude;
 #endif

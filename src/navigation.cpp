@@ -1,6 +1,33 @@
 //*****************************************************************
 // Navigation Thread 1HZ
 //*****************************************************************
+#include "navigation.h"
+NAVIGATION::NAVIGATION()
+    :
+{
+}
+NAVIGATION::~NAVIGATION() {}
+
+int NAVIGATION::setup()
+{
+//
+#ifdef MPU6050
+  mpu6050init();
+#endif
+#ifdef BNO055
+//shit
+#endif
+  Task::setup("navigation", 1);
+}
+
+int NAVIGATION::start()
+{
+  while (1)
+  {
+
+     vTaskDelay((configTICK_RATE_HZ) / 1000L);
+  }
+}
 
 static void NEDpositionControl(void *pvParameters)
 {

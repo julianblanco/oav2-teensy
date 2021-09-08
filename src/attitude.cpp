@@ -1,5 +1,31 @@
 #include "attitude.h"
 #include "imu.h"
+ATTITUDE::ATTITUDE()
+    :
+{
+}
+ATTITUDE::~ATTITUDE() {}
+
+int ATTITUDE::setup()
+{
+//
+#ifdef MPU6050
+  mpu6050init();
+#endif
+#ifdef BNO055
+//shit
+#endif
+  Task::setup("attitude", 1);
+}
+
+int ATTITUDE::start()
+{
+  while (1)
+  {
+    //getdata
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+  }
+}
 //*****************************************************************
 // attitudeControl Sensor 100hz
 //*****************************************************************
