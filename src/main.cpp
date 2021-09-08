@@ -1,29 +1,27 @@
 /*
- * Example to demonstrate thread definition, semaphores, and thread sleep.
+ * objee
  */
 
 #include <FreeRTOS_TEENSY4.h>
 #include "config.h"
 #include "imu.h"
 #include "flightcontroller.h"
-// Declare a semaphore handle.
-SemaphoreHandle_t sem;
-
-
-u_int32_t time1 = 0;
-u_int32_t time2 = 0;
-u_int32_t timebetweenparses = 0;
 
 
 
+
+ACTUATORS g_actuators;
+ATTITUDE g_attiude;
 IMU g_imu;
+NAVIGATION g_navigation;
+SENSORS g_sensor;
+TELEMETRY g_telemetry;
+
+
 
 
 void setup()
 {
-  // digitalWrite(LED_PIN, LOW);
-  portBASE_TYPE s0, s1, s2, s3, s4, s5;
-
   delay(500);
 
   if (!HITL)
@@ -31,26 +29,15 @@ void setup()
     Serial.begin(57600);
     Serial.println("Start");
     Serial2.begin(57600);
-    init_motors();
-    init_radios();
-    init_imu();
     
-    // initialize semaphore
-    sem = xSemaphoreCreateCounting(1, 0);
-    s5 = xTaskCreate(telemetry, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
-    s4 = xTaskCreate(IMU::imuLoop, NULL, configMINIMAL_STACK_SIZE, &imu, 5, &imu.task);
-    s3 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, &Handle_desiredAttitudeTask);
-    s2 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 3, &Handle_navigationTask);
-    s1 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 2, &Handle_attitudeTask);
-    s0 = xTaskCreate(actuarorsThread, NULL, configMINIMAL_STACK_SIZE, NULL, 1, &Handle_acutatorsTask);
+    
+    int actuators = g_actuators.setup();
+    int attitude = g_attitude.setup();
+    int imu_start = g_imu.setup();
+    int navigation_start = g_navigation.setup();
+    int sensor_start = g_sensor.setup();
+    int telemetry_start = g_sensor.setup();
 
-    // check for creation errors
-    if (sem == NULL || s0 != pdPASS || s1 != pdPASS || s2 != pdPASS)
-    {
-      Serial.println("Creation problem");
-      while (1)
-        ;
-    }
   }
   else
   {

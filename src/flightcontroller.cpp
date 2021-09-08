@@ -9,31 +9,6 @@ flightcontroller::~flightcontroller() { }
 
 void flightcontroller::getsensordata()
 
-void flightcontroller::imuLoop(void *arg)
-{
-  while (1)
-  {
-    
-    if (mpu6050)
-    {
-      getmpu6050data();
-      // Serial.print("a");
-    }
-    if (bno055)
-    {
-      getbno055data();
-    }
-    if (bno080)
-    {
-      getbno080data();
-    }
-
-    
-    // Serial.println("a");
-    vTaskDelay((configTICK_RATE_HZ) / 1000L); //1000hz
-                                              // Serial.println(dt);
-  }
-}
 
 int flightcontroller::slow_sensorsloop()
 {

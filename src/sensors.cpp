@@ -1,3 +1,11 @@
+
+/*
+ * Record and Push imu for Laphable
+*/
+#ifndef _sensors_H_
+#define _sesnors_H_
+#endif
+
 #include gps.h
 void gpsSample(Adafruit_GPS &gpsobject)
 {

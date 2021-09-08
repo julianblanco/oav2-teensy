@@ -1,5 +1,5 @@
 #include "actuators.h"
- sendHITLmotorcommands()
+void sendHITLmotorcommands()
 {
       Serial.print(frontRightMotorSignal);
       Serial.print(',');

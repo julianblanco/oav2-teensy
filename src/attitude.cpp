@@ -45,9 +45,9 @@ static void PIDAttitudeControl()
       yawErrorLast = yawError;
       g_imu.lock.ReaderLock();
       yawError = angular_diff(g_imu.yaw, desiredYaw);
-      rollError = currentRoll - desiredRoll;
-      pitchError = currentPitch - desiredPitch;
-      sensor_rwlock.ReaderUnlock();
+      rollError = g_imu.roll - desiredRoll;
+      pitchError = g_imu.pitch - desiredPitch;
+      g_imu.lock.ReaderUnlock();
 
       pYawResponse = yawError * yawKp;
       pRollResponse = rollError * rollKp;
