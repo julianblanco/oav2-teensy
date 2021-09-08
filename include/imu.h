@@ -1,9 +1,9 @@
 /*
- * Record and Push imu for Laphable
+ * imu interface methods and imu loop task during Flightcontroller running
 */
 #ifndef _imu_H_
 #define _imu_H_
-
+#include "task.h"
 #include <Wire.h>
 #include <stdint.h>
 #include "config.h"
@@ -11,15 +11,21 @@
 #include <Adafruit_BNO055.h>
 #include <SparkFun_BNO080_Arduino_Library.h>
 #include <utility/imumaths.h>
-class imu
+#include "read_write_lock.hpp"
+
+
+class IMU : public Task
 {
-// Public interface methods
+  // Public interface methods
 public:
-  imu();
-  ~imu();
+  IMU();
+  ~IMU();
   float yaw;
   float roll;
   float pitch;
+  cpp_freertos::ReadWriteLockPreferWriter lock;
+
+  
   /**
    * Setup the imu
    *
@@ -31,42 +37,44 @@ public:
    * - 
    */
   int setup();
+  int start();
 
   /**
    * Execute the main loop for the imu.
    *
    * This will begin sampling and uploading results as needed/available.
   */
-  void run();
-    void getmpu6050data();
-  void  getbno080data();
- void  getbno055data();
 
-// Private internal methods
+  static void imuLoop(void *arg);
+  void getmpu6050data();
+  void getbno080data();
+  void getbno055data();
+
+  // Private internal methods
 private:
-const int MPU = 0x68; //MPU6050 I2C address -- pins 19 = SCL & 18 = SDA
-//DECLARE GLOBAL VARIABLES
-//General stuff
-float dt;
-unsigned long current_time, prev_time;
-unsigned long print_counter, serial_counter;
-unsigned long blink_counter, blink_delay;
-bool blinkAlternate;
-//IMU:
-float AccX, AccY, AccZ;
-float AccX_prev, AccY_prev, AccZ_prev;
-float GyroX, GyroY, GyroZ;
-float GyroX_prev, GyroY_prev, GyroZ_prev;
-float roll_IMU, pitch_IMU, yaw_IMU;
-float roll_IMU_prev, pitch_IMU_prev;
-float AccErrorX, AccErrorY, AccErrorZ, GyroErrorX, GyroErrorY, GyroErrorZ;
-float roll_correction, pitch_correction;
-float beta = 0.04; //madgwick filter parameter
-float q0 = 1.0f;   //initialize quaternion for madgwick filter
-float q1 = 0.0f;
-float q2 = 0.0f;
-float q3 = 0.0f;
-// Eigen::Matrix<double,1,3> eulerPQR;
+  const int MPU = 0x68; //MPU6050 I2C address -- pins 19 = SCL & 18 = SDA
+  //DECLARE GLOBAL VARIABLES
+  //General stuff
+  float dt;
+  unsigned long current_time, prev_time;
+  unsigned long print_counter, serial_counter;
+  unsigned long blink_counter, blink_delay;
+  bool blinkAlternate;
+  //IMU:
+  float AccX, AccY, AccZ;
+  float AccX_prev, AccY_prev, AccZ_prev;
+  float GyroX, GyroY, GyroZ;
+  float GyroX_prev, GyroY_prev, GyroZ_prev;
+  float roll_IMU, pitch_IMU, yaw_IMU;
+  float roll_IMU_prev, pitch_IMU_prev;
+  float AccErrorX, AccErrorY, AccErrorZ, GyroErrorX, GyroErrorY, GyroErrorZ;
+  float roll_correction, pitch_correction;
+  float beta = 0.04; //madgwick filter parameter
+  float q0 = 1.0f;   //initialize quaternion for madgwick filter
+  float q1 = 0.0f;
+  float q2 = 0.0f;
+  float q3 = 0.0f;
+  // Eigen::Matrix<double,1,3> eulerPQR;
   /**
    * Calibrate mpu6050 offset
    *
@@ -103,7 +111,7 @@ float q3 = 0.0f;
    *
    * @param None 
    */
- void mpu6050init();
+  void mpu6050init();
   /**
    * Stop sampling process and upload all channel data to FTP server.
    *
@@ -111,8 +119,7 @@ float q3 = 0.0f;
    * @param data_file Open handles to SD files which are being sampled to
    */
   void calculate_mpu6050_IMU_error();
-void requestdatafrompu6050();
-
+  void requestdatafrompu6050();
 
   /**
    * The following initialization routines are called by setup().
@@ -124,7 +131,6 @@ void requestdatafrompu6050();
   int init_bno080();
   int init_mpu6050();
 
-
   /**
    * Display a panic message and error code and halt the processor.
    *
@@ -135,7 +141,7 @@ void requestdatafrompu6050();
    * @param message A message to dump to serial
    * @param code An error code to dump to serial (only used if non-zero)
    */
-  [[noreturn]] void panic(const char* message, int code) const;
+  [[noreturn]] void panic(const char *message, int code) const;
 
   /**
    * Dump a formatted log message to the serial port.
@@ -147,25 +153,27 @@ void requestdatafrompu6050();
    * @param fmt A printf-style format string
    * @param ... Variable arguments matching the given format string
    */
-  void log(const char* fmt, ...) const;
+  void log(const char *fmt, ...) const;
 
-// Private internal variables used directly by our imu
+  // Private internal variables used directly by our imu
 private:
   CONFIG_SD_CONTROLLER m_sd;
   unsigned long m_next_recording;
   unsigned long m_first_recording;
 
-// #if ! CONFIG_DISABLE_NETWORK
-//   FTP<EthernetClient> m_ftp;
+  // #if ! CONFIG_DISABLE_NETWORK
+  //   FTP<EthernetClient> m_ftp;
 
-// // Private internal variables not used by the imu directly
-// private:
-//   uint8_t m_network_heap[CONFIG_NETWORK_HEAP_SIZE];
-// #endif
+  // // Private internal variables not used by the imu directly
+  // private:
+  //   uint8_t m_network_heap[CONFIG_NETWORK_HEAP_SIZE];
+  // #endif
 
-// // Static variables used for audio shenanigans
-// private:
-//   static DMAMEM audio_block_t m_audio_queue_buffer[CONFIG_AUDIO_BUFFER_SIZE];
+  // // Static variables used for audio shenanigans
+  // private:
+  //   static DMAMEM audio_block_t m_audio_queue_buffer[CONFIG_AUDIO_BUFFER_SIZE];
 };
 
+
+extern IMU g_imu;
 #endif

@@ -3,26 +3,20 @@
  */
 
 #include <FreeRTOS_TEENSY4.h>
-#include "read_write_lock.hpp"
 #include "config.h"
+#include "imu.h"
 #include "flightcontroller.h"
 // Declare a semaphore handle.
 SemaphoreHandle_t sem;
-cpp_freertos::ReadWriteLockPreferWriter sensor_rwlock;
+
 
 u_int32_t time1 = 0;
 u_int32_t time2 = 0;
 u_int32_t timebetweenparses = 0;
 
-TaskHandle_t Handle_gyroTask;
-TaskHandle_t Handle_desiredAttitudeTask;
-TaskHandle_t Handle_attitudeTask;
-TaskHandle_t Handle_navigationTask;
-TaskHandle_t Handle_acutatorsTask;
-TaskHandle_t Handle_monitorTask;
-TaskHandle_t Handle_commsTask;
-TaskHandle_t Handle_lidarTask;
-TaskHandle_t Handle_telemetry;
+
+
+IMU g_imu;
 
 
 void setup()
@@ -40,11 +34,11 @@ void setup()
     init_motors();
     init_radios();
     init_imu();
-   
+    
     // initialize semaphore
     sem = xSemaphoreCreateCounting(1, 0);
     s5 = xTaskCreate(telemetry, NULL, configMINIMAL_STACK_SIZE, NULL, 6, &Handle_telemetry);
-    s4 = xTaskCreate(getSensorData, NULL, configMINIMAL_STACK_SIZE, NULL, 5, &Handle_monitorTask);
+    s4 = xTaskCreate(IMU::imuLoop, NULL, configMINIMAL_STACK_SIZE, &imu, 5, &imu.task);
     s3 = xTaskCreate(trajectoryControl, NULL, configMINIMAL_STACK_SIZE, NULL, 4, &Handle_desiredAttitudeTask);
     s2 = xTaskCreate(positionControl, NULL, configMINIMAL_STACK_SIZE, NULL, 3, &Handle_navigationTask);
     s1 = xTaskCreate(attitudeControl, NULL, configMINIMAL_STACK_SIZE, NULL, 2, &Handle_attitudeTask);

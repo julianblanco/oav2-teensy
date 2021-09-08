@@ -1,4 +1,5 @@
 #include "attitude.h"
+#include "imu.h"
 //*****************************************************************
 // attitudeControl Sensor 100hz
 //*****************************************************************
@@ -42,8 +43,8 @@ static void PIDAttitudeControl()
       rollErrorLast = rollError;
       pitchErrorLast = pitchError;
       yawErrorLast = yawError;
-      sensor_rwlock.ReaderLock();
-      yawError = angular_diff(currentYaw, desiredYaw);
+      g_imu.lock.ReaderLock();
+      yawError = angular_diff(g_imu.yaw, desiredYaw);
       rollError = currentRoll - desiredRoll;
       pitchError = currentPitch - desiredPitch;
       sensor_rwlock.ReaderUnlock();

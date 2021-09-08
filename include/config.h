@@ -1,5 +1,7 @@
 
-
+#ifndef _config_H_
+#define _config_H_
+#endif
 #define HITL 0
 
 

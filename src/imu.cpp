@@ -1,24 +1,42 @@
 #include "imu.h"
 
-
-
-imu::imu()
-  : 
-{ }
-imu::~imu() { }
-
-
-
-void imu::getbno055data()
+IMU::IMU()
+    :
 {
-  imu::Vector<3> euler = bno055imu.getVector(Adafruit_BNO055::VECTOR_EULER);
-  currentYaw = correct_heading_wrap(euler.x() - headingOffset);
-  currentPitch = -1 * euler.y();
-  //rollInput=fmod((euler.z()+(360+90)), 360)-180;
-  currentRoll = euler.z();
+}
+IMU::~IMU() {}
+
+int IMU::setup()
+{
+//some shit
+#ifdef MPU6050
+  mpu6050init();
+#endif
+#ifdef BNO055
+//shit
+#endif
+  Task::setup("imu", 1);
 }
 
-void imu::getbno080data()
+int IMU::start()
+{
+  while (1)
+  {
+    //getdata
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+  }
+}
+
+void IMU::getbno055data()
+{
+  imu::Vector<3> euler = bno055imu.getVector(Adafruit_BNO055::VECTOR_EULER); //lowercase imu is from namespace in utility.h
+  yaw = correct_heading_wrap(euler.x() - headingOffset);
+  pitch = -1 * euler.y();
+  //rollInput=fmod((euler.z()+(360+90)), 360)-180;
+  roll = euler.z();
+}
+
+void IMU::getbno080data()
 {
   if (bno080imu.dataAvailable() == true)
   {
@@ -27,7 +45,18 @@ void imu::getbno080data()
     yaw = (bno080imu.getYaw()) * 180.0 / PI;     // Convert yaw / heading to degrees
   }
 }
-void imu::getmpu6050data()
+void IMU::getmpu6050data()
+{
+  prev_time = current_time;
+  current_time = micros();
+  dt = (current_time - prev_time) / 1000000.0; // convert from microseconds to seconds
+  getIMUdata();
+  Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt); //updates roll_IMU, pitch_IMU, and yaw_IMU (degrees)
+  currentRoll = pitch_IMU;
+  currentPitch = -roll_IMU;
+  currentYaw = -yaw_IMU;
+}
+void IMU::requestdatafrompu6050()
 {
   //DESCRIPTION: Request full dataset from IMU and LP filter gyro and accelerometer data
   /*
@@ -93,7 +122,7 @@ void imu::getmpu6050data()
   GyroZ = GyroZ - GyroErrorZ;
 }
 
-void imu::calculate_mpu6050_IMU_error()
+void IMU::calculate_mpu6050_IMU_error()
 {
   //DESCRIPTION: Computes IMU error on startup. Note: vehicle should be powered up on flat surface
   /*
@@ -153,8 +182,7 @@ void imu::calculate_mpu6050_IMU_error()
   GyroErrorZ = GyroErrorZ / 12000.0;
 }
 
-
-void imu::mpu6050init()
+void IMU::mpu6050init()
 {
   //DESCRIPTION: Initialize IMU I2C connection
   /*
@@ -169,7 +197,7 @@ void imu::mpu6050init()
   Wire.write(0x00);            //Make reset - place a 0 into the 6B register
   Wire.endTransmission(true);  //End the transmission
 }
-void imu::Madgwick(float gx, float gy, float gz, float ax, float ay, float az, float invSampleFreq)
+void IMU::Madgwick(float gx, float gy, float gz, float ax, float ay, float az, float invSampleFreq)
 {
   //DESCRIPTION: Attitude estimation through sensor fusion
   /*
@@ -257,9 +285,7 @@ void imu::Madgwick(float gx, float gy, float gz, float ax, float ay, float az, f
   //   eulerPQR = derive_ang_velocity(const Eigen::Ref<const Eigen::Matrix<double,1,3>>& e_)
 }
 
-
-
-void imu::calibratempu6050Attitude()
+void IMU::calibratempu6050Attitude()
 {
   //DESCRIPTION: Extra function to calibrate IMU attitude estimate on startup, can be used to warm up everything before entering main loop
   //Assuming vehicle is powered up on level surface!

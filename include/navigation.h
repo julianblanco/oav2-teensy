@@ -1,3 +1,11 @@
+
+/*
+ * Record and Push imu for Laphable
+*/
+#ifndef _navigation_H_
+#define _navigation_H_
+
+
 #define waypointmindistance 2
 
 float currentNorth = 0;
@@ -29,3 +37,5 @@ float desiredLong = 0;
 
 float homeLat = 0;
 float homeLong = 0;
+
+#endif
