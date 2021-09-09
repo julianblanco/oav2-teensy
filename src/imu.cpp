@@ -8,12 +8,30 @@ IMU::~IMU() {}
 
 int IMU::setup()
 {
-//some shit
+
 #ifdef MPU6050
+
   mpu6050init();
+  delay(100);
+  calculate_IMU_error();
+  calibrateAttitude(); //helps to warm up IMU and Madgwick filter
 #endif
 #ifdef BNO055
-//shit
+
+  bno050init();
+
+#endif
+#if BNO080
+
+  if (bno080imu.begin() == false)
+  {
+    Serial.println("BNO080 not detected at default I2C address. Check your jumpers and the hookup guide. Freezing...");
+    while (1)
+      ;
+  }
+  Wire.setClock(400000); //Increase I2C data rate to 400kHz
+
+  bno080imu.enableRotationVector(1); //Send data update every 50ms
 #endif
   Task::setup("imu", 1);
 }
@@ -22,27 +40,33 @@ int IMU::start()
 {
   while (1)
   {
-    //getdata
+    g_imu.lock.WriterLock();
+    getIMUdata();
+    g_imu.lock.WriterUnlock();
     vTaskDelay((configTICK_RATE_HZ) / 1000L);
   }
 }
 
+int bno050init()
+{
+}
+
 void IMU::getbno055data()
 {
-  imu::Vector<3> euler = bno055imu.getVector(Adafruit_BNO055::VECTOR_EULER); //lowercase imu is from namespace in utility.h
-  yaw = correct_heading_wrap(euler.x() - headingOffset);
-  pitch = -1 * euler.y();
+  g_imu.euler = g_imu.bno055imu.getVector(Adafruit_BNO055::VECTOR_EULER); //lowercase imu is from namespace in utility.h
+  g_imu.yaw = correct_heading_wrap(g_imu.euler.x() - g_imu.headingOffset);
+  g_imu.pitch = -1 * g_imu.euler.y();
   //rollInput=fmod((euler.z()+(360+90)), 360)-180;
-  roll = euler.z();
+  g_imu.roll = euler.z();
 }
 
 void IMU::getbno080data()
 {
-  if (bno080imu.dataAvailable() == true)
+  if (g_imu.bno080imu.dataAvailable() == true)
   {
-    roll = (bno080imu.getRoll()) * 180.0 / PI;   // Convert roll to degrees
-    pitch = (bno080imu.getPitch()) * 180.0 / PI; // Convert pitch to degrees
-    yaw = (bno080imu.getYaw()) * 180.0 / PI;     // Convert yaw / heading to degrees
+    g_imu.roll = (g_imu.bno080imu.getRoll()) * 180.0 / PI;   // Convert roll to degrees
+    g_imu.pitch = (g_imu.bno080imu.getPitch()) * 180.0 / PI; // Convert pitch to degrees
+    g_imu.yaw = (g_imu.bno080imu.getYaw()) * 180.0 / PI;     // Convert yaw / heading to degrees
   }
 }
 void IMU::getmpu6050data()
@@ -52,9 +76,9 @@ void IMU::getmpu6050data()
   dt = (current_time - prev_time) / 1000000.0; // convert from microseconds to seconds
   getIMUdata();
   Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt); //updates roll_IMU, pitch_IMU, and yaw_IMU (degrees)
-  currentRoll = pitch_IMU;
-  currentPitch = -roll_IMU;
-  currentYaw = -yaw_IMU;
+  g_imu.roll = pitch_IMU;
+  g_imu.pitch = -roll_IMU;
+  g_imu.yaw = -yaw_IMU;
 }
 void IMU::requestdatafrompu6050()
 {
@@ -285,7 +309,7 @@ void IMU::Madgwick(float gx, float gy, float gz, float ax, float ay, float az, f
   //   eulerPQR = derive_ang_velocity(const Eigen::Ref<const Eigen::Matrix<double,1,3>>& e_)
 }
 
-void IMU::calibratempu6050Attitude()
+int IMU::calibratempu6050Attitude()
 {
   //DESCRIPTION: Extra function to calibrate IMU attitude estimate on startup, can be used to warm up everything before entering main loop
   //Assuming vehicle is powered up on level surface!
@@ -321,6 +345,7 @@ void IMU::calibratempu6050Attitude()
   //These are applied to roll and pitch after Madgwick filter in main loop if desired using correctRollPitch()
   roll_correction = roll_correction / 2000.0;
   pitch_correction = pitch_correction / 2000.0;
+  return (0);
 }
 
 //// Derives angular velocity vector from euler angles

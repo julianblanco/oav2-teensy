@@ -1,3 +1,134 @@
+#include "telemetry.h"
+
+
+TELEMETRY::TELEMETRY()
+    :
+{
+}
+TELEMETRY::~TELEMETRY() {}
+
+int TELEMETRY::setup()
+{
+//
+#ifdef MPU6050
+  mpu6050init();
+#endif
+#ifdef BNO055
+//shit
+#endif
+  Task::setup("telemetry", 1);
+}
+
+int TELEMETRY::start()
+{
+  while (1)
+  {
+    sbusParse();
+
+    vTaskDelay(500*(configTICK_RATE_HZ) / 1000L);
+  }
+}
+int mavlink_send_and_parse()
+{
+
+
+
+    currentTime = micros();
+    memset(buf, 0xFF, sizeof(buf));
+    mavlink_system.sysid = 1;
+    mavlink_system.compid = MAV_COMP_ID_AUTOPILOT1;
+    heartbeat.system_status = MAV_STATE_ACTIVE;
+    heartbeat.custom_mode = 65536;
+    heartbeat.base_mode = 81;
+
+    // // Pack the message
+    mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &heartbeatMsg, 2, 12, heartbeat.base_mode, heartbeat.custom_mode, heartbeat.system_status);
+    // // Copy the message to send buffer
+    uint16_t len = mavlink_msg_to_send_buffer(buf, &heartbeatMsg);
+    // Serial2.println("Heartbeat");
+    // //Write Message
+    Serial2.write(buf, len);
+    memset(buf, 0xFF, sizeof(buf));
+
+    mavlink_msg_gps_raw_int_pack(mavlink_system.sysid, mavlink_system.compid, &global_position_intMsg, currentTime, 3, 392919390, -772862310, 10, 0xFFFF, 0xFFFF, Velocity, 0xFFFF, 7, 0, 0, 0, 0, 0); //fix_type must be 3 for some odd reason
+    // /// Copy the message to send buffer
+    len = mavlink_msg_to_send_buffer(buf, &global_position_intMsg);
+    //Write Message
+    Serial2.write(buf, len);
+    memset(buf, 0xFF, sizeof(buf));
+
+    mavlink_msg_altitude_pack(mavlink_system.sysid, mavlink_system.compid, &altMsg, currentTime, 12, 13, 14, 15, 16, 17);
+    len = mavlink_msg_to_send_buffer(buf, &altMsg);
+    //Write Message
+    Serial2.write(buf, len);
+    //Reset Buffer
+    memset(buf, 0xFF, sizeof(buf));
+
+    mavlink_msg_local_position_ned_pack(mavlink_system.sysid, mavlink_system.compid, &local_position_nedMsg, 1, 1, 2, 3, 0, 0, 0);
+    len = mavlink_msg_to_send_buffer(buf, &local_position_nedMsg);
+    //Write Message
+    Serial2.write(buf, len);
+    //Reset Buffer
+    memset(buf, 0xFF, sizeof(buf));
+
+    mavlink_msg_attitude_pack(mavlink_system.sysid, mavlink_system.compid, &attitudeMsg, currentTime, currentRoll * 3.14 / 180, currentPitch * 3.14 / 180, currentYaw * 3.14 / 180, 4, 5, 6);
+    len = mavlink_msg_to_send_buffer(buf, &attitudeMsg);
+    //Write Message
+    Serial2.write(buf, len);
+    //Reset Buffer
+    memset(buf, 0xFF, sizeof(buf));
+
+    mavlink_msg_highres_imu_pack(mavlink_system.sysid, mavlink_system.compid, &highres_imuMsg, currentTime, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);
+    len = mavlink_msg_to_send_buffer(buf, &highres_imuMsg);
+    //Write Message
+    Serial2.write(buf, len);
+    //Reset Buffer
+    memset(buf, 0xFF, sizeof(buf));
+
+    mavlink_msg_sys_status_pack(mavlink_system.sysid, mavlink_system.compid, &sys_statusMsg, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);
+    len = mavlink_msg_to_send_buffer(buf, &sys_statusMsg);
+    //Write Message
+    Serial2.write(buf, len);
+    //Reset Buffer
+    memset(buf, 0xFF, sizeof(buf));
+
+    //   //Read Message
+    if (Serial2.available())
+
+    {
+      data = Serial2.read();
+
+      if (mavlink_parse_char(MAVLINK_COMM_0, data, &receivedMsg, &mav_status))
+      {
+        parsed = micros();
+        timebetweenparsed = parsed - lastparsed;
+        lastparsed = parsed;
+        // Serial.print(1000000/timebetweenparsed);Serial.println(" hz");
+        Serial.print("  Sys ID: ");
+        Serial.print(receivedMsg.sysid, DEC);
+        Serial.print("  Comp ID: ");
+        Serial.print(receivedMsg.compid, DEC);
+        Serial.print("  Len ID: ");
+        Serial.print(receivedMsg.len, DEC);
+        Serial.print("  Msg ID: ");
+        Serial.print(receivedMsg.msgid, DEC);
+        Serial.print("\n");
+      }
+    }
+
+    // mavlink_msg_ping_pack(mavlink_system.sysid, mavlink_system.compid, &pingMsg, currentTime, 0, 0, 0);
+    // len = mavlink_msg_to_send_buffer(buf, &pingMsg);
+    // //Write Message
+    // Serial2.write(buf, len);
+    // //Reset Buffer
+    // memset(buf, 0xFF, sizeof(buf));
+
+    // time1 = micros();
+   
+    time2 = time1;
+
+
+}
 
 void sbusParse()
 {
@@ -23,16 +154,16 @@ void sbusParse()
     // Serial.print(channels[14]);Serial.print(",");
     // Serial.print(channels[15]);Serial.print(",");
     // Serial.println(channels[16]);
-    RCThrottle = channels[0]; //172-1811 1017
-    RCRoll = channels[1];     //172-1811 mid988
-    RCPitch = channels[2];    //172-1811 985
-    RCYaw = channels[3];      //172-1811 1000
-    RCMode = channels[4];     //down 992 Up172
-    RCArm = channels[5];      //down 992 Up172
+    g_telemetry.RCThrottle = channels[0]; //172-1811 1017
+    g_telemetry.RCRoll = channels[1];     //172-1811 mid988
+    g_telemetry.RCPitch = channels[2];    //172-1811 985
+    g_telemetry.RCYaw = channels[3];      //172-1811 1000
+    g_telemetry.RCMode = channels[4];     //down 992 Up172
+    g_telemetry.RCArm = channels[5];      //down 992 Up172
 
     if (channels[0] > 0) //if no signal.... needs to be verified across radis
     {
-      if (RCArm > 500)
+      if (g_telemetry.RCArm > 500)
       {
         flag_armed = 1;
       }
@@ -41,7 +172,7 @@ void sbusParse()
         flag_armed = 0;
       }
 
-      if (RCMode < 500)
+      if (g_telemetry.RCMode < 500)
       {
         currentMode = 1;
       }
@@ -52,7 +183,7 @@ void sbusParse()
       if (currentMode == 1)
       {
 
-        if (RCYaw > 1040) //(1021-1811)
+        if (g_telemetry.RCYaw > 1040) //(1021-1811)
         {
           desiredYaw = correct_heading_wrap(desiredYaw + (.0001 * pow(map(RCYaw, 1021, 1811, 0, 100), 2)));
         }
@@ -178,150 +309,6 @@ void stringparse(char buffer[80], int ind)
 }
 
 
-static void telemetry(void *pvParameters)
-{
-
-  uint8_t system_type = MAV_TYPE_GROUND_ROVER;    //MAV_TYPE_HELICOPTER;//MAV_TYPE_FIXED_WING;
-  uint8_t autopilot_type = MAV_AUTOPILOT_GENERIC; //MAV_AUTOPILOT_ARDUPILOTMEGA
-  uint8_t system_mode = MAV_MODE_MANUAL_DISARMED; //MAV_MODE_MANUAL_ARMED; //MAV_MODE_GUIDED_ARMED //MAV_MODE_GUIDED_DISARMED
-  uint8_t system_state = MAV_STATE_ACTIVE;
-  mavlink_message_t heartbeatMsg;
-  mavlink_message_t battery_statusMsg;
-  mavlink_message_t radio_statusMsg;
-  mavlink_message_t local_position_nedMsg;
-  mavlink_message_t global_position_intMsg;
-  mavlink_message_t position_target_local_nedMsg;
-  mavlink_message_t position_target_global_intMsg;
-  mavlink_message_t highres_imuMsg;
-  mavlink_message_t attitudeMsg;
-  mavlink_message_t sys_statusMsg;
-  mavlink_message_t altMsg;
-  mavlink_message_t pingMsg;
-  mavlink_manual_control_t manual_control;
-  mavlink_set_mode_t mode;
-  mavlink_heartbeat_t heartbeat;
-
-  mavlink_system_t mavlink_system;
-  float position[6];
-  bool ManualMode = false;
-  int32_t Latitude;
-  int32_t Longitude;
-  int32_t Altitude;
-  int16_t Velocity;
-  int64_t Microseconds;
-
-  long parsed;
-  long lastparsed;
-  long timebetweenparsed;
-
-  //Initialize Timers
-  unsigned long heartbeatTimer_TX = millis();
-  unsigned long heartbeatTimer_RX = millis();
-  unsigned long heartbeatInterval_TX = 0.5L * 1000L;
-  unsigned long heartbeatInterval_RX = 2L * 1000L;
-  unsigned long currentTime = currentTime;
-  int data = 0;
-  mavlink_message_t receivedMsg;
-  mavlink_status_t mav_status;
-  while (1)
-  {
-    currentTime = micros();
-    memset(buf, 0xFF, sizeof(buf));
-    mavlink_system.sysid = 1;
-    mavlink_system.compid = MAV_COMP_ID_AUTOPILOT1;
-    heartbeat.system_status = MAV_STATE_ACTIVE;
-    heartbeat.custom_mode = 65536;
-    heartbeat.base_mode = 81;
-
-    // // Pack the message
-    mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &heartbeatMsg, 2, 12, heartbeat.base_mode, heartbeat.custom_mode, heartbeat.system_status);
-    // // Copy the message to send buffer
-    uint16_t len = mavlink_msg_to_send_buffer(buf, &heartbeatMsg);
-    // Serial2.println("Heartbeat");
-    // //Write Message
-    Serial2.write(buf, len);
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_gps_raw_int_pack(mavlink_system.sysid, mavlink_system.compid, &global_position_intMsg, currentTime, 3, 392919390, -772862310, 10, 0xFFFF, 0xFFFF, Velocity, 0xFFFF, 7, 0, 0, 0, 0, 0); //fix_type must be 3 for some odd reason
-    // /// Copy the message to send buffer
-    len = mavlink_msg_to_send_buffer(buf, &global_position_intMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_altitude_pack(mavlink_system.sysid, mavlink_system.compid, &altMsg, currentTime, 12, 13, 14, 15, 16, 17);
-    len = mavlink_msg_to_send_buffer(buf, &altMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_local_position_ned_pack(mavlink_system.sysid, mavlink_system.compid, &local_position_nedMsg, 1, 1, 2, 3, 0, 0, 0);
-    len = mavlink_msg_to_send_buffer(buf, &local_position_nedMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_attitude_pack(mavlink_system.sysid, mavlink_system.compid, &attitudeMsg, currentTime, currentRoll * 3.14 / 180, currentPitch * 3.14 / 180, currentYaw * 3.14 / 180, 4, 5, 6);
-    len = mavlink_msg_to_send_buffer(buf, &attitudeMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_highres_imu_pack(mavlink_system.sysid, mavlink_system.compid, &highres_imuMsg, currentTime, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);
-    len = mavlink_msg_to_send_buffer(buf, &highres_imuMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_sys_status_pack(mavlink_system.sysid, mavlink_system.compid, &sys_statusMsg, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);
-    len = mavlink_msg_to_send_buffer(buf, &sys_statusMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    //   //Read Message
-    if (Serial2.available())
-
-    {
-      data = Serial2.read();
-
-      if (mavlink_parse_char(MAVLINK_COMM_0, data, &receivedMsg, &mav_status))
-      {
-        parsed = micros();
-        timebetweenparsed = parsed - lastparsed;
-        lastparsed = parsed;
-        // Serial.print(1000000/timebetweenparsed);Serial.println(" hz");
-        Serial.print("  Sys ID: ");
-        Serial.print(receivedMsg.sysid, DEC);
-        Serial.print("  Comp ID: ");
-        Serial.print(receivedMsg.compid, DEC);
-        Serial.print("  Len ID: ");
-        Serial.print(receivedMsg.len, DEC);
-        Serial.print("  Msg ID: ");
-        Serial.print(receivedMsg.msgid, DEC);
-        Serial.print("\n");
-      }
-    }
-
-    // mavlink_msg_ping_pack(mavlink_system.sysid, mavlink_system.compid, &pingMsg, currentTime, 0, 0, 0);
-    // len = mavlink_msg_to_send_buffer(buf, &pingMsg);
-    // //Write Message
-    // Serial2.write(buf, len);
-    // //Reset Buffer
-    // memset(buf, 0xFF, sizeof(buf));
-
-    // time1 = micros();
-   
-    time2 = time1;
-    vTaskDelay(1000L * (configTICK_RATE_HZ) / 1000L);
-
-  } //end while1
-}
 
 
 void quickdebug()

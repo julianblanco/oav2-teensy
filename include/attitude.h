@@ -1,7 +1,7 @@
 
 
 /*
- * Record and Push imu for Laphable
+ * Attitude
 */
 #ifndef _attitude_H_
 #define _attitude_H_
@@ -17,7 +17,6 @@ public:
   float pitch;
   cpp_freertos::ReadWriteLockPreferWriter lock;
 
-  
   /**
    * Setup the imu
    *
@@ -30,7 +29,6 @@ public:
    */
   int setup();
   int start();
-
 
 #define northKp 10
 #define northKi 0
@@ -57,6 +55,35 @@ public:
 #define throtKp 10
 #define throtKi 0
 #define throtKd 0
+  float yawResponse = 0;
+  float rollResponse = 0;
+  float pitchResponse = 0;
+  float throtResponse = 0;
+
+  float yawError = 0;
+  float rollError = 0;
+  float pitchError = 0;
+  float throtError = 0;
+
+  float pYawResponse = 0;
+  float pRollResponse = 0;
+  float pPitchResponse = 0;
+  float pThrotResponse = 0;
+
+  float iYawResponse = 0;
+  float iRollResponse = 0;
+  float iPitchResponse = 0;
+  float iThrotResponse = 0;
+
+  float dYawResponse = 0;
+  float dRollResponse = 0;
+  float dPitchResponse = 0;
+  float dThrotResponse = 0;
+
+  float yawErrorLast = 0;
+  float rollErrorLast = 0;
+  float pitchErrorLast = 0;
+  float throtErrorLast = 0;
 };
 extern ATTITUDE g_attiude;
 #endif

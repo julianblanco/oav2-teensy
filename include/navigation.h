@@ -11,6 +11,8 @@ class NAVIGATION : public Task
 public:
   NAVIGATION();
   ~NAVIGATION();
+  int start();
+  int setup();
 #define waypointmindistance 2
 
 float currentNorth = 0;
@@ -43,4 +45,5 @@ float desiredLong = 0;
 float homeLat = 0;
 float homeLong = 0;
 };
+extern NAVIGATION g_navigation;
 #endif

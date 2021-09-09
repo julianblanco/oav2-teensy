@@ -99,56 +99,56 @@ static void PIDAttitudeControl()
         {
           if (throtResponse < 75)
           {
-            frontLeftMotorSignal = 1000;
-            frontRightMotorSignal = 1000;
-            backLeftMotorSignal = 1000;
-            backRightMotorSignal = 1000;
+            g_actuators.frontLeftMotorSignal = 1000;
+             g_actuators.frontRightMotorSignal = 1000;
+             g_actuators.backLeftMotorSignal = 1000;
+             g_actuators.backRightMotorSignal = 1000;
           }
           else
           {
-            frontLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse + pitchResponse - yawResponse);
-            frontRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse + pitchResponse + yawResponse);
-            backLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse - pitchResponse + yawResponse);
-            backRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse - pitchResponse - yawResponse);
+             g_actuators.frontLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse + pitchResponse - yawResponse);
+             g_actuators.frontRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse + pitchResponse + yawResponse);
+             g_actuators.backLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse - pitchResponse + yawResponse);
+             g_actuators.backRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse - pitchResponse - yawResponse);
           }
 
           // Serial.println(backRightMotorSignal);
         }
         if (vechicle_type == 1)
         {
-          yawSignal = 1500 + yawResponse;
-          throttleSignal = 1500 + throtResponse;
+           g_actuators.yawSignal = 1500 + yawResponse;
+           g_actuators.throttleSignal = 1500 + throtResponse;
         }
 
-        yawSignal = saturate(yawSignal, highPWMmotor, 1000);
-        throttleSignal = saturate(throttleSignal, highPWMmotor, 1000);
-        backRightMotorSignal = saturate(backRightMotorSignal, highPWMmotor, 1000);
-        backLeftMotorSignal = saturate(backLeftMotorSignal, highPWMmotor, 1000);
-        frontRightMotorSignal = saturate(frontRightMotorSignal, highPWMmotor, 1000);
-        frontLeftMotorSignal = saturate(frontLeftMotorSignal, highPWMmotor, 1000);
+         g_actuators.yawSignal = saturate( g_actuators.yawSignal, highPWMmotor, 1000);
+         g_actuators.throttleSignal = saturate( g_actuators.throttleSignal, highPWMmotor, 1000);
+         g_actuators.backRightMotorSignal = saturate( g_actuators.backRightMotorSignal, highPWMmotor, 1000);
+         g_actuators.backLeftMotorSignal = saturate( g_actuators.backLeftMotorSignal, highPWMmotor, 1000);
+         g_actuators.frontRightMotorSignal = saturate( g_actuators.frontRightMotorSignal, highPWMmotor, 1000);
+         g_actuators.frontLeftMotorSignal = saturate( g_actuators.frontLeftMotorSignal, highPWMmotor, 1000);
         // Serial.println(backRightMotorSignal);
       }
       else
       {
-        backRightMotorSignal = HITLthrottleIdle + throtResponse - rollResponse + pitchResponse + yawResponse;
-        backLeftMotorSignal = HITLthrottleIdle + throtResponse + rollResponse + pitchResponse - yawResponse;
-        frontRightMotorSignal = HITLthrottleIdle + throtResponse - rollResponse - pitchResponse - yawResponse;
-        frontLeftMotorSignal = HITLthrottleIdle + throtResponse + rollResponse - pitchResponse + yawResponse;
+         g_actuators.backRightMotorSignal = HITLthrottleIdle + throtResponse - rollResponse + pitchResponse + yawResponse;
+         g_actuators.backLeftMotorSignal = HITLthrottleIdle + throtResponse + rollResponse + pitchResponse - yawResponse;
+         g_actuators.frontRightMotorSignal = HITLthrottleIdle + throtResponse - rollResponse - pitchResponse - yawResponse;
+         g_actuators.frontLeftMotorSignal = HITLthrottleIdle + throtResponse + rollResponse - pitchResponse + yawResponse;
 
-        backRightMotorSignal = saturate(backRightMotorSignal, 600, 600);
-        backLeftMotorSignal = saturate(backLeftMotorSignal, 600, 600);
-        frontRightMotorSignal = saturate(frontRightMotorSignal, 600, 600);
-        frontLeftMotorSignal = saturate(frontLeftMotorSignal, 600, 600);
+         g_actuators.backRightMotorSignal = saturate( g_actuators.backRightMotorSignal, 600, 600);
+         g_actuators.backLeftMotorSignal = saturate( g_actuators.backLeftMotorSignal, 600, 600);
+         g_actuators.frontRightMotorSignal = saturate(g_actuators.frontRightMotorSignal, 600, 600);
+         g_actuators.frontLeftMotorSignal = saturate( g_actuators.frontLeftMotorSignal, 600, 600);
       }
     }
     else
     {
-      yawSignal = 1500;
-      throttleSignal = 1500;
-      backRightMotorSignal = 1000;
-      backLeftMotorSignal = 1000;
-      frontRightMotorSignal = 1000;
-      frontLeftMotorSignal = 1000;
+       g_actuators.yawSignal = 1500;
+       g_actuators.throttleSignal = 1500;
+       g_actuators.backRightMotorSignal = 1000;
+       g_actuators.backLeftMotorSignal = 1000;
+       g_actuators.frontRightMotorSignal = 1000;
+       g_actuators.frontLeftMotorSignal = 1000;
     }
   }
 }

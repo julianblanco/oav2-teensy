@@ -13,7 +13,7 @@
 #include "telemetry.h"
 
 
-
+int g_flag_armed =0;
 
 
 ACTUATORS g_actuators;

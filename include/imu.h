@@ -13,6 +13,7 @@
 #include <SparkFun_BNO080_Arduino_Library.h>
 #include <utility/imumaths.h>
 #include "read_write_lock.hpp"
+#include "helper.h"
 
 
 class IMU : public Task
@@ -24,8 +25,11 @@ public:
   float yaw;
   float roll;
   float pitch;
+  Adafruit_BNO055 bno055imu;
+  BNO080 bno080imu;
+  imu::Vector<3> euler;
   cpp_freertos::ReadWriteLockPreferWriter lock;
-
+float headingOffset;
   
   /**
    * Setup the imu
@@ -45,7 +49,7 @@ public:
    *
    * This will begin sampling and uploading results as needed/available.
   */
-
+ void getIMUdata();
   static void imuLoop(void *arg);
   void getmpu6050data();
   void getbno080data();
@@ -102,7 +106,7 @@ private:
    * @param invSampleFreq The length of the path array.
    * @return 0 on success or -1 
    */
-  int Madgwick(float gx, float gy, float gz, float ax, float ay, float az, float invSampleFreq);
+  void Madgwick(float gx, float gy, float gz, float ax, float ay, float az, float invSampleFreq);
 
   /**
    * Start the mpu6050
@@ -157,10 +161,7 @@ private:
   void log(const char *fmt, ...) const;
 
   // Private internal variables used directly by our imu
-private:
-  CONFIG_SD_CONTROLLER m_sd;
-  unsigned long m_next_recording;
-  unsigned long m_first_recording;
+
 
   // #if ! CONFIG_DISABLE_NETWORK
   //   FTP<EthernetClient> m_ftp;

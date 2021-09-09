@@ -2,17 +2,19 @@
 /*
  * Record and Push imu for Laphable
 */
-#include "task.h"
+
 #ifndef _actuators_H_
 #define _actuators_H_
+#include "task.h"
+#include <servo.h>
 class ACTUATORS : public Task
 {
   // Public interface methods
 public:
   ACTUATORS();
   ~ACTUATORS();
-
-#include <servo.h>
+int  ACTUATORS::setup();
+int ACTUATORS::start();
 Servo yawMotor;
 Servo throttle;
 
@@ -28,4 +30,6 @@ int backLeftMotorSignal = 1000;
 int backRightMotorSignal = 1000;
 
 };
+
+extern ACTUATORS g_actuators;
 #endif

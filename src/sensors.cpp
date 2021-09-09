@@ -25,11 +25,10 @@ int SENSORS::start()
 {
   while (1)
   {
-
-     vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    gpsSample(gpsobject);
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
   }
 }
-
 
 void gpsSample(Adafruit_GPS &gpsobject)
 {
@@ -39,7 +38,6 @@ void gpsSample(Adafruit_GPS &gpsobject)
     {
       g_sensors.GPS_fix = 1;
       g_sensors.new_GPS_data = 1;
-     
     }
   }
 }
