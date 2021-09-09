@@ -7,7 +7,7 @@
 #include "task.h"
 #include <Wire.h>
 #include <stdint.h>
-#include "config.h"
+// #include "config.h"
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <SparkFun_BNO080_Arduino_Library.h>
@@ -29,6 +29,8 @@ public:
   BNO080 bno080imu;
   imu::Vector<3> euler;
   cpp_freertos::ReadWriteLockPreferWriter lock;
+
+  
 float headingOffset;
   
   /**
@@ -177,5 +179,5 @@ private:
 };
 
 
-extern IMU g_imu;
+// extern IMU g_imu;
 #endif

@@ -5,6 +5,7 @@
 #ifndef _navigation_H_
 #define _navigation_H_
 #include "task.h"
+// #include "config.h"
 class NAVIGATION : public Task
 {
   // Public interface methods
@@ -13,37 +14,54 @@ public:
   ~NAVIGATION();
   int start();
   int setup();
+  void headingFromGPS();
+  void NEDpositionControl();
+  void quickdebug();
+  float  crossTrackCorrection(float distanceXT, float targetHead, float distance2WP);
+float crossTrackError(float distance2WP, float tracklegHead, float targetHead);
+float distanceToWaypoint(float Lat1, float Long1, float Lat2, float Long2);
+float courseToWaypoint(float lat1, float long1, float lat2, float long2);
+void convertToNED(float startLat, float startLong, float currentLat, float currentLong, float &North, float &East, float &Down);
 #define waypointmindistance 2
+int flag_are_waypointing;
+float currentNorth ;
+float currentEast ;
+float currentDown ;
 
-float currentNorth = 0;
-float currentEast = 0;
-float currentDown = 0;
+float desiredNorth ;
+float desiredEast ;
+float desiredDown;
 
-float desiredNorth = 0;
-float desiredEast = 0;
-float desiredDown = -1;
+float currentLat ;
+float currentLong ;
 
-float currentLat = 0;
-float currentLong = 0;
+float desiredYaw ;
+float desiredRoll ;
+float desiredPitch ;
+float desiredThrottle ;
 
-float wplat[] = {
-    39.292186,
-    39.292130,
-    39.291964,
-    39.291709,
-    39.292016};
-float wplong[] = {
-    -77.286096,
-    -77.285766,
-    -77.286192,
-    -77.286213,
-    -77.285894};
 
-float desiredLat = 0;
-float desiredLong = 0;
+  float northKp ;
+  float northKi ;
+  float northKd ;
 
-float homeLat = 0;
-float homeLong = 0;
+  float eastKp ;
+  float eastKi;
+  float eastKd;
+
+  float downKp;
+  float downKi ;
+  float downKd;
+
+
+float wplat[] ;
+float wplong[] ;
+
+float desiredLat ;
+float desiredLong ;
+
+float homeLat ;
+float homeLong ;
 };
-extern NAVIGATION g_navigation;
+// extern NAVIGATION g_navigation;
 #endif

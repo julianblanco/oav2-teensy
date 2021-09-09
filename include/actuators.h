@@ -7,14 +7,19 @@
 #define _actuators_H_
 #include "task.h"
 #include <servo.h>
+// #include "config.h"
 class ACTUATORS : public Task
 {
   // Public interface methods
 public:
   ACTUATORS();
   ~ACTUATORS();
-int  ACTUATORS::setup();
-int ACTUATORS::start();
+int  setup();
+int start();
+void update_motors();
+void stop_motors();
+void sendHITLmotorcommands();
+
 Servo yawMotor;
 Servo throttle;
 
@@ -31,5 +36,5 @@ int backRightMotorSignal = 1000;
 
 };
 
-extern ACTUATORS g_actuators;
+// extern ACTUATORS g_actuators;
 #endif

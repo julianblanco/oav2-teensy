@@ -1,10 +1,6 @@
 #include "telemetry.h"
-
-
-TELEMETRY::TELEMETRY()
-    :
-{
-}
+ #include "config.h"
+TELEMETRY::TELEMETRY() : x8r(sbsuserial) {}
 TELEMETRY::~TELEMETRY() {}
 
 int TELEMETRY::setup()
@@ -25,112 +21,11 @@ int TELEMETRY::start()
   {
     sbusParse();
 
-    vTaskDelay(500*(configTICK_RATE_HZ) / 1000L);
+    vTaskDelay(500 * (configTICK_RATE_HZ) / 1000L);
   }
 }
-int mavlink_send_and_parse()
-{
 
-
-
-    currentTime = micros();
-    memset(buf, 0xFF, sizeof(buf));
-    mavlink_system.sysid = 1;
-    mavlink_system.compid = MAV_COMP_ID_AUTOPILOT1;
-    heartbeat.system_status = MAV_STATE_ACTIVE;
-    heartbeat.custom_mode = 65536;
-    heartbeat.base_mode = 81;
-
-    // // Pack the message
-    mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &heartbeatMsg, 2, 12, heartbeat.base_mode, heartbeat.custom_mode, heartbeat.system_status);
-    // // Copy the message to send buffer
-    uint16_t len = mavlink_msg_to_send_buffer(buf, &heartbeatMsg);
-    // Serial2.println("Heartbeat");
-    // //Write Message
-    Serial2.write(buf, len);
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_gps_raw_int_pack(mavlink_system.sysid, mavlink_system.compid, &global_position_intMsg, currentTime, 3, 392919390, -772862310, 10, 0xFFFF, 0xFFFF, Velocity, 0xFFFF, 7, 0, 0, 0, 0, 0); //fix_type must be 3 for some odd reason
-    // /// Copy the message to send buffer
-    len = mavlink_msg_to_send_buffer(buf, &global_position_intMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_altitude_pack(mavlink_system.sysid, mavlink_system.compid, &altMsg, currentTime, 12, 13, 14, 15, 16, 17);
-    len = mavlink_msg_to_send_buffer(buf, &altMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_local_position_ned_pack(mavlink_system.sysid, mavlink_system.compid, &local_position_nedMsg, 1, 1, 2, 3, 0, 0, 0);
-    len = mavlink_msg_to_send_buffer(buf, &local_position_nedMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_attitude_pack(mavlink_system.sysid, mavlink_system.compid, &attitudeMsg, currentTime, currentRoll * 3.14 / 180, currentPitch * 3.14 / 180, currentYaw * 3.14 / 180, 4, 5, 6);
-    len = mavlink_msg_to_send_buffer(buf, &attitudeMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_highres_imu_pack(mavlink_system.sysid, mavlink_system.compid, &highres_imuMsg, currentTime, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);
-    len = mavlink_msg_to_send_buffer(buf, &highres_imuMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    mavlink_msg_sys_status_pack(mavlink_system.sysid, mavlink_system.compid, &sys_statusMsg, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);
-    len = mavlink_msg_to_send_buffer(buf, &sys_statusMsg);
-    //Write Message
-    Serial2.write(buf, len);
-    //Reset Buffer
-    memset(buf, 0xFF, sizeof(buf));
-
-    //   //Read Message
-    if (Serial2.available())
-
-    {
-      data = Serial2.read();
-
-      if (mavlink_parse_char(MAVLINK_COMM_0, data, &receivedMsg, &mav_status))
-      {
-        parsed = micros();
-        timebetweenparsed = parsed - lastparsed;
-        lastparsed = parsed;
-        // Serial.print(1000000/timebetweenparsed);Serial.println(" hz");
-        Serial.print("  Sys ID: ");
-        Serial.print(receivedMsg.sysid, DEC);
-        Serial.print("  Comp ID: ");
-        Serial.print(receivedMsg.compid, DEC);
-        Serial.print("  Len ID: ");
-        Serial.print(receivedMsg.len, DEC);
-        Serial.print("  Msg ID: ");
-        Serial.print(receivedMsg.msgid, DEC);
-        Serial.print("\n");
-      }
-    }
-
-    // mavlink_msg_ping_pack(mavlink_system.sysid, mavlink_system.compid, &pingMsg, currentTime, 0, 0, 0);
-    // len = mavlink_msg_to_send_buffer(buf, &pingMsg);
-    // //Write Message
-    // Serial2.write(buf, len);
-    // //Reset Buffer
-    // memset(buf, 0xFF, sizeof(buf));
-
-    // time1 = micros();
-   
-    time2 = time1;
-
-
-}
-
-void sbusParse()
+void TELEMETRY::sbusParse()
 {
   if (x8r.read(&channels[0], &failSafe, &lostFrame))
   {
@@ -154,57 +49,153 @@ void sbusParse()
     // Serial.print(channels[14]);Serial.print(",");
     // Serial.print(channels[15]);Serial.print(",");
     // Serial.println(channels[16]);
-    g_telemetry.RCThrottle = channels[0]; //172-1811 1017
-    g_telemetry.RCRoll = channels[1];     //172-1811 mid988
-    g_telemetry.RCPitch = channels[2];    //172-1811 985
-    g_telemetry.RCYaw = channels[3];      //172-1811 1000
-    g_telemetry.RCMode = channels[4];     //down 992 Up172
-    g_telemetry.RCArm = channels[5];      //down 992 Up172
+    RCThrottle = channels[0]; //172-1811 1017
+    RCRoll = channels[1];     //172-1811 mid988
+    RCPitch = channels[2];    //172-1811 985
+    RCYaw = channels[3];      //172-1811 1000
+    RCMode = channels[4];     //down 992 Up172
+    RCArm = channels[5];      //down 992 Up172
 
     if (channels[0] > 0) //if no signal.... needs to be verified across radis
     {
-      if (g_telemetry.RCArm > 500)
+      if (RCArm > 500)
       {
-        flag_armed = 1;
+        g_armed = 1;
       }
       else
       {
-        flag_armed = 0;
+        g_armed = 0;
       }
 
-      if (g_telemetry.RCMode < 500)
+      if (RCMode < 500)
       {
-        currentMode = 1;
+        g_current_mode = 1;
       }
       else
       {
-        currentMode = 2;
+        g_current_mode = 2;
       }
-      if (currentMode == 1)
+      if (g_current_mode == 1)
       {
 
-        if (g_telemetry.RCYaw > 1040) //(1021-1811)
+        if (RCYaw > 1040) //(1021-1811)
         {
-          desiredYaw = correct_heading_wrap(desiredYaw + (.0001 * pow(map(RCYaw, 1021, 1811, 0, 100), 2)));
+          g_navigation.desiredYaw = correct_heading_wrap(g_navigation.desiredYaw + (.0001 * pow(map(g_telemetry.RCYaw, 1021, 1811, 0, 100), 2)));
         }
         if (RCYaw < 1000)
         {
-          desiredYaw = correct_heading_wrap(desiredYaw - (.0001 * pow(map(RCYaw, 170, 1021, 0, 100), 2)));
+          g_navigation.desiredYaw = correct_heading_wrap(g_navigation.desiredYaw - (.0001 * pow(map(g_telemetry.RCYaw, 170, 1021, 0, 100), 2)));
         }
-        desiredYaw = 0;
+        g_navigation.desiredYaw = 0;
 
-        desiredThrottle = map(RCThrottle, 172, 1811, 0, 300); //172-1811
-        desiredRoll = map(RCRoll, 172, 1811, -20, 20);
-        desiredPitch = map(RCPitch, 172, 1811, -20, 20);
+        g_navigation.desiredThrottle = map(g_telemetry.RCThrottle, 172, 1811, 0, 300); //172-1811
+        g_navigation.desiredRoll = map(g_telemetry.RCRoll, 172, 1811, -20, 20);
+        g_navigation.desiredPitch = map(g_telemetry.RCPitch, 172, 1811, -20, 20);
       }
     }
     else //no rc signal -- failsafe
     {
-      flag_armed = 0;
-      currentMode = 0;
+      g_armed = 0;
+      g_current_mode = 0;
     }
   }
 }
+int TELEMETRY::mavlink_send_and_parse()
+{
+
+  float currentTime = micros();
+  memset(buf, 0xFF, sizeof(buf));
+  mavlink_system.sysid = 1;
+  mavlink_system.compid = MAV_COMP_ID_AUTOPILOT1;
+  heartbeat.system_status = MAV_STATE_ACTIVE;
+  heartbeat.custom_mode = 65536;
+  heartbeat.base_mode = 81;
+
+  // // Pack the message
+  mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &heartbeatMsg, 2, 12, heartbeat.base_mode, heartbeat.custom_mode, heartbeat.system_status);
+  // // Copy the message to send buffer
+  uint16_t len = mavlink_msg_to_send_buffer(buf, &heartbeatMsg);
+  // Serial2.println("Heartbeat");
+  // //Write Message
+  mavlinkserial.write(buf, len);
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_gps_raw_int_pack(mavlink_system.sysid, mavlink_system.compid, &global_position_intMsg, currentTime, 3, 392919390, -772862310, 10, 0xFFFF, 0xFFFF, Velocity, 0xFFFF, 7, 0, 0, 0, 0, 0); //fix_type must be 3 for some odd reason
+  // /// Copy the message to send buffer
+  len = mavlink_msg_to_send_buffer(buf, &global_position_intMsg);
+  //Write Message
+  mavlinkserial.write(buf, len);
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_altitude_pack(mavlink_system.sysid, mavlink_system.compid, &altMsg, currentTime, 12, 13, 14, 15, 16, 17);
+  len = mavlink_msg_to_send_buffer(buf, &altMsg);
+  //Write Message
+  mavlinkserial.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_local_position_ned_pack(mavlink_system.sysid, mavlink_system.compid, &local_position_nedMsg, 1, 1, 2, 3, 0, 0, 0);
+  len = mavlink_msg_to_send_buffer(buf, &local_position_nedMsg);
+  //Write Message
+  mavlinkserial.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_attitude_pack(mavlink_system.sysid, mavlink_system.compid, &attitudeMsg, currentTime, g_attitude.roll * 3.14 / 180, g_attitude.pitch * 3.14 / 180, g_attitude.yaw * 3.14 / 180, 4, 5, 6);
+  len = mavlink_msg_to_send_buffer(buf, &attitudeMsg);
+  //Write Message
+  mavlinkserial.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_highres_imu_pack(mavlink_system.sysid, mavlink_system.compid, &highres_imuMsg, currentTime, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);
+  len = mavlink_msg_to_send_buffer(buf, &highres_imuMsg);
+  //Write Message
+  mavlinkserial.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  mavlink_msg_sys_status_pack(mavlink_system.sysid, mavlink_system.compid, &sys_statusMsg, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);
+  len = mavlink_msg_to_send_buffer(buf, &sys_statusMsg);
+  //Write Message
+  mavlinkserial.write(buf, len);
+  //Reset Buffer
+  memset(buf, 0xFF, sizeof(buf));
+
+  //   //Read Message
+  if (mavlinkserial.available())
+
+  {
+    data = mavlinkserial.read();
+
+    if (mavlink_parse_char(MAVLINK_COMM_0, data, &receivedMsg, &mav_status))
+    {
+      parsed = micros();
+      timebetweenparsed = parsed - lastparsed;
+      lastparsed = parsed;
+      // Serial.print(1000000/timebetweenparsed);Serial.println(" hz");
+      Serial.print("  Sys ID: ");
+      Serial.print(receivedMsg.sysid, DEC);
+      Serial.print("  Comp ID: ");
+      Serial.print(receivedMsg.compid, DEC);
+      Serial.print("  Len ID: ");
+      Serial.print(receivedMsg.len, DEC);
+      Serial.print("  Msg ID: ");
+      Serial.print(receivedMsg.msgid, DEC);
+      Serial.print("\n");
+    }
+  }
+
+  // mavlink_msg_ping_pack(mavlink_system.sysid, mavlink_system.compid, &pingMsg, currentTime, 0, 0, 0);
+  // len = mavlink_msg_to_send_buffer(buf, &pingMsg);
+  // //Write Message
+  // Serial2.write(buf, len);
+  // //Reset Buffer
+  // memset(buf, 0xFF, sizeof(buf));
+
+  // time1 = micros();
+}
+
 
 void tokenCreator(char *instr);
 void stringparse(char buffer[200], int ind);
@@ -291,43 +282,186 @@ void stringparse(char buffer[80], int ind)
   {
     // Serial2.println("Choice1");
     if (ind == 1)
-      currentYaw = atof(buffer);
+      g_imu.yaw = atof(buffer);
     if (ind == 2)
-      currentRoll = atof(buffer);
+      g_imu.roll = atof(buffer);
     if (ind == 3)
-      currentPitch = atof(buffer);
+      g_imu.yaw = atof(buffer);
     if (ind == 4)
-      currentNorth = atof(buffer);
+      g_navigation.currentNorth = atof(buffer);
     if (ind == 5)
-      currentEast = atof(buffer);
+      g_navigation.currentEast = atof(buffer);
     if (ind == 6)
     {
-      currentDown = atof(buffer);
+      g_navigation.currentDown = atof(buffer);
       // Serial2.println("Yay");
     }
   }
 }
 
-
-
-
-void quickdebug()
+void TELEMETRY::quickdebug()
 {
-     Serial.print(currentYaw, 3);
-    Serial.print(',');
-    Serial.print(currentRoll, 3);
-    Serial.print(',');
-    Serial.print(currentPitch, 3);
-    Serial.print(',');
-    Serial.print(desiredYaw, 3);
-    Serial.print(',');
-    Serial.print(desiredRoll, 3);
-    Serial.print(',');
-    Serial.print(desiredPitch, 3);
-    Serial.print(',');
-    Serial.print(desiredThrottle, 3);
-    Serial.print(',');
-    Serial.print(currentMode);
-    Serial.print(',');
-    Serial.println(flag_armed);
+  Serial.print(g_imu.yaw, 3);
+  Serial.print(',');
+  Serial.print(g_imu.roll, 3);
+  Serial.print(',');
+  Serial.print(g_imu.pitch, 3);
+  Serial.print(',');
+  Serial.print(g_navigation.desiredYaw, 3);
+  Serial.print(',');
+  Serial.print(g_navigation.desiredRoll, 3);
+  Serial.print(',');
+  Serial.print(g_navigation.desiredPitch, 3);
+  Serial.print(',');
+  Serial.print(g_navigation.desiredThrottle, 3);
+  Serial.print(',');
+  Serial.print(g_current_mode);
+  Serial.print(',');
+  Serial.println(g_armed);
+}
+
+int TELEMETRY::init_sdcard()
+{
+  // const char *const animation = "\\|/-";
+  // int frame = 0;
+
+  // // Wait for an SD card to be inserted
+  // this->log("[-] waiting for sd card insertion...");
+  while (!m_sd.begin(CONFIG_SD))
+  {
+    // Silly, but erases previous message, allows us to give a lil spinny-boi
+    // this->log("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+    // this->log("[%c] waiting for sd card insertion...", animation[frame]);
+    // frame = (frame + 1) % 4;
+    delay(1000);
+  }
+
+  // Again, silly, but I like it, okay?
+  // this->log("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+  // this->log("                                    ");
+  // this->log("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+  // this->log("[+] initialized sd card\n");
+
+  // We track the recording file. If drop off is disabled, then this never changes.
+  if (m_sd.exists("/first_recording"))
+  {
+    char buffer[64];
+    CONFIG_SD_FILE file = m_sd.open("/first_recording", O_RDONLY);
+    file.read(buffer, 64);
+    file.close();
+
+    m_first_recording = atoi(buffer);
+  }
+  else
+  {
+    m_first_recording = 0;
+    // Touch the marker file
+    CONFIG_SD_FILE file = m_sd.open("/first_recording", O_WRONLY | O_CREAT);
+    file.write("0\n", 2);
+    file.close();
+  }
+
+  // This is updated after every recording, and helps start up times when the SD card
+  // has a lot of recordings (e.g. >1k).
+  if (m_sd.exists("/next_recording"))
+  {
+    char buffer[64];
+    CONFIG_SD_FILE file = m_sd.open("/next_recording", O_RDONLY);
+    file.read(buffer, 64);
+    file.close();
+
+    m_next_recording = atoi(buffer);
+  }
+  else
+  {
+    m_next_recording = 0;
+    CONFIG_SD_FILE file = m_sd.open("/next_recording", O_WRONLY | O_CREAT);
+    file.write("0\n", 2);
+    file.close();
+  }
+
+  // this->log("[+] first saved recording: %ld\n", m_first_recording);
+  // this->log("[+] next recording slot: %ld\n", m_next_recording);
+
+  return 0;
+}
+
+int TELEMETRY::generate_new_dir(char *recording_dir, size_t length)
+{
+  size_t needed;
+  size_t blocks_left = m_sd.freeClusterCount() * m_sd.sectorsPerCluster();
+
+  // Check if we have enough for this recording + 2 blocks for accounting information
+  while (blocks_left < (CONFIG_RECORDING_TOTAL_BLOCKS + 2))
+  {
+#if CONFIG_SD_CARD_ROLLOFF
+    char channel_path[256];
+
+    for (int id = m_first_recording;; id++)
+    {
+      // Produce a new folder path
+      needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
+
+      // Ignore non-existent entries
+      if (!m_sd.exists(recording_dir))
+        continue;
+
+      // Remove channel data
+      for (int ch = 0;; ch++)
+      {
+        snprintf(channel_path, 256, CONFIG_CHANNEL_PATH, recording_dir, ch);
+        if (!m_sd.exists(channel_path))
+          break;
+        m_sd.remove(channel_path);
+      }
+
+      // Remove the recording directory
+      m_sd.rmdir(recording_dir);
+
+      // Update first recording ID
+      m_first_recording = id + 1;
+
+      // Update first recording tracker on disk
+      CONFIG_SD_FILE file = m_sd.open("/first_recording", O_WRONLY);
+      char buffer[64];
+      size_t len = snprintf(buffer, 64, "%ld\n", m_first_recording);
+      file.write(buffer, len);
+      file.close();
+
+      break;
+    }
+#else
+    // this->panic("sd card full and rolloff disabled!", -1);
+#endif
+  }
+
+  for (int id = m_next_recording;; id++)
+  {
+    // Produce a new folder path
+    needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
+
+    // Could we fit it in our buffer?
+    if (needed > length)
+    {
+      return 1;
+    }
+
+    // Does it exist?
+    if (!m_sd.exists(recording_dir))
+    {
+      // Create the new directory
+      m_sd.mkdir(recording_dir);
+      // Increment counter
+      m_next_recording = id + 1;
+
+      // Update the next recording tracker on disk
+      CONFIG_SD_FILE file = m_sd.open("/next_recording", O_WRONLY);
+      char buffer[64];
+      size_t len = snprintf(buffer, 64, "%ld\n", m_next_recording);
+      file.write(buffer, len);
+      file.close();
+
+      return 0;
+    }
+  }
 }

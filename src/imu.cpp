@@ -1,9 +1,6 @@
 #include "imu.h"
-
-IMU::IMU()
-    :
-{
-}
+ #include "config.h"
+IMU::IMU(){}
 IMU::~IMU() {}
 
 int IMU::setup()
@@ -34,6 +31,7 @@ int IMU::setup()
   bno080imu.enableRotationVector(1); //Send data update every 50ms
 #endif
   Task::setup("imu", 1);
+  return 0;
 }
 
 int IMU::start()
@@ -49,6 +47,7 @@ int IMU::start()
 
 int bno050init()
 {
+  return 0;
 }
 
 void IMU::getbno055data()
@@ -328,7 +327,7 @@ int IMU::calibratempu6050Attitude()
     dt = (current_time - prev_time) / 1000000.0;
     getIMUdata();
     Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt);
-    loopRate(2000); //do not exceed 2000Hz
+    loopRate(2000,current_time); //do not exceed 2000Hz
   }
   //Grab mean roll and pitch values after everything is warmed up
   for (int j = 1; j <= 2000; j++)
@@ -340,7 +339,7 @@ int IMU::calibratempu6050Attitude()
     Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt);
     roll_correction = roll_IMU + roll_correction;
     pitch_correction = pitch_IMU + pitch_correction;
-    loopRate(2000); //do not exceed 2000Hz
+    loopRate(2000,current_time); //do not exceed 2000Hz
   }
   //These are applied to roll and pitch after Madgwick filter in main loop if desired using correctRollPitch()
   roll_correction = roll_correction / 2000.0;

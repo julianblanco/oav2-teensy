@@ -1,23 +1,18 @@
 
 /*
- * Record and Push imu for Laphable
+ * Slow sensors code
 */
 #include "sensors.h"
-SENSORS::SENSORS()
-    :
+ #include "config.h"
+ #include "HardwareSerial.h"
+SENSORS::SENSORS():gps(&gpsserial)
 {
 }
 SENSORS::~SENSORS() {}
 
 int SENSORS::setup()
 {
-//
-#ifdef MPU6050
-  mpu6050init();
-#endif
-#ifdef BNO055
-//shit
-#endif
+
   Task::setup("sensors", 1);
 }
 
@@ -25,19 +20,23 @@ int SENSORS::start()
 {
   while (1)
   {
-    gpsSample(gpsobject);
+    #ifdef gps_enable
+    gpsSample();
+    #endif
+    #ifdef lidar_enable
+    #endif
     vTaskDelay((configTICK_RATE_HZ) / 1000L);
   }
 }
 
-void gpsSample(Adafruit_GPS &gpsobject)
+void SENSORS::gpsSample()
 {
-  if (gpsobject.newNMEAreceived())
+  if (gps.newNMEAreceived())
   {
-    if (gpsobject.parse(gpsobject.lastNMEA())) // this also sets the newNMEAreceived() flag to false
+    if (gps.parse(gps.lastNMEA())) // this also sets the newNMEAreceived() flag to false
     {
-      g_sensors.GPS_fix = 1;
-      g_sensors.new_GPS_data = 1;
+      GPS_fix = 1;
+      new_GPS_data = 1;
     }
   }
 }

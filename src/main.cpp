@@ -12,38 +12,33 @@
 #include "sensors.h"
 #include "telemetry.h"
 
-
-int g_flag_armed =0;
-
-
+int g_flag_armed = 0;
+int g_current_mode = 0;
 ACTUATORS g_actuators;
-ATTITUDE g_attiude;
+ATTITUDE g_attitude;
 IMU g_imu;
 NAVIGATION g_navigation;
 SENSORS g_sensors;
 TELEMETRY g_telemetry;
 
-
-
-
-void main()
+int main()
 {
-  delay(500);
-
-  
-    Serial.begin(57600);
-    Serial.println("Start");
-    Serial2.begin(57600);
-    
-    
-    int actuators = g_actuators.setup();
-    int attitude = g_attitude.setup();
-    int imu_start = g_imu.setup();
-    int navigation_start = g_navigation.setup();
-    int sensor_start = g_sensor.setup();
-    int telemetry_start = g_sensor.setup();
+  int flag = 0;
+  flag += g_actuators.setup();
+  flag += g_attitude.setup();
+  flag += g_imu.setup();
+  flag += g_navigation.setup();
+  flag += g_sensors.setup();
+  flag += g_telemetry.setup();
+  if (flag == 0) 
+  {
+    Serial.println("error starting a thread");
+    while(1);
+  }
   vTaskStartScheduler();
- 
+
   while (1)
     ;
+    
+    return 0;
 }

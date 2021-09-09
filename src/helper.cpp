@@ -1,5 +1,6 @@
 #include "helper.h"
-void loopRate(int freq)
+
+void loopRate(int freq,float functionstarttime)
 {
   //DESCRIPTION: Regulate main loop rate to specified frequency in Hz
   /*
@@ -13,7 +14,7 @@ void loopRate(int freq)
   unsigned long checker = micros();
 
   //Sit in loop until appropriate time has passed
-  while (invFreq > (checker - current_time))
+  while (invFreq > (checker - functionstarttime))
   {
     checker = micros();
   }
@@ -59,4 +60,15 @@ float angular_diff(float target_angle, float source_angle)
     diff += 360;
 
   return (diff);
+}
+
+float correct_heading_wrap(float current_heading)
+{
+  // Correct 360 deg wrap around
+  if (current_heading >= 360)
+    current_heading -= 360;
+  else if (current_heading < 0)
+    current_heading += 360;
+
+  return (current_heading);
 }

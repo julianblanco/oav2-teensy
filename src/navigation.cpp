@@ -2,10 +2,8 @@
 // Navigation Thread 1HZ
 //*****************************************************************
 #include "navigation.h"
-NAVIGATION::NAVIGATION()
-    :
-{
-}
+ #include "config.h"
+NAVIGATION::NAVIGATION() {}
 NAVIGATION::~NAVIGATION() {}
 
 int NAVIGATION::setup()
@@ -25,13 +23,13 @@ int NAVIGATION::start()
   while (1)
   {
 
-     vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    vTaskDelay((configTICK_RATE_HZ) / 1000L);
   }
 }
 
-static void NEDpositionControl(void *pvParameters)
+ void NAVIGATION::NEDpositionControl()
 {
-  float northError = desiredNorth - currentNorth;
+  float northError = desiredNorth -currentNorth;
   float eastError = currentEast - desiredEast;
   float downError = currentDown - desiredDown;
 
@@ -57,13 +55,13 @@ static void NEDpositionControl(void *pvParameters)
   float mixer = 0;
   while (1)
   {
-    if (flag_armed)
+    if (g_armed)
     {
-      if (currentMode == 2)
+      if (g_current_mode == 2)
       {
-        northError = currentNorth - desiredNorth;
-        eastError = currentEast - desiredEast;
-        downError = currentDown - desiredDown;
+        northError = g_navigation.currentNorth - g_navigation.desiredNorth;
+        eastError = g_navigation.currentEast - g_navigation.desiredEast;
+        downError = g_navigation.currentDown - g_navigation.desiredDown;
 
         pNorthResponse = northError * northKp;
         pEastResponse = eastError * eastKp;
@@ -81,11 +79,11 @@ static void NEDpositionControl(void *pvParameters)
         eastResponse = pEastResponse + iEastResponse + dEastResponse;
         downResponse = pDownResponse + iDownResponse + dDownResponse;
 
-        desiredPitch = saturate(northResponse, 30, -30);
-        desiredRoll = saturate(eastResponse, 30, -30);
-        desiredThrottle = saturate(downResponse, 1000, -1000);
+        g_navigation.desiredPitch = saturate(northResponse, 30, -30);
+        g_navigation.desiredRoll = saturate(eastResponse, 30, -30);
+        g_navigation.desiredThrottle = saturate(downResponse, 1000, -1000);
       }
-      if (currentMode == 1)
+      if (g_current_mode == 1)
       {
         //handled elsewhere
       }
@@ -93,7 +91,8 @@ static void NEDpositionControl(void *pvParameters)
 
     //
   }
-static void headingFromGPS(void *pvParameters)
+}
+void NAVIGATION::headingFromGPS()
 {
   int waypointNumber = 0;
   int numOfWaypoints = 5; //size of waypoints
@@ -106,19 +105,19 @@ static void headingFromGPS(void *pvParameters)
   while (1)
   {
     //calculates the distance to the waypoint
-    float distanceToTarget = distanceToWaypoint(currentLat, currentLong, desiredLat, desiredLong);
+    float distanceToTarget = distanceToWaypoint(g_sensors.gps.latitudeDegrees, g_sensors.gps.longitudeDegrees, desiredLat,  desiredLong);
 
     if (flag_are_waypointing == 1)
     {
       float XTerror = crossTrackError(distanceToTarget, courseBetweenWaypoints, oldHeading);
       if (waypointNumber > 1 && XTerror > 1)
       {
-        oldHeading = courseToWaypoint(currentLat, currentLong, desiredLat, desiredLong);
+        oldHeading = courseToWaypoint(g_sensors.gps.latitudeDegrees, g_sensors.gps.longitudeDegrees, desiredLat,  desiredLong);
         targetHeading = crossTrackCorrection(XTerror, oldHeading, distanceToTarget);
       }
       else
       {
-        targetHeading = courseToWaypoint(currentLat, currentLong, desiredLat, desiredLong);
+        targetHeading = courseToWaypoint(g_sensors.gps.latitudeDegrees, g_sensors.gps.longitudeDegrees, g_navigation.desiredLat,  g_navigation.desiredLong);
       }
 
       if (waypointNumber > 1)
@@ -144,9 +143,9 @@ static void headingFromGPS(void *pvParameters)
       courseBetweenWaypoints = courseToWaypoint(wplat[waypointNumber - 1], wplong[waypointNumber - 1], desiredLat, desiredLong);
     }
   }
+}
 
-
-  float crossTrackCorrection(float distanceXT, float targetHead, float distance2WP)
+float  NAVIGATION::crossTrackCorrection(float distanceXT, float targetHead, float distance2WP)
 {
   float xtCoeff = -100; // based on experimental data from the autonomous car
   float temp = (xtCoeff * distanceXT) / distance2WP;
@@ -166,8 +165,7 @@ static void headingFromGPS(void *pvParameters)
   return newTargetHeading;
 } // end crossTrackError
 
-
-float crossTrackError(float distance2WP, float tracklegHead, float targetHead)
+float NAVIGATION::crossTrackError(float distance2WP, float tracklegHead, float targetHead)
 {
   //convert to radians for use with sin
   tracklegHead = (3.14159265 / 180) * tracklegHead;
@@ -182,20 +180,8 @@ float crossTrackError(float distance2WP, float tracklegHead, float targetHead)
   return distanceXT;
 }
 
-//helper functions s
-//**************************************************************************
-float correct_heading_wrap(float current_heading)
-{
-  // Correct 360 deg wrap around
-  if (current_heading >= 360)
-    current_heading -= 360;
-  else if (current_heading < 0)
-    current_heading += 360;
 
-  return (current_heading);
-}
-
-float distanceToWaypoint(float Lat1, float Long1, float Lat2, float Long2)
+float NAVIGATION::distanceToWaypoint(float Lat1, float Long1, float Lat2, float Long2)
 {
   float dist;
   float dLat = (float)(Lat2 - Lat1);               // difference of latitude in 1/10 000 000 degrees
@@ -205,7 +191,7 @@ float distanceToWaypoint(float Lat1, float Long1, float Lat2, float Long2)
   return dist;
 }
 
-float courseToWaypoint(float lat1, float long1, float lat2, float long2)
+float NAVIGATION::courseToWaypoint(float lat1, float long1, float lat2, float long2)
 {
   // returns course in degrees (North=0, West=270) from position 1 to position 2,
   // both specified as signed decimal-degrees latitude and longitude.
@@ -225,7 +211,7 @@ float courseToWaypoint(float lat1, float long1, float lat2, float long2)
   return degrees(a2);
 } // courseToWaypoint()
 
-void convertToNED(float startLat, float startLong, float currentLat, float currentLong, float &North, float &East, float &Down)
+void NAVIGATION::convertToNED(float startLat, float startLong, float currentLat, float currentLong, float &North, float &East, float &Down)
 {
   float heading = courseToWaypoint(startLat, startLong, currentLat, currentLong);
   float distance = distanceToWaypoint(startLat, startLong, currentLat, currentLong);
@@ -233,4 +219,3 @@ void convertToNED(float startLat, float startLong, float currentLat, float curre
   East = distance * cos(heading);
   // Down = currentRangeSensorHeight - heightOffset;
 }
-
