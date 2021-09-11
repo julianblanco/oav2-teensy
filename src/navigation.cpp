@@ -15,7 +15,8 @@ int NAVIGATION::setup()
 #ifdef BNO055
 //shit
 #endif
-  Task::setup("navigation", 1);
+  Task::setup("navigation", 6);
+  return 0;
 }
 
 int NAVIGATION::start()
@@ -23,7 +24,7 @@ int NAVIGATION::start()
   while (1)
   {
 
-    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    LOOPFREQ(100);//hz
   }
 }
 

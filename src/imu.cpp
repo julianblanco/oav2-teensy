@@ -5,7 +5,7 @@ IMU::~IMU() {}
 
 int IMU::setup()
 {
-
+Wire.begin();
 #ifdef MPU6050
 
   mpu6050init();
@@ -18,7 +18,7 @@ int IMU::setup()
   bno050init();
 
 #endif
-#if BNO080
+#ifdef BNO080
 
   if (bno080imu.begin() == false)
   {
@@ -30,7 +30,7 @@ int IMU::setup()
 
   bno080imu.enableRotationVector(1); //Send data update every 50ms
 #endif
-  Task::setup("imu", 1);
+  Task::setup("imu", 9);
   return 0;
 }
 
@@ -41,13 +41,19 @@ int IMU::start()
     g_imu.lock.WriterLock();
     getIMUdata();
     g_imu.lock.WriterUnlock();
-    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    LOOPFREQ(500);//hz
   }
 }
 
 int bno050init()
 {
   return 0;
+}
+
+void IMU::getIMUdata()
+{
+  // getbno055data();
+  getbno080data();
 }
 
 void IMU::getbno055data()
@@ -63,9 +69,9 @@ void IMU::getbno080data()
 {
   if (g_imu.bno080imu.dataAvailable() == true)
   {
-    g_imu.roll = (g_imu.bno080imu.getRoll()) * 180.0 / PI;   // Convert roll to degrees
-    g_imu.pitch = (g_imu.bno080imu.getPitch()) * 180.0 / PI; // Convert pitch to degrees
-    g_imu.yaw = (g_imu.bno080imu.getYaw()) * 180.0 / PI;     // Convert yaw / heading to degrees
+    roll = (g_imu.bno080imu.getRoll()) * 180.0 / PI;   // Convert roll to degrees
+    pitch = (g_imu.bno080imu.getPitch()) * 180.0 / PI; // Convert pitch to degrees
+    yaw = (g_imu.bno080imu.getYaw()) * 180.0 / PI;     // Convert yaw / heading to degrees
   }
 }
 void IMU::getmpu6050data()

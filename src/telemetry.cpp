@@ -1,62 +1,63 @@
 #include "telemetry.h"
- #include "config.h"
-TELEMETRY::TELEMETRY() : x8r(sbsuserial) {}
+#include "config.h"
+TELEMETRY::TELEMETRY() : x8r(&sbsuserial) {}
 TELEMETRY::~TELEMETRY() {}
 
 int TELEMETRY::setup()
 {
-//
+  //
+
+  Serial.begin(115200);
+  // Serial1.begin(57600);
+  Serial2.begin(115200);
+  x8r.Begin();
 #ifdef MPU6050
   mpu6050init();
 #endif
 #ifdef BNO055
 //shit
 #endif
-  Task::setup("telemetry", 1);
+  Task::setup("telemetry", 4);
 }
 
 int TELEMETRY::start()
 {
+  int count = 0;
   while (1)
   {
+    count++;
     sbusParse();
-
-    vTaskDelay(500 * (configTICK_RATE_HZ) / 1000L);
+    if (count > 10)
+    {
+      quickdebug();
+      count = 0;
+    }
+    // vTaskDelay(100*(configTICK_RATE_HZ) / 1000L);
+    LOOPFREQ(100);//hz
   }
 }
 
 void TELEMETRY::sbusParse()
 {
-  if (x8r.read(&channels[0], &failSafe, &lostFrame))
+  // Serial.println("sbus");
+  if (x8r.Read())
   {
 
-    // write the SBUS packet to an SBUS compatible servo
-    //    x8r.write(&channels[0]);
-    // Serial.print(channels[0]);Serial.print(",");
-    // Serial.print(channels[1]);Serial.print(",");
-    // Serial.print(channels[2]);Serial.print(",");
-    // Serial.print(channels[3]);Serial.print(",");
-    // Serial.print(channels[4]);Serial.print(",");
-    // Serial.print(channels[5]);Serial.print(",");
-    // Serial.print(channels[6]);Serial.print(",");
-    // Serial.print(channels[7]);Serial.print(",");
-    // Serial.print(channels[8]);Serial.print(",");
-    // Serial.print(channels[9]);Serial.print(",");
-    // Serial.print(channels[10]);Serial.print(",");
-    // Serial.print(channels[11]);Serial.print(",");
-    // Serial.print(channels[12]);Serial.print(",");
-    // Serial.print(channels[13]);Serial.print(",");
-    // Serial.print(channels[14]);Serial.print(",");
-    // Serial.print(channels[15]);Serial.print(",");
-    // Serial.println(channels[16]);
-    RCThrottle = channels[0]; //172-1811 1017
-    RCRoll = channels[1];     //172-1811 mid988
-    RCPitch = channels[2];    //172-1811 985
-    RCYaw = channels[3];      //172-1811 1000
-    RCMode = channels[4];     //down 992 Up172
-    RCArm = channels[5];      //down 992 Up172
 
-    if (channels[0] > 0) //if no signal.... needs to be verified across radis
+    // for (int i = 0; i < x8r.rx_channels().size(); i++) {
+    //   Serial.print(x8r.rx_channels()[i]);
+    //   Serial.print(",");
+    // }
+    // Serial.println();
+    auto l_channels = x8r.rx_channels();
+    RCThrottle = l_channels[0]; //172-1811 1017
+    RCRoll = l_channels[1];     //172-1811 mid988
+    RCPitch = l_channels[2];    //172-1811 985
+    RCYaw = l_channels[3];      //172-1811 1000
+    RCMode = l_channels[4];     //down 992 Up172
+    RCArm = l_channels[5];      //down 992 Up172
+
+    if (l_channels[0] > 0) //if no signal.... needs to be verified across radis
     {
       if (RCArm > 500)
       {
@@ -92,11 +93,18 @@ void TELEMETRY::sbusParse()
         g_navigation.desiredRoll = map(g_telemetry.RCRoll, 172, 1811, -20, 20);
         g_navigation.desiredPitch = map(g_telemetry.RCPitch, 172, 1811, -20, 20);
       }
+      lastread = millis();
     }
     else //no rc signal -- failsafe
     {
-      g_armed = 0;
-      g_current_mode = 0;
+      timeelapsed = millis() - lastread;
+
+      if (timeelapsed > 2000)
+      {
+        Serial.println("lost connection");
+        g_armed = 0;
+        g_current_mode = 0;
+      }
     }
   }
 }
@@ -196,7 +204,6 @@ int TELEMETRY::mavlink_send_and_parse()
   // time1 = micros();
 }
 
-
 void tokenCreator(char *instr);
 void stringparse(char buffer[200], int ind);
 static void readComputer(void *pvParameters)
@@ -271,9 +278,9 @@ void stringparse(char buffer[80], int ind)
   {
     choice = 1;
     // Serial2.println("sucess");
-    time1 = millis();
-    timebetweenparses = time1 - time2;
-    time2 = time1;
+    // time1 = millis();
+    // timebetweenparses = time1 - time2;
+    // time2 = time1;
   }
   if ((strcmp(buffer, "$OA009") == 0))
     choice = 2;
@@ -301,17 +308,18 @@ void stringparse(char buffer[80], int ind)
 
 void TELEMETRY::quickdebug()
 {
-  Serial.print(g_imu.yaw, 3);
-  Serial.print(',');
+
   Serial.print(g_imu.roll, 3);
   Serial.print(',');
   Serial.print(g_imu.pitch, 3);
+  Serial.print(',');
+  Serial.print(g_imu.yaw, 3);
   Serial.print(',');
   Serial.print(g_navigation.desiredYaw, 3);
   Serial.print(',');
   Serial.print(g_navigation.desiredRoll, 3);
   Serial.print(',');
-  Serial.print(g_navigation.desiredPitch, 3);
+  Serial.print(g_actuators.frontLeftMotorSignal);
   Serial.print(',');
   Serial.print(g_navigation.desiredThrottle, 3);
   Serial.print(',');
@@ -391,54 +399,54 @@ int TELEMETRY::generate_new_dir(char *recording_dir, size_t length)
   size_t needed;
   size_t blocks_left = m_sd.freeClusterCount() * m_sd.sectorsPerCluster();
 
-  // Check if we have enough for this recording + 2 blocks for accounting information
-  while (blocks_left < (CONFIG_RECORDING_TOTAL_BLOCKS + 2))
-  {
+  // // Check if we have enough for this recording + 2 blocks for accounting information
+  // while (blocks_left < (CONFIG_RECORDING_TOTAL_BLOCKS + 2))
+  // {
 #if CONFIG_SD_CARD_ROLLOFF
-    char channel_path[256];
+  char channel_path[256];
 
-    for (int id = m_first_recording;; id++)
+  for (int id = m_first_recording;; id++)
+  {
+    // Produce a new folder path
+    needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
+
+    // Ignore non-existent entries
+    if (!m_sd.exists(recording_dir))
+      continue;
+
+    // Remove channel data
+    for (int ch = 0;; ch++)
     {
-      // Produce a new folder path
-      needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
-
-      // Ignore non-existent entries
-      if (!m_sd.exists(recording_dir))
-        continue;
-
-      // Remove channel data
-      for (int ch = 0;; ch++)
-      {
-        snprintf(channel_path, 256, CONFIG_CHANNEL_PATH, recording_dir, ch);
-        if (!m_sd.exists(channel_path))
-          break;
-        m_sd.remove(channel_path);
-      }
-
-      // Remove the recording directory
-      m_sd.rmdir(recording_dir);
-
-      // Update first recording ID
-      m_first_recording = id + 1;
-
-      // Update first recording tracker on disk
-      CONFIG_SD_FILE file = m_sd.open("/first_recording", O_WRONLY);
-      char buffer[64];
-      size_t len = snprintf(buffer, 64, "%ld\n", m_first_recording);
-      file.write(buffer, len);
-      file.close();
-
-      break;
+      snprintf(channel_path, 256, CONFIG_CHANNEL_PATH, recording_dir, ch);
+      if (!m_sd.exists(channel_path))
+        break;
+      m_sd.remove(channel_path);
     }
-#else
-    // this->panic("sd card full and rolloff disabled!", -1);
-#endif
+
+    // Remove the recording directory
+    m_sd.rmdir(recording_dir);
+
+    // Update first recording ID
+    m_first_recording = id + 1;
+
+    // Update first recording tracker on disk
+    CONFIG_SD_FILE file = m_sd.open("/first_recording", O_WRONLY);
+    char buffer[64];
+    size_t len = snprintf(buffer, 64, "%ld\n", m_first_recording);
+    file.write(buffer, len);
+    file.close();
+
+    break;
   }
+#else
+  // this->panic("sd card full and rolloff disabled!", -1);
+#endif
+  // }
 
   for (int id = m_next_recording;; id++)
   {
     // Produce a new folder path
-    needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
+    // needed = snprintf(recording_dir, length, CONFIG_RECORDING_DIRECTORY, id);
 
     // Could we fit it in our buffer?
     if (needed > length)

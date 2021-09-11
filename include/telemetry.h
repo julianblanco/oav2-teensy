@@ -22,10 +22,11 @@ public:
   void sbusParse();
   int init_sdcard();
 
-SBUS x8r;
+void quickdebug();
+SbusRx x8r;
 uint8_t buf[MAVLINK_MAX_PACKET_LEN];
 uint8_t buf0[MAVLINK_MAX_PACKET_LEN];
-uint16_t channels[16];
+// uint16_t channels[16];
 int RCThrottle;
 int RCYaw;
 int RCRoll;
@@ -34,6 +35,9 @@ int RCArm;
 int RCMode;
 bool failSafe;
 bool lostFrame;
+long timeelapsed;
+long lastread;
+#define CONFIG_RECORDING_DIRECTORY         "/rec%d"
   uint8_t system_type = MAV_TYPE_GROUND_ROVER;    //MAV_TYPE_HELICOPTER;//MAV_TYPE_FIXED_WING;
   uint8_t autopilot_type = MAV_AUTOPILOT_GENERIC; //MAV_AUTOPILOT_ARDUPILOTMEGA
   uint8_t system_mode = MAV_MODE_MANUAL_DISARMED; //MAV_MODE_MANUAL_ARMED; //MAV_MODE_GUIDED_ARMED //MAV_MODE_GUIDED_DISARMED

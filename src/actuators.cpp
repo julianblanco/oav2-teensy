@@ -21,21 +21,24 @@ int ACTUATORS::setup()
 
   // this->log("[+] initialized audio controller\n");
 
-  return 0;
-  Task::setup("actuators", 1);
+
+  Task::setup("actuators", 7);
+    return 0;
 }
 
 int ACTUATORS::start()
 {
   while (1)
   {
+  // {    Serial.println("updatemoteos2");
 #ifdef HITL
     sendHITLmotorcommands();
 
 #else
 
     if (g_armed)
-    {
+    { 
+        //  Serial.println("updatemoteos");
       update_motors();
     }
     else
@@ -43,7 +46,9 @@ int ACTUATORS::start()
       stop_motors();
     }
 #endif
-    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    
+  LOOPFREQ(100);//hz
+
   }
 }
 void ACTUATORS::sendHITLmotorcommands()
@@ -60,14 +65,15 @@ void ACTUATORS::sendHITLmotorcommands()
 
 void ACTUATORS::update_motors()
 {
-  if (vechicle_type == 0) //quadcopter
+  if (g_vehicle_type == 0) //quadcopter
   {
+
     g_actuators.frontRightMotor.writeMicroseconds(g_actuators.frontRightMotorSignal);
     g_actuators.frontLeftMotor.writeMicroseconds(g_actuators.frontLeftMotorSignal);
     g_actuators.backRightMotor.writeMicroseconds(g_actuators.backRightMotorSignal);
     g_actuators.backLeftMotor.writeMicroseconds(g_actuators.backLeftMotorSignal);
   }
-  if (vechicle_type == 1) //plane
+  if (g_vehicle_type == 1) //plane
   {
     g_actuators.yawMotor.writeMicroseconds(g_actuators.yawSignal);
     g_actuators.throttle.writeMicroseconds(g_actuators.throttleSignal);
@@ -76,14 +82,14 @@ void ACTUATORS::update_motors()
 
 void ACTUATORS::stop_motors()
 {
-  if (vechicle_type == 0) //quadcopter
+  if (g_vehicle_type == 0) //quadcopter
   {
     g_actuators.frontRightMotor.writeMicroseconds(1000);
     g_actuators.frontLeftMotor.writeMicroseconds(1000);
     g_actuators.backRightMotor.writeMicroseconds(1000);
     g_actuators.backLeftMotor.writeMicroseconds(1000);
   }
-  if (vechicle_type == 1) //plane
+  if (g_vehicle_type == 1) //plane
   {
     g_actuators.yawMotor.writeMicroseconds(1500);
     g_actuators.throttle.writeMicroseconds(1500);

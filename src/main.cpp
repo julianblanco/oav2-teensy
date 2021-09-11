@@ -12,8 +12,13 @@
 #include "sensors.h"
 #include "telemetry.h"
 
-int g_flag_armed = 0;
+int g_armed = 0;
 int g_current_mode = 0;
+int g_vehicle_type = 0;
+int highPWMmotor = 1500;
+int lowPWMmotor = 1000;
+int throttleIdle = 1080;
+
 ACTUATORS g_actuators;
 ATTITUDE g_attitude;
 IMU g_imu;
@@ -24,21 +29,54 @@ TELEMETRY g_telemetry;
 int main()
 {
   int flag = 0;
-  flag += g_actuators.setup();
-  flag += g_attitude.setup();
-  flag += g_imu.setup();
-  flag += g_navigation.setup();
-  flag += g_sensors.setup();
   flag += g_telemetry.setup();
-  if (flag == 0) 
+  if (flag)
   {
     Serial.println("error starting a thread");
-    while(1);
+    while (1)
+      ;
   }
+  Serial.println("telemetry started");
+  flag += g_actuators.setup();
+  if (flag)
+  {
+    Serial.println("error starting a thread");
+    while (1)
+      ;
+  }
+  flag += g_attitude.setup();
+  if (flag)
+  {
+    Serial.println("error starting a thread");
+    while (1)
+      ;
+  }
+  flag += g_imu.setup();
+  if (flag)
+  {
+    Serial.println("error starting a thread");
+    while (1)
+      ;
+  }
+  flag += g_navigation.setup();
+  if (flag)
+  {
+    Serial.println("error starting a thread");
+    while (1)
+      ;
+  }
+  flag += g_sensors.setup();
+  if (flag)
+  {
+    Serial.println("error starting a thread");
+    while (1)
+      ;
+  }
+
   vTaskStartScheduler();
 
   while (1)
     ;
-    
-    return 0;
+
+  return 0;
 }

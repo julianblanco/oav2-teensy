@@ -13,7 +13,7 @@ SENSORS::~SENSORS() {}
 int SENSORS::setup()
 {
 
-  Task::setup("sensors", 1);
+  Task::setup("sensors", 5);
 }
 
 int SENSORS::start()
@@ -25,7 +25,7 @@ int SENSORS::start()
     #endif
     #ifdef lidar_enable
     #endif
-    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    LOOPFREQ(100);//hz
   }
 }
 

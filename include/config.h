@@ -9,17 +9,17 @@
 #include "attitude.h"
 #include "sensors.h"
 #include <Arduino.h>
-
+  #define LOOPFREQ(frequency) vTaskDelay((configTICK_RATE_HZ) / (frequency));
 extern bool vechicle_type; //0quadcopter,1plane,2car
 // #define HITL
-#define gps_enable
+// #define gps_enable
 // #define lidar_enable
 
-#define mpu6050
+// #define mpu6050
 // #define bno055
-// #define bno080
+#define BNO080
 
-#define SDLogging
+// #define SDLogging
 #define mavlinkserial Serial2
 #define sbsuserial Serial1
 extern int lowPWMmotor;
@@ -28,6 +28,7 @@ extern int highPWMmotor;
 extern int g_current_mode;
 extern int g_armed;
 extern int throttleIdle;
+extern int g_vehicle_type;
 extern TELEMETRY g_telemetry;
 extern ATTITUDE g_attitude;
 extern ACTUATORS g_actuators;

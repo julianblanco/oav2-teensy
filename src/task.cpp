@@ -10,7 +10,7 @@ int Task::setup(const char *name, UBaseType_t priority)
       priority,
       &m_handle);
 
-  if (result != pdPass)
+  if (result != pdPASS)
   {
     return 1;
   }

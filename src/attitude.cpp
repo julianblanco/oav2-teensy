@@ -13,7 +13,7 @@ int ATTITUDE::setup()
 #ifdef BNO055
 //shit
 #endif
-  Task::setup("attitude", 1);
+  Task::setup("attitude",8);
   return 0;
 }
 
@@ -23,7 +23,7 @@ int ATTITUDE::start()
   {
     //getdata
     ATTITUDE::PIDAttitudeControl();
-    vTaskDelay((configTICK_RATE_HZ) / 1000L);
+    LOOPFREQ(400);//hz
   }
 }
 //*****************************************************************
@@ -63,7 +63,7 @@ void ATTITUDE::PIDAttitudeControl()
 
     throtResponse = g_navigation.desiredThrottle;
 
-    if (vechicle_type == 0)
+    if (g_vehicle_type == 0)
     {
       if (throtResponse < 75)
       {
@@ -74,6 +74,7 @@ void ATTITUDE::PIDAttitudeControl()
       }
       else
       {
+        // Serial.print("hello");
         g_actuators.frontLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse + pitchResponse - yawResponse);
         g_actuators.frontRightMotorSignal = (int)(throttleIdle + throtResponse + rollResponse + pitchResponse + yawResponse);
         g_actuators.backLeftMotorSignal = (int)(throttleIdle + throtResponse - rollResponse - pitchResponse + yawResponse);
@@ -82,7 +83,7 @@ void ATTITUDE::PIDAttitudeControl()
 
       // Serial.println(backRightMotorSignal);
     }
-    if (vechicle_type == 1)
+    if (g_vehicle_type == 1)
     {
       g_actuators.yawSignal = 1500 + yawResponse;
       g_actuators.throttleSignal = 1500 + throtResponse;
