@@ -1,0 +1,162 @@
+\hypertarget{mavlink__msg__mission__item__reached_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+mission\+\_\+item\+\_\+reached.\+h}
+\label{mavlink__msg__mission__item__reached_8h_source}\index{lib/common/mavlink\_msg\_mission\_item\_reached.h@{lib/common/mavlink\_msg\_mission\_item\_reached.h}}
+\mbox{\hyperlink{mavlink__msg__mission__item__reached_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE MISSION\_ITEM\_REACHED PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED 46}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a5c9fdb169ac479ba78abe9e47bd40ba7}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_mission\_item\_reached\_t \{}
+\DoxyCodeLine{8  uint16\_t seq; \textcolor{comment}{/*<  Sequence*/}}
+\DoxyCodeLine{9 \}) mavlink\_mission\_item\_reached\_t;}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN 2}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN 2}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_46\_LEN 2}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_46\_MIN\_LEN 2}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC 11}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_46\_CRC 11}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_MISSION\_ITEM\_REACHED \{ \(\backslash\)}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{    46, \(\backslash\)}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{    "{}MISSION\_ITEM\_REACHED"{}}, \(\backslash\)}
+\DoxyCodeLine{25     1, \(\backslash\)}
+\DoxyCodeLine{26     \{  \{ "{}seq"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 0, offsetof(mavlink\_mission\_item\_reached\_t, seq) \}, \(\backslash\)}
+\DoxyCodeLine{27          \} \(\backslash\)}
+\DoxyCodeLine{28 \}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_MISSION\_ITEM\_REACHED \{ \(\backslash\)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{    "{}MISSION\_ITEM\_REACHED"{}}, \(\backslash\)}
+\DoxyCodeLine{32     1, \(\backslash\)}
+\DoxyCodeLine{33     \{  \{ "{}seq"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 0, offsetof(mavlink\_mission\_item\_reached\_t, seq) \}, \(\backslash\)}
+\DoxyCodeLine{34          \} \(\backslash\)}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{47 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mission\_item\_reached\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{48                                uint16\_t seq)}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}];}
+\DoxyCodeLine{52     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, seq);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}});}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{56     mavlink\_mission\_item\_reached\_t packet;}
+\DoxyCodeLine{57     packet.seq = seq;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}});}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}};}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{64 \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{75 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mission\_item\_reached\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{76                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{77                                    uint16\_t seq)}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{80     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}];}
+\DoxyCodeLine{81     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, seq);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}});}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{85     mavlink\_mission\_item\_reached\_t packet;}
+\DoxyCodeLine{86     packet.seq = seq;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}});}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}};}
+\DoxyCodeLine{92     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{93 \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{103 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mission\_item\_reached\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_mission\_item\_reached\_t* mission\_item\_reached)}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105     \textcolor{keywordflow}{return} mavlink\_msg\_mission\_item\_reached\_pack(system\_id, component\_id, msg, mission\_item\_reached-\/>seq);}
+\DoxyCodeLine{106 \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{117 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mission\_item\_reached\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_mission\_item\_reached\_t* mission\_item\_reached)}
+\DoxyCodeLine{118 \{}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} mavlink\_msg\_mission\_item\_reached\_pack\_chan(system\_id, component\_id, chan, msg, mission\_item\_reached-\/>seq);}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mission\_item\_reached\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint16\_t seq)}
+\DoxyCodeLine{131 \{}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{133     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}];}
+\DoxyCodeLine{134     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, seq);}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}}, buf, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{138     mavlink\_mission\_item\_reached\_t packet;}
+\DoxyCodeLine{139     packet.seq = seq;}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{143 \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{150 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mission\_item\_reached\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_mission\_item\_reached\_t* mission\_item\_reached)}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{152 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{153     mavlink\_msg\_mission\_item\_reached\_send(chan, mission\_item\_reached-\/>seq);}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{155     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)mission\_item\_reached, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{157 \}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{160 \textcolor{comment}{/*}}
+\DoxyCodeLine{161 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{162 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{163 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{164 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{165 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{166 \textcolor{comment}{ */}}
+\DoxyCodeLine{167 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mission\_item\_reached\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint16\_t seq)}
+\DoxyCodeLine{168 \{}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{170     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{171     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, seq);}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}}, buf, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{175     mavlink\_mission\_item\_reached\_t *packet = (mavlink\_mission\_item\_reached\_t *)msgbuf;}
+\DoxyCodeLine{176     packet-\/>seq = seq;}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_abbdda195c98d1bb49e3879fb899b1e59}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a1043571f6ff55c49a2c9d8dd6449e1db}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a234b9a45047bb3f73f528f029806131c}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_CRC}});}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{180 \}}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{comment}{// MESSAGE MISSION\_ITEM\_REACHED UNPACKING}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187 }
+\DoxyCodeLine{193 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mission\_item\_reached\_get\_seq(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{194 \{}
+\DoxyCodeLine{195     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  0);}
+\DoxyCodeLine{196 \}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{204 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mission\_item\_reached\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_mission\_item\_reached\_t* mission\_item\_reached)}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{207     mission\_item\_reached-\/>seq = mavlink\_msg\_mission\_item\_reached\_get\_seq(msg);}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{209         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}};}
+\DoxyCodeLine{210         memset(mission\_item\_reached, 0, \mbox{\hyperlink{mavlink__msg__mission__item__reached_8h_a8c33a13af9660612f1fd0df81363d60b}{MAVLINK\_MSG\_ID\_MISSION\_ITEM\_REACHED\_LEN}});}
+\DoxyCodeLine{211     memcpy(mission\_item\_reached, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{213 \}}
+
+\end{DoxyCode}

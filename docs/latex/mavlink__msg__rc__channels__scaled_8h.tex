@@ -1,0 +1,106 @@
+\hypertarget{mavlink__msg__rc__channels__scaled_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+rc\+\_\+channels\+\_\+scaled.h File Reference}
+\label{mavlink__msg__rc__channels__scaled_8h}\index{lib/common/mavlink\_msg\_rc\_channels\_scaled.h@{lib/common/mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_aacfb2602c9e913c34d79c5bbbaafccf4}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED}}~34
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_a823104d3155e1dd599f1b71b077b3905}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_a370ff3d9a23b3ecb5c686a9caf6c86ca}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED\+\_\+\+MIN\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_adecb75d8f187b31b4ab01ec4cf7d41a7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+34\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_ae5aaeef2200be7f453e6d21264d1ac57}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+34\+\_\+\+MIN\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_a53871e4bb4486894734b7e4a57dc5ce4}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED\+\_\+\+CRC}}~237
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_a0c81cda94135879b3735443ddb51be68}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+34\+\_\+\+CRC}}~237
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_a3ccf349eca5f47b57a381efa213b4766}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__rc__channels__scaled_8h_aee13dd1a670f0781b9a9fbf538d77552}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+rc\+\_\+channels\+\_\+scaled\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;int16\+\_\+t chan1\+\_\+scaled;int16\+\_\+t chan2\+\_\+scaled;int16\+\_\+t chan3\+\_\+scaled;int16\+\_\+t chan4\+\_\+scaled;int16\+\_\+t chan5\+\_\+scaled;int16\+\_\+t chan6\+\_\+scaled;int16\+\_\+t chan7\+\_\+scaled;int16\+\_\+t chan8\+\_\+scaled;uint8\+\_\+t port;uint8\+\_\+t rssi;\}) mavlink\+\_\+rc\+\_\+channels\+\_\+scaled\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_a3ccf349eca5f47b57a381efa213b4766}\label{mavlink__msg__rc__channels__scaled_8h_a3ccf349eca5f47b57a381efa213b4766}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MESSAGE\_INFO\_RC\_CHANNELS\_SCALED@{MAVLINK\_MESSAGE\_INFO\_RC\_CHANNELS\_SCALED}}
+\index{MAVLINK\_MESSAGE\_INFO\_RC\_CHANNELS\_SCALED@{MAVLINK\_MESSAGE\_INFO\_RC\_CHANNELS\_SCALED}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_RC\_CHANNELS\_SCALED}{MAVLINK\_MESSAGE\_INFO\_RC\_CHANNELS\_SCALED}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}RC\_CHANNELS\_SCALED"{}}, \(\backslash\)}
+\DoxyCodeLine{    11, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_rc\_channels\_scaled\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}port"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 20, offsetof(mavlink\_rc\_channels\_scaled\_t, port) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan1\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 4, offsetof(mavlink\_rc\_channels\_scaled\_t, chan1\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan2\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 6, offsetof(mavlink\_rc\_channels\_scaled\_t, chan2\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan3\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 8, offsetof(mavlink\_rc\_channels\_scaled\_t, chan3\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan4\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 10, offsetof(mavlink\_rc\_channels\_scaled\_t, chan4\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan5\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 12, offsetof(mavlink\_rc\_channels\_scaled\_t, chan5\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan6\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 14, offsetof(mavlink\_rc\_channels\_scaled\_t, chan6\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan7\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 16, offsetof(mavlink\_rc\_channels\_scaled\_t, chan7\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan8\_scaled"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 18, offsetof(mavlink\_rc\_channels\_scaled\_t, chan8\_scaled) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}rssi"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 21, offsetof(mavlink\_rc\_channels\_scaled\_t, rssi) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_a0c81cda94135879b3735443ddb51be68}\label{mavlink__msg__rc__channels__scaled_8h_a0c81cda94135879b3735443ddb51be68}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_34\_CRC@{MAVLINK\_MSG\_ID\_34\_CRC}}
+\index{MAVLINK\_MSG\_ID\_34\_CRC@{MAVLINK\_MSG\_ID\_34\_CRC}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_34\_CRC}{MAVLINK\_MSG\_ID\_34\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+34\+\_\+\+CRC~237}
+
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_adecb75d8f187b31b4ab01ec4cf7d41a7}\label{mavlink__msg__rc__channels__scaled_8h_adecb75d8f187b31b4ab01ec4cf7d41a7}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_34\_LEN@{MAVLINK\_MSG\_ID\_34\_LEN}}
+\index{MAVLINK\_MSG\_ID\_34\_LEN@{MAVLINK\_MSG\_ID\_34\_LEN}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_34\_LEN}{MAVLINK\_MSG\_ID\_34\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+34\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_ae5aaeef2200be7f453e6d21264d1ac57}\label{mavlink__msg__rc__channels__scaled_8h_ae5aaeef2200be7f453e6d21264d1ac57}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_34\_MIN\_LEN@{MAVLINK\_MSG\_ID\_34\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_34\_MIN\_LEN@{MAVLINK\_MSG\_ID\_34\_MIN\_LEN}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_34\_MIN\_LEN}{MAVLINK\_MSG\_ID\_34\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+34\+\_\+\+MIN\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_aacfb2602c9e913c34d79c5bbbaafccf4}\label{mavlink__msg__rc__channels__scaled_8h_aacfb2602c9e913c34d79c5bbbaafccf4}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED}}
+\index{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED}{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED~34}
+
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_a53871e4bb4486894734b7e4a57dc5ce4}\label{mavlink__msg__rc__channels__scaled_8h_a53871e4bb4486894734b7e4a57dc5ce4}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_CRC@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_CRC}}
+\index{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_CRC@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_CRC}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_CRC}{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED\+\_\+\+CRC~237}
+
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_a823104d3155e1dd599f1b71b077b3905}\label{mavlink__msg__rc__channels__scaled_8h_a823104d3155e1dd599f1b71b077b3905}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_LEN@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_LEN}}
+\index{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_LEN@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_LEN}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_LEN}{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_a370ff3d9a23b3ecb5c686a9caf6c86ca}\label{mavlink__msg__rc__channels__scaled_8h_a370ff3d9a23b3ecb5c686a9caf6c86ca}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_MIN\_LEN@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_MIN\_LEN@{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_MIN\_LEN}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_MIN\_LEN}{MAVLINK\_MSG\_ID\_RC\_CHANNELS\_SCALED\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+RC\+\_\+\+CHANNELS\+\_\+\+SCALED\+\_\+\+MIN\+\_\+\+LEN~22}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__rc__channels__scaled_8h_aee13dd1a670f0781b9a9fbf538d77552}\label{mavlink__msg__rc__channels__scaled_8h_aee13dd1a670f0781b9a9fbf538d77552}} 
+\index{mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_rc\_channels\_scaled.h@{mavlink\_msg\_rc\_channels\_scaled.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+rc\+\_\+channels\+\_\+scaled\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;int16\+\_\+t chan1\+\_\+scaled;int16\+\_\+t chan2\+\_\+scaled;int16\+\_\+t chan3\+\_\+scaled;int16\+\_\+t chan4\+\_\+scaled;int16\+\_\+t chan5\+\_\+scaled;int16\+\_\+t chan6\+\_\+scaled;int16\+\_\+t chan7\+\_\+scaled;int16\+\_\+t chan8\+\_\+scaled;uint8\+\_\+t port;uint8\+\_\+t rssi;\}}]{ }\end{DoxyParamCaption})}
+

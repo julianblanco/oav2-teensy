@@ -1,0 +1,206 @@
+\hypertarget{mavlink__msg__param__ext__ack_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+param\+\_\+ext\+\_\+ack.\+h}
+\label{mavlink__msg__param__ext__ack_8h_source}\index{lib/common/mavlink\_msg\_param\_ext\_ack.h@{lib/common/mavlink\_msg\_param\_ext\_ack.h}}
+\mbox{\hyperlink{mavlink__msg__param__ext__ack_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE PARAM\_EXT\_ACK PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK 324}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_af28d417206b3f40af23424f08208987b}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_param\_ext\_ack\_t \{}
+\DoxyCodeLine{8  \textcolor{keywordtype}{char} param\_id[16]; \textcolor{comment}{/*<  Parameter id, terminated by NULL if the length is less than 16 human-\/readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars -\/ applications have to provide 16+1 bytes storage if the ID is stored as string*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{char} param\_value[128]; \textcolor{comment}{/*<  Parameter value (new value if PARAM\_ACK\_ACCEPTED, current value otherwise)*/}}
+\DoxyCodeLine{10  uint8\_t param\_type; \textcolor{comment}{/*<  Parameter type.*/}}
+\DoxyCodeLine{11  uint8\_t param\_result; \textcolor{comment}{/*<  Result code.*/}}
+\DoxyCodeLine{12 \}) mavlink\_param\_ext\_ack\_t;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN 146}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN 146}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_324\_LEN 146}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_324\_MIN\_LEN 146}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC 132}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_324\_CRC 132}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_PARAM\_EXT\_ACK\_FIELD\_PARAM\_ID\_LEN 16}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_PARAM\_EXT\_ACK\_FIELD\_PARAM\_VALUE\_LEN 128}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_PARAM\_EXT\_ACK \{ \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    324, \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    "{}PARAM\_EXT\_ACK"{}}, \(\backslash\)}
+\DoxyCodeLine{29     4, \(\backslash\)}
+\DoxyCodeLine{30     \{  \{ "{}param\_id"{}, NULL, MAVLINK\_TYPE\_CHAR, 16, 0, offsetof(mavlink\_param\_ext\_ack\_t, param\_id) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}param\_value"{}, NULL, MAVLINK\_TYPE\_CHAR, 128, 16, offsetof(mavlink\_param\_ext\_ack\_t, param\_value) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}param\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 144, offsetof(mavlink\_param\_ext\_ack\_t, param\_type) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}param\_result"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 145, offsetof(mavlink\_param\_ext\_ack\_t, param\_result) \}, \(\backslash\)}
+\DoxyCodeLine{34          \} \(\backslash\)}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_PARAM\_EXT\_ACK \{ \(\backslash\)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{    "{}PARAM\_EXT\_ACK"{}}, \(\backslash\)}
+\DoxyCodeLine{39     4, \(\backslash\)}
+\DoxyCodeLine{40     \{  \{ "{}param\_id"{}, NULL, MAVLINK\_TYPE\_CHAR, 16, 0, offsetof(mavlink\_param\_ext\_ack\_t, param\_id) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}param\_value"{}, NULL, MAVLINK\_TYPE\_CHAR, 128, 16, offsetof(mavlink\_param\_ext\_ack\_t, param\_value) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}param\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 144, offsetof(mavlink\_param\_ext\_ack\_t, param\_type) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}param\_result"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 145, offsetof(mavlink\_param\_ext\_ack\_t, param\_result) \}, \(\backslash\)}
+\DoxyCodeLine{44          \} \(\backslash\)}
+\DoxyCodeLine{45 \}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{60 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_param\_ext\_ack\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{61                                \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_id, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_value, uint8\_t param\_type, uint8\_t param\_result)}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{64     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}];}
+\DoxyCodeLine{65     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 144, param\_type);}
+\DoxyCodeLine{66     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 145, param\_result);}
+\DoxyCodeLine{67     \_mav\_put\_char\_array(buf, 0, param\_id, 16);}
+\DoxyCodeLine{68     \_mav\_put\_char\_array(buf, 16, param\_value, 128);}
+\DoxyCodeLine{69         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}});}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{71     mavlink\_param\_ext\_ack\_t packet;}
+\DoxyCodeLine{72     packet.param\_type = param\_type;}
+\DoxyCodeLine{73     packet.param\_result = param\_result;}
+\DoxyCodeLine{74     mav\_array\_memcpy(packet.param\_id, param\_id, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*16);}
+\DoxyCodeLine{75     mav\_array\_memcpy(packet.param\_value, param\_value, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*128);}
+\DoxyCodeLine{76         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}});}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}};}
+\DoxyCodeLine{80     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{81 \}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{95 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_param\_ext\_ack\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{96                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{97                                    \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_id,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_value,uint8\_t param\_type,uint8\_t param\_result)}
+\DoxyCodeLine{98 \{}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{100     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}];}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 144, param\_type);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 145, param\_result);}
+\DoxyCodeLine{103     \_mav\_put\_char\_array(buf, 0, param\_id, 16);}
+\DoxyCodeLine{104     \_mav\_put\_char\_array(buf, 16, param\_value, 128);}
+\DoxyCodeLine{105         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}});}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{107     mavlink\_param\_ext\_ack\_t packet;}
+\DoxyCodeLine{108     packet.param\_type = param\_type;}
+\DoxyCodeLine{109     packet.param\_result = param\_result;}
+\DoxyCodeLine{110     mav\_array\_memcpy(packet.param\_id, param\_id, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*16);}
+\DoxyCodeLine{111     mav\_array\_memcpy(packet.param\_value, param\_value, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*128);}
+\DoxyCodeLine{112         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}});}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}};}
+\DoxyCodeLine{116     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{117 \}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{127 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_param\_ext\_ack\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_param\_ext\_ack\_t* param\_ext\_ack)}
+\DoxyCodeLine{128 \{}
+\DoxyCodeLine{129     \textcolor{keywordflow}{return} mavlink\_msg\_param\_ext\_ack\_pack(system\_id, component\_id, msg, param\_ext\_ack-\/>param\_id, param\_ext\_ack-\/>param\_value, param\_ext\_ack-\/>param\_type, param\_ext\_ack-\/>param\_result);}
+\DoxyCodeLine{130 \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{141 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_param\_ext\_ack\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_param\_ext\_ack\_t* param\_ext\_ack)}
+\DoxyCodeLine{142 \{}
+\DoxyCodeLine{143     \textcolor{keywordflow}{return} mavlink\_msg\_param\_ext\_ack\_pack\_chan(system\_id, component\_id, chan, msg, param\_ext\_ack-\/>param\_id, param\_ext\_ack-\/>param\_value, param\_ext\_ack-\/>param\_type, param\_ext\_ack-\/>param\_result);}
+\DoxyCodeLine{144 \}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{155 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_param\_ext\_ack\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_id, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_value, uint8\_t param\_type, uint8\_t param\_result)}
+\DoxyCodeLine{158 \{}
+\DoxyCodeLine{159 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{160     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}];}
+\DoxyCodeLine{161     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 144, param\_type);}
+\DoxyCodeLine{162     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 145, param\_result);}
+\DoxyCodeLine{163     \_mav\_put\_char\_array(buf, 0, param\_id, 16);}
+\DoxyCodeLine{164     \_mav\_put\_char\_array(buf, 16, param\_value, 128);}
+\DoxyCodeLine{165     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}}, buf, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{166 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{167     mavlink\_param\_ext\_ack\_t packet;}
+\DoxyCodeLine{168     packet.param\_type = param\_type;}
+\DoxyCodeLine{169     packet.param\_result = param\_result;}
+\DoxyCodeLine{170     mav\_array\_memcpy(packet.param\_id, param\_id, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*16);}
+\DoxyCodeLine{171     mav\_array\_memcpy(packet.param\_value, param\_value, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*128);}
+\DoxyCodeLine{172     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{173 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{174 \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{181 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_param\_ext\_ack\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_param\_ext\_ack\_t* param\_ext\_ack)}
+\DoxyCodeLine{182 \{}
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{184     mavlink\_msg\_param\_ext\_ack\_send(chan, param\_ext\_ack-\/>param\_id, param\_ext\_ack-\/>param\_value, param\_ext\_ack-\/>param\_type, param\_ext\_ack-\/>param\_result);}
+\DoxyCodeLine{185 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{186     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)param\_ext\_ack, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{188 \}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{191 \textcolor{comment}{/*}}
+\DoxyCodeLine{192 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{193 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{194 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{195 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{196 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{197 \textcolor{comment}{ */}}
+\DoxyCodeLine{198 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_param\_ext\_ack\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_id, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *param\_value, uint8\_t param\_type, uint8\_t param\_result)}
+\DoxyCodeLine{199 \{}
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{201     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{202     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 144, param\_type);}
+\DoxyCodeLine{203     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 145, param\_result);}
+\DoxyCodeLine{204     \_mav\_put\_char\_array(buf, 0, param\_id, 16);}
+\DoxyCodeLine{205     \_mav\_put\_char\_array(buf, 16, param\_value, 128);}
+\DoxyCodeLine{206     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}}, buf, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{208     mavlink\_param\_ext\_ack\_t *packet = (mavlink\_param\_ext\_ack\_t *)msgbuf;}
+\DoxyCodeLine{209     packet-\/>param\_type = param\_type;}
+\DoxyCodeLine{210     packet-\/>param\_result = param\_result;}
+\DoxyCodeLine{211     mav\_array\_memcpy(packet-\/>param\_id, param\_id, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*16);}
+\DoxyCodeLine{212     mav\_array\_memcpy(packet-\/>param\_value, param\_value, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*128);}
+\DoxyCodeLine{213     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a6ae13b6978243b9f0bad31fbb3ff0be3}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a2458e41f76158895c295196c3db7fadc}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a7761f7ccb8593cf1b4dd7a175859c1d6}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_CRC}});}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{215 \}}
+\DoxyCodeLine{216 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{comment}{// MESSAGE PARAM\_EXT\_ACK UNPACKING}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222 }
+\DoxyCodeLine{228 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_param\_ext\_ack\_get\_param\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *param\_id)}
+\DoxyCodeLine{229 \{}
+\DoxyCodeLine{230     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, param\_id, 16,  0);}
+\DoxyCodeLine{231 \}}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{238 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_param\_ext\_ack\_get\_param\_value(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *param\_value)}
+\DoxyCodeLine{239 \{}
+\DoxyCodeLine{240     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, param\_value, 128,  16);}
+\DoxyCodeLine{241 \}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{248 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_param\_ext\_ack\_get\_param\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{249 \{}
+\DoxyCodeLine{250     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  144);}
+\DoxyCodeLine{251 \}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{258 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_param\_ext\_ack\_get\_param\_result(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{259 \{}
+\DoxyCodeLine{260     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  145);}
+\DoxyCodeLine{261 \}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{269 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_param\_ext\_ack\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_param\_ext\_ack\_t* param\_ext\_ack)}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{272     mavlink\_msg\_param\_ext\_ack\_get\_param\_id(msg, param\_ext\_ack-\/>param\_id);}
+\DoxyCodeLine{273     mavlink\_msg\_param\_ext\_ack\_get\_param\_value(msg, param\_ext\_ack-\/>param\_value);}
+\DoxyCodeLine{274     param\_ext\_ack-\/>param\_type = mavlink\_msg\_param\_ext\_ack\_get\_param\_type(msg);}
+\DoxyCodeLine{275     param\_ext\_ack-\/>param\_result = mavlink\_msg\_param\_ext\_ack\_get\_param\_result(msg);}
+\DoxyCodeLine{276 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{277         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}};}
+\DoxyCodeLine{278         memset(param\_ext\_ack, 0, \mbox{\hyperlink{mavlink__msg__param__ext__ack_8h_a536a8e228a552acab7bec922825d5a78}{MAVLINK\_MSG\_ID\_PARAM\_EXT\_ACK\_LEN}});}
+\DoxyCodeLine{279     memcpy(param\_ext\_ack, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{280 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{281 \}}
+
+\end{DoxyCode}

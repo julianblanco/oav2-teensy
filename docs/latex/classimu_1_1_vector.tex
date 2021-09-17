@@ -1,0 +1,307 @@
+\hypertarget{classimu_1_1_vector}{}\doxysection{imu\+::Vector\texorpdfstring{$<$}{<} N \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classimu_1_1_vector}\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+
+
+{\ttfamily \#include $<$vector.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_a667a1005471e4fcebf73ead95876a47b}{Vector}} ()
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_a5c5865e4675a523be019b59e7dd6e71d}{Vector}} (double a)
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_ac866dc18a2dde71d4ed75fcf17985b37}{Vector}} (double a, double b)
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_a2f4376bea64f28af31577f4a3714f685}{Vector}} (double a, double b, double c)
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_a22e00ac9fb47009559e09bd426699307}{Vector}} (double a, double b, double c, double d)
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_ab24875305dcee04f43d98983805128dc}{Vector}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&v)
+\item 
+\mbox{\hyperlink{classimu_1_1_vector_a7c0e81f19910f0822e23075be2fe48e0}{$\sim$\+Vector}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}} ()
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_ab0ab23b4ec794463b7a01338dfd6f7b7}{magnitude}} () const
+\item 
+void \mbox{\hyperlink{classimu_1_1_vector_a89ee6ee911143e28e21424607db1af12}{normalize}} ()
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_a331da97cba9de19da5d8988f2ed700de}{dot}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}{cross}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a35e9a5f168a7ca4e19a76bff718c9ea1}{scale}} (double scalar) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a4bff7ce1e3a57fc4690ef4e526ca43cd}{invert}} () const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \& \mbox{\hyperlink{classimu_1_1_vector_abf85c8dff7dc1a810adae2d1e0e2b4d8}{operator=}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v)
+\item 
+double \& \mbox{\hyperlink{classimu_1_1_vector_a671ca2023c1ac08128f6e3acfd20efb9}{operator\mbox{[}$\,$\mbox{]}}} (int \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}})
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_a27accb010ad7e223c52c39935320d129}{operator\mbox{[}$\,$\mbox{]}}} (int \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}) const
+\item 
+double \& \mbox{\hyperlink{classimu_1_1_vector_a8424fd029df5fc1443779e45f1ab512a}{operator()}} (int \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}})
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_a83ce30e976afd729290f25dfe404550e}{operator()}} (int \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a803175c6245a043edf1e066e6ad1b47e}{operator+}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a20bc854a0668925149d53c0d73aac493}{operator-\/}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_ae94909f37c9805e852aaa0232fa59e4d}{operator$\ast$}} (double scalar) const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_af72c8ca05d7e8b8e36e32dcf13e8f74b}{operator/}} (double scalar) const
+\item 
+void \mbox{\hyperlink{classimu_1_1_vector_aa8c89e5fc2b3a18925a9c5ffb0fa5732}{to\+Degrees}} ()
+\item 
+void \mbox{\hyperlink{classimu_1_1_vector_ab927756f1e3dcfad401deaa56742c197}{to\+Radians}} ()
+\item 
+double \& \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}} ()
+\item 
+double \& \mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}} ()
+\item 
+double \& \mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}} ()
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_a3b9364b9010622acb5ea6a41aa79ca32}{x}} () const
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_a6fc3453407e6046419536cc4cecd68b3}{y}} () const
+\item 
+double \mbox{\hyperlink{classimu_1_1_vector_ad24eaaf80ce19b119fd5cc4589e8fdeb}{z}} () const
+\item 
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ 3 $>$ \mbox{\hyperlink{classimu_1_1_vector_a87aa1b70f7f84f7b96b7e9b4c965b3f0}{cross}} (const \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classimu_1_1_vector_a667a1005471e4fcebf73ead95876a47b}\label{classimu_1_1_vector_a667a1005471e4fcebf73ead95876a47b}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a5c5865e4675a523be019b59e7dd6e71d}\label{classimu_1_1_vector_a5c5865e4675a523be019b59e7dd6e71d}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}\item[{double}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_ac866dc18a2dde71d4ed75fcf17985b37}\label{classimu_1_1_vector_ac866dc18a2dde71d4ed75fcf17985b37}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a2f4376bea64f28af31577f4a3714f685}\label{classimu_1_1_vector_a2f4376bea64f28af31577f4a3714f685}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b,  }\item[{double}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a22e00ac9fb47009559e09bd426699307}\label{classimu_1_1_vector_a22e00ac9fb47009559e09bd426699307}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b,  }\item[{double}]{c,  }\item[{double}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_ab24875305dcee04f43d98983805128dc}\label{classimu_1_1_vector_ab24875305dcee04f43d98983805128dc}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!Vector@{Vector}}
+\index{Vector@{Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a7c0e81f19910f0822e23075be2fe48e0}\label{classimu_1_1_vector_a7c0e81f19910f0822e23075be2fe48e0}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!````~Vector@{$\sim$Vector}}
+\index{````~Vector@{$\sim$Vector}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Vector()}{~Vector()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::$\sim$\mbox{\hyperlink{classimu_1_1_vector}{Vector}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}\label{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!cross@{cross}}
+\index{cross@{cross}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{cross()}{cross()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::cross (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a87aa1b70f7f84f7b96b7e9b4c965b3f0}\label{classimu_1_1_vector_a87aa1b70f7f84f7b96b7e9b4c965b3f0}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!cross@{cross}}
+\index{cross@{cross}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{cross()}{cross()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ 3 $>$ \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ 3 $>$\+::cross (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a331da97cba9de19da5d8988f2ed700de}\label{classimu_1_1_vector_a331da97cba9de19da5d8988f2ed700de}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!dot@{dot}}
+\index{dot@{dot}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a4bff7ce1e3a57fc4690ef4e526ca43cd}\label{classimu_1_1_vector_a4bff7ce1e3a57fc4690ef4e526ca43cd}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!invert@{invert}}
+\index{invert@{invert}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{invert()}{invert()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::invert (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_ab0ab23b4ec794463b7a01338dfd6f7b7}\label{classimu_1_1_vector_ab0ab23b4ec794463b7a01338dfd6f7b7}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!magnitude@{magnitude}}
+\index{magnitude@{magnitude}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{magnitude()}{magnitude()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::magnitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}\label{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!n@{n}}
+\index{n@{n}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{n()}{n()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+uint8\+\_\+t \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::n (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a89ee6ee911143e28e21424607db1af12}\label{classimu_1_1_vector_a89ee6ee911143e28e21424607db1af12}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!normalize@{normalize}}
+\index{normalize@{normalize}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+void \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::normalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a8424fd029df5fc1443779e45f1ab512a}\label{classimu_1_1_vector_a8424fd029df5fc1443779e45f1ab512a}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \& \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator() (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a83ce30e976afd729290f25dfe404550e}\label{classimu_1_1_vector_a83ce30e976afd729290f25dfe404550e}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator() (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_ae94909f37c9805e852aaa0232fa59e4d}\label{classimu_1_1_vector_ae94909f37c9805e852aaa0232fa59e4d}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{scalar }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a803175c6245a043edf1e066e6ad1b47e}\label{classimu_1_1_vector_a803175c6245a043edf1e066e6ad1b47e}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a20bc854a0668925149d53c0d73aac493}\label{classimu_1_1_vector_a20bc854a0668925149d53c0d73aac493}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_af72c8ca05d7e8b8e36e32dcf13e8f74b}\label{classimu_1_1_vector_af72c8ca05d7e8b8e36e32dcf13e8f74b}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator/@{operator/}}
+\index{operator/@{operator/}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator/ (\begin{DoxyParamCaption}\item[{double}]{scalar }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_abf85c8dff7dc1a810adae2d1e0e2b4d8}\label{classimu_1_1_vector_abf85c8dff7dc1a810adae2d1e0e2b4d8}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \& \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classimu_1_1_vector}{Vector}}$<$ N $>$ \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a671ca2023c1ac08128f6e3acfd20efb9}\label{classimu_1_1_vector_a671ca2023c1ac08128f6e3acfd20efb9}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \& \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a27accb010ad7e223c52c39935320d129}\label{classimu_1_1_vector_a27accb010ad7e223c52c39935320d129}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a35e9a5f168a7ca4e19a76bff718c9ea1}\label{classimu_1_1_vector_a35e9a5f168a7ca4e19a76bff718c9ea1}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!scale@{scale}}
+\index{scale@{scale}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::scale (\begin{DoxyParamCaption}\item[{double}]{scalar }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_aa8c89e5fc2b3a18925a9c5ffb0fa5732}\label{classimu_1_1_vector_aa8c89e5fc2b3a18925a9c5ffb0fa5732}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!toDegrees@{toDegrees}}
+\index{toDegrees@{toDegrees}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{toDegrees()}{toDegrees()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+void \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::to\+Degrees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_ab927756f1e3dcfad401deaa56742c197}\label{classimu_1_1_vector_ab927756f1e3dcfad401deaa56742c197}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!toRadians@{toRadians}}
+\index{toRadians@{toRadians}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{toRadians()}{toRadians()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+void \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::to\+Radians (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}\label{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!x@{x}}
+\index{x@{x}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{x()}{x()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \& \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a3b9364b9010622acb5ea6a41aa79ca32}\label{classimu_1_1_vector_a3b9364b9010622acb5ea6a41aa79ca32}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!x@{x}}
+\index{x@{x}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{x()}{x()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}\label{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!y@{y}}
+\index{y@{y}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{y()}{y()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \& \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a6fc3453407e6046419536cc4cecd68b3}\label{classimu_1_1_vector_a6fc3453407e6046419536cc4cecd68b3}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!y@{y}}
+\index{y@{y}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{y()}{y()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}\label{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!z@{z}}
+\index{z@{z}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{z()}{z()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \& \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classimu_1_1_vector_ad24eaaf80ce19b119fd5cc4589e8fdeb}\label{classimu_1_1_vector_ad24eaaf80ce19b119fd5cc4589e8fdeb}} 
+\index{imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}!z@{z}}
+\index{z@{z}!imu::Vector$<$ N $>$@{imu::Vector$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{z()}{z()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t N$>$ \\
+double \mbox{\hyperlink{classimu_1_1_vector}{imu\+::\+Vector}}$<$ N $>$\+::z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Adafruit\+\_\+\+BNO055/utility/\mbox{\hyperlink{vector_8h}{vector.\+h}}\end{DoxyCompactItemize}

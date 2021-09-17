@@ -1,0 +1,115 @@
+\hypertarget{attitude_8cpp_source}{}\doxysection{attitude.\+cpp}
+\label{attitude_8cpp_source}\index{src/attitude.cpp@{src/attitude.cpp}}
+\mbox{\hyperlink{attitude_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{attitude_8h}{attitude.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00002}00002 \textcolor{preprocessor}{ \#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00003}\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_af4d51b6ab7c16f4c6441e47d84b43d82}{00003}} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_af4d51b6ab7c16f4c6441e47d84b43d82}{ATTITUDE::ATTITUDE}}() \{\}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00005}\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ae31d57e3e9072e754c4e9f2e12962c3f}{00005}} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ae31d57e3e9072e754c4e9f2e12962c3f}{ATTITUDE::\string~ATTITUDE}}() \{\}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00007}\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}{00007}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}{ATTITUDE::setup}}()}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00008}00008 \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00009}00009 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#ifdef MPU6050}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00011}00011   mpu6050init();}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#ifdef BNO055}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00014}00014 \textcolor{comment}{//shit}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00016}00016   \mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{Task::setup}}(\textcolor{stringliteral}{"{}attitude"{}},8);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00017}00017   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00020}\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ad67ef620f500081fbf17d47041a29edd}{00020}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ad67ef620f500081fbf17d47041a29edd}{ATTITUDE::start}}()}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00022}00022   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00023}00023   \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00024}00024     \textcolor{comment}{//getdata}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00025}00025     \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}{ATTITUDE::PIDAttitudeControl}}();}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00026}00026     \mbox{\hyperlink{config_8h_a2474ae4ac8596b106a6b115f11e37602}{LOOPFREQ}}(400);\textcolor{comment}{//hz}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00027}00027   \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00028}00028 \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00029}00029 \textcolor{comment}{//*****************************************************************}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00030}00030 \textcolor{comment}{// attitudeControl Sensor 100hz}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00031}00031 \textcolor{comment}{//*****************************************************************}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00032}\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}{00032}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}{ATTITUDE::PIDAttitudeControl}}()}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00035}00035   \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}})}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00036}00036   \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00038}00038     rollErrorLast = rollError;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00039}00039     pitchErrorLast = pitchError;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00040}00040     yawErrorLast = yawError;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00041}00041     \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}{lock}}.\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a31e8525d2b0ef7c293e30e61dfe942ac}{ReaderLock}}();}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00042}00042     yawError = \mbox{\hyperlink{helper_8h_a8cbfe5073506cc8949bd83ba3fafc0aa}{angular\_diff}}(\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}}, \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}});}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00043}00043     rollError = \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}} -\/ \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}{desiredRoll}};}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00044}00044     pitchError = \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}} -\/ \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2d3c7982e23531114b4595c55bc7ba0b}{desiredPitch}};}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00045}00045     \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}{lock}}.\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a2e3b7527e0db1bce0ceb2f6a7de54d63}{ReaderUnlock}}();}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00047}00047     pYawResponse = yawError * yawKp;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00048}00048     pRollResponse = rollError * rollKp;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00049}00049     pPitchResponse = pitchError * pitchKp;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00050}00050     pThrotResponse = \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}{desiredThrottle}};}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00052}00052     iYawResponse += yawError * yawKi;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00053}00053     iRollResponse += rollError * rollKi;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00054}00054     iPitchResponse += pitchError * pitchKi;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00056}00056     dYawResponse = yawKd * (yawError -\/ yawErrorLast) / 100; \textcolor{comment}{//10microseconds}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00057}00057     dRollResponse = rollKd * (rollError -\/ rollErrorLast) / 100;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00058}00058     dPitchResponse = pitchKd * (pitchError -\/ pitchErrorLast) / 100;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00060}00060     yawResponse = pYawResponse + iYawResponse -\/ dYawResponse;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00061}00061     rollResponse = pRollResponse + iRollResponse -\/ dRollResponse;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00062}00062     pitchResponse = pPitchResponse + iPitchResponse -\/ dPitchResponse;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00064}00064     throtResponse = \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}{desiredThrottle}};}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00066}00066     \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}{g\_vehicle\_type}} == 0)}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00067}00067     \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00068}00068       \textcolor{keywordflow}{if} (throtResponse < 75)}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00069}00069       \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00070}00070         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00071}00071         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ae336b7420be719e9096749dc308d4270}{frontRightMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00072}00072         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a36cc06905b63f7dd4a384b8925f8049f}{backLeftMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00073}00073         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aaf57e5fe9e23e552fe5ce8f52c6439bf}{backRightMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00074}00074       \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00075}00075       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00076}00076       \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00077}00077         \textcolor{comment}{// Serial.print("{}hello"{});}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00078}00078         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}} = (int)(\mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{throttleIdle}} + throtResponse -\/ rollResponse + pitchResponse -\/ yawResponse);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00079}00079         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ae336b7420be719e9096749dc308d4270}{frontRightMotorSignal}} = (int)(\mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{throttleIdle}} + throtResponse + rollResponse + pitchResponse + yawResponse);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00080}00080         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a36cc06905b63f7dd4a384b8925f8049f}{backLeftMotorSignal}} = (int)(\mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{throttleIdle}} + throtResponse -\/ rollResponse -\/ pitchResponse + yawResponse);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00081}00081         \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aaf57e5fe9e23e552fe5ce8f52c6439bf}{backRightMotorSignal}} = (int)(\mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{throttleIdle}} + throtResponse + rollResponse -\/ pitchResponse -\/ yawResponse);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00082}00082       \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00084}00084       \textcolor{comment}{// Serial.println(backRightMotorSignal);}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00086}00086     \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}{g\_vehicle\_type}} == 1)}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00087}00087     \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00088}00088       \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_abb10823a2e194f066e247ddc6e29fafb}{yawSignal}} = 1500 + yawResponse;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00089}00089       \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af56aea3f63a11c72c241fdff0477e604}{throttleSignal}} = 1500 + throtResponse;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00092}00092     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_abb10823a2e194f066e247ddc6e29fafb}{yawSignal}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_abb10823a2e194f066e247ddc6e29fafb}{yawSignal}}, \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}}, 1000);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00093}00093     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af56aea3f63a11c72c241fdff0477e604}{throttleSignal}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af56aea3f63a11c72c241fdff0477e604}{throttleSignal}}, \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}}, 1000);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00094}00094     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aaf57e5fe9e23e552fe5ce8f52c6439bf}{backRightMotorSignal}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aaf57e5fe9e23e552fe5ce8f52c6439bf}{backRightMotorSignal}}, \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}}, 1000);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00095}00095     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a36cc06905b63f7dd4a384b8925f8049f}{backLeftMotorSignal}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a36cc06905b63f7dd4a384b8925f8049f}{backLeftMotorSignal}}, \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}}, 1000);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00096}00096     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ae336b7420be719e9096749dc308d4270}{frontRightMotorSignal}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ae336b7420be719e9096749dc308d4270}{frontRightMotorSignal}}, \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}}, 1000);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00097}00097     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}}, \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}}, 1000);}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00098}00098     \textcolor{comment}{// Serial.println(backRightMotorSignal);}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00099}00099   \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00100}00100   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00101}00101   \{}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00102}00102     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_abb10823a2e194f066e247ddc6e29fafb}{yawSignal}} = 1500;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00103}00103     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af56aea3f63a11c72c241fdff0477e604}{throttleSignal}} = 1500;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00104}00104     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aaf57e5fe9e23e552fe5ce8f52c6439bf}{backRightMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00105}00105     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a36cc06905b63f7dd4a384b8925f8049f}{backLeftMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00106}00106     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ae336b7420be719e9096749dc308d4270}{frontRightMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00107}00107     \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}} = 1000;}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00108}00108   \}}
+\DoxyCodeLine{\Hypertarget{attitude_8cpp_source_l00109}00109 \}}
+
+\end{DoxyCode}

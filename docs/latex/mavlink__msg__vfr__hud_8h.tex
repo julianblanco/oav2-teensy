@@ -1,0 +1,101 @@
+\hypertarget{mavlink__msg__vfr__hud_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+vfr\+\_\+hud.h File Reference}
+\label{mavlink__msg__vfr__hud_8h}\index{lib/common/mavlink\_msg\_vfr\_hud.h@{lib/common/mavlink\_msg\_vfr\_hud.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_a61b2d9bfbd952ed4355ea1d7993c1593}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD}}~74
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_aadac5365ae5e0cdd6a76257df89101fa}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_a42f9d50155970dc2a8211bbc92805700}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD\+\_\+\+MIN\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_af451777a76ad9bbca524621afa45a92a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+74\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_a989e382134e52832d965e6ef62a31b6b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+74\+\_\+\+MIN\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_a036a8c3d0ded1d3204dbc7ba8d7a517a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD\+\_\+\+CRC}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_ab0036757fd85dc4a7047d63b9f2175de}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+74\+\_\+\+CRC}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vfr__hud_8h_a8a7cc6c6a8cd28510b200a8cb401501c}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+VFR\+\_\+\+HUD}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__vfr__hud_8h_ab9edde7ea5ac81798b42649a6e0bf2d8}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+vfr\+\_\+hud\+\_\+t \{ float airspeed;float groundspeed;float alt;float climb;int16\+\_\+t heading;uint16\+\_\+t throttle;\}) mavlink\+\_\+vfr\+\_\+hud\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_a8a7cc6c6a8cd28510b200a8cb401501c}\label{mavlink__msg__vfr__hud_8h_a8a7cc6c6a8cd28510b200a8cb401501c}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MESSAGE\_INFO\_VFR\_HUD@{MAVLINK\_MESSAGE\_INFO\_VFR\_HUD}}
+\index{MAVLINK\_MESSAGE\_INFO\_VFR\_HUD@{MAVLINK\_MESSAGE\_INFO\_VFR\_HUD}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_VFR\_HUD}{MAVLINK\_MESSAGE\_INFO\_VFR\_HUD}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+VFR\+\_\+\+HUD}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}VFR\_HUD"{}}, \(\backslash\)}
+\DoxyCodeLine{    6, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}airspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 0, offsetof(mavlink\_vfr\_hud\_t, airspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}groundspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 4, offsetof(mavlink\_vfr\_hud\_t, groundspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}heading"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 16, offsetof(mavlink\_vfr\_hud\_t, heading) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}throttle"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 18, offsetof(mavlink\_vfr\_hud\_t, throttle) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}alt"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_vfr\_hud\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}climb"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_vfr\_hud\_t, climb) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_ab0036757fd85dc4a7047d63b9f2175de}\label{mavlink__msg__vfr__hud_8h_ab0036757fd85dc4a7047d63b9f2175de}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_74\_CRC@{MAVLINK\_MSG\_ID\_74\_CRC}}
+\index{MAVLINK\_MSG\_ID\_74\_CRC@{MAVLINK\_MSG\_ID\_74\_CRC}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_74\_CRC}{MAVLINK\_MSG\_ID\_74\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+74\+\_\+\+CRC~20}
+
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_af451777a76ad9bbca524621afa45a92a}\label{mavlink__msg__vfr__hud_8h_af451777a76ad9bbca524621afa45a92a}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_74\_LEN@{MAVLINK\_MSG\_ID\_74\_LEN}}
+\index{MAVLINK\_MSG\_ID\_74\_LEN@{MAVLINK\_MSG\_ID\_74\_LEN}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_74\_LEN}{MAVLINK\_MSG\_ID\_74\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+74\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_a989e382134e52832d965e6ef62a31b6b}\label{mavlink__msg__vfr__hud_8h_a989e382134e52832d965e6ef62a31b6b}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_74\_MIN\_LEN@{MAVLINK\_MSG\_ID\_74\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_74\_MIN\_LEN@{MAVLINK\_MSG\_ID\_74\_MIN\_LEN}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_74\_MIN\_LEN}{MAVLINK\_MSG\_ID\_74\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+74\+\_\+\+MIN\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_a61b2d9bfbd952ed4355ea1d7993c1593}\label{mavlink__msg__vfr__hud_8h_a61b2d9bfbd952ed4355ea1d7993c1593}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_VFR\_HUD@{MAVLINK\_MSG\_ID\_VFR\_HUD}}
+\index{MAVLINK\_MSG\_ID\_VFR\_HUD@{MAVLINK\_MSG\_ID\_VFR\_HUD}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VFR\_HUD}{MAVLINK\_MSG\_ID\_VFR\_HUD}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD~74}
+
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_a036a8c3d0ded1d3204dbc7ba8d7a517a}\label{mavlink__msg__vfr__hud_8h_a036a8c3d0ded1d3204dbc7ba8d7a517a}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_VFR\_HUD\_CRC@{MAVLINK\_MSG\_ID\_VFR\_HUD\_CRC}}
+\index{MAVLINK\_MSG\_ID\_VFR\_HUD\_CRC@{MAVLINK\_MSG\_ID\_VFR\_HUD\_CRC}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VFR\_HUD\_CRC}{MAVLINK\_MSG\_ID\_VFR\_HUD\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD\+\_\+\+CRC~20}
+
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_aadac5365ae5e0cdd6a76257df89101fa}\label{mavlink__msg__vfr__hud_8h_aadac5365ae5e0cdd6a76257df89101fa}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_VFR\_HUD\_LEN@{MAVLINK\_MSG\_ID\_VFR\_HUD\_LEN}}
+\index{MAVLINK\_MSG\_ID\_VFR\_HUD\_LEN@{MAVLINK\_MSG\_ID\_VFR\_HUD\_LEN}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VFR\_HUD\_LEN}{MAVLINK\_MSG\_ID\_VFR\_HUD\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_a42f9d50155970dc2a8211bbc92805700}\label{mavlink__msg__vfr__hud_8h_a42f9d50155970dc2a8211bbc92805700}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVLINK\_MSG\_ID\_VFR\_HUD\_MIN\_LEN@{MAVLINK\_MSG\_ID\_VFR\_HUD\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_VFR\_HUD\_MIN\_LEN@{MAVLINK\_MSG\_ID\_VFR\_HUD\_MIN\_LEN}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VFR\_HUD\_MIN\_LEN}{MAVLINK\_MSG\_ID\_VFR\_HUD\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VFR\+\_\+\+HUD\+\_\+\+MIN\+\_\+\+LEN~20}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__vfr__hud_8h_ab9edde7ea5ac81798b42649a6e0bf2d8}\label{mavlink__msg__vfr__hud_8h_ab9edde7ea5ac81798b42649a6e0bf2d8}} 
+\index{mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_vfr\_hud.h@{mavlink\_msg\_vfr\_hud.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+vfr\+\_\+hud\+\_\+t \{ float airspeed;float groundspeed;float alt;float climb;int16\+\_\+t heading;uint16\+\_\+t throttle;\}}]{ }\end{DoxyParamCaption})}
+

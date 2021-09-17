@@ -1,0 +1,205 @@
+\hypertarget{mavlink__msg__setup__signing_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+setup\+\_\+signing.\+h}
+\label{mavlink__msg__setup__signing_8h_source}\index{lib/common/mavlink\_msg\_setup\_signing.h@{lib/common/mavlink\_msg\_setup\_signing.h}}
+\mbox{\hyperlink{mavlink__msg__setup__signing_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE SETUP\_SIGNING PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SETUP\_SIGNING 256}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aaa5638b0630fc4bfc9f45c67f4723fcf}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_setup\_signing\_t \{}
+\DoxyCodeLine{8  uint64\_t initial\_timestamp; \textcolor{comment}{/*<  initial timestamp*/}}
+\DoxyCodeLine{9  uint8\_t target\_system; \textcolor{comment}{/*<  system id of the target*/}}
+\DoxyCodeLine{10  uint8\_t target\_component; \textcolor{comment}{/*<  component ID of the target*/}}
+\DoxyCodeLine{11  uint8\_t secret\_key[32]; \textcolor{comment}{/*<  signing key*/}}
+\DoxyCodeLine{12 \}) mavlink\_setup\_signing\_t;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN 42}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN 42}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_256\_LEN 42}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_256\_MIN\_LEN 42}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC 71}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_256\_CRC 71}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_SETUP\_SIGNING\_FIELD\_SECRET\_KEY\_LEN 32}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SETUP\_SIGNING \{ \(\backslash\)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{    256, \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    "{}SETUP\_SIGNING"{}}, \(\backslash\)}
+\DoxyCodeLine{28     4, \(\backslash\)}
+\DoxyCodeLine{29     \{  \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 8, offsetof(mavlink\_setup\_signing\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{30          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 9, offsetof(mavlink\_setup\_signing\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}secret\_key"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 32, 10, offsetof(mavlink\_setup\_signing\_t, secret\_key) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}initial\_timestamp"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_setup\_signing\_t, initial\_timestamp) \}, \(\backslash\)}
+\DoxyCodeLine{33          \} \(\backslash\)}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SETUP\_SIGNING \{ \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    "{}SETUP\_SIGNING"{}}, \(\backslash\)}
+\DoxyCodeLine{38     4, \(\backslash\)}
+\DoxyCodeLine{39     \{  \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 8, offsetof(mavlink\_setup\_signing\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 9, offsetof(mavlink\_setup\_signing\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}secret\_key"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 32, 10, offsetof(mavlink\_setup\_signing\_t, secret\_key) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}initial\_timestamp"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_setup\_signing\_t, initial\_timestamp) \}, \(\backslash\)}
+\DoxyCodeLine{43          \} \(\backslash\)}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{59 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_setup\_signing\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{60                                uint8\_t target\_system, uint8\_t target\_component, \textcolor{keyword}{const} uint8\_t *secret\_key, uint64\_t initial\_timestamp)}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}];}
+\DoxyCodeLine{64     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, initial\_timestamp);}
+\DoxyCodeLine{65     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 8, target\_system);}
+\DoxyCodeLine{66     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 9, target\_component);}
+\DoxyCodeLine{67     \_mav\_put\_uint8\_t\_array(buf, 10, secret\_key, 32);}
+\DoxyCodeLine{68         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}});}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{70     mavlink\_setup\_signing\_t packet;}
+\DoxyCodeLine{71     packet.initial\_timestamp = initial\_timestamp;}
+\DoxyCodeLine{72     packet.target\_system = target\_system;}
+\DoxyCodeLine{73     packet.target\_component = target\_component;}
+\DoxyCodeLine{74     mav\_array\_memcpy(packet.secret\_key, secret\_key, \textcolor{keyword}{sizeof}(uint8\_t)*32);}
+\DoxyCodeLine{75         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}});}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}};}
+\DoxyCodeLine{79     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{94 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_setup\_signing\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{95                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{96                                    uint8\_t target\_system,uint8\_t target\_component,\textcolor{keyword}{const} uint8\_t *secret\_key,uint64\_t initial\_timestamp)}
+\DoxyCodeLine{97 \{}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{99     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}];}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, initial\_timestamp);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 8, target\_system);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 9, target\_component);}
+\DoxyCodeLine{103     \_mav\_put\_uint8\_t\_array(buf, 10, secret\_key, 32);}
+\DoxyCodeLine{104         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}});}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{106     mavlink\_setup\_signing\_t packet;}
+\DoxyCodeLine{107     packet.initial\_timestamp = initial\_timestamp;}
+\DoxyCodeLine{108     packet.target\_system = target\_system;}
+\DoxyCodeLine{109     packet.target\_component = target\_component;}
+\DoxyCodeLine{110     mav\_array\_memcpy(packet.secret\_key, secret\_key, \textcolor{keyword}{sizeof}(uint8\_t)*32);}
+\DoxyCodeLine{111         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}});}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}};}
+\DoxyCodeLine{115     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{116 \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{126 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_setup\_signing\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_setup\_signing\_t* setup\_signing)}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} mavlink\_msg\_setup\_signing\_pack(system\_id, component\_id, msg, setup\_signing-\/>target\_system, setup\_signing-\/>target\_component, setup\_signing-\/>secret\_key, setup\_signing-\/>initial\_timestamp);}
+\DoxyCodeLine{129 \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{140 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_setup\_signing\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_setup\_signing\_t* setup\_signing)}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142     \textcolor{keywordflow}{return} mavlink\_msg\_setup\_signing\_pack\_chan(system\_id, component\_id, chan, msg, setup\_signing-\/>target\_system, setup\_signing-\/>target\_component, setup\_signing-\/>secret\_key, setup\_signing-\/>initial\_timestamp);}
+\DoxyCodeLine{143 \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_setup\_signing\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t target\_system, uint8\_t target\_component, \textcolor{keyword}{const} uint8\_t *secret\_key, uint64\_t initial\_timestamp)}
+\DoxyCodeLine{157 \{}
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{159     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}];}
+\DoxyCodeLine{160     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, initial\_timestamp);}
+\DoxyCodeLine{161     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 8, target\_system);}
+\DoxyCodeLine{162     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 9, target\_component);}
+\DoxyCodeLine{163     \_mav\_put\_uint8\_t\_array(buf, 10, secret\_key, 32);}
+\DoxyCodeLine{164     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}}, buf, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{165 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{166     mavlink\_setup\_signing\_t packet;}
+\DoxyCodeLine{167     packet.initial\_timestamp = initial\_timestamp;}
+\DoxyCodeLine{168     packet.target\_system = target\_system;}
+\DoxyCodeLine{169     packet.target\_component = target\_component;}
+\DoxyCodeLine{170     mav\_array\_memcpy(packet.secret\_key, secret\_key, \textcolor{keyword}{sizeof}(uint8\_t)*32);}
+\DoxyCodeLine{171     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{173 \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_setup\_signing\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_setup\_signing\_t* setup\_signing)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{183     mavlink\_msg\_setup\_signing\_send(chan, setup\_signing-\/>target\_system, setup\_signing-\/>target\_component, setup\_signing-\/>secret\_key, setup\_signing-\/>initial\_timestamp);}
+\DoxyCodeLine{184 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{185     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)setup\_signing, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{186 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{187 \}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{190 \textcolor{comment}{/*}}
+\DoxyCodeLine{191 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{192 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{193 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{194 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{195 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{196 \textcolor{comment}{ */}}
+\DoxyCodeLine{197 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_setup\_signing\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t target\_system, uint8\_t target\_component, \textcolor{keyword}{const} uint8\_t *secret\_key, uint64\_t initial\_timestamp)}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{200     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{201     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, initial\_timestamp);}
+\DoxyCodeLine{202     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 8, target\_system);}
+\DoxyCodeLine{203     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 9, target\_component);}
+\DoxyCodeLine{204     \_mav\_put\_uint8\_t\_array(buf, 10, secret\_key, 32);}
+\DoxyCodeLine{205     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}}, buf, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{207     mavlink\_setup\_signing\_t *packet = (mavlink\_setup\_signing\_t *)msgbuf;}
+\DoxyCodeLine{208     packet-\/>initial\_timestamp = initial\_timestamp;}
+\DoxyCodeLine{209     packet-\/>target\_system = target\_system;}
+\DoxyCodeLine{210     packet-\/>target\_component = target\_component;}
+\DoxyCodeLine{211     mav\_array\_memcpy(packet-\/>secret\_key, secret\_key, \textcolor{keyword}{sizeof}(uint8\_t)*32);}
+\DoxyCodeLine{212     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a5c13931f0170c40e2e4827d38740cb33}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_adbcf91e8410a50da2c96f8c5fb350a37}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_a7035718c5c893313c5a22ea8543ae59f}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_CRC}});}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{214 \}}
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{comment}{// MESSAGE SETUP\_SIGNING UNPACKING}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 }
+\DoxyCodeLine{227 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_setup\_signing\_get\_target\_system(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  8);}
+\DoxyCodeLine{230 \}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{237 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_setup\_signing\_get\_target\_component(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{238 \{}
+\DoxyCodeLine{239     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  9);}
+\DoxyCodeLine{240 \}}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{247 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_setup\_signing\_get\_secret\_key(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *secret\_key)}
+\DoxyCodeLine{248 \{}
+\DoxyCodeLine{249     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, secret\_key, 32,  10);}
+\DoxyCodeLine{250 \}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{257 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_setup\_signing\_get\_initial\_timestamp(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{258 \{}
+\DoxyCodeLine{259     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{260 \}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{268 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_setup\_signing\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_setup\_signing\_t* setup\_signing)}
+\DoxyCodeLine{269 \{}
+\DoxyCodeLine{270 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{271     setup\_signing-\/>initial\_timestamp = mavlink\_msg\_setup\_signing\_get\_initial\_timestamp(msg);}
+\DoxyCodeLine{272     setup\_signing-\/>target\_system = mavlink\_msg\_setup\_signing\_get\_target\_system(msg);}
+\DoxyCodeLine{273     setup\_signing-\/>target\_component = mavlink\_msg\_setup\_signing\_get\_target\_component(msg);}
+\DoxyCodeLine{274     mavlink\_msg\_setup\_signing\_get\_secret\_key(msg, setup\_signing-\/>secret\_key);}
+\DoxyCodeLine{275 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{276         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}};}
+\DoxyCodeLine{277         memset(setup\_signing, 0, \mbox{\hyperlink{mavlink__msg__setup__signing_8h_aa1ce1c30181981b7faa68ae2dab6a829}{MAVLINK\_MSG\_ID\_SETUP\_SIGNING\_LEN}});}
+\DoxyCodeLine{278     memcpy(setup\_signing, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{279 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{280 \}}
+
+\end{DoxyCode}

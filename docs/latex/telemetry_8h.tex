@@ -1,0 +1,146 @@
+\hypertarget{telemetry_8h}{}\doxysection{include/telemetry.h File Reference}
+\label{telemetry_8h}\index{include/telemetry.h@{include/telemetry.h}}
+{\ttfamily \#include \char`\"{}mavlink.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SBUS.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Sd\+Fat.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_abaf94b849770f1a5f8d7c256c5fc2e76}{CONFIG\+\_\+\+RECORDING\+\_\+\+DIRECTORY}}~\char`\"{}/rec\%d\char`\"{}
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a6131f366a743bda2b0b657ed32ee2a95}{CONFIG\+\_\+\+SD\+\_\+\+USE\+\_\+\+SDIO}}~1
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a8f85f0213a562997625879b272b79514}{CONFIG\+\_\+\+SD\+\_\+\+FAT\+\_\+\+TYPE}}~3
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_ac095b534c7d8b6984a662fb252c02b56}{CONFIG\+\_\+\+NETWORK\+\_\+\+HEAP\+\_\+\+SIZE}}~(1024$\ast$120)
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a8d89ed83a0dd38eecc0a54f299909af0}{CONFIG\+\_\+\+WATCHDOG\+\_\+\+WARNING\+\_\+\+TIMEOUT}}~30
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_accf7bd2816dcfb191a3247e2c8e68611}{CONFIG\+\_\+\+WATCHDOG\+\_\+\+RESET\+\_\+\+TIMEOUT}}~60
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a1ef34b84a9af4cb20b349e8f2b4bcb67}{CONFIG\+\_\+\+SERIAL\+\_\+\+BAUD}}~9600
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a31913e59c5155e1a75fd600d195ac0b2}{CONFIG\+\_\+\+LED}}~LED\+\_\+\+BUILTIN
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_aaae8aa0e07608ba5cbaad0c51b835b87}{CONFIG\+\_\+\+RECORDING\+\_\+\+LENGTH}}~5000
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_aa4e1c2a7d32cdb1a9389d788b13aabc1}{CONFIG\+\_\+\+HOLD\+\_\+\+LENGTH}}~25000
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_ad1197ddb5cd748405d1029886fddeaf7}{CONFIG\+\_\+\+AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}}~256
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a7912a4c759f7ac83c29f7a103e7b6c51}{CONFIG\+\_\+\+SD\+\_\+\+CARD\+\_\+\+ROLLOFF}}~0
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_ac725825ab4afdf53abad1b45b9f1db6a}{CONFIG\+\_\+\+DISABLE\+\_\+\+NETWORK}}~1
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a6d6d590619f05e527b2617fee215f0a5}{CONFIG\+\_\+\+SD}}~Sdio\+Config(FIFO\+\_\+\+SDIO)
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a3b411d76b2279b3c4aa2b78fae22557d}{CONFIG\+\_\+\+SD\+\_\+\+CONTROLLER}}~Sd\+Fs
+\item 
+\#define \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\+\_\+\+SD\+\_\+\+FILE}}~Fs\+File
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{telemetry_8h_ad1197ddb5cd748405d1029886fddeaf7}\label{telemetry_8h_ad1197ddb5cd748405d1029886fddeaf7}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_AUDIO\_BUFFER\_SIZE@{CONFIG\_AUDIO\_BUFFER\_SIZE}}
+\index{CONFIG\_AUDIO\_BUFFER\_SIZE@{CONFIG\_AUDIO\_BUFFER\_SIZE}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_AUDIO\_BUFFER\_SIZE}{CONFIG\_AUDIO\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE~256}
+
+\mbox{\Hypertarget{telemetry_8h_ac725825ab4afdf53abad1b45b9f1db6a}\label{telemetry_8h_ac725825ab4afdf53abad1b45b9f1db6a}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_DISABLE\_NETWORK@{CONFIG\_DISABLE\_NETWORK}}
+\index{CONFIG\_DISABLE\_NETWORK@{CONFIG\_DISABLE\_NETWORK}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_DISABLE\_NETWORK}{CONFIG\_DISABLE\_NETWORK}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+DISABLE\+\_\+\+NETWORK~1}
+
+\mbox{\Hypertarget{telemetry_8h_aa4e1c2a7d32cdb1a9389d788b13aabc1}\label{telemetry_8h_aa4e1c2a7d32cdb1a9389d788b13aabc1}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_HOLD\_LENGTH@{CONFIG\_HOLD\_LENGTH}}
+\index{CONFIG\_HOLD\_LENGTH@{CONFIG\_HOLD\_LENGTH}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_HOLD\_LENGTH}{CONFIG\_HOLD\_LENGTH}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+HOLD\+\_\+\+LENGTH~25000}
+
+\mbox{\Hypertarget{telemetry_8h_a31913e59c5155e1a75fd600d195ac0b2}\label{telemetry_8h_a31913e59c5155e1a75fd600d195ac0b2}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_LED@{CONFIG\_LED}}
+\index{CONFIG\_LED@{CONFIG\_LED}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_LED}{CONFIG\_LED}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+LED~LED\+\_\+\+BUILTIN}
+
+\mbox{\Hypertarget{telemetry_8h_ac095b534c7d8b6984a662fb252c02b56}\label{telemetry_8h_ac095b534c7d8b6984a662fb252c02b56}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_NETWORK\_HEAP\_SIZE@{CONFIG\_NETWORK\_HEAP\_SIZE}}
+\index{CONFIG\_NETWORK\_HEAP\_SIZE@{CONFIG\_NETWORK\_HEAP\_SIZE}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_NETWORK\_HEAP\_SIZE}{CONFIG\_NETWORK\_HEAP\_SIZE}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+NETWORK\+\_\+\+HEAP\+\_\+\+SIZE~(1024$\ast$120)}
+
+\mbox{\Hypertarget{telemetry_8h_abaf94b849770f1a5f8d7c256c5fc2e76}\label{telemetry_8h_abaf94b849770f1a5f8d7c256c5fc2e76}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_RECORDING\_DIRECTORY@{CONFIG\_RECORDING\_DIRECTORY}}
+\index{CONFIG\_RECORDING\_DIRECTORY@{CONFIG\_RECORDING\_DIRECTORY}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_RECORDING\_DIRECTORY}{CONFIG\_RECORDING\_DIRECTORY}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+RECORDING\+\_\+\+DIRECTORY~\char`\"{}/rec\%d\char`\"{}}
+
+\mbox{\Hypertarget{telemetry_8h_aaae8aa0e07608ba5cbaad0c51b835b87}\label{telemetry_8h_aaae8aa0e07608ba5cbaad0c51b835b87}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_RECORDING\_LENGTH@{CONFIG\_RECORDING\_LENGTH}}
+\index{CONFIG\_RECORDING\_LENGTH@{CONFIG\_RECORDING\_LENGTH}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_RECORDING\_LENGTH}{CONFIG\_RECORDING\_LENGTH}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+RECORDING\+\_\+\+LENGTH~5000}
+
+\mbox{\Hypertarget{telemetry_8h_a6d6d590619f05e527b2617fee215f0a5}\label{telemetry_8h_a6d6d590619f05e527b2617fee215f0a5}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SD@{CONFIG\_SD}}
+\index{CONFIG\_SD@{CONFIG\_SD}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SD}{CONFIG\_SD}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SD~Sdio\+Config(FIFO\+\_\+\+SDIO)}
+
+\mbox{\Hypertarget{telemetry_8h_a7912a4c759f7ac83c29f7a103e7b6c51}\label{telemetry_8h_a7912a4c759f7ac83c29f7a103e7b6c51}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SD\_CARD\_ROLLOFF@{CONFIG\_SD\_CARD\_ROLLOFF}}
+\index{CONFIG\_SD\_CARD\_ROLLOFF@{CONFIG\_SD\_CARD\_ROLLOFF}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SD\_CARD\_ROLLOFF}{CONFIG\_SD\_CARD\_ROLLOFF}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SD\+\_\+\+CARD\+\_\+\+ROLLOFF~0}
+
+\mbox{\Hypertarget{telemetry_8h_a3b411d76b2279b3c4aa2b78fae22557d}\label{telemetry_8h_a3b411d76b2279b3c4aa2b78fae22557d}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SD\_CONTROLLER@{CONFIG\_SD\_CONTROLLER}}
+\index{CONFIG\_SD\_CONTROLLER@{CONFIG\_SD\_CONTROLLER}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SD\_CONTROLLER}{CONFIG\_SD\_CONTROLLER}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SD\+\_\+\+CONTROLLER~Sd\+Fs}
+
+\mbox{\Hypertarget{telemetry_8h_a8f85f0213a562997625879b272b79514}\label{telemetry_8h_a8f85f0213a562997625879b272b79514}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SD\_FAT\_TYPE@{CONFIG\_SD\_FAT\_TYPE}}
+\index{CONFIG\_SD\_FAT\_TYPE@{CONFIG\_SD\_FAT\_TYPE}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SD\_FAT\_TYPE}{CONFIG\_SD\_FAT\_TYPE}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SD\+\_\+\+FAT\+\_\+\+TYPE~3}
+
+\mbox{\Hypertarget{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}\label{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SD\_FILE@{CONFIG\_SD\_FILE}}
+\index{CONFIG\_SD\_FILE@{CONFIG\_SD\_FILE}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SD\_FILE}{CONFIG\_SD\_FILE}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SD\+\_\+\+FILE~Fs\+File}
+
+\mbox{\Hypertarget{telemetry_8h_a6131f366a743bda2b0b657ed32ee2a95}\label{telemetry_8h_a6131f366a743bda2b0b657ed32ee2a95}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SD\_USE\_SDIO@{CONFIG\_SD\_USE\_SDIO}}
+\index{CONFIG\_SD\_USE\_SDIO@{CONFIG\_SD\_USE\_SDIO}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SD\_USE\_SDIO}{CONFIG\_SD\_USE\_SDIO}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SD\+\_\+\+USE\+\_\+\+SDIO~1}
+
+\mbox{\Hypertarget{telemetry_8h_a1ef34b84a9af4cb20b349e8f2b4bcb67}\label{telemetry_8h_a1ef34b84a9af4cb20b349e8f2b4bcb67}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_SERIAL\_BAUD@{CONFIG\_SERIAL\_BAUD}}
+\index{CONFIG\_SERIAL\_BAUD@{CONFIG\_SERIAL\_BAUD}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_SERIAL\_BAUD}{CONFIG\_SERIAL\_BAUD}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+SERIAL\+\_\+\+BAUD~9600}
+
+\mbox{\Hypertarget{telemetry_8h_accf7bd2816dcfb191a3247e2c8e68611}\label{telemetry_8h_accf7bd2816dcfb191a3247e2c8e68611}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_WATCHDOG\_RESET\_TIMEOUT@{CONFIG\_WATCHDOG\_RESET\_TIMEOUT}}
+\index{CONFIG\_WATCHDOG\_RESET\_TIMEOUT@{CONFIG\_WATCHDOG\_RESET\_TIMEOUT}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_WATCHDOG\_RESET\_TIMEOUT}{CONFIG\_WATCHDOG\_RESET\_TIMEOUT}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+WATCHDOG\+\_\+\+RESET\+\_\+\+TIMEOUT~60}
+
+\mbox{\Hypertarget{telemetry_8h_a8d89ed83a0dd38eecc0a54f299909af0}\label{telemetry_8h_a8d89ed83a0dd38eecc0a54f299909af0}} 
+\index{telemetry.h@{telemetry.h}!CONFIG\_WATCHDOG\_WARNING\_TIMEOUT@{CONFIG\_WATCHDOG\_WARNING\_TIMEOUT}}
+\index{CONFIG\_WATCHDOG\_WARNING\_TIMEOUT@{CONFIG\_WATCHDOG\_WARNING\_TIMEOUT}!telemetry.h@{telemetry.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_WATCHDOG\_WARNING\_TIMEOUT}{CONFIG\_WATCHDOG\_WARNING\_TIMEOUT}}
+{\footnotesize\ttfamily \#define CONFIG\+\_\+\+WATCHDOG\+\_\+\+WARNING\+\_\+\+TIMEOUT~30}
+

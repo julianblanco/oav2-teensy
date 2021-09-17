@@ -1,0 +1,178 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$Free\+RTOS\+\_\+\+TEENSY4.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}actuators.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}attitude.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}imu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}navigation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}telemetry.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ace661a16158ce369f36f263359d1baca}{g\+\_\+armed}} = 0
+\item 
+int \mbox{\hyperlink{main_8cpp_aefec37c5e938e2536e7f0a016cf855aa}{g\+\_\+current\+\_\+mode}} = 0
+\item 
+int \mbox{\hyperlink{main_8cpp_ac02b4874909f3ffceafbc4fd1c1be316}{g\+\_\+vehicle\+\_\+type}} = 0
+\item 
+int \mbox{\hyperlink{main_8cpp_a93fc6d29671974eecc37efe724bb1596}{high\+PWMmotor}} = 1500
+\item 
+int \mbox{\hyperlink{main_8cpp_a6b8ea81e63be1d2ca4064295b74cd3d5}{low\+PWMmotor}} = 1000
+\item 
+int \mbox{\hyperlink{main_8cpp_a59a9eab06aebc898c20b1e1f678d227c}{throttle\+Idle}} = 1080
+\item 
+\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} \mbox{\hyperlink{main_8cpp_a61ae9c488a5b998500849309eccc4ab9}{g\+\_\+actuators}}
+\item 
+\mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} \mbox{\hyperlink{main_8cpp_affbe32f3d7302137c38bf9a99a0746aa}{g\+\_\+attitude}}
+\item 
+\mbox{\hyperlink{class_i_m_u}{IMU}} \mbox{\hyperlink{main_8cpp_ab2e2ba186f9665ae5a3018f157925910}{g\+\_\+imu}}
+\item 
+\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n}{NAVIGATION}} \mbox{\hyperlink{main_8cpp_a79498913145b8bd48d078e46ae5243ef}{g\+\_\+navigation}}
+\item 
+\mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} \mbox{\hyperlink{main_8cpp_a4210ff4d5c72ca381fc0275fe90464bd}{g\+\_\+sensors}}
+\item 
+\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} \mbox{\hyperlink{main_8cpp_a6f2452f706068c239589d713af9bb760}{g\+\_\+telemetry}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_a61ae9c488a5b998500849309eccc4ab9}\label{main_8cpp_a61ae9c488a5b998500849309eccc4ab9}} 
+\index{main.cpp@{main.cpp}!g\_actuators@{g\_actuators}}
+\index{g\_actuators@{g\_actuators}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_actuators}{g\_actuators}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} g\+\_\+actuators}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ace661a16158ce369f36f263359d1baca}\label{main_8cpp_ace661a16158ce369f36f263359d1baca}} 
+\index{main.cpp@{main.cpp}!g\_armed@{g\_armed}}
+\index{g\_armed@{g\_armed}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_armed}{g\_armed}}
+{\footnotesize\ttfamily int g\+\_\+armed = 0}
+
+objeeairlines, flightcontroller for quadrotors based on the teensy4 and freertos 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_affbe32f3d7302137c38bf9a99a0746aa}\label{main_8cpp_affbe32f3d7302137c38bf9a99a0746aa}} 
+\index{main.cpp@{main.cpp}!g\_attitude@{g\_attitude}}
+\index{g\_attitude@{g\_attitude}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_attitude}{g\_attitude}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} g\+\_\+attitude}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_aefec37c5e938e2536e7f0a016cf855aa}\label{main_8cpp_aefec37c5e938e2536e7f0a016cf855aa}} 
+\index{main.cpp@{main.cpp}!g\_current\_mode@{g\_current\_mode}}
+\index{g\_current\_mode@{g\_current\_mode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_current\_mode}{g\_current\_mode}}
+{\footnotesize\ttfamily int g\+\_\+current\+\_\+mode = 0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ab2e2ba186f9665ae5a3018f157925910}\label{main_8cpp_ab2e2ba186f9665ae5a3018f157925910}} 
+\index{main.cpp@{main.cpp}!g\_imu@{g\_imu}}
+\index{g\_imu@{g\_imu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_imu}{g\_imu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_i_m_u}{IMU}} g\+\_\+imu}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a79498913145b8bd48d078e46ae5243ef}\label{main_8cpp_a79498913145b8bd48d078e46ae5243ef}} 
+\index{main.cpp@{main.cpp}!g\_navigation@{g\_navigation}}
+\index{g\_navigation@{g\_navigation}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_navigation}{g\_navigation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n}{NAVIGATION}} g\+\_\+navigation}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a4210ff4d5c72ca381fc0275fe90464bd}\label{main_8cpp_a4210ff4d5c72ca381fc0275fe90464bd}} 
+\index{main.cpp@{main.cpp}!g\_sensors@{g\_sensors}}
+\index{g\_sensors@{g\_sensors}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_sensors}{g\_sensors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} g\+\_\+sensors}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a6f2452f706068c239589d713af9bb760}\label{main_8cpp_a6f2452f706068c239589d713af9bb760}} 
+\index{main.cpp@{main.cpp}!g\_telemetry@{g\_telemetry}}
+\index{g\_telemetry@{g\_telemetry}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_telemetry}{g\_telemetry}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} g\+\_\+telemetry}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ac02b4874909f3ffceafbc4fd1c1be316}\label{main_8cpp_ac02b4874909f3ffceafbc4fd1c1be316}} 
+\index{main.cpp@{main.cpp}!g\_vehicle\_type@{g\_vehicle\_type}}
+\index{g\_vehicle\_type@{g\_vehicle\_type}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_vehicle\_type}{g\_vehicle\_type}}
+{\footnotesize\ttfamily int g\+\_\+vehicle\+\_\+type = 0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a93fc6d29671974eecc37efe724bb1596}\label{main_8cpp_a93fc6d29671974eecc37efe724bb1596}} 
+\index{main.cpp@{main.cpp}!highPWMmotor@{highPWMmotor}}
+\index{highPWMmotor@{highPWMmotor}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{highPWMmotor}{highPWMmotor}}
+{\footnotesize\ttfamily int high\+PWMmotor = 1500}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a6b8ea81e63be1d2ca4064295b74cd3d5}\label{main_8cpp_a6b8ea81e63be1d2ca4064295b74cd3d5}} 
+\index{main.cpp@{main.cpp}!lowPWMmotor@{lowPWMmotor}}
+\index{lowPWMmotor@{lowPWMmotor}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lowPWMmotor}{lowPWMmotor}}
+{\footnotesize\ttfamily int low\+PWMmotor = 1000}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a59a9eab06aebc898c20b1e1f678d227c}\label{main_8cpp_a59a9eab06aebc898c20b1e1f678d227c}} 
+\index{main.cpp@{main.cpp}!throttleIdle@{throttleIdle}}
+\index{throttleIdle@{throttleIdle}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{throttleIdle}{throttleIdle}}
+{\footnotesize\ttfamily int throttle\+Idle = 1080}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+

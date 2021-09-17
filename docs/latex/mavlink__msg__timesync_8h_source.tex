@@ -1,0 +1,179 @@
+\hypertarget{mavlink__msg__timesync_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+timesync.\+h}
+\label{mavlink__msg__timesync_8h_source}\index{lib/common/mavlink\_msg\_timesync.h@{lib/common/mavlink\_msg\_timesync.h}}
+\mbox{\hyperlink{mavlink__msg__timesync_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE TIMESYNC PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TIMESYNC 111}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__timesync_8h_aca3d62b05ecd338609bd11d7a309dce4}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_timesync\_t \{}
+\DoxyCodeLine{8  int64\_t tc1; \textcolor{comment}{/*<  Time sync timestamp 1*/}}
+\DoxyCodeLine{9  int64\_t ts1; \textcolor{comment}{/*<  Time sync timestamp 2*/}}
+\DoxyCodeLine{10 \}) mavlink\_timesync\_t;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TIMESYNC\_LEN 16}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN 16}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_111\_LEN 16}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_111\_MIN\_LEN 16}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TIMESYNC\_CRC 34}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_111\_CRC 34}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TIMESYNC \{ \(\backslash\)}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{    111, \(\backslash\)}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{    "{}TIMESYNC"{}}, \(\backslash\)}
+\DoxyCodeLine{26     2, \(\backslash\)}
+\DoxyCodeLine{27     \{  \{ "{}tc1"{}, NULL, MAVLINK\_TYPE\_INT64\_T, 0, 0, offsetof(mavlink\_timesync\_t, tc1) \}, \(\backslash\)}
+\DoxyCodeLine{28          \{ "{}ts1"{}, NULL, MAVLINK\_TYPE\_INT64\_T, 0, 8, offsetof(mavlink\_timesync\_t, ts1) \}, \(\backslash\)}
+\DoxyCodeLine{29          \} \(\backslash\)}
+\DoxyCodeLine{30 \}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TIMESYNC \{ \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    "{}TIMESYNC"{}}, \(\backslash\)}
+\DoxyCodeLine{34     2, \(\backslash\)}
+\DoxyCodeLine{35     \{  \{ "{}tc1"{}, NULL, MAVLINK\_TYPE\_INT64\_T, 0, 0, offsetof(mavlink\_timesync\_t, tc1) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}ts1"{}, NULL, MAVLINK\_TYPE\_INT64\_T, 0, 8, offsetof(mavlink\_timesync\_t, ts1) \}, \(\backslash\)}
+\DoxyCodeLine{37          \} \(\backslash\)}
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{51 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_timesync\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{52                                int64\_t tc1, int64\_t ts1)}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{55     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}];}
+\DoxyCodeLine{56     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 0, tc1);}
+\DoxyCodeLine{57     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 8, ts1);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}});}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{61     mavlink\_timesync\_t packet;}
+\DoxyCodeLine{62     packet.tc1 = tc1;}
+\DoxyCodeLine{63     packet.ts1 = ts1;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}});}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}};}
+\DoxyCodeLine{69     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{70 \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{82 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_timesync\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{83                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{84                                    int64\_t tc1,int64\_t ts1)}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{87     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}];}
+\DoxyCodeLine{88     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 0, tc1);}
+\DoxyCodeLine{89     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 8, ts1);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}});}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{93     mavlink\_timesync\_t packet;}
+\DoxyCodeLine{94     packet.tc1 = tc1;}
+\DoxyCodeLine{95     packet.ts1 = ts1;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}});}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}};}
+\DoxyCodeLine{101     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{102 \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{112 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_timesync\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_timesync\_t* timesync)}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114     \textcolor{keywordflow}{return} mavlink\_msg\_timesync\_pack(system\_id, component\_id, msg, timesync-\/>tc1, timesync-\/>ts1);}
+\DoxyCodeLine{115 \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{126 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_timesync\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_timesync\_t* timesync)}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} mavlink\_msg\_timesync\_pack\_chan(system\_id, component\_id, chan, msg, timesync-\/>tc1, timesync-\/>ts1);}
+\DoxyCodeLine{129 \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_timesync\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, int64\_t tc1, int64\_t ts1)}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{143     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}];}
+\DoxyCodeLine{144     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 0, tc1);}
+\DoxyCodeLine{145     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 8, ts1);}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}}, buf, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{149     mavlink\_timesync\_t packet;}
+\DoxyCodeLine{150     packet.tc1 = tc1;}
+\DoxyCodeLine{151     packet.ts1 = ts1;}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{155 \}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{162 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_timesync\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_timesync\_t* timesync)}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{165     mavlink\_msg\_timesync\_send(chan, timesync-\/>tc1, timesync-\/>ts1);}
+\DoxyCodeLine{166 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{167     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)timesync, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{169 \}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_TIMESYNC\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{172 \textcolor{comment}{/*}}
+\DoxyCodeLine{173 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{174 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{175 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{176 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{177 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{178 \textcolor{comment}{ */}}
+\DoxyCodeLine{179 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_timesync\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  int64\_t tc1, int64\_t ts1)}
+\DoxyCodeLine{180 \{}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{182     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{183     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 0, tc1);}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\_mav\_put\_int64\_t}}(buf, 8, ts1);}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}}, buf, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{188     mavlink\_timesync\_t *packet = (mavlink\_timesync\_t *)msgbuf;}
+\DoxyCodeLine{189     packet-\/>tc1 = tc1;}
+\DoxyCodeLine{190     packet-\/>ts1 = ts1;}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__timesync_8h_a2ea9a3945a44f90a67c90e70173e88ee}{MAVLINK\_MSG\_ID\_TIMESYNC}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__timesync_8h_ae30ae657d82838a13dca9ab191feddb9}{MAVLINK\_MSG\_ID\_TIMESYNC\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}, \mbox{\hyperlink{mavlink__msg__timesync_8h_a939839d19610a706bca3f768cc311e7d}{MAVLINK\_MSG\_ID\_TIMESYNC\_CRC}});}
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{194 \}}
+\DoxyCodeLine{195 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199 \textcolor{comment}{// MESSAGE TIMESYNC UNPACKING}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 }
+\DoxyCodeLine{207 \textcolor{keyword}{static} \textcolor{keyword}{inline} int64\_t mavlink\_msg\_timesync\_get\_tc1(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{208 \{}
+\DoxyCodeLine{209     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int64\_t(msg,  0);}
+\DoxyCodeLine{210 \}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{217 \textcolor{keyword}{static} \textcolor{keyword}{inline} int64\_t mavlink\_msg\_timesync\_get\_ts1(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{218 \{}
+\DoxyCodeLine{219     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int64\_t(msg,  8);}
+\DoxyCodeLine{220 \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{228 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_timesync\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_timesync\_t* timesync)}
+\DoxyCodeLine{229 \{}
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{231     timesync-\/>tc1 = mavlink\_msg\_timesync\_get\_tc1(msg);}
+\DoxyCodeLine{232     timesync-\/>ts1 = mavlink\_msg\_timesync\_get\_ts1(msg);}
+\DoxyCodeLine{233 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{234         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}};}
+\DoxyCodeLine{235         memset(timesync, 0, \mbox{\hyperlink{mavlink__msg__timesync_8h_ace4854502a5a7f2c61ba9e8fa28ce865}{MAVLINK\_MSG\_ID\_TIMESYNC\_LEN}});}
+\DoxyCodeLine{236     memcpy(timesync, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{238 \}}
+
+\end{DoxyCode}

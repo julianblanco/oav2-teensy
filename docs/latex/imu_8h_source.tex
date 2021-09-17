@@ -1,0 +1,112 @@
+\hypertarget{imu_8h_source}{}\doxysection{imu.\+h}
+\label{imu_8h_source}\index{include/imu.h@{include/imu.h}}
+\mbox{\hyperlink{imu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * imu interface methods and imu loop task during Flightcontroller running}}
+\DoxyCodeLine{3 \textcolor{comment}{*/}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef \_imu\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define \_imu\_H\_}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{task_8h}{task.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{10 \textcolor{comment}{// \#include "{}config.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <Adafruit\_Sensor.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <Adafruit\_BNO055.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <SparkFun\_BNO080\_Arduino\_Library.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <utility/imumaths.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}read\_write\_lock.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{helper_8h}{helper.h}}"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_i_m_u}{IMU}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21   \textcolor{comment}{// Public interface methods}}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23   \mbox{\hyperlink{class_i_m_u_a5d36c5fa0688efe1a013679dbdcef4cc}{IMU}}(); \textcolor{comment}{// contstuctor}}
+\DoxyCodeLine{24   \mbox{\hyperlink{class_i_m_u_ad1f213d1e6aa08988ff683feab721559}{\string~IMU}}(); \textcolor{comment}{// decontstuctor}}
+\DoxyCodeLine{25   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}}; \textcolor{comment}{//yaw for the craft, in degrees}}
+\DoxyCodeLine{26   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}}; \textcolor{comment}{//roll for the craft, in degrees}}
+\DoxyCodeLine{27   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}}; \textcolor{comment}{//pitch for the craft, in degrees}}
+\DoxyCodeLine{28   Adafruit\_BNO055 \mbox{\hyperlink{class_i_m_u_adce5d46d0b84d522fa2b93e592364529}{bno055imu}}; \textcolor{comment}{//class object for the bno055, see adafruits documentation }}
+\DoxyCodeLine{29   \mbox{\hyperlink{config_8h_a3963085bfd77a0ac7e0ab6625daab728}{BNO080}} \mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}; \textcolor{comment}{//class object for the bno055, see sparkfuns documentation }}
+\DoxyCodeLine{30   imu::Vector<3> \mbox{\hyperlink{class_i_m_u_a94930a7795d239a15326b4782a6ce968}{euler}}; \textcolor{comment}{//vector to temporarily hold data coming from the bno055}}
+\DoxyCodeLine{31   cpp\_freertos::ReadWriteLockPreferWriter \mbox{\hyperlink{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}{lock}}; \textcolor{comment}{//lock to prevent rw issues}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33   }
+\DoxyCodeLine{34 \textcolor{keywordtype}{float} \mbox{\hyperlink{class_i_m_u_a9f92a6d75cfb6dac7efb51dde00d1bf8}{headingOffset}};}
+\DoxyCodeLine{35   }
+\DoxyCodeLine{46   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}{setup}}();}
+\DoxyCodeLine{52   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_i_m_u_a79913151edc7437f211b1b638e1172e9}{start}}();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{57  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{getIMUdata}}();}
+\DoxyCodeLine{61   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_a3137b5219e41ad390031f5869f8c2269}{getmpu6050data}}();}
+\DoxyCodeLine{65   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_a795368e5bbf84e833e66b922782e206d}{getbno080data}}();}
+\DoxyCodeLine{69   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_a82ad5080a2d3b0a76b68fd909220cc65}{getbno055data}}();}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74   \textcolor{comment}{// Private internal methods}}
+\DoxyCodeLine{75 \textcolor{keyword}{private}:}
+\DoxyCodeLine{76   \textcolor{keyword}{const} \textcolor{keywordtype}{int} MPU = 0x68; \textcolor{comment}{//MPU6050 I2C address -\/-\/ pins 19 = SCL \& 18 = SDA}}
+\DoxyCodeLine{77   \textcolor{comment}{//DECLARE GLOBAL VARIABLES}}
+\DoxyCodeLine{78   \textcolor{comment}{//General stuff}}
+\DoxyCodeLine{79   \textcolor{keywordtype}{float} dt;}
+\DoxyCodeLine{80   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} current\_time, prev\_time;}
+\DoxyCodeLine{81   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} print\_counter, serial\_counter;}
+\DoxyCodeLine{82   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} blink\_counter, blink\_delay;}
+\DoxyCodeLine{83   \textcolor{keywordtype}{bool} blinkAlternate;}
+\DoxyCodeLine{84   \textcolor{comment}{//IMU:}}
+\DoxyCodeLine{85   \textcolor{keywordtype}{float} AccX, AccY, AccZ;}
+\DoxyCodeLine{86   \textcolor{keywordtype}{float} AccX\_prev, AccY\_prev, AccZ\_prev;}
+\DoxyCodeLine{87   \textcolor{keywordtype}{float} GyroX, GyroY, GyroZ;}
+\DoxyCodeLine{88   \textcolor{keywordtype}{float} GyroX\_prev, GyroY\_prev, GyroZ\_prev;}
+\DoxyCodeLine{89   \textcolor{keywordtype}{float} roll\_IMU, pitch\_IMU, yaw\_IMU;}
+\DoxyCodeLine{90   \textcolor{keywordtype}{float} roll\_IMU\_prev, pitch\_IMU\_prev;}
+\DoxyCodeLine{91   \textcolor{keywordtype}{float} AccErrorX, AccErrorY, AccErrorZ, GyroErrorX, GyroErrorY, GyroErrorZ;}
+\DoxyCodeLine{92   \textcolor{keywordtype}{float} roll\_correction, pitch\_correction;}
+\DoxyCodeLine{93   \textcolor{keywordtype}{float} beta = 0.04; \textcolor{comment}{//madgwick filter parameter}}
+\DoxyCodeLine{94   \textcolor{keywordtype}{float} q0 = 1.0f;   \textcolor{comment}{//initialize quaternion for madgwick filter}}
+\DoxyCodeLine{95   \textcolor{keywordtype}{float} q1 = 0.0f;}
+\DoxyCodeLine{96   \textcolor{keywordtype}{float} q2 = 0.0f;}
+\DoxyCodeLine{97   \textcolor{keywordtype}{float} q3 = 0.0f;}
+\DoxyCodeLine{98   \textcolor{comment}{// Eigen::Matrix<double,1,3> eulerPQR;}}
+\DoxyCodeLine{107 \textcolor{comment}{}  \textcolor{keywordtype}{int} calibratempu6050Attitude();}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{125   \textcolor{keywordtype}{void} Madgwick(\textcolor{keywordtype}{float} gx, \textcolor{keywordtype}{float} gy, \textcolor{keywordtype}{float} gz, \textcolor{keywordtype}{float} ax, \textcolor{keywordtype}{float} ay, \textcolor{keywordtype}{float} az, \textcolor{keywordtype}{float} invSampleFreq);}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{135   \textcolor{keywordtype}{void} mpu6050init();}
+\DoxyCodeLine{142   \textcolor{keywordtype}{void} calculate\_mpu6050\_IMU\_error();}
+\DoxyCodeLine{143   \textcolor{keywordtype}{void} requestdatafrompu6050();}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{151   \textcolor{keywordtype}{int} init\_bno055();}
+\DoxyCodeLine{152   \textcolor{keywordtype}{int} init\_bno080();}
+\DoxyCodeLine{153   \textcolor{keywordtype}{int} init\_mpu6050();}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{165   [[noreturn]] \textcolor{keywordtype}{void} panic(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *message, \textcolor{keywordtype}{int} code) \textcolor{keyword}{const};}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{177   \textcolor{keywordtype}{void} log(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *fmt, ...) \textcolor{keyword}{const};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179   \textcolor{comment}{// Private internal variables used directly by our imu}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182   \textcolor{comment}{// \#if ! CONFIG\_DISABLE\_NETWORK}}
+\DoxyCodeLine{183   \textcolor{comment}{//   FTP<EthernetClient> m\_ftp;}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185   \textcolor{comment}{// // Private internal variables not used by the imu directly}}
+\DoxyCodeLine{186   \textcolor{comment}{// private:}}
+\DoxyCodeLine{187   \textcolor{comment}{//   uint8\_t m\_network\_heap[CONFIG\_NETWORK\_HEAP\_SIZE];}}
+\DoxyCodeLine{188   \textcolor{comment}{// \#endif}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190   \textcolor{comment}{// // Static variables used for audio shenanigans}}
+\DoxyCodeLine{191   \textcolor{comment}{// private:}}
+\DoxyCodeLine{192   \textcolor{comment}{//   static DMAMEM audio\_block\_t m\_audio\_queue\_buffer[CONFIG\_AUDIO\_BUFFER\_SIZE];}}
+\DoxyCodeLine{193 \};}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{comment}{// extern IMU g\_imu;}}
+\DoxyCodeLine{197 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,273 @@
+\hypertarget{mavlink__msg__video__stream__information_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+video\+\_\+stream\+\_\+information.\+h}
+\label{mavlink__msg__video__stream__information_8h_source}\index{lib/common/mavlink\_msg\_video\_stream\_information.h@{lib/common/mavlink\_msg\_video\_stream\_information.h}}
+\mbox{\hyperlink{mavlink__msg__video__stream__information_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE VIDEO\_STREAM\_INFORMATION PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION 269}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a965a5fa9c998b66a7f3ccec24183483d}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_video\_stream\_information\_t \{}
+\DoxyCodeLine{8  \textcolor{keywordtype}{float} framerate; \textcolor{comment}{/*< [Hz] Frame rate*/}}
+\DoxyCodeLine{9  uint32\_t bitrate; \textcolor{comment}{/*< [bits/s] Bit rate in bits per second*/}}
+\DoxyCodeLine{10  uint16\_t resolution\_h; \textcolor{comment}{/*< [pix] Horizontal resolution*/}}
+\DoxyCodeLine{11  uint16\_t resolution\_v; \textcolor{comment}{/*< [pix] Vertical resolution*/}}
+\DoxyCodeLine{12  uint16\_t rotation; \textcolor{comment}{/*< [deg] Video image rotation clockwise*/}}
+\DoxyCodeLine{13  uint8\_t camera\_id; \textcolor{comment}{/*<  Camera ID (1 for first, 2 for second, etc.)*/}}
+\DoxyCodeLine{14  uint8\_t status; \textcolor{comment}{/*<  Current status of video streaming (0: not running, 1: in progress)*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{char} uri[230]; \textcolor{comment}{/*<  Video stream URI*/}}
+\DoxyCodeLine{16 \}) mavlink\_video\_stream\_information\_t;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN 246}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN 246}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_269\_LEN 246}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_269\_MIN\_LEN 246}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC 58}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_269\_CRC 58}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_VIDEO\_STREAM\_INFORMATION\_FIELD\_URI\_LEN 230}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_VIDEO\_STREAM\_INFORMATION \{ \(\backslash\)}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{    269, \(\backslash\)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{    "{}VIDEO\_STREAM\_INFORMATION"{}}, \(\backslash\)}
+\DoxyCodeLine{32     8, \(\backslash\)}
+\DoxyCodeLine{33     \{  \{ "{}camera\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 14, offsetof(mavlink\_video\_stream\_information\_t, camera\_id) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}status"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 15, offsetof(mavlink\_video\_stream\_information\_t, status) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}framerate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 0, offsetof(mavlink\_video\_stream\_information\_t, framerate) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}resolution\_h"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_video\_stream\_information\_t, resolution\_h) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}resolution\_v"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 10, offsetof(mavlink\_video\_stream\_information\_t, resolution\_v) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}bitrate"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 4, offsetof(mavlink\_video\_stream\_information\_t, bitrate) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}rotation"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_video\_stream\_information\_t, rotation) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}uri"{}, NULL, MAVLINK\_TYPE\_CHAR, 230, 16, offsetof(mavlink\_video\_stream\_information\_t, uri) \}, \(\backslash\)}
+\DoxyCodeLine{41          \} \(\backslash\)}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_VIDEO\_STREAM\_INFORMATION \{ \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{    "{}VIDEO\_STREAM\_INFORMATION"{}}, \(\backslash\)}
+\DoxyCodeLine{46     8, \(\backslash\)}
+\DoxyCodeLine{47     \{  \{ "{}camera\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 14, offsetof(mavlink\_video\_stream\_information\_t, camera\_id) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}status"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 15, offsetof(mavlink\_video\_stream\_information\_t, status) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}framerate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 0, offsetof(mavlink\_video\_stream\_information\_t, framerate) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}resolution\_h"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_video\_stream\_information\_t, resolution\_h) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}resolution\_v"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 10, offsetof(mavlink\_video\_stream\_information\_t, resolution\_v) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}bitrate"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 4, offsetof(mavlink\_video\_stream\_information\_t, bitrate) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}rotation"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_video\_stream\_information\_t, rotation) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}uri"{}, NULL, MAVLINK\_TYPE\_CHAR, 230, 16, offsetof(mavlink\_video\_stream\_information\_t, uri) \}, \(\backslash\)}
+\DoxyCodeLine{55          \} \(\backslash\)}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{75 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{76                                uint8\_t camera\_id, uint8\_t status, \textcolor{keywordtype}{float} framerate, uint16\_t resolution\_h, uint16\_t resolution\_v, uint32\_t bitrate, uint16\_t rotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri)}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{79     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}];}
+\DoxyCodeLine{80     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 0, framerate);}
+\DoxyCodeLine{81     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, bitrate);}
+\DoxyCodeLine{82     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, resolution\_h);}
+\DoxyCodeLine{83     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, resolution\_v);}
+\DoxyCodeLine{84     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, rotation);}
+\DoxyCodeLine{85     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, camera\_id);}
+\DoxyCodeLine{86     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, status);}
+\DoxyCodeLine{87     \_mav\_put\_char\_array(buf, 16, uri, 230);}
+\DoxyCodeLine{88         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}});}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{90     mavlink\_video\_stream\_information\_t packet;}
+\DoxyCodeLine{91     packet.framerate = framerate;}
+\DoxyCodeLine{92     packet.bitrate = bitrate;}
+\DoxyCodeLine{93     packet.resolution\_h = resolution\_h;}
+\DoxyCodeLine{94     packet.resolution\_v = resolution\_v;}
+\DoxyCodeLine{95     packet.rotation = rotation;}
+\DoxyCodeLine{96     packet.camera\_id = camera\_id;}
+\DoxyCodeLine{97     packet.status = status;}
+\DoxyCodeLine{98     mav\_array\_memcpy(packet.uri, uri, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*230);}
+\DoxyCodeLine{99         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}});}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}};}
+\DoxyCodeLine{103     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{104 \}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{122 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{123                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{124                                    uint8\_t camera\_id,uint8\_t status,\textcolor{keywordtype}{float} framerate,uint16\_t resolution\_h,uint16\_t resolution\_v,uint32\_t bitrate,uint16\_t rotation,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri)}
+\DoxyCodeLine{125 \{}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{127     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}];}
+\DoxyCodeLine{128     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 0, framerate);}
+\DoxyCodeLine{129     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, bitrate);}
+\DoxyCodeLine{130     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, resolution\_h);}
+\DoxyCodeLine{131     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, resolution\_v);}
+\DoxyCodeLine{132     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, rotation);}
+\DoxyCodeLine{133     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, camera\_id);}
+\DoxyCodeLine{134     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, status);}
+\DoxyCodeLine{135     \_mav\_put\_char\_array(buf, 16, uri, 230);}
+\DoxyCodeLine{136         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}});}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{138     mavlink\_video\_stream\_information\_t packet;}
+\DoxyCodeLine{139     packet.framerate = framerate;}
+\DoxyCodeLine{140     packet.bitrate = bitrate;}
+\DoxyCodeLine{141     packet.resolution\_h = resolution\_h;}
+\DoxyCodeLine{142     packet.resolution\_v = resolution\_v;}
+\DoxyCodeLine{143     packet.rotation = rotation;}
+\DoxyCodeLine{144     packet.camera\_id = camera\_id;}
+\DoxyCodeLine{145     packet.status = status;}
+\DoxyCodeLine{146     mav\_array\_memcpy(packet.uri, uri, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*230);}
+\DoxyCodeLine{147         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}});}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}};}
+\DoxyCodeLine{151     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{152 \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{162 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_video\_stream\_information\_t* video\_stream\_information)}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164     \textcolor{keywordflow}{return} mavlink\_msg\_video\_stream\_information\_pack(system\_id, component\_id, msg, video\_stream\_information-\/>camera\_id, video\_stream\_information-\/>status, video\_stream\_information-\/>framerate, video\_stream\_information-\/>resolution\_h, video\_stream\_information-\/>resolution\_v, video\_stream\_information-\/>bitrate, video\_stream\_information-\/>rotation, video\_stream\_information-\/>uri);}
+\DoxyCodeLine{165 \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{176 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_video\_stream\_information\_t* video\_stream\_information)}
+\DoxyCodeLine{177 \{}
+\DoxyCodeLine{178     \textcolor{keywordflow}{return} mavlink\_msg\_video\_stream\_information\_pack\_chan(system\_id, component\_id, chan, msg, video\_stream\_information-\/>camera\_id, video\_stream\_information-\/>status, video\_stream\_information-\/>framerate, video\_stream\_information-\/>resolution\_h, video\_stream\_information-\/>resolution\_v, video\_stream\_information-\/>bitrate, video\_stream\_information-\/>rotation, video\_stream\_information-\/>uri);}
+\DoxyCodeLine{179 \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{194 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_video\_stream\_information\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t camera\_id, uint8\_t status, \textcolor{keywordtype}{float} framerate, uint16\_t resolution\_h, uint16\_t resolution\_v, uint32\_t bitrate, uint16\_t rotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri)}
+\DoxyCodeLine{197 \{}
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{199     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}];}
+\DoxyCodeLine{200     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 0, framerate);}
+\DoxyCodeLine{201     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, bitrate);}
+\DoxyCodeLine{202     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, resolution\_h);}
+\DoxyCodeLine{203     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, resolution\_v);}
+\DoxyCodeLine{204     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, rotation);}
+\DoxyCodeLine{205     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, camera\_id);}
+\DoxyCodeLine{206     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, status);}
+\DoxyCodeLine{207     \_mav\_put\_char\_array(buf, 16, uri, 230);}
+\DoxyCodeLine{208     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}}, buf, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{209 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{210     mavlink\_video\_stream\_information\_t packet;}
+\DoxyCodeLine{211     packet.framerate = framerate;}
+\DoxyCodeLine{212     packet.bitrate = bitrate;}
+\DoxyCodeLine{213     packet.resolution\_h = resolution\_h;}
+\DoxyCodeLine{214     packet.resolution\_v = resolution\_v;}
+\DoxyCodeLine{215     packet.rotation = rotation;}
+\DoxyCodeLine{216     packet.camera\_id = camera\_id;}
+\DoxyCodeLine{217     packet.status = status;}
+\DoxyCodeLine{218     mav\_array\_memcpy(packet.uri, uri, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*230);}
+\DoxyCodeLine{219     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{220 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{221 \}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{228 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_video\_stream\_information\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_video\_stream\_information\_t* video\_stream\_information)}
+\DoxyCodeLine{229 \{}
+\DoxyCodeLine{230 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{231     mavlink\_msg\_video\_stream\_information\_send(chan, video\_stream\_information-\/>camera\_id, video\_stream\_information-\/>status, video\_stream\_information-\/>framerate, video\_stream\_information-\/>resolution\_h, video\_stream\_information-\/>resolution\_v, video\_stream\_information-\/>bitrate, video\_stream\_information-\/>rotation, video\_stream\_information-\/>uri);}
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{233     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)video\_stream\_information, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{234 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{235 \}}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{238 \textcolor{comment}{/*}}
+\DoxyCodeLine{239 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{240 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{241 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{242 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{243 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{244 \textcolor{comment}{ */}}
+\DoxyCodeLine{245 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_video\_stream\_information\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t camera\_id, uint8\_t status, \textcolor{keywordtype}{float} framerate, uint16\_t resolution\_h, uint16\_t resolution\_v, uint32\_t bitrate, uint16\_t rotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri)}
+\DoxyCodeLine{246 \{}
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{248     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{249     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 0, framerate);}
+\DoxyCodeLine{250     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, bitrate);}
+\DoxyCodeLine{251     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, resolution\_h);}
+\DoxyCodeLine{252     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, resolution\_v);}
+\DoxyCodeLine{253     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, rotation);}
+\DoxyCodeLine{254     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, camera\_id);}
+\DoxyCodeLine{255     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, status);}
+\DoxyCodeLine{256     \_mav\_put\_char\_array(buf, 16, uri, 230);}
+\DoxyCodeLine{257     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}}, buf, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{259     mavlink\_video\_stream\_information\_t *packet = (mavlink\_video\_stream\_information\_t *)msgbuf;}
+\DoxyCodeLine{260     packet-\/>framerate = framerate;}
+\DoxyCodeLine{261     packet-\/>bitrate = bitrate;}
+\DoxyCodeLine{262     packet-\/>resolution\_h = resolution\_h;}
+\DoxyCodeLine{263     packet-\/>resolution\_v = resolution\_v;}
+\DoxyCodeLine{264     packet-\/>rotation = rotation;}
+\DoxyCodeLine{265     packet-\/>camera\_id = camera\_id;}
+\DoxyCodeLine{266     packet-\/>status = status;}
+\DoxyCodeLine{267     mav\_array\_memcpy(packet-\/>uri, uri, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*230);}
+\DoxyCodeLine{268     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a916e5a06c94dd19ce93b6a73f613fa61}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_ab2307ac5c8b022ea0e34b9a8eded5f91}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a4d0efbda708b7a0e096d076d5807ebfb}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_CRC}});}
+\DoxyCodeLine{269 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{270 \}}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{275 \textcolor{comment}{// MESSAGE VIDEO\_STREAM\_INFORMATION UNPACKING}}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277 }
+\DoxyCodeLine{283 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_video\_stream\_information\_get\_camera\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{284 \{}
+\DoxyCodeLine{285     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  14);}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{293 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_video\_stream\_information\_get\_status(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{294 \{}
+\DoxyCodeLine{295     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  15);}
+\DoxyCodeLine{296 \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{303 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_video\_stream\_information\_get\_framerate(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{304 \{}
+\DoxyCodeLine{305     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  0);}
+\DoxyCodeLine{306 \}}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{313 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_get\_resolution\_h(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{314 \{}
+\DoxyCodeLine{315     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  8);}
+\DoxyCodeLine{316 \}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{323 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_get\_resolution\_v(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{324 \{}
+\DoxyCodeLine{325     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  10);}
+\DoxyCodeLine{326 \}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{333 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_video\_stream\_information\_get\_bitrate(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{334 \{}
+\DoxyCodeLine{335     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  4);}
+\DoxyCodeLine{336 \}}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{343 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_get\_rotation(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{344 \{}
+\DoxyCodeLine{345     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  12);}
+\DoxyCodeLine{346 \}}
+\DoxyCodeLine{347 }
+\DoxyCodeLine{353 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_video\_stream\_information\_get\_uri(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *uri)}
+\DoxyCodeLine{354 \{}
+\DoxyCodeLine{355     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, uri, 230,  16);}
+\DoxyCodeLine{356 \}}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{364 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_video\_stream\_information\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_video\_stream\_information\_t* video\_stream\_information)}
+\DoxyCodeLine{365 \{}
+\DoxyCodeLine{366 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{367     video\_stream\_information-\/>framerate = mavlink\_msg\_video\_stream\_information\_get\_framerate(msg);}
+\DoxyCodeLine{368     video\_stream\_information-\/>bitrate = mavlink\_msg\_video\_stream\_information\_get\_bitrate(msg);}
+\DoxyCodeLine{369     video\_stream\_information-\/>resolution\_h = mavlink\_msg\_video\_stream\_information\_get\_resolution\_h(msg);}
+\DoxyCodeLine{370     video\_stream\_information-\/>resolution\_v = mavlink\_msg\_video\_stream\_information\_get\_resolution\_v(msg);}
+\DoxyCodeLine{371     video\_stream\_information-\/>rotation = mavlink\_msg\_video\_stream\_information\_get\_rotation(msg);}
+\DoxyCodeLine{372     video\_stream\_information-\/>camera\_id = mavlink\_msg\_video\_stream\_information\_get\_camera\_id(msg);}
+\DoxyCodeLine{373     video\_stream\_information-\/>status = mavlink\_msg\_video\_stream\_information\_get\_status(msg);}
+\DoxyCodeLine{374     mavlink\_msg\_video\_stream\_information\_get\_uri(msg, video\_stream\_information-\/>uri);}
+\DoxyCodeLine{375 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{376         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}};}
+\DoxyCodeLine{377         memset(video\_stream\_information, 0, \mbox{\hyperlink{mavlink__msg__video__stream__information_8h_a0c130cbcd4bc9c93790f5b6c92393286}{MAVLINK\_MSG\_ID\_VIDEO\_STREAM\_INFORMATION\_LEN}});}
+\DoxyCodeLine{378     memcpy(video\_stream\_information, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{379 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{380 \}}
+
+\end{DoxyCode}

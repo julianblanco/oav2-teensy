@@ -1,0 +1,202 @@
+\hypertarget{_adafruit___sensor_8h}{}\doxysection{lib/\+Adafruit\+\_\+\+Unified\+\_\+\+Sensor/\+Adafruit\+\_\+\+Sensor.h File Reference}
+\label{_adafruit___sensor_8h}\index{lib/Adafruit\_Unified\_Sensor/Adafruit\_Sensor.h@{lib/Adafruit\_Unified\_Sensor/Adafruit\_Sensor.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsensors__vec__t}{sensors\+\_\+vec\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structsensors__color__t}{sensors\+\_\+color\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structsensors__event__t}{sensors\+\_\+event\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structsensor__t}{sensor\+\_\+t}}
+\item 
+class \mbox{\hyperlink{class_adafruit___sensor}{Adafruit\+\_\+\+Sensor}}
+\begin{DoxyCompactList}\small\item\em Common sensor interface to unify various sensors. Intentionally modeled after sensors.\+h in the Android API\+: \href{https://github.com/android/platform_hardware_libhardware/blob/master/include/hardware/sensors.h}{\texttt{ https\+://github.\+com/android/platform\+\_\+hardware\+\_\+libhardware/blob/master/include/hardware/sensors.\+h}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_adf2baeb9499e0aae21699e2345fd51bd}{SENSORS\+\_\+\+GRAVITY\+\_\+\+EARTH}}~(9.\+80665\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_a4c728b30ce5e9479e6fa974f6d10d03a}{SENSORS\+\_\+\+GRAVITY\+\_\+\+MOON}}~(1.\+6\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_a9520402939315a287a0ab085f6b21a5b}{SENSORS\+\_\+\+GRAVITY\+\_\+\+SUN}}~(275.\+0F)
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_ab70b42e9de016c42388ff5d293b75712}{SENSORS\+\_\+\+GRAVITY\+\_\+\+STANDARD}}~(\mbox{\hyperlink{_adafruit___sensor_8h_adf2baeb9499e0aae21699e2345fd51bd}{SENSORS\+\_\+\+GRAVITY\+\_\+\+EARTH}})
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_a23db0dca57c605a25ddfcdc0e349fd27}{SENSORS\+\_\+\+MAGFIELD\+\_\+\+EARTH\+\_\+\+MAX}}~  (60.\+0F)
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_a7a7347c9dd68408657c181e16d75472d}{SENSORS\+\_\+\+MAGFIELD\+\_\+\+EARTH\+\_\+\+MIN}}~  (30.\+0F)
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_ad12eded4725631bfb3a662e743fe3bfb}{SENSORS\+\_\+\+PRESSURE\+\_\+\+SEALEVELHPA}}~  (1013.\+25\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_a54bd9549d7c88977f8769fac7be4578d}{SENSORS\+\_\+\+DPS\+\_\+\+TO\+\_\+\+RADS}}~  (0.\+017453293\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_afc1d6f5819b7a1e3436af6948f5bcc80}{SENSORS\+\_\+\+RADS\+\_\+\+TO\+\_\+\+DPS}}~  (57.\+29577793\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})
+\item 
+\#define \mbox{\hyperlink{_adafruit___sensor_8h_ac6c93a70e05c30bcd40f68a0621b8d52}{SENSORS\+\_\+\+GAUSS\+\_\+\+TO\+\_\+\+MICROTESLA}}~  (100)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643}{sensors\+\_\+type\+\_\+t}} \{ \newline
+\mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643abd9779b04292b5e8054485b10fccb99c}{SENSOR\+\_\+\+TYPE\+\_\+\+ACCELEROMETER}} = (1)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a74438e3f4f1f8cb1e97ccebbd1096fe8}{SENSOR\+\_\+\+TYPE\+\_\+\+MAGNETIC\+\_\+\+FIELD}} = (2)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}{SENSOR\+\_\+\+TYPE\+\_\+\+ORIENTATION}} = (3)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643adc01250dcba5642d294f74ba4d115c28}{SENSOR\+\_\+\+TYPE\+\_\+\+GYROSCOPE}} = (4)
+, \newline
+\mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae19c28b874a4ef6706d44af6f373f743}{SENSOR\+\_\+\+TYPE\+\_\+\+LIGHT}} = (5)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a81634a16935829065d399d686c44ad86}{SENSOR\+\_\+\+TYPE\+\_\+\+PRESSURE}} = (6)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a47912cab9ef79bbe4eb20538a88ce59c}{SENSOR\+\_\+\+TYPE\+\_\+\+PROXIMITY}} = (8)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac7d364262029cc21bc865577d5288a1e}{SENSOR\+\_\+\+TYPE\+\_\+\+GRAVITY}} = (9)
+, \newline
+\mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a914a1f090dcc61586318fd4eb4cb1384}{SENSOR\+\_\+\+TYPE\+\_\+\+LINEAR\+\_\+\+ACCELERATION}}
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac407aca03c7ce72ea55e52f40477561b}{SENSOR\+\_\+\+TYPE\+\_\+\+ROTATION\+\_\+\+VECTOR}} = (11)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ad9ebf0d3f835c55738b4d4e915768875}{SENSOR\+\_\+\+TYPE\+\_\+\+RELATIVE\+\_\+\+HUMIDITY}} = (12)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a7d9456395f361833de2ee3ef12a1af2a}{SENSOR\+\_\+\+TYPE\+\_\+\+AMBIENT\+\_\+\+TEMPERATURE}} = (13)
+, \newline
+\mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aea45b19cb567b213ad9e4d703ef00ac0}{SENSOR\+\_\+\+TYPE\+\_\+\+OBJECT\+\_\+\+TEMPERATURE}} = (14)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aac4a182cee3a61ab359afa073b352b02}{SENSOR\+\_\+\+TYPE\+\_\+\+VOLTAGE}} = (15)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac822523f1553bc62459b208283e27fa5}{SENSOR\+\_\+\+TYPE\+\_\+\+CURRENT}} = (16)
+, \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae41c2d95d02910a0e15266a9f4f1ed63}{SENSOR\+\_\+\+TYPE\+\_\+\+COLOR}} = (17)
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_adafruit___sensor_8h_a54bd9549d7c88977f8769fac7be4578d}\label{_adafruit___sensor_8h_a54bd9549d7c88977f8769fac7be4578d}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_DPS\_TO\_RADS@{SENSORS\_DPS\_TO\_RADS}}
+\index{SENSORS\_DPS\_TO\_RADS@{SENSORS\_DPS\_TO\_RADS}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_DPS\_TO\_RADS}{SENSORS\_DPS\_TO\_RADS}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+DPS\+\_\+\+TO\+\_\+\+RADS~  (0.\+017453293\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})}
+
+Degrees/s to rad/s multiplier \textbackslash{} \mbox{\Hypertarget{_adafruit___sensor_8h_ac6c93a70e05c30bcd40f68a0621b8d52}\label{_adafruit___sensor_8h_ac6c93a70e05c30bcd40f68a0621b8d52}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_GAUSS\_TO\_MICROTESLA@{SENSORS\_GAUSS\_TO\_MICROTESLA}}
+\index{SENSORS\_GAUSS\_TO\_MICROTESLA@{SENSORS\_GAUSS\_TO\_MICROTESLA}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_GAUSS\_TO\_MICROTESLA}{SENSORS\_GAUSS\_TO\_MICROTESLA}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+GAUSS\+\_\+\+TO\+\_\+\+MICROTESLA~  (100)}
+
+Gauss to micro-\/\+Tesla multiplier \mbox{\Hypertarget{_adafruit___sensor_8h_adf2baeb9499e0aae21699e2345fd51bd}\label{_adafruit___sensor_8h_adf2baeb9499e0aae21699e2345fd51bd}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_GRAVITY\_EARTH@{SENSORS\_GRAVITY\_EARTH}}
+\index{SENSORS\_GRAVITY\_EARTH@{SENSORS\_GRAVITY\_EARTH}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_GRAVITY\_EARTH}{SENSORS\_GRAVITY\_EARTH}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+GRAVITY\+\_\+\+EARTH~(9.\+80665\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})}
+
+Earth\textquotesingle{}s gravity in m/s$^\wedge$2 \mbox{\Hypertarget{_adafruit___sensor_8h_a4c728b30ce5e9479e6fa974f6d10d03a}\label{_adafruit___sensor_8h_a4c728b30ce5e9479e6fa974f6d10d03a}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_GRAVITY\_MOON@{SENSORS\_GRAVITY\_MOON}}
+\index{SENSORS\_GRAVITY\_MOON@{SENSORS\_GRAVITY\_MOON}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_GRAVITY\_MOON}{SENSORS\_GRAVITY\_MOON}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+GRAVITY\+\_\+\+MOON~(1.\+6\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})}
+
+The moon\textquotesingle{}s gravity in m/s$^\wedge$2 \mbox{\Hypertarget{_adafruit___sensor_8h_ab70b42e9de016c42388ff5d293b75712}\label{_adafruit___sensor_8h_ab70b42e9de016c42388ff5d293b75712}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_GRAVITY\_STANDARD@{SENSORS\_GRAVITY\_STANDARD}}
+\index{SENSORS\_GRAVITY\_STANDARD@{SENSORS\_GRAVITY\_STANDARD}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_GRAVITY\_STANDARD}{SENSORS\_GRAVITY\_STANDARD}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+GRAVITY\+\_\+\+STANDARD~(\mbox{\hyperlink{_adafruit___sensor_8h_adf2baeb9499e0aae21699e2345fd51bd}{SENSORS\+\_\+\+GRAVITY\+\_\+\+EARTH}})}
+
+\mbox{\Hypertarget{_adafruit___sensor_8h_a9520402939315a287a0ab085f6b21a5b}\label{_adafruit___sensor_8h_a9520402939315a287a0ab085f6b21a5b}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_GRAVITY\_SUN@{SENSORS\_GRAVITY\_SUN}}
+\index{SENSORS\_GRAVITY\_SUN@{SENSORS\_GRAVITY\_SUN}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_GRAVITY\_SUN}{SENSORS\_GRAVITY\_SUN}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+GRAVITY\+\_\+\+SUN~(275.\+0F)}
+
+The sun\textquotesingle{}s gravity in m/s$^\wedge$2 \mbox{\Hypertarget{_adafruit___sensor_8h_a23db0dca57c605a25ddfcdc0e349fd27}\label{_adafruit___sensor_8h_a23db0dca57c605a25ddfcdc0e349fd27}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_MAGFIELD\_EARTH\_MAX@{SENSORS\_MAGFIELD\_EARTH\_MAX}}
+\index{SENSORS\_MAGFIELD\_EARTH\_MAX@{SENSORS\_MAGFIELD\_EARTH\_MAX}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_MAGFIELD\_EARTH\_MAX}{SENSORS\_MAGFIELD\_EARTH\_MAX}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+MAGFIELD\+\_\+\+EARTH\+\_\+\+MAX~  (60.\+0F)}
+
+Maximum magnetic field on Earth\textquotesingle{}s surface \mbox{\Hypertarget{_adafruit___sensor_8h_a7a7347c9dd68408657c181e16d75472d}\label{_adafruit___sensor_8h_a7a7347c9dd68408657c181e16d75472d}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_MAGFIELD\_EARTH\_MIN@{SENSORS\_MAGFIELD\_EARTH\_MIN}}
+\index{SENSORS\_MAGFIELD\_EARTH\_MIN@{SENSORS\_MAGFIELD\_EARTH\_MIN}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_MAGFIELD\_EARTH\_MIN}{SENSORS\_MAGFIELD\_EARTH\_MIN}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+MAGFIELD\+\_\+\+EARTH\+\_\+\+MIN~  (30.\+0F)}
+
+Minimum magnetic field on Earth\textquotesingle{}s surface \mbox{\Hypertarget{_adafruit___sensor_8h_ad12eded4725631bfb3a662e743fe3bfb}\label{_adafruit___sensor_8h_ad12eded4725631bfb3a662e743fe3bfb}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_PRESSURE\_SEALEVELHPA@{SENSORS\_PRESSURE\_SEALEVELHPA}}
+\index{SENSORS\_PRESSURE\_SEALEVELHPA@{SENSORS\_PRESSURE\_SEALEVELHPA}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_PRESSURE\_SEALEVELHPA}{SENSORS\_PRESSURE\_SEALEVELHPA}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+PRESSURE\+\_\+\+SEALEVELHPA~  (1013.\+25\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})}
+
+Average sea level pressure is 1013.\+25 h\+Pa \mbox{\Hypertarget{_adafruit___sensor_8h_afc1d6f5819b7a1e3436af6948f5bcc80}\label{_adafruit___sensor_8h_afc1d6f5819b7a1e3436af6948f5bcc80}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSORS\_RADS\_TO\_DPS@{SENSORS\_RADS\_TO\_DPS}}
+\index{SENSORS\_RADS\_TO\_DPS@{SENSORS\_RADS\_TO\_DPS}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{SENSORS\_RADS\_TO\_DPS}{SENSORS\_RADS\_TO\_DPS}}
+{\footnotesize\ttfamily \#define SENSORS\+\_\+\+RADS\+\_\+\+TO\+\_\+\+DPS~  (57.\+29577793\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}})}
+
+Rad/s to degrees/s multiplier 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643}} 
+\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!sensors\_type\_t@{sensors\_type\_t}}
+\index{sensors\_type\_t@{sensors\_type\_t}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}
+\doxysubsubsection{\texorpdfstring{sensors\_type\_t}{sensors\_type\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643}{sensors\+\_\+type\+\_\+t}}}
+
+Sensor types \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_ACCELEROMETER@{SENSOR\_TYPE\_ACCELEROMETER}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_ACCELEROMETER@{SENSOR\_TYPE\_ACCELEROMETER}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643abd9779b04292b5e8054485b10fccb99c}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643abd9779b04292b5e8054485b10fccb99c}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+ACCELEROMETER&Gravity + linear acceleration \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_MAGNETIC\_FIELD@{SENSOR\_TYPE\_MAGNETIC\_FIELD}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_MAGNETIC\_FIELD@{SENSOR\_TYPE\_MAGNETIC\_FIELD}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a74438e3f4f1f8cb1e97ccebbd1096fe8}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a74438e3f4f1f8cb1e97ccebbd1096fe8}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+MAGNETIC\+\_\+\+FIELD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_ORIENTATION@{SENSOR\_TYPE\_ORIENTATION}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_ORIENTATION@{SENSOR\_TYPE\_ORIENTATION}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+ORIENTATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_GYROSCOPE@{SENSOR\_TYPE\_GYROSCOPE}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_GYROSCOPE@{SENSOR\_TYPE\_GYROSCOPE}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643adc01250dcba5642d294f74ba4d115c28}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643adc01250dcba5642d294f74ba4d115c28}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+GYROSCOPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_LIGHT@{SENSOR\_TYPE\_LIGHT}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_LIGHT@{SENSOR\_TYPE\_LIGHT}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae19c28b874a4ef6706d44af6f373f743}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae19c28b874a4ef6706d44af6f373f743}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+LIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_PRESSURE@{SENSOR\_TYPE\_PRESSURE}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_PRESSURE@{SENSOR\_TYPE\_PRESSURE}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a81634a16935829065d399d686c44ad86}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a81634a16935829065d399d686c44ad86}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+PRESSURE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_PROXIMITY@{SENSOR\_TYPE\_PROXIMITY}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_PROXIMITY@{SENSOR\_TYPE\_PROXIMITY}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a47912cab9ef79bbe4eb20538a88ce59c}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a47912cab9ef79bbe4eb20538a88ce59c}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+PROXIMITY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_GRAVITY@{SENSOR\_TYPE\_GRAVITY}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_GRAVITY@{SENSOR\_TYPE\_GRAVITY}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac7d364262029cc21bc865577d5288a1e}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac7d364262029cc21bc865577d5288a1e}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+GRAVITY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_LINEAR\_ACCELERATION@{SENSOR\_TYPE\_LINEAR\_ACCELERATION}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_LINEAR\_ACCELERATION@{SENSOR\_TYPE\_LINEAR\_ACCELERATION}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a914a1f090dcc61586318fd4eb4cb1384}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a914a1f090dcc61586318fd4eb4cb1384}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+LINEAR\+\_\+\+ACCELERATION&Acceleration not including gravity \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_ROTATION\_VECTOR@{SENSOR\_TYPE\_ROTATION\_VECTOR}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_ROTATION\_VECTOR@{SENSOR\_TYPE\_ROTATION\_VECTOR}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac407aca03c7ce72ea55e52f40477561b}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac407aca03c7ce72ea55e52f40477561b}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+ROTATION\+\_\+\+VECTOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_RELATIVE\_HUMIDITY@{SENSOR\_TYPE\_RELATIVE\_HUMIDITY}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_RELATIVE\_HUMIDITY@{SENSOR\_TYPE\_RELATIVE\_HUMIDITY}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ad9ebf0d3f835c55738b4d4e915768875}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ad9ebf0d3f835c55738b4d4e915768875}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+RELATIVE\+\_\+\+HUMIDITY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_AMBIENT\_TEMPERATURE@{SENSOR\_TYPE\_AMBIENT\_TEMPERATURE}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_AMBIENT\_TEMPERATURE@{SENSOR\_TYPE\_AMBIENT\_TEMPERATURE}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a7d9456395f361833de2ee3ef12a1af2a}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a7d9456395f361833de2ee3ef12a1af2a}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+AMBIENT\+\_\+\+TEMPERATURE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_OBJECT\_TEMPERATURE@{SENSOR\_TYPE\_OBJECT\_TEMPERATURE}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_OBJECT\_TEMPERATURE@{SENSOR\_TYPE\_OBJECT\_TEMPERATURE}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aea45b19cb567b213ad9e4d703ef00ac0}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aea45b19cb567b213ad9e4d703ef00ac0}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+OBJECT\+\_\+\+TEMPERATURE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_VOLTAGE@{SENSOR\_TYPE\_VOLTAGE}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_VOLTAGE@{SENSOR\_TYPE\_VOLTAGE}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aac4a182cee3a61ab359afa073b352b02}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aac4a182cee3a61ab359afa073b352b02}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+VOLTAGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_CURRENT@{SENSOR\_TYPE\_CURRENT}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_CURRENT@{SENSOR\_TYPE\_CURRENT}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac822523f1553bc62459b208283e27fa5}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac822523f1553bc62459b208283e27fa5}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+CURRENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SENSOR\_TYPE\_COLOR@{SENSOR\_TYPE\_COLOR}!Adafruit\_Sensor.h@{Adafruit\_Sensor.h}}\index{Adafruit\_Sensor.h@{Adafruit\_Sensor.h}!SENSOR\_TYPE\_COLOR@{SENSOR\_TYPE\_COLOR}}}\mbox{\Hypertarget{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae41c2d95d02910a0e15266a9f4f1ed63}\label{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae41c2d95d02910a0e15266a9f4f1ed63}} 
+SENSOR\+\_\+\+TYPE\+\_\+\+COLOR&\\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,107 @@
+\hypertarget{mavlink__msg__gps__inject__data_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+gps\+\_\+inject\+\_\+data.h File Reference}
+\label{mavlink__msg__gps__inject__data_8h}\index{lib/common/mavlink\_msg\_gps\_inject\_data.h@{lib/common/mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA}}~123
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+LEN}}~113
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+MIN\+\_\+\+LEN}}~113
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a487b0e87c513cae253aaa773b7866fd9}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+123\+\_\+\+LEN}}~113
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a5b10cfe049b3bfa7093ab3ce594ca764}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+123\+\_\+\+MIN\+\_\+\+LEN}}~113
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+CRC}}~250
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_af2fd5bcb035ab396cbe5fb9785d74785}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+123\+\_\+\+CRC}}~250
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a9f8c761337103a2a930d5f6c735fb539}{MAVLINK\+\_\+\+MSG\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+FIELD\+\_\+\+DATA\+\_\+\+LEN}}~110
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a11a5e43b76f04fef5f292ef330548d55}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a033336ca89877a6badfb7ed0a73d699d}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+gps\+\_\+inject\+\_\+data\+\_\+t \{ uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;uint8\+\_\+t len;uint8\+\_\+t data\mbox{[}110\mbox{]};\}) mavlink\+\_\+gps\+\_\+inject\+\_\+data\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a11a5e43b76f04fef5f292ef330548d55}\label{mavlink__msg__gps__inject__data_8h_a11a5e43b76f04fef5f292ef330548d55}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA@{MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA}}
+\index{MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA@{MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA}{MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}GPS\_INJECT\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{    4, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}target\_system"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 0, offsetof(mavlink\_gps\_inject\_data\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}target\_component"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 1, offsetof(mavlink\_gps\_inject\_data\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}len"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 2, offsetof(mavlink\_gps\_inject\_data\_t, len) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}data"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 110, 3, offsetof(mavlink\_gps\_inject\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a9f8c761337103a2a930d5f6c735fb539}\label{mavlink__msg__gps__inject__data_8h_a9f8c761337103a2a930d5f6c735fb539}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN@{MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN}}
+\index{MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN@{MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN}{MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+FIELD\+\_\+\+DATA\+\_\+\+LEN~110}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_af2fd5bcb035ab396cbe5fb9785d74785}\label{mavlink__msg__gps__inject__data_8h_af2fd5bcb035ab396cbe5fb9785d74785}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_123\_CRC@{MAVLINK\_MSG\_ID\_123\_CRC}}
+\index{MAVLINK\_MSG\_ID\_123\_CRC@{MAVLINK\_MSG\_ID\_123\_CRC}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_123\_CRC}{MAVLINK\_MSG\_ID\_123\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+123\+\_\+\+CRC~250}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a487b0e87c513cae253aaa773b7866fd9}\label{mavlink__msg__gps__inject__data_8h_a487b0e87c513cae253aaa773b7866fd9}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_123\_LEN@{MAVLINK\_MSG\_ID\_123\_LEN}}
+\index{MAVLINK\_MSG\_ID\_123\_LEN@{MAVLINK\_MSG\_ID\_123\_LEN}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_123\_LEN}{MAVLINK\_MSG\_ID\_123\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+123\+\_\+\+LEN~113}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a5b10cfe049b3bfa7093ab3ce594ca764}\label{mavlink__msg__gps__inject__data_8h_a5b10cfe049b3bfa7093ab3ce594ca764}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_123\_MIN\_LEN@{MAVLINK\_MSG\_ID\_123\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_123\_MIN\_LEN@{MAVLINK\_MSG\_ID\_123\_MIN\_LEN}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_123\_MIN\_LEN}{MAVLINK\_MSG\_ID\_123\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+123\+\_\+\+MIN\+\_\+\+LEN~113}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}\label{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}
+\index{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA~123}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}\label{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}}
+\index{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+CRC~250}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}\label{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}
+\index{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+LEN~113}
+
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}\label{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN@{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GPS\+\_\+\+INJECT\+\_\+\+DATA\+\_\+\+MIN\+\_\+\+LEN~113}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__gps__inject__data_8h_a033336ca89877a6badfb7ed0a73d699d}\label{mavlink__msg__gps__inject__data_8h_a033336ca89877a6badfb7ed0a73d699d}} 
+\index{mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_gps\_inject\_data.h@{mavlink\_msg\_gps\_inject\_data.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+gps\+\_\+inject\+\_\+data\+\_\+t \{ uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;uint8\+\_\+t len;uint8\+\_\+t data\mbox{[}110\mbox{]};\}}]{ }\end{DoxyParamCaption})}
+

@@ -1,0 +1,205 @@
+\hypertarget{mavlink__msg__gps__inject__data_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+gps\+\_\+inject\+\_\+data.\+h}
+\label{mavlink__msg__gps__inject__data_8h_source}\index{lib/common/mavlink\_msg\_gps\_inject\_data.h@{lib/common/mavlink\_msg\_gps\_inject\_data.h}}
+\mbox{\hyperlink{mavlink__msg__gps__inject__data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE GPS\_INJECT\_DATA PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA 123}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a033336ca89877a6badfb7ed0a73d699d}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_gps\_inject\_data\_t \{}
+\DoxyCodeLine{8  uint8\_t target\_system; \textcolor{comment}{/*<  System ID*/}}
+\DoxyCodeLine{9  uint8\_t target\_component; \textcolor{comment}{/*<  Component ID*/}}
+\DoxyCodeLine{10  uint8\_t len; \textcolor{comment}{/*< [bytes] data length*/}}
+\DoxyCodeLine{11  uint8\_t data[110]; \textcolor{comment}{/*<  raw data (110 is enough for 12 satellites of RTCMv2)*/}}
+\DoxyCodeLine{12 \}) mavlink\_gps\_inject\_data\_t;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN 113}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN 113}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_123\_LEN 113}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_123\_MIN\_LEN 113}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC 250}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_123\_CRC 250}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_INJECT\_DATA\_FIELD\_DATA\_LEN 110}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{    123, \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    "{}GPS\_INJECT\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{28     4, \(\backslash\)}
+\DoxyCodeLine{29     \{  \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 0, offsetof(mavlink\_gps\_inject\_data\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{30          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 1, offsetof(mavlink\_gps\_inject\_data\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}len"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 2, offsetof(mavlink\_gps\_inject\_data\_t, len) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 110, 3, offsetof(mavlink\_gps\_inject\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{33          \} \(\backslash\)}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_INJECT\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    "{}GPS\_INJECT\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{38     4, \(\backslash\)}
+\DoxyCodeLine{39     \{  \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 0, offsetof(mavlink\_gps\_inject\_data\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 1, offsetof(mavlink\_gps\_inject\_data\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}len"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 2, offsetof(mavlink\_gps\_inject\_data\_t, len) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 110, 3, offsetof(mavlink\_gps\_inject\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{43          \} \(\backslash\)}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{59 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_inject\_data\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{60                                uint8\_t target\_system, uint8\_t target\_component, uint8\_t len, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}];}
+\DoxyCodeLine{64     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, target\_system);}
+\DoxyCodeLine{65     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, target\_component);}
+\DoxyCodeLine{66     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, len);}
+\DoxyCodeLine{67     \_mav\_put\_uint8\_t\_array(buf, 3, data, 110);}
+\DoxyCodeLine{68         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}});}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{70     mavlink\_gps\_inject\_data\_t packet;}
+\DoxyCodeLine{71     packet.target\_system = target\_system;}
+\DoxyCodeLine{72     packet.target\_component = target\_component;}
+\DoxyCodeLine{73     packet.len = len;}
+\DoxyCodeLine{74     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*110);}
+\DoxyCodeLine{75         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}});}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}};}
+\DoxyCodeLine{79     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{94 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_inject\_data\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{95                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{96                                    uint8\_t target\_system,uint8\_t target\_component,uint8\_t len,\textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{97 \{}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{99     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}];}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, target\_system);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, target\_component);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, len);}
+\DoxyCodeLine{103     \_mav\_put\_uint8\_t\_array(buf, 3, data, 110);}
+\DoxyCodeLine{104         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}});}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{106     mavlink\_gps\_inject\_data\_t packet;}
+\DoxyCodeLine{107     packet.target\_system = target\_system;}
+\DoxyCodeLine{108     packet.target\_component = target\_component;}
+\DoxyCodeLine{109     packet.len = len;}
+\DoxyCodeLine{110     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*110);}
+\DoxyCodeLine{111         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}});}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}};}
+\DoxyCodeLine{115     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{116 \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{126 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_inject\_data\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_inject\_data\_t* gps\_inject\_data)}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_inject\_data\_pack(system\_id, component\_id, msg, gps\_inject\_data-\/>target\_system, gps\_inject\_data-\/>target\_component, gps\_inject\_data-\/>len, gps\_inject\_data-\/>data);}
+\DoxyCodeLine{129 \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{140 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_inject\_data\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_inject\_data\_t* gps\_inject\_data)}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_inject\_data\_pack\_chan(system\_id, component\_id, chan, msg, gps\_inject\_data-\/>target\_system, gps\_inject\_data-\/>target\_component, gps\_inject\_data-\/>len, gps\_inject\_data-\/>data);}
+\DoxyCodeLine{143 \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_inject\_data\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t target\_system, uint8\_t target\_component, uint8\_t len, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{157 \{}
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{159     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}];}
+\DoxyCodeLine{160     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, target\_system);}
+\DoxyCodeLine{161     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, target\_component);}
+\DoxyCodeLine{162     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, len);}
+\DoxyCodeLine{163     \_mav\_put\_uint8\_t\_array(buf, 3, data, 110);}
+\DoxyCodeLine{164     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{165 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{166     mavlink\_gps\_inject\_data\_t packet;}
+\DoxyCodeLine{167     packet.target\_system = target\_system;}
+\DoxyCodeLine{168     packet.target\_component = target\_component;}
+\DoxyCodeLine{169     packet.len = len;}
+\DoxyCodeLine{170     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*110);}
+\DoxyCodeLine{171     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{173 \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_inject\_data\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_gps\_inject\_data\_t* gps\_inject\_data)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{183     mavlink\_msg\_gps\_inject\_data\_send(chan, gps\_inject\_data-\/>target\_system, gps\_inject\_data-\/>target\_component, gps\_inject\_data-\/>len, gps\_inject\_data-\/>data);}
+\DoxyCodeLine{184 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{185     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)gps\_inject\_data, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{186 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{187 \}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{190 \textcolor{comment}{/*}}
+\DoxyCodeLine{191 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{192 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{193 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{194 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{195 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{196 \textcolor{comment}{ */}}
+\DoxyCodeLine{197 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_inject\_data\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t target\_system, uint8\_t target\_component, uint8\_t len, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{200     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{201     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, target\_system);}
+\DoxyCodeLine{202     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, target\_component);}
+\DoxyCodeLine{203     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, len);}
+\DoxyCodeLine{204     \_mav\_put\_uint8\_t\_array(buf, 3, data, 110);}
+\DoxyCodeLine{205     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{207     mavlink\_gps\_inject\_data\_t *packet = (mavlink\_gps\_inject\_data\_t *)msgbuf;}
+\DoxyCodeLine{208     packet-\/>target\_system = target\_system;}
+\DoxyCodeLine{209     packet-\/>target\_component = target\_component;}
+\DoxyCodeLine{210     packet-\/>len = len;}
+\DoxyCodeLine{211     mav\_array\_memcpy(packet-\/>data, data, \textcolor{keyword}{sizeof}(uint8\_t)*110);}
+\DoxyCodeLine{212     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_ab06721b27a41ed5e5fabef9ba34e60df}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a6541fccf01a46cfa99bd1fd1dec15672}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a21b38dc0f084b0d70d98fee4b466e460}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_CRC}});}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{214 \}}
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{comment}{// MESSAGE GPS\_INJECT\_DATA UNPACKING}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 }
+\DoxyCodeLine{227 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_inject\_data\_get\_target\_system(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  0);}
+\DoxyCodeLine{230 \}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{237 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_inject\_data\_get\_target\_component(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{238 \{}
+\DoxyCodeLine{239     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  1);}
+\DoxyCodeLine{240 \}}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{247 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_inject\_data\_get\_len(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{248 \{}
+\DoxyCodeLine{249     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  2);}
+\DoxyCodeLine{250 \}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{257 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_inject\_data\_get\_data(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *data)}
+\DoxyCodeLine{258 \{}
+\DoxyCodeLine{259     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, data, 110,  3);}
+\DoxyCodeLine{260 \}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{268 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_inject\_data\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_gps\_inject\_data\_t* gps\_inject\_data)}
+\DoxyCodeLine{269 \{}
+\DoxyCodeLine{270 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{271     gps\_inject\_data-\/>target\_system = mavlink\_msg\_gps\_inject\_data\_get\_target\_system(msg);}
+\DoxyCodeLine{272     gps\_inject\_data-\/>target\_component = mavlink\_msg\_gps\_inject\_data\_get\_target\_component(msg);}
+\DoxyCodeLine{273     gps\_inject\_data-\/>len = mavlink\_msg\_gps\_inject\_data\_get\_len(msg);}
+\DoxyCodeLine{274     mavlink\_msg\_gps\_inject\_data\_get\_data(msg, gps\_inject\_data-\/>data);}
+\DoxyCodeLine{275 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{276         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}};}
+\DoxyCodeLine{277         memset(gps\_inject\_data, 0, \mbox{\hyperlink{mavlink__msg__gps__inject__data_8h_a0393f71b52687e941a064357e5361f24}{MAVLINK\_MSG\_ID\_GPS\_INJECT\_DATA\_LEN}});}
+\DoxyCodeLine{278     memcpy(gps\_inject\_data, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{279 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{280 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,278 @@
+\hypertarget{mavlink__types_8h_source}{}\doxysection{mavlink\+\_\+types.\+h}
+\label{mavlink__types_8h_source}\index{lib/mavlink\_types.h@{lib/mavlink\_types.h}}
+\mbox{\hyperlink{mavlink__types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Visual Studio versions before 2010 don't have stdint.h, so we just error out.}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#if (defined \_MSC\_VER) \&\& (\_MSC\_VER < 1600)}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#error "{}The C-\/MAVLink implementation requires Visual Studio 2010 or greater"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CXX\_NAMESPACE}}
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }mavlink \{}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Macro to define packed structures}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#ifdef \_\_GNUC\_\_}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{  \#define MAVPACKED( \_\_Declaration\_\_ ) \_\_Declaration\_\_ \_\_attribute\_\_((packed))}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{  \#define MAVPACKED( \_\_Declaration\_\_ ) \_\_pragma( pack(push, 1) ) \_\_Declaration\_\_ \_\_pragma( pack(pop) )}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{23 \textcolor{comment}{// it is possible to override this, but be careful!}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MAX\_PAYLOAD\_LEN 255 }}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_CORE\_HEADER\_LEN 9 }}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_CORE\_HEADER\_MAVLINK1\_LEN 5 }}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_NUM\_HEADER\_BYTES (MAVLINK\_CORE\_HEADER\_LEN + 1) }}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_NUM\_CHECKSUM\_BYTES 2}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_NUM\_NON\_PAYLOAD\_BYTES (MAVLINK\_NUM\_HEADER\_BYTES + MAVLINK\_NUM\_CHECKSUM\_BYTES)}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_SIGNATURE\_BLOCK\_LEN 13}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define MAVLINK\_MAX\_PACKET\_LEN (MAVLINK\_MAX\_PAYLOAD\_LEN + MAVLINK\_NUM\_NON\_PAYLOAD\_BYTES + MAVLINK\_SIGNATURE\_BLOCK\_LEN) }}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{46 \mbox{\hyperlink{mavlink__types_8h_a3031568875a1ac06ed1bdaec6605f846}{MAVPACKED}}(}
+\DoxyCodeLine{47 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} param\_union \{}
+\DoxyCodeLine{48     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{49         \textcolor{keywordtype}{float} param\_float;}
+\DoxyCodeLine{50         int32\_t param\_int32;}
+\DoxyCodeLine{51         uint32\_t param\_uint32;}
+\DoxyCodeLine{52         int16\_t param\_int16;}
+\DoxyCodeLine{53         uint16\_t param\_uint16;}
+\DoxyCodeLine{54         int8\_t param\_int8;}
+\DoxyCodeLine{55         uint8\_t param\_uint8;}
+\DoxyCodeLine{56         uint8\_t bytes[4];}
+\DoxyCodeLine{57     \};}
+\DoxyCodeLine{58     uint8\_t type;}
+\DoxyCodeLine{59 \}) mavlink\_param\_union\_t;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{75 \mbox{\hyperlink{mavlink__types_8h_a3031568875a1ac06ed1bdaec6605f846}{MAVPACKED}}(}
+\DoxyCodeLine{76 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} param\_union\_extended \{}
+\DoxyCodeLine{77     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{78     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{79         uint8\_t is\_double:1;}
+\DoxyCodeLine{80         uint8\_t mavlink\_type:7;}
+\DoxyCodeLine{81         \textcolor{keyword}{union }\{}
+\DoxyCodeLine{82             \textcolor{keywordtype}{char} c;}
+\DoxyCodeLine{83             uint8\_t uint8;}
+\DoxyCodeLine{84             int8\_t int8;}
+\DoxyCodeLine{85             uint16\_t uint16;}
+\DoxyCodeLine{86             int16\_t int16;}
+\DoxyCodeLine{87             uint32\_t uint32;}
+\DoxyCodeLine{88             int32\_t int32;}
+\DoxyCodeLine{89             \textcolor{keywordtype}{float} f;}
+\DoxyCodeLine{90             uint8\_t align[7];}
+\DoxyCodeLine{91         \};}
+\DoxyCodeLine{92     \};}
+\DoxyCodeLine{93     uint8\_t data[8];}
+\DoxyCodeLine{94     \};}
+\DoxyCodeLine{95 \}) mavlink\_param\_union\_double\_t;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{101 \mbox{\hyperlink{mavlink__types_8h_a3031568875a1ac06ed1bdaec6605f846}{MAVPACKED}}(}
+\DoxyCodeLine{102 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_system \{}
+\DoxyCodeLine{103     uint8\_t sysid;   }
+\DoxyCodeLine{104     uint8\_t compid;  }
+\DoxyCodeLine{105 \}) mavlink\_system\_t;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \mbox{\hyperlink{mavlink__types_8h_a3031568875a1ac06ed1bdaec6605f846}{MAVPACKED}}(}
+\DoxyCodeLine{108 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_message \{}
+\DoxyCodeLine{109     uint16\_t checksum;      }
+\DoxyCodeLine{110     uint8\_t magic;          }
+\DoxyCodeLine{111     uint8\_t len;            }
+\DoxyCodeLine{112     uint8\_t incompat\_flags; }
+\DoxyCodeLine{113     uint8\_t compat\_flags;   }
+\DoxyCodeLine{114     uint8\_t seq;            }
+\DoxyCodeLine{115     uint8\_t sysid;          }
+\DoxyCodeLine{116     uint8\_t compid;         }
+\DoxyCodeLine{117     uint32\_t msgid:24;      }
+\DoxyCodeLine{118     uint64\_t payload64[(\mbox{\hyperlink{mavlink__types_8h_acdb4be921d71a2d1c5b63467c58bd08e}{MAVLINK\_MAX\_PAYLOAD\_LEN}}+\mbox{\hyperlink{mavlink__types_8h_a0c5e0f95542a7073907027c431fa9351}{MAVLINK\_NUM\_CHECKSUM\_BYTES}}+7)/8];}
+\DoxyCodeLine{119     uint8\_t ck[2];          }
+\DoxyCodeLine{120     uint8\_t signature[\mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}}];}
+\DoxyCodeLine{121 \}) mavlink\_message\_t;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{124     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a205452ad3d1ab60bf6df4487957eca90}{MAVLINK\_TYPE\_CHAR}}     = 0,}
+\DoxyCodeLine{125     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}  = 1,}
+\DoxyCodeLine{126     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aadfce75c32e04fc5d552c06e222bc19a}{MAVLINK\_TYPE\_INT8\_T}}   = 2,}
+\DoxyCodeLine{127     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}} = 3,}
+\DoxyCodeLine{128     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}  = 4,}
+\DoxyCodeLine{129     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}} = 5,}
+\DoxyCodeLine{130     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}  = 6,}
+\DoxyCodeLine{131     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}} = 7,}
+\DoxyCodeLine{132     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae88c9564e4c18e4cf5c067db21faf166}{MAVLINK\_TYPE\_INT64\_T}}  = 8,}
+\DoxyCodeLine{133     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}    = 9,}
+\DoxyCodeLine{134     \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4acb93481e0938a2be06955904639bcef4}{MAVLINK\_TYPE\_DOUBLE}}   = 10}
+\DoxyCodeLine{135 \} \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4}{mavlink\_message\_type\_t}};}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#define MAVLINK\_MAX\_FIELDS 64}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__field__info}{\_\_mavlink\_field\_info}} \{}
+\DoxyCodeLine{140     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{struct____mavlink__field__info_a09193c7acc510180ecf6f944381e53c2}{name}};                 \textcolor{comment}{// name of this field}}
+\DoxyCodeLine{141         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{struct____mavlink__field__info_af3fc635b6e03851bb683c0c3d57dfc12}{print\_format}};         \textcolor{comment}{// printing format hint, or NULL}}
+\DoxyCodeLine{142         \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4}{mavlink\_message\_type\_t}} \mbox{\hyperlink{struct____mavlink__field__info_a32f98e7c869ae1567c4ad366c74b6552}{type}};      \textcolor{comment}{// type of this field}}
+\DoxyCodeLine{143         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct____mavlink__field__info_aa3ab268c4176743874c8d05694ed293f}{array\_length}};        \textcolor{comment}{// if non-\/zero, field is an array}}
+\DoxyCodeLine{144         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct____mavlink__field__info_a7156648575e497f112fde78e851dd4d9}{wire\_offset}};         \textcolor{comment}{// offset of each field in the payload}}
+\DoxyCodeLine{145         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct____mavlink__field__info_acb947cd22e51e70e8b5f677b543196ac}{structure\_offset}};    \textcolor{comment}{// offset in a C structure}}
+\DoxyCodeLine{146 \} \mbox{\hyperlink{mavlink__types_8h_afa193cbd8db34d43858260339b1f5625}{mavlink\_field\_info\_t}};}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 \textcolor{comment}{// note that in this structure the order of fields is the order}}
+\DoxyCodeLine{149 \textcolor{comment}{// in the XML file, not necessary the wire order}}
+\DoxyCodeLine{150 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__message__info}{\_\_mavlink\_message\_info}} \{}
+\DoxyCodeLine{151     uint32\_t \mbox{\hyperlink{struct____mavlink__message__info_a4d2150d2bb5fdaa7da1231f3515d8cc4}{msgid}};                                        \textcolor{comment}{// message ID}}
+\DoxyCodeLine{152     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{struct____mavlink__message__info_a5e8b48c51cb8bc44bd844d1c3049ee32}{name}};                                      \textcolor{comment}{// name of the message}}
+\DoxyCodeLine{153     \textcolor{keywordtype}{unsigned} \mbox{\hyperlink{struct____mavlink__message__info_a0c343bcc1f27884e8c2ab875e7efc2e5}{num\_fields}};                                   \textcolor{comment}{// how many fields in this message}}
+\DoxyCodeLine{154     \mbox{\hyperlink{struct____mavlink__field__info}{mavlink\_field\_info\_t}} fields[\mbox{\hyperlink{mavlink__types_8h_a27984b8945d505a56168731dc3cac63a}{MAVLINK\_MAX\_FIELDS}}];       \textcolor{comment}{// field information}}
+\DoxyCodeLine{155 \} \mbox{\hyperlink{mavlink__types_8h_a5fb8850e579f65f333d653a953076896}{mavlink\_message\_info\_t}};}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157 \textcolor{preprocessor}{\#define \_MAV\_PAYLOAD(msg) ((const char *)(\&((msg)-\/>payload64[0])))}}
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#define \_MAV\_PAYLOAD\_NON\_CONST(msg) ((char *)(\&((msg)-\/>payload64[0])))}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{comment}{// checksum is immediately after the payload bytes}}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#define mavlink\_ck\_a(msg) *((msg)-\/>len + (uint8\_t *)\_MAV\_PAYLOAD\_NON\_CONST(msg))}}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#define mavlink\_ck\_b(msg) *(((msg)-\/>len+(uint16\_t)1) + (uint8\_t *)\_MAV\_PAYLOAD\_NON\_CONST(msg))}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{165     \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709cae41095bf35dfe1b8cbf7a683301e449a}{MAVLINK\_COMM\_0}},}
+\DoxyCodeLine{166     \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709ca333615f0071d83f94eb5e259cf03beec}{MAVLINK\_COMM\_1}},}
+\DoxyCodeLine{167     \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709ca86fccd015796023025f884dd9ab9f82c}{MAVLINK\_COMM\_2}},}
+\DoxyCodeLine{168     \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709cade5be55c8319d8ef6e2753449dc4392a}{MAVLINK\_COMM\_3}}}
+\DoxyCodeLine{169 \} \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}};}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171 \textcolor{comment}{/*}}
+\DoxyCodeLine{172 \textcolor{comment}{ * applications can set MAVLINK\_COMM\_NUM\_BUFFERS to the maximum number}}
+\DoxyCodeLine{173 \textcolor{comment}{ * of buffers they will use. If more are used, then the result will be}}
+\DoxyCodeLine{174 \textcolor{comment}{ * a stack overrun}}
+\DoxyCodeLine{175 \textcolor{comment}{ */}}
+\DoxyCodeLine{176 \textcolor{preprocessor}{\#ifndef MAVLINK\_COMM\_NUM\_BUFFERS}}
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#if (defined linux) | (defined \_\_linux) | (defined  \_\_MACH\_\_) | (defined \_WIN32)}}
+\DoxyCodeLine{178 \textcolor{preprocessor}{\# define MAVLINK\_COMM\_NUM\_BUFFERS 16}}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{180 \textcolor{preprocessor}{\# define MAVLINK\_COMM\_NUM\_BUFFERS 4}}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{185     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a939d196b8931cc1955518f4f7a43bfb7}{MAVLINK\_PARSE\_STATE\_UNINIT}}=0,}
+\DoxyCodeLine{186     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}},}
+\DoxyCodeLine{187     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aafe7ca693d7a00daa3ced9c8fe3c0f8b}{MAVLINK\_PARSE\_STATE\_GOT\_STX}},}
+\DoxyCodeLine{188     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a4b9ad9e12be9111207da32d6630d91d7}{MAVLINK\_PARSE\_STATE\_GOT\_LENGTH}},}
+\DoxyCodeLine{189     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a518457f4678af167fae567adbd6beab1}{MAVLINK\_PARSE\_STATE\_GOT\_INCOMPAT\_FLAGS}},}
+\DoxyCodeLine{190     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a76bada2b3d4366042154c7cf7dcb31f8}{MAVLINK\_PARSE\_STATE\_GOT\_COMPAT\_FLAGS}},}
+\DoxyCodeLine{191     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a32d7342759d61c0cbb956aeb09b065cb}{MAVLINK\_PARSE\_STATE\_GOT\_SEQ}},}
+\DoxyCodeLine{192     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a6eff5ca7b6c333bda21347e31cce0430}{MAVLINK\_PARSE\_STATE\_GOT\_SYSID}},}
+\DoxyCodeLine{193     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1abdacceb394b783c6beb689b1f25fb6f6}{MAVLINK\_PARSE\_STATE\_GOT\_COMPID}},}
+\DoxyCodeLine{194     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a1219128bff8717007397ad3957414093}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID1}},}
+\DoxyCodeLine{195     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aa064720fcc66e5393294f6086fe5333f}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID2}},}
+\DoxyCodeLine{196     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a2e59b10e893077c17d4839ab079dc9ea}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID3}},}
+\DoxyCodeLine{197     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a70250545e55394bc86332ff29f82e8bf}{MAVLINK\_PARSE\_STATE\_GOT\_PAYLOAD}},}
+\DoxyCodeLine{198     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a6da96e625309597402e5e97699207469}{MAVLINK\_PARSE\_STATE\_GOT\_CRC1}},}
+\DoxyCodeLine{199     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aae8c53898458dbd2f91e194b99ee8e68}{MAVLINK\_PARSE\_STATE\_GOT\_BAD\_CRC1}},}
+\DoxyCodeLine{200     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a9eb5c868cdc345361a3ecded133af6cb}{MAVLINK\_PARSE\_STATE\_SIGNATURE\_WAIT}}}
+\DoxyCodeLine{201 \} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1}{mavlink\_parse\_state\_t}}; }
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{204     \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a5733fde28d47e85068019eab9d10643e}{MAVLINK\_FRAMING\_INCOMPLETE}}=0,}
+\DoxyCodeLine{205     \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a0d71e3a0df12784f07a8ae12b5efed75}{MAVLINK\_FRAMING\_OK}}=1,}
+\DoxyCodeLine{206     \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a99e415392cf893009bc8262f19ec2954}{MAVLINK\_FRAMING\_BAD\_CRC}}=2,}
+\DoxyCodeLine{207     \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1ab815d4e6060c843954ef41f95add3a0b}{MAVLINK\_FRAMING\_BAD\_SIGNATURE}}=3}
+\DoxyCodeLine{208 \} \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1}{mavlink\_framing\_t}};}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#define MAVLINK\_STATUS\_FLAG\_IN\_MAVLINK1  1 }\textcolor{comment}{// last incoming packet was MAVLink1}}
+\DoxyCodeLine{211 \textcolor{preprocessor}{\#define MAVLINK\_STATUS\_FLAG\_OUT\_MAVLINK1 2 }\textcolor{comment}{// generate MAVLink1 by default}}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#define MAVLINK\_STATUS\_FLAG\_IN\_SIGNED    4 }\textcolor{comment}{// last incoming packet was signed and validated}}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#define MAVLINK\_STATUS\_FLAG\_IN\_BADSIG    8 }\textcolor{comment}{// last incoming packet had a bad signature}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#define MAVLINK\_STX\_MAVLINK1 0xFE          }\textcolor{comment}{// marker for old protocol}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__status}{\_\_mavlink\_status}} \{}
+\DoxyCodeLine{218     uint8\_t \mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}};               }
+\DoxyCodeLine{219     uint8\_t \mbox{\hyperlink{struct____mavlink__status_ae0ceb5a136021ee78c953f2e86d772cb}{buffer\_overrun}};             }
+\DoxyCodeLine{220     uint8\_t \mbox{\hyperlink{struct____mavlink__status_ae7a52aa0c84929dbf181220c689f9ec8}{parse\_error}};                }
+\DoxyCodeLine{221     \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1}{mavlink\_parse\_state\_t}} \mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}};  }
+\DoxyCodeLine{222     uint8\_t \mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}};                 }
+\DoxyCodeLine{223     uint8\_t \mbox{\hyperlink{struct____mavlink__status_affbdd32b3dff8ae35327a79ed6b17646}{current\_rx\_seq}};             }
+\DoxyCodeLine{224     uint8\_t \mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}};             }
+\DoxyCodeLine{225     uint16\_t \mbox{\hyperlink{struct____mavlink__status_aa088f67773cdf9ff541c5880e65cee68}{packet\_rx\_success\_count}};   }
+\DoxyCodeLine{226     uint16\_t \mbox{\hyperlink{struct____mavlink__status_a1a1f510b9484e705c971f20fd1d61912}{packet\_rx\_drop\_count}};      }
+\DoxyCodeLine{227     uint8\_t \mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}};                      }
+\DoxyCodeLine{228     uint8\_t \mbox{\hyperlink{struct____mavlink__status_afbdd26652864ceeccf1155287752496c}{signature\_wait}};             }
+\DoxyCodeLine{229     \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__signing}{\_\_mavlink\_signing}} *\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}};  }
+\DoxyCodeLine{230     \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__signing__streams}{\_\_mavlink\_signing\_streams}} *\mbox{\hyperlink{struct____mavlink__status_ab0e29fe56be92a4bbd722529ac76bd84}{signing\_streams}}; }
+\DoxyCodeLine{231 \} \mbox{\hyperlink{mavlink__types_8h_a5c38023752ad459b76684ebb7c193a40}{mavlink\_status\_t}};}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 \textcolor{comment}{/*}}
+\DoxyCodeLine{234 \textcolor{comment}{  a callback function to allow for accepting unsigned packets}}
+\DoxyCodeLine{235 \textcolor{comment}{ */}}
+\DoxyCodeLine{236 \textcolor{keyword}{typedef} bool (*\mbox{\hyperlink{mavlink__types_8h_ae34bd7a529f7175ab3dcfab0ba5b0c0d}{mavlink\_accept\_unsigned\_t}})(\textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status, uint32\_t msgid);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238 \textcolor{comment}{/*}}
+\DoxyCodeLine{239 \textcolor{comment}{  flags controlling signing}}
+\DoxyCodeLine{240 \textcolor{comment}{ */}}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#define MAVLINK\_SIGNING\_FLAG\_SIGN\_OUTGOING 1    }}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{comment}{/*}}
+\DoxyCodeLine{244 \textcolor{comment}{  state of MAVLink signing for this channel}}
+\DoxyCodeLine{245 \textcolor{comment}{ */}}
+\DoxyCodeLine{246 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__signing}{\_\_mavlink\_signing}} \{}
+\DoxyCodeLine{247     uint8\_t \mbox{\hyperlink{struct____mavlink__signing_a5e08957249da64329f7ee29c1c503516}{flags}};                     }
+\DoxyCodeLine{248     uint8\_t \mbox{\hyperlink{struct____mavlink__signing_a03d44bb3079f7af6924d6868846ccc57}{link\_id}};                   }
+\DoxyCodeLine{249     uint64\_t \mbox{\hyperlink{struct____mavlink__signing_ac6010de27e406777d336935ba93ddac1}{timestamp}};                }
+\DoxyCodeLine{250     uint8\_t secret\_key[32];}
+\DoxyCodeLine{251     \mbox{\hyperlink{mavlink__types_8h_ae34bd7a529f7175ab3dcfab0ba5b0c0d}{mavlink\_accept\_unsigned\_t}} \mbox{\hyperlink{struct____mavlink__signing_a74f675ae2e09c5a793c06d5005cd7d1b}{accept\_unsigned\_callback}};}
+\DoxyCodeLine{252 \} \mbox{\hyperlink{mavlink__types_8h_ad73c564d158d5e14438b734bedded4d3}{mavlink\_signing\_t}};}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254 \textcolor{comment}{/*}}
+\DoxyCodeLine{255 \textcolor{comment}{  timestamp state of each logical signing stream. This needs to be the same structure for all}}
+\DoxyCodeLine{256 \textcolor{comment}{  connections in order to be secure}}
+\DoxyCodeLine{257 \textcolor{comment}{ */}}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#ifndef MAVLINK\_MAX\_SIGNING\_STREAMS}}
+\DoxyCodeLine{259 \textcolor{preprocessor}{\#define MAVLINK\_MAX\_SIGNING\_STREAMS 16}}
+\DoxyCodeLine{260 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{261 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__signing__streams}{\_\_mavlink\_signing\_streams}} \{}
+\DoxyCodeLine{262     uint16\_t \mbox{\hyperlink{struct____mavlink__signing__streams_a21844f3fe728695a8e33a4b003591979}{num\_signing\_streams}};}
+\DoxyCodeLine{263     \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream}{\_\_mavlink\_signing\_stream}} \{}
+\DoxyCodeLine{264         uint8\_t \mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_a460c2c122f9a4350bcbdeaea3e5aa534}{link\_id}};              }
+\DoxyCodeLine{265         uint8\_t \mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_ab8826081c0e1c8635ab2b706e046b4f6}{sysid}};                }
+\DoxyCodeLine{266         uint8\_t \mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_abdeaafd43daa73f208160ac46d510389}{compid}};               }
+\DoxyCodeLine{267         uint8\_t timestamp\_bytes[6];   }
+\DoxyCodeLine{268     \} stream[\mbox{\hyperlink{mavlink__types_8h_aa50fb9588340e4be3b9c17e95494282c}{MAVLINK\_MAX\_SIGNING\_STREAMS}}];}
+\DoxyCodeLine{269 \} \mbox{\hyperlink{mavlink__types_8h_a4a80a6d5162bde2e633eb29a0d5dd26f}{mavlink\_signing\_streams\_t}};}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272 \textcolor{preprocessor}{\#define MAVLINK\_BIG\_ENDIAN 0}}
+\DoxyCodeLine{273 \textcolor{preprocessor}{\#define MAVLINK\_LITTLE\_ENDIAN 1}}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{275 \textcolor{preprocessor}{\#define MAV\_MSG\_ENTRY\_FLAG\_HAVE\_TARGET\_SYSTEM    1}}
+\DoxyCodeLine{276 \textcolor{preprocessor}{\#define MAV\_MSG\_ENTRY\_FLAG\_HAVE\_TARGET\_COMPONENT 2}}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278 \textcolor{comment}{/*}}
+\DoxyCodeLine{279 \textcolor{comment}{  entry in table of information about each message type}}
+\DoxyCodeLine{280 \textcolor{comment}{ */}}
+\DoxyCodeLine{281 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct____mavlink__msg__entry}{\_\_mavlink\_msg\_entry}} \{}
+\DoxyCodeLine{282     uint32\_t \mbox{\hyperlink{struct____mavlink__msg__entry_a9febab81ee60dbd1a91a23a5515cad31}{msgid}};}
+\DoxyCodeLine{283     uint8\_t \mbox{\hyperlink{struct____mavlink__msg__entry_ab85eed6dcef2052cffb9093b4e2fb026}{crc\_extra}};}
+\DoxyCodeLine{284     uint8\_t \mbox{\hyperlink{struct____mavlink__msg__entry_a694a59ebf8db1111bdc87ae20e19e57d}{msg\_len}};}
+\DoxyCodeLine{285     uint8\_t \mbox{\hyperlink{struct____mavlink__msg__entry_a5dd6c81b1631f802139252c6032f0bf3}{flags}};             \textcolor{comment}{// MAV\_MSG\_ENTRY\_FLAG\_*}}
+\DoxyCodeLine{286     uint8\_t \mbox{\hyperlink{struct____mavlink__msg__entry_a4c94154ed0764d8084d67270b1142dfa}{target\_system\_ofs}}; \textcolor{comment}{// payload offset to target\_system, or 0}}
+\DoxyCodeLine{287     uint8\_t \mbox{\hyperlink{struct____mavlink__msg__entry_a08d68ae337d99e053f02cb248a8d41b8}{target\_component\_ofs}}; \textcolor{comment}{// payload offset to target\_component, or 0}}
+\DoxyCodeLine{288 \} \mbox{\hyperlink{mavlink__types_8h_ad3a7d8839bc22572c77580b55d587b04}{mavlink\_msg\_entry\_t}};}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290 \textcolor{comment}{/*}}
+\DoxyCodeLine{291 \textcolor{comment}{  incompat\_flags bits}}
+\DoxyCodeLine{292 \textcolor{comment}{ */}}
+\DoxyCodeLine{293 \textcolor{preprocessor}{\#define MAVLINK\_IFLAG\_SIGNED  0x01}}
+\DoxyCodeLine{294 \textcolor{preprocessor}{\#define MAVLINK\_IFLAG\_MASK    0x01 }\textcolor{comment}{// mask of all understood bits}}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CXX\_NAMESPACE}}
+\DoxyCodeLine{297 \} \textcolor{comment}{// namespace mavlink}}
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

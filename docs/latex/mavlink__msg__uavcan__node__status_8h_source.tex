@@ -1,0 +1,247 @@
+\hypertarget{mavlink__msg__uavcan__node__status_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+uavcan\+\_\+node\+\_\+status.\+h}
+\label{mavlink__msg__uavcan__node__status_8h_source}\index{lib/common/mavlink\_msg\_uavcan\_node\_status.h@{lib/common/mavlink\_msg\_uavcan\_node\_status.h}}
+\mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE UAVCAN\_NODE\_STATUS PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS 310}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a3f22b2136d61688ee46440d367ba8481}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_uavcan\_node\_status\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint32\_t uptime\_sec; \textcolor{comment}{/*< [s] Time since the start-\/up of the node.*/}}
+\DoxyCodeLine{10  uint16\_t vendor\_specific\_status\_code; \textcolor{comment}{/*<  Vendor-\/specific status information.*/}}
+\DoxyCodeLine{11  uint8\_t health; \textcolor{comment}{/*<  Generalized node health status.*/}}
+\DoxyCodeLine{12  uint8\_t mode; \textcolor{comment}{/*<  Generalized operating mode.*/}}
+\DoxyCodeLine{13  uint8\_t sub\_mode; \textcolor{comment}{/*<  Not used currently.*/}}
+\DoxyCodeLine{14 \}) mavlink\_uavcan\_node\_status\_t;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN 17}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN 17}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_310\_LEN 17}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_310\_MIN\_LEN 17}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC 28}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_310\_CRC 28}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    310, \(\backslash\)}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{    "{}UAVCAN\_NODE\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{30     6, \(\backslash\)}
+\DoxyCodeLine{31     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_uavcan\_node\_status\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}uptime\_sec"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_uavcan\_node\_status\_t, uptime\_sec) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}health"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 14, offsetof(mavlink\_uavcan\_node\_status\_t, health) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}mode"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 15, offsetof(mavlink\_uavcan\_node\_status\_t, mode) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}sub\_mode"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 16, offsetof(mavlink\_uavcan\_node\_status\_t, sub\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}vendor\_specific\_status\_code"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_uavcan\_node\_status\_t, vendor\_specific\_status\_code) \}, \(\backslash\)}
+\DoxyCodeLine{37          \} \(\backslash\)}
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{    "{}UAVCAN\_NODE\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{42     6, \(\backslash\)}
+\DoxyCodeLine{43     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_uavcan\_node\_status\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}uptime\_sec"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_uavcan\_node\_status\_t, uptime\_sec) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}health"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 14, offsetof(mavlink\_uavcan\_node\_status\_t, health) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}mode"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 15, offsetof(mavlink\_uavcan\_node\_status\_t, mode) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}sub\_mode"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 16, offsetof(mavlink\_uavcan\_node\_status\_t, sub\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}vendor\_specific\_status\_code"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_uavcan\_node\_status\_t, vendor\_specific\_status\_code) \}, \(\backslash\)}
+\DoxyCodeLine{49          \} \(\backslash\)}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{67 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_uavcan\_node\_status\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{68                                uint64\_t time\_usec, uint32\_t uptime\_sec, uint8\_t health, uint8\_t mode, uint8\_t sub\_mode, uint16\_t vendor\_specific\_status\_code)}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}];}
+\DoxyCodeLine{72     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{73     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, uptime\_sec);}
+\DoxyCodeLine{74     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, vendor\_specific\_status\_code);}
+\DoxyCodeLine{75     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, health);}
+\DoxyCodeLine{76     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, mode);}
+\DoxyCodeLine{77     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 16, sub\_mode);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}});}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{81     mavlink\_uavcan\_node\_status\_t packet;}
+\DoxyCodeLine{82     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{83     packet.uptime\_sec = uptime\_sec;}
+\DoxyCodeLine{84     packet.vendor\_specific\_status\_code = vendor\_specific\_status\_code;}
+\DoxyCodeLine{85     packet.health = health;}
+\DoxyCodeLine{86     packet.mode = mode;}
+\DoxyCodeLine{87     packet.sub\_mode = sub\_mode;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}});}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}};}
+\DoxyCodeLine{93     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{94 \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{110 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_uavcan\_node\_status\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{111                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{112                                    uint64\_t time\_usec,uint32\_t uptime\_sec,uint8\_t health,uint8\_t mode,uint8\_t sub\_mode,uint16\_t vendor\_specific\_status\_code)}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{115     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}];}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, uptime\_sec);}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, vendor\_specific\_status\_code);}
+\DoxyCodeLine{119     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, health);}
+\DoxyCodeLine{120     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, mode);}
+\DoxyCodeLine{121     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 16, sub\_mode);}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}});}
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{125     mavlink\_uavcan\_node\_status\_t packet;}
+\DoxyCodeLine{126     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{127     packet.uptime\_sec = uptime\_sec;}
+\DoxyCodeLine{128     packet.vendor\_specific\_status\_code = vendor\_specific\_status\_code;}
+\DoxyCodeLine{129     packet.health = health;}
+\DoxyCodeLine{130     packet.mode = mode;}
+\DoxyCodeLine{131     packet.sub\_mode = sub\_mode;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}});}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}};}
+\DoxyCodeLine{137     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{138 \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{148 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_uavcan\_node\_status\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_uavcan\_node\_status\_t* uavcan\_node\_status)}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150     \textcolor{keywordflow}{return} mavlink\_msg\_uavcan\_node\_status\_pack(system\_id, component\_id, msg, uavcan\_node\_status-\/>time\_usec, uavcan\_node\_status-\/>uptime\_sec, uavcan\_node\_status-\/>health, uavcan\_node\_status-\/>mode, uavcan\_node\_status-\/>sub\_mode, uavcan\_node\_status-\/>vendor\_specific\_status\_code);}
+\DoxyCodeLine{151 \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{162 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_uavcan\_node\_status\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_uavcan\_node\_status\_t* uavcan\_node\_status)}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164     \textcolor{keywordflow}{return} mavlink\_msg\_uavcan\_node\_status\_pack\_chan(system\_id, component\_id, chan, msg, uavcan\_node\_status-\/>time\_usec, uavcan\_node\_status-\/>uptime\_sec, uavcan\_node\_status-\/>health, uavcan\_node\_status-\/>mode, uavcan\_node\_status-\/>sub\_mode, uavcan\_node\_status-\/>vendor\_specific\_status\_code);}
+\DoxyCodeLine{165 \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_uavcan\_node\_status\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint32\_t uptime\_sec, uint8\_t health, uint8\_t mode, uint8\_t sub\_mode, uint16\_t vendor\_specific\_status\_code)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{183     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}];}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{185     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, uptime\_sec);}
+\DoxyCodeLine{186     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, vendor\_specific\_status\_code);}
+\DoxyCodeLine{187     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, health);}
+\DoxyCodeLine{188     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, mode);}
+\DoxyCodeLine{189     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 16, sub\_mode);}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{193     mavlink\_uavcan\_node\_status\_t packet;}
+\DoxyCodeLine{194     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{195     packet.uptime\_sec = uptime\_sec;}
+\DoxyCodeLine{196     packet.vendor\_specific\_status\_code = vendor\_specific\_status\_code;}
+\DoxyCodeLine{197     packet.health = health;}
+\DoxyCodeLine{198     packet.mode = mode;}
+\DoxyCodeLine{199     packet.sub\_mode = sub\_mode;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{203 \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{210 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_uavcan\_node\_status\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_uavcan\_node\_status\_t* uavcan\_node\_status)}
+\DoxyCodeLine{211 \{}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{213     mavlink\_msg\_uavcan\_node\_status\_send(chan, uavcan\_node\_status-\/>time\_usec, uavcan\_node\_status-\/>uptime\_sec, uavcan\_node\_status-\/>health, uavcan\_node\_status-\/>mode, uavcan\_node\_status-\/>sub\_mode, uavcan\_node\_status-\/>vendor\_specific\_status\_code);}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{215     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)uavcan\_node\_status, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{216 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{217 \}}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{220 \textcolor{comment}{/*}}
+\DoxyCodeLine{221 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{222 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{223 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{224 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{225 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{226 \textcolor{comment}{ */}}
+\DoxyCodeLine{227 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_uavcan\_node\_status\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint32\_t uptime\_sec, uint8\_t health, uint8\_t mode, uint8\_t sub\_mode, uint16\_t vendor\_specific\_status\_code)}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{230     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{231     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{232     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, uptime\_sec);}
+\DoxyCodeLine{233     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, vendor\_specific\_status\_code);}
+\DoxyCodeLine{234     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 14, health);}
+\DoxyCodeLine{235     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 15, mode);}
+\DoxyCodeLine{236     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 16, sub\_mode);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{240     mavlink\_uavcan\_node\_status\_t *packet = (mavlink\_uavcan\_node\_status\_t *)msgbuf;}
+\DoxyCodeLine{241     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{242     packet-\/>uptime\_sec = uptime\_sec;}
+\DoxyCodeLine{243     packet-\/>vendor\_specific\_status\_code = vendor\_specific\_status\_code;}
+\DoxyCodeLine{244     packet-\/>health = health;}
+\DoxyCodeLine{245     packet-\/>mode = mode;}
+\DoxyCodeLine{246     packet-\/>sub\_mode = sub\_mode;}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}});}
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{250 \}}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \textcolor{comment}{// MESSAGE UAVCAN\_NODE\_STATUS UNPACKING}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257 }
+\DoxyCodeLine{263 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_uavcan\_node\_status\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{264 \{}
+\DoxyCodeLine{265     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{266 \}}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{273 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_uavcan\_node\_status\_get\_uptime\_sec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{274 \{}
+\DoxyCodeLine{275     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  8);}
+\DoxyCodeLine{276 \}}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{283 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_uavcan\_node\_status\_get\_health(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{284 \{}
+\DoxyCodeLine{285     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  14);}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{293 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_uavcan\_node\_status\_get\_mode(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{294 \{}
+\DoxyCodeLine{295     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  15);}
+\DoxyCodeLine{296 \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{303 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_uavcan\_node\_status\_get\_sub\_mode(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{304 \{}
+\DoxyCodeLine{305     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  16);}
+\DoxyCodeLine{306 \}}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{313 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_uavcan\_node\_status\_get\_vendor\_specific\_status\_code(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{314 \{}
+\DoxyCodeLine{315     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  12);}
+\DoxyCodeLine{316 \}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{324 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_uavcan\_node\_status\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_uavcan\_node\_status\_t* uavcan\_node\_status)}
+\DoxyCodeLine{325 \{}
+\DoxyCodeLine{326 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{327     uavcan\_node\_status-\/>time\_usec = mavlink\_msg\_uavcan\_node\_status\_get\_time\_usec(msg);}
+\DoxyCodeLine{328     uavcan\_node\_status-\/>uptime\_sec = mavlink\_msg\_uavcan\_node\_status\_get\_uptime\_sec(msg);}
+\DoxyCodeLine{329     uavcan\_node\_status-\/>vendor\_specific\_status\_code = mavlink\_msg\_uavcan\_node\_status\_get\_vendor\_specific\_status\_code(msg);}
+\DoxyCodeLine{330     uavcan\_node\_status-\/>health = mavlink\_msg\_uavcan\_node\_status\_get\_health(msg);}
+\DoxyCodeLine{331     uavcan\_node\_status-\/>mode = mavlink\_msg\_uavcan\_node\_status\_get\_mode(msg);}
+\DoxyCodeLine{332     uavcan\_node\_status-\/>sub\_mode = mavlink\_msg\_uavcan\_node\_status\_get\_sub\_mode(msg);}
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{334         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}};}
+\DoxyCodeLine{335         memset(uavcan\_node\_status, 0, \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}});}
+\DoxyCodeLine{336     memcpy(uavcan\_node\_status, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{337 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{338 \}}
+
+\end{DoxyCode}

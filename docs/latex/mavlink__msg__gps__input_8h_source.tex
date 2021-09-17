@@ -1,0 +1,451 @@
+\hypertarget{mavlink__msg__gps__input_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+gps\+\_\+input.\+h}
+\label{mavlink__msg__gps__input_8h_source}\index{lib/common/mavlink\_msg\_gps\_input.h@{lib/common/mavlink\_msg\_gps\_input.h}}
+\mbox{\hyperlink{mavlink__msg__gps__input_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE GPS\_INPUT PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INPUT 232}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__gps__input_8h_ab5e7b40404d150aa1355c0b1e11ea7ef}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_gps\_input\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint32\_t time\_week\_ms; \textcolor{comment}{/*< [ms] GPS time (from start of GPS week)*/}}
+\DoxyCodeLine{10  int32\_t lat; \textcolor{comment}{/*< [degE7] Latitude (WGS84)*/}}
+\DoxyCodeLine{11  int32\_t lon; \textcolor{comment}{/*< [degE7] Longitude (WGS84)*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} alt; \textcolor{comment}{/*< [m] Altitude (AMSL). Positive for up.*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} hdop; \textcolor{comment}{/*< [m] GPS HDOP horizontal dilution of position*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} vdop; \textcolor{comment}{/*< [m] GPS VDOP vertical dilution of position*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{float} vn; \textcolor{comment}{/*< [m/s] GPS velocity in NORTH direction in earth-\/fixed NED frame*/}}
+\DoxyCodeLine{16  \textcolor{keywordtype}{float} ve; \textcolor{comment}{/*< [m/s] GPS velocity in EAST direction in earth-\/fixed NED frame*/}}
+\DoxyCodeLine{17  \textcolor{keywordtype}{float} vd; \textcolor{comment}{/*< [m/s] GPS velocity in DOWN direction in earth-\/fixed NED frame*/}}
+\DoxyCodeLine{18  \textcolor{keywordtype}{float} speed\_accuracy; \textcolor{comment}{/*< [m/s] GPS speed accuracy*/}}
+\DoxyCodeLine{19  \textcolor{keywordtype}{float} horiz\_accuracy; \textcolor{comment}{/*< [m] GPS horizontal accuracy*/}}
+\DoxyCodeLine{20  \textcolor{keywordtype}{float} vert\_accuracy; \textcolor{comment}{/*< [m] GPS vertical accuracy*/}}
+\DoxyCodeLine{21  uint16\_t ignore\_flags; \textcolor{comment}{/*<  Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided.*/}}
+\DoxyCodeLine{22  uint16\_t time\_week; \textcolor{comment}{/*<  GPS week number*/}}
+\DoxyCodeLine{23  uint8\_t gps\_id; \textcolor{comment}{/*<  ID of the GPS for multiple GPS inputs*/}}
+\DoxyCodeLine{24  uint8\_t fix\_type; \textcolor{comment}{/*<  0-\/1: no fix, 2: 2D fix, 3: 3D fix. 4: 3D with DGPS. 5: 3D with RTK*/}}
+\DoxyCodeLine{25  uint8\_t satellites\_visible; \textcolor{comment}{/*<  Number of satellites visible.*/}}
+\DoxyCodeLine{26 \}) mavlink\_gps\_input\_t;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN 63}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN 63}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_232\_LEN 63}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_232\_MIN\_LEN 63}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC 151}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_232\_CRC 151}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_INPUT \{ \(\backslash\)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{    232, \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{    "{}GPS\_INPUT"{}}, \(\backslash\)}
+\DoxyCodeLine{42     18, \(\backslash\)}
+\DoxyCodeLine{43     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_gps\_input\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}gps\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 60, offsetof(mavlink\_gps\_input\_t, gps\_id) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}ignore\_flags"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 56, offsetof(mavlink\_gps\_input\_t, ignore\_flags) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}time\_week\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_gps\_input\_t, time\_week\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}time\_week"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 58, offsetof(mavlink\_gps\_input\_t, time\_week) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}fix\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 61, offsetof(mavlink\_gps\_input\_t, fix\_type) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_gps\_input\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 16, offsetof(mavlink\_gps\_input\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}alt"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_gps\_input\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}hdop"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_gps\_input\_t, hdop) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}vdop"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_gps\_input\_t, vdop) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}vn"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_gps\_input\_t, vn) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}ve"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_gps\_input\_t, ve) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}vd"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 40, offsetof(mavlink\_gps\_input\_t, vd) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}speed\_accuracy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 44, offsetof(mavlink\_gps\_input\_t, speed\_accuracy) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}horiz\_accuracy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 48, offsetof(mavlink\_gps\_input\_t, horiz\_accuracy) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}vert\_accuracy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 52, offsetof(mavlink\_gps\_input\_t, vert\_accuracy) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}satellites\_visible"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 62, offsetof(mavlink\_gps\_input\_t, satellites\_visible) \}, \(\backslash\)}
+\DoxyCodeLine{61          \} \(\backslash\)}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_INPUT \{ \(\backslash\)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{    "{}GPS\_INPUT"{}}, \(\backslash\)}
+\DoxyCodeLine{66     18, \(\backslash\)}
+\DoxyCodeLine{67     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_gps\_input\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}gps\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 60, offsetof(mavlink\_gps\_input\_t, gps\_id) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}ignore\_flags"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 56, offsetof(mavlink\_gps\_input\_t, ignore\_flags) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}time\_week\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_gps\_input\_t, time\_week\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}time\_week"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 58, offsetof(mavlink\_gps\_input\_t, time\_week) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}fix\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 61, offsetof(mavlink\_gps\_input\_t, fix\_type) \}, \(\backslash\)}
+\DoxyCodeLine{73          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_gps\_input\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{74          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 16, offsetof(mavlink\_gps\_input\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{75          \{ "{}alt"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_gps\_input\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{76          \{ "{}hdop"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_gps\_input\_t, hdop) \}, \(\backslash\)}
+\DoxyCodeLine{77          \{ "{}vdop"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_gps\_input\_t, vdop) \}, \(\backslash\)}
+\DoxyCodeLine{78          \{ "{}vn"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_gps\_input\_t, vn) \}, \(\backslash\)}
+\DoxyCodeLine{79          \{ "{}ve"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_gps\_input\_t, ve) \}, \(\backslash\)}
+\DoxyCodeLine{80          \{ "{}vd"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 40, offsetof(mavlink\_gps\_input\_t, vd) \}, \(\backslash\)}
+\DoxyCodeLine{81          \{ "{}speed\_accuracy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 44, offsetof(mavlink\_gps\_input\_t, speed\_accuracy) \}, \(\backslash\)}
+\DoxyCodeLine{82          \{ "{}horiz\_accuracy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 48, offsetof(mavlink\_gps\_input\_t, horiz\_accuracy) \}, \(\backslash\)}
+\DoxyCodeLine{83          \{ "{}vert\_accuracy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 52, offsetof(mavlink\_gps\_input\_t, vert\_accuracy) \}, \(\backslash\)}
+\DoxyCodeLine{84          \{ "{}satellites\_visible"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 62, offsetof(mavlink\_gps\_input\_t, satellites\_visible) \}, \(\backslash\)}
+\DoxyCodeLine{85          \} \(\backslash\)}
+\DoxyCodeLine{86 \}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{115 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_input\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{116                                uint64\_t time\_usec, uint8\_t gps\_id, uint16\_t ignore\_flags, uint32\_t time\_week\_ms, uint16\_t time\_week, uint8\_t fix\_type, int32\_t lat, int32\_t lon, \textcolor{keywordtype}{float} alt, \textcolor{keywordtype}{float} hdop, \textcolor{keywordtype}{float} vdop, \textcolor{keywordtype}{float} vn, \textcolor{keywordtype}{float} ve, \textcolor{keywordtype}{float} vd, \textcolor{keywordtype}{float} speed\_accuracy, \textcolor{keywordtype}{float} horiz\_accuracy, \textcolor{keywordtype}{float} vert\_accuracy, uint8\_t satellites\_visible)}
+\DoxyCodeLine{117 \{}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{119     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}];}
+\DoxyCodeLine{120     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{121     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_week\_ms);}
+\DoxyCodeLine{122     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{123     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{124     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, alt);}
+\DoxyCodeLine{125     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, hdop);}
+\DoxyCodeLine{126     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vdop);}
+\DoxyCodeLine{127     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vn);}
+\DoxyCodeLine{128     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ve);}
+\DoxyCodeLine{129     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vd);}
+\DoxyCodeLine{130     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, speed\_accuracy);}
+\DoxyCodeLine{131     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, horiz\_accuracy);}
+\DoxyCodeLine{132     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, vert\_accuracy);}
+\DoxyCodeLine{133     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 56, ignore\_flags);}
+\DoxyCodeLine{134     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 58, time\_week);}
+\DoxyCodeLine{135     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 60, gps\_id);}
+\DoxyCodeLine{136     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 61, fix\_type);}
+\DoxyCodeLine{137     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 62, satellites\_visible);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}});}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{141     mavlink\_gps\_input\_t packet;}
+\DoxyCodeLine{142     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{143     packet.time\_week\_ms = time\_week\_ms;}
+\DoxyCodeLine{144     packet.lat = lat;}
+\DoxyCodeLine{145     packet.lon = lon;}
+\DoxyCodeLine{146     packet.alt = alt;}
+\DoxyCodeLine{147     packet.hdop = hdop;}
+\DoxyCodeLine{148     packet.vdop = vdop;}
+\DoxyCodeLine{149     packet.vn = vn;}
+\DoxyCodeLine{150     packet.ve = ve;}
+\DoxyCodeLine{151     packet.vd = vd;}
+\DoxyCodeLine{152     packet.speed\_accuracy = speed\_accuracy;}
+\DoxyCodeLine{153     packet.horiz\_accuracy = horiz\_accuracy;}
+\DoxyCodeLine{154     packet.vert\_accuracy = vert\_accuracy;}
+\DoxyCodeLine{155     packet.ignore\_flags = ignore\_flags;}
+\DoxyCodeLine{156     packet.time\_week = time\_week;}
+\DoxyCodeLine{157     packet.gps\_id = gps\_id;}
+\DoxyCodeLine{158     packet.fix\_type = fix\_type;}
+\DoxyCodeLine{159     packet.satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}});}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}};}
+\DoxyCodeLine{165     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{166 \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{194 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_input\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{195                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{196                                    uint64\_t time\_usec,uint8\_t gps\_id,uint16\_t ignore\_flags,uint32\_t time\_week\_ms,uint16\_t time\_week,uint8\_t fix\_type,int32\_t lat,int32\_t lon,\textcolor{keywordtype}{float} alt,\textcolor{keywordtype}{float} hdop,\textcolor{keywordtype}{float} vdop,\textcolor{keywordtype}{float} vn,\textcolor{keywordtype}{float} ve,\textcolor{keywordtype}{float} vd,\textcolor{keywordtype}{float} speed\_accuracy,\textcolor{keywordtype}{float} horiz\_accuracy,\textcolor{keywordtype}{float} vert\_accuracy,uint8\_t satellites\_visible)}
+\DoxyCodeLine{197 \{}
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{199     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}];}
+\DoxyCodeLine{200     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{201     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_week\_ms);}
+\DoxyCodeLine{202     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{203     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{204     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, alt);}
+\DoxyCodeLine{205     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, hdop);}
+\DoxyCodeLine{206     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vdop);}
+\DoxyCodeLine{207     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vn);}
+\DoxyCodeLine{208     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ve);}
+\DoxyCodeLine{209     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vd);}
+\DoxyCodeLine{210     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, speed\_accuracy);}
+\DoxyCodeLine{211     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, horiz\_accuracy);}
+\DoxyCodeLine{212     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, vert\_accuracy);}
+\DoxyCodeLine{213     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 56, ignore\_flags);}
+\DoxyCodeLine{214     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 58, time\_week);}
+\DoxyCodeLine{215     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 60, gps\_id);}
+\DoxyCodeLine{216     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 61, fix\_type);}
+\DoxyCodeLine{217     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 62, satellites\_visible);}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}});}
+\DoxyCodeLine{220 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{221     mavlink\_gps\_input\_t packet;}
+\DoxyCodeLine{222     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{223     packet.time\_week\_ms = time\_week\_ms;}
+\DoxyCodeLine{224     packet.lat = lat;}
+\DoxyCodeLine{225     packet.lon = lon;}
+\DoxyCodeLine{226     packet.alt = alt;}
+\DoxyCodeLine{227     packet.hdop = hdop;}
+\DoxyCodeLine{228     packet.vdop = vdop;}
+\DoxyCodeLine{229     packet.vn = vn;}
+\DoxyCodeLine{230     packet.ve = ve;}
+\DoxyCodeLine{231     packet.vd = vd;}
+\DoxyCodeLine{232     packet.speed\_accuracy = speed\_accuracy;}
+\DoxyCodeLine{233     packet.horiz\_accuracy = horiz\_accuracy;}
+\DoxyCodeLine{234     packet.vert\_accuracy = vert\_accuracy;}
+\DoxyCodeLine{235     packet.ignore\_flags = ignore\_flags;}
+\DoxyCodeLine{236     packet.time\_week = time\_week;}
+\DoxyCodeLine{237     packet.gps\_id = gps\_id;}
+\DoxyCodeLine{238     packet.fix\_type = fix\_type;}
+\DoxyCodeLine{239     packet.satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}});}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}};}
+\DoxyCodeLine{245     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{246 \}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{256 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_input\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_input\_t* gps\_input)}
+\DoxyCodeLine{257 \{}
+\DoxyCodeLine{258     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_input\_pack(system\_id, component\_id, msg, gps\_input-\/>time\_usec, gps\_input-\/>gps\_id, gps\_input-\/>ignore\_flags, gps\_input-\/>time\_week\_ms, gps\_input-\/>time\_week, gps\_input-\/>fix\_type, gps\_input-\/>lat, gps\_input-\/>lon, gps\_input-\/>alt, gps\_input-\/>hdop, gps\_input-\/>vdop, gps\_input-\/>vn, gps\_input-\/>ve, gps\_input-\/>vd, gps\_input-\/>speed\_accuracy, gps\_input-\/>horiz\_accuracy, gps\_input-\/>vert\_accuracy, gps\_input-\/>satellites\_visible);}
+\DoxyCodeLine{259 \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{270 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_input\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_input\_t* gps\_input)}
+\DoxyCodeLine{271 \{}
+\DoxyCodeLine{272     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_input\_pack\_chan(system\_id, component\_id, chan, msg, gps\_input-\/>time\_usec, gps\_input-\/>gps\_id, gps\_input-\/>ignore\_flags, gps\_input-\/>time\_week\_ms, gps\_input-\/>time\_week, gps\_input-\/>fix\_type, gps\_input-\/>lat, gps\_input-\/>lon, gps\_input-\/>alt, gps\_input-\/>hdop, gps\_input-\/>vdop, gps\_input-\/>vn, gps\_input-\/>ve, gps\_input-\/>vd, gps\_input-\/>speed\_accuracy, gps\_input-\/>horiz\_accuracy, gps\_input-\/>vert\_accuracy, gps\_input-\/>satellites\_visible);}
+\DoxyCodeLine{273 \}}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_input\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t gps\_id, uint16\_t ignore\_flags, uint32\_t time\_week\_ms, uint16\_t time\_week, uint8\_t fix\_type, int32\_t lat, int32\_t lon, \textcolor{keywordtype}{float} alt, \textcolor{keywordtype}{float} hdop, \textcolor{keywordtype}{float} vdop, \textcolor{keywordtype}{float} vn, \textcolor{keywordtype}{float} ve, \textcolor{keywordtype}{float} vd, \textcolor{keywordtype}{float} speed\_accuracy, \textcolor{keywordtype}{float} horiz\_accuracy, \textcolor{keywordtype}{float} vert\_accuracy, uint8\_t satellites\_visible)}
+\DoxyCodeLine{301 \{}
+\DoxyCodeLine{302 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{303     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}];}
+\DoxyCodeLine{304     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{305     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_week\_ms);}
+\DoxyCodeLine{306     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{307     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{308     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, alt);}
+\DoxyCodeLine{309     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, hdop);}
+\DoxyCodeLine{310     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vdop);}
+\DoxyCodeLine{311     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vn);}
+\DoxyCodeLine{312     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ve);}
+\DoxyCodeLine{313     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vd);}
+\DoxyCodeLine{314     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, speed\_accuracy);}
+\DoxyCodeLine{315     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, horiz\_accuracy);}
+\DoxyCodeLine{316     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, vert\_accuracy);}
+\DoxyCodeLine{317     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 56, ignore\_flags);}
+\DoxyCodeLine{318     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 58, time\_week);}
+\DoxyCodeLine{319     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 60, gps\_id);}
+\DoxyCodeLine{320     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 61, fix\_type);}
+\DoxyCodeLine{321     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 62, satellites\_visible);}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}}, buf, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{324 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{325     mavlink\_gps\_input\_t packet;}
+\DoxyCodeLine{326     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{327     packet.time\_week\_ms = time\_week\_ms;}
+\DoxyCodeLine{328     packet.lat = lat;}
+\DoxyCodeLine{329     packet.lon = lon;}
+\DoxyCodeLine{330     packet.alt = alt;}
+\DoxyCodeLine{331     packet.hdop = hdop;}
+\DoxyCodeLine{332     packet.vdop = vdop;}
+\DoxyCodeLine{333     packet.vn = vn;}
+\DoxyCodeLine{334     packet.ve = ve;}
+\DoxyCodeLine{335     packet.vd = vd;}
+\DoxyCodeLine{336     packet.speed\_accuracy = speed\_accuracy;}
+\DoxyCodeLine{337     packet.horiz\_accuracy = horiz\_accuracy;}
+\DoxyCodeLine{338     packet.vert\_accuracy = vert\_accuracy;}
+\DoxyCodeLine{339     packet.ignore\_flags = ignore\_flags;}
+\DoxyCodeLine{340     packet.time\_week = time\_week;}
+\DoxyCodeLine{341     packet.gps\_id = gps\_id;}
+\DoxyCodeLine{342     packet.fix\_type = fix\_type;}
+\DoxyCodeLine{343     packet.satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{346 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{347 \}}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{354 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_input\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_gps\_input\_t* gps\_input)}
+\DoxyCodeLine{355 \{}
+\DoxyCodeLine{356 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{357     mavlink\_msg\_gps\_input\_send(chan, gps\_input-\/>time\_usec, gps\_input-\/>gps\_id, gps\_input-\/>ignore\_flags, gps\_input-\/>time\_week\_ms, gps\_input-\/>time\_week, gps\_input-\/>fix\_type, gps\_input-\/>lat, gps\_input-\/>lon, gps\_input-\/>alt, gps\_input-\/>hdop, gps\_input-\/>vdop, gps\_input-\/>vn, gps\_input-\/>ve, gps\_input-\/>vd, gps\_input-\/>speed\_accuracy, gps\_input-\/>horiz\_accuracy, gps\_input-\/>vert\_accuracy, gps\_input-\/>satellites\_visible);}
+\DoxyCodeLine{358 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{359     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)gps\_input, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{360 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{361 \}}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{364 \textcolor{comment}{/*}}
+\DoxyCodeLine{365 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{366 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{367 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{368 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{369 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{370 \textcolor{comment}{ */}}
+\DoxyCodeLine{371 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_input\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t gps\_id, uint16\_t ignore\_flags, uint32\_t time\_week\_ms, uint16\_t time\_week, uint8\_t fix\_type, int32\_t lat, int32\_t lon, \textcolor{keywordtype}{float} alt, \textcolor{keywordtype}{float} hdop, \textcolor{keywordtype}{float} vdop, \textcolor{keywordtype}{float} vn, \textcolor{keywordtype}{float} ve, \textcolor{keywordtype}{float} vd, \textcolor{keywordtype}{float} speed\_accuracy, \textcolor{keywordtype}{float} horiz\_accuracy, \textcolor{keywordtype}{float} vert\_accuracy, uint8\_t satellites\_visible)}
+\DoxyCodeLine{372 \{}
+\DoxyCodeLine{373 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{374     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{375     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{376     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_week\_ms);}
+\DoxyCodeLine{377     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{378     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{379     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, alt);}
+\DoxyCodeLine{380     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, hdop);}
+\DoxyCodeLine{381     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vdop);}
+\DoxyCodeLine{382     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vn);}
+\DoxyCodeLine{383     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ve);}
+\DoxyCodeLine{384     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vd);}
+\DoxyCodeLine{385     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, speed\_accuracy);}
+\DoxyCodeLine{386     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, horiz\_accuracy);}
+\DoxyCodeLine{387     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, vert\_accuracy);}
+\DoxyCodeLine{388     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 56, ignore\_flags);}
+\DoxyCodeLine{389     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 58, time\_week);}
+\DoxyCodeLine{390     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 60, gps\_id);}
+\DoxyCodeLine{391     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 61, fix\_type);}
+\DoxyCodeLine{392     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 62, satellites\_visible);}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}}, buf, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{395 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{396     mavlink\_gps\_input\_t *packet = (mavlink\_gps\_input\_t *)msgbuf;}
+\DoxyCodeLine{397     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{398     packet-\/>time\_week\_ms = time\_week\_ms;}
+\DoxyCodeLine{399     packet-\/>lat = lat;}
+\DoxyCodeLine{400     packet-\/>lon = lon;}
+\DoxyCodeLine{401     packet-\/>alt = alt;}
+\DoxyCodeLine{402     packet-\/>hdop = hdop;}
+\DoxyCodeLine{403     packet-\/>vdop = vdop;}
+\DoxyCodeLine{404     packet-\/>vn = vn;}
+\DoxyCodeLine{405     packet-\/>ve = ve;}
+\DoxyCodeLine{406     packet-\/>vd = vd;}
+\DoxyCodeLine{407     packet-\/>speed\_accuracy = speed\_accuracy;}
+\DoxyCodeLine{408     packet-\/>horiz\_accuracy = horiz\_accuracy;}
+\DoxyCodeLine{409     packet-\/>vert\_accuracy = vert\_accuracy;}
+\DoxyCodeLine{410     packet-\/>ignore\_flags = ignore\_flags;}
+\DoxyCodeLine{411     packet-\/>time\_week = time\_week;}
+\DoxyCodeLine{412     packet-\/>gps\_id = gps\_id;}
+\DoxyCodeLine{413     packet-\/>fix\_type = fix\_type;}
+\DoxyCodeLine{414     packet-\/>satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{416     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a977fc23f2bac60640ac61250a687b932}{MAVLINK\_MSG\_ID\_GPS\_INPUT}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a86a38d8083f128a54ac76d0e046c2955}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__input_8h_ace9cdb5972f9cb7ea86de0d6fb7c8326}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_CRC}});}
+\DoxyCodeLine{417 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{418 \}}
+\DoxyCodeLine{419 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{420 }
+\DoxyCodeLine{421 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423 \textcolor{comment}{// MESSAGE GPS\_INPUT UNPACKING}}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425 }
+\DoxyCodeLine{431 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_gps\_input\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{432 \{}
+\DoxyCodeLine{433     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{434 \}}
+\DoxyCodeLine{435 }
+\DoxyCodeLine{441 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_input\_get\_gps\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{442 \{}
+\DoxyCodeLine{443     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  60);}
+\DoxyCodeLine{444 \}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{451 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_input\_get\_ignore\_flags(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{452 \{}
+\DoxyCodeLine{453     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  56);}
+\DoxyCodeLine{454 \}}
+\DoxyCodeLine{455 }
+\DoxyCodeLine{461 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_gps\_input\_get\_time\_week\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{462 \{}
+\DoxyCodeLine{463     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  8);}
+\DoxyCodeLine{464 \}}
+\DoxyCodeLine{465 }
+\DoxyCodeLine{471 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_input\_get\_time\_week(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{472 \{}
+\DoxyCodeLine{473     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  58);}
+\DoxyCodeLine{474 \}}
+\DoxyCodeLine{475 }
+\DoxyCodeLine{481 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_input\_get\_fix\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{482 \{}
+\DoxyCodeLine{483     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  61);}
+\DoxyCodeLine{484 \}}
+\DoxyCodeLine{485 }
+\DoxyCodeLine{491 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_gps\_input\_get\_lat(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{492 \{}
+\DoxyCodeLine{493     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  12);}
+\DoxyCodeLine{494 \}}
+\DoxyCodeLine{495 }
+\DoxyCodeLine{501 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_gps\_input\_get\_lon(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{502 \{}
+\DoxyCodeLine{503     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  16);}
+\DoxyCodeLine{504 \}}
+\DoxyCodeLine{505 }
+\DoxyCodeLine{511 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_alt(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{512 \{}
+\DoxyCodeLine{513     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  20);}
+\DoxyCodeLine{514 \}}
+\DoxyCodeLine{515 }
+\DoxyCodeLine{521 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_hdop(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{522 \{}
+\DoxyCodeLine{523     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  24);}
+\DoxyCodeLine{524 \}}
+\DoxyCodeLine{525 }
+\DoxyCodeLine{531 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_vdop(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{532 \{}
+\DoxyCodeLine{533     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  28);}
+\DoxyCodeLine{534 \}}
+\DoxyCodeLine{535 }
+\DoxyCodeLine{541 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_vn(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{542 \{}
+\DoxyCodeLine{543     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  32);}
+\DoxyCodeLine{544 \}}
+\DoxyCodeLine{545 }
+\DoxyCodeLine{551 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_ve(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{552 \{}
+\DoxyCodeLine{553     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  36);}
+\DoxyCodeLine{554 \}}
+\DoxyCodeLine{555 }
+\DoxyCodeLine{561 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_vd(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{562 \{}
+\DoxyCodeLine{563     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  40);}
+\DoxyCodeLine{564 \}}
+\DoxyCodeLine{565 }
+\DoxyCodeLine{571 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_speed\_accuracy(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{572 \{}
+\DoxyCodeLine{573     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  44);}
+\DoxyCodeLine{574 \}}
+\DoxyCodeLine{575 }
+\DoxyCodeLine{581 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_horiz\_accuracy(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{582 \{}
+\DoxyCodeLine{583     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  48);}
+\DoxyCodeLine{584 \}}
+\DoxyCodeLine{585 }
+\DoxyCodeLine{591 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_gps\_input\_get\_vert\_accuracy(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{592 \{}
+\DoxyCodeLine{593     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  52);}
+\DoxyCodeLine{594 \}}
+\DoxyCodeLine{595 }
+\DoxyCodeLine{601 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_input\_get\_satellites\_visible(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{602 \{}
+\DoxyCodeLine{603     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  62);}
+\DoxyCodeLine{604 \}}
+\DoxyCodeLine{605 }
+\DoxyCodeLine{612 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_input\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_gps\_input\_t* gps\_input)}
+\DoxyCodeLine{613 \{}
+\DoxyCodeLine{614 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{615     gps\_input-\/>time\_usec = mavlink\_msg\_gps\_input\_get\_time\_usec(msg);}
+\DoxyCodeLine{616     gps\_input-\/>time\_week\_ms = mavlink\_msg\_gps\_input\_get\_time\_week\_ms(msg);}
+\DoxyCodeLine{617     gps\_input-\/>lat = mavlink\_msg\_gps\_input\_get\_lat(msg);}
+\DoxyCodeLine{618     gps\_input-\/>lon = mavlink\_msg\_gps\_input\_get\_lon(msg);}
+\DoxyCodeLine{619     gps\_input-\/>alt = mavlink\_msg\_gps\_input\_get\_alt(msg);}
+\DoxyCodeLine{620     gps\_input-\/>hdop = mavlink\_msg\_gps\_input\_get\_hdop(msg);}
+\DoxyCodeLine{621     gps\_input-\/>vdop = mavlink\_msg\_gps\_input\_get\_vdop(msg);}
+\DoxyCodeLine{622     gps\_input-\/>vn = mavlink\_msg\_gps\_input\_get\_vn(msg);}
+\DoxyCodeLine{623     gps\_input-\/>ve = mavlink\_msg\_gps\_input\_get\_ve(msg);}
+\DoxyCodeLine{624     gps\_input-\/>vd = mavlink\_msg\_gps\_input\_get\_vd(msg);}
+\DoxyCodeLine{625     gps\_input-\/>speed\_accuracy = mavlink\_msg\_gps\_input\_get\_speed\_accuracy(msg);}
+\DoxyCodeLine{626     gps\_input-\/>horiz\_accuracy = mavlink\_msg\_gps\_input\_get\_horiz\_accuracy(msg);}
+\DoxyCodeLine{627     gps\_input-\/>vert\_accuracy = mavlink\_msg\_gps\_input\_get\_vert\_accuracy(msg);}
+\DoxyCodeLine{628     gps\_input-\/>ignore\_flags = mavlink\_msg\_gps\_input\_get\_ignore\_flags(msg);}
+\DoxyCodeLine{629     gps\_input-\/>time\_week = mavlink\_msg\_gps\_input\_get\_time\_week(msg);}
+\DoxyCodeLine{630     gps\_input-\/>gps\_id = mavlink\_msg\_gps\_input\_get\_gps\_id(msg);}
+\DoxyCodeLine{631     gps\_input-\/>fix\_type = mavlink\_msg\_gps\_input\_get\_fix\_type(msg);}
+\DoxyCodeLine{632     gps\_input-\/>satellites\_visible = mavlink\_msg\_gps\_input\_get\_satellites\_visible(msg);}
+\DoxyCodeLine{633 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{634         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}};}
+\DoxyCodeLine{635         memset(gps\_input, 0, \mbox{\hyperlink{mavlink__msg__gps__input_8h_a7e90b08fcb020b64db668e95ef0bcc6b}{MAVLINK\_MSG\_ID\_GPS\_INPUT\_LEN}});}
+\DoxyCodeLine{636     memcpy(gps\_input, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{637 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{638 \}}
+
+\end{DoxyCode}

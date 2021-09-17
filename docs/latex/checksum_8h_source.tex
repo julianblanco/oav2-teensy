@@ -1,0 +1,65 @@
+\hypertarget{checksum_8h_source}{}\doxysection{checksum.\+h}
+\label{checksum_8h_source}\index{lib/checksum.h@{lib/checksum.h}}
+\mbox{\hyperlink{checksum_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#if defined(MAVLINK\_USE\_CXX\_NAMESPACE)}}
+\DoxyCodeLine{4 \textcolor{keyword}{namespace }mavlink \{}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#elif defined(\_\_cplusplus)}}
+\DoxyCodeLine{6 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// Visual Studio versions before 2010 don't have stdint.h, so we just error out.}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#if (defined \_MSC\_VER) \&\& (\_MSC\_VER < 1600)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#error "{}The C-\/MAVLink implementation requires Visual Studio 2010 or greater"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define X25\_INIT\_CRC 0xffff}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define X25\_VALIDATE\_CRC 0xf0b8}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#ifndef HAVE\_CRC\_ACCUMULATE}}
+\DoxyCodeLine{35 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} crc\_accumulate(uint8\_t data, uint16\_t *crcAccum)}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37         \textcolor{comment}{/*Accumulate one byte of data into the CRC*/}}
+\DoxyCodeLine{38         uint8\_t tmp;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         tmp = data \string^ (uint8\_t)(*crcAccum \&0xff);}
+\DoxyCodeLine{41         tmp \string^= (tmp<<4);}
+\DoxyCodeLine{42         *crcAccum = (*crcAccum>>8) \string^ (tmp<<8) \string^ (tmp <<3) \string^ (tmp>>4);}
+\DoxyCodeLine{43 \}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{52 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} crc\_init(uint16\_t* crcAccum)}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54         *crcAccum = \mbox{\hyperlink{checksum_8h_a29ccc2b5de887ee2ca14e814e867bb2a}{X25\_INIT\_CRC}};}
+\DoxyCodeLine{55 \}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{65 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t crc\_calculate(\textcolor{keyword}{const} uint8\_t* pBuffer, uint16\_t length)}
+\DoxyCodeLine{66 \{}
+\DoxyCodeLine{67         uint16\_t crcTmp;}
+\DoxyCodeLine{68         crc\_init(\&crcTmp);}
+\DoxyCodeLine{69     \textcolor{keywordflow}{while} (length-\/-\/) \{}
+\DoxyCodeLine{70                 crc\_accumulate(*pBuffer++, \&crcTmp);}
+\DoxyCodeLine{71         \}}
+\DoxyCodeLine{72         \textcolor{keywordflow}{return} crcTmp;}
+\DoxyCodeLine{73 \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{85 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} crc\_accumulate\_buffer(uint16\_t *crcAccum, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pBuffer, uint16\_t length)}
+\DoxyCodeLine{86 \{}
+\DoxyCodeLine{87     \textcolor{keyword}{const} uint8\_t *p = (\textcolor{keyword}{const} uint8\_t *)pBuffer;}
+\DoxyCodeLine{88     \textcolor{keywordflow}{while} (length-\/-\/) \{}
+\DoxyCodeLine{89                 crc\_accumulate(*p++, crcAccum);}
+\DoxyCodeLine{90         \}}
+\DoxyCodeLine{91 \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#if defined(MAVLINK\_USE\_CXX\_NAMESPACE) || defined(\_\_cplusplus)}}
+\DoxyCodeLine{94 \}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

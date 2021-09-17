@@ -1,0 +1,169 @@
+\hypertarget{_p_x4_flow_8cpp}{}\doxysection{lib/\+PX4\+Flow/\+PX4\+Flow.cpp File Reference}
+\label{_p_x4_flow_8cpp}\index{lib/PX4Flow/PX4Flow.cpp@{lib/PX4Flow/PX4Flow.cpp}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}PX4\+Flow.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Wire \mbox{\hyperlink{_p_x4_flow_8cpp_aa397a63c56f62c056e43beb8d0e5e642}{write}} (0x0)
+\item 
+Wire \mbox{\hyperlink{_p_x4_flow_8cpp_af6edc53528242ecdee60b093a0b5db17}{end\+Transmission}} ()
+\item 
+Wire \mbox{\hyperlink{_p_x4_flow_8cpp_a34c1b7f096ddd686922cb0fbfa648082}{request\+From}} (\mbox{\hyperlink{_p_x4_flow_8h_a12cac4bf7620f006f031c723d072c73b}{PX4\+FLOW\+\_\+\+ADDRESS}}, 22)
+\item 
+\mbox{\hyperlink{_p_x4_flow_8cpp_aa97707a0fb5c428dc2c90519b2a43486}{if}} (!wait(22))
+\item 
+\mbox{\hyperlink{_p_x4_flow_8cpp_a6b33024267810dc5299e21fd22a8bb09}{if}} (Wire.\+available())
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_x4_flow_8cpp_ab6f3c269fc46c9c1c0f81b3431240138}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_aceaf8ffaf61f831163a65492ab9a4d81}{frame\+\_\+count}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a687da877c9b53ea129bdb1f1ec1632de}{pixel\+\_\+flow\+\_\+x\+\_\+sum}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_ac402edc849149cec1bc053b81a35d8db}{pixel\+\_\+flow\+\_\+y\+\_\+sum}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a49848836f35b9621bd49c10a0bbf6037}{flow\+\_\+comp\+\_\+m\+\_\+x}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a16a44d14930d293e02e30fb6acb869ea}{flow\+\_\+comp\+\_\+m\+\_\+y}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_aee31512d74b9f8997b983f61bf4e518a}{qual}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a3cbb9aa1f625183bbab894b2bacde13f}{gyro\+\_\+x\+\_\+rate}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_aeebf17614cb86a3379128392e90c896f}{gyro\+\_\+y\+\_\+rate}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a2989b98304c12234738639b9ec02326a}{gyro\+\_\+z\+\_\+rate}} = read16()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a726ca0c059402a5bd44c6e4d2a551c97}{gyro\+\_\+range}} = read8()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_aaf5d875b5c895c6cb0a698d95a4f98ec}{sonar\+\_\+timestamp}} = read8()
+\item 
+frame \mbox{\hyperlink{_p_x4_flow_8cpp_a3a7b2e751933c1099dc11e329b700f3e}{ground\+\_\+distance}} = read16()
+\item 
+return \mbox{\hyperlink{_p_x4_flow_8cpp_a930920b2bc42824a5c03be681830f4b2}{true}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_p_x4_flow_8cpp_af6edc53528242ecdee60b093a0b5db17}\label{_p_x4_flow_8cpp_af6edc53528242ecdee60b093a0b5db17}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!endTransmission@{endTransmission}}
+\index{endTransmission@{endTransmission}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{endTransmission()}{endTransmission()}}
+{\footnotesize\ttfamily Wire end\+Transmission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_aa97707a0fb5c428dc2c90519b2a43486}\label{_p_x4_flow_8cpp_aa97707a0fb5c428dc2c90519b2a43486}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!if@{if}}
+\index{if@{if}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{!}]{wait22 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a6b33024267810dc5299e21fd22a8bb09}\label{_p_x4_flow_8cpp_a6b33024267810dc5299e21fd22a8bb09}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!if@{if}}
+\index{if@{if}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{Wire.}]{available() }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a34c1b7f096ddd686922cb0fbfa648082}\label{_p_x4_flow_8cpp_a34c1b7f096ddd686922cb0fbfa648082}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!requestFrom@{requestFrom}}
+\index{requestFrom@{requestFrom}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{requestFrom()}{requestFrom()}}
+{\footnotesize\ttfamily Wire request\+From (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_p_x4_flow_8h_a12cac4bf7620f006f031c723d072c73b}{PX4\+FLOW\+\_\+\+ADDRESS}}}]{,  }\item[{22}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_aa397a63c56f62c056e43beb8d0e5e642}\label{_p_x4_flow_8cpp_aa397a63c56f62c056e43beb8d0e5e642}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!write@{write}}
+\index{write@{write}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily Wire write (\begin{DoxyParamCaption}\item[{0x0}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_p_x4_flow_8cpp_ab6f3c269fc46c9c1c0f81b3431240138}\label{_p_x4_flow_8cpp_ab6f3c269fc46c9c1c0f81b3431240138}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily \+\_\+\+\_\+pad0\+\_\+\+\_\+}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a49848836f35b9621bd49c10a0bbf6037}\label{_p_x4_flow_8cpp_a49848836f35b9621bd49c10a0bbf6037}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!flow\_comp\_m\_x@{flow\_comp\_m\_x}}
+\index{flow\_comp\_m\_x@{flow\_comp\_m\_x}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{flow\_comp\_m\_x}{flow\_comp\_m\_x}}
+{\footnotesize\ttfamily frame flow\+\_\+comp\+\_\+m\+\_\+x = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a16a44d14930d293e02e30fb6acb869ea}\label{_p_x4_flow_8cpp_a16a44d14930d293e02e30fb6acb869ea}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!flow\_comp\_m\_y@{flow\_comp\_m\_y}}
+\index{flow\_comp\_m\_y@{flow\_comp\_m\_y}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{flow\_comp\_m\_y}{flow\_comp\_m\_y}}
+{\footnotesize\ttfamily frame flow\+\_\+comp\+\_\+m\+\_\+y = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_aceaf8ffaf61f831163a65492ab9a4d81}\label{_p_x4_flow_8cpp_aceaf8ffaf61f831163a65492ab9a4d81}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!frame\_count@{frame\_count}}
+\index{frame\_count@{frame\_count}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{frame\_count}{frame\_count}}
+{\footnotesize\ttfamily frame frame\+\_\+count = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a3a7b2e751933c1099dc11e329b700f3e}\label{_p_x4_flow_8cpp_a3a7b2e751933c1099dc11e329b700f3e}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!ground\_distance@{ground\_distance}}
+\index{ground\_distance@{ground\_distance}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{ground\_distance}{ground\_distance}}
+{\footnotesize\ttfamily frame ground\+\_\+distance = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a726ca0c059402a5bd44c6e4d2a551c97}\label{_p_x4_flow_8cpp_a726ca0c059402a5bd44c6e4d2a551c97}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!gyro\_range@{gyro\_range}}
+\index{gyro\_range@{gyro\_range}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{gyro\_range}{gyro\_range}}
+{\footnotesize\ttfamily frame gyro\+\_\+range = read8()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a3cbb9aa1f625183bbab894b2bacde13f}\label{_p_x4_flow_8cpp_a3cbb9aa1f625183bbab894b2bacde13f}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!gyro\_x\_rate@{gyro\_x\_rate}}
+\index{gyro\_x\_rate@{gyro\_x\_rate}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{gyro\_x\_rate}{gyro\_x\_rate}}
+{\footnotesize\ttfamily frame gyro\+\_\+x\+\_\+rate = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_aeebf17614cb86a3379128392e90c896f}\label{_p_x4_flow_8cpp_aeebf17614cb86a3379128392e90c896f}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!gyro\_y\_rate@{gyro\_y\_rate}}
+\index{gyro\_y\_rate@{gyro\_y\_rate}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{gyro\_y\_rate}{gyro\_y\_rate}}
+{\footnotesize\ttfamily frame gyro\+\_\+y\+\_\+rate = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a2989b98304c12234738639b9ec02326a}\label{_p_x4_flow_8cpp_a2989b98304c12234738639b9ec02326a}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!gyro\_z\_rate@{gyro\_z\_rate}}
+\index{gyro\_z\_rate@{gyro\_z\_rate}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{gyro\_z\_rate}{gyro\_z\_rate}}
+{\footnotesize\ttfamily frame gyro\+\_\+z\+\_\+rate = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a687da877c9b53ea129bdb1f1ec1632de}\label{_p_x4_flow_8cpp_a687da877c9b53ea129bdb1f1ec1632de}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!pixel\_flow\_x\_sum@{pixel\_flow\_x\_sum}}
+\index{pixel\_flow\_x\_sum@{pixel\_flow\_x\_sum}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{pixel\_flow\_x\_sum}{pixel\_flow\_x\_sum}}
+{\footnotesize\ttfamily frame pixel\+\_\+flow\+\_\+x\+\_\+sum = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_ac402edc849149cec1bc053b81a35d8db}\label{_p_x4_flow_8cpp_ac402edc849149cec1bc053b81a35d8db}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!pixel\_flow\_y\_sum@{pixel\_flow\_y\_sum}}
+\index{pixel\_flow\_y\_sum@{pixel\_flow\_y\_sum}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{pixel\_flow\_y\_sum}{pixel\_flow\_y\_sum}}
+{\footnotesize\ttfamily frame pixel\+\_\+flow\+\_\+y\+\_\+sum = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_aee31512d74b9f8997b983f61bf4e518a}\label{_p_x4_flow_8cpp_aee31512d74b9f8997b983f61bf4e518a}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!qual@{qual}}
+\index{qual@{qual}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{qual}{qual}}
+{\footnotesize\ttfamily frame qual = read16()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_aaf5d875b5c895c6cb0a698d95a4f98ec}\label{_p_x4_flow_8cpp_aaf5d875b5c895c6cb0a698d95a4f98ec}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!sonar\_timestamp@{sonar\_timestamp}}
+\index{sonar\_timestamp@{sonar\_timestamp}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{sonar\_timestamp}{sonar\_timestamp}}
+{\footnotesize\ttfamily frame sonar\+\_\+timestamp = read8()}
+
+\mbox{\Hypertarget{_p_x4_flow_8cpp_a930920b2bc42824a5c03be681830f4b2}\label{_p_x4_flow_8cpp_a930920b2bc42824a5c03be681830f4b2}} 
+\index{PX4Flow.cpp@{PX4Flow.cpp}!true@{true}}
+\index{true@{true}!PX4Flow.cpp@{PX4Flow.cpp}}
+\doxysubsubsection{\texorpdfstring{true}{true}}
+{\footnotesize\ttfamily return true}
+

@@ -1,0 +1,109 @@
+\hypertarget{mavlink__msg__hil__rc__inputs__raw_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+hil\+\_\+rc\+\_\+inputs\+\_\+raw.h File Reference}
+\label{mavlink__msg__hil__rc__inputs__raw_8h}\index{lib/common/mavlink\_msg\_hil\_rc\_inputs\_raw.h@{lib/common/mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW}}~92
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW\+\_\+\+LEN}}~33
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW\+\_\+\+MIN\+\_\+\+LEN}}~33
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_adfd4c6aa1c8a91644a576261ee31bc5e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+92\+\_\+\+LEN}}~33
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_afb9d9969d53f662a3ba9a91cff6f6a0e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+92\+\_\+\+MIN\+\_\+\+LEN}}~33
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW\+\_\+\+CRC}}~54
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a8c01a277c3659e356a2128a3a2d5b025}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+92\+\_\+\+CRC}}~54
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a64e44a5d75054447bd4c592b7d3a418c}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_adc58bf83422dd53679e56f0790354268}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+hil\+\_\+rc\+\_\+inputs\+\_\+raw\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint16\+\_\+t chan1\+\_\+raw;uint16\+\_\+t chan2\+\_\+raw;uint16\+\_\+t chan3\+\_\+raw;uint16\+\_\+t chan4\+\_\+raw;uint16\+\_\+t chan5\+\_\+raw;uint16\+\_\+t chan6\+\_\+raw;uint16\+\_\+t chan7\+\_\+raw;uint16\+\_\+t chan8\+\_\+raw;uint16\+\_\+t chan9\+\_\+raw;uint16\+\_\+t chan10\+\_\+raw;uint16\+\_\+t chan11\+\_\+raw;uint16\+\_\+t chan12\+\_\+raw;uint8\+\_\+t rssi;\}) mavlink\+\_\+hil\+\_\+rc\+\_\+inputs\+\_\+raw\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_a64e44a5d75054447bd4c592b7d3a418c}\label{mavlink__msg__hil__rc__inputs__raw_8h_a64e44a5d75054447bd4c592b7d3a418c}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW@{MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW}}
+\index{MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW@{MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW}{MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}HIL\_RC\_INPUTS\_RAW"{}}, \(\backslash\)}
+\DoxyCodeLine{    14, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan1\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 8, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan1\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan2\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 10, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan2\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan3\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 12, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan3\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan4\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 14, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan4\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan5\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 16, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan5\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan6\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 18, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan6\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan7\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 20, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan7\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan8\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 22, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan8\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan9\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 24, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan9\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan10\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 26, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan10\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan11\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 28, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan11\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}chan12\_raw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 30, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan12\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}rssi"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 32, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, rssi) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_a8c01a277c3659e356a2128a3a2d5b025}\label{mavlink__msg__hil__rc__inputs__raw_8h_a8c01a277c3659e356a2128a3a2d5b025}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_92\_CRC@{MAVLINK\_MSG\_ID\_92\_CRC}}
+\index{MAVLINK\_MSG\_ID\_92\_CRC@{MAVLINK\_MSG\_ID\_92\_CRC}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_92\_CRC}{MAVLINK\_MSG\_ID\_92\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+92\+\_\+\+CRC~54}
+
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_adfd4c6aa1c8a91644a576261ee31bc5e}\label{mavlink__msg__hil__rc__inputs__raw_8h_adfd4c6aa1c8a91644a576261ee31bc5e}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_92\_LEN@{MAVLINK\_MSG\_ID\_92\_LEN}}
+\index{MAVLINK\_MSG\_ID\_92\_LEN@{MAVLINK\_MSG\_ID\_92\_LEN}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_92\_LEN}{MAVLINK\_MSG\_ID\_92\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+92\+\_\+\+LEN~33}
+
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_afb9d9969d53f662a3ba9a91cff6f6a0e}\label{mavlink__msg__hil__rc__inputs__raw_8h_afb9d9969d53f662a3ba9a91cff6f6a0e}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_92\_MIN\_LEN@{MAVLINK\_MSG\_ID\_92\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_92\_MIN\_LEN@{MAVLINK\_MSG\_ID\_92\_MIN\_LEN}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_92\_MIN\_LEN}{MAVLINK\_MSG\_ID\_92\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+92\+\_\+\+MIN\+\_\+\+LEN~33}
+
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}\label{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}
+\index{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW~92}
+
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}\label{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}}
+\index{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW\+\_\+\+CRC~54}
+
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}\label{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW\+\_\+\+LEN~33}
+
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}\label{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+RC\+\_\+\+INPUTS\+\_\+\+RAW\+\_\+\+MIN\+\_\+\+LEN~33}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_adc58bf83422dd53679e56f0790354268}\label{mavlink__msg__hil__rc__inputs__raw_8h_adc58bf83422dd53679e56f0790354268}} 
+\index{mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_hil\_rc\_inputs\_raw.h@{mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+hil\+\_\+rc\+\_\+inputs\+\_\+raw\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint16\+\_\+t chan1\+\_\+raw;uint16\+\_\+t chan2\+\_\+raw;uint16\+\_\+t chan3\+\_\+raw;uint16\+\_\+t chan4\+\_\+raw;uint16\+\_\+t chan5\+\_\+raw;uint16\+\_\+t chan6\+\_\+raw;uint16\+\_\+t chan7\+\_\+raw;uint16\+\_\+t chan8\+\_\+raw;uint16\+\_\+t chan9\+\_\+raw;uint16\+\_\+t chan10\+\_\+raw;uint16\+\_\+t chan11\+\_\+raw;uint16\+\_\+t chan12\+\_\+raw;uint8\+\_\+t rssi;\}}]{ }\end{DoxyParamCaption})}
+

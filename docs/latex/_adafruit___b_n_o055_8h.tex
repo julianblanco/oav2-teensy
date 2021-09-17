@@ -1,0 +1,69 @@
+\hypertarget{_adafruit___b_n_o055_8h}{}\doxysection{lib/\+Adafruit\+\_\+\+BNO055/\+Adafruit\+\_\+\+BNO055.h File Reference}
+\label{_adafruit___b_n_o055_8h}\index{lib/Adafruit\_BNO055/Adafruit\_BNO055.h@{lib/Adafruit\_BNO055/Adafruit\_BNO055.h}}
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}utility/imumaths.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Adafruit\+\_\+\+Sensor.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structadafruit__bno055__offsets__t}{adafruit\+\_\+bno055\+\_\+offsets\+\_\+t}}
+\item 
+class \mbox{\hyperlink{class_adafruit___b_n_o055}{Adafruit\+\_\+\+BNO055}}
+\begin{DoxyCompactList}\small\item\em Class that stores state and functions for interacting with BNO055 Sensor. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t}{Adafruit\+\_\+\+BNO055\+::adafruit\+\_\+bno055\+\_\+rev\+\_\+info\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_adafruit___b_n_o055_8h_ac3cdd930d950b35e2041e394d5f44693}{BNO055\+\_\+\+ADDRESS\+\_\+A}}~(0x28)
+\item 
+\#define \mbox{\hyperlink{_adafruit___b_n_o055_8h_aa141fc6fa09b855e6bda7e792bf54e21}{BNO055\+\_\+\+ADDRESS\+\_\+B}}~(0x29)
+\item 
+\#define \mbox{\hyperlink{_adafruit___b_n_o055_8h_a5d61e3776e3b3017ed5e2d84ed9ec578}{BNO055\+\_\+\+ID}}~(0x\+A0)
+\item 
+\#define \mbox{\hyperlink{_adafruit___b_n_o055_8h_a419d749dedf96924ff95aad0c457eb0e}{NUM\+\_\+\+BNO055\+\_\+\+OFFSET\+\_\+\+REGISTERS}}~(22)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is a library for the BNO055 orientation sensor
+
+Designed specifically to work with the Adafruit BNO055 Breakout.
+
+Pick one up today in the adafruit shop! -\/-\/-\/---\texorpdfstring{$>$}{>} \href{https://www.adafruit.com/product/2472}{\texttt{ https\+://www.\+adafruit.\+com/product/2472}}
+
+These sensors use I2C to communicate, 2 pins are required to interface.
+
+Adafruit invests time and resources providing this open source code, please support Adafruit andopen-\/source hardware by purchasing products from Adafruit!
+
+K.\+Townsend (Adafruit Industries)
+
+MIT license, all text above must be included in any redistribution 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_adafruit___b_n_o055_8h_ac3cdd930d950b35e2041e394d5f44693}\label{_adafruit___b_n_o055_8h_ac3cdd930d950b35e2041e394d5f44693}} 
+\index{Adafruit\_BNO055.h@{Adafruit\_BNO055.h}!BNO055\_ADDRESS\_A@{BNO055\_ADDRESS\_A}}
+\index{BNO055\_ADDRESS\_A@{BNO055\_ADDRESS\_A}!Adafruit\_BNO055.h@{Adafruit\_BNO055.h}}
+\doxysubsubsection{\texorpdfstring{BNO055\_ADDRESS\_A}{BNO055\_ADDRESS\_A}}
+{\footnotesize\ttfamily \#define BNO055\+\_\+\+ADDRESS\+\_\+A~(0x28)}
+
+BNO055 Address A \mbox{\Hypertarget{_adafruit___b_n_o055_8h_aa141fc6fa09b855e6bda7e792bf54e21}\label{_adafruit___b_n_o055_8h_aa141fc6fa09b855e6bda7e792bf54e21}} 
+\index{Adafruit\_BNO055.h@{Adafruit\_BNO055.h}!BNO055\_ADDRESS\_B@{BNO055\_ADDRESS\_B}}
+\index{BNO055\_ADDRESS\_B@{BNO055\_ADDRESS\_B}!Adafruit\_BNO055.h@{Adafruit\_BNO055.h}}
+\doxysubsubsection{\texorpdfstring{BNO055\_ADDRESS\_B}{BNO055\_ADDRESS\_B}}
+{\footnotesize\ttfamily \#define BNO055\+\_\+\+ADDRESS\+\_\+B~(0x29)}
+
+BNO055 Address B \mbox{\Hypertarget{_adafruit___b_n_o055_8h_a5d61e3776e3b3017ed5e2d84ed9ec578}\label{_adafruit___b_n_o055_8h_a5d61e3776e3b3017ed5e2d84ed9ec578}} 
+\index{Adafruit\_BNO055.h@{Adafruit\_BNO055.h}!BNO055\_ID@{BNO055\_ID}}
+\index{BNO055\_ID@{BNO055\_ID}!Adafruit\_BNO055.h@{Adafruit\_BNO055.h}}
+\doxysubsubsection{\texorpdfstring{BNO055\_ID}{BNO055\_ID}}
+{\footnotesize\ttfamily \#define BNO055\+\_\+\+ID~(0x\+A0)}
+
+BNO055 ID \mbox{\Hypertarget{_adafruit___b_n_o055_8h_a419d749dedf96924ff95aad0c457eb0e}\label{_adafruit___b_n_o055_8h_a419d749dedf96924ff95aad0c457eb0e}} 
+\index{Adafruit\_BNO055.h@{Adafruit\_BNO055.h}!NUM\_BNO055\_OFFSET\_REGISTERS@{NUM\_BNO055\_OFFSET\_REGISTERS}}
+\index{NUM\_BNO055\_OFFSET\_REGISTERS@{NUM\_BNO055\_OFFSET\_REGISTERS}!Adafruit\_BNO055.h@{Adafruit\_BNO055.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_BNO055\_OFFSET\_REGISTERS}{NUM\_BNO055\_OFFSET\_REGISTERS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+BNO055\+\_\+\+OFFSET\+\_\+\+REGISTERS~(22)}
+
+Offsets registers 

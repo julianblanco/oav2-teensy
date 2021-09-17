@@ -1,0 +1,105 @@
+\hypertarget{mavlink__msg__scaled__imu_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+scaled\+\_\+imu.h File Reference}
+\label{mavlink__msg__scaled__imu_8h}\index{lib/common/mavlink\_msg\_scaled\_imu.h@{lib/common/mavlink\_msg\_scaled\_imu.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_a82d22e6db01c2771c785baa8e3c26283}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU}}~26
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_a278ee2af32a666bc204fe924031485b0}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_a47170b81cd5ab6be3d9df3412bea78aa}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU\+\_\+\+MIN\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_ac06be782c30428ac5eeb9de91b3e2b4b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+26\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_a8777963bc33d61c30ae3bdcd4dac72dc}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+26\+\_\+\+MIN\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_ab4647a5104a3a1d3d5a3d9f7ba7e7f3d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU\+\_\+\+CRC}}~170
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_a1091fd68caff1d465e5d48816d7fe32a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+26\+\_\+\+CRC}}~170
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__imu_8h_aaf3b64211cdca86282fd6e0a360cdf15}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+SCALED\+\_\+\+IMU}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__scaled__imu_8h_a7f7b75ce0ad1dd2b1ed73403967e120c}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+scaled\+\_\+imu\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;int16\+\_\+t xacc;int16\+\_\+t yacc;int16\+\_\+t zacc;int16\+\_\+t xgyro;int16\+\_\+t ygyro;int16\+\_\+t zgyro;int16\+\_\+t xmag;int16\+\_\+t ymag;int16\+\_\+t zmag;\}) mavlink\+\_\+scaled\+\_\+imu\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_aaf3b64211cdca86282fd6e0a360cdf15}\label{mavlink__msg__scaled__imu_8h_aaf3b64211cdca86282fd6e0a360cdf15}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU@{MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU}}
+\index{MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU@{MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU}{MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+SCALED\+\_\+\+IMU}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}SCALED\_IMU"{}}, \(\backslash\)}
+\DoxyCodeLine{    10, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_scaled\_imu\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}xacc"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 4, offsetof(mavlink\_scaled\_imu\_t, xacc) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yacc"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 6, offsetof(mavlink\_scaled\_imu\_t, yacc) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}zacc"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 8, offsetof(mavlink\_scaled\_imu\_t, zacc) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}xgyro"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 10, offsetof(mavlink\_scaled\_imu\_t, xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}ygyro"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 12, offsetof(mavlink\_scaled\_imu\_t, ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}zgyro"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 14, offsetof(mavlink\_scaled\_imu\_t, zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}xmag"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 16, offsetof(mavlink\_scaled\_imu\_t, xmag) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}ymag"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 18, offsetof(mavlink\_scaled\_imu\_t, ymag) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}zmag"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 20, offsetof(mavlink\_scaled\_imu\_t, zmag) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_a1091fd68caff1d465e5d48816d7fe32a}\label{mavlink__msg__scaled__imu_8h_a1091fd68caff1d465e5d48816d7fe32a}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_26\_CRC@{MAVLINK\_MSG\_ID\_26\_CRC}}
+\index{MAVLINK\_MSG\_ID\_26\_CRC@{MAVLINK\_MSG\_ID\_26\_CRC}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_26\_CRC}{MAVLINK\_MSG\_ID\_26\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+26\+\_\+\+CRC~170}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_ac06be782c30428ac5eeb9de91b3e2b4b}\label{mavlink__msg__scaled__imu_8h_ac06be782c30428ac5eeb9de91b3e2b4b}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_26\_LEN@{MAVLINK\_MSG\_ID\_26\_LEN}}
+\index{MAVLINK\_MSG\_ID\_26\_LEN@{MAVLINK\_MSG\_ID\_26\_LEN}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_26\_LEN}{MAVLINK\_MSG\_ID\_26\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+26\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_a8777963bc33d61c30ae3bdcd4dac72dc}\label{mavlink__msg__scaled__imu_8h_a8777963bc33d61c30ae3bdcd4dac72dc}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_26\_MIN\_LEN@{MAVLINK\_MSG\_ID\_26\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_26\_MIN\_LEN@{MAVLINK\_MSG\_ID\_26\_MIN\_LEN}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_26\_MIN\_LEN}{MAVLINK\_MSG\_ID\_26\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+26\+\_\+\+MIN\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_a82d22e6db01c2771c785baa8e3c26283}\label{mavlink__msg__scaled__imu_8h_a82d22e6db01c2771c785baa8e3c26283}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_SCALED\_IMU@{MAVLINK\_MSG\_ID\_SCALED\_IMU}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_IMU@{MAVLINK\_MSG\_ID\_SCALED\_IMU}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_IMU}{MAVLINK\_MSG\_ID\_SCALED\_IMU}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU~26}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_ab4647a5104a3a1d3d5a3d9f7ba7e7f3d}\label{mavlink__msg__scaled__imu_8h_ab4647a5104a3a1d3d5a3d9f7ba7e7f3d}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_SCALED\_IMU\_CRC@{MAVLINK\_MSG\_ID\_SCALED\_IMU\_CRC}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_IMU\_CRC@{MAVLINK\_MSG\_ID\_SCALED\_IMU\_CRC}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_IMU\_CRC}{MAVLINK\_MSG\_ID\_SCALED\_IMU\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU\+\_\+\+CRC~170}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_a278ee2af32a666bc204fe924031485b0}\label{mavlink__msg__scaled__imu_8h_a278ee2af32a666bc204fe924031485b0}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_SCALED\_IMU\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_IMU\_LEN}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_IMU\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_IMU\_LEN}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_IMU\_LEN}{MAVLINK\_MSG\_ID\_SCALED\_IMU\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_a47170b81cd5ab6be3d9df3412bea78aa}\label{mavlink__msg__scaled__imu_8h_a47170b81cd5ab6be3d9df3412bea78aa}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVLINK\_MSG\_ID\_SCALED\_IMU\_MIN\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_IMU\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_IMU\_MIN\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_IMU\_MIN\_LEN}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_IMU\_MIN\_LEN}{MAVLINK\_MSG\_ID\_SCALED\_IMU\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+IMU\+\_\+\+MIN\+\_\+\+LEN~22}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__scaled__imu_8h_a7f7b75ce0ad1dd2b1ed73403967e120c}\label{mavlink__msg__scaled__imu_8h_a7f7b75ce0ad1dd2b1ed73403967e120c}} 
+\index{mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_scaled\_imu.h@{mavlink\_msg\_scaled\_imu.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+scaled\+\_\+imu\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;int16\+\_\+t xacc;int16\+\_\+t yacc;int16\+\_\+t zacc;int16\+\_\+t xgyro;int16\+\_\+t ygyro;int16\+\_\+t zgyro;int16\+\_\+t xmag;int16\+\_\+t ymag;int16\+\_\+t zmag;\}}]{ }\end{DoxyParamCaption})}
+

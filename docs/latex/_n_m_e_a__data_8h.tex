@@ -1,0 +1,495 @@
+\hypertarget{_n_m_e_a__data_8h}{}\doxysection{lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\+NMEA\+\_\+data.h File Reference}
+\label{_n_m_e_a__data_8h}\index{lib/Adafruit\_GPS\_Library/src/NMEA\_data.h@{lib/Adafruit\_GPS\_Library/src/NMEA\_data.h}}
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnmea__history__t}{nmea\+\_\+history\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structnmea__datavalue__t}{nmea\+\_\+datavalue\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_n_m_e_a__data_8h_af7216e836776a428f63f632b003e5cb4}{\+\_\+\+NMEA\+\_\+\+\_\+\+DATA\+\_\+H}}
+\item 
+\#define \mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\+\_\+\+MAX\+\_\+\+WP\+\_\+\+ID}}~  20
+\begin{DoxyCompactList}\small\item\em maximum length of a waypoint ID name, including terminating 0 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID}}~  20
+\begin{DoxyCompactList}\small\item\em maximum length of a sentence ID name, including terminating 0 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID}}~  3
+\begin{DoxyCompactList}\small\item\em maximum length of a source ID name, including terminating 0 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_n_m_e_a__data_8h_a0c423588a466231e5a996377c5b652e1}{NMEA\+\_\+\+FLOAT\+\_\+T}}~float
+\begin{DoxyCompactList}\small\item\em let float be overidden on command line \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{_n_m_e_a__data_8h_a0c423588a466231e5a996377c5b652e1}{NMEA\+\_\+\+FLOAT\+\_\+T}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em the type of variables to use for floating point \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\+\_\+value\+\_\+type\+\_\+t}} \{ \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\+\_\+\+SIMPLE\+\_\+\+FLOAT}} = 0
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a7bc54aef98d4ed5daa02cb521e386a6f}{NMEA\+\_\+\+COMPASS\+\_\+\+ANGLE}} = 1
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\+\_\+\+BOAT\+\_\+\+ANGLE}} = 2
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\+\_\+\+COMPASS\+\_\+\+ANGLE\+\_\+\+SIN}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}{NMEA\+\_\+\+BOAT\+\_\+\+ANGLE\+\_\+\+SIN}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a34ae709a17b026e87e3ff3c15be18b2a}{NMEA\+\_\+\+DDMM}} = 20
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a4284cc96e4113988a1e57f1de8c9b3bf}{NMEA\+\_\+\+HHMMSS}}
+ \}
+\item 
+enum \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} \{ \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\+\_\+\+HDOP}} = 0
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\+\_\+\+LAT}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\+\_\+\+LON}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a192af66d3d405dcd64314dd2052aa066}{NMEA\+\_\+\+LATWP}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7c7af90260edd7f77f2c5d5f3996da8c}{NMEA\+\_\+\+LONWP}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ac0740cafb89c58378223849d33770d5f}{NMEA\+\_\+\+SOG}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0dc2497e13496f5f3b4f23cd4626664d}{NMEA\+\_\+\+COG}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a67b120bf6a8123092de748e0b42f94f4}{NMEA\+\_\+\+COG\+\_\+\+SIN}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1dadabf0a1457e491693f79c0df15aac}{NMEA\+\_\+\+COG\+\_\+\+COS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abca6e3662f289de96485a385ff658b00}{NMEA\+\_\+\+COGWP}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}{NMEA\+\_\+\+XTE}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1ef9e86aba876eedca5c4f2f38b72991}{NMEA\+\_\+\+DISTWP}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}{NMEA\+\_\+\+AWA}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a04fe7a2c0cfad169ce450a0b61f8103b}{NMEA\+\_\+\+AWA\+\_\+\+SIN}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aced0f6b647b9b3d9090e10eab53a573f}{NMEA\+\_\+\+AWA\+\_\+\+COS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}{NMEA\+\_\+\+AWS}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}{NMEA\+\_\+\+TWA}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f0acf144e3a15735c1895f0d62d5eaa}{NMEA\+\_\+\+TWA\+\_\+\+SIN}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae339fe721d0bcfda7d5ab9bae78dfb6a}{NMEA\+\_\+\+TWA\+\_\+\+COS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a621aa4c4d29b1a6c0a6348cf6bc0fe77}{NMEA\+\_\+\+TWD}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6a508ebd84e789b82823b9ee8aa28af0}{NMEA\+\_\+\+TWD\+\_\+\+SIN}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8f4492ccd6e317a60887edc9432884d1}{NMEA\+\_\+\+TWD\+\_\+\+COS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}{NMEA\+\_\+\+TWS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}{NMEA\+\_\+\+VMG}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}{NMEA\+\_\+\+VMGWP}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a91e791eb52bd523a25057c2e56adb862}{NMEA\+\_\+\+HEEL}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f3c01dbb1008cd0269e606cc5c2acea}{NMEA\+\_\+\+PITCH}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\+\_\+\+HDG}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a65053e4ad02756b570f62b5e41c7f710}{NMEA\+\_\+\+HDG\+\_\+\+SIN}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa01cdd1ff0af82b39e3df95c7e789eae}{NMEA\+\_\+\+HDG\+\_\+\+COS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\+\_\+\+HDT}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab2852227f6863bca31159d539a26828b}{NMEA\+\_\+\+HDT\+\_\+\+SIN}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0b0976830a8c5e67e8cfe7889ccf58be}{NMEA\+\_\+\+HDT\+\_\+\+COS}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}{NMEA\+\_\+\+VTW}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}{NMEA\+\_\+\+LOG}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab9f8b31288a7280ea18544c44bf1f8c1}{NMEA\+\_\+\+LOGR}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\+\_\+\+DEPTH}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae9935f17810b837223b8ce117b8fc19d}{NMEA\+\_\+\+RPM\+\_\+\+M1}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7accd128fe8ad3caadc6cddb855f9bec1a}{NMEA\+\_\+\+TEMPERATURE\+\_\+\+M1}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a622d07457540a62d101c3dba77b8fb3e}{NMEA\+\_\+\+PRESSURE\+\_\+\+M1}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9e736a5305edf879cfc648eef4728db7}{NMEA\+\_\+\+VOLTAGE\+\_\+\+M1}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae491a271e5bda7132ca831ec5e83d84b}{NMEA\+\_\+\+CURRENT\+\_\+\+M1}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a5ec5d1c335aa2285e2afaf79f88b155f}{NMEA\+\_\+\+RPM\+\_\+\+M2}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4dce2ddf1a5aa38cc150fbee4fdecda9}{NMEA\+\_\+\+TEMPERATURE\+\_\+\+M2}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a14f464441fc70d4106487a8ef816cf07}{NMEA\+\_\+\+PRESSURE\+\_\+\+M2}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abd0a65c66607397fe2dddc00713e6bd6}{NMEA\+\_\+\+VOLTAGE\+\_\+\+M2}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a889981e7ff93913b8cedda0bbeaa8a3a}{NMEA\+\_\+\+CURRENT\+\_\+\+M2}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a083ed5d1df1aefd81fcc3d67d8c3587d}{NMEA\+\_\+\+TEMPERATURE\+\_\+\+AIR}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}{NMEA\+\_\+\+TEMPERATURE\+\_\+\+WATER}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a88de695da7b711f27ad0b07b71c4c56d}{NMEA\+\_\+\+HUMIDITY}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}{NMEA\+\_\+\+BAROMETER}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a59965ef2b32c4ad4d4859eeb9680d24e}{NMEA\+\_\+\+USR\+\_\+00}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a941914dde5659e33dd944c438589d14b}{NMEA\+\_\+\+USR\+\_\+01}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa37c86d68193266279d372fe2aa2f367}{NMEA\+\_\+\+USR\+\_\+02}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7d174bb004ddc87d92de8d09c01a5ada}{NMEA\+\_\+\+USR\+\_\+03}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a37049dcba18b17ce24aba058197217ba}{NMEA\+\_\+\+USR\+\_\+04}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a17f2f25154f6758eb833eee2c7ae5946}{NMEA\+\_\+\+USR\+\_\+05}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9d30dd87e76fc7773f502514bf38c0db}{NMEA\+\_\+\+USR\+\_\+06}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4066a92481349c8b57769df56d375296}{NMEA\+\_\+\+USR\+\_\+07}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8cc3d88285ee5c82d5dc97e93f65ec3c}{NMEA\+\_\+\+USR\+\_\+08}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6b73287aa7fbe476a76f4ce48889228e}{NMEA\+\_\+\+USR\+\_\+09}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1df94f78d880c540eabdc7152599f317}{NMEA\+\_\+\+USR\+\_\+10}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9551f5161d5004f87f1969b9efe796a2}{NMEA\+\_\+\+USR\+\_\+11}}
+, \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a383b260fe374c7efcd82b392a2c04673}{NMEA\+\_\+\+USR\+\_\+12}}
+, \newline
+\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\+\_\+\+MAX\+\_\+\+INDEX}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_n_m_e_a__data_8h_af7216e836776a428f63f632b003e5cb4}\label{_n_m_e_a__data_8h_af7216e836776a428f63f632b003e5cb4}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!\_NMEA\_\_DATA\_H@{\_NMEA\_\_DATA\_H}}
+\index{\_NMEA\_\_DATA\_H@{\_NMEA\_\_DATA\_H}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{\_NMEA\_\_DATA\_H}{\_NMEA\_\_DATA\_H}}
+{\footnotesize\ttfamily \#define \+\_\+\+NMEA\+\_\+\+\_\+\+DATA\+\_\+H}
+
+\mbox{\Hypertarget{_n_m_e_a__data_8h_a0c423588a466231e5a996377c5b652e1}\label{_n_m_e_a__data_8h_a0c423588a466231e5a996377c5b652e1}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_FLOAT\_T@{NMEA\_FLOAT\_T}}
+\index{NMEA\_FLOAT\_T@{NMEA\_FLOAT\_T}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_FLOAT\_T}{NMEA\_FLOAT\_T}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+FLOAT\+\_\+T~float}
+
+
+
+let float be overidden on command line 
+
+\mbox{\Hypertarget{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}\label{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_MAX\_SENTENCE\_ID@{NMEA\_MAX\_SENTENCE\_ID}}
+\index{NMEA\_MAX\_SENTENCE\_ID@{NMEA\_MAX\_SENTENCE\_ID}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_MAX\_SENTENCE\_ID}{NMEA\_MAX\_SENTENCE\_ID}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID~  20}
+
+
+
+maximum length of a sentence ID name, including terminating 0 
+
+\mbox{\Hypertarget{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}\label{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_MAX\_SOURCE\_ID@{NMEA\_MAX\_SOURCE\_ID}}
+\index{NMEA\_MAX\_SOURCE\_ID@{NMEA\_MAX\_SOURCE\_ID}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_MAX\_SOURCE\_ID}{NMEA\_MAX\_SOURCE\_ID}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID~  3}
+
+
+
+maximum length of a source ID name, including terminating 0 
+
+\mbox{\Hypertarget{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}\label{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_MAX\_WP\_ID@{NMEA\_MAX\_WP\_ID}}
+\index{NMEA\_MAX\_WP\_ID@{NMEA\_MAX\_WP\_ID}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_MAX\_WP\_ID}{NMEA\_MAX\_WP\_ID}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+MAX\+\_\+\+WP\+\_\+\+ID~  20}
+
+
+
+maximum length of a waypoint ID name, including terminating 0 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}\label{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!nmea\_float\_t@{nmea\_float\_t}}
+\index{nmea\_float\_t@{nmea\_float\_t}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{nmea\_float\_t}{nmea\_float\_t}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{_n_m_e_a__data_8h_a0c423588a466231e5a996377c5b652e1}{NMEA\+\_\+\+FLOAT\+\_\+T}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}
+
+
+
+the type of variables to use for floating point 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!nmea\_index\_t@{nmea\_index\_t}}
+\index{nmea\_index\_t@{nmea\_index\_t}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{nmea\_index\_t}{nmea\_index\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}
+
+Type to provide an index into the array of data values for different NMEA quantities. The sine and cosine components of some angles allow for smoothing of those angles by averaging of sine and cosine values that are continuous, rather than angles that are discontinuous at -\/180/180 or 359/0 transitions. Note that the enumerations are arranged so that NMEA\+\_\+\+XXX\+\_\+\+SIN = NMEA\+\_\+\+XXX + 1, and NMEA\+\_\+\+XXX\+\_\+\+COS = NMEA\+\_\+\+XXX + 2. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDOP@{NMEA\_HDOP}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDOP@{NMEA\_HDOP}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}} 
+NMEA\+\_\+\+HDOP&Horizontal Dilution of Position. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_LAT@{NMEA\_LAT}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_LAT@{NMEA\_LAT}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}} 
+NMEA\+\_\+\+LAT&Latitude in signed decimal degrees -\/90 to 90. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_LON@{NMEA\_LON}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_LON@{NMEA\_LON}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}} 
+NMEA\+\_\+\+LON&Longitude in signed decimal degrees -\/180 to 180. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_LATWP@{NMEA\_LATWP}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_LATWP@{NMEA\_LATWP}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a192af66d3d405dcd64314dd2052aa066}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a192af66d3d405dcd64314dd2052aa066}} 
+NMEA\+\_\+\+LATWP&Waypoint Latitude in signed decimal degrees -\/90 to 90. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_LONWP@{NMEA\_LONWP}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_LONWP@{NMEA\_LONWP}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7c7af90260edd7f77f2c5d5f3996da8c}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7c7af90260edd7f77f2c5d5f3996da8c}} 
+NMEA\+\_\+\+LONWP&Waypoint Longitude in signed decimal degrees -\/180 to 180. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_SOG@{NMEA\_SOG}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_SOG@{NMEA\_SOG}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ac0740cafb89c58378223849d33770d5f}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ac0740cafb89c58378223849d33770d5f}} 
+NMEA\+\_\+\+SOG&Speed over Ground in knots. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_COG@{NMEA\_COG}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_COG@{NMEA\_COG}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0dc2497e13496f5f3b4f23cd4626664d}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0dc2497e13496f5f3b4f23cd4626664d}} 
+NMEA\+\_\+\+COG&Course over ground, 0 to 360 degrees true. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_COG\_SIN@{NMEA\_COG\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_COG\_SIN@{NMEA\_COG\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a67b120bf6a8123092de748e0b42f94f4}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a67b120bf6a8123092de748e0b42f94f4}} 
+NMEA\+\_\+\+COG\+\_\+\+SIN&sine of Course over ground \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_COG\_COS@{NMEA\_COG\_COS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_COG\_COS@{NMEA\_COG\_COS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1dadabf0a1457e491693f79c0df15aac}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1dadabf0a1457e491693f79c0df15aac}} 
+NMEA\+\_\+\+COG\+\_\+\+COS&cosine of Course over ground \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_COGWP@{NMEA\_COGWP}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_COGWP@{NMEA\_COGWP}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abca6e3662f289de96485a385ff658b00}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abca6e3662f289de96485a385ff658b00}} 
+NMEA\+\_\+\+COGWP&Course over ground to the waypoint, 0 to 360 degrees true. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_XTE@{NMEA\_XTE}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_XTE@{NMEA\_XTE}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}} 
+NMEA\+\_\+\+XTE&Cross track error for the current segment to the waypoint, Nautical Miles -\/ve to the left \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_DISTWP@{NMEA\_DISTWP}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_DISTWP@{NMEA\_DISTWP}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1ef9e86aba876eedca5c4f2f38b72991}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1ef9e86aba876eedca5c4f2f38b72991}} 
+NMEA\+\_\+\+DISTWP&Distance to the waypoint in nautical miles. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_AWA@{NMEA\_AWA}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_AWA@{NMEA\_AWA}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}} 
+NMEA\+\_\+\+AWA&apparent wind angle relative to the boat -\/180 to 180 degrees \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_AWA\_SIN@{NMEA\_AWA\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_AWA\_SIN@{NMEA\_AWA\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a04fe7a2c0cfad169ce450a0b61f8103b}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a04fe7a2c0cfad169ce450a0b61f8103b}} 
+NMEA\+\_\+\+AWA\+\_\+\+SIN&sine of apparent wind angle relative to the boat \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_AWA\_COS@{NMEA\_AWA\_COS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_AWA\_COS@{NMEA\_AWA\_COS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aced0f6b647b9b3d9090e10eab53a573f}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aced0f6b647b9b3d9090e10eab53a573f}} 
+NMEA\+\_\+\+AWA\+\_\+\+COS&cosine of apparent wind angle relative to the boat \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_AWS@{NMEA\_AWS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_AWS@{NMEA\_AWS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}} 
+NMEA\+\_\+\+AWS&apparent wind speed, will be coerced to knots \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWA@{NMEA\_TWA}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWA@{NMEA\_TWA}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}} 
+NMEA\+\_\+\+TWA&true wind angle relative to the boat -\/180 to 180 degrees \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWA\_SIN@{NMEA\_TWA\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWA\_SIN@{NMEA\_TWA\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f0acf144e3a15735c1895f0d62d5eaa}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f0acf144e3a15735c1895f0d62d5eaa}} 
+NMEA\+\_\+\+TWA\+\_\+\+SIN&sine of true wind angle relative to the boat \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWA\_COS@{NMEA\_TWA\_COS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWA\_COS@{NMEA\_TWA\_COS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae339fe721d0bcfda7d5ab9bae78dfb6a}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae339fe721d0bcfda7d5ab9bae78dfb6a}} 
+NMEA\+\_\+\+TWA\+\_\+\+COS&cosine of true wind angle relative to the boat \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWD@{NMEA\_TWD}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWD@{NMEA\_TWD}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a621aa4c4d29b1a6c0a6348cf6bc0fe77}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a621aa4c4d29b1a6c0a6348cf6bc0fe77}} 
+NMEA\+\_\+\+TWD&true wind compass direction, magnetic 0 to 360 degrees magnetic \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWD\_SIN@{NMEA\_TWD\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWD\_SIN@{NMEA\_TWD\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6a508ebd84e789b82823b9ee8aa28af0}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6a508ebd84e789b82823b9ee8aa28af0}} 
+NMEA\+\_\+\+TWD\+\_\+\+SIN&sine of true wind compass direction, magnetic \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWD\_COS@{NMEA\_TWD\_COS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWD\_COS@{NMEA\_TWD\_COS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8f4492ccd6e317a60887edc9432884d1}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8f4492ccd6e317a60887edc9432884d1}} 
+NMEA\+\_\+\+TWD\+\_\+\+COS&cosine of true wind compass direction, magnetic \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TWS@{NMEA\_TWS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TWS@{NMEA\_TWS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}} 
+NMEA\+\_\+\+TWS&true wind speed in knots TWS \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_VMG@{NMEA\_VMG}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_VMG@{NMEA\_VMG}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}} 
+NMEA\+\_\+\+VMG&velocity made good relative to the wind -\/ve means downwind, knots \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_VMGWP@{NMEA\_VMGWP}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_VMGWP@{NMEA\_VMGWP}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}} 
+NMEA\+\_\+\+VMGWP&velocity made good relative to the waypoint, knots \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HEEL@{NMEA\_HEEL}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HEEL@{NMEA\_HEEL}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a91e791eb52bd523a25057c2e56adb862}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a91e791eb52bd523a25057c2e56adb862}} 
+NMEA\+\_\+\+HEEL&boat heel angle, -\/180 to 180 degrees to starboard \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_PITCH@{NMEA\_PITCH}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_PITCH@{NMEA\_PITCH}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f3c01dbb1008cd0269e606cc5c2acea}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f3c01dbb1008cd0269e606cc5c2acea}} 
+NMEA\+\_\+\+PITCH&boat pitch angle, -\/180 to 180 degrees bow up \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDG@{NMEA\_HDG}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDG@{NMEA\_HDG}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}} 
+NMEA\+\_\+\+HDG&magnetic heading, 0 to 360 degrees magnetic \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDG\_SIN@{NMEA\_HDG\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDG\_SIN@{NMEA\_HDG\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a65053e4ad02756b570f62b5e41c7f710}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a65053e4ad02756b570f62b5e41c7f710}} 
+NMEA\+\_\+\+HDG\+\_\+\+SIN&sine of magnetic heading \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDG\_COS@{NMEA\_HDG\_COS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDG\_COS@{NMEA\_HDG\_COS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa01cdd1ff0af82b39e3df95c7e789eae}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa01cdd1ff0af82b39e3df95c7e789eae}} 
+NMEA\+\_\+\+HDG\+\_\+\+COS&cosine of magnetic heading \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDT@{NMEA\_HDT}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDT@{NMEA\_HDT}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}} 
+NMEA\+\_\+\+HDT&true heading, 0 to 360 degrees true \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDT\_SIN@{NMEA\_HDT\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDT\_SIN@{NMEA\_HDT\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab2852227f6863bca31159d539a26828b}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab2852227f6863bca31159d539a26828b}} 
+NMEA\+\_\+\+HDT\+\_\+\+SIN&sine of true heading \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HDT\_COS@{NMEA\_HDT\_COS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HDT\_COS@{NMEA\_HDT\_COS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0b0976830a8c5e67e8cfe7889ccf58be}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0b0976830a8c5e67e8cfe7889ccf58be}} 
+NMEA\+\_\+\+HDT\+\_\+\+COS&cosine of true heading \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_VTW@{NMEA\_VTW}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_VTW@{NMEA\_VTW}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}} 
+NMEA\+\_\+\+VTW&Boat speed through the water in knots. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_LOG@{NMEA\_LOG}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_LOG@{NMEA\_LOG}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}} 
+NMEA\+\_\+\+LOG&Distance logged through the water in nautical miles. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_LOGR@{NMEA\_LOGR}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_LOGR@{NMEA\_LOGR}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab9f8b31288a7280ea18544c44bf1f8c1}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab9f8b31288a7280ea18544c44bf1f8c1}} 
+NMEA\+\_\+\+LOGR&Distance logged through the water in nautical miles since reset \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_DEPTH@{NMEA\_DEPTH}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_DEPTH@{NMEA\_DEPTH}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}} 
+NMEA\+\_\+\+DEPTH&depth of water below the surface in metres \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_RPM\_M1@{NMEA\_RPM\_M1}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_RPM\_M1@{NMEA\_RPM\_M1}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae9935f17810b837223b8ce117b8fc19d}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae9935f17810b837223b8ce117b8fc19d}} 
+NMEA\+\_\+\+RPM\+\_\+\+M1&rpm of motor 1 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TEMPERATURE\_M1@{NMEA\_TEMPERATURE\_M1}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TEMPERATURE\_M1@{NMEA\_TEMPERATURE\_M1}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7accd128fe8ad3caadc6cddb855f9bec1a}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7accd128fe8ad3caadc6cddb855f9bec1a}} 
+NMEA\+\_\+\+TEMPERATURE\+\_\+\+M1&temperature of motor 1 in C \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_PRESSURE\_M1@{NMEA\_PRESSURE\_M1}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_PRESSURE\_M1@{NMEA\_PRESSURE\_M1}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a622d07457540a62d101c3dba77b8fb3e}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a622d07457540a62d101c3dba77b8fb3e}} 
+NMEA\+\_\+\+PRESSURE\+\_\+\+M1&pressure of motor 1 in k\+Pa \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_VOLTAGE\_M1@{NMEA\_VOLTAGE\_M1}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_VOLTAGE\_M1@{NMEA\_VOLTAGE\_M1}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9e736a5305edf879cfc648eef4728db7}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9e736a5305edf879cfc648eef4728db7}} 
+NMEA\+\_\+\+VOLTAGE\+\_\+\+M1&voltage of motor 1 in Volts \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_CURRENT\_M1@{NMEA\_CURRENT\_M1}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_CURRENT\_M1@{NMEA\_CURRENT\_M1}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae491a271e5bda7132ca831ec5e83d84b}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae491a271e5bda7132ca831ec5e83d84b}} 
+NMEA\+\_\+\+CURRENT\+\_\+\+M1&current of motor 1 in Amps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_RPM\_M2@{NMEA\_RPM\_M2}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_RPM\_M2@{NMEA\_RPM\_M2}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a5ec5d1c335aa2285e2afaf79f88b155f}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a5ec5d1c335aa2285e2afaf79f88b155f}} 
+NMEA\+\_\+\+RPM\+\_\+\+M2&rpm of motor 2 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TEMPERATURE\_M2@{NMEA\_TEMPERATURE\_M2}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TEMPERATURE\_M2@{NMEA\_TEMPERATURE\_M2}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4dce2ddf1a5aa38cc150fbee4fdecda9}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4dce2ddf1a5aa38cc150fbee4fdecda9}} 
+NMEA\+\_\+\+TEMPERATURE\+\_\+\+M2&temperature of motor 2 in C \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_PRESSURE\_M2@{NMEA\_PRESSURE\_M2}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_PRESSURE\_M2@{NMEA\_PRESSURE\_M2}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a14f464441fc70d4106487a8ef816cf07}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a14f464441fc70d4106487a8ef816cf07}} 
+NMEA\+\_\+\+PRESSURE\+\_\+\+M2&pressure of motor 2 in k\+Pa \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_VOLTAGE\_M2@{NMEA\_VOLTAGE\_M2}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_VOLTAGE\_M2@{NMEA\_VOLTAGE\_M2}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abd0a65c66607397fe2dddc00713e6bd6}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abd0a65c66607397fe2dddc00713e6bd6}} 
+NMEA\+\_\+\+VOLTAGE\+\_\+\+M2&voltage of motor 2 in Volts \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_CURRENT\_M2@{NMEA\_CURRENT\_M2}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_CURRENT\_M2@{NMEA\_CURRENT\_M2}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a889981e7ff93913b8cedda0bbeaa8a3a}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a889981e7ff93913b8cedda0bbeaa8a3a}} 
+NMEA\+\_\+\+CURRENT\+\_\+\+M2&current of motor 2 in Amps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TEMPERATURE\_AIR@{NMEA\_TEMPERATURE\_AIR}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TEMPERATURE\_AIR@{NMEA\_TEMPERATURE\_AIR}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a083ed5d1df1aefd81fcc3d67d8c3587d}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a083ed5d1df1aefd81fcc3d67d8c3587d}} 
+NMEA\+\_\+\+TEMPERATURE\+\_\+\+AIR&outside temperature in C \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_TEMPERATURE\_WATER@{NMEA\_TEMPERATURE\_WATER}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_TEMPERATURE\_WATER@{NMEA\_TEMPERATURE\_WATER}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}} 
+NMEA\+\_\+\+TEMPERATURE\+\_\+\+WATER&sea water temperature in C \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HUMIDITY@{NMEA\_HUMIDITY}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HUMIDITY@{NMEA\_HUMIDITY}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a88de695da7b711f27ad0b07b71c4c56d}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a88de695da7b711f27ad0b07b71c4c56d}} 
+NMEA\+\_\+\+HUMIDITY&outside relative humidity in \% \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_BAROMETER@{NMEA\_BAROMETER}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_BAROMETER@{NMEA\_BAROMETER}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}} 
+NMEA\+\_\+\+BAROMETER&barometric pressure in Pa absolute -- not altitude corrected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_00@{NMEA\_USR\_00}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_00@{NMEA\_USR\_00}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a59965ef2b32c4ad4d4859eeb9680d24e}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a59965ef2b32c4ad4d4859eeb9680d24e}} 
+NMEA\+\_\+\+USR\+\_\+00&spaces for a user sketch to inject its own data \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_01@{NMEA\_USR\_01}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_01@{NMEA\_USR\_01}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a941914dde5659e33dd944c438589d14b}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a941914dde5659e33dd944c438589d14b}} 
+NMEA\+\_\+\+USR\+\_\+01&spaces for a user sketch to inject its own data \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_02@{NMEA\_USR\_02}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_02@{NMEA\_USR\_02}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa37c86d68193266279d372fe2aa2f367}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa37c86d68193266279d372fe2aa2f367}} 
+NMEA\+\_\+\+USR\+\_\+02&spaces for a user sketch to inject its own data \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_03@{NMEA\_USR\_03}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_03@{NMEA\_USR\_03}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7d174bb004ddc87d92de8d09c01a5ada}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7d174bb004ddc87d92de8d09c01a5ada}} 
+NMEA\+\_\+\+USR\+\_\+03&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_04@{NMEA\_USR\_04}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_04@{NMEA\_USR\_04}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a37049dcba18b17ce24aba058197217ba}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a37049dcba18b17ce24aba058197217ba}} 
+NMEA\+\_\+\+USR\+\_\+04&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_05@{NMEA\_USR\_05}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_05@{NMEA\_USR\_05}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a17f2f25154f6758eb833eee2c7ae5946}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a17f2f25154f6758eb833eee2c7ae5946}} 
+NMEA\+\_\+\+USR\+\_\+05&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_06@{NMEA\_USR\_06}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_06@{NMEA\_USR\_06}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9d30dd87e76fc7773f502514bf38c0db}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9d30dd87e76fc7773f502514bf38c0db}} 
+NMEA\+\_\+\+USR\+\_\+06&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_07@{NMEA\_USR\_07}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_07@{NMEA\_USR\_07}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4066a92481349c8b57769df56d375296}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4066a92481349c8b57769df56d375296}} 
+NMEA\+\_\+\+USR\+\_\+07&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_08@{NMEA\_USR\_08}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_08@{NMEA\_USR\_08}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8cc3d88285ee5c82d5dc97e93f65ec3c}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8cc3d88285ee5c82d5dc97e93f65ec3c}} 
+NMEA\+\_\+\+USR\+\_\+08&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_09@{NMEA\_USR\_09}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_09@{NMEA\_USR\_09}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6b73287aa7fbe476a76f4ce48889228e}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6b73287aa7fbe476a76f4ce48889228e}} 
+NMEA\+\_\+\+USR\+\_\+09&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_10@{NMEA\_USR\_10}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_10@{NMEA\_USR\_10}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1df94f78d880c540eabdc7152599f317}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1df94f78d880c540eabdc7152599f317}} 
+NMEA\+\_\+\+USR\+\_\+10&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_11@{NMEA\_USR\_11}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_11@{NMEA\_USR\_11}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9551f5161d5004f87f1969b9efe796a2}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9551f5161d5004f87f1969b9efe796a2}} 
+NMEA\+\_\+\+USR\+\_\+11&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_USR\_12@{NMEA\_USR\_12}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_USR\_12@{NMEA\_USR\_12}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a383b260fe374c7efcd82b392a2c04673}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a383b260fe374c7efcd82b392a2c04673}} 
+NMEA\+\_\+\+USR\+\_\+12&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_MAX\_INDEX@{NMEA\_MAX\_INDEX}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_MAX\_INDEX@{NMEA\_MAX\_INDEX}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}\label{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}} 
+NMEA\+\_\+\+MAX\+\_\+\+INDEX&the largest number in the enum type -- not for data, but does define size of data value array required. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}} 
+\index{NMEA\_data.h@{NMEA\_data.h}!nmea\_value\_type\_t@{nmea\_value\_type\_t}}
+\index{nmea\_value\_type\_t@{nmea\_value\_type\_t}!NMEA\_data.h@{NMEA\_data.h}}
+\doxysubsubsection{\texorpdfstring{nmea\_value\_type\_t}{nmea\_value\_type\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\+\_\+value\+\_\+type\+\_\+t}}}
+
+Type to characterize the type of value stored in a data value struct. The sine and cosine components of some angles allow for smoothing of those angles by averaging of sine and cosine values that are continuous, rather than angles that are discontinuous at -\/180/180 or 359/0 transitions. Types 10-\/19 must have three contiguous data value entries set up in the matrix to accommodate the extra sin and cos values. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_SIMPLE\_FLOAT@{NMEA\_SIMPLE\_FLOAT}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_SIMPLE\_FLOAT@{NMEA\_SIMPLE\_FLOAT}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}} 
+NMEA\+\_\+\+SIMPLE\+\_\+\+FLOAT&A simple floating point number. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_COMPASS\_ANGLE@{NMEA\_COMPASS\_ANGLE}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_COMPASS\_ANGLE@{NMEA\_COMPASS\_ANGLE}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a7bc54aef98d4ed5daa02cb521e386a6f}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a7bc54aef98d4ed5daa02cb521e386a6f}} 
+NMEA\+\_\+\+COMPASS\+\_\+\+ANGLE&A compass style angle from 0 to 360 degrees. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_BOAT\_ANGLE@{NMEA\_BOAT\_ANGLE}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_BOAT\_ANGLE@{NMEA\_BOAT\_ANGLE}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}} 
+NMEA\+\_\+\+BOAT\+\_\+\+ANGLE&An angle relative to the boat orientation from -\/180 (port) to 180 degrees \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_COMPASS\_ANGLE\_SIN@{NMEA\_COMPASS\_ANGLE\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_COMPASS\_ANGLE\_SIN@{NMEA\_COMPASS\_ANGLE\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}} 
+NMEA\+\_\+\+COMPASS\+\_\+\+ANGLE\+\_\+\+SIN&A compass style angle from 0 to 360 degrees, with sin and cos elements stored for averaging, etc. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_BOAT\_ANGLE\_SIN@{NMEA\_BOAT\_ANGLE\_SIN}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_BOAT\_ANGLE\_SIN@{NMEA\_BOAT\_ANGLE\_SIN}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}} 
+NMEA\+\_\+\+BOAT\+\_\+\+ANGLE\+\_\+\+SIN&An angle relative to the boat orientation from -\/180 (port) to 180 degrees, with sin and cos elements stored for averaging, etc. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_DDMM@{NMEA\_DDMM}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_DDMM@{NMEA\_DDMM}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a34ae709a17b026e87e3ff3c15be18b2a}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a34ae709a17b026e87e3ff3c15be18b2a}} 
+NMEA\+\_\+\+DDMM&A latitude or longitude angle stored in DDMM.\+mmmm format like it comes in from the GPS \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HHMMSS@{NMEA\_HHMMSS}!NMEA\_data.h@{NMEA\_data.h}}\index{NMEA\_data.h@{NMEA\_data.h}!NMEA\_HHMMSS@{NMEA\_HHMMSS}}}\mbox{\Hypertarget{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a4284cc96e4113988a1e57f1de8c9b3bf}\label{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a4284cc96e4113988a1e57f1de8c9b3bf}} 
+NMEA\+\_\+\+HHMMSS&A time stored in HHMMSS format like it comes in from the GPS. \\
+\hline
+
+\end{DoxyEnumFields}

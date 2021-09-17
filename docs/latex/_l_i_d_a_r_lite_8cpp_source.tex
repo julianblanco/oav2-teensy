@@ -1,0 +1,398 @@
+\hypertarget{_l_i_d_a_r_lite_8cpp_source}{}\doxysection{LIDARLite.\+cpp}
+\label{_l_i_d_a_r_lite_8cpp_source}\index{lib/LIDAR-\/Lite/src/LIDARLite.cpp@{lib/LIDAR-\/Lite/src/LIDARLite.cpp}}
+\mbox{\hyperlink{_l_i_d_a_r_lite_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00001}00001 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00002}00002 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00003}00003 \textcolor{comment}{  LIDARLite Arduino Library}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00004}00004 \textcolor{comment}{  LIDARLite.cpp}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00005}00005 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00006}00006 \textcolor{comment}{  This library provides quick access to the basic functions of LIDAR-\/Lite}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00007}00007 \textcolor{comment}{  via the Arduino interface. Additionally, it can provide a user of any}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00008}00008 \textcolor{comment}{  platform with a template for their own application code.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00010}00010 \textcolor{comment}{  Copyright (c) 2016 Garmin Ltd. or its subsidiaries.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00011}00011 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00012}00012 \textcolor{comment}{  Licensed under the Apache License, Version 2.0 (the "{}License"{});}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00013}00013 \textcolor{comment}{  you may not use this file except in compliance with the License.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00014}00014 \textcolor{comment}{  You may obtain a copy of the License at}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00015}00015 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00016}00016 \textcolor{comment}{  http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00017}00017 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00018}00018 \textcolor{comment}{  Unless required by applicable law or agreed to in writing, software}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00019}00019 \textcolor{comment}{  distributed under the License is distributed on an "{}AS IS"{} BASIS,}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00020}00020 \textcolor{comment}{  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00021}00021 \textcolor{comment}{  See the License for the specific language governing permissions and}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00022}00022 \textcolor{comment}{  limitations under the License.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00023}00023 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00024}00024 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00028}00028 \textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00029}00029 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_l_i_d_a_r_lite_8h}{LIDARLite.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00031}00031 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00032}00032 \textcolor{comment}{  Constructor}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00033}00033 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00034}00034 \textcolor{comment}{  Use LIDARLite::begin to initialize.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00035}00035 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00036}\mbox{\hyperlink{class_l_i_d_a_r_lite_a160a9704c65c980691c388982ab887c0}{00036}} \mbox{\hyperlink{class_l_i_d_a_r_lite_a160a9704c65c980691c388982ab887c0}{LIDARLite::LIDARLite}}()\{\}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00038}00038 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00039}00039 \textcolor{comment}{  Begin}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00040}00040 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00041}00041 \textcolor{comment}{  Starts the sensor and I2C.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00042}00042 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00043}00043 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00044}00044 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00045}00045 \textcolor{comment}{  configuration: Default 0. Selects one of several preset configurations.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00046}00046 \textcolor{comment}{  fasti2c: Default 100 kHz. I2C base frequency.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00047}00047 \textcolor{comment}{    If true I2C frequency is set to 400kHz.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00048}00048 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00049}00049 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00050}00050 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00051}\mbox{\hyperlink{class_l_i_d_a_r_lite_afcaa12b2ea8ea674aaf97cd552fa573d}{00051}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_afcaa12b2ea8ea674aaf97cd552fa573d}{LIDARLite::begin}}(\textcolor{keywordtype}{int} configuration, \textcolor{keywordtype}{bool} fasti2c, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00052}00052 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00053}00053   Wire.begin(); \textcolor{comment}{// Start I2C}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00054}00054   \textcolor{keywordflow}{if}(fasti2c)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00055}00055   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00056}00056 \textcolor{preprocessor}{    \#if ARDUINO >= 157}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00057}00057       Wire.setClock(400000UL); \textcolor{comment}{// Set I2C frequency to 400kHz, for Arduino Due}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00058}00058 \textcolor{preprocessor}{    \#else}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00059}00059       TWBR = ((\mbox{\hyperlink{_free_r_t_o_s_config__default_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\_CPU}} / 400000UL) -\/ 16) / 2; \textcolor{comment}{// Set I2C frequency to 400kHz}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00060}00060 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00061}00061   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00062}00062   \mbox{\hyperlink{class_l_i_d_a_r_lite_a528543696ed39934f440be167dad3326}{configure}}(configuration, lidarliteAddress); \textcolor{comment}{// Configuration settings}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00063}00063 \} \textcolor{comment}{/* LIDARLite::begin */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00065}00065 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00066}00066 \textcolor{comment}{  Configure}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00067}00067 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00068}00068 \textcolor{comment}{  Selects one of several preset configurations.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00069}00069 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00070}00070 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00071}00071 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00072}00072 \textcolor{comment}{  configuration:  Default 0.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00073}00073 \textcolor{comment}{    0: Default mode, balanced performance.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00074}00074 \textcolor{comment}{    1: Short range, high speed. Uses 0x1d maximum acquisition count.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00075}00075 \textcolor{comment}{    2: Default range, higher speed short range. Turns on quick termination}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00076}00076 \textcolor{comment}{        detection for faster measurements at short range (with decreased}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00077}00077 \textcolor{comment}{        accuracy)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00078}00078 \textcolor{comment}{    3: Maximum range. Uses 0xff maximum acquisition count.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00079}00079 \textcolor{comment}{    4: High sensitivity detection. Overrides default valid measurement detection}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00080}00080 \textcolor{comment}{        algorithm, and uses a threshold value for high sensitivity and noise.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00081}00081 \textcolor{comment}{    5: Low sensitivity detection. Overrides default valid measurement detection}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00082}00082 \textcolor{comment}{        algorithm, and uses a threshold value for low sensitivity and noise.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00083}00083 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00084}00084 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00085}00085 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00086}\mbox{\hyperlink{class_l_i_d_a_r_lite_a528543696ed39934f440be167dad3326}{00086}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a528543696ed39934f440be167dad3326}{LIDARLite::configure}}(\textcolor{keywordtype}{int} configuration, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00087}00087 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00088}00088   \textcolor{keywordflow}{switch} (configuration)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00089}00089   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00090}00090     \textcolor{keywordflow}{case} 0: \textcolor{comment}{// Default mode, balanced performance}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00091}00091       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x02,0x80,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00092}00092       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x04,0x08,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00093}00093       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1c,0x00,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00094}00094     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00096}00096     \textcolor{keywordflow}{case} 1: \textcolor{comment}{// Short range, high speed}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00097}00097       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x02,0x1d,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00098}00098       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x04,0x08,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00099}00099       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1c,0x00,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00100}00100     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00102}00102     \textcolor{keywordflow}{case} 2: \textcolor{comment}{// Default range, higher speed short range}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00103}00103       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x02,0x80,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00104}00104       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x04,0x00,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00105}00105       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1c,0x00,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00106}00106     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00108}00108     \textcolor{keywordflow}{case} 3: \textcolor{comment}{// Maximum range}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00109}00109       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x02,0xff,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00110}00110       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x04,0x08,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00111}00111       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1c,0x00,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00112}00112     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00114}00114     \textcolor{keywordflow}{case} 4: \textcolor{comment}{// High sensitivity detection, high erroneous measurements}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00115}00115       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x02,0x80,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00116}00116       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x04,0x08,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00117}00117       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1c,0x80,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00118}00118     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00120}00120     \textcolor{keywordflow}{case} 5: \textcolor{comment}{// Low sensitivity detection, low erroneous measurements}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00121}00121       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x02,0x80,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00122}00122       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x04,0x08,lidarliteAddress); \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00123}00123       \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1c,0xb0,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00124}00124     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00125}00125   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00126}00126 \} \textcolor{comment}{/* LIDARLite::configure */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00128}00128 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00129}00129 \textcolor{comment}{  Set I2C Address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00130}00130 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00131}00131 \textcolor{comment}{  Set Alternate I2C Device Address. See Operation Manual for additional info.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00132}00132 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00133}00133 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00134}00134 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00135}00135 \textcolor{comment}{  newAddress: desired secondary I2C device address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00136}00136 \textcolor{comment}{  disableDefault: a non-\/zero value here means the default 0x62 I2C device}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00137}00137 \textcolor{comment}{    address will be disabled.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00138}00138 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00139}00139 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00140}00140 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00141}\mbox{\hyperlink{class_l_i_d_a_r_lite_a2eeabb7f2223d6813ff77c5b02ae8bf3}{00141}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a2eeabb7f2223d6813ff77c5b02ae8bf3}{LIDARLite::setI2Caddr}}(\textcolor{keywordtype}{char} newAddress, \textcolor{keywordtype}{char} disableDefault, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00142}00142 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00143}00143   \textcolor{keywordtype}{byte} dataBytes[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00145}00145   \textcolor{comment}{// Read UNIT\_ID serial number bytes and write them into I2C\_ID byte locations}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00146}00146   \mbox{\hyperlink{class_l_i_d_a_r_lite_a2260d699ed61978ab4db10958d6b4a10}{read}} ((0x16 | 0x80), 2, dataBytes, \textcolor{keyword}{false}, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00147}00147   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x18, dataBytes[0], lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00148}00148   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x19, dataBytes[1], lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00150}00150   \textcolor{comment}{// Write the new I2C device address to registers}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00151}00151   dataBytes[0] = newAddress;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00152}00152   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1a, dataBytes[0], lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00154}00154   \textcolor{comment}{// Enable the new I2C device address using the default I2C device address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00155}00155   dataBytes[0] = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00156}00156   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1e, dataBytes[0], lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00158}00158   \textcolor{comment}{// If desired, disable default I2C device address (using the new I2C device address)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00159}00159   \textcolor{keywordflow}{if} (disableDefault)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00160}00160   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00161}00161     dataBytes[0] = (1 << 3); \textcolor{comment}{// set bit to disable default address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00162}00162     \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x1e, dataBytes[0], newAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00163}00163   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00164}00164 \} \textcolor{comment}{/* LIDARLite::setI2Caddr */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00166}00166 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00167}00167 \textcolor{comment}{  Reset}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00168}00168 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00169}00169 \textcolor{comment}{  Reset device. The device reloads default register settings, including the}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00170}00170 \textcolor{comment}{  default I2C address. Re-\/initialization takes approximately 22ms.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00171}00171 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00172}00172 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00173}00173 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00174}00174 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00175}00175 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00176}00176 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00177}\mbox{\hyperlink{class_l_i_d_a_r_lite_ad6e5e19fbc0e9307148d7b161cf168e2}{00177}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_ad6e5e19fbc0e9307148d7b161cf168e2}{LIDARLite::reset}}(\textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00178}00178 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00179}00179   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x00,0x00,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00180}00180 \} \textcolor{comment}{/* LIDARLite::reset */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00182}00182 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00183}00183 \textcolor{comment}{  Distance}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00184}00184 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00185}00185 \textcolor{comment}{  Take a distance measurement and read the result.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00186}00186 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00187}00187 \textcolor{comment}{  Process}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00188}00188 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00189}00189 \textcolor{comment}{  1.  Write 0x04 or 0x03 to register 0x00 to initiate an aquisition.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00190}00190 \textcolor{comment}{  2.  Read register 0x01 (this is handled in the read() command)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00191}00191 \textcolor{comment}{      -\/ if the first bit is "{}1"{} then the sensor is busy, loop until the first}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00192}00192 \textcolor{comment}{        bit is "{}0"{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00193}00193 \textcolor{comment}{      -\/ if the first bit is "{}0"{} then the sensor is ready}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00194}00194 \textcolor{comment}{  3.  Read two bytes from register 0x8f and save}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00195}00195 \textcolor{comment}{  4.  Shift the first value from 0x8f << 8 and add to second value from 0x8f.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00196}00196 \textcolor{comment}{      The result is the measured distance in centimeters.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00197}00197 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00198}00198 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00199}00199 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00200}00200 \textcolor{comment}{  biasCorrection: Default true. Take aquisition with receiver bias}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00201}00201 \textcolor{comment}{    correction. If set to false measurements will be faster. Receiver bias}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00202}00202 \textcolor{comment}{    correction must be performed periodically. (e.g. 1 out of every 100}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00203}00203 \textcolor{comment}{    readings).}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00204}00204 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00205}00205 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00206}00206 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00207}\mbox{\hyperlink{class_l_i_d_a_r_lite_a4a8e57f982b83a08e84dbe8d734d25e8}{00207}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_l_i_d_a_r_lite_a4a8e57f982b83a08e84dbe8d734d25e8}{LIDARLite::distance}}(\textcolor{keywordtype}{bool} biasCorrection, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00208}00208 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00209}00209   \textcolor{keywordflow}{if}(biasCorrection)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00210}00210   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00211}00211     \textcolor{comment}{// Take acquisition \& correlation processing with receiver bias correction}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00212}00212     \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x00,0x04,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00213}00213   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00214}00214   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00215}00215   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00216}00216     \textcolor{comment}{// Take acquisition \& correlation processing without receiver bias correction}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00217}00217     \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x00,0x03,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00218}00218   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00219}00219   \textcolor{comment}{// Array to store high and low bytes of distance}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00220}00220   \textcolor{keywordtype}{byte} distanceArray[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00221}00221   \textcolor{comment}{// Read two bytes from register 0x8f (autoincrement for reading 0x0f and 0x10)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00222}00222   \mbox{\hyperlink{class_l_i_d_a_r_lite_a2260d699ed61978ab4db10958d6b4a10}{read}}(0x8f,2,distanceArray,\textcolor{keyword}{true},lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00223}00223   \textcolor{comment}{// Shift high byte and add to low byte}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00224}00224   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_l_i_d_a_r_lite_a4a8e57f982b83a08e84dbe8d734d25e8}{distance}} = (distanceArray[0] << 8) + distanceArray[1];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00225}00225   \textcolor{keywordflow}{return}(\mbox{\hyperlink{class_l_i_d_a_r_lite_a4a8e57f982b83a08e84dbe8d734d25e8}{distance}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00226}00226 \} \textcolor{comment}{/* LIDARLite::distance */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00228}00228 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00229}00229 \textcolor{comment}{  Write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00230}00230 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00231}00231 \textcolor{comment}{  Perform I2C write to device.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00232}00232 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00233}00233 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00234}00234 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00235}00235 \textcolor{comment}{  myAddress: register address to write to.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00236}00236 \textcolor{comment}{  myValue: value to write.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00237}00237 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00238}00238 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00239}00239 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00240}\mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{00240}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{LIDARLite::write}}(\textcolor{keywordtype}{char} myAddress, \textcolor{keywordtype}{char} myValue, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00241}00241 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00242}00242   Wire.beginTransmission((\textcolor{keywordtype}{int})lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00243}00243   Wire.write((\textcolor{keywordtype}{int})myAddress); \textcolor{comment}{// Set register for write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00244}00244   Wire.write((\textcolor{keywordtype}{int})myValue); \textcolor{comment}{// Write myValue to register}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00246}00246   \textcolor{comment}{// A nack means the device is not responding, report the error over serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00247}00247   \textcolor{keywordtype}{int} nackCatcher = Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00248}00248   \textcolor{keywordflow}{if}(nackCatcher != 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00249}00249   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00250}00250     Serial.println(\textcolor{stringliteral}{"{}> nack"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00251}00251   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00253}00253   delay(1); \textcolor{comment}{// 1 ms delay for robustness with successive reads and writes}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00254}00254 \} \textcolor{comment}{/* LIDARLite::write */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00256}00256 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00257}00257 \textcolor{comment}{  Read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00258}00258 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00259}00259 \textcolor{comment}{  Perform I2C read from device. Will detect an unresponsive device and report}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00260}00260 \textcolor{comment}{  the error over serial. The optional busy flag monitoring}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00261}00261 \textcolor{comment}{  can be used to read registers that are updated at the end of a distance}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00262}00262 \textcolor{comment}{  measurement to obtain the new data.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00263}00263 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00264}00264 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00265}00265 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00266}00266 \textcolor{comment}{  myAddress: register address to read from.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00267}00267 \textcolor{comment}{  numOfBytes: numbers of bytes to read. Can be 1 or 2.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00268}00268 \textcolor{comment}{  arrayToSave: an array to store the read values.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00269}00269 \textcolor{comment}{  monitorBusyFlag: if true, the routine will repeatedly read the status}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00270}00270 \textcolor{comment}{    register until the busy flag (LSB) is 0.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00271}00271 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00272}\mbox{\hyperlink{class_l_i_d_a_r_lite_a2260d699ed61978ab4db10958d6b4a10}{00272}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a2260d699ed61978ab4db10958d6b4a10}{LIDARLite::read}}(\textcolor{keywordtype}{char} myAddress, \textcolor{keywordtype}{int} numOfBytes, \textcolor{keywordtype}{byte} arrayToSave[2], \textcolor{keywordtype}{bool} monitorBusyFlag, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00273}00273 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00274}00274   \textcolor{keywordtype}{int} busyFlag = 0; \textcolor{comment}{// busyFlag monitors when the device is done with a measurement}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00275}00275   \textcolor{keywordflow}{if}(monitorBusyFlag)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00276}00276   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00277}00277     busyFlag = 1; \textcolor{comment}{// Begin read immediately if not monitoring busy flag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00278}00278   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00279}00279   \textcolor{keywordtype}{int} busyCounter = 0; \textcolor{comment}{// busyCounter counts number of times busy flag is checked, for timeout}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00280}00280 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00281}00281   \textcolor{keywordflow}{while}(busyFlag != 0) \textcolor{comment}{// Loop until device is not busy}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00282}00282   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00283}00283     \textcolor{comment}{// Read status register to check busy flag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00284}00284     Wire.beginTransmission((\textcolor{keywordtype}{int})lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00285}00285     Wire.write(0x01); \textcolor{comment}{// Set the status register to be read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00287}00287     \textcolor{comment}{// A nack means the device is not responding, report the error over serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00288}00288     \textcolor{keywordtype}{int} nackCatcher = Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00289}00289     \textcolor{keywordflow}{if}(nackCatcher != 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00290}00290     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00291}00291       Serial.println(\textcolor{stringliteral}{"{}> nack"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00292}00292     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00294}00294     Wire.requestFrom((\textcolor{keywordtype}{int})lidarliteAddress,1); \textcolor{comment}{// Read register 0x01}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00295}00295     busyFlag = bitRead(Wire.read(),0); \textcolor{comment}{// Assign the LSB of the status register to busyFlag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00297}00297     busyCounter++; \textcolor{comment}{// Increment busyCounter for timeout}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00298}00298 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00299}00299     \textcolor{comment}{// Handle timeout condition, exit while loop and goto bailout}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00300}00300     \textcolor{keywordflow}{if}(busyCounter > 9999)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00301}00301     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00302}00302       \textcolor{keywordflow}{goto} bailout;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00303}00303     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00304}00304   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00306}00306   \textcolor{comment}{// Device is not busy, begin read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00307}00307   \textcolor{keywordflow}{if}(busyFlag == 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00308}00308   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00309}00309     Wire.beginTransmission((\textcolor{keywordtype}{int})lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00310}00310     Wire.write((\textcolor{keywordtype}{int})myAddress); \textcolor{comment}{// Set the register to be read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00312}00312     \textcolor{comment}{// A nack means the device is not responding, report the error over serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00313}00313     \textcolor{keywordtype}{int} nackCatcher = Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00314}00314     \textcolor{keywordflow}{if}(nackCatcher != 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00315}00315     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00316}00316       Serial.println(\textcolor{stringliteral}{"{}> nack"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00317}00317     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00318}00318 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00319}00319     \textcolor{comment}{// Perform read of 1 or 2 bytes, save in arrayToSave}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00320}00320     Wire.requestFrom((\textcolor{keywordtype}{int})lidarliteAddress, numOfBytes);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00321}00321     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00322}00322     \textcolor{keywordflow}{if}(numOfBytes <= Wire.available())}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00323}00323     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00324}00324       \textcolor{keywordflow}{while}(i < numOfBytes)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00325}00325       \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00326}00326         arrayToSave[i] = Wire.read();}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00327}00327         i++;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00328}00328       \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00329}00329     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00330}00330   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00331}00331 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00332}00332   \textcolor{comment}{// bailout reports error over serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00333}00333   \textcolor{keywordflow}{if}(busyCounter > 9999)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00334}00334   \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00335}00335     bailout:}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00336}00336       busyCounter = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00337}00337       Serial.println(\textcolor{stringliteral}{"{}> read failed"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00338}00338   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00339}00339 \} \textcolor{comment}{/* LIDARLite::read */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00340}00340 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00341}00341 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00342}00342 \textcolor{comment}{  Correlation Record To Serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00343}00343 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00344}00344 \textcolor{comment}{  The correlation record used to calculate distance can be read from the device.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00345}00345 \textcolor{comment}{  It has a bipolar wave shape, transitioning from a positive going portion to a}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00346}00346 \textcolor{comment}{  roughly symmetrical negative going pulse. The point where the signal crosses}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00347}00347 \textcolor{comment}{  zero represents the effective delay for the reference and return signals.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00348}00348 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00349}00349 \textcolor{comment}{  Process}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00350}00350 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00351}00351 \textcolor{comment}{  1.  Take a distance reading (there is no correlation record without at least}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00352}00352 \textcolor{comment}{      one distance reading being taken)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00353}00353 \textcolor{comment}{  2.  Select memory bank by writing 0xc0 to register 0x5d}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00354}00354 \textcolor{comment}{  3.  Set test mode select by writing 0x07 to register 0x40}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00355}00355 \textcolor{comment}{  4.  For as many readings as you want to take (max is 1024)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00356}00356 \textcolor{comment}{      1.  Read two bytes from 0xd2}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00357}00357 \textcolor{comment}{      2.  The Low byte is the value from the record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00358}00358 \textcolor{comment}{      3.  The high byte is the sign from the record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00359}00359 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00360}00360 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00361}00361 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00362}00362 \textcolor{comment}{  separator: the separator between serial data words}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00363}00363 \textcolor{comment}{  numberOfReadings: Default: 256. Maximum of 1024}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00364}00364 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00365}00365 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00366}00366 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00367}\mbox{\hyperlink{class_l_i_d_a_r_lite_a4835a40a1f92f20c42babe6073071fc6}{00367}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a4835a40a1f92f20c42babe6073071fc6}{LIDARLite::correlationRecordToSerial}}(\textcolor{keywordtype}{char} separator, \textcolor{keywordtype}{int} numberOfReadings, \textcolor{keywordtype}{char} lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00368}00368 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00370}00370   \textcolor{comment}{// Array to store read values}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00371}00371   \textcolor{keywordtype}{byte} correlationArray[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00372}00372   \textcolor{comment}{// Var to store value of correlation record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00373}00373   \textcolor{keywordtype}{int} correlationValue = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00374}00374   \textcolor{comment}{//  Selects memory bank}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00375}00375   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x5d,0xc0,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00376}00376   \textcolor{comment}{// Test mode enable}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00377}00377   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x40, 0x07,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00378}00378   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i<numberOfReadings; i++)\{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00379}00379     \textcolor{comment}{// Select single byte}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00380}00380     \mbox{\hyperlink{class_l_i_d_a_r_lite_a2260d699ed61978ab4db10958d6b4a10}{read}}(0xd2,2,correlationArray,\textcolor{keyword}{false},lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00381}00381     \textcolor{comment}{//  Low byte is the value of the correlation record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00382}00382     correlationValue = correlationArray[0];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00383}00383     \textcolor{comment}{// if upper byte lsb is set, the value is negative}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00384}00384     \textcolor{keywordflow}{if}((\textcolor{keywordtype}{int})correlationArray[1] == 1)\{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00385}00385       correlationValue |= 0xff00;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00386}00386     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00387}00387     Serial.print((\textcolor{keywordtype}{int})correlationValue);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00388}00388     Serial.print(separator);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00389}00389   \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00390}00390   \textcolor{comment}{// test mode disable}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00391}00391   \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(0x40,0x00,lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite_8cpp_source_l00392}00392 \} \textcolor{comment}{/* LIDARLite::correlationRecordToSerial */}}
+
+\end{DoxyCode}

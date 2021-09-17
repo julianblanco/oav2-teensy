@@ -1,0 +1,532 @@
+\hypertarget{_n_m_e_a__build_8cpp_source}{}\doxysection{NMEA\+\_\+build.\+cpp}
+\label{_n_m_e_a__build_8cpp_source}\index{lib/Adafruit\_GPS\_Library/src/NMEA\_build.cpp@{lib/Adafruit\_GPS\_Library/src/NMEA\_build.cpp}}
+\mbox{\hyperlink{_n_m_e_a__build_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00001}00001 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00029}00029 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00031}00031 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_adafruit___g_p_s_8h}{Adafruit\_GPS.h}}>}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00033}00033 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00034}00034 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00072}00072 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00073}00073 \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{Adafruit\_GPS::build}}(\textcolor{keywordtype}{char} *nmea, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *thisSource,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00074}00074                           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *thisSentence, \textcolor{keywordtype}{char} ref, \textcolor{keywordtype}{bool} noCRLF) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00075}00075   sprintf(nmea, \textcolor{stringliteral}{"{}\%6.2f"{}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00076}00076           (\textcolor{keywordtype}{double})123.45); \textcolor{comment}{// fail if sprintf() doesn't handle floats}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00077}00077   \textcolor{keywordflow}{if} (strcmp(nmea, \textcolor{stringliteral}{"{}123.45"{}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00078}00078     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00079}00079   *nmea = \textcolor{charliteral}{'\$'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00080}00080   \textcolor{keywordtype}{char} *p = nmea + 1; \textcolor{comment}{// Pointer to move through the sentence}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00081}00081   strncpy(p, \mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}}, strlen(\mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}}));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00082}00082   p += strlen(\mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00083}00083   strncpy(p, \mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, strlen(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00084}00084   p += strlen(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00085}00085   *p = \textcolor{charliteral}{','};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00086}00086   p += 1; \textcolor{comment}{// Now \$XXSSS, and need to add argument fields}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00087}00087   \textcolor{comment}{// This may look inefficient, but an M0 will get down the list in about 1 us /}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00088}00088   \textcolor{comment}{// strcmp()! Put the GPS sentences from Adafruit\_GPS at the top to make}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00089}00089   \textcolor{comment}{// pruning excess code easier. Otherwise, keep them alphabetical for ease of}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00090}00090   \textcolor{comment}{// reading.}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00092}00092   \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GGA"{}})) \{ \textcolor{comment}{//************************************GGA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00093}00093     \textcolor{comment}{// GGA Global Positioning System Fix Data. Time, Position and fix related}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00094}00094     \textcolor{comment}{// data for a GPS receiver}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00095}00095     \textcolor{comment}{//       1         2       3 4        5 6 7  8   9  10 11 12 13  14  15}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00096}00096     \textcolor{comment}{//       |         |       | |        | | |  |   |   | |   | |   |    |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00097}00097     \textcolor{comment}{//\$-\/-\/GGA,hhmmss.ss,ddmm.mm,a,dddmm.mm,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00098}00098     \textcolor{comment}{// 1) Time (UTC)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00099}00099     \textcolor{comment}{// 2) Latitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00100}00100     \textcolor{comment}{// 3) N or S (North or South)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00101}00101     \textcolor{comment}{// 4) Longitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00102}00102     \textcolor{comment}{// 5) E or W (East or West)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00103}00103     \textcolor{comment}{// 6) GPS Quality Indicator, 0 -\/ fix not available, 1 -\/ GPS fix, 2 -\/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00104}00104     \textcolor{comment}{// Differential GPS fix 7) Number of satellites in view, 00 -\/ 12 8)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00105}00105     \textcolor{comment}{// Horizontal Dilution of precision 9) Antenna Altitude above/below}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00106}00106     \textcolor{comment}{// mean-\/sea-\/level (geoid) 10) Units of antenna altitude, meters 11) Geoidal}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00107}00107     \textcolor{comment}{// separation, the difference between the WGS-\/84 earth}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00108}00108     \textcolor{comment}{//    ellipsoid and mean-\/sea-\/level (geoid), "{}-\/"{} means mean-\/sea-\/level below}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00109}00109     \textcolor{comment}{//    ellipsoid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00110}00110     \textcolor{comment}{// 12) Units of geoidal separation, meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00111}00111     \textcolor{comment}{// 13) Age of differential GPS data, time in seconds since last SC104}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00112}00112     \textcolor{comment}{//    type 1 or 9 update, null field when DGPS is not used}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00113}00113     \textcolor{comment}{// 14) Differential reference station ID, 0000-\/1023}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00114}00114     \textcolor{comment}{// 15) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00115}00115     sprintf(p, \textcolor{stringliteral}{"{}\%09.2f,\%09.4f,\%c,\%010.4f,\%c,\%d,\%02d,\%f,\%f,M,\%f,M,,"{}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00116}00116             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}} * 10000L + \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}} * 100L + \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} +}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00117}00117                 \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}} / 1000.,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00118}00118             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, \mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, \mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}}, \mbox{\hyperlink{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}{fixquality}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00119}00119             \mbox{\hyperlink{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}{satellites}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}{HDOP}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}{altitude}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}{geoidheight}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00121}00121   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GLL"{}})) \{ \textcolor{comment}{//*****************************GLL}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00122}00122     \textcolor{comment}{// GLL Geographic Position – Latitude/Longitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00123}00123     \textcolor{comment}{//       1       2 3        4 5         6 7}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00124}00124     \textcolor{comment}{//       |       | |        | |         | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00125}00125     \textcolor{comment}{//\$-\/-\/GLL,llll.ll,a,yyyyy.yy,a,hhmmss.ss,A*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00126}00126     \textcolor{comment}{// 1) Latitude ddmm.mm format}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00127}00127     \textcolor{comment}{// 2) N or S (North or South)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00128}00128     \textcolor{comment}{// 3) Longitude dddmm.mm format}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00129}00129     \textcolor{comment}{// 4) E or W (East or West)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00130}00130     \textcolor{comment}{// 5) Time (UTC)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00131}00131     \textcolor{comment}{// 6) Status A -\/ Data Valid, V -\/ Data Invalid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00132}00132     \textcolor{comment}{// 7) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00133}00133     sprintf(p, \textcolor{stringliteral}{"{}\%09.4f,\%c,\%010.4f,\%c,\%09.2f,A"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, \mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00134}00134             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, \mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00135}00135             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}} * 10000L + \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}} * 100L + \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} +}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00136}00136                 \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}} / 1000.);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00138}00138   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GSA"{}})) \{ \textcolor{comment}{//*****************************GSA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00139}00139     \textcolor{comment}{// GSA GPS DOP and active satellites}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00140}00140     \textcolor{comment}{//       1 2 3                        14 15  16  17 18}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00141}00141     \textcolor{comment}{//       | | |                         | |   |   |   |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00142}00142     \textcolor{comment}{//\$-\/-\/GSA,a,a,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x.x,x.x,x.x*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00143}00143     \textcolor{comment}{// 1) Selection mode}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00144}00144     \textcolor{comment}{// 2) Mode}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00145}00145     \textcolor{comment}{// 3) ID of 1st satellite used for fix}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00146}00146     \textcolor{comment}{// 4) ID of 2nd satellite used for fix}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00147}00147     \textcolor{comment}{// ...}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00148}00148     \textcolor{comment}{// 14) ID of 12th satellite used for fix}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00149}00149     \textcolor{comment}{// 15) PDOP in meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00150}00150     \textcolor{comment}{// 16) HDOP in meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00151}00151     \textcolor{comment}{// 17) VDOP in meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00152}00152     \textcolor{comment}{// 18) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00153}00153     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00155}00155   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RMC"{}})) \{ \textcolor{comment}{//*****************************RMC}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00156}00156     \textcolor{comment}{// RMC Recommended Minimum Navigation Information}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00157}00157     \textcolor{comment}{//                                                            12}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00158}00158     \textcolor{comment}{//       1         2 3       4 5        6 7   8   9     10  11 |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00159}00159     \textcolor{comment}{//       |         | |       | |        | |   |   |      |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00160}00160     \textcolor{comment}{//\$-\/-\/RMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,xxxxxx,x.x,a*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00161}00161     \textcolor{comment}{// 1) Time (UTC)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00162}00162     \textcolor{comment}{// 2) Status, V = Navigation receiver warning}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00163}00163     \textcolor{comment}{// 3) Latitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00164}00164     \textcolor{comment}{// 4) N or S}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00165}00165     \textcolor{comment}{// 5) Longitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00166}00166     \textcolor{comment}{// 6) E or W}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00167}00167     \textcolor{comment}{// 7) Speed over ground, knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00168}00168     \textcolor{comment}{// 8) Track made good, degrees true}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00169}00169     \textcolor{comment}{// 9) Date, ddmmyy}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00170}00170     \textcolor{comment}{// 10) Magnetic Variation, degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00171}00171     \textcolor{comment}{// 11) E or W}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00172}00172     \textcolor{comment}{// 12) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00173}00173     sprintf(p, \textcolor{stringliteral}{"{}\%09.2f,A,\%09.4f,\%c,\%010.4f,\%c,\%f,\%f,\%06d,\%f,\%c"{}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00174}00174             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}} * 10000L + \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}} * 100L + \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} +}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00175}00175                 \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}} / 1000.,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00176}00176             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, \mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, \mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}{speed}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00177}00177             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}}, \mbox{\hyperlink{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}{day}} * 10000 + \mbox{\hyperlink{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}{month}} * 100 + \mbox{\hyperlink{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}{year}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00178}00178             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a2c53f008694ebee3871583cb44842033}{magvariation}}, \mbox{\hyperlink{class_adafruit___g_p_s_a13af36459c90392c2378ce14248cfcfb}{mag}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00180}00180   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}APB"{}})) \{ \textcolor{comment}{//*****************************APB}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00181}00181     \textcolor{comment}{// APB Autopilot Sentence "{}B"{}}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00182}00182     \textcolor{comment}{//                                       13    15}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00183}00183     \textcolor{comment}{//       1 2 3   4 5 6 7 8   9 10   11 12 |  14 |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00184}00184     \textcolor{comment}{//       | | |   | | | | |   | |    |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00185}00185     \textcolor{comment}{//\$-\/-\/APB,A,A,x.x,a,N,A,A,x.x,a,c-\/-\/c,x.x,a,x.x,a*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00186}00186     \textcolor{comment}{// 1) Status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00187}00187     \textcolor{comment}{//    V = LORAN-\/C Blink or SNR warning}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00188}00188     \textcolor{comment}{//    A = general warning flag or other navigation systems when a reliable}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00189}00189     \textcolor{comment}{//    fix is not available}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00190}00190     \textcolor{comment}{// 2) Status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00191}00191     \textcolor{comment}{//    V = Loran-\/C Cycle Lock warning flag}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00192}00192     \textcolor{comment}{//    A = OK or not used}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00193}00193     \textcolor{comment}{// 3) Cross Track Error Magnitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00194}00194     \textcolor{comment}{// 4) Direction to steer, L or R}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00195}00195     \textcolor{comment}{// 5) Cross Track Units, N = Nautical Miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00196}00196     \textcolor{comment}{// 6) Status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00197}00197     \textcolor{comment}{//    A = Arrival Circle Entered}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00198}00198     \textcolor{comment}{// 7) Status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00199}00199     \textcolor{comment}{//    A = Perpendicular passed at waypoint}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00200}00200     \textcolor{comment}{// 8) Bearing origin to destination}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00201}00201     \textcolor{comment}{// 9) M = Magnetic, T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00202}00202     \textcolor{comment}{// 10) Destination Waypoint ID}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00203}00203     \textcolor{comment}{// 11) Bearing, present position to Destination}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00204}00204     \textcolor{comment}{// 12) M = Magnetic, T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00205}00205     \textcolor{comment}{// 13) Heading to steer to destination waypoint}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00206}00206     \textcolor{comment}{// 14) M = Magnetic, T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00207}00207     \textcolor{comment}{// 15) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00208}00208     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00209}00209 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00210}00210   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}DBK"{}})) \{ \textcolor{comment}{//*****************************DBT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00211}00211     \textcolor{comment}{// DBK Depth Below Keel}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00212}00212     \textcolor{comment}{//       1   2 3   4 5   6 7}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00213}00213     \textcolor{comment}{//       |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00214}00214     \textcolor{comment}{//\$-\/-\/DBK,x.x,f,x.x,M,x.x,F*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00215}00215     \textcolor{comment}{// 1) Depth, feet}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00216}00216     \textcolor{comment}{// 2) f = feet}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00217}00217     \textcolor{comment}{// 3) Depth, meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00218}00218     \textcolor{comment}{// 4) M = meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00219}00219     \textcolor{comment}{// 5) Depth, Fathoms}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00220}00220     \textcolor{comment}{// 6) F = Fathoms}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00221}00221     \textcolor{comment}{// 7) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00222}00222     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00224}00224   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}DBS"{}})) \{ \textcolor{comment}{//*****************************DBT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00225}00225     \textcolor{comment}{// DBS Depth Below Surface}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00226}00226     \textcolor{comment}{//       1   2 3   4 5   6 7}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00227}00227     \textcolor{comment}{//       |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00228}00228     \textcolor{comment}{//\$-\/-\/DBS,x.x,f,x.x,M,x.x,F*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00229}00229     \textcolor{comment}{// 1) Depth, feet}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00230}00230     \textcolor{comment}{// 2) f = feet}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00231}00231     \textcolor{comment}{// 3) Depth, meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00232}00232     \textcolor{comment}{// 4) M = meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00233}00233     \textcolor{comment}{// 5) Depth, Fathoms}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00234}00234     \textcolor{comment}{// 6) F = Fathoms}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00235}00235     \textcolor{comment}{// 7) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00236}00236     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00238}00238   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}DBT"{}})) \{ \textcolor{comment}{//*****************************DBT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00239}00239     \textcolor{comment}{// DBT Depth Below Transducer}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00240}00240     \textcolor{comment}{//       1   2 3   4 5   6 7}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00241}00241     \textcolor{comment}{//       |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00242}00242     \textcolor{comment}{//\$-\/-\/DBT,x.x,f,x.x,M,x.x,F*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00243}00243     \textcolor{comment}{// 1) Depth, feet}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00244}00244     \textcolor{comment}{// 2) f = feet}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00245}00245     \textcolor{comment}{// 3) Depth, meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00246}00246     \textcolor{comment}{// 4) M = meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00247}00247     \textcolor{comment}{// 5) Depth, Fathoms}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00248}00248     \textcolor{comment}{// 6) F = Fathoms}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00249}00249     \textcolor{comment}{// 7) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00250}00250     \textcolor{keywordtype}{double} d = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\_DEPTH}}].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}} -\/ \mbox{\hyperlink{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}{depthToTransducer}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00251}00251     sprintf(p, \textcolor{stringliteral}{"{}\%f,f,\%f,M,,,"{}}, d / 0.3048, d);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00253}00253   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}DPT"{}})) \{ \textcolor{comment}{//*****************************DPT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00254}00254     \textcolor{comment}{// DPT Heading – Deviation \& Variation}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00255}00255     \textcolor{comment}{//       1   2   3}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00256}00256     \textcolor{comment}{//       |   |   |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00257}00257     \textcolor{comment}{//\$-\/-\/DPT,x.x,x.x*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00258}00258     \textcolor{comment}{// 1) Depth, meters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00259}00259     \textcolor{comment}{// 2) Offset from transducer;}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00260}00260     \textcolor{comment}{//      positive means distance from transducer to water line,}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00261}00261     \textcolor{comment}{//      negative means distance from transducer to keel}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00262}00262     \textcolor{comment}{// 3) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00263}00263     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00265}00265   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GSV"{}})) \{ \textcolor{comment}{//*****************************GSV}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00266}00266     \textcolor{comment}{// GSV Satellites in view}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00267}00267     \textcolor{comment}{//       1 2 3 4 5 6 7     n}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00268}00268     \textcolor{comment}{//       | | | | | | |     |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00269}00269     \textcolor{comment}{//\$-\/-\/GSV,x,x,x,x,x,x,x,...*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00270}00270     \textcolor{comment}{// 1) total number of messages}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00271}00271     \textcolor{comment}{// 2) message number}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00272}00272     \textcolor{comment}{// 3) satellites in view}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00273}00273     \textcolor{comment}{// 4) satellite number}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00274}00274     \textcolor{comment}{// 5) elevation in degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00275}00275     \textcolor{comment}{// 6) azimuth in degrees to true}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00276}00276     \textcolor{comment}{// 7) SNR in dB}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00277}00277     \textcolor{comment}{// more satellite infos like 4)-\/7)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00278}00278     \textcolor{comment}{// n) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00279}00279     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00280}00280 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00281}00281   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}HDG"{}})) \{ \textcolor{comment}{//*****************************HDG}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00282}00282     \textcolor{comment}{//  HDG Heading – Deviation \& Variation}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00283}00283     \textcolor{comment}{//       1   2   3 4   5 6}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00284}00284     \textcolor{comment}{//       |   |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00285}00285     \textcolor{comment}{//\$-\/-\/HDG,x.x,x.x,a,x.x,a*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00286}00286     \textcolor{comment}{// 1) Magnetic Sensor heading in degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00287}00287     \textcolor{comment}{// 2) Magnetic Deviation, degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00288}00288     \textcolor{comment}{// 3) Magnetic Deviation direction, E = Easterly, W = Westerly}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00289}00289     \textcolor{comment}{// 4) Magnetic Variation degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00290}00290     \textcolor{comment}{// 5) Magnetic Variation direction, E = Easterly, W = Westerly}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00291}00291     \textcolor{comment}{// 6) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00292}00292     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00294}00294   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}HDM"{}})) \{ \textcolor{comment}{//*****************************HDM}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00295}00295     \textcolor{comment}{// HDM Heading – Magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00296}00296     \textcolor{comment}{//       1   2 3}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00297}00297     \textcolor{comment}{//       |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00298}00298     \textcolor{comment}{//\$-\/-\/HDM,x.x,M*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00299}00299     \textcolor{comment}{// 1) Heading Degrees, magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00300}00300     \textcolor{comment}{// 2) M = magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00301}00301     \textcolor{comment}{// 3) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00302}00302     sprintf(p, \textcolor{stringliteral}{"{}\%f,M"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\_HDG}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00303}00303 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00304}00304   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}HDT"{}})) \{ \textcolor{comment}{//*****************************HDT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00305}00305     \textcolor{comment}{// HDT Heading – True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00306}00306     \textcolor{comment}{//       1   2 3}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00307}00307     \textcolor{comment}{//       |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00308}00308     \textcolor{comment}{//\$-\/-\/HDT,x.x,T*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00309}00309     \textcolor{comment}{// 1) Heading Degrees, true}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00310}00310     \textcolor{comment}{// 2) T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00311}00311     \textcolor{comment}{// 3) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00312}00312     \textcolor{comment}{// starts with \$II for integrated instrumentation}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00313}00313     sprintf(p, \textcolor{stringliteral}{"{}\%f,T"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\_HDT}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00314}00314 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00315}00315   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MDA"{}})) \{ \textcolor{comment}{//*****************************MDA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00316}00316     \textcolor{comment}{// MDA Meteorological Composite}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00317}00317     \textcolor{comment}{//       1   2 3   4 5   6 7   8 9 10 11  12}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00318}00318     \textcolor{comment}{//       |   | |   | |   | |   | |  |  |   |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00319}00319     \textcolor{comment}{//\$\_\_MDA,x.x,I,x.x,B,x.x,C,x.x,C,x.x, ,x.x,C,,T,,M,,N,,M*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00320}00320     \textcolor{comment}{//\$IIMDA,,I,,B,,C,21.8,C,,,,C,,T,,M,,N,,M*0F     // sent by RayMarine i70s}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00321}00321     \textcolor{comment}{// Speed/Depth/Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00322}00322     \textcolor{comment}{// 1) Barometric Pressure}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00323}00323     \textcolor{comment}{// 2) inches of Hg}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00324}00324     \textcolor{comment}{// 3) Barometric Pressure}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00325}00325     \textcolor{comment}{// 4) bar}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00326}00326     \textcolor{comment}{// 5) Atmospheric Temperature}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00327}00327     \textcolor{comment}{// 6) C or F}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00328}00328     \textcolor{comment}{// 7) Water Temperature}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00329}00329     \textcolor{comment}{// 8) C or F}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00330}00330     \textcolor{comment}{// 9) Relative Humidity}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00331}00331     \textcolor{comment}{// 10)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00332}00332     \textcolor{comment}{// 11) Dew Point}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00333}00333     \textcolor{comment}{// 12) C or F}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00334}00334     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00335}00335 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00336}00336   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MTW"{}})) \{ \textcolor{comment}{//*****************************MTW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00337}00337     \textcolor{comment}{// MTW Water Temperature}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00338}00338     \textcolor{comment}{//       1   2 3}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00339}00339     \textcolor{comment}{//       |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00340}00340     \textcolor{comment}{//\$IIMTW,x.x,C*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00341}00341     \textcolor{comment}{//\$IIMTW,21.8,C*18     // sent by RayMarine i70s Speed/Depth/Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00342}00342     \textcolor{comment}{// 1) Degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00343}00343     \textcolor{comment}{// 2) Unit of Measurement, Celcius}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00344}00344     \textcolor{comment}{// 3) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00345}00345     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00347}00347   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MWD"{}})) \{ \textcolor{comment}{//*****************************MWD}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00348}00348     \textcolor{comment}{// MWD Wind Direction \& Speed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00349}00349     \textcolor{comment}{// Format unknown}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00350}00350     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00352}00352   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MWV"{}})) \{ \textcolor{comment}{//*****************************MWV}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00353}00353     \textcolor{comment}{// MWV Wind Speed and Angle assuming values for True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00354}00354     \textcolor{comment}{//       1   2 3   4 5 6}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00355}00355     \textcolor{comment}{//       |   | |   | | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00356}00356     \textcolor{comment}{//\$IIMWV,x.x,a,x.x,a,a*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00357}00357     \textcolor{comment}{//\$WIMWV,276.94,R,0,N,A*03      // sent by RayMarine i70s Speed/Depth/Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00358}00358     \textcolor{comment}{// 1) Wind Angle, 0 to 360 degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00359}00359     \textcolor{comment}{// 2) Reference, R = Relative, T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00360}00360     \textcolor{comment}{// 3) Wind Speed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00361}00361     \textcolor{comment}{// 4) Wind Speed Units, K/M/N  kilometers/miles/knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00362}00362     \textcolor{comment}{// 5) Status, A = Data Valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00363}00363     \textcolor{comment}{// 6) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00364}00364     \textcolor{keywordflow}{if} (ref == \textcolor{charliteral}{'R'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00365}00365       sprintf(p, \textcolor{stringliteral}{"{}\%f,\%c,\%f,N,A"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}{NMEA\_AWA}}].latest, ref,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00366}00366               (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}{NMEA\_AWS}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00367}00367     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00368}00368       sprintf(p, \textcolor{stringliteral}{"{}\%f,\%c,\%f,N,A"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}{NMEA\_TWA}}].latest, \textcolor{charliteral}{'T'},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00369}00369               (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}{NMEA\_TWS}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00371}00371   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RMB"{}})) \{ \textcolor{comment}{//*****************************RMB}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00372}00372     \textcolor{comment}{// RMB Recommended Minimum Navigation Information}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00373}00373     \textcolor{comment}{//       1 2   3 4    5    6       7 8        9 10  11 12  13 14}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00374}00374     \textcolor{comment}{//       | |   | |    |    |       | |        | |   |   |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00375}00375     \textcolor{comment}{//\$-\/-\/RMB,A,x.x,a,c-\/-\/c,c-\/-\/c,llll.ll,a,yyyyy.yy,a,x.x,x.x,x.x,A*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00376}00376     \textcolor{comment}{// 1) Status, V = Navigation receiver warning}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00377}00377     \textcolor{comment}{// 2) Cross Track error -\/ nautical miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00378}00378     \textcolor{comment}{// 3) Direction to Steer, Left or Right}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00379}00379     \textcolor{comment}{// 4) TO Waypoint ID}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00380}00380     \textcolor{comment}{// 5) FROM Waypoint ID}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00381}00381     \textcolor{comment}{// 6) Destination Waypoint Latitude 7) N or S}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00382}00382     \textcolor{comment}{// 8) Destination Waypoint Longitude 9) E or W}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00383}00383     \textcolor{comment}{// 10) Range to destination in nautical miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00384}00384     \textcolor{comment}{// 11) Bearing to destination in degrees True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00385}00385     \textcolor{comment}{// 12) Destination closing velocity in knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00386}00386     \textcolor{comment}{// 13) Arrival Status, A = Arrival Circle Entered 14) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00387}00387     sprintf(p, \textcolor{stringliteral}{"{},,,,,,,,,,,\%f,A"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}{NMEA\_VMGWP}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00388}00388 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00389}00389   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}ROT"{}})) \{ \textcolor{comment}{//*****************************ROT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00390}00390     \textcolor{comment}{// ROT Rate Of Turn}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00391}00391     \textcolor{comment}{//       1   2 3}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00392}00392     \textcolor{comment}{//       |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00393}00393     \textcolor{comment}{//\$-\/-\/ROT,x.x,A*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00394}00394     \textcolor{comment}{// 1) Rate Of Turn, degrees per minute, "{}-\/"{} means bow turns to port}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00395}00395     \textcolor{comment}{// 2) Status, A means data is valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00396}00396     \textcolor{comment}{// 3) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00397}00397     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00399}00399   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RPM"{}})) \{ \textcolor{comment}{//*****************************RPM}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00400}00400     \textcolor{comment}{// RPM Revolutions}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00401}00401     \textcolor{comment}{//       1 2 3   4   5 6}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00402}00402     \textcolor{comment}{//       | | |   |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00403}00403     \textcolor{comment}{//\$-\/-\/RPM,a,x,x.x,x.x,A*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00404}00404     \textcolor{comment}{// 1) Source; S = Shaft, E = Engine}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00405}00405     \textcolor{comment}{// 2) Engine or shaft number}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00406}00406     \textcolor{comment}{// 3) Speed, Revolutions per minute}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00407}00407     \textcolor{comment}{// 4) Propeller pitch, \% of maximum, "{}-\/"{} means astern}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00408}00408     \textcolor{comment}{// 5) Status, A means data is valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00409}00409     \textcolor{comment}{// 6) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00410}00410     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00411}00411 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00412}00412   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RSA"{}})) \{ \textcolor{comment}{//*****************************RSA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00413}00413     \textcolor{comment}{//  RSA Rudder Sensor Angle}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00414}00414     \textcolor{comment}{//       1   2 3   4 5}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00415}00415     \textcolor{comment}{//       |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00416}00416     \textcolor{comment}{//\$-\/-\/RSA,x.x,A,x.x,A*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00417}00417     \textcolor{comment}{// 1) Starboard (or single) rudder sensor, "{}-\/"{} means Turn To Port}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00418}00418     \textcolor{comment}{// 2) Status, A means data is valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00419}00419     \textcolor{comment}{// 3) Port rudder sensor}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00420}00420     \textcolor{comment}{// 4) Status, A means data is valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00421}00421     \textcolor{comment}{// 5) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00422}00422     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00423}00423 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00424}00424   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}TXT"{}})) \{ \textcolor{comment}{//*****************************TXT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00425}00425     \textcolor{comment}{// as mentioned in https://github.com/adafruit/Adafruit\_GPS/issues/95}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00426}00426     \textcolor{comment}{// TXT Text Transmission}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00427}00427     \textcolor{comment}{//       1  2  3  4    5}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00428}00428     \textcolor{comment}{//       |  |  |  |    |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00429}00429     \textcolor{comment}{//\$-\/-\/TXT,xx,xx,xx,c-\/-\/c*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00430}00430     \textcolor{comment}{// 1) Total Number of Sentences 01-\/99}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00431}00431     \textcolor{comment}{// 2) Sentence Number 01-\/99}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00432}00432     \textcolor{comment}{// 3) Text Identifier 01-\/99}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00433}00433     \textcolor{comment}{// 4) Text String, max 61 characters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00434}00434     \textcolor{comment}{// 5) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00435}00435     sprintf(p, \textcolor{stringliteral}{"{}01,01,23,This is the text of the sample message"{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00436}00436 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00437}00437   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VDR"{}})) \{ \textcolor{comment}{//*****************************VDR}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00438}00438     \textcolor{comment}{// VDR Set and Drift}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00439}00439     \textcolor{comment}{//       1   2 3   4 5   6 7}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00440}00440     \textcolor{comment}{//       |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00441}00441     \textcolor{comment}{//\$-\/-\/VDR,x.x,T,x.x,M,x.x,N*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00442}00442     \textcolor{comment}{// 1) Degress True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00443}00443     \textcolor{comment}{// 2) T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00444}00444     \textcolor{comment}{// 3) Degrees Magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00445}00445     \textcolor{comment}{// 4) M = Magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00446}00446     \textcolor{comment}{// 5) Knots (speed of current)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00447}00447     \textcolor{comment}{// 6) N = Knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00448}00448     \textcolor{comment}{// 7) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00449}00449     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00450}00450 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00451}00451   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VHW"{}})) \{ \textcolor{comment}{//*****************************VHW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00452}00452     \textcolor{comment}{// VHW Water Speed and Heading}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00453}00453     \textcolor{comment}{//       1   2 3   4 5   6 7   8 9}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00454}00454     \textcolor{comment}{//       |   | |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00455}00455     \textcolor{comment}{//\$-\/-\/VHW,x.x,T,x.x,M,x.x,N,x.x,K*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00456}00456     \textcolor{comment}{//\$IIVHW,,T,,M,0,N,0,K*55     // sent by RayMarine i70s Speed/Depth/Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00457}00457     \textcolor{comment}{// 1) Degrees True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00458}00458     \textcolor{comment}{// 2) T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00459}00459     \textcolor{comment}{// 3) Degrees Magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00460}00460     \textcolor{comment}{// 4) M = Magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00461}00461     \textcolor{comment}{// 5) Knots (speed of vessel relative to the water) [66]}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00462}00462     \textcolor{comment}{// 6) N = Knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00463}00463     \textcolor{comment}{// 7) Kilometers (speed of vessel relative to the water)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00464}00464     \textcolor{comment}{// 8) K = Kilometres}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00465}00465     \textcolor{comment}{// 9) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00466}00466     sprintf(p, \textcolor{stringliteral}{"{}\%f,T,\%f,M,\%f,N,\%f,K"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\_HDT}}].latest,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00467}00467             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\_HDG}}].latest, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}{NMEA\_VTW}}].latest,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00468}00468             (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}{NMEA\_VTW}}].latest * 1.829);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00469}00469 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00470}00470   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VLW"{}})) \{ \textcolor{comment}{//*****************************VLW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00471}00471     \textcolor{comment}{// VLW Distance Traveled through Water}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00472}00472     \textcolor{comment}{//       1   2 3   4 5}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00473}00473     \textcolor{comment}{//       |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00474}00474     \textcolor{comment}{//\$-\/-\/VLW,x.x,N,x.x,N*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00475}00475     \textcolor{comment}{//\$IIVLW,0,N,0,N,,N,,N*4D     // sent by RayMarine i70s Speed/Depth/Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00476}00476     \textcolor{comment}{// not sure what the last two are?}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00477}00477     \textcolor{comment}{// 1) Total cumulative distance}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00478}00478     \textcolor{comment}{// 2) N = Nautical Miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00479}00479     \textcolor{comment}{// 3) Distance since Reset}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00480}00480     \textcolor{comment}{// 4) N = Nautical Miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00481}00481     \textcolor{comment}{// 5) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00482}00482     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00483}00483 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00484}00484   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VPW"{}})) \{ \textcolor{comment}{//*****************************VPW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00485}00485     \textcolor{comment}{// not supported by iNavX}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00486}00486     \textcolor{comment}{// VPW Speed – Measured Parallel to Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00487}00487     \textcolor{comment}{//       1   2 3   4 5}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00488}00488     \textcolor{comment}{//       |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00489}00489     \textcolor{comment}{//\$-\/-\/VPW,x.x,N,x.x,M*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00490}00490     \textcolor{comment}{// 1) Speed, "{}-\/"{} means downwind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00491}00491     \textcolor{comment}{// 2) N = Knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00492}00492     \textcolor{comment}{// 3) Speed, "{}-\/"{} means downwind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00493}00493     \textcolor{comment}{// 4) M = Meters per second}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00494}00494     \textcolor{comment}{// 5) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00495}00495     sprintf(p, \textcolor{stringliteral}{"{}\%f,N,,"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}{NMEA\_VMG}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00496}00496 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00497}00497   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VTG"{}})) \{ \textcolor{comment}{//*****************************VTG}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00498}00498     \textcolor{comment}{// VTG Track Made Good and Ground Speed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00499}00499     \textcolor{comment}{//       1   2 3   4 5   6 7   8 9}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00500}00500     \textcolor{comment}{//       |   | |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00501}00501     \textcolor{comment}{//\$-\/-\/VTG,x.x,T,x.x,M,x.x,N,x.x,K*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00502}00502     \textcolor{comment}{// 1) Track Degrees               2) T = True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00503}00503     \textcolor{comment}{// 3) Track Degrees               4) M = Magnetic}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00504}00504     \textcolor{comment}{// 5) Speed Knots                 6) N = Knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00505}00505     \textcolor{comment}{// 7) Speed Kilometers Per Hour   8) K = Kilometres Per Hour}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00506}00506     \textcolor{comment}{// 9) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00507}00507     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00508}00508 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00509}00509   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VWR"{}})) \{ \textcolor{comment}{//*****************************VWR}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00510}00510     \textcolor{comment}{// VWR Relative Wind Speed and Angle}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00511}00511     \textcolor{comment}{//       1   2 3   4 5   6 7   8 9}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00512}00512     \textcolor{comment}{//       |   | |   | |   | |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00513}00513     \textcolor{comment}{//\$-\/-\/VWR,x.x,a,x.x,N,x.x,M,x.x,K*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00514}00514     \textcolor{comment}{//\$WIVWR,83.1,L,0,N,0,M,0,K*6D     // sent by RayMarine i70s}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00515}00515     \textcolor{comment}{// Speed/Depth/Wind}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00516}00516     \textcolor{comment}{// 1) Wind direction magnitude in degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00517}00517     \textcolor{comment}{// 2) Wind direction Left/Right of bow}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00518}00518     \textcolor{comment}{// 3) Speed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00519}00519     \textcolor{comment}{// 4) N = Knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00520}00520     \textcolor{comment}{// 5) Speed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00521}00521     \textcolor{comment}{// 6) M = Meters Per Second}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00522}00522     \textcolor{comment}{// 7) Speed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00523}00523     \textcolor{comment}{// 8) K = Kilometers Per Hour}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00524}00524     \textcolor{comment}{// 9) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00525}00525     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00526}00526 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00527}00527   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}WCV"{}})) \{ \textcolor{comment}{//*****************************WCV}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00528}00528     \textcolor{comment}{// WCV Waypoint Closure Velocity}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00529}00529     \textcolor{comment}{//       1   2 3    4}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00530}00530     \textcolor{comment}{//       |   | |    |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00531}00531     \textcolor{comment}{//\$-\/-\/WCV,x.x,N,c-\/-\/c*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00532}00532     \textcolor{comment}{// 1) Velocity 2) N = knots 3) Waypoint ID 4) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00533}00533     sprintf(p, \textcolor{stringliteral}{"{}\%f,N,home"{}}, (\textcolor{keywordtype}{double})\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}{NMEA\_VMG}}].latest);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00534}00534 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00535}00535   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}XTE"{}})) \{ \textcolor{comment}{//*****************************XTE}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00536}00536     \textcolor{comment}{// XTE Cross-\/Track Error – Measured}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00537}00537     \textcolor{comment}{//       1 2 3   4 5  6}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00538}00538     \textcolor{comment}{//       | | |   | |  |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00539}00539     \textcolor{comment}{//\$-\/-\/XTE,A,A,x.x,a,N,*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00540}00540     \textcolor{comment}{// 1) Status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00541}00541     \textcolor{comment}{//    V = LORAN-\/C blink or SNR warning}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00542}00542     \textcolor{comment}{//    A = general warning flag or other navigation systems when a reliable}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00543}00543     \textcolor{comment}{//    fix is not available}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00544}00544     \textcolor{comment}{// 2) Status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00545}00545     \textcolor{comment}{//    V = Loran-\/C cycle lock warning flag}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00546}00546     \textcolor{comment}{//    A = OK or not used}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00547}00547     \textcolor{comment}{// 3) Cross track error magnitude}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00548}00548     \textcolor{comment}{// 4) Direction to steer, L or R}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00549}00549     \textcolor{comment}{// 5) Cross track units. N = Nautical Miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00550}00550     \textcolor{comment}{// 6) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00551}00551     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00552}00552 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00553}00553   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}ZDA"{}})) \{ \textcolor{comment}{//*****************************ZDA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00554}00554     \textcolor{comment}{// ZDA Time \& Date – UTC, Day, Month, Year and Local Time Zone}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00555}00555     \textcolor{comment}{//       1         2  3  4    5  6  7}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00556}00556     \textcolor{comment}{//       |         |  |  |    |  |  |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00557}00557     \textcolor{comment}{//\$-\/-\/ZDA,hhmmss.ss,xx,xx,xxxx,xx,xx*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00558}00558     \textcolor{comment}{// 1) Local zone minutes description, same sign as local hours}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00559}00559     \textcolor{comment}{// 2) Local zone description, 00 to +/-\/ 13 hours}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00560}00560     \textcolor{comment}{// 3) Year}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00561}00561     \textcolor{comment}{// 4) Month, 01 to 12}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00562}00562     \textcolor{comment}{// 5) Day, 01 to 31}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00563}00563     \textcolor{comment}{// 6) Time (UTC)}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00564}00564     \textcolor{comment}{// 7) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00565}00565     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00566}00566 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00567}00567   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00568}00568     \textcolor{keywordflow}{return} NULL; \textcolor{comment}{// didn't find a match for the build request}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00569}00569   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00570}00570 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00571}00571   \mbox{\hyperlink{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}{addChecksum}}(nmea); \textcolor{comment}{// Successful completion}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00572}00572   \textcolor{keywordflow}{if} (!noCRLF) \{ \textcolor{comment}{// Add Carriage Return and Line Feed to comply with NMEA-\/183}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00573}00573     sprintf(nmea, \textcolor{stringliteral}{"{}\%s\(\backslash\)r\(\backslash\)n"{}}, nmea);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00574}00574   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00575}00575   \textcolor{keywordflow}{return} nmea; \textcolor{comment}{// return pointer to finished product}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00576}00576 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00577}00577 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00578}00578 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00579}00579 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00580}00580 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00590}00590 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00591}\mbox{\hyperlink{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}{00591}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}{Adafruit\_GPS::addChecksum}}(\textcolor{keywordtype}{char} *buff) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00592}00592   \textcolor{keywordtype}{char} cs = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00593}00593   \textcolor{keywordtype}{int} i = 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00594}00594   \textcolor{keywordflow}{while} (buff[i]) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00595}00595     cs \string^= buff[i];}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00596}00596     i++;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00597}00597   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00598}00598   sprintf(buff, \textcolor{stringliteral}{"{}\%s*\%02X"{}}, buff, cs);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__build_8cpp_source_l00599}00599 \}}
+
+\end{DoxyCode}

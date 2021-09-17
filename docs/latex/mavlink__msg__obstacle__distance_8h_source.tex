@@ -1,0 +1,239 @@
+\hypertarget{mavlink__msg__obstacle__distance_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+obstacle\+\_\+distance.\+h}
+\label{mavlink__msg__obstacle__distance_8h_source}\index{lib/common/mavlink\_msg\_obstacle\_distance.h@{lib/common/mavlink\_msg\_obstacle\_distance.h}}
+\mbox{\hyperlink{mavlink__msg__obstacle__distance_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE OBSTACLE\_DISTANCE PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE 330}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a46afd732b297b30b0e2389b03e5cf457}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_obstacle\_distance\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint16\_t distances[72]; \textcolor{comment}{/*< [cm] Distance of obstacles around the UAV with index 0 corresponding to local North. A value of 0 means that the obstacle is right in front of the sensor. A value of max\_distance +1 means no obstacle is present. A value of UINT16\_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.*/}}
+\DoxyCodeLine{10  uint16\_t min\_distance; \textcolor{comment}{/*< [cm] Minimum distance the sensor can measure.*/}}
+\DoxyCodeLine{11  uint16\_t max\_distance; \textcolor{comment}{/*< [cm] Maximum distance the sensor can measure.*/}}
+\DoxyCodeLine{12  uint8\_t sensor\_type; \textcolor{comment}{/*<  Class id of the distance sensor type.*/}}
+\DoxyCodeLine{13  uint8\_t increment; \textcolor{comment}{/*< [deg] Angular width in degrees of each array element.*/}}
+\DoxyCodeLine{14 \}) mavlink\_obstacle\_distance\_t;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN 158}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN 158}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_330\_LEN 158}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_330\_MIN\_LEN 158}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC 23}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_330\_CRC 23}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN 72}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE \{ \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    330, \(\backslash\)}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{    "{}OBSTACLE\_DISTANCE"{}}, \(\backslash\)}
+\DoxyCodeLine{30     6, \(\backslash\)}
+\DoxyCodeLine{31     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_obstacle\_distance\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}sensor\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 156, offsetof(mavlink\_obstacle\_distance\_t, sensor\_type) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}distances"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 72, 8, offsetof(mavlink\_obstacle\_distance\_t, distances) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}increment"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 157, offsetof(mavlink\_obstacle\_distance\_t, increment) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}min\_distance"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 152, offsetof(mavlink\_obstacle\_distance\_t, min\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}max\_distance"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 154, offsetof(mavlink\_obstacle\_distance\_t, max\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{37          \} \(\backslash\)}
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE \{ \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{    "{}OBSTACLE\_DISTANCE"{}}, \(\backslash\)}
+\DoxyCodeLine{42     6, \(\backslash\)}
+\DoxyCodeLine{43     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_obstacle\_distance\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}sensor\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 156, offsetof(mavlink\_obstacle\_distance\_t, sensor\_type) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}distances"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 72, 8, offsetof(mavlink\_obstacle\_distance\_t, distances) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}increment"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 157, offsetof(mavlink\_obstacle\_distance\_t, increment) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}min\_distance"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 152, offsetof(mavlink\_obstacle\_distance\_t, min\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}max\_distance"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 154, offsetof(mavlink\_obstacle\_distance\_t, max\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{49          \} \(\backslash\)}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{67 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{68                                uint64\_t time\_usec, uint8\_t sensor\_type, \textcolor{keyword}{const} uint16\_t *distances, uint8\_t increment, uint16\_t min\_distance, uint16\_t max\_distance)}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}];}
+\DoxyCodeLine{72     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{73     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 152, min\_distance);}
+\DoxyCodeLine{74     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 154, max\_distance);}
+\DoxyCodeLine{75     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 156, sensor\_type);}
+\DoxyCodeLine{76     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 157, increment);}
+\DoxyCodeLine{77     \_mav\_put\_uint16\_t\_array(buf, 8, distances, 72);}
+\DoxyCodeLine{78         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}});}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{80     mavlink\_obstacle\_distance\_t packet;}
+\DoxyCodeLine{81     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{82     packet.min\_distance = min\_distance;}
+\DoxyCodeLine{83     packet.max\_distance = max\_distance;}
+\DoxyCodeLine{84     packet.sensor\_type = sensor\_type;}
+\DoxyCodeLine{85     packet.increment = increment;}
+\DoxyCodeLine{86     mav\_array\_memcpy(packet.distances, distances, \textcolor{keyword}{sizeof}(uint16\_t)*72);}
+\DoxyCodeLine{87         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}});}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}};}
+\DoxyCodeLine{91     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{108 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{109                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{110                                    uint64\_t time\_usec,uint8\_t sensor\_type,\textcolor{keyword}{const} uint16\_t *distances,uint8\_t increment,uint16\_t min\_distance,uint16\_t max\_distance)}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{113     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}];}
+\DoxyCodeLine{114     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{115     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 152, min\_distance);}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 154, max\_distance);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 156, sensor\_type);}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 157, increment);}
+\DoxyCodeLine{119     \_mav\_put\_uint16\_t\_array(buf, 8, distances, 72);}
+\DoxyCodeLine{120         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}});}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{122     mavlink\_obstacle\_distance\_t packet;}
+\DoxyCodeLine{123     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{124     packet.min\_distance = min\_distance;}
+\DoxyCodeLine{125     packet.max\_distance = max\_distance;}
+\DoxyCodeLine{126     packet.sensor\_type = sensor\_type;}
+\DoxyCodeLine{127     packet.increment = increment;}
+\DoxyCodeLine{128     mav\_array\_memcpy(packet.distances, distances, \textcolor{keyword}{sizeof}(uint16\_t)*72);}
+\DoxyCodeLine{129         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}});}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}};}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{134 \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{144 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_obstacle\_distance\_t* obstacle\_distance)}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146     \textcolor{keywordflow}{return} mavlink\_msg\_obstacle\_distance\_pack(system\_id, component\_id, msg, obstacle\_distance-\/>time\_usec, obstacle\_distance-\/>sensor\_type, obstacle\_distance-\/>distances, obstacle\_distance-\/>increment, obstacle\_distance-\/>min\_distance, obstacle\_distance-\/>max\_distance);}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{158 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_obstacle\_distance\_t* obstacle\_distance)}
+\DoxyCodeLine{159 \{}
+\DoxyCodeLine{160     \textcolor{keywordflow}{return} mavlink\_msg\_obstacle\_distance\_pack\_chan(system\_id, component\_id, chan, msg, obstacle\_distance-\/>time\_usec, obstacle\_distance-\/>sensor\_type, obstacle\_distance-\/>distances, obstacle\_distance-\/>increment, obstacle\_distance-\/>min\_distance, obstacle\_distance-\/>max\_distance);}
+\DoxyCodeLine{161 \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_obstacle\_distance\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t sensor\_type, \textcolor{keyword}{const} uint16\_t *distances, uint8\_t increment, uint16\_t min\_distance, uint16\_t max\_distance)}
+\DoxyCodeLine{177 \{}
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{179     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}];}
+\DoxyCodeLine{180     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{181     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 152, min\_distance);}
+\DoxyCodeLine{182     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 154, max\_distance);}
+\DoxyCodeLine{183     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 156, sensor\_type);}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 157, increment);}
+\DoxyCodeLine{185     \_mav\_put\_uint16\_t\_array(buf, 8, distances, 72);}
+\DoxyCodeLine{186     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}, buf, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{188     mavlink\_obstacle\_distance\_t packet;}
+\DoxyCodeLine{189     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{190     packet.min\_distance = min\_distance;}
+\DoxyCodeLine{191     packet.max\_distance = max\_distance;}
+\DoxyCodeLine{192     packet.sensor\_type = sensor\_type;}
+\DoxyCodeLine{193     packet.increment = increment;}
+\DoxyCodeLine{194     mav\_array\_memcpy(packet.distances, distances, \textcolor{keyword}{sizeof}(uint16\_t)*72);}
+\DoxyCodeLine{195     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{197 \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{204 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_obstacle\_distance\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_obstacle\_distance\_t* obstacle\_distance)}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{207     mavlink\_msg\_obstacle\_distance\_send(chan, obstacle\_distance-\/>time\_usec, obstacle\_distance-\/>sensor\_type, obstacle\_distance-\/>distances, obstacle\_distance-\/>increment, obstacle\_distance-\/>min\_distance, obstacle\_distance-\/>max\_distance);}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{209     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)obstacle\_distance, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{211 \}}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{214 \textcolor{comment}{/*}}
+\DoxyCodeLine{215 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{216 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{217 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{218 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{219 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{220 \textcolor{comment}{ */}}
+\DoxyCodeLine{221 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_obstacle\_distance\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t sensor\_type, \textcolor{keyword}{const} uint16\_t *distances, uint8\_t increment, uint16\_t min\_distance, uint16\_t max\_distance)}
+\DoxyCodeLine{222 \{}
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{224     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{225     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{226     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 152, min\_distance);}
+\DoxyCodeLine{227     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 154, max\_distance);}
+\DoxyCodeLine{228     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 156, sensor\_type);}
+\DoxyCodeLine{229     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 157, increment);}
+\DoxyCodeLine{230     \_mav\_put\_uint16\_t\_array(buf, 8, distances, 72);}
+\DoxyCodeLine{231     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}, buf, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{233     mavlink\_obstacle\_distance\_t *packet = (mavlink\_obstacle\_distance\_t *)msgbuf;}
+\DoxyCodeLine{234     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{235     packet-\/>min\_distance = min\_distance;}
+\DoxyCodeLine{236     packet-\/>max\_distance = max\_distance;}
+\DoxyCodeLine{237     packet-\/>sensor\_type = sensor\_type;}
+\DoxyCodeLine{238     packet-\/>increment = increment;}
+\DoxyCodeLine{239     mav\_array\_memcpy(packet-\/>distances, distances, \textcolor{keyword}{sizeof}(uint16\_t)*72);}
+\DoxyCodeLine{240     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}});}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{242 \}}
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247 \textcolor{comment}{// MESSAGE OBSTACLE\_DISTANCE UNPACKING}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249 }
+\DoxyCodeLine{255 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_obstacle\_distance\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{256 \{}
+\DoxyCodeLine{257     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{258 \}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{265 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_obstacle\_distance\_get\_sensor\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{266 \{}
+\DoxyCodeLine{267     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  156);}
+\DoxyCodeLine{268 \}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{275 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_get\_distances(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint16\_t *distances)}
+\DoxyCodeLine{276 \{}
+\DoxyCodeLine{277     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t\_array(msg, distances, 72,  8);}
+\DoxyCodeLine{278 \}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{285 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_obstacle\_distance\_get\_increment(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{286 \{}
+\DoxyCodeLine{287     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  157);}
+\DoxyCodeLine{288 \}}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{295 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_get\_min\_distance(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{296 \{}
+\DoxyCodeLine{297     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  152);}
+\DoxyCodeLine{298 \}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{305 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_obstacle\_distance\_get\_max\_distance(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{306 \{}
+\DoxyCodeLine{307     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  154);}
+\DoxyCodeLine{308 \}}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{316 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_obstacle\_distance\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_obstacle\_distance\_t* obstacle\_distance)}
+\DoxyCodeLine{317 \{}
+\DoxyCodeLine{318 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{319     obstacle\_distance-\/>time\_usec = mavlink\_msg\_obstacle\_distance\_get\_time\_usec(msg);}
+\DoxyCodeLine{320     mavlink\_msg\_obstacle\_distance\_get\_distances(msg, obstacle\_distance-\/>distances);}
+\DoxyCodeLine{321     obstacle\_distance-\/>min\_distance = mavlink\_msg\_obstacle\_distance\_get\_min\_distance(msg);}
+\DoxyCodeLine{322     obstacle\_distance-\/>max\_distance = mavlink\_msg\_obstacle\_distance\_get\_max\_distance(msg);}
+\DoxyCodeLine{323     obstacle\_distance-\/>sensor\_type = mavlink\_msg\_obstacle\_distance\_get\_sensor\_type(msg);}
+\DoxyCodeLine{324     obstacle\_distance-\/>increment = mavlink\_msg\_obstacle\_distance\_get\_increment(msg);}
+\DoxyCodeLine{325 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{326         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}};}
+\DoxyCodeLine{327         memset(obstacle\_distance, 0, \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}});}
+\DoxyCodeLine{328     memcpy(obstacle\_distance, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{329 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{330 \}}
+
+\end{DoxyCode}

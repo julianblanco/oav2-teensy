@@ -1,0 +1,152 @@
+\hypertarget{_n_m_e_a__data_8h_source}{}\doxysection{NMEA\+\_\+data.\+h}
+\label{_n_m_e_a__data_8h_source}\index{lib/Adafruit\_GPS\_Library/src/NMEA\_data.h@{lib/Adafruit\_GPS\_Library/src/NMEA\_data.h}}
+\mbox{\hyperlink{_n_m_e_a__data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{5 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#ifndef \_NMEA\_DATA\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define \_NMEA\_\_DATA\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define NMEA\_MAX\_WP\_ID                                                         \(\backslash\)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{  20 }}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define NMEA\_MAX\_SENTENCE\_ID                                                   \(\backslash\)}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{  20 }}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define NMEA\_MAX\_SOURCE\_ID                                                     \(\backslash\)}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{  3 }}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{18 \textcolor{comment}{  doubles and floats are identical on AVR processors like the UNO where space}}
+\DoxyCodeLine{19 \textcolor{comment}{  is tight. doubles avoid the roundoff errors that led to the fixed point mods}}
+\DoxyCodeLine{20 \textcolor{comment}{  in https://github.com/adafruit/Adafruit-\/GPS-\/Library/pull/13, provided the}}
+\DoxyCodeLine{21 \textcolor{comment}{  processor supports actual doubles like the SAMD series with more storage. The}}
+\DoxyCodeLine{22 \textcolor{comment}{  total penalty for going all double is under a few hundred bytes / instance or}}
+\DoxyCodeLine{23 \textcolor{comment}{  0 bytes / instance on an UNO. This typedef allows a switch to lower precision}}
+\DoxyCodeLine{24 \textcolor{comment}{  to save some storage if needed. A float carries 23 bits of fractional}}
+\DoxyCodeLine{25 \textcolor{comment}{  resolution, giving a resolution of at least 9 significant digits, thus 6}}
+\DoxyCodeLine{26 \textcolor{comment}{  significant digits in the decimal place of an angular value like latitude, and}}
+\DoxyCodeLine{27 \textcolor{comment}{  thus a resolution on earth of at least 110 mm. That's closer than GPS will}}
+\DoxyCodeLine{28 \textcolor{comment}{  hit, and closer than needed for navigation, so floats can be used to save a}}
+\DoxyCodeLine{29 \textcolor{comment}{  little storage.}}
+\DoxyCodeLine{30 \textcolor{comment}{ **************************************************************************/}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifndef NMEA\_FLOAT\_T}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define NMEA\_FLOAT\_T float }}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{34 \textcolor{keyword}{typedef} \mbox{\hyperlink{_n_m_e_a__data_8h_a0c423588a466231e5a996377c5b652e1}{NMEA\_FLOAT\_T}}}
+\DoxyCodeLine{35     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}}; }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{51 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{52   int16\_t *data = NULL;          }
+\DoxyCodeLine{53   \textcolor{keywordtype}{unsigned} n = 0;                }
+\DoxyCodeLine{54   uint32\_t lastHistory = 0;      }
+\DoxyCodeLine{55   uint16\_t historyInterval = 20; }
+\DoxyCodeLine{56   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} scale = 1.0;      }
+\DoxyCodeLine{57   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} offset = 0.0;     }
+\DoxyCodeLine{58 \} \mbox{\hyperlink{structnmea__history__t}{nmea\_history\_t}};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{70 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{71 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{72   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\_SIMPLE\_FLOAT}} = 0,  }
+\DoxyCodeLine{73   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a7bc54aef98d4ed5daa02cb521e386a6f}{NMEA\_COMPASS\_ANGLE}} = 1, }
+\DoxyCodeLine{74   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}} = 2,    }
+\DoxyCodeLine{76   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\_COMPASS\_ANGLE\_SIN}} =}
+\DoxyCodeLine{77       11, }
+\DoxyCodeLine{79   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}{NMEA\_BOAT\_ANGLE\_SIN}} =}
+\DoxyCodeLine{80       12, }
+\DoxyCodeLine{82   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a34ae709a17b026e87e3ff3c15be18b2a}{NMEA\_DDMM}} = 20, }
+\DoxyCodeLine{84   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a4284cc96e4113988a1e57f1de8c9b3bf}{NMEA\_HHMMSS}} =}
+\DoxyCodeLine{85       30 }
+\DoxyCodeLine{86 \} \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\_value\_type\_t}};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{95 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{96 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{97   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} latest = 0.0; }
+\DoxyCodeLine{98   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} smoothed =}
+\DoxyCodeLine{99       0.0;                  }
+\DoxyCodeLine{100   uint32\_t lastUpdate = 0;  }
+\DoxyCodeLine{101   uint16\_t response = 1000; }
+\DoxyCodeLine{102   \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\_value\_type\_t}} type =}
+\DoxyCodeLine{103       \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\_SIMPLE\_FLOAT}}; }
+\DoxyCodeLine{104   \textcolor{keywordtype}{byte} ockam = 0; }
+\DoxyCodeLine{105   \mbox{\hyperlink{structnmea__history__t}{nmea\_history\_t}} *hist = NULL; }
+\DoxyCodeLine{106   \textcolor{keywordtype}{char} *label = NULL;          }
+\DoxyCodeLine{107   \textcolor{keywordtype}{char} *unit = NULL;           }
+\DoxyCodeLine{108   \textcolor{keywordtype}{char} *fmt = NULL;            }
+\DoxyCodeLine{109 \} \mbox{\hyperlink{structnmea__datavalue__t}{nmea\_datavalue\_t}};}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{120 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{121 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{122   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\_HDOP}} = 0, }
+\DoxyCodeLine{123   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\_LAT}},      }
+\DoxyCodeLine{124   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\_LON}},      }
+\DoxyCodeLine{125   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a192af66d3d405dcd64314dd2052aa066}{NMEA\_LATWP}},    }
+\DoxyCodeLine{126   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7c7af90260edd7f77f2c5d5f3996da8c}{NMEA\_LONWP}},    }
+\DoxyCodeLine{127   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ac0740cafb89c58378223849d33770d5f}{NMEA\_SOG}},      }
+\DoxyCodeLine{128   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0dc2497e13496f5f3b4f23cd4626664d}{NMEA\_COG}},      }
+\DoxyCodeLine{129   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a67b120bf6a8123092de748e0b42f94f4}{NMEA\_COG\_SIN}},  }
+\DoxyCodeLine{130   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1dadabf0a1457e491693f79c0df15aac}{NMEA\_COG\_COS}},  }
+\DoxyCodeLine{131   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abca6e3662f289de96485a385ff658b00}{NMEA\_COGWP}},    }
+\DoxyCodeLine{132   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}{NMEA\_XTE}},      }
+\DoxyCodeLine{134   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1ef9e86aba876eedca5c4f2f38b72991}{NMEA\_DISTWP}},   }
+\DoxyCodeLine{135   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}{NMEA\_AWA}}, }
+\DoxyCodeLine{136   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a04fe7a2c0cfad169ce450a0b61f8103b}{NMEA\_AWA\_SIN}}, }
+\DoxyCodeLine{137   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aced0f6b647b9b3d9090e10eab53a573f}{NMEA\_AWA\_COS}}, }
+\DoxyCodeLine{138   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}{NMEA\_AWS}},     }
+\DoxyCodeLine{139   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}{NMEA\_TWA}},     }
+\DoxyCodeLine{140   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f0acf144e3a15735c1895f0d62d5eaa}{NMEA\_TWA\_SIN}}, }
+\DoxyCodeLine{141   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae339fe721d0bcfda7d5ab9bae78dfb6a}{NMEA\_TWA\_COS}}, }
+\DoxyCodeLine{142   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a621aa4c4d29b1a6c0a6348cf6bc0fe77}{NMEA\_TWD}}, }
+\DoxyCodeLine{143   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6a508ebd84e789b82823b9ee8aa28af0}{NMEA\_TWD\_SIN}}, }
+\DoxyCodeLine{144   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8f4492ccd6e317a60887edc9432884d1}{NMEA\_TWD\_COS}}, }
+\DoxyCodeLine{145   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}{NMEA\_TWS}},     }
+\DoxyCodeLine{146   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}{NMEA\_VMG}},     }
+\DoxyCodeLine{148   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}{NMEA\_VMGWP}},   }
+\DoxyCodeLine{149   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a91e791eb52bd523a25057c2e56adb862}{NMEA\_HEEL}},    }
+\DoxyCodeLine{150   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f3c01dbb1008cd0269e606cc5c2acea}{NMEA\_PITCH}},   }
+\DoxyCodeLine{151   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\_HDG}},     }
+\DoxyCodeLine{152   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a65053e4ad02756b570f62b5e41c7f710}{NMEA\_HDG\_SIN}}, }
+\DoxyCodeLine{153   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa01cdd1ff0af82b39e3df95c7e789eae}{NMEA\_HDG\_COS}}, }
+\DoxyCodeLine{154   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\_HDT}},     }
+\DoxyCodeLine{155   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab2852227f6863bca31159d539a26828b}{NMEA\_HDT\_SIN}}, }
+\DoxyCodeLine{156   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0b0976830a8c5e67e8cfe7889ccf58be}{NMEA\_HDT\_COS}}, }
+\DoxyCodeLine{157   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}{NMEA\_VTW}},     }
+\DoxyCodeLine{158   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}{NMEA\_LOG}},     }
+\DoxyCodeLine{159   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab9f8b31288a7280ea18544c44bf1f8c1}{NMEA\_LOGR}},    }
+\DoxyCodeLine{161   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\_DEPTH}},   }
+\DoxyCodeLine{162   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae9935f17810b837223b8ce117b8fc19d}{NMEA\_RPM\_M1}},  }
+\DoxyCodeLine{163   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7accd128fe8ad3caadc6cddb855f9bec1a}{NMEA\_TEMPERATURE\_M1}},    }
+\DoxyCodeLine{164   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a622d07457540a62d101c3dba77b8fb3e}{NMEA\_PRESSURE\_M1}},       }
+\DoxyCodeLine{165   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9e736a5305edf879cfc648eef4728db7}{NMEA\_VOLTAGE\_M1}},        }
+\DoxyCodeLine{166   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae491a271e5bda7132ca831ec5e83d84b}{NMEA\_CURRENT\_M1}},        }
+\DoxyCodeLine{167   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a5ec5d1c335aa2285e2afaf79f88b155f}{NMEA\_RPM\_M2}},            }
+\DoxyCodeLine{168   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4dce2ddf1a5aa38cc150fbee4fdecda9}{NMEA\_TEMPERATURE\_M2}},    }
+\DoxyCodeLine{169   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a14f464441fc70d4106487a8ef816cf07}{NMEA\_PRESSURE\_M2}},       }
+\DoxyCodeLine{170   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abd0a65c66607397fe2dddc00713e6bd6}{NMEA\_VOLTAGE\_M2}},        }
+\DoxyCodeLine{171   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a889981e7ff93913b8cedda0bbeaa8a3a}{NMEA\_CURRENT\_M2}},        }
+\DoxyCodeLine{172   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a083ed5d1df1aefd81fcc3d67d8c3587d}{NMEA\_TEMPERATURE\_AIR}},   }
+\DoxyCodeLine{173   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}{NMEA\_TEMPERATURE\_WATER}}, }
+\DoxyCodeLine{174   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a88de695da7b711f27ad0b07b71c4c56d}{NMEA\_HUMIDITY}},          }
+\DoxyCodeLine{175   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}{NMEA\_BAROMETER}}, }
+\DoxyCodeLine{177   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a59965ef2b32c4ad4d4859eeb9680d24e}{NMEA\_USR\_00}},    }
+\DoxyCodeLine{178   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a941914dde5659e33dd944c438589d14b}{NMEA\_USR\_01}},    }
+\DoxyCodeLine{179   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7aa37c86d68193266279d372fe2aa2f367}{NMEA\_USR\_02}},    }
+\DoxyCodeLine{180   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7d174bb004ddc87d92de8d09c01a5ada}{NMEA\_USR\_03}},}
+\DoxyCodeLine{181   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a37049dcba18b17ce24aba058197217ba}{NMEA\_USR\_04}},}
+\DoxyCodeLine{182   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a17f2f25154f6758eb833eee2c7ae5946}{NMEA\_USR\_05}},}
+\DoxyCodeLine{183   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9d30dd87e76fc7773f502514bf38c0db}{NMEA\_USR\_06}},}
+\DoxyCodeLine{184   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4066a92481349c8b57769df56d375296}{NMEA\_USR\_07}},}
+\DoxyCodeLine{185   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8cc3d88285ee5c82d5dc97e93f65ec3c}{NMEA\_USR\_08}},}
+\DoxyCodeLine{186   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6b73287aa7fbe476a76f4ce48889228e}{NMEA\_USR\_09}},}
+\DoxyCodeLine{187   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1df94f78d880c540eabdc7152599f317}{NMEA\_USR\_10}},}
+\DoxyCodeLine{188   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9551f5161d5004f87f1969b9efe796a2}{NMEA\_USR\_11}},}
+\DoxyCodeLine{189   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a383b260fe374c7efcd82b392a2c04673}{NMEA\_USR\_12}},}
+\DoxyCodeLine{190   \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}} }
+\DoxyCodeLine{192 \} \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}};  }
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_NMEA\_DATA\_H}}
+
+\end{DoxyCode}

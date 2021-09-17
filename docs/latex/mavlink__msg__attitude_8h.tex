@@ -1,0 +1,102 @@
+\hypertarget{mavlink__msg__attitude_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+attitude.h File Reference}
+\label{mavlink__msg__attitude_8h}\index{lib/common/mavlink\_msg\_attitude.h@{lib/common/mavlink\_msg\_attitude.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_a48dd5ae33eb4e063f36a74549aba56aa}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE}}~30
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_acb7531456d57dd27ad7c95029142eae3}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE\+\_\+\+LEN}}~28
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_a31e17ef9d6b9e62bb6c8cf6c6c9ef33d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE\+\_\+\+MIN\+\_\+\+LEN}}~28
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_aa0b388e7a1150d159326b0f93ba34969}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+30\+\_\+\+LEN}}~28
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_ab007526c98952ed678dd43e5b19ebeb8}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+30\+\_\+\+MIN\+\_\+\+LEN}}~28
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_ae9533a6479c81bec59f1e66b7200b2f1}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE\+\_\+\+CRC}}~39
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_a9f194be827cde09a9594acc8deda8481}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+30\+\_\+\+CRC}}~39
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__attitude_8h_a2ceb81e754314e3e0f2e0eb0193c8129}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+ATTITUDE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__attitude_8h_a9f1187eabe52eca288fd4517d91ea49f}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+attitude\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float roll;float pitch;float yaw;float rollspeed;float pitchspeed;float yawspeed;\}) mavlink\+\_\+attitude\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_a2ceb81e754314e3e0f2e0eb0193c8129}\label{mavlink__msg__attitude_8h_a2ceb81e754314e3e0f2e0eb0193c8129}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MESSAGE\_INFO\_ATTITUDE@{MAVLINK\_MESSAGE\_INFO\_ATTITUDE}}
+\index{MAVLINK\_MESSAGE\_INFO\_ATTITUDE@{MAVLINK\_MESSAGE\_INFO\_ATTITUDE}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_ATTITUDE}{MAVLINK\_MESSAGE\_INFO\_ATTITUDE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+ATTITUDE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}ATTITUDE"{}}, \(\backslash\)}
+\DoxyCodeLine{    7, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_attitude\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}roll"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 4, offsetof(mavlink\_attitude\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_attitude\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yaw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_attitude\_t, yaw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}rollspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_attitude\_t, rollspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitchspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 20, offsetof(mavlink\_attitude\_t, pitchspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yawspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 24, offsetof(mavlink\_attitude\_t, yawspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_a9f194be827cde09a9594acc8deda8481}\label{mavlink__msg__attitude_8h_a9f194be827cde09a9594acc8deda8481}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_30\_CRC@{MAVLINK\_MSG\_ID\_30\_CRC}}
+\index{MAVLINK\_MSG\_ID\_30\_CRC@{MAVLINK\_MSG\_ID\_30\_CRC}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_30\_CRC}{MAVLINK\_MSG\_ID\_30\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+30\+\_\+\+CRC~39}
+
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_aa0b388e7a1150d159326b0f93ba34969}\label{mavlink__msg__attitude_8h_aa0b388e7a1150d159326b0f93ba34969}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_30\_LEN@{MAVLINK\_MSG\_ID\_30\_LEN}}
+\index{MAVLINK\_MSG\_ID\_30\_LEN@{MAVLINK\_MSG\_ID\_30\_LEN}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_30\_LEN}{MAVLINK\_MSG\_ID\_30\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+30\+\_\+\+LEN~28}
+
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_ab007526c98952ed678dd43e5b19ebeb8}\label{mavlink__msg__attitude_8h_ab007526c98952ed678dd43e5b19ebeb8}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_30\_MIN\_LEN@{MAVLINK\_MSG\_ID\_30\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_30\_MIN\_LEN@{MAVLINK\_MSG\_ID\_30\_MIN\_LEN}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_30\_MIN\_LEN}{MAVLINK\_MSG\_ID\_30\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+30\+\_\+\+MIN\+\_\+\+LEN~28}
+
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_a48dd5ae33eb4e063f36a74549aba56aa}\label{mavlink__msg__attitude_8h_a48dd5ae33eb4e063f36a74549aba56aa}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_ATTITUDE@{MAVLINK\_MSG\_ID\_ATTITUDE}}
+\index{MAVLINK\_MSG\_ID\_ATTITUDE@{MAVLINK\_MSG\_ID\_ATTITUDE}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ATTITUDE}{MAVLINK\_MSG\_ID\_ATTITUDE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE~30}
+
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_ae9533a6479c81bec59f1e66b7200b2f1}\label{mavlink__msg__attitude_8h_ae9533a6479c81bec59f1e66b7200b2f1}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_ATTITUDE\_CRC@{MAVLINK\_MSG\_ID\_ATTITUDE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_ATTITUDE\_CRC@{MAVLINK\_MSG\_ID\_ATTITUDE\_CRC}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ATTITUDE\_CRC}{MAVLINK\_MSG\_ID\_ATTITUDE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE\+\_\+\+CRC~39}
+
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_acb7531456d57dd27ad7c95029142eae3}\label{mavlink__msg__attitude_8h_acb7531456d57dd27ad7c95029142eae3}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_ATTITUDE\_LEN@{MAVLINK\_MSG\_ID\_ATTITUDE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_ATTITUDE\_LEN@{MAVLINK\_MSG\_ID\_ATTITUDE\_LEN}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ATTITUDE\_LEN}{MAVLINK\_MSG\_ID\_ATTITUDE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE\+\_\+\+LEN~28}
+
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_a31e17ef9d6b9e62bb6c8cf6c6c9ef33d}\label{mavlink__msg__attitude_8h_a31e17ef9d6b9e62bb6c8cf6c6c9ef33d}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVLINK\_MSG\_ID\_ATTITUDE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_ATTITUDE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_ATTITUDE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_ATTITUDE\_MIN\_LEN}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ATTITUDE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_ATTITUDE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ATTITUDE\+\_\+\+MIN\+\_\+\+LEN~28}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__attitude_8h_a9f1187eabe52eca288fd4517d91ea49f}\label{mavlink__msg__attitude_8h_a9f1187eabe52eca288fd4517d91ea49f}} 
+\index{mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_attitude.h@{mavlink\_msg\_attitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+attitude\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float roll;float pitch;float yaw;float rollspeed;float pitchspeed;float yawspeed;\}}]{ }\end{DoxyParamCaption})}
+

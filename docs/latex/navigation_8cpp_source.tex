@@ -1,0 +1,228 @@
+\hypertarget{navigation_8cpp_source}{}\doxysection{navigation.\+cpp}
+\label{navigation_8cpp_source}\index{src/navigation.cpp@{src/navigation.cpp}}
+\mbox{\hyperlink{navigation_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00001}00001 \textcolor{comment}{//*****************************************************************}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00002}00002 \textcolor{comment}{// Navigation Thread 1HZ}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00003}00003 \textcolor{comment}{//*****************************************************************}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{navigation_8h}{navigation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00005}00005 \textcolor{preprocessor}{ \#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00006}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a48555355a38b059ddd0c108ecd9017a1}{00006}} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a48555355a38b059ddd0c108ecd9017a1}{NAVIGATION::NAVIGATION}}() \{\}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00007}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ad0810a0fd35f81bb29f24fbf8bbb098a}{00007}} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ad0810a0fd35f81bb29f24fbf8bbb098a}{NAVIGATION::\string~NAVIGATION}}() \{\}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00009}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2ab6f0f056a33af30c82c52ab7eb6a45}{00009}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2ab6f0f056a33af30c82c52ab7eb6a45}{NAVIGATION::setup}}()}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00011}00011 \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#ifdef MPU6050}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00013}00013   mpu6050init();}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#ifdef BNO055}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00016}00016 \textcolor{comment}{//shit}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00018}00018   \mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{Task::setup}}(\textcolor{stringliteral}{"{}navigation"{}}, 6);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00019}00019   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00020}00020 \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00022}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a711336d565a5e4002ee15f1079b4d092}{00022}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a711336d565a5e4002ee15f1079b4d092}{NAVIGATION::start}}()}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00024}00024   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00025}00025   \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00027}00027     \mbox{\hyperlink{config_8h_a2474ae4ac8596b106a6b115f11e37602}{LOOPFREQ}}(100);\textcolor{comment}{//hz}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00028}00028   \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00031}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adca619030a46aa1f8ed529817b41f6d4}{00031}}  \textcolor{keywordtype}{void} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adca619030a46aa1f8ed529817b41f6d4}{NAVIGATION::NEDpositionControl}}()}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00033}00033   \textcolor{keywordtype}{float} northError = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a71185b4747cce98956f47013f9d9908a}{desiredNorth}} -\/\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ac7a5683a4b4c2ca3b01887ec5996fa9e}{currentNorth}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00034}00034   \textcolor{keywordtype}{float} eastError = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a77ac6adfd10c8299e411031279e3cb2c}{currentEast}} -\/ \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a26e02d6926c0ed733354025feaf29460}{desiredEast}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00035}00035   \textcolor{keywordtype}{float} downError = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a88baa8bf2fc9d5f552357b43fcd8a9f5}{currentDown}} -\/ \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a183896811f4123cb466ee0338f4feef8}{desiredDown}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00037}00037   \textcolor{keywordtype}{float} northResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00038}00038   \textcolor{keywordtype}{float} eastResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00039}00039   \textcolor{keywordtype}{float} downResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00041}00041   \textcolor{keywordtype}{float} pNorthResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00042}00042   \textcolor{keywordtype}{float} pEastResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00043}00043   \textcolor{keywordtype}{float} pDownResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00045}00045   \textcolor{keywordtype}{float} iNorthResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00046}00046   \textcolor{keywordtype}{float} iEastResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00047}00047   \textcolor{keywordtype}{float} iDownResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00049}00049   \textcolor{keywordtype}{float} dNorthResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00050}00050   \textcolor{keywordtype}{float} dEastResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00051}00051   \textcolor{keywordtype}{float} dDownResponse = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00053}00053   \textcolor{keywordtype}{float} northErrorLast = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00054}00054   \textcolor{keywordtype}{float} eastErrorLast = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00055}00055   \textcolor{keywordtype}{float} downErrorLast = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00056}00056   \textcolor{keywordtype}{float} mixer = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00057}00057   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00058}00058   \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00059}00059     \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}})}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00060}00060     \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00061}00061       \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} == 2)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00062}00062       \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00063}00063         northError = \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ac7a5683a4b4c2ca3b01887ec5996fa9e}{currentNorth}} -\/ \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a71185b4747cce98956f47013f9d9908a}{desiredNorth}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00064}00064         eastError = \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a77ac6adfd10c8299e411031279e3cb2c}{currentEast}} -\/ \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a26e02d6926c0ed733354025feaf29460}{desiredEast}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00065}00065         downError = \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a88baa8bf2fc9d5f552357b43fcd8a9f5}{currentDown}} -\/ \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a183896811f4123cb466ee0338f4feef8}{desiredDown}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00067}00067         pNorthResponse = northError * \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_acc49dc62fa6e56fa5e88ab83cc981c37}{northKp}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00068}00068         pEastResponse = eastError * \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aac6c24d75db547d3810b1eff3aae0735}{eastKp}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00069}00069         pDownResponse = downError * \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ace334efa608e37d7fa3c85aaa805c1e5}{downKp}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00071}00071         iNorthResponse += northError * \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a78b6ca4c120f48033c972a47af80d601}{northKi}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00072}00072         iEastResponse += eastError * \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a394cfe845a5127ebc3d58f0b5e2c25d1}{eastKi}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00073}00073         iDownResponse += downError * \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a6c9eca3203970f254cf14e4f658ed08c}{downKi}};}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00075}00075         dNorthResponse = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ac527d793faa1d09c340cececd60b1f82}{northKd}} * (northError -\/ northErrorLast) / 10;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00076}00076         dEastResponse = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae3fd1e729e9cce6f7be9407935ae4187}{eastKd}} * (eastError -\/ eastErrorLast) / 10;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00077}00077         dDownResponse = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aec84dc30b1950208a5b5dee5bc102e24}{downKd}} * (downError -\/ downErrorLast) / 10;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00079}00079         northResponse = pNorthResponse + iNorthResponse + dNorthResponse;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00080}00080         eastResponse = pEastResponse + iEastResponse + dEastResponse;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00081}00081         downResponse = pDownResponse + iDownResponse + dDownResponse;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00083}00083         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2d3c7982e23531114b4595c55bc7ba0b}{desiredPitch}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(northResponse, 30, -\/30);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00084}00084         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}{desiredRoll}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(eastResponse, 30, -\/30);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00085}00085         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}{desiredThrottle}} = \mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(downResponse, 1000, -\/1000);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00086}00086       \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00087}00087       \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} == 1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00088}00088       \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00089}00089         \textcolor{comment}{//handled elsewhere}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00090}00090       \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00091}00091     \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00093}00093     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00094}00094   \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00095}00095 \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00096}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a30058cca18999f55774e367eab3f0a2f}{00096}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a30058cca18999f55774e367eab3f0a2f}{NAVIGATION::headingFromGPS}}()}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00097}00097 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00098}00098   \textcolor{keywordtype}{int} waypointNumber = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00099}00099   \textcolor{keywordtype}{int} numOfWaypoints = 5; \textcolor{comment}{//size of waypoints}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00100}00100   \textcolor{keywordtype}{float} oldHeading = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00101}00101   \textcolor{keywordtype}{float} courseBetweenWaypoints = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00102}00102   \textcolor{keywordtype}{float} distanceBetweenWaypoints = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00103}00103   \textcolor{keywordtype}{float} targetHeading = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00104}00104   \textcolor{keywordtype}{float} lastdesiredLat = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00105}00105   \textcolor{keywordtype}{float} lastdesiredLong = 0;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00106}00106   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00107}00107   \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00108}00108     \textcolor{comment}{//calculates the distance to the waypoint}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00109}00109     \textcolor{keywordtype}{float} distanceToTarget = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}{distanceToWaypoint}}(\mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}.\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, \mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}.\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desiredLat}},  \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desiredLong}});}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00111}00111     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a0d35b0ca4be8783734bd66135193a0e7}{flag\_are\_waypointing}} == 1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00112}00112     \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00113}00113       \textcolor{keywordtype}{float} XTerror = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adc92d3881934dc7b97549468b5aa688d}{crossTrackError}}(distanceToTarget, courseBetweenWaypoints, oldHeading);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00114}00114       \textcolor{keywordflow}{if} (waypointNumber > 1 \&\& XTerror > 1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00115}00115       \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00116}00116         oldHeading = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{courseToWaypoint}}(\mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}.\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, \mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}.\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desiredLat}},  \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desiredLong}});}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00117}00117         targetHeading = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a6b5a0c4089acd1e691416c0540ca6085}{crossTrackCorrection}}(XTerror, oldHeading, distanceToTarget);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00118}00118       \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00119}00119       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00120}00120       \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00121}00121         targetHeading = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{courseToWaypoint}}(\mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}.\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, \mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}.\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desiredLat}},  \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desiredLong}});}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00122}00122       \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00124}00124       \textcolor{keywordflow}{if} (waypointNumber > 1)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00125}00125       \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00126}00126         lastdesiredLat = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}{wplat}}[waypointNumber -\/ 1];}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00127}00127         lastdesiredLong = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}{wplong}}[waypointNumber -\/ 1];}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00128}00128       \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00130}00130       \textcolor{keywordflow}{if} (distanceToTarget < \mbox{\hyperlink{navigation_8h_a17492a48300f072d03a12833333a1e1d}{waypointmindistance}})}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00131}00131       \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00132}00132         waypointNumber = waypointNumber + 1;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00134}00134         \textcolor{keywordflow}{if} (waypointNumber == numOfWaypoints)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00135}00135         \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00136}00136           waypointNumber = 1;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00137}00137         \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00138}00138       \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00140}00140       \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desiredLat}} = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}{wplat}}[waypointNumber];}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00141}00141       \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desiredLong}} = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}{wplong}}[waypointNumber];}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00143}00143       distanceBetweenWaypoints = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}{distanceToWaypoint}}(\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desiredLat}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desiredLong}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}{wplat}}[waypointNumber -\/ 1], \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}{wplong}}[waypointNumber -\/ 1]);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00144}00144       courseBetweenWaypoints = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{courseToWaypoint}}(\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}{wplat}}[waypointNumber -\/ 1], \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}{wplong}}[waypointNumber -\/ 1], \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desiredLat}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desiredLong}});}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00145}00145     \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00146}00146   \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00147}00147 \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00149}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a6b5a0c4089acd1e691416c0540ca6085}{00149}} \textcolor{keywordtype}{float}  \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a6b5a0c4089acd1e691416c0540ca6085}{NAVIGATION::crossTrackCorrection}}(\textcolor{keywordtype}{float} distanceXT, \textcolor{keywordtype}{float} targetHead, \textcolor{keywordtype}{float} distance2WP)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00150}00150 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00151}00151   \textcolor{keywordtype}{float} xtCoeff = -\/100; \textcolor{comment}{// based on experimental data from the autonomous car}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00152}00152   \textcolor{keywordtype}{float} temp = (xtCoeff * distanceXT) / distance2WP;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00154}00154   \textcolor{keywordflow}{if} (temp > 30)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00155}00155     temp = 30; \textcolor{comment}{// maximum allowable correction}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00156}00156   \textcolor{keywordflow}{if} (temp < -\/30)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00157}00157     temp = -\/30;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00159}00159   \textcolor{keywordtype}{float} newTargetHeading = targetHead + temp;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00161}00161   \textcolor{keywordflow}{if} (newTargetHeading >= 360)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00162}00162     newTargetHeading -\/= 360;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00163}00163   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (newTargetHeading < 0)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00164}00164     newTargetHeading += 360;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00166}00166   \textcolor{keywordflow}{return} newTargetHeading;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00167}00167 \} \textcolor{comment}{// end crossTrackError}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00169}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adc92d3881934dc7b97549468b5aa688d}{00169}} \textcolor{keywordtype}{float} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adc92d3881934dc7b97549468b5aa688d}{NAVIGATION::crossTrackError}}(\textcolor{keywordtype}{float} distance2WP, \textcolor{keywordtype}{float} tracklegHead, \textcolor{keywordtype}{float} targetHead)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00170}00170 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00171}00171   \textcolor{comment}{//convert to radians for use with sin}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00172}00172   tracklegHead = (3.14159265 / 180) * tracklegHead;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00173}00173   targetHead = (3.14159265 / 180) * targetHead;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00175}00175   \textcolor{comment}{//compute heading error off trackline}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00176}00176   \textcolor{keywordtype}{float} deltaHeading = tracklegHead -\/ targetHead;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00178}00178   \textcolor{comment}{// crosstrack distance (positive if right of track)}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00179}00179   \textcolor{keywordtype}{float} distanceXT = distance2WP * sin(deltaHeading);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00181}00181   \textcolor{keywordflow}{return} distanceXT;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00182}00182 \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00185}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}{00185}} \textcolor{keywordtype}{float} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}{NAVIGATION::distanceToWaypoint}}(\textcolor{keywordtype}{float} Lat1, \textcolor{keywordtype}{float} Long1, \textcolor{keywordtype}{float} Lat2, \textcolor{keywordtype}{float} Long2)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00186}00186 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00187}00187   \textcolor{keywordtype}{float} dist;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00188}00188   \textcolor{keywordtype}{float} dLat = (float)(Lat2 -\/ Lat1);               \textcolor{comment}{// difference of latitude in 1/10 000 000 degrees}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00189}00189   \textcolor{keywordtype}{float} dLon = (float)(Long2 -\/ Long1) * cos(Lat1); \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00190}00190   dist = sqrt(sq(dLat) + sq(dLon)) * 110312;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00192}00192   \textcolor{keywordflow}{return} dist;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00193}00193 \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00195}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{00195}} \textcolor{keywordtype}{float} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{NAVIGATION::courseToWaypoint}}(\textcolor{keywordtype}{float} lat1, \textcolor{keywordtype}{float} long1, \textcolor{keywordtype}{float} lat2, \textcolor{keywordtype}{float} long2)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00196}00196 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00197}00197   \textcolor{comment}{// returns course in degrees (North=0, West=270) from position 1 to position 2,}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00198}00198   \textcolor{comment}{// both specified as signed decimal-\/degrees latitude and longitude.}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00199}00199   \textcolor{comment}{// Because Earth is no exact sphere, calculated course may be off by a tiny fraction.}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00200}00200   \textcolor{comment}{// Courtesy of Maarten Lamers}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00201}00201   \textcolor{keywordtype}{float} dlon = radians(long2 -\/ long1);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00202}00202   lat1 = radians(lat1);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00203}00203   lat2 = radians(lat2);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00204}00204   \textcolor{keywordtype}{float} a1 = sin(dlon) * cos(lat2);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00205}00205   \textcolor{keywordtype}{float} a2 = sin(lat1) * cos(lat2) * cos(dlon);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00206}00206   a2 = cos(lat1) * sin(lat2) -\/ a2;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00207}00207   a2 = atan2(a1, a2);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00208}00208   \textcolor{keywordflow}{if} (a2 < 0.0)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00209}00209   \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00210}00210     a2 += TWO\_PI;}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00211}00211   \}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00212}00212   \textcolor{keywordflow}{return} degrees(a2);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00213}00213 \} \textcolor{comment}{// courseToWaypoint()}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00215}\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ace932d9e8527bd6654d55c3df83bf154}{00215}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ace932d9e8527bd6654d55c3df83bf154}{NAVIGATION::convertToNED}}(\textcolor{keywordtype}{float} startLat, \textcolor{keywordtype}{float} startLong, \textcolor{keywordtype}{float} currentLat, \textcolor{keywordtype}{float} currentLong, \textcolor{keywordtype}{float} \&North, \textcolor{keywordtype}{float} \&East, \textcolor{keywordtype}{float} \&Down)}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00216}00216 \{}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00217}00217   \textcolor{keywordtype}{float} heading = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{courseToWaypoint}}(startLat, startLong, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4a94205003e3379d200372cf99802397}{currentLat}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae7c5f87923f4a0ba2f7bf62cd3a51d90}{currentLong}});}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00218}00218   \textcolor{keywordtype}{float} distance = \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}{distanceToWaypoint}}(startLat, startLong, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4a94205003e3379d200372cf99802397}{currentLat}}, \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae7c5f87923f4a0ba2f7bf62cd3a51d90}{currentLong}});}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00219}00219   North = distance * sin(heading);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00220}00220   East = distance * cos(heading);}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00221}00221   \textcolor{comment}{// Down = currentRangeSensorHeight -\/ heightOffset;}}
+\DoxyCodeLine{\Hypertarget{navigation_8cpp_source_l00222}00222 \}}
+
+\end{DoxyCode}

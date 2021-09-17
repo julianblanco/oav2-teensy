@@ -1,0 +1,578 @@
+\hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source}{}\doxysection{LIDARLite\+\_\+v3\+HP.\+cpp}
+\label{_l_i_d_a_r_lite__v3_h_p_8cpp_source}\index{lib/LIDAR-\/Lite/src/LIDARLite\_v3HP.cpp@{lib/LIDAR-\/Lite/src/LIDARLite\_v3HP.cpp}}
+\mbox{\hyperlink{_l_i_d_a_r_lite__v3_h_p_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00001}00001 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00002}00002 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00003}00003 \textcolor{comment}{  LIDARLite\_v3HP Arduino Library}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00004}00004 \textcolor{comment}{  LIDARLite\_v3HP.cpp}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00005}00005 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00006}00006 \textcolor{comment}{  This library provides quick access to the basic functions of LIDAR-\/Lite}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00007}00007 \textcolor{comment}{  via the Arduino interface. Additionally, it can provide a user of any}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00008}00008 \textcolor{comment}{  platform with a template for their own application code.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00010}00010 \textcolor{comment}{  Copyright (c) 2018 Garmin Ltd. or its subsidiaries.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00011}00011 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00012}00012 \textcolor{comment}{  Licensed under the Apache License, Version 2.0 (the "{}License"{});}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00013}00013 \textcolor{comment}{  you may not use this file except in compliance with the License.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00014}00014 \textcolor{comment}{  You may obtain a copy of the License at}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00015}00015 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00016}00016 \textcolor{comment}{  http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00017}00017 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00018}00018 \textcolor{comment}{  Unless required by applicable law or agreed to in writing, software}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00019}00019 \textcolor{comment}{  distributed under the License is distributed on an "{}AS IS"{} BASIS,}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00020}00020 \textcolor{comment}{  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00021}00021 \textcolor{comment}{  See the License for the specific language governing permissions and}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00022}00022 \textcolor{comment}{  limitations under the License.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00023}00023 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00024}00024 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00028}00028 \textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00029}00029 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00030}00030 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_l_i_d_a_r_lite__v3_h_p_8h}{LIDARLite\_v3HP.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00032}00032 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00033}00033 \textcolor{comment}{  Configure}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00034}00034 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00035}00035 \textcolor{comment}{  Selects one of several preset configurations.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00036}00036 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00037}00037 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00038}00038 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00039}00039 \textcolor{comment}{  configuration:  Default 0.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00040}00040 \textcolor{comment}{    0: Default mode, balanced performance.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00041}00041 \textcolor{comment}{    1: Short range, high speed. Uses 0x1d maximum acquisition count.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00042}00042 \textcolor{comment}{    2: Default range, higher speed short range. Turns on quick termination}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00043}00043 \textcolor{comment}{        detection for faster measurements at short range (with decreased}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00044}00044 \textcolor{comment}{        accuracy)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00045}00045 \textcolor{comment}{    3: Maximum range. Uses 0xff maximum acquisition count.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00046}00046 \textcolor{comment}{    4: High sensitivity detection. Overrides default valid measurement detection}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00047}00047 \textcolor{comment}{        algorithm, and uses a threshold value for high sensitivity and noise.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00048}00048 \textcolor{comment}{    5: Low sensitivity detection. Overrides default valid measurement detection}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00049}00049 \textcolor{comment}{        algorithm, and uses a threshold value for low sensitivity and noise.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00050}00050 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00051}00051 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00052}00052 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00053}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a2237d2ed986c7d6b94c6fcc7f308f496}{00053}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a2237d2ed986c7d6b94c6fcc7f308f496}{LIDARLite\_v3HP::configure}}(uint8\_t configuration, uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00055}00055     uint8\_t sigCountMax;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00056}00056     uint8\_t acqConfigReg;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00057}00057     uint8\_t refCountMax;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00058}00058     uint8\_t thresholdBypass;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00060}00060     \textcolor{keywordflow}{switch} (configuration)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00061}00061     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00062}00062         \textcolor{keywordflow}{case} 0: \textcolor{comment}{// Default mode, balanced performance}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00063}00063             sigCountMax     = 0x80; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00064}00064             acqConfigReg    = 0x08; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00065}00065             refCountMax     = 0x05; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00066}00066             thresholdBypass = 0x00; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00067}00067             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00069}00069         \textcolor{keywordflow}{case} 1: \textcolor{comment}{// Short range, high speed}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00070}00070             sigCountMax     = 0x1d;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00071}00071             acqConfigReg    = 0x08; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00072}00072             refCountMax     = 0x03;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00073}00073             thresholdBypass = 0x00; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00074}00074             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00076}00076         \textcolor{keywordflow}{case} 2: \textcolor{comment}{// Default range, higher speed short range}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00077}00077             sigCountMax     = 0x80; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00078}00078             acqConfigReg    = 0x00;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00079}00079             refCountMax     = 0x03;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00080}00080             thresholdBypass = 0x00; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00081}00081             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00083}00083         \textcolor{keywordflow}{case} 3: \textcolor{comment}{// Maximum range}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00084}00084             sigCountMax     = 0xff;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00085}00085             acqConfigReg    = 0x08; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00086}00086             refCountMax     = 0x05; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00087}00087             thresholdBypass = 0x00; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00088}00088             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00090}00090         \textcolor{keywordflow}{case} 4: \textcolor{comment}{// High sensitivity detection, high erroneous measurements}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00091}00091             sigCountMax     = 0x80; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00092}00092             acqConfigReg    = 0x08; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00093}00093             refCountMax     = 0x05; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00094}00094             thresholdBypass = 0x80;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00095}00095             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00097}00097         \textcolor{keywordflow}{case} 5: \textcolor{comment}{// Low sensitivity detection, low erroneous measurements}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00098}00098             sigCountMax     = 0x80; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00099}00099             acqConfigReg    = 0x08; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00100}00100             refCountMax     = 0x05; \textcolor{comment}{// Default}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00101}00101             thresholdBypass = 0xb0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00102}00102             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00104}00104         \textcolor{keywordflow}{case} 6: \textcolor{comment}{// Short range, high speed, higher error}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00105}00105             sigCountMax     = 0x04;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00106}00106             acqConfigReg    = 0x01; \textcolor{comment}{// turn off short\_sig, mode pin = status output mode}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00107}00107             refCountMax     = 0x03;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00108}00108             thresholdBypass = 0x00;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00109}00109             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00110}00110     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00112}00112     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x02, \&sigCountMax    , 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00113}00113     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x04, \&acqConfigReg   , 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00114}00114     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x12, \&refCountMax    , 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00115}00115     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x1c, \&thresholdBypass, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00116}00116 \} \textcolor{comment}{/* LIDARLite\_v3HP::configure */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00118}00118 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00119}00119 \textcolor{comment}{  Set I2C Address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00120}00120 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00121}00121 \textcolor{comment}{  Set Alternate I2C Device Address. See Operation Manual for additional info.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00122}00122 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00123}00123 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00124}00124 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00125}00125 \textcolor{comment}{  newAddress: desired secondary I2C device address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00126}00126 \textcolor{comment}{  disableDefault: a non-\/zero value here means the default 0x62 I2C device}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00127}00127 \textcolor{comment}{    address will be disabled.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00128}00128 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00129}00129 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00130}00130 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00131}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab20ac4dcea0f410d61a266fa5caaf887}{00131}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab20ac4dcea0f410d61a266fa5caaf887}{LIDARLite\_v3HP::setI2Caddr}} (uint8\_t newAddress, uint8\_t disableDefault,}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00132}00132                                  uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00133}00133 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00134}00134     uint8\_t dataBytes[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00136}00136     \textcolor{comment}{// Read UNIT\_ID serial number bytes and write them into I2C\_ID byte locations}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00137}00137     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}} (0x16, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00138}00138     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x18, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00140}00140     \textcolor{comment}{// Write the new I2C device address to registers}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00141}00141     \textcolor{comment}{// left shift by one to work around data alignment issue in v3HP}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00142}00142     dataBytes[0] = (newAddress << 1);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00143}00143     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x1a, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00145}00145     \textcolor{comment}{// Enable the new I2C device address using the default I2C device address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00146}00146     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}} (0x1e, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00147}00147     dataBytes[0] = dataBytes[0] | (1 << 4); \textcolor{comment}{// set bit to enable the new address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00148}00148     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x1e, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00150}00150     \textcolor{comment}{// If desired, disable default I2C device address (using the new I2C device address)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00151}00151     \textcolor{keywordflow}{if} (disableDefault)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00152}00152     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00153}00153         \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}} (0x1e, dataBytes, 1, newAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00154}00154         dataBytes[0] = dataBytes[0] | (1 << 3); \textcolor{comment}{// set bit to disable default address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00155}00155         \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x1e, dataBytes, 1, newAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00156}00156     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00157}00157 \} \textcolor{comment}{/* LIDARLite\_v3HP::setI2Caddr */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00159}00159 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00160}00160 \textcolor{comment}{  Take Range}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00161}00161 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00162}00162 \textcolor{comment}{  Initiate a distance measurement by writing to register 0x00.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00163}00163 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00164}00164 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00165}00165 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00166}00166 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00167}00167 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00168}00168 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00169}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_af14570aedf5b12007d3e941418c617a2}{00169}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_af14570aedf5b12007d3e941418c617a2}{LIDARLite\_v3HP::takeRange}}(uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00170}00170 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00171}00171     uint8\_t dataByte = 0x01;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00173}00173     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x00, \&dataByte, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00174}00174 \} \textcolor{comment}{/* LIDARLite\_v3HP::takeRange */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00176}00176 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00177}00177 \textcolor{comment}{  Wait for Busy Flag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00178}00178 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00179}00179 \textcolor{comment}{  Blocking function to wait until the Lidar Lite's internal busy flag goes low}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00180}00180 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00181}00181 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00182}00182 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00183}00183 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00184}00184 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00185}00185 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00186}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}{00186}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}{LIDARLite\_v3HP::waitForBusy}}(uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00187}00187 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00188}00188     uint16\_t busyCounter = 0; \textcolor{comment}{// busyCounter counts number of times busy flag is checked, for timeout}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00189}00189     uint8\_t  busyFlag    = 1; \textcolor{comment}{// busyFlag monitors when the device is done with a measurement}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00191}00191     \textcolor{keywordflow}{while} (busyFlag)      \textcolor{comment}{// Loop until device is not busy}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00192}00192     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00193}00193         \textcolor{comment}{// Handle timeout condition, exit while loop and goto bailout}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00194}00194         \textcolor{keywordflow}{if} (busyCounter > 9999)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00195}00195         \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00196}00196             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00197}00197         \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00199}00199         busyFlag = \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a52ad5c92b845d9bcc2f037f566b55b34}{getBusyFlag}}(lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00201}00201         \textcolor{comment}{// Increment busyCounter for timeout}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00202}00202         busyCounter++;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00203}00203     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00205}00205     \textcolor{comment}{// bailout reports error over serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00206}00206     \textcolor{keywordflow}{if} (busyCounter > 9999)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00207}00207     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00208}00208         Serial.println(\textcolor{stringliteral}{"{}> bailing out of waitForBusy()"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00209}00209     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00210}00210 \} \textcolor{comment}{/* LIDARLite\_v3HP::waitForBusy */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00212}00212 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00213}00213 \textcolor{comment}{  Get Busy Flag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00214}00214 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00215}00215 \textcolor{comment}{  Read BUSY flag from device registers. Function will return 0x00 if not busy.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00216}00216 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00217}00217 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00218}00218 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00219}00219 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00220}00220 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00221}00221 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00222}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a52ad5c92b845d9bcc2f037f566b55b34}{00222}} uint8\_t \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a52ad5c92b845d9bcc2f037f566b55b34}{LIDARLite\_v3HP::getBusyFlag}}(uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00223}00223 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00224}00224     uint8\_t  busyFlag; \textcolor{comment}{// busyFlag monitors when the device is done with a measurement}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00225}00225 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00226}00226     \textcolor{comment}{// Read status register to check busy flag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00227}00227     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x01, \&busyFlag, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00229}00229     \textcolor{comment}{// STATUS bit 0 is busyFlag}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00230}00230     busyFlag \&= 0x01;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00232}00232     \textcolor{keywordflow}{return} busyFlag;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00233}00233 \} \textcolor{comment}{/* LIDARLite\_v3HP::getBusyFlag */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00234}00234 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00235}00235 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00236}00236 \textcolor{comment}{  Read Distance}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00237}00237 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00238}00238 \textcolor{comment}{  Read and return result of distance measurement.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00239}00239 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00240}00240 \textcolor{comment}{  Process}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00241}00241 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00242}00242 \textcolor{comment}{  1.  Read two bytes from register 0x8f and save}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00243}00243 \textcolor{comment}{  2.  Shift the first value from 0x8f << 8 and add to second value from 0x8f.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00244}00244 \textcolor{comment}{      The result is the measured distance in centimeters.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00245}00245 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00246}00246 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00247}00247 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00248}00248 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00249}00249 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00250}00250 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00251}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab8b101735ca8485cfec6c5e7c775caba}{00251}} uint16\_t \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab8b101735ca8485cfec6c5e7c775caba}{LIDARLite\_v3HP::readDistance}}(uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00252}00252 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00253}00253     uint16\_t  distance;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00254}00254     uint8\_t dataBytes[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00256}00256     \textcolor{comment}{// Read two bytes from register 0x0f and 0x10 (autoincrement)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00257}00257     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x0f, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00259}00259     \textcolor{comment}{// Shift high byte and add to low byte}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00260}00260     distance = (dataBytes[0] << 8) | dataBytes[1];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00261}00261 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00262}00262     \textcolor{keywordflow}{return} (distance);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00263}00263 \} \textcolor{comment}{/* LIDARLite\_v3HP::readDistance */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00265}00265 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00266}00266 \textcolor{comment}{  Reset Reference Filter}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00267}00267 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00268}00268 \textcolor{comment}{  In some scenarios, power-\/on transients in the LIDAR-\/Lite v3HP can result in}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00269}00269 \textcolor{comment}{  initial measurements that may be a few centimeters short of actual distance.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00270}00270 \textcolor{comment}{  This symptom will eventually rectify itself after a few hundred measurements.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00271}00271 \textcolor{comment}{  This symptom can also be rectified more quickly by resetting the unit's internal}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00272}00272 \textcolor{comment}{  reference filter. The process here illustrates how to disable the internal}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00273}00273 \textcolor{comment}{  reference filter, trigger a measurement (forcing re-\/init of the reference}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00274}00274 \textcolor{comment}{  filter), and then re-\/enable the filter.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00275}00275 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00276}00276 \textcolor{comment}{  Process}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00277}00277 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00278}00278 \textcolor{comment}{  1.  Disable the LIDAR-\/Lite reference filter}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00279}00279 \textcolor{comment}{  2.  Set reference integration count to max}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00280}00280 \textcolor{comment}{  3.  Trigger a measurement}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00281}00281 \textcolor{comment}{  4.  Restore reference integration count}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00282}00282 \textcolor{comment}{  5.  Re-\/enable reference filter}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00283}00283 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00284}00284 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00285}00285 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00286}00286 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00287}00287 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00288}00288 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00289}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a666dde149f854e4eff4f50462d117166}{00289}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a666dde149f854e4eff4f50462d117166}{LIDARLite\_v3HP::resetReferenceFilter}}(uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00290}00290 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00291}00291     uint8\_t dataBytes[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00292}00292     uint8\_t acqConfigReg;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00293}00293     uint8\_t refCountMax;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00295}00295     \textcolor{comment}{// Set bit 4 of the acquisition configuration register (disable reference filter)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00296}00296     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x04, dataBytes, 1, lidarliteAddress);  \textcolor{comment}{// Read address 0x04 (acquisition config register)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00297}00297     acqConfigReg = dataBytes[0];                 \textcolor{comment}{// store for later restoration}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00298}00298     dataBytes[0] = dataBytes[0] | 0x10;          \textcolor{comment}{// turn on disable of ref filter}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00299}00299     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x04, dataBytes, 1, lidarliteAddress); \textcolor{comment}{// write it back}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00301}00301     \textcolor{comment}{// Set reference integration count to max}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00302}00302     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x12, dataBytes, 1, lidarliteAddress);  \textcolor{comment}{// Read address 0x12 (ref integration count)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00303}00303     refCountMax = dataBytes[0];                  \textcolor{comment}{// store for later restoration}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00304}00304     dataBytes[0] = 0xff;                         \textcolor{comment}{// we want to reference to overflow quickly}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00305}00305     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x12, dataBytes, 1, lidarliteAddress); \textcolor{comment}{// write ref integration count}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00306}00306 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00307}00307     \textcolor{comment}{// Trigger a measurement}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00308}00308     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}{waitForBusy}}(lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00309}00309     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_af14570aedf5b12007d3e941418c617a2}{takeRange}}(lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00310}00310     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}{waitForBusy}}(lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00311}00311     \textcolor{comment}{// ... no need to read the distance, it is immaterial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00312}00312 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00313}00313     \textcolor{comment}{// Restore previous reference integration count}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00314}00314     dataBytes[0] = refCountMax;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00315}00315     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x12, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00316}00316 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00317}00317     \textcolor{comment}{// Restore previous acquisition configuration register (re-\/enabling reference filter)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00318}00318     dataBytes[0] = acqConfigReg;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00319}00319     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x04, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00320}00320 \} \textcolor{comment}{/* LIDARLite\_v3HP::resetReferenceFilter */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00321}00321 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00322}00322 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00323}00323 \textcolor{comment}{  Write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00324}00324 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00325}00325 \textcolor{comment}{  Perform I2C write to device. The I2C peripheral in the LidarLite v3 HP}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00326}00326 \textcolor{comment}{  will receive multiple bytes in one I2C transmission. The first byte is}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00327}00327 \textcolor{comment}{  always the register address. The the bytes that follow will be written}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00328}00328 \textcolor{comment}{  into the specified register address first and then the internal address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00329}00329 \textcolor{comment}{  in the Lidar Lite will be auto-\/incremented for all following bytes.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00330}00330 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00331}00331 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00332}00332 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00333}00333 \textcolor{comment}{  regAddr:   register address to write to}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00334}00334 \textcolor{comment}{  dataBytes: pointer to array of bytes to write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00335}00335 \textcolor{comment}{  numBytes:  number of bytes in 'dataBytes' array to write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00336}00336 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00337}00337 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00338}00338 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00339}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{00339}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{LIDARLite\_v3HP::write}}(uint8\_t regAddr, uint8\_t * dataBytes,}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00340}00340                            uint16\_t numBytes, uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00341}00341 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00342}00342     \textcolor{keywordtype}{int} nackCatcher;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00343}00343 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00344}00344     Wire.beginTransmission((\textcolor{keywordtype}{int}) lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00345}00345 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00346}00346     \textcolor{comment}{// Wire.write Syntax}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00347}00347     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00348}00348     \textcolor{comment}{// Wire.write(value)         -\/ a value to send as a single byte}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00349}00349     \textcolor{comment}{// Wire.write(string)        -\/ a string to send as a series of bytes}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00350}00350     \textcolor{comment}{// Wire.write(data, length)  -\/ an array of data to send as bytes}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00352}00352     \textcolor{comment}{// First byte of every write sets the LidarLite's internal register address pointer}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00353}00353     Wire.write((\textcolor{keywordtype}{int}) regAddr);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00354}00354 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00355}00355     \textcolor{comment}{// Subsequent bytes are data writes}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00356}00356     Wire.write(dataBytes, (\textcolor{keywordtype}{int}) numBytes);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00357}00357 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00358}00358     \textcolor{comment}{// A nack means the device is not responding. Report the error over serial.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00359}00359     nackCatcher = Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00360}00360     \textcolor{keywordflow}{if} (nackCatcher != 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00361}00361     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00362}00362         Serial.println(\textcolor{stringliteral}{"{}> nack"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00363}00363     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00364}00364 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00365}00365     delayMicroseconds(100); \textcolor{comment}{// 100 us delay for robustness with successive reads and writes}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00366}00366 \} \textcolor{comment}{/* LIDARLite\_v3HP::write */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00367}00367 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00368}00368 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00369}00369 \textcolor{comment}{  Read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00370}00370 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00371}00371 \textcolor{comment}{  Perform I2C read from device.  The I2C peripheral in the LidarLite v3 HP}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00372}00372 \textcolor{comment}{  will send multiple bytes in one I2C transmission. The register address must}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00373}00373 \textcolor{comment}{  be set up by a previous I2C write. The bytes that follow will be read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00374}00374 \textcolor{comment}{  from the specified register address first and then the internal address}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00375}00375 \textcolor{comment}{  pointer in the Lidar Lite will be auto-\/incremented for following bytes.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00376}00376 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00377}00377 \textcolor{comment}{  Will detect an unresponsive device and report the error over serial.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00378}00378 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00379}00379 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00380}00380 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00381}00381 \textcolor{comment}{  regAddr:   register address to write to}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00382}00382 \textcolor{comment}{  dataBytes: pointer to array of bytes to write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00383}00383 \textcolor{comment}{  numBytes:  number of bytes in 'dataBytes' array to write}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00384}00384 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00385}00385 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00386}00386 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00387}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{00387}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{LIDARLite\_v3HP::read}}(uint8\_t regAddr, uint8\_t * dataBytes,}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00388}00388                           uint16\_t numBytes, uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00389}00389 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00390}00390     uint16\_t i = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00391}00391     \textcolor{keywordtype}{int} nackCatcher = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00392}00392 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00393}00393     \textcolor{comment}{// Set the internal register address pointer in the Lidar Lite}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00394}00394     Wire.beginTransmission((\textcolor{keywordtype}{int}) lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00395}00395     Wire.write((\textcolor{keywordtype}{int}) regAddr); \textcolor{comment}{// Set the register to be read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00397}00397     \textcolor{comment}{// A nack means the device is not responding, report the error over serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00398}00398     nackCatcher = Wire.endTransmission(\textcolor{keyword}{false}); \textcolor{comment}{// false means perform repeated start}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00399}00399     \textcolor{keywordflow}{if} (nackCatcher != 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00400}00400     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00401}00401         Serial.println(\textcolor{stringliteral}{"{}> nack"{}});}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00402}00402     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00403}00403 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00404}00404     \textcolor{comment}{// Perform read, save in dataBytes array}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00405}00405     Wire.requestFrom((\textcolor{keywordtype}{int})lidarliteAddress, (\textcolor{keywordtype}{int}) numBytes);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00406}00406     \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{int}) numBytes <= Wire.available())}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00407}00407     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00408}00408         \textcolor{keywordflow}{while} (i < numBytes)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00409}00409         \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00410}00410             dataBytes[i] = (uint8\_t) Wire.read();}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00411}00411             i++;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00412}00412         \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00413}00413     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00414}00414 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00415}00415 \} \textcolor{comment}{/* LIDARLite\_v3HP::read */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00416}00416 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00417}00417 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00418}00418 \textcolor{comment}{  Correlation Record To Serial}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00419}00419 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00420}00420 \textcolor{comment}{  The correlation record used to calculate distance can be read from the device.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00421}00421 \textcolor{comment}{  It has a bipolar wave shape, transitioning from a positive going portion to a}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00422}00422 \textcolor{comment}{  roughly symmetrical negative going pulse. The point where the signal crosses}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00423}00423 \textcolor{comment}{  zero represents the effective delay for the reference and return signals.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00424}00424 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00425}00425 \textcolor{comment}{  Process}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00426}00426 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00427}00427 \textcolor{comment}{  1.  Take a distance reading (there is no correlation record without at least}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00428}00428 \textcolor{comment}{      one distance reading being taken)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00429}00429 \textcolor{comment}{  2.  Set test mode select by writing 0x07 to register 0x40}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00430}00430 \textcolor{comment}{  3.  For as many readings as you want to take (max is 1024)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00431}00431 \textcolor{comment}{      1.  Read two bytes from 0x52}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00432}00432 \textcolor{comment}{      2.  The Low byte is the value from the record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00433}00433 \textcolor{comment}{      3.  The high byte is the sign from the record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00434}00434 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00435}00435 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00436}00436 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00437}00437 \textcolor{comment}{  numberOfReadings: Default: 1024. Maximum of 1024}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00438}00438 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00439}00439 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00440}00440 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00441}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a838b1877ad8012aed804e1075a613e49}{00441}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a838b1877ad8012aed804e1075a613e49}{LIDARLite\_v3HP::correlationRecordToSerial}}(}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00442}00442     uint16\_t numberOfReadings, uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00443}00443 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00444}00444     uint16\_t  i = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00445}00445     uint8\_t   dataBytes[2];          \textcolor{comment}{// Array to store read / write data}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00446}00446     int16\_t   correlationValue = 0;  \textcolor{comment}{// Var to store value of correlation record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00447}00447 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00448}00448     \textcolor{comment}{// Test mode enable}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00449}00449     dataBytes[0] = 0x07;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00450}00450     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x40, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00451}00451 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00452}00452     \textcolor{keywordflow}{for} (i=0 ; i<numberOfReadings ; i++)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00453}00453     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00454}00454         \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x52, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00455}00455 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00456}00456         \textcolor{comment}{//  Low byte is the value of the correlation record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00457}00457         correlationValue = (uint16\_t) dataBytes[0];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00458}00458 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00459}00459         \textcolor{comment}{// if upper byte lsb is one, the value is negative}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00460}00460         \textcolor{comment}{// so here we test to artifically sign extend the data}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00461}00461         \textcolor{keywordflow}{if} ( (\textcolor{keywordtype}{int}) dataBytes[1] == 1)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00462}00462         \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00463}00463             correlationValue |= 0xff00;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00464}00464         \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00465}00465         Serial.println(correlationValue);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00466}00466     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00467}00467 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00468}00468     \textcolor{comment}{// test mode disable}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00469}00469     dataBytes[0] = 0;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00470}00470     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x40, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00471}00471 \} \textcolor{comment}{/* LIDARLite\_v3HP::correlationRecordToSerial */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00472}00472 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00473}00473 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00474}00474 \textcolor{comment}{  Correlation Peak Stack Read}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00475}00475 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00476}00476 \textcolor{comment}{  Following a distance measurement, the correlation record is searched and a peak}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00477}00477 \textcolor{comment}{  stack table is built. The nine total entries in the peak stack table are}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00478}00478 \textcolor{comment}{  readable via registers, as illustrated below. This function reads all stack}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00479}00479 \textcolor{comment}{  entries, calculates distances from those entries, and then returns arrays}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00480}00480 \textcolor{comment}{  containing the peak magnitudes and associated distances.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00481}00481 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00482}00482 \textcolor{comment}{  -\/ The first stack entry represents internal reference measurement data.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00483}00483 \textcolor{comment}{  -\/ The next eight entries represent the largest peaks in the correlation record.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00484}00484 \textcolor{comment}{      -\/ The eight range entries are sorted largest peak to smallest peak.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00485}00485 \textcolor{comment}{      -\/ The first of these eight entries is assumed to be the intended target}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00486}00486 \textcolor{comment}{        and is used to calculate the distance data stored in I2C registers.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00487}00487 \textcolor{comment}{      -\/ The remaining entries most often represent system noise.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00488}00488 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00489}00489 \textcolor{comment}{  Each stack entry is comprised of three 16-\/bit values (6 total bytes)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00490}00490 \textcolor{comment}{      1st value = Peak Strength (Magnitude of Peak)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00491}00491 \textcolor{comment}{      2nd value = Zero crossing address (Coarse Distance)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00492}00492 \textcolor{comment}{      3rd value = Interpolated value (Fine Distance)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00493}00493 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00494}00494 \textcolor{comment}{  Note: There are calibration and compensation circuits not available}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00495}00495 \textcolor{comment}{        outside the LIDAR-\/Lite system, but the following shows how to}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00496}00496 \textcolor{comment}{        quickly extract multiple signatures from the correlation results.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00497}00497 \textcolor{comment}{        Using this method does not result in data that matches the}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00498}00498 \textcolor{comment}{        device distance registers exactly, but it is representative.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00499}00499 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00500}00500 \textcolor{comment}{  Note: Using this method, some negative distances can be produced}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00501}00501 \textcolor{comment}{        if noise artifacts exist very early in the correlation record.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00502}00502 \textcolor{comment}{        This is normal. Any negative distances should be ignored.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00503}00503 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00504}00504 \textcolor{comment}{  Note: LIDAR-\/Lite must be idle (not BUSY) in order to perform this function.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00505}00505 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00506}00506 \textcolor{comment}{  Process}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00507}00507 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00508}00508 \textcolor{comment}{  1.  Take a distance reading (there is no peak stack data available before}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00509}00509 \textcolor{comment}{      at least one distance reading is performed)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00510}00510 \textcolor{comment}{  2.  Read stack entries}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00511}00511 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00512}00512 \textcolor{comment}{  Parameters}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00513}00513 \textcolor{comment}{  -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00514}00514 \textcolor{comment}{  peakArray: Pointer to an array of eight 16-\/bit unsigned data values}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00515}00515 \textcolor{comment}{             for storing the Peak Strengths (Magnitude) from the stack}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00516}00516 \textcolor{comment}{  distArray: Pointer to an array of eight 16-\/bit unsigned data values}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00517}00517 \textcolor{comment}{             for storing the effective distance associated with each peak}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00518}00518 \textcolor{comment}{  lidarliteAddress: Default 0x62. Fill in the new address here if changed. See}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00519}00519 \textcolor{comment}{    operating manual for instructions.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00520}00520 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00521}\mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_aa20bc46c13b2ae13863365cc0c3d2375}{00521}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_aa20bc46c13b2ae13863365cc0c3d2375}{LIDARLite\_v3HP::peakStackRead}}(}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00522}00522     int16\_t * peakArray, int16\_t * distArray, uint8\_t lidarliteAddress)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00523}00523 \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00524}00524 \textcolor{preprocessor}{    \#define RECORD\_OFFSET ((63*18) + 1)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00525}00525 \textcolor{preprocessor}{    \#define FREQ\_ADJUST   (1.067)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00526}00526 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00527}00527     uint8\_t   idx;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00528}00528     uint8\_t   dataBytes[2];}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00529}00529     int16\_t   peakVal;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00530}00530     int16\_t   coarseDist;  \textcolor{comment}{// Zero crossing address (Coarse Distance)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00531}00531     int16\_t   fineDist; \textcolor{comment}{// Interpolated value (Fine Distance)}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00532}00532     int16\_t   LLref;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00533}00533     int16\_t   LLtarget;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00534}00534 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00535}00535     \textcolor{comment}{// Reset the peak stack internal address pointer}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00536}00536     dataBytes[0] = 1;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00537}00537     \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}}(0x26, dataBytes, 1, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00538}00538 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00539}00539     \textcolor{comment}{// Each time through the loop read one peak stack "{}entry."{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00540}00540     \textcolor{comment}{// First time through the loop always retrieves reference data entry.}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00541}00541     \textcolor{keywordflow}{for} (idx = 0 ; idx < 9 ; idx++)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00542}00542     \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00543}00543         \textcolor{comment}{// *** Read "{}Peak Strength"{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00544}00544         \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x26, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00545}00545         peakVal    = (int16\_t) ((dataBytes[0] << 8) + dataBytes[1]);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00546}00546 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00547}00547         \textcolor{comment}{// *** Read "{}Zero Crossing Address"{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00548}00548         \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x26, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00549}00549         coarseDist = (int16\_t) ((dataBytes[0] << 8) + dataBytes[1]);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00551}00551         \textcolor{comment}{// *** Read "{}Interpolated Value"{}}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00552}00552         \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}}(0x26, dataBytes, 2, lidarliteAddress);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00553}00553         fineDist   = (int16\_t) ((dataBytes[0] << 8) + dataBytes[1]);}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00554}00554 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00555}00555         \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Calculate distance from peak stack data -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00556}00556 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00557}00557         LLtarget = (coarseDist * 18) + fineDist;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00558}00558 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00559}00559         \textcolor{comment}{// The first entry in the peak stack contains reference data}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00560}00560         \textcolor{keywordflow}{if} (idx == 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00561}00561             LLref  = LLtarget;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00562}00562 }
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00563}00563         \textcolor{comment}{// The remaining eight entries contain data corresponding to the}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00564}00564         \textcolor{comment}{// eight largest peaks in the correlation record}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00565}00565         \textcolor{keywordflow}{if} (idx != 0)}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00566}00566         \{}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00567}00567             peakArray[idx-\/1] = peakVal;}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00568}00568             distArray[idx-\/1] = ((LLtarget -\/ \mbox{\hyperlink{_l_i_d_a_r_lite__v3_h_p_8cpp_a3107031b770860ec732efc142fc817a7}{RECORD\_OFFSET}}) -\/ LLref) * \mbox{\hyperlink{_l_i_d_a_r_lite__v3_h_p_8cpp_a53e4f65cdaff8da2fb2c977c3c1294ce}{FREQ\_ADJUST}};}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00569}00569         \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00570}00570     \}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00571}00571 \} \textcolor{comment}{/* LIDARLite\_v3HP::peakStackRead */}}
+\DoxyCodeLine{\Hypertarget{_l_i_d_a_r_lite__v3_h_p_8cpp_source_l00572}00572 }
+
+\end{DoxyCode}

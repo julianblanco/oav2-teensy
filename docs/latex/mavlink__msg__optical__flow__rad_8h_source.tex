@@ -1,0 +1,349 @@
+\hypertarget{mavlink__msg__optical__flow__rad_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+optical\+\_\+flow\+\_\+rad.\+h}
+\label{mavlink__msg__optical__flow__rad_8h_source}\index{lib/common/mavlink\_msg\_optical\_flow\_rad.h@{lib/common/mavlink\_msg\_optical\_flow\_rad.h}}
+\mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE OPTICAL\_FLOW\_RAD PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD 106}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_afd1f34fc3faf5dc18f3541faf98ecf74}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_optical\_flow\_rad\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint32\_t integration\_time\_us; \textcolor{comment}{/*< [us] Integration time. Divide integrated\_x and integrated\_y by the integration time to obtain average flow. The integration time also indicates the.*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} integrated\_x; \textcolor{comment}{/*< [rad] Flow around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} integrated\_y; \textcolor{comment}{/*< [rad] Flow around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.)*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} integrated\_xgyro; \textcolor{comment}{/*< [rad] RH rotation around X axis*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} integrated\_ygyro; \textcolor{comment}{/*< [rad] RH rotation around Y axis*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} integrated\_zgyro; \textcolor{comment}{/*< [rad] RH rotation around Z axis*/}}
+\DoxyCodeLine{15  uint32\_t time\_delta\_distance\_us; \textcolor{comment}{/*< [us] Time since the distance was sampled.*/}}
+\DoxyCodeLine{16  \textcolor{keywordtype}{float} distance; \textcolor{comment}{/*< [m] Distance to the center of the flow field. Positive value (including zero): distance known. Negative value: Unknown distance.*/}}
+\DoxyCodeLine{17  int16\_t temperature; \textcolor{comment}{/*< [cdegC] Temperature*/}}
+\DoxyCodeLine{18  uint8\_t sensor\_id; \textcolor{comment}{/*<  Sensor ID*/}}
+\DoxyCodeLine{19  uint8\_t quality; \textcolor{comment}{/*<  Optical flow quality / confidence. 0: no valid flow, 255: maximum quality*/}}
+\DoxyCodeLine{20 \}) mavlink\_optical\_flow\_rad\_t;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN 44}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN 44}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_106\_LEN 44}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_106\_MIN\_LEN 44}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC 138}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_106\_CRC 138}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD \{ \(\backslash\)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    106, \(\backslash\)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{    "{}OPTICAL\_FLOW\_RAD"{}}, \(\backslash\)}
+\DoxyCodeLine{36     12, \(\backslash\)}
+\DoxyCodeLine{37     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_optical\_flow\_rad\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}sensor\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 42, offsetof(mavlink\_optical\_flow\_rad\_t, sensor\_id) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}integration\_time\_us"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_optical\_flow\_rad\_t, integration\_time\_us) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}integrated\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_x) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}integrated\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_y) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}integrated\_xgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}integrated\_ygyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}integrated\_zgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 40, offsetof(mavlink\_optical\_flow\_rad\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}quality"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 43, offsetof(mavlink\_optical\_flow\_rad\_t, quality) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}time\_delta\_distance\_us"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 32, offsetof(mavlink\_optical\_flow\_rad\_t, time\_delta\_distance\_us) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}distance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_optical\_flow\_rad\_t, distance) \}, \(\backslash\)}
+\DoxyCodeLine{49          \} \(\backslash\)}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD \{ \(\backslash\)}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{    "{}OPTICAL\_FLOW\_RAD"{}}, \(\backslash\)}
+\DoxyCodeLine{54     12, \(\backslash\)}
+\DoxyCodeLine{55     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_optical\_flow\_rad\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}sensor\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 42, offsetof(mavlink\_optical\_flow\_rad\_t, sensor\_id) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}integration\_time\_us"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_optical\_flow\_rad\_t, integration\_time\_us) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}integrated\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_x) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}integrated\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_y) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}integrated\_xgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}integrated\_ygyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}integrated\_zgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 40, offsetof(mavlink\_optical\_flow\_rad\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}quality"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 43, offsetof(mavlink\_optical\_flow\_rad\_t, quality) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}time\_delta\_distance\_us"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 32, offsetof(mavlink\_optical\_flow\_rad\_t, time\_delta\_distance\_us) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}distance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_optical\_flow\_rad\_t, distance) \}, \(\backslash\)}
+\DoxyCodeLine{67          \} \(\backslash\)}
+\DoxyCodeLine{68 \}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{91 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_optical\_flow\_rad\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{92                                uint64\_t time\_usec, uint8\_t sensor\_id, uint32\_t integration\_time\_us, \textcolor{keywordtype}{float} integrated\_x, \textcolor{keywordtype}{float} integrated\_y, \textcolor{keywordtype}{float} integrated\_xgyro, \textcolor{keywordtype}{float} integrated\_ygyro, \textcolor{keywordtype}{float} integrated\_zgyro, int16\_t temperature, uint8\_t quality, uint32\_t time\_delta\_distance\_us, \textcolor{keywordtype}{float} distance)}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{95     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}];}
+\DoxyCodeLine{96     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{97     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, integration\_time\_us);}
+\DoxyCodeLine{98     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, integrated\_x);}
+\DoxyCodeLine{99     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, integrated\_y);}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, integrated\_xgyro);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, integrated\_ygyro);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, integrated\_zgyro);}
+\DoxyCodeLine{103     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 32, time\_delta\_distance\_us);}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, distance);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 40, temperature);}
+\DoxyCodeLine{106     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, sensor\_id);}
+\DoxyCodeLine{107     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 43, quality);}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}});}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{111     mavlink\_optical\_flow\_rad\_t packet;}
+\DoxyCodeLine{112     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{113     packet.integration\_time\_us = integration\_time\_us;}
+\DoxyCodeLine{114     packet.integrated\_x = integrated\_x;}
+\DoxyCodeLine{115     packet.integrated\_y = integrated\_y;}
+\DoxyCodeLine{116     packet.integrated\_xgyro = integrated\_xgyro;}
+\DoxyCodeLine{117     packet.integrated\_ygyro = integrated\_ygyro;}
+\DoxyCodeLine{118     packet.integrated\_zgyro = integrated\_zgyro;}
+\DoxyCodeLine{119     packet.time\_delta\_distance\_us = time\_delta\_distance\_us;}
+\DoxyCodeLine{120     packet.distance = distance;}
+\DoxyCodeLine{121     packet.temperature = temperature;}
+\DoxyCodeLine{122     packet.sensor\_id = sensor\_id;}
+\DoxyCodeLine{123     packet.quality = quality;}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}});}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}};}
+\DoxyCodeLine{129     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{130 \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{152 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_optical\_flow\_rad\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{153                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{154                                    uint64\_t time\_usec,uint8\_t sensor\_id,uint32\_t integration\_time\_us,\textcolor{keywordtype}{float} integrated\_x,\textcolor{keywordtype}{float} integrated\_y,\textcolor{keywordtype}{float} integrated\_xgyro,\textcolor{keywordtype}{float} integrated\_ygyro,\textcolor{keywordtype}{float} integrated\_zgyro,int16\_t temperature,uint8\_t quality,uint32\_t time\_delta\_distance\_us,\textcolor{keywordtype}{float} distance)}
+\DoxyCodeLine{155 \{}
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{157     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}];}
+\DoxyCodeLine{158     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{159     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, integration\_time\_us);}
+\DoxyCodeLine{160     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, integrated\_x);}
+\DoxyCodeLine{161     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, integrated\_y);}
+\DoxyCodeLine{162     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, integrated\_xgyro);}
+\DoxyCodeLine{163     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, integrated\_ygyro);}
+\DoxyCodeLine{164     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, integrated\_zgyro);}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 32, time\_delta\_distance\_us);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, distance);}
+\DoxyCodeLine{167     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 40, temperature);}
+\DoxyCodeLine{168     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, sensor\_id);}
+\DoxyCodeLine{169     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 43, quality);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}});}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{173     mavlink\_optical\_flow\_rad\_t packet;}
+\DoxyCodeLine{174     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{175     packet.integration\_time\_us = integration\_time\_us;}
+\DoxyCodeLine{176     packet.integrated\_x = integrated\_x;}
+\DoxyCodeLine{177     packet.integrated\_y = integrated\_y;}
+\DoxyCodeLine{178     packet.integrated\_xgyro = integrated\_xgyro;}
+\DoxyCodeLine{179     packet.integrated\_ygyro = integrated\_ygyro;}
+\DoxyCodeLine{180     packet.integrated\_zgyro = integrated\_zgyro;}
+\DoxyCodeLine{181     packet.time\_delta\_distance\_us = time\_delta\_distance\_us;}
+\DoxyCodeLine{182     packet.distance = distance;}
+\DoxyCodeLine{183     packet.temperature = temperature;}
+\DoxyCodeLine{184     packet.sensor\_id = sensor\_id;}
+\DoxyCodeLine{185     packet.quality = quality;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}});}
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}};}
+\DoxyCodeLine{191     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{192 \}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{202 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_optical\_flow\_rad\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_optical\_flow\_rad\_t* optical\_flow\_rad)}
+\DoxyCodeLine{203 \{}
+\DoxyCodeLine{204     \textcolor{keywordflow}{return} mavlink\_msg\_optical\_flow\_rad\_pack(system\_id, component\_id, msg, optical\_flow\_rad-\/>time\_usec, optical\_flow\_rad-\/>sensor\_id, optical\_flow\_rad-\/>integration\_time\_us, optical\_flow\_rad-\/>integrated\_x, optical\_flow\_rad-\/>integrated\_y, optical\_flow\_rad-\/>integrated\_xgyro, optical\_flow\_rad-\/>integrated\_ygyro, optical\_flow\_rad-\/>integrated\_zgyro, optical\_flow\_rad-\/>temperature, optical\_flow\_rad-\/>quality, optical\_flow\_rad-\/>time\_delta\_distance\_us, optical\_flow\_rad-\/>distance);}
+\DoxyCodeLine{205 \}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{216 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_optical\_flow\_rad\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_optical\_flow\_rad\_t* optical\_flow\_rad)}
+\DoxyCodeLine{217 \{}
+\DoxyCodeLine{218     \textcolor{keywordflow}{return} mavlink\_msg\_optical\_flow\_rad\_pack\_chan(system\_id, component\_id, chan, msg, optical\_flow\_rad-\/>time\_usec, optical\_flow\_rad-\/>sensor\_id, optical\_flow\_rad-\/>integration\_time\_us, optical\_flow\_rad-\/>integrated\_x, optical\_flow\_rad-\/>integrated\_y, optical\_flow\_rad-\/>integrated\_xgyro, optical\_flow\_rad-\/>integrated\_ygyro, optical\_flow\_rad-\/>integrated\_zgyro, optical\_flow\_rad-\/>temperature, optical\_flow\_rad-\/>quality, optical\_flow\_rad-\/>time\_delta\_distance\_us, optical\_flow\_rad-\/>distance);}
+\DoxyCodeLine{219 \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{238 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_optical\_flow\_rad\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t sensor\_id, uint32\_t integration\_time\_us, \textcolor{keywordtype}{float} integrated\_x, \textcolor{keywordtype}{float} integrated\_y, \textcolor{keywordtype}{float} integrated\_xgyro, \textcolor{keywordtype}{float} integrated\_ygyro, \textcolor{keywordtype}{float} integrated\_zgyro, int16\_t temperature, uint8\_t quality, uint32\_t time\_delta\_distance\_us, \textcolor{keywordtype}{float} distance)}
+\DoxyCodeLine{241 \{}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{243     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}];}
+\DoxyCodeLine{244     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{245     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, integration\_time\_us);}
+\DoxyCodeLine{246     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, integrated\_x);}
+\DoxyCodeLine{247     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, integrated\_y);}
+\DoxyCodeLine{248     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, integrated\_xgyro);}
+\DoxyCodeLine{249     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, integrated\_ygyro);}
+\DoxyCodeLine{250     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, integrated\_zgyro);}
+\DoxyCodeLine{251     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 32, time\_delta\_distance\_us);}
+\DoxyCodeLine{252     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, distance);}
+\DoxyCodeLine{253     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 40, temperature);}
+\DoxyCodeLine{254     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, sensor\_id);}
+\DoxyCodeLine{255     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 43, quality);}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}, buf, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{259     mavlink\_optical\_flow\_rad\_t packet;}
+\DoxyCodeLine{260     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{261     packet.integration\_time\_us = integration\_time\_us;}
+\DoxyCodeLine{262     packet.integrated\_x = integrated\_x;}
+\DoxyCodeLine{263     packet.integrated\_y = integrated\_y;}
+\DoxyCodeLine{264     packet.integrated\_xgyro = integrated\_xgyro;}
+\DoxyCodeLine{265     packet.integrated\_ygyro = integrated\_ygyro;}
+\DoxyCodeLine{266     packet.integrated\_zgyro = integrated\_zgyro;}
+\DoxyCodeLine{267     packet.time\_delta\_distance\_us = time\_delta\_distance\_us;}
+\DoxyCodeLine{268     packet.distance = distance;}
+\DoxyCodeLine{269     packet.temperature = temperature;}
+\DoxyCodeLine{270     packet.sensor\_id = sensor\_id;}
+\DoxyCodeLine{271     packet.quality = quality;}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{274 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{275 \}}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{282 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_optical\_flow\_rad\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_optical\_flow\_rad\_t* optical\_flow\_rad)}
+\DoxyCodeLine{283 \{}
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{285     mavlink\_msg\_optical\_flow\_rad\_send(chan, optical\_flow\_rad-\/>time\_usec, optical\_flow\_rad-\/>sensor\_id, optical\_flow\_rad-\/>integration\_time\_us, optical\_flow\_rad-\/>integrated\_x, optical\_flow\_rad-\/>integrated\_y, optical\_flow\_rad-\/>integrated\_xgyro, optical\_flow\_rad-\/>integrated\_ygyro, optical\_flow\_rad-\/>integrated\_zgyro, optical\_flow\_rad-\/>temperature, optical\_flow\_rad-\/>quality, optical\_flow\_rad-\/>time\_delta\_distance\_us, optical\_flow\_rad-\/>distance);}
+\DoxyCodeLine{286 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{287     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)optical\_flow\_rad, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{288 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{289 \}}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{292 \textcolor{comment}{/*}}
+\DoxyCodeLine{293 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{294 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{295 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{296 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{297 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{298 \textcolor{comment}{ */}}
+\DoxyCodeLine{299 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_optical\_flow\_rad\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t sensor\_id, uint32\_t integration\_time\_us, \textcolor{keywordtype}{float} integrated\_x, \textcolor{keywordtype}{float} integrated\_y, \textcolor{keywordtype}{float} integrated\_xgyro, \textcolor{keywordtype}{float} integrated\_ygyro, \textcolor{keywordtype}{float} integrated\_zgyro, int16\_t temperature, uint8\_t quality, uint32\_t time\_delta\_distance\_us, \textcolor{keywordtype}{float} distance)}
+\DoxyCodeLine{300 \{}
+\DoxyCodeLine{301 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{302     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{303     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{304     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, integration\_time\_us);}
+\DoxyCodeLine{305     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, integrated\_x);}
+\DoxyCodeLine{306     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, integrated\_y);}
+\DoxyCodeLine{307     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, integrated\_xgyro);}
+\DoxyCodeLine{308     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, integrated\_ygyro);}
+\DoxyCodeLine{309     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, integrated\_zgyro);}
+\DoxyCodeLine{310     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 32, time\_delta\_distance\_us);}
+\DoxyCodeLine{311     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, distance);}
+\DoxyCodeLine{312     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 40, temperature);}
+\DoxyCodeLine{313     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, sensor\_id);}
+\DoxyCodeLine{314     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 43, quality);}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}, buf, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{317 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{318     mavlink\_optical\_flow\_rad\_t *packet = (mavlink\_optical\_flow\_rad\_t *)msgbuf;}
+\DoxyCodeLine{319     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{320     packet-\/>integration\_time\_us = integration\_time\_us;}
+\DoxyCodeLine{321     packet-\/>integrated\_x = integrated\_x;}
+\DoxyCodeLine{322     packet-\/>integrated\_y = integrated\_y;}
+\DoxyCodeLine{323     packet-\/>integrated\_xgyro = integrated\_xgyro;}
+\DoxyCodeLine{324     packet-\/>integrated\_ygyro = integrated\_ygyro;}
+\DoxyCodeLine{325     packet-\/>integrated\_zgyro = integrated\_zgyro;}
+\DoxyCodeLine{326     packet-\/>time\_delta\_distance\_us = time\_delta\_distance\_us;}
+\DoxyCodeLine{327     packet-\/>distance = distance;}
+\DoxyCodeLine{328     packet-\/>temperature = temperature;}
+\DoxyCodeLine{329     packet-\/>sensor\_id = sensor\_id;}
+\DoxyCodeLine{330     packet-\/>quality = quality;}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}});}
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{334 \}}
+\DoxyCodeLine{335 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{comment}{// MESSAGE OPTICAL\_FLOW\_RAD UNPACKING}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341 }
+\DoxyCodeLine{347 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_optical\_flow\_rad\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{348 \{}
+\DoxyCodeLine{349     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{350 \}}
+\DoxyCodeLine{351 }
+\DoxyCodeLine{357 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_optical\_flow\_rad\_get\_sensor\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{358 \{}
+\DoxyCodeLine{359     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  42);}
+\DoxyCodeLine{360 \}}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{367 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_optical\_flow\_rad\_get\_integration\_time\_us(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{368 \{}
+\DoxyCodeLine{369     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  8);}
+\DoxyCodeLine{370 \}}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{377 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{378 \{}
+\DoxyCodeLine{379     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  12);}
+\DoxyCodeLine{380 \}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{387 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{388 \{}
+\DoxyCodeLine{389     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  16);}
+\DoxyCodeLine{390 \}}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{397 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_xgyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{398 \{}
+\DoxyCodeLine{399     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  20);}
+\DoxyCodeLine{400 \}}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{407 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_ygyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{408 \{}
+\DoxyCodeLine{409     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  24);}
+\DoxyCodeLine{410 \}}
+\DoxyCodeLine{411 }
+\DoxyCodeLine{417 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_zgyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{418 \{}
+\DoxyCodeLine{419     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  28);}
+\DoxyCodeLine{420 \}}
+\DoxyCodeLine{421 }
+\DoxyCodeLine{427 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_optical\_flow\_rad\_get\_temperature(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{428 \{}
+\DoxyCodeLine{429     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  40);}
+\DoxyCodeLine{430 \}}
+\DoxyCodeLine{431 }
+\DoxyCodeLine{437 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_optical\_flow\_rad\_get\_quality(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{438 \{}
+\DoxyCodeLine{439     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  43);}
+\DoxyCodeLine{440 \}}
+\DoxyCodeLine{441 }
+\DoxyCodeLine{447 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_optical\_flow\_rad\_get\_time\_delta\_distance\_us(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{448 \{}
+\DoxyCodeLine{449     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  32);}
+\DoxyCodeLine{450 \}}
+\DoxyCodeLine{451 }
+\DoxyCodeLine{457 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_optical\_flow\_rad\_get\_distance(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{458 \{}
+\DoxyCodeLine{459     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  36);}
+\DoxyCodeLine{460 \}}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{468 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_optical\_flow\_rad\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_optical\_flow\_rad\_t* optical\_flow\_rad)}
+\DoxyCodeLine{469 \{}
+\DoxyCodeLine{470 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{471     optical\_flow\_rad-\/>time\_usec = mavlink\_msg\_optical\_flow\_rad\_get\_time\_usec(msg);}
+\DoxyCodeLine{472     optical\_flow\_rad-\/>integration\_time\_us = mavlink\_msg\_optical\_flow\_rad\_get\_integration\_time\_us(msg);}
+\DoxyCodeLine{473     optical\_flow\_rad-\/>integrated\_x = mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_x(msg);}
+\DoxyCodeLine{474     optical\_flow\_rad-\/>integrated\_y = mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_y(msg);}
+\DoxyCodeLine{475     optical\_flow\_rad-\/>integrated\_xgyro = mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_xgyro(msg);}
+\DoxyCodeLine{476     optical\_flow\_rad-\/>integrated\_ygyro = mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_ygyro(msg);}
+\DoxyCodeLine{477     optical\_flow\_rad-\/>integrated\_zgyro = mavlink\_msg\_optical\_flow\_rad\_get\_integrated\_zgyro(msg);}
+\DoxyCodeLine{478     optical\_flow\_rad-\/>time\_delta\_distance\_us = mavlink\_msg\_optical\_flow\_rad\_get\_time\_delta\_distance\_us(msg);}
+\DoxyCodeLine{479     optical\_flow\_rad-\/>distance = mavlink\_msg\_optical\_flow\_rad\_get\_distance(msg);}
+\DoxyCodeLine{480     optical\_flow\_rad-\/>temperature = mavlink\_msg\_optical\_flow\_rad\_get\_temperature(msg);}
+\DoxyCodeLine{481     optical\_flow\_rad-\/>sensor\_id = mavlink\_msg\_optical\_flow\_rad\_get\_sensor\_id(msg);}
+\DoxyCodeLine{482     optical\_flow\_rad-\/>quality = mavlink\_msg\_optical\_flow\_rad\_get\_quality(msg);}
+\DoxyCodeLine{483 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{484         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}};}
+\DoxyCodeLine{485         memset(optical\_flow\_rad, 0, \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}});}
+\DoxyCodeLine{486     memcpy(optical\_flow\_rad, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{487 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{488 \}}
+
+\end{DoxyCode}

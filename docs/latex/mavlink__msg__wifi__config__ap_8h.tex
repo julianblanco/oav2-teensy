@@ -1,0 +1,113 @@
+\hypertarget{mavlink__msg__wifi__config__ap_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+wifi\+\_\+config\+\_\+ap.h File Reference}
+\label{mavlink__msg__wifi__config__ap_8h}\index{lib/common/mavlink\_msg\_wifi\_config\_ap.h@{lib/common/mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_a86d46e7d14726fadbf5cab59d29f877e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP}}~299
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_a5540afbbe6ee34e8a7d5c593f7fc9ea7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+LEN}}~96
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_acc51167e094a81ca6cfee058c932f4aa}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+MIN\+\_\+\+LEN}}~96
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_a9fdbf9cfd1875452f7bda5355bbebc02}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+299\+\_\+\+LEN}}~96
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_ac97bcc50271dfa982283337059b6ac45}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+299\+\_\+\+MIN\+\_\+\+LEN}}~96
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_a6713efcf5a21e5331d8827fd2afb2e1e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+CRC}}~19
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_a61ecbd2035191be453390595e8e5273c}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+299\+\_\+\+CRC}}~19
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_adedd1edb0955aa2268b36ea48c97fd96}{MAVLINK\+\_\+\+MSG\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+FIELD\+\_\+\+SSID\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_ae25d7174ab293f36a52cfd8496f2ab9b}{MAVLINK\+\_\+\+MSG\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+FIELD\+\_\+\+PASSWORD\+\_\+\+LEN}}~64
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_a6b9b2e2f354fd22d761799b01f923eee}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__wifi__config__ap_8h_aab19c2220a456be5b9429a83024149b2}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+wifi\+\_\+config\+\_\+ap\+\_\+t \{ char ssid\mbox{[}32\mbox{]};char password\mbox{[}64\mbox{]};\}) mavlink\+\_\+wifi\+\_\+config\+\_\+ap\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_a6b9b2e2f354fd22d761799b01f923eee}\label{mavlink__msg__wifi__config__ap_8h_a6b9b2e2f354fd22d761799b01f923eee}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MESSAGE\_INFO\_WIFI\_CONFIG\_AP@{MAVLINK\_MESSAGE\_INFO\_WIFI\_CONFIG\_AP}}
+\index{MAVLINK\_MESSAGE\_INFO\_WIFI\_CONFIG\_AP@{MAVLINK\_MESSAGE\_INFO\_WIFI\_CONFIG\_AP}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_WIFI\_CONFIG\_AP}{MAVLINK\_MESSAGE\_INFO\_WIFI\_CONFIG\_AP}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}WIFI\_CONFIG\_AP"{}}, \(\backslash\)}
+\DoxyCodeLine{    2, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}ssid"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a205452ad3d1ab60bf6df4487957eca90}{MAVLINK\_TYPE\_CHAR}}, 32, 0, offsetof(mavlink\_wifi\_config\_ap\_t, ssid) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}password"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a205452ad3d1ab60bf6df4487957eca90}{MAVLINK\_TYPE\_CHAR}}, 64, 32, offsetof(mavlink\_wifi\_config\_ap\_t, password) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_a61ecbd2035191be453390595e8e5273c}\label{mavlink__msg__wifi__config__ap_8h_a61ecbd2035191be453390595e8e5273c}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_299\_CRC@{MAVLINK\_MSG\_ID\_299\_CRC}}
+\index{MAVLINK\_MSG\_ID\_299\_CRC@{MAVLINK\_MSG\_ID\_299\_CRC}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_299\_CRC}{MAVLINK\_MSG\_ID\_299\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+299\+\_\+\+CRC~19}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_a9fdbf9cfd1875452f7bda5355bbebc02}\label{mavlink__msg__wifi__config__ap_8h_a9fdbf9cfd1875452f7bda5355bbebc02}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_299\_LEN@{MAVLINK\_MSG\_ID\_299\_LEN}}
+\index{MAVLINK\_MSG\_ID\_299\_LEN@{MAVLINK\_MSG\_ID\_299\_LEN}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_299\_LEN}{MAVLINK\_MSG\_ID\_299\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+299\+\_\+\+LEN~96}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_ac97bcc50271dfa982283337059b6ac45}\label{mavlink__msg__wifi__config__ap_8h_ac97bcc50271dfa982283337059b6ac45}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_299\_MIN\_LEN@{MAVLINK\_MSG\_ID\_299\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_299\_MIN\_LEN@{MAVLINK\_MSG\_ID\_299\_MIN\_LEN}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_299\_MIN\_LEN}{MAVLINK\_MSG\_ID\_299\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+299\+\_\+\+MIN\+\_\+\+LEN~96}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_a86d46e7d14726fadbf5cab59d29f877e}\label{mavlink__msg__wifi__config__ap_8h_a86d46e7d14726fadbf5cab59d29f877e}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP}}
+\index{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP}{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP~299}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_a6713efcf5a21e5331d8827fd2afb2e1e}\label{mavlink__msg__wifi__config__ap_8h_a6713efcf5a21e5331d8827fd2afb2e1e}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_CRC@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_CRC}}
+\index{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_CRC@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_CRC}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_CRC}{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+CRC~19}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_a5540afbbe6ee34e8a7d5c593f7fc9ea7}\label{mavlink__msg__wifi__config__ap_8h_a5540afbbe6ee34e8a7d5c593f7fc9ea7}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_LEN@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_LEN}}
+\index{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_LEN@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_LEN}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_LEN}{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+LEN~96}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_acc51167e094a81ca6cfee058c932f4aa}\label{mavlink__msg__wifi__config__ap_8h_acc51167e094a81ca6cfee058c932f4aa}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_MIN\_LEN@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_MIN\_LEN@{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_MIN\_LEN}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_MIN\_LEN}{MAVLINK\_MSG\_ID\_WIFI\_CONFIG\_AP\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+MIN\+\_\+\+LEN~96}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_ae25d7174ab293f36a52cfd8496f2ab9b}\label{mavlink__msg__wifi__config__ap_8h_ae25d7174ab293f36a52cfd8496f2ab9b}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_PASSWORD\_LEN@{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_PASSWORD\_LEN}}
+\index{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_PASSWORD\_LEN@{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_PASSWORD\_LEN}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_PASSWORD\_LEN}{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_PASSWORD\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+FIELD\+\_\+\+PASSWORD\+\_\+\+LEN~64}
+
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_adedd1edb0955aa2268b36ea48c97fd96}\label{mavlink__msg__wifi__config__ap_8h_adedd1edb0955aa2268b36ea48c97fd96}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_SSID\_LEN@{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_SSID\_LEN}}
+\index{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_SSID\_LEN@{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_SSID\_LEN}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_SSID\_LEN}{MAVLINK\_MSG\_WIFI\_CONFIG\_AP\_FIELD\_SSID\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+WIFI\+\_\+\+CONFIG\+\_\+\+AP\+\_\+\+FIELD\+\_\+\+SSID\+\_\+\+LEN~32}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__wifi__config__ap_8h_aab19c2220a456be5b9429a83024149b2}\label{mavlink__msg__wifi__config__ap_8h_aab19c2220a456be5b9429a83024149b2}} 
+\index{mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_wifi\_config\_ap.h@{mavlink\_msg\_wifi\_config\_ap.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+wifi\+\_\+config\+\_\+ap\+\_\+t \{ char ssid\mbox{[}32\mbox{]};char password\mbox{[}64\mbox{]};\}}]{ }\end{DoxyParamCaption})}
+

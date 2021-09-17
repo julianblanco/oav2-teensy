@@ -1,0 +1,100 @@
+\hypertarget{mavlink__msg__mount__orientation_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+mount\+\_\+orientation.h File Reference}
+\label{mavlink__msg__mount__orientation_8h}\index{lib/common/mavlink\_msg\_mount\_orientation.h@{lib/common/mavlink\_msg\_mount\_orientation.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION}}~265
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION\+\_\+\+MIN\+\_\+\+LEN}}~16
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_aca9e93e574c8d6e301d6c6440a7d4987}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+265\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a67fe606fad43db5fa2d5071b20d8c435}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+265\+\_\+\+MIN\+\_\+\+LEN}}~16
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION\+\_\+\+CRC}}~26
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a49ed8cfe504634eed894914f75e76530}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+265\+\_\+\+CRC}}~26
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_abb518d828506a47f7bfd9f4d724a72ab}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+MOUNT\+\_\+\+ORIENTATION}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a20e2ea587e527a00d28936d08675a2d1}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+mount\+\_\+orientation\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float roll;float pitch;float yaw;float yaw\+\_\+absolute;\}) mavlink\+\_\+mount\+\_\+orientation\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_abb518d828506a47f7bfd9f4d724a72ab}\label{mavlink__msg__mount__orientation_8h_abb518d828506a47f7bfd9f4d724a72ab}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION@{MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION}}
+\index{MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION@{MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION}{MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+MOUNT\+\_\+\+ORIENTATION}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}MOUNT\_ORIENTATION"{}}, \(\backslash\)}
+\DoxyCodeLine{    5, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_mount\_orientation\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}roll"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 4, offsetof(mavlink\_mount\_orientation\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_mount\_orientation\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yaw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_mount\_orientation\_t, yaw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yaw\_absolute"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_mount\_orientation\_t, yaw\_absolute) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_a49ed8cfe504634eed894914f75e76530}\label{mavlink__msg__mount__orientation_8h_a49ed8cfe504634eed894914f75e76530}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_265\_CRC@{MAVLINK\_MSG\_ID\_265\_CRC}}
+\index{MAVLINK\_MSG\_ID\_265\_CRC@{MAVLINK\_MSG\_ID\_265\_CRC}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_265\_CRC}{MAVLINK\_MSG\_ID\_265\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+265\+\_\+\+CRC~26}
+
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_aca9e93e574c8d6e301d6c6440a7d4987}\label{mavlink__msg__mount__orientation_8h_aca9e93e574c8d6e301d6c6440a7d4987}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_265\_LEN@{MAVLINK\_MSG\_ID\_265\_LEN}}
+\index{MAVLINK\_MSG\_ID\_265\_LEN@{MAVLINK\_MSG\_ID\_265\_LEN}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_265\_LEN}{MAVLINK\_MSG\_ID\_265\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+265\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_a67fe606fad43db5fa2d5071b20d8c435}\label{mavlink__msg__mount__orientation_8h_a67fe606fad43db5fa2d5071b20d8c435}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_265\_MIN\_LEN@{MAVLINK\_MSG\_ID\_265\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_265\_MIN\_LEN@{MAVLINK\_MSG\_ID\_265\_MIN\_LEN}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_265\_MIN\_LEN}{MAVLINK\_MSG\_ID\_265\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+265\+\_\+\+MIN\+\_\+\+LEN~16}
+
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}\label{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}
+\index{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION~265}
+
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}\label{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}}
+\index{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION\+\_\+\+CRC~26}
+
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}\label{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}
+\index{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}\label{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN@{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MOUNT\+\_\+\+ORIENTATION\+\_\+\+MIN\+\_\+\+LEN~16}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__mount__orientation_8h_a20e2ea587e527a00d28936d08675a2d1}\label{mavlink__msg__mount__orientation_8h_a20e2ea587e527a00d28936d08675a2d1}} 
+\index{mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_mount\_orientation.h@{mavlink\_msg\_mount\_orientation.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+mount\+\_\+orientation\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float roll;float pitch;float yaw;float yaw\+\_\+absolute;\}}]{ }\end{DoxyParamCaption})}
+

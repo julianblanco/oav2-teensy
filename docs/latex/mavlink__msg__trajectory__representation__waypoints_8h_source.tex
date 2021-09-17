@@ -1,0 +1,368 @@
+\hypertarget{mavlink__msg__trajectory__representation__waypoints_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+trajectory\+\_\+representation\+\_\+waypoints.\+h}
+\label{mavlink__msg__trajectory__representation__waypoints_8h_source}\index{lib/common/mavlink\_msg\_trajectory\_representation\_waypoints.h@{lib/common/mavlink\_msg\_trajectory\_representation\_waypoints.h}}
+\mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE TRAJECTORY\_REPRESENTATION\_WAYPOINTS PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS 332}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a4968b039f26b255f6b55ef5593ba53eb}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_trajectory\_representation\_waypoints\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} pos\_x[5]; \textcolor{comment}{/*< [m] X-\/coordinate of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} pos\_y[5]; \textcolor{comment}{/*< [m] Y-\/coordinate of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} pos\_z[5]; \textcolor{comment}{/*< [m] Z-\/coordinate of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} vel\_x[5]; \textcolor{comment}{/*< [m/s] X-\/velocity of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} vel\_y[5]; \textcolor{comment}{/*< [m/s] Y-\/velocity of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} vel\_z[5]; \textcolor{comment}{/*< [m/s] Z-\/velocity of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{float} acc\_x[5]; \textcolor{comment}{/*< [m/s/s] X-\/acceleration of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{16  \textcolor{keywordtype}{float} acc\_y[5]; \textcolor{comment}{/*< [m/s/s] Y-\/acceleration of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{17  \textcolor{keywordtype}{float} acc\_z[5]; \textcolor{comment}{/*< [m/s/s] Z-\/acceleration of waypoint, set to NaN if not being used*/}}
+\DoxyCodeLine{18  \textcolor{keywordtype}{float} pos\_yaw[5]; \textcolor{comment}{/*< [rad] Yaw angle, set to NaN if not being used*/}}
+\DoxyCodeLine{19  \textcolor{keywordtype}{float} vel\_yaw[5]; \textcolor{comment}{/*< [rad/s] Yaw rate, set to NaN if not being used*/}}
+\DoxyCodeLine{20  uint8\_t valid\_points; \textcolor{comment}{/*<  Number of valid points (up-\/to 5 waypoints are possible)*/}}
+\DoxyCodeLine{21 \}) mavlink\_trajectory\_representation\_waypoints\_t;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN 229}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN 229}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_332\_LEN 229}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_332\_MIN\_LEN 229}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC 91}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_332\_CRC 91}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_POS\_X\_LEN 5}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_POS\_Y\_LEN 5}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_POS\_Z\_LEN 5}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_VEL\_X\_LEN 5}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_VEL\_Y\_LEN 5}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_VEL\_Z\_LEN 5}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_ACC\_X\_LEN 5}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_ACC\_Y\_LEN 5}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_ACC\_Z\_LEN 5}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_POS\_YAW\_LEN 5}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_FIELD\_VEL\_YAW\_LEN 5}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS \{ \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{    332, \(\backslash\)}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{    "{}TRAJECTORY\_REPRESENTATION\_WAYPOINTS"{}}, \(\backslash\)}
+\DoxyCodeLine{47     13, \(\backslash\)}
+\DoxyCodeLine{48     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}valid\_points"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 228, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, valid\_points) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}pos\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 8, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_x) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}pos\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 28, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_y) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}pos\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 48, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_z) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}vel\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 68, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_x) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}vel\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 88, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_y) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}vel\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 108, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_z) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}acc\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 128, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, acc\_x) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}acc\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 148, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, acc\_y) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}acc\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 168, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, acc\_z) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}pos\_yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 188, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_yaw) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}vel\_yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 208, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_yaw) \}, \(\backslash\)}
+\DoxyCodeLine{61          \} \(\backslash\)}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS \{ \(\backslash\)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{    "{}TRAJECTORY\_REPRESENTATION\_WAYPOINTS"{}}, \(\backslash\)}
+\DoxyCodeLine{66     13, \(\backslash\)}
+\DoxyCodeLine{67     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}valid\_points"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 228, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, valid\_points) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}pos\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 8, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_x) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}pos\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 28, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_y) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}pos\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 48, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_z) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}vel\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 68, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_x) \}, \(\backslash\)}
+\DoxyCodeLine{73          \{ "{}vel\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 88, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_y) \}, \(\backslash\)}
+\DoxyCodeLine{74          \{ "{}vel\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 108, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_z) \}, \(\backslash\)}
+\DoxyCodeLine{75          \{ "{}acc\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 128, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, acc\_x) \}, \(\backslash\)}
+\DoxyCodeLine{76          \{ "{}acc\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 148, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, acc\_y) \}, \(\backslash\)}
+\DoxyCodeLine{77          \{ "{}acc\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 168, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, acc\_z) \}, \(\backslash\)}
+\DoxyCodeLine{78          \{ "{}pos\_yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 188, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, pos\_yaw) \}, \(\backslash\)}
+\DoxyCodeLine{79          \{ "{}vel\_yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 208, offsetof(mavlink\_trajectory\_representation\_waypoints\_t, vel\_yaw) \}, \(\backslash\)}
+\DoxyCodeLine{80          \} \(\backslash\)}
+\DoxyCodeLine{81 \}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{105 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{106                                uint64\_t time\_usec, uint8\_t valid\_points, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_yaw)}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{109     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}];}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, valid\_points);}
+\DoxyCodeLine{112     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{113     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{114     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{115     \_mav\_put\_float\_array(buf, 68, vel\_x, 5);}
+\DoxyCodeLine{116     \_mav\_put\_float\_array(buf, 88, vel\_y, 5);}
+\DoxyCodeLine{117     \_mav\_put\_float\_array(buf, 108, vel\_z, 5);}
+\DoxyCodeLine{118     \_mav\_put\_float\_array(buf, 128, acc\_x, 5);}
+\DoxyCodeLine{119     \_mav\_put\_float\_array(buf, 148, acc\_y, 5);}
+\DoxyCodeLine{120     \_mav\_put\_float\_array(buf, 168, acc\_z, 5);}
+\DoxyCodeLine{121     \_mav\_put\_float\_array(buf, 188, pos\_yaw, 5);}
+\DoxyCodeLine{122     \_mav\_put\_float\_array(buf, 208, vel\_yaw, 5);}
+\DoxyCodeLine{123         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}});}
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{125     mavlink\_trajectory\_representation\_waypoints\_t packet;}
+\DoxyCodeLine{126     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{127     packet.valid\_points = valid\_points;}
+\DoxyCodeLine{128     mav\_array\_memcpy(packet.pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{129     mav\_array\_memcpy(packet.pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{130     mav\_array\_memcpy(packet.pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{131     mav\_array\_memcpy(packet.vel\_x, vel\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{132     mav\_array\_memcpy(packet.vel\_y, vel\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{133     mav\_array\_memcpy(packet.vel\_z, vel\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{134     mav\_array\_memcpy(packet.acc\_x, acc\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{135     mav\_array\_memcpy(packet.acc\_y, acc\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{136     mav\_array\_memcpy(packet.acc\_z, acc\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{137     mav\_array\_memcpy(packet.pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{138     mav\_array\_memcpy(packet.vel\_yaw, vel\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{139         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}});}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}};}
+\DoxyCodeLine{143     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{144 \}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{167 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{168                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{169                                    uint64\_t time\_usec,uint8\_t valid\_points,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_x,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_y,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_z,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_x,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_y,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_z,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_yaw)}
+\DoxyCodeLine{170 \{}
+\DoxyCodeLine{171 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{172     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}];}
+\DoxyCodeLine{173     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, valid\_points);}
+\DoxyCodeLine{175     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{176     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{177     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{178     \_mav\_put\_float\_array(buf, 68, vel\_x, 5);}
+\DoxyCodeLine{179     \_mav\_put\_float\_array(buf, 88, vel\_y, 5);}
+\DoxyCodeLine{180     \_mav\_put\_float\_array(buf, 108, vel\_z, 5);}
+\DoxyCodeLine{181     \_mav\_put\_float\_array(buf, 128, acc\_x, 5);}
+\DoxyCodeLine{182     \_mav\_put\_float\_array(buf, 148, acc\_y, 5);}
+\DoxyCodeLine{183     \_mav\_put\_float\_array(buf, 168, acc\_z, 5);}
+\DoxyCodeLine{184     \_mav\_put\_float\_array(buf, 188, pos\_yaw, 5);}
+\DoxyCodeLine{185     \_mav\_put\_float\_array(buf, 208, vel\_yaw, 5);}
+\DoxyCodeLine{186         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}});}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{188     mavlink\_trajectory\_representation\_waypoints\_t packet;}
+\DoxyCodeLine{189     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{190     packet.valid\_points = valid\_points;}
+\DoxyCodeLine{191     mav\_array\_memcpy(packet.pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{192     mav\_array\_memcpy(packet.pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{193     mav\_array\_memcpy(packet.pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{194     mav\_array\_memcpy(packet.vel\_x, vel\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{195     mav\_array\_memcpy(packet.vel\_y, vel\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{196     mav\_array\_memcpy(packet.vel\_z, vel\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{197     mav\_array\_memcpy(packet.acc\_x, acc\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{198     mav\_array\_memcpy(packet.acc\_y, acc\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{199     mav\_array\_memcpy(packet.acc\_z, acc\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{200     mav\_array\_memcpy(packet.pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{201     mav\_array\_memcpy(packet.vel\_yaw, vel\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{202         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}});}
+\DoxyCodeLine{203 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}};}
+\DoxyCodeLine{206     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{207 \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{217 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_trajectory\_representation\_waypoints\_t* trajectory\_representation\_waypoints)}
+\DoxyCodeLine{218 \{}
+\DoxyCodeLine{219     \textcolor{keywordflow}{return} mavlink\_msg\_trajectory\_representation\_waypoints\_pack(system\_id, component\_id, msg, trajectory\_representation\_waypoints-\/>time\_usec, trajectory\_representation\_waypoints-\/>valid\_points, trajectory\_representation\_waypoints-\/>pos\_x, trajectory\_representation\_waypoints-\/>pos\_y, trajectory\_representation\_waypoints-\/>pos\_z, trajectory\_representation\_waypoints-\/>vel\_x, trajectory\_representation\_waypoints-\/>vel\_y, trajectory\_representation\_waypoints-\/>vel\_z, trajectory\_representation\_waypoints-\/>acc\_x, trajectory\_representation\_waypoints-\/>acc\_y, trajectory\_representation\_waypoints-\/>acc\_z, trajectory\_representation\_waypoints-\/>pos\_yaw, trajectory\_representation\_waypoints-\/>vel\_yaw);}
+\DoxyCodeLine{220 \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{231 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_trajectory\_representation\_waypoints\_t* trajectory\_representation\_waypoints)}
+\DoxyCodeLine{232 \{}
+\DoxyCodeLine{233     \textcolor{keywordflow}{return} mavlink\_msg\_trajectory\_representation\_waypoints\_pack\_chan(system\_id, component\_id, chan, msg, trajectory\_representation\_waypoints-\/>time\_usec, trajectory\_representation\_waypoints-\/>valid\_points, trajectory\_representation\_waypoints-\/>pos\_x, trajectory\_representation\_waypoints-\/>pos\_y, trajectory\_representation\_waypoints-\/>pos\_z, trajectory\_representation\_waypoints-\/>vel\_x, trajectory\_representation\_waypoints-\/>vel\_y, trajectory\_representation\_waypoints-\/>vel\_z, trajectory\_representation\_waypoints-\/>acc\_x, trajectory\_representation\_waypoints-\/>acc\_y, trajectory\_representation\_waypoints-\/>acc\_z, trajectory\_representation\_waypoints-\/>pos\_yaw, trajectory\_representation\_waypoints-\/>vel\_yaw);}
+\DoxyCodeLine{234 \}}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_waypoints\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t valid\_points, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_yaw)}
+\DoxyCodeLine{257 \{}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{259     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}];}
+\DoxyCodeLine{260     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{261     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, valid\_points);}
+\DoxyCodeLine{262     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{263     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{264     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{265     \_mav\_put\_float\_array(buf, 68, vel\_x, 5);}
+\DoxyCodeLine{266     \_mav\_put\_float\_array(buf, 88, vel\_y, 5);}
+\DoxyCodeLine{267     \_mav\_put\_float\_array(buf, 108, vel\_z, 5);}
+\DoxyCodeLine{268     \_mav\_put\_float\_array(buf, 128, acc\_x, 5);}
+\DoxyCodeLine{269     \_mav\_put\_float\_array(buf, 148, acc\_y, 5);}
+\DoxyCodeLine{270     \_mav\_put\_float\_array(buf, 168, acc\_z, 5);}
+\DoxyCodeLine{271     \_mav\_put\_float\_array(buf, 188, pos\_yaw, 5);}
+\DoxyCodeLine{272     \_mav\_put\_float\_array(buf, 208, vel\_yaw, 5);}
+\DoxyCodeLine{273     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}}, buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{274 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{275     mavlink\_trajectory\_representation\_waypoints\_t packet;}
+\DoxyCodeLine{276     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{277     packet.valid\_points = valid\_points;}
+\DoxyCodeLine{278     mav\_array\_memcpy(packet.pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{279     mav\_array\_memcpy(packet.pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{280     mav\_array\_memcpy(packet.pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{281     mav\_array\_memcpy(packet.vel\_x, vel\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{282     mav\_array\_memcpy(packet.vel\_y, vel\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{283     mav\_array\_memcpy(packet.vel\_z, vel\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{284     mav\_array\_memcpy(packet.acc\_x, acc\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{285     mav\_array\_memcpy(packet.acc\_y, acc\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{286     mav\_array\_memcpy(packet.acc\_z, acc\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{287     mav\_array\_memcpy(packet.pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{288     mav\_array\_memcpy(packet.vel\_yaw, vel\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{289     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{290 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{291 \}}
+\DoxyCodeLine{292 }
+\DoxyCodeLine{298 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_waypoints\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_trajectory\_representation\_waypoints\_t* trajectory\_representation\_waypoints)}
+\DoxyCodeLine{299 \{}
+\DoxyCodeLine{300 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{301     mavlink\_msg\_trajectory\_representation\_waypoints\_send(chan, trajectory\_representation\_waypoints-\/>time\_usec, trajectory\_representation\_waypoints-\/>valid\_points, trajectory\_representation\_waypoints-\/>pos\_x, trajectory\_representation\_waypoints-\/>pos\_y, trajectory\_representation\_waypoints-\/>pos\_z, trajectory\_representation\_waypoints-\/>vel\_x, trajectory\_representation\_waypoints-\/>vel\_y, trajectory\_representation\_waypoints-\/>vel\_z, trajectory\_representation\_waypoints-\/>acc\_x, trajectory\_representation\_waypoints-\/>acc\_y, trajectory\_representation\_waypoints-\/>acc\_z, trajectory\_representation\_waypoints-\/>pos\_yaw, trajectory\_representation\_waypoints-\/>vel\_yaw);}
+\DoxyCodeLine{302 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{303     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)trajectory\_representation\_waypoints, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{304 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{305 \}}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{307 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{308 \textcolor{comment}{/*}}
+\DoxyCodeLine{309 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{310 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{311 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{312 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{313 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{314 \textcolor{comment}{ */}}
+\DoxyCodeLine{315 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_waypoints\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t valid\_points, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *acc\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *vel\_yaw)}
+\DoxyCodeLine{316 \{}
+\DoxyCodeLine{317 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{318     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{319     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{320     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, valid\_points);}
+\DoxyCodeLine{321     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{322     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{323     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{324     \_mav\_put\_float\_array(buf, 68, vel\_x, 5);}
+\DoxyCodeLine{325     \_mav\_put\_float\_array(buf, 88, vel\_y, 5);}
+\DoxyCodeLine{326     \_mav\_put\_float\_array(buf, 108, vel\_z, 5);}
+\DoxyCodeLine{327     \_mav\_put\_float\_array(buf, 128, acc\_x, 5);}
+\DoxyCodeLine{328     \_mav\_put\_float\_array(buf, 148, acc\_y, 5);}
+\DoxyCodeLine{329     \_mav\_put\_float\_array(buf, 168, acc\_z, 5);}
+\DoxyCodeLine{330     \_mav\_put\_float\_array(buf, 188, pos\_yaw, 5);}
+\DoxyCodeLine{331     \_mav\_put\_float\_array(buf, 208, vel\_yaw, 5);}
+\DoxyCodeLine{332     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}}, buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{334     mavlink\_trajectory\_representation\_waypoints\_t *packet = (mavlink\_trajectory\_representation\_waypoints\_t *)msgbuf;}
+\DoxyCodeLine{335     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{336     packet-\/>valid\_points = valid\_points;}
+\DoxyCodeLine{337     mav\_array\_memcpy(packet-\/>pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{338     mav\_array\_memcpy(packet-\/>pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{339     mav\_array\_memcpy(packet-\/>pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{340     mav\_array\_memcpy(packet-\/>vel\_x, vel\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{341     mav\_array\_memcpy(packet-\/>vel\_y, vel\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{342     mav\_array\_memcpy(packet-\/>vel\_z, vel\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{343     mav\_array\_memcpy(packet-\/>acc\_x, acc\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{344     mav\_array\_memcpy(packet-\/>acc\_y, acc\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{345     mav\_array\_memcpy(packet-\/>acc\_z, acc\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{346     mav\_array\_memcpy(packet-\/>pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{347     mav\_array\_memcpy(packet-\/>vel\_yaw, vel\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{348     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a3752a53f016478a85ffabd6d11f6c5fa}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a7d2a7d14d0b721a91a70cd15a07a9f7b}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a43ea6775fbf2f21f45b69925d927b2b5}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_CRC}});}
+\DoxyCodeLine{349 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{350 \}}
+\DoxyCodeLine{351 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355 \textcolor{comment}{// MESSAGE TRAJECTORY\_REPRESENTATION\_WAYPOINTS UNPACKING}}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357 }
+\DoxyCodeLine{363 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{364 \{}
+\DoxyCodeLine{365     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{366 \}}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{373 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_valid\_points(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{374 \{}
+\DoxyCodeLine{375     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  228);}
+\DoxyCodeLine{376 \}}
+\DoxyCodeLine{377 }
+\DoxyCodeLine{383 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_x)}
+\DoxyCodeLine{384 \{}
+\DoxyCodeLine{385     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_x, 5,  8);}
+\DoxyCodeLine{386 \}}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{393 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_y)}
+\DoxyCodeLine{394 \{}
+\DoxyCodeLine{395     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_y, 5,  28);}
+\DoxyCodeLine{396 \}}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{403 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_z(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_z)}
+\DoxyCodeLine{404 \{}
+\DoxyCodeLine{405     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_z, 5,  48);}
+\DoxyCodeLine{406 \}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{413 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *vel\_x)}
+\DoxyCodeLine{414 \{}
+\DoxyCodeLine{415     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, vel\_x, 5,  68);}
+\DoxyCodeLine{416 \}}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{423 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *vel\_y)}
+\DoxyCodeLine{424 \{}
+\DoxyCodeLine{425     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, vel\_y, 5,  88);}
+\DoxyCodeLine{426 \}}
+\DoxyCodeLine{427 }
+\DoxyCodeLine{433 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_z(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *vel\_z)}
+\DoxyCodeLine{434 \{}
+\DoxyCodeLine{435     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, vel\_z, 5,  108);}
+\DoxyCodeLine{436 \}}
+\DoxyCodeLine{437 }
+\DoxyCodeLine{443 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_acc\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *acc\_x)}
+\DoxyCodeLine{444 \{}
+\DoxyCodeLine{445     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, acc\_x, 5,  128);}
+\DoxyCodeLine{446 \}}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{453 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_acc\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *acc\_y)}
+\DoxyCodeLine{454 \{}
+\DoxyCodeLine{455     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, acc\_y, 5,  148);}
+\DoxyCodeLine{456 \}}
+\DoxyCodeLine{457 }
+\DoxyCodeLine{463 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_acc\_z(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *acc\_z)}
+\DoxyCodeLine{464 \{}
+\DoxyCodeLine{465     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, acc\_z, 5,  168);}
+\DoxyCodeLine{466 \}}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{473 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_yaw(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_yaw)}
+\DoxyCodeLine{474 \{}
+\DoxyCodeLine{475     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_yaw, 5,  188);}
+\DoxyCodeLine{476 \}}
+\DoxyCodeLine{477 }
+\DoxyCodeLine{483 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_yaw(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *vel\_yaw)}
+\DoxyCodeLine{484 \{}
+\DoxyCodeLine{485     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, vel\_yaw, 5,  208);}
+\DoxyCodeLine{486 \}}
+\DoxyCodeLine{487 }
+\DoxyCodeLine{494 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_waypoints\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_trajectory\_representation\_waypoints\_t* trajectory\_representation\_waypoints)}
+\DoxyCodeLine{495 \{}
+\DoxyCodeLine{496 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{497     trajectory\_representation\_waypoints-\/>time\_usec = mavlink\_msg\_trajectory\_representation\_waypoints\_get\_time\_usec(msg);}
+\DoxyCodeLine{498     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_x(msg, trajectory\_representation\_waypoints-\/>pos\_x);}
+\DoxyCodeLine{499     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_y(msg, trajectory\_representation\_waypoints-\/>pos\_y);}
+\DoxyCodeLine{500     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_z(msg, trajectory\_representation\_waypoints-\/>pos\_z);}
+\DoxyCodeLine{501     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_x(msg, trajectory\_representation\_waypoints-\/>vel\_x);}
+\DoxyCodeLine{502     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_y(msg, trajectory\_representation\_waypoints-\/>vel\_y);}
+\DoxyCodeLine{503     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_z(msg, trajectory\_representation\_waypoints-\/>vel\_z);}
+\DoxyCodeLine{504     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_acc\_x(msg, trajectory\_representation\_waypoints-\/>acc\_x);}
+\DoxyCodeLine{505     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_acc\_y(msg, trajectory\_representation\_waypoints-\/>acc\_y);}
+\DoxyCodeLine{506     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_acc\_z(msg, trajectory\_representation\_waypoints-\/>acc\_z);}
+\DoxyCodeLine{507     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_pos\_yaw(msg, trajectory\_representation\_waypoints-\/>pos\_yaw);}
+\DoxyCodeLine{508     mavlink\_msg\_trajectory\_representation\_waypoints\_get\_vel\_yaw(msg, trajectory\_representation\_waypoints-\/>vel\_yaw);}
+\DoxyCodeLine{509     trajectory\_representation\_waypoints-\/>valid\_points = mavlink\_msg\_trajectory\_representation\_waypoints\_get\_valid\_points(msg);}
+\DoxyCodeLine{510 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{511         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}};}
+\DoxyCodeLine{512         memset(trajectory\_representation\_waypoints, 0, \mbox{\hyperlink{mavlink__msg__trajectory__representation__waypoints_8h_a6e01bc6376c912affd8e40ffa1d5c40e}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_WAYPOINTS\_LEN}});}
+\DoxyCodeLine{513     memcpy(trajectory\_representation\_waypoints, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{514 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{515 \}}
+
+\end{DoxyCode}

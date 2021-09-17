@@ -1,0 +1,85 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_free_r_t_o_s___t_e_e_n_s_y4_8h}{FreeRTOS\_TEENSY4.h}}>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{actuators_8h}{actuators.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{attitude_8h}{attitude.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{imu_8h}{imu.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{navigation_8h}{navigation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{sensors_8h}{sensors.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{telemetry_8h}{telemetry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}\mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{00015}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ace661a16158ce369f36f263359d1baca}{g\_armed}} = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}\mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{00016}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}\mbox{\hyperlink{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}{00017}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ac02b4874909f3ffceafbc4fd1c1be316}{g\_vehicle\_type}} = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}\mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{00018}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}} = 1500;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}\mbox{\hyperlink{config_8h_a6b8ea81e63be1d2ca4064295b74cd3d5}{00019}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a6b8ea81e63be1d2ca4064295b74cd3d5}{lowPWMmotor}} = 1000;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}\mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{00020}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a59a9eab06aebc898c20b1e1f678d227c}{throttleIdle}} = 1080;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{00022}} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} \mbox{\hyperlink{main_8cpp_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}\mbox{\hyperlink{config_8h_affbe32f3d7302137c38bf9a99a0746aa}{00023}} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} \mbox{\hyperlink{main_8cpp_affbe32f3d7302137c38bf9a99a0746aa}{g\_attitude}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{00024}} \mbox{\hyperlink{class_i_m_u}{IMU}} \mbox{\hyperlink{main_8cpp_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}\mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{00025}} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n}{NAVIGATION}} \mbox{\hyperlink{main_8cpp_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}\mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{00026}} \mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} \mbox{\hyperlink{main_8cpp_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}\mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{00027}} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} \mbox{\hyperlink{main_8cpp_a6f2452f706068c239589d713af9bb760}{g\_telemetry}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00029}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031   \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032   flag += \mbox{\hyperlink{main_8cpp_a6f2452f706068c239589d713af9bb760}{g\_telemetry}}.\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}{setup}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033   \textcolor{keywordflow}{if} (flag)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034   \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035     Serial.println(\textcolor{stringliteral}{"{}error starting a thread"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037       ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039   Serial.println(\textcolor{stringliteral}{"{}telemetry started"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040   flag += \mbox{\hyperlink{main_8cpp_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a87b1ce1e000e4e16eec89cc26f20e317}{setup}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041   \textcolor{keywordflow}{if} (flag)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042   \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043     Serial.println(\textcolor{stringliteral}{"{}error starting a thread"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045       ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047   flag += \mbox{\hyperlink{main_8cpp_affbe32f3d7302137c38bf9a99a0746aa}{g\_attitude}}.\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}{setup}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048   \textcolor{keywordflow}{if} (flag)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049   \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050     Serial.println(\textcolor{stringliteral}{"{}error starting a thread"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052       ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054   flag += \mbox{\hyperlink{main_8cpp_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}{setup}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055   \textcolor{keywordflow}{if} (flag)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056   \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057     Serial.println(\textcolor{stringliteral}{"{}error starting a thread"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059       ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061   flag += \mbox{\hyperlink{main_8cpp_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2ab6f0f056a33af30c82c52ab7eb6a45}{setup}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062   \textcolor{keywordflow}{if} (flag)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063   \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064     Serial.println(\textcolor{stringliteral}{"{}error starting a thread"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066       ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068   flag += \mbox{\hyperlink{main_8cpp_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}}.\mbox{\hyperlink{class_s_e_n_s_o_r_s_a97e61939549aa5a02b7bfa45ab769a76}{setup}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069   \textcolor{keywordflow}{if} (flag)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070   \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071     Serial.println(\textcolor{stringliteral}{"{}error starting a thread"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073       ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076   \mbox{\hyperlink{lib_2src_2task_8h_aaf9dca1065c60abdeb309d56ab7293cb}{vTaskStartScheduler}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079     ;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082 \}}
+
+\end{DoxyCode}

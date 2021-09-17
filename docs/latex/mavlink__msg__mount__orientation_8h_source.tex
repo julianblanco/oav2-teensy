@@ -1,0 +1,230 @@
+\hypertarget{mavlink__msg__mount__orientation_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+mount\+\_\+orientation.\+h}
+\label{mavlink__msg__mount__orientation_8h_source}\index{lib/common/mavlink\_msg\_mount\_orientation.h@{lib/common/mavlink\_msg\_mount\_orientation.h}}
+\mbox{\hyperlink{mavlink__msg__mount__orientation_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE MOUNT\_ORIENTATION PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION 265}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a20e2ea587e527a00d28936d08675a2d1}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_mount\_orientation\_t \{}
+\DoxyCodeLine{8  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} roll; \textcolor{comment}{/*< [deg] Roll in global frame (set to NaN for invalid).*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} pitch; \textcolor{comment}{/*< [deg] Pitch in global frame (set to NaN for invalid).*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} yaw; \textcolor{comment}{/*< [deg] Yaw relative to vehicle(set to NaN for invalid).*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} yaw\_absolute; \textcolor{comment}{/*< [deg] Yaw in absolute frame, North is 0 (set to NaN for invalid).*/}}
+\DoxyCodeLine{13 \}) mavlink\_mount\_orientation\_t;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN 20}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN 16}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_265\_LEN 20}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_265\_MIN\_LEN 16}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC 26}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_265\_CRC 26}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION \{ \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    265, \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    "{}MOUNT\_ORIENTATION"{}}, \(\backslash\)}
+\DoxyCodeLine{29     5, \(\backslash\)}
+\DoxyCodeLine{30     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_mount\_orientation\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}roll"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 4, offsetof(mavlink\_mount\_orientation\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}pitch"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_mount\_orientation\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_mount\_orientation\_t, yaw) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}yaw\_absolute"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_mount\_orientation\_t, yaw\_absolute) \}, \(\backslash\)}
+\DoxyCodeLine{35          \} \(\backslash\)}
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_MOUNT\_ORIENTATION \{ \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    "{}MOUNT\_ORIENTATION"{}}, \(\backslash\)}
+\DoxyCodeLine{40     5, \(\backslash\)}
+\DoxyCodeLine{41     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_mount\_orientation\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}roll"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 4, offsetof(mavlink\_mount\_orientation\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}pitch"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_mount\_orientation\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_mount\_orientation\_t, yaw) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}yaw\_absolute"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_mount\_orientation\_t, yaw\_absolute) \}, \(\backslash\)}
+\DoxyCodeLine{46          \} \(\backslash\)}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{63 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mount\_orientation\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{64                                uint32\_t time\_boot\_ms, \textcolor{keywordtype}{float} roll, \textcolor{keywordtype}{float} pitch, \textcolor{keywordtype}{float} yaw, \textcolor{keywordtype}{float} yaw\_absolute)}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{67     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}];}
+\DoxyCodeLine{68     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{69     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, roll);}
+\DoxyCodeLine{70     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, pitch);}
+\DoxyCodeLine{71     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yaw);}
+\DoxyCodeLine{72     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, yaw\_absolute);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}});}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{76     mavlink\_mount\_orientation\_t packet;}
+\DoxyCodeLine{77     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{78     packet.roll = roll;}
+\DoxyCodeLine{79     packet.pitch = pitch;}
+\DoxyCodeLine{80     packet.yaw = yaw;}
+\DoxyCodeLine{81     packet.yaw\_absolute = yaw\_absolute;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}});}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}};}
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{88 \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{103 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mount\_orientation\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{104                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{105                                    uint32\_t time\_boot\_ms,\textcolor{keywordtype}{float} roll,\textcolor{keywordtype}{float} pitch,\textcolor{keywordtype}{float} yaw,\textcolor{keywordtype}{float} yaw\_absolute)}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{108     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}];}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, roll);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, pitch);}
+\DoxyCodeLine{112     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yaw);}
+\DoxyCodeLine{113     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, yaw\_absolute);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}});}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{117     mavlink\_mount\_orientation\_t packet;}
+\DoxyCodeLine{118     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{119     packet.roll = roll;}
+\DoxyCodeLine{120     packet.pitch = pitch;}
+\DoxyCodeLine{121     packet.yaw = yaw;}
+\DoxyCodeLine{122     packet.yaw\_absolute = yaw\_absolute;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}});}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}};}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{129 \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{139 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mount\_orientation\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_mount\_orientation\_t* mount\_orientation)}
+\DoxyCodeLine{140 \{}
+\DoxyCodeLine{141     \textcolor{keywordflow}{return} mavlink\_msg\_mount\_orientation\_pack(system\_id, component\_id, msg, mount\_orientation-\/>time\_boot\_ms, mount\_orientation-\/>roll, mount\_orientation-\/>pitch, mount\_orientation-\/>yaw, mount\_orientation-\/>yaw\_absolute);}
+\DoxyCodeLine{142 \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{153 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_mount\_orientation\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_mount\_orientation\_t* mount\_orientation)}
+\DoxyCodeLine{154 \{}
+\DoxyCodeLine{155     \textcolor{keywordflow}{return} mavlink\_msg\_mount\_orientation\_pack\_chan(system\_id, component\_id, chan, msg, mount\_orientation-\/>time\_boot\_ms, mount\_orientation-\/>roll, mount\_orientation-\/>pitch, mount\_orientation-\/>yaw, mount\_orientation-\/>yaw\_absolute);}
+\DoxyCodeLine{156 \}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mount\_orientation\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, \textcolor{keywordtype}{float} roll, \textcolor{keywordtype}{float} pitch, \textcolor{keywordtype}{float} yaw, \textcolor{keywordtype}{float} yaw\_absolute)}
+\DoxyCodeLine{171 \{}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{173     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}];}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{175     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, roll);}
+\DoxyCodeLine{176     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, pitch);}
+\DoxyCodeLine{177     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yaw);}
+\DoxyCodeLine{178     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, yaw\_absolute);}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}, buf, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{182     mavlink\_mount\_orientation\_t packet;}
+\DoxyCodeLine{183     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{184     packet.roll = roll;}
+\DoxyCodeLine{185     packet.pitch = pitch;}
+\DoxyCodeLine{186     packet.yaw = yaw;}
+\DoxyCodeLine{187     packet.yaw\_absolute = yaw\_absolute;}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{191 \}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{198 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mount\_orientation\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_mount\_orientation\_t* mount\_orientation)}
+\DoxyCodeLine{199 \{}
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{201     mavlink\_msg\_mount\_orientation\_send(chan, mount\_orientation-\/>time\_boot\_ms, mount\_orientation-\/>roll, mount\_orientation-\/>pitch, mount\_orientation-\/>yaw, mount\_orientation-\/>yaw\_absolute);}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{203     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)mount\_orientation, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{204 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{205 \}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{208 \textcolor{comment}{/*}}
+\DoxyCodeLine{209 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{210 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{211 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{212 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{213 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{214 \textcolor{comment}{ */}}
+\DoxyCodeLine{215 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mount\_orientation\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, \textcolor{keywordtype}{float} roll, \textcolor{keywordtype}{float} pitch, \textcolor{keywordtype}{float} yaw, \textcolor{keywordtype}{float} yaw\_absolute)}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{218     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{219     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{220     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, roll);}
+\DoxyCodeLine{221     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, pitch);}
+\DoxyCodeLine{222     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yaw);}
+\DoxyCodeLine{223     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, yaw\_absolute);}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}, buf, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{227     mavlink\_mount\_orientation\_t *packet = (mavlink\_mount\_orientation\_t *)msgbuf;}
+\DoxyCodeLine{228     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{229     packet-\/>roll = roll;}
+\DoxyCodeLine{230     packet-\/>pitch = pitch;}
+\DoxyCodeLine{231     packet-\/>yaw = yaw;}
+\DoxyCodeLine{232     packet-\/>yaw\_absolute = yaw\_absolute;}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a60159020d296df1166708c869e11b9e4}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_a072a8f06cad69612f2a36e7d626cb136}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_af5f78f6f43d8a21daff5483f8a65ecc8}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_CRC}});}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{236 \}}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241 \textcolor{comment}{// MESSAGE MOUNT\_ORIENTATION UNPACKING}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 }
+\DoxyCodeLine{249 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_mount\_orientation\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{250 \{}
+\DoxyCodeLine{251     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{252 \}}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{259 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_mount\_orientation\_get\_roll(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{260 \{}
+\DoxyCodeLine{261     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  4);}
+\DoxyCodeLine{262 \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{269 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_mount\_orientation\_get\_pitch(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  8);}
+\DoxyCodeLine{272 \}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{279 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_mount\_orientation\_get\_yaw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{280 \{}
+\DoxyCodeLine{281     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  12);}
+\DoxyCodeLine{282 \}}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{289 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_mount\_orientation\_get\_yaw\_absolute(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{290 \{}
+\DoxyCodeLine{291     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  16);}
+\DoxyCodeLine{292 \}}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{300 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_mount\_orientation\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_mount\_orientation\_t* mount\_orientation)}
+\DoxyCodeLine{301 \{}
+\DoxyCodeLine{302 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{303     mount\_orientation-\/>time\_boot\_ms = mavlink\_msg\_mount\_orientation\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{304     mount\_orientation-\/>roll = mavlink\_msg\_mount\_orientation\_get\_roll(msg);}
+\DoxyCodeLine{305     mount\_orientation-\/>pitch = mavlink\_msg\_mount\_orientation\_get\_pitch(msg);}
+\DoxyCodeLine{306     mount\_orientation-\/>yaw = mavlink\_msg\_mount\_orientation\_get\_yaw(msg);}
+\DoxyCodeLine{307     mount\_orientation-\/>yaw\_absolute = mavlink\_msg\_mount\_orientation\_get\_yaw\_absolute(msg);}
+\DoxyCodeLine{308 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{309         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}};}
+\DoxyCodeLine{310         memset(mount\_orientation, 0, \mbox{\hyperlink{mavlink__msg__mount__orientation_8h_add5e03a2995769aa6d423d062a490e2f}{MAVLINK\_MSG\_ID\_MOUNT\_ORIENTATION\_LEN}});}
+\DoxyCodeLine{311     memcpy(mount\_orientation, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{313 \}}
+
+\end{DoxyCode}

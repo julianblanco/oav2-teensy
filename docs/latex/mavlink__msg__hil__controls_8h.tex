@@ -1,0 +1,106 @@
+\hypertarget{mavlink__msg__hil__controls_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+hil\+\_\+controls.h File Reference}
+\label{mavlink__msg__hil__controls_8h}\index{lib/common/mavlink\_msg\_hil\_controls.h@{lib/common/mavlink\_msg\_hil\_controls.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_aecdd4f21b710ec57d211fe4160eace1a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS}}~91
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_a7dcf3ac4781ec0f4d5f8a45309f0d10e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS\+\_\+\+LEN}}~42
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_af848cd56a1faa73350f35f8fb80bddc2}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS\+\_\+\+MIN\+\_\+\+LEN}}~42
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_ae811b4d44fe93fbd8a84da44af513e93}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+91\+\_\+\+LEN}}~42
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_a6e34dd6a0a0df806b41cb363204c683b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+91\+\_\+\+MIN\+\_\+\+LEN}}~42
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_a4b1f15da31c497104f0e29b338e0a2c0}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS\+\_\+\+CRC}}~63
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_af2ab22ddc6899970c4df7746f3f45915}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+91\+\_\+\+CRC}}~63
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__hil__controls_8h_a3997477de05e10d75a65851654b9fb31}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HIL\+\_\+\+CONTROLS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__hil__controls_8h_af31d50345a86676fd74fc172b18cad36}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+hil\+\_\+controls\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float roll\+\_\+ailerons;float pitch\+\_\+elevator;float yaw\+\_\+rudder;float throttle;float aux1;float aux2;float aux3;float aux4;uint8\+\_\+t mode;uint8\+\_\+t nav\+\_\+mode;\}) mavlink\+\_\+hil\+\_\+controls\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_a3997477de05e10d75a65851654b9fb31}\label{mavlink__msg__hil__controls_8h_a3997477de05e10d75a65851654b9fb31}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MESSAGE\_INFO\_HIL\_CONTROLS@{MAVLINK\_MESSAGE\_INFO\_HIL\_CONTROLS}}
+\index{MAVLINK\_MESSAGE\_INFO\_HIL\_CONTROLS@{MAVLINK\_MESSAGE\_INFO\_HIL\_CONTROLS}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_HIL\_CONTROLS}{MAVLINK\_MESSAGE\_INFO\_HIL\_CONTROLS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HIL\+\_\+\+CONTROLS}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}HIL\_CONTROLS"{}}, \(\backslash\)}
+\DoxyCodeLine{    11, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_hil\_controls\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}roll\_ailerons"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_hil\_controls\_t, roll\_ailerons) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitch\_elevator"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_hil\_controls\_t, pitch\_elevator) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yaw\_rudder"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_hil\_controls\_t, yaw\_rudder) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}throttle"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 20, offsetof(mavlink\_hil\_controls\_t, throttle) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}aux1"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 24, offsetof(mavlink\_hil\_controls\_t, aux1) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}aux2"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 28, offsetof(mavlink\_hil\_controls\_t, aux2) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}aux3"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 32, offsetof(mavlink\_hil\_controls\_t, aux3) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}aux4"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 36, offsetof(mavlink\_hil\_controls\_t, aux4) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 40, offsetof(mavlink\_hil\_controls\_t, mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}nav\_mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 41, offsetof(mavlink\_hil\_controls\_t, nav\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_af2ab22ddc6899970c4df7746f3f45915}\label{mavlink__msg__hil__controls_8h_af2ab22ddc6899970c4df7746f3f45915}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_91\_CRC@{MAVLINK\_MSG\_ID\_91\_CRC}}
+\index{MAVLINK\_MSG\_ID\_91\_CRC@{MAVLINK\_MSG\_ID\_91\_CRC}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_91\_CRC}{MAVLINK\_MSG\_ID\_91\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+91\+\_\+\+CRC~63}
+
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_ae811b4d44fe93fbd8a84da44af513e93}\label{mavlink__msg__hil__controls_8h_ae811b4d44fe93fbd8a84da44af513e93}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_91\_LEN@{MAVLINK\_MSG\_ID\_91\_LEN}}
+\index{MAVLINK\_MSG\_ID\_91\_LEN@{MAVLINK\_MSG\_ID\_91\_LEN}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_91\_LEN}{MAVLINK\_MSG\_ID\_91\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+91\+\_\+\+LEN~42}
+
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_a6e34dd6a0a0df806b41cb363204c683b}\label{mavlink__msg__hil__controls_8h_a6e34dd6a0a0df806b41cb363204c683b}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_91\_MIN\_LEN@{MAVLINK\_MSG\_ID\_91\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_91\_MIN\_LEN@{MAVLINK\_MSG\_ID\_91\_MIN\_LEN}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_91\_MIN\_LEN}{MAVLINK\_MSG\_ID\_91\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+91\+\_\+\+MIN\+\_\+\+LEN~42}
+
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_aecdd4f21b710ec57d211fe4160eace1a}\label{mavlink__msg__hil__controls_8h_aecdd4f21b710ec57d211fe4160eace1a}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_HIL\_CONTROLS@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS}}
+\index{MAVLINK\_MSG\_ID\_HIL\_CONTROLS@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_CONTROLS}{MAVLINK\_MSG\_ID\_HIL\_CONTROLS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS~91}
+
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_a4b1f15da31c497104f0e29b338e0a2c0}\label{mavlink__msg__hil__controls_8h_a4b1f15da31c497104f0e29b338e0a2c0}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_CRC@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_CRC}}
+\index{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_CRC@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_CRC}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_CRC}{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS\+\_\+\+CRC~63}
+
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_a7dcf3ac4781ec0f4d5f8a45309f0d10e}\label{mavlink__msg__hil__controls_8h_a7dcf3ac4781ec0f4d5f8a45309f0d10e}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_LEN@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_LEN@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_LEN}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_LEN}{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS\+\_\+\+LEN~42}
+
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_af848cd56a1faa73350f35f8fb80bddc2}\label{mavlink__msg__hil__controls_8h_af848cd56a1faa73350f35f8fb80bddc2}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_MIN\_LEN}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_MIN\_LEN}{MAVLINK\_MSG\_ID\_HIL\_CONTROLS\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIL\+\_\+\+CONTROLS\+\_\+\+MIN\+\_\+\+LEN~42}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__hil__controls_8h_af31d50345a86676fd74fc172b18cad36}\label{mavlink__msg__hil__controls_8h_af31d50345a86676fd74fc172b18cad36}} 
+\index{mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_hil\_controls.h@{mavlink\_msg\_hil\_controls.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+hil\+\_\+controls\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float roll\+\_\+ailerons;float pitch\+\_\+elevator;float yaw\+\_\+rudder;float throttle;float aux1;float aux2;float aux3;float aux4;uint8\+\_\+t mode;uint8\+\_\+t nav\+\_\+mode;\}}]{ }\end{DoxyParamCaption})}
+

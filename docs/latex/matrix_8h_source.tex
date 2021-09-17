@@ -1,0 +1,189 @@
+\hypertarget{matrix_8h_source}{}\doxysection{matrix.\+h}
+\label{matrix_8h_source}\index{lib/Adafruit\_BNO055/utility/matrix.h@{lib/Adafruit\_BNO055/utility/matrix.h}}
+\mbox{\hyperlink{matrix_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Inertial Measurement Unit Maths Library}}
+\DoxyCodeLine{3 \textcolor{comment}{    Copyright (C) 2013-\/2014  Samuel Cowen}}
+\DoxyCodeLine{4 \textcolor{comment}{    www.camelsoftware.com}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{    Bug fixes and cleanups by Gé Vissers (gvissers@gmail.com)}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{    This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{9 \textcolor{comment}{    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{10 \textcolor{comment}{    the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{11 \textcolor{comment}{    (at your option) any later version.}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{    This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{14 \textcolor{comment}{    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{15 \textcolor{comment}{    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{16 \textcolor{comment}{    GNU General Public License for more details.}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{19 \textcolor{comment}{    along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{20 \textcolor{comment}{*/}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef IMUMATH\_MATRIX\_HPP}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define IMUMATH\_MATRIX\_HPP}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vector_8h}{vector.h}}"{}}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceimu}{imu}} \{}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{template} <u\textcolor{keywordtype}{int}8\_t N> \textcolor{keyword}{class }\mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \{}
+\DoxyCodeLine{33 \textcolor{keyword}{public}:}
+\DoxyCodeLine{34   \mbox{\hyperlink{classimu_1_1_matrix_a5b649193b96374840dc3530e91f0bec0}{Matrix}}() \{ memset(\_cell\_data, 0, N * N * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double})); \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36   \mbox{\hyperlink{classimu_1_1_matrix_aea80f956257e689fb022c168d100525c}{Matrix}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \&m) \{}
+\DoxyCodeLine{37     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ij = 0; ij < N * N; ++ij) \{}
+\DoxyCodeLine{38       \_cell\_data[ij] = m.\_cell\_data[ij];}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40   \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42   \mbox{\hyperlink{classimu_1_1_matrix_a1834e4aa47ea76f7fdfeb3bd16f1e9a9}{\string~Matrix}}() \{\}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \&\mbox{\hyperlink{classimu_1_1_matrix_aa2367dc595c504d22926fa03db7043b9}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \&m) \{}
+\DoxyCodeLine{45     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ij = 0; ij < N * N; ++ij) \{}
+\DoxyCodeLine{46       \_cell\_data[ij] = m.\_cell\_data[ij];}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{49   \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51   \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} \mbox{\hyperlink{classimu_1_1_matrix_a0b9aa219e6a056c80d95c943811201f8}{row\_to\_vector}}(\textcolor{keywordtype}{int} i)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{52     \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} ret;}
+\DoxyCodeLine{53     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < N; j++) \{}
+\DoxyCodeLine{54       ret[j] = \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j);}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{57   \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59   \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} \mbox{\hyperlink{classimu_1_1_matrix_a87b1d073ae4b98eb8b1450badd3c49d2}{col\_to\_vector}}(\textcolor{keywordtype}{int} j)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{60     \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} ret;}
+\DoxyCodeLine{61     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++) \{}
+\DoxyCodeLine{62       ret[i] = \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j);}
+\DoxyCodeLine{63     \}}
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{65   \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_matrix_a51e6e291b74346c646de155669cfd5d0}{vector\_to\_row}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} \&v, \textcolor{keywordtype}{int} i) \{}
+\DoxyCodeLine{68     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < N; j++) \{}
+\DoxyCodeLine{69       \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j) = v[j];}
+\DoxyCodeLine{70     \}}
+\DoxyCodeLine{71   \}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_matrix_a63a6b95f49c96e547815608f66e7d694}{vector\_to\_col}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} \&v, \textcolor{keywordtype}{int} j) \{}
+\DoxyCodeLine{74     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++) \{}
+\DoxyCodeLine{75       \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j) = v[i];}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77   \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_matrix_a8a7c018fcecb28e84f538c8294155d9c}{operator()}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j); \}}
+\DoxyCodeLine{80   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_matrix_a4a209a1e356a4704911632ab9fdda0e1}{operator()}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j); \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_cell\_data[i * N + j]; \}}
+\DoxyCodeLine{83   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_matrix_a2eae215c6912184faccb7d976e5dc701}{cell}}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j) \{ \textcolor{keywordflow}{return} \_cell\_data[i * N + j]; \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \mbox{\hyperlink{classimu_1_1_matrix_a56278de3bb83dae10aa25b1f690b2295}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \&m)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{86     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} ret;}
+\DoxyCodeLine{87     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ij = 0; ij < N * N; ++ij) \{}
+\DoxyCodeLine{88       ret.\_cell\_data[ij] = \_cell\_data[ij] + m.\_cell\_data[ij];}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{91   \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \mbox{\hyperlink{classimu_1_1_matrix_a7edb5e4f7971bd2aa1721314434370c0}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \&m)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{94     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} ret;}
+\DoxyCodeLine{95     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ij = 0; ij < N * N; ++ij) \{}
+\DoxyCodeLine{96       ret.\_cell\_data[ij] = \_cell\_data[ij] -\/ m.\_cell\_data[ij];}
+\DoxyCodeLine{97     \}}
+\DoxyCodeLine{98     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{99   \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \mbox{\hyperlink{classimu_1_1_matrix_aed89817a42b32cb935cf383d34476b23}{operator*}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{102     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} ret;}
+\DoxyCodeLine{103     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ij = 0; ij < N * N; ++ij) \{}
+\DoxyCodeLine{104       ret.\_cell\_data[ij] = \_cell\_data[ij] * scalar;}
+\DoxyCodeLine{105     \}}
+\DoxyCodeLine{106     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{107   \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \mbox{\hyperlink{classimu_1_1_matrix_a520fa0eb9db22c30d03724bfe040ba87}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \&m)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{110     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} ret;}
+\DoxyCodeLine{111     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++) \{}
+\DoxyCodeLine{112       \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} row = \mbox{\hyperlink{classimu_1_1_matrix_a0b9aa219e6a056c80d95c943811201f8}{row\_to\_vector}}(i);}
+\DoxyCodeLine{113       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < N; j++) \{}
+\DoxyCodeLine{114         ret(i, j) = row.\mbox{\hyperlink{classimu_1_1_vector_a331da97cba9de19da5d8988f2ed700de}{dot}}(m.\mbox{\hyperlink{classimu_1_1_matrix_a87b1d073ae4b98eb8b1450badd3c49d2}{col\_to\_vector}}(j));}
+\DoxyCodeLine{115       \}}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{118   \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \mbox{\hyperlink{classimu_1_1_matrix_afb99697b9a6a83c05f7b9efda6e67a6c}{transpose}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{121     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} ret;}
+\DoxyCodeLine{122     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++) \{}
+\DoxyCodeLine{123       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < N; j++) \{}
+\DoxyCodeLine{124         ret(j, i) = \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j);}
+\DoxyCodeLine{125       \}}
+\DoxyCodeLine{126     \}}
+\DoxyCodeLine{127     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{128   \}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}}<N -\/ 1> \mbox{\hyperlink{classimu_1_1_matrix_a6c5e368c027a23f7a555d62d2b8db89e}{minor\_matrix}}(\textcolor{keywordtype}{int} row, \textcolor{keywordtype}{int} col)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{131     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}}<N -\/ 1> ret;}
+\DoxyCodeLine{132     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0, im = 0; i < N; i++) \{}
+\DoxyCodeLine{133       \textcolor{keywordflow}{if} (i == row)}
+\DoxyCodeLine{134         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0, jm = 0; j < N; j++) \{}
+\DoxyCodeLine{137         \textcolor{keywordflow}{if} (j != col) \{}
+\DoxyCodeLine{138           ret(im, jm++) = \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, j);}
+\DoxyCodeLine{139         \}}
+\DoxyCodeLine{140       \}}
+\DoxyCodeLine{141       im++;}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{143     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{144   \}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_matrix_a8ee2d353dd55cd203a01949b05e83184}{determinant}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{147     \textcolor{comment}{// specialization for N == 1 given below this class}}
+\DoxyCodeLine{148     \textcolor{keywordtype}{double} det = 0.0, sign = 1.0;}
+\DoxyCodeLine{149     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; ++i, sign = -\/sign)}
+\DoxyCodeLine{150       det += sign * \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(0, i) * \mbox{\hyperlink{classimu_1_1_matrix_a6c5e368c027a23f7a555d62d2b8db89e}{minor\_matrix}}(0, i).determinant();}
+\DoxyCodeLine{151     \textcolor{keywordflow}{return} det;}
+\DoxyCodeLine{152   \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} \mbox{\hyperlink{classimu_1_1_matrix_a9bcb6e0b2672e5571ef27125d06c7677}{invert}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{155     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix}} ret;}
+\DoxyCodeLine{156     \textcolor{keywordtype}{double} det = \mbox{\hyperlink{classimu_1_1_matrix_a8ee2d353dd55cd203a01949b05e83184}{determinant}}();}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++) \{}
+\DoxyCodeLine{159       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < N; j++) \{}
+\DoxyCodeLine{160         ret(i, j) = \mbox{\hyperlink{classimu_1_1_matrix_a6c5e368c027a23f7a555d62d2b8db89e}{minor\_matrix}}(j, i).determinant() / det;}
+\DoxyCodeLine{161         \textcolor{keywordflow}{if} ((i + j) \% 2 == 1)}
+\DoxyCodeLine{162           ret(i, j) = -\/ret(i, j);}
+\DoxyCodeLine{163       \}}
+\DoxyCodeLine{164     \}}
+\DoxyCodeLine{165     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{166   \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_matrix_aac2eaf43d5637f96484ce1122fd7abc0}{trace}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{169     \textcolor{keywordtype}{double} tr = 0.0;}
+\DoxyCodeLine{170     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; ++i)}
+\DoxyCodeLine{171       tr += \mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(i, i);}
+\DoxyCodeLine{172     \textcolor{keywordflow}{return} tr;}
+\DoxyCodeLine{173   \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{keyword}{private}:}
+\DoxyCodeLine{176   \textcolor{keywordtype}{double} \_cell\_data[N * N];}
+\DoxyCodeLine{177 \};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179 \textcolor{keyword}{template} <> \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_matrix_a8ee2d353dd55cd203a01949b05e83184}{Matrix<1>::determinant}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} cell(0, 0); \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \}; \textcolor{comment}{// namespace imu}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

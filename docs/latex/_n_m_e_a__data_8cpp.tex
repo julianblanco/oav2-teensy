@@ -1,0 +1,18 @@
+\hypertarget{_n_m_e_a__data_8cpp}{}\doxysection{lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\+NMEA\+\_\+data.cpp File Reference}
+\label{_n_m_e_a__data_8cpp}\index{lib/Adafruit\_GPS\_Library/src/NMEA\_data.cpp@{lib/Adafruit\_GPS\_Library/src/NMEA\_data.cpp}}
+{\ttfamily \#include \char`\"{}Adafruit\+\_\+\+GPS.\+h\char`\"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{_n_m_e_a__data_8cpp_intro}{}\doxysubsection{Introduction}\label{_n_m_e_a__data_8cpp_intro}
+Code for tracking values that change with time so that history can be examined for recent trends in real time. This code will only generate the stubs for new\+Data\+Value() and data\+\_\+init(), adding essentially nothing to the memory footprint unless NMEA\+\_\+\+EXTENSIONS is defined.
+
+This is code intended to complement the Adafruit GPS library and process data for many additional NMEA sentences, mostly of interest to sailors.
+
+The parse function can be a direct substitute for the \mbox{\hyperlink{class_adafruit___g_p_s}{Adafruit\+\_\+\+GPS}} function of the same name, updating the same variables within an NMEA object. A simple use case would involve\+:
+
+Define an \mbox{\hyperlink{class_adafruit___g_p_s}{Adafruit\+\_\+\+GPS}} object and use it to collect and parse sentences from a serial port. The GPS object will be updated and can be used exactly as usual.
+
+Define an NMEA object and use it to parse the same sentences. It will succeed on more sentences than the GPS object and keep more detailed data records. It updates all the same variables as the GPS object, so you could skip the GPS parsing step.\hypertarget{index_author}{}\doxysubsection{Author}\label{index_author}
+Written by Rick Sellens.\hypertarget{index_license}{}\doxysubsection{License}\label{index_license}
+CCBY license 

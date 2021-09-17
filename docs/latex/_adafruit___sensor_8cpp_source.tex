@@ -1,0 +1,81 @@
+\hypertarget{_adafruit___sensor_8cpp_source}{}\doxysection{Adafruit\+\_\+\+Sensor.\+cpp}
+\label{_adafruit___sensor_8cpp_source}\index{lib/Adafruit\_Unified\_Sensor/Adafruit\_Sensor.cpp@{lib/Adafruit\_Unified\_Sensor/Adafruit\_Sensor.cpp}}
+\mbox{\hyperlink{_adafruit___sensor_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_adafruit___sensor_8h}{Adafruit\_Sensor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00003}00003 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00007}00007 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00008}\mbox{\hyperlink{class_adafruit___sensor_af994cc1147831134ad7bf7b2c99d7478}{00008}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___sensor_af994cc1147831134ad7bf7b2c99d7478}{Adafruit\_Sensor::printSensorDetails}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00009}00009   \mbox{\hyperlink{structsensor__t}{sensor\_t}} sensor;}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00010}00010   \mbox{\hyperlink{class_adafruit___sensor_a19e844c1eb2dc37cb72705d5572c4676}{getSensor}}(\&sensor);}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00011}00011   Serial.println(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00012}00012   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Sensor:       "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00013}00013   Serial.println(sensor.\mbox{\hyperlink{structsensor__t_a4383b68d36f9dc4096d83583c3b009bf}{name}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00014}00014   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Type:         "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00015}00015   \textcolor{keywordflow}{switch} ((\mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643}{sensors\_type\_t}})sensor.\mbox{\hyperlink{structsensor__t_ae1d59df64438923d3bd95f2416c32203}{type}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00016}00016   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643abd9779b04292b5e8054485b10fccb99c}{SENSOR\_TYPE\_ACCELEROMETER}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00017}00017     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Acceleration (m/s2)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00018}00018     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00019}00019   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a74438e3f4f1f8cb1e97ccebbd1096fe8}{SENSOR\_TYPE\_MAGNETIC\_FIELD}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00020}00020     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Magnetic (uT)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00021}00021     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00022}00022   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}{SENSOR\_TYPE\_ORIENTATION}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00023}00023     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Orientation (degrees)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00024}00024     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00025}00025   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643adc01250dcba5642d294f74ba4d115c28}{SENSOR\_TYPE\_GYROSCOPE}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00026}00026     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Gyroscopic (rad/s)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00027}00027     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00028}00028   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae19c28b874a4ef6706d44af6f373f743}{SENSOR\_TYPE\_LIGHT}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00029}00029     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Light (lux)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00030}00030     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00031}00031   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a81634a16935829065d399d686c44ad86}{SENSOR\_TYPE\_PRESSURE}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00032}00032     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Pressure (hPa)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00033}00033     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00034}00034   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a47912cab9ef79bbe4eb20538a88ce59c}{SENSOR\_TYPE\_PROXIMITY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00035}00035     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Distance (cm)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00036}00036     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00037}00037   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac7d364262029cc21bc865577d5288a1e}{SENSOR\_TYPE\_GRAVITY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00038}00038     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Gravity (m/s2)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00039}00039     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00040}00040   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a914a1f090dcc61586318fd4eb4cb1384}{SENSOR\_TYPE\_LINEAR\_ACCELERATION}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00041}00041     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Linear Acceleration (m/s2)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00042}00042     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00043}00043   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac407aca03c7ce72ea55e52f40477561b}{SENSOR\_TYPE\_ROTATION\_VECTOR}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00044}00044     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Rotation vector"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00045}00045     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00046}00046   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ad9ebf0d3f835c55738b4d4e915768875}{SENSOR\_TYPE\_RELATIVE\_HUMIDITY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00047}00047     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Relative Humidity (\%)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00048}00048     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00049}00049   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a7d9456395f361833de2ee3ef12a1af2a}{SENSOR\_TYPE\_AMBIENT\_TEMPERATURE}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00050}00050     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Ambient Temp (C)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00051}00051     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00052}00052   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aea45b19cb567b213ad9e4d703ef00ac0}{SENSOR\_TYPE\_OBJECT\_TEMPERATURE}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00053}00053     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Object Temp (C)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00054}00054     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00055}00055   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643aac4a182cee3a61ab359afa073b352b02}{SENSOR\_TYPE\_VOLTAGE}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00056}00056     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Voltage (V)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00057}00057     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00058}00058   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac822523f1553bc62459b208283e27fa5}{SENSOR\_TYPE\_CURRENT}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00059}00059     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Current (mA)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00060}00060     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00061}00061   \textcolor{keywordflow}{case} \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ae41c2d95d02910a0e15266a9f4f1ed63}{SENSOR\_TYPE\_COLOR}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00062}00062     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Color (RGBA)"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00063}00063     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00064}00064   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00066}00066   Serial.println();}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00067}00067   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Driver Ver:   "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00068}00068   Serial.println(sensor.\mbox{\hyperlink{structsensor__t_a274f12a47669fbd2b61935706339e1c2}{version}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00069}00069   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Unique ID:    "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00070}00070   Serial.println(sensor.\mbox{\hyperlink{structsensor__t_a224f6201d59873cc1b6e9dd8a1894736}{sensor\_id}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00071}00071   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Min Value:    "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00072}00072   Serial.println(sensor.\mbox{\hyperlink{structsensor__t_a4556ed82a0389a7f6af25a6fd0ee1431}{min\_value}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00073}00073   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Max Value:    "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00074}00074   Serial.println(sensor.\mbox{\hyperlink{structsensor__t_a1a17359f1080eb169a452656f7dec1ee}{max\_value}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00075}00075   Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}Resolution:   "{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00076}00076   Serial.println(sensor.\mbox{\hyperlink{structsensor__t_a926aba3216afd50e62c0a6cdbcc7433a}{resolution}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00077}00077   Serial.println(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___sensor_8cpp_source_l00078}00078 \}}
+
+\end{DoxyCode}

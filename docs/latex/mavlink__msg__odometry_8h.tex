@@ -1,0 +1,134 @@
+\hypertarget{mavlink__msg__odometry_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+odometry.h File Reference}
+\label{mavlink__msg__odometry_8h}\index{lib/common/mavlink\_msg\_odometry.h@{lib/common/mavlink\_msg\_odometry.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY}}~331
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY\+\_\+\+LEN}}~230
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY\+\_\+\+MIN\+\_\+\+LEN}}~230
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a278346b9f492df0a2fd8d5afa4523925}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+331\+\_\+\+LEN}}~230
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a5ab97adef27af4b8e48bba515f7197c3}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+331\+\_\+\+MIN\+\_\+\+LEN}}~230
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY\+\_\+\+CRC}}~58
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a2d0b4ae8e61ae444d101ded15cdee458}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+331\+\_\+\+CRC}}~58
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a2b4d7d1a289ddcfeb06398dbdbfc838e}{MAVLINK\+\_\+\+MSG\+\_\+\+ODOMETRY\+\_\+\+FIELD\+\_\+\+Q\+\_\+\+LEN}}~4
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a84f83ad05e45a6b6d63d091e7ba4ec45}{MAVLINK\+\_\+\+MSG\+\_\+\+ODOMETRY\+\_\+\+FIELD\+\_\+\+POSE\+\_\+\+COVARIANCE\+\_\+\+LEN}}~21
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a865bf9bd1c5fbe0897ade8fdf5bab2c7}{MAVLINK\+\_\+\+MSG\+\_\+\+ODOMETRY\+\_\+\+FIELD\+\_\+\+TWIST\+\_\+\+COVARIANCE\+\_\+\+LEN}}~21
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__odometry_8h_a7ec2702aa46d4770e5c4a98c1d86aff4}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+ODOMETRY}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__odometry_8h_a3e8e0e44773eca6883c17f1d9ad5ed31}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+odometry\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float x;float y;float z;float q\mbox{[}4\mbox{]};float vx;float vy;float vz;float rollspeed;float pitchspeed;float yawspeed;float pose\+\_\+covariance\mbox{[}21\mbox{]};float twist\+\_\+covariance\mbox{[}21\mbox{]};uint8\+\_\+t frame\+\_\+id;uint8\+\_\+t child\+\_\+frame\+\_\+id;\}) mavlink\+\_\+odometry\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a7ec2702aa46d4770e5c4a98c1d86aff4}\label{mavlink__msg__odometry_8h_a7ec2702aa46d4770e5c4a98c1d86aff4}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MESSAGE\_INFO\_ODOMETRY@{MAVLINK\_MESSAGE\_INFO\_ODOMETRY}}
+\index{MAVLINK\_MESSAGE\_INFO\_ODOMETRY@{MAVLINK\_MESSAGE\_INFO\_ODOMETRY}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_ODOMETRY}{MAVLINK\_MESSAGE\_INFO\_ODOMETRY}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+ODOMETRY}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}ODOMETRY"{}}, \(\backslash\)}
+\DoxyCodeLine{    15, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_odometry\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}frame\_id"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 228, offsetof(mavlink\_odometry\_t, frame\_id) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}child\_frame\_id"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 229, offsetof(mavlink\_odometry\_t, child\_frame\_id) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}x"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_odometry\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}y"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_odometry\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}z"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_odometry\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}q"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 4, 20, offsetof(mavlink\_odometry\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vx"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 36, offsetof(mavlink\_odometry\_t, vx) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vy"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 40, offsetof(mavlink\_odometry\_t, vy) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vz"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 44, offsetof(mavlink\_odometry\_t, vz) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}rollspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 48, offsetof(mavlink\_odometry\_t, rollspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitchspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 52, offsetof(mavlink\_odometry\_t, pitchspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yawspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 56, offsetof(mavlink\_odometry\_t, yawspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pose\_covariance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 21, 60, offsetof(mavlink\_odometry\_t, pose\_covariance) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}twist\_covariance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 21, 144, offsetof(mavlink\_odometry\_t, twist\_covariance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a2d0b4ae8e61ae444d101ded15cdee458}\label{mavlink__msg__odometry_8h_a2d0b4ae8e61ae444d101ded15cdee458}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_331\_CRC@{MAVLINK\_MSG\_ID\_331\_CRC}}
+\index{MAVLINK\_MSG\_ID\_331\_CRC@{MAVLINK\_MSG\_ID\_331\_CRC}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_331\_CRC}{MAVLINK\_MSG\_ID\_331\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+331\+\_\+\+CRC~58}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a278346b9f492df0a2fd8d5afa4523925}\label{mavlink__msg__odometry_8h_a278346b9f492df0a2fd8d5afa4523925}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_331\_LEN@{MAVLINK\_MSG\_ID\_331\_LEN}}
+\index{MAVLINK\_MSG\_ID\_331\_LEN@{MAVLINK\_MSG\_ID\_331\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_331\_LEN}{MAVLINK\_MSG\_ID\_331\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+331\+\_\+\+LEN~230}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a5ab97adef27af4b8e48bba515f7197c3}\label{mavlink__msg__odometry_8h_a5ab97adef27af4b8e48bba515f7197c3}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_331\_MIN\_LEN@{MAVLINK\_MSG\_ID\_331\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_331\_MIN\_LEN@{MAVLINK\_MSG\_ID\_331\_MIN\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_331\_MIN\_LEN}{MAVLINK\_MSG\_ID\_331\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+331\+\_\+\+MIN\+\_\+\+LEN~230}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}\label{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_ODOMETRY@{MAVLINK\_MSG\_ID\_ODOMETRY}}
+\index{MAVLINK\_MSG\_ID\_ODOMETRY@{MAVLINK\_MSG\_ID\_ODOMETRY}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ODOMETRY}{MAVLINK\_MSG\_ID\_ODOMETRY}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY~331}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}\label{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_ODOMETRY\_CRC@{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}}
+\index{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC@{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY\+\_\+\+CRC~58}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}\label{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_ODOMETRY\_LEN@{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}
+\index{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN@{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY\+\_\+\+LEN~230}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}\label{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN@{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN@{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ODOMETRY\+\_\+\+MIN\+\_\+\+LEN~230}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a84f83ad05e45a6b6d63d091e7ba4ec45}\label{mavlink__msg__odometry_8h_a84f83ad05e45a6b6d63d091e7ba4ec45}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN@{MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN}}
+\index{MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN@{MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN}{MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ODOMETRY\+\_\+\+FIELD\+\_\+\+POSE\+\_\+\+COVARIANCE\+\_\+\+LEN~21}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a2b4d7d1a289ddcfeb06398dbdbfc838e}\label{mavlink__msg__odometry_8h_a2b4d7d1a289ddcfeb06398dbdbfc838e}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN@{MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN}}
+\index{MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN@{MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN}{MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ODOMETRY\+\_\+\+FIELD\+\_\+\+Q\+\_\+\+LEN~4}
+
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a865bf9bd1c5fbe0897ade8fdf5bab2c7}\label{mavlink__msg__odometry_8h_a865bf9bd1c5fbe0897ade8fdf5bab2c7}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN@{MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN}}
+\index{MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN@{MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN}{MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ODOMETRY\+\_\+\+FIELD\+\_\+\+TWIST\+\_\+\+COVARIANCE\+\_\+\+LEN~21}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__odometry_8h_a3e8e0e44773eca6883c17f1d9ad5ed31}\label{mavlink__msg__odometry_8h_a3e8e0e44773eca6883c17f1d9ad5ed31}} 
+\index{mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_odometry.h@{mavlink\_msg\_odometry.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+odometry\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float x;float y;float z;float q\mbox{[}4\mbox{]};float vx;float vy;float vz;float rollspeed;float pitchspeed;float yawspeed;float pose\+\_\+covariance\mbox{[}21\mbox{]};float twist\+\_\+covariance\mbox{[}21\mbox{]};uint8\+\_\+t frame\+\_\+id;uint8\+\_\+t child\+\_\+frame\+\_\+id;\}}]{ }\end{DoxyParamCaption})}
+

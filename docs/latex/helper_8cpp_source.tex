@@ -1,0 +1,80 @@
+\hypertarget{helper_8cpp_source}{}\doxysection{helper.\+cpp}
+\label{helper_8cpp_source}\index{src/helper.cpp@{src/helper.cpp}}
+\mbox{\hyperlink{helper_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{helper_8h}{helper.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00003}\mbox{\hyperlink{helper_8h_a8c3d15fb636e1c90bdc9bcaad48b5d0a}{00003}} \textcolor{keywordtype}{void} \mbox{\hyperlink{helper_8cpp_a8c3d15fb636e1c90bdc9bcaad48b5d0a}{loopRate}}(\textcolor{keywordtype}{int} freq,\textcolor{keywordtype}{float} functionstarttime)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00005}00005   \textcolor{comment}{//DESCRIPTION: Regulate main loop rate to specified frequency in Hz}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00006}00006   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00007}00007 \textcolor{comment}{   * It's good to operate at a constant loop rate for filters to remain stable and whatnot. Interrupt routines running in the}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00008}00008 \textcolor{comment}{   * background cause the loop rate to fluctuate. This function basically just waits at the end of every loop iteration until }}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00009}00009 \textcolor{comment}{   * the correct time has passed since the start of the current loop for the desired loop rate in Hz. 2kHz is a good rate to }}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00010}00010 \textcolor{comment}{   * be at because the loop nominally will run between 2.8kHz -\/ 4.2kHz. This lets us have a little room to add extra computations}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00011}00011 \textcolor{comment}{   * and remain above 2kHz, without needing to retune all of our filtering parameters scattered around this code.}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00012}00012 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00013}00013   \textcolor{keywordtype}{float} invFreq = 1.0 / freq * 1000000.0;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00014}00014   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} checker = micros();}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00016}00016   \textcolor{comment}{//Sit in loop until appropriate time has passed}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00017}00017   \textcolor{keywordflow}{while} (invFreq > (checker -\/ functionstarttime))}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00018}00018   \{}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00019}00019     checker = micros();}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00020}00020   \}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00021}00021 \}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00024}\mbox{\hyperlink{helper_8h_a5e5346796220b271615a52428f6ec6ca}{00024}} \textcolor{keywordtype}{float} \mbox{\hyperlink{helper_8cpp_a5e5346796220b271615a52428f6ec6ca}{invSqrt}}(\textcolor{keywordtype}{float} x)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00026}00026   \textcolor{comment}{//Fast inverse sqrt}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00027}00027   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00028}00028 \textcolor{comment}{  float halfx = 0.5f * x;}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00029}00029 \textcolor{comment}{  float y = x;}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00030}00030 \textcolor{comment}{  long i = *(long*)\&y;}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00031}00031 \textcolor{comment}{  i = 0x5f3759df -\/ (i>>1);}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00032}00032 \textcolor{comment}{  y = *(float*)\&i;}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00033}00033 \textcolor{comment}{  y = y * (1.5f -\/ (halfx * y * y));}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00034}00034 \textcolor{comment}{  y = y * (1.5f -\/ (halfx * y * y));}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00035}00035 \textcolor{comment}{  return y;}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00036}00036 \textcolor{comment}{  */}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00037}00037   \textcolor{comment}{//alternate form:}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00038}00038   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0x5F1F1412 -\/ (*(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *)\&x >> 1);}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00039}00039   \textcolor{keywordtype}{float} tmp = *(\textcolor{keywordtype}{float} *)\&i;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00040}00040   \textcolor{keywordtype}{float} y = tmp * (1.69000231f -\/ 0.714158168f * x * tmp * tmp);}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00041}00041   \textcolor{keywordflow}{return} y;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00043}\mbox{\hyperlink{helper_8h_a0898f91b1615a0ebabb1bf184e57b62b}{00043}} \textcolor{keywordtype}{float} \mbox{\hyperlink{helper_8cpp_a0898f91b1615a0ebabb1bf184e57b62b}{saturate}}(\textcolor{keywordtype}{float} input, \textcolor{keywordtype}{float} upperbound, \textcolor{keywordtype}{float} lowerbound)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00045}00045   \textcolor{keywordflow}{if} (input > upperbound)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00046}00046     input = upperbound;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00047}00047   \textcolor{keywordflow}{if} (input < lowerbound)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00048}00048     input = lowerbound;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00049}00049   \textcolor{keywordflow}{return} input;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00050}00050 \}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00053}\mbox{\hyperlink{helper_8h_a8cbfe5073506cc8949bd83ba3fafc0aa}{00053}} \textcolor{keywordtype}{float} \mbox{\hyperlink{helper_8cpp_a8cbfe5073506cc8949bd83ba3fafc0aa}{angular\_diff}}(\textcolor{keywordtype}{float} target\_angle, \textcolor{keywordtype}{float} source\_angle)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00055}00055   \textcolor{comment}{// Find simple difference}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00056}00056   \textcolor{keywordtype}{float} diff = target\_angle -\/ source\_angle;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00057}00057   \textcolor{keywordflow}{if} (diff > 180)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00058}00058     diff -\/= 360;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00059}00059   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (diff < -\/180)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00060}00060     diff += 360;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00062}00062   \textcolor{keywordflow}{return} (diff);}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00065}\mbox{\hyperlink{helper_8h_acceb3156a9e8f6e4285adc31afda4074}{00065}} \textcolor{keywordtype}{float} \mbox{\hyperlink{helper_8cpp_acceb3156a9e8f6e4285adc31afda4074}{correct\_heading\_wrap}}(\textcolor{keywordtype}{float} current\_heading)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00066}00066 \{}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00067}00067   \textcolor{comment}{// Correct 360 deg wrap around}}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00068}00068   \textcolor{keywordflow}{if} (current\_heading >= 360)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00069}00069     current\_heading -\/= 360;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00070}00070   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current\_heading < 0)}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00071}00071     current\_heading += 360;}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00073}00073   \textcolor{keywordflow}{return} (current\_heading);}
+\DoxyCodeLine{\Hypertarget{helper_8cpp_source_l00074}00074 \}}
+
+\end{DoxyCode}

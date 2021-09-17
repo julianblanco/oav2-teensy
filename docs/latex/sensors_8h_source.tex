@@ -1,0 +1,37 @@
+\hypertarget{sensors_8h_source}{}\doxysection{sensors.\+h}
+\label{sensors_8h_source}\index{include/sensors.h@{include/sensors.h}}
+\mbox{\hyperlink{sensors_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Record and Push imu for Laphable}}
+\DoxyCodeLine{3 \textcolor{comment}{*/}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef \_sensors\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define \_sensors\_H\_}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{task_8h}{task.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Adafruit\_GPS.h"{}}}
+\DoxyCodeLine{8 \textcolor{comment}{// \#include <Arduino.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}HardwareSerial.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{helper_8h}{helper.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{comment}{// \#include "{}config.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define gpsserial Serial2}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16   \textcolor{comment}{// Public interface methods}}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18   \mbox{\hyperlink{class_s_e_n_s_o_r_s_a000a291c237eef0e76b1d9513d6ec136}{SENSORS}}();}
+\DoxyCodeLine{19   \mbox{\hyperlink{class_s_e_n_s_o_r_s_aa19bebc6388bb3b90778fb575f0da209}{\string~SENSORS}}();}
+\DoxyCodeLine{20   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_s_e_n_s_o_r_s_a97e61939549aa5a02b7bfa45ab769a76}{setup}}();}
+\DoxyCodeLine{21   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_s_e_n_s_o_r_s_af577e7512ee82b97108a5b54ee6a0c04}{start}}();}
+\DoxyCodeLine{22   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_s_e_n_s_o_r_s_ae25ea45950ed8a500142a8103a9dd94c}{GPS\_fix}};}
+\DoxyCodeLine{23   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_s_e_n_s_o_r_s_a3811507674c4d45bb880ceac17acbc52}{new\_GPS\_data}};}
+\DoxyCodeLine{24   Adafruit\_GPS \mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}};}
+\DoxyCodeLine{25   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_s_e_n_s_o_r_s_a3d16ec5f493a116c1e2dcf75087d7e2c}{gpsSample}}();}
+\DoxyCodeLine{26   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_s_e_n_s_o_r_s_a96c162d3a931a3ab9378c47ff6e9dbaa}{currentRangeSensorHeight}} ;}
+\DoxyCodeLine{27   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_s_e_n_s_o_r_s_a3a5f259ad1f04a25202b3d562948d968}{heightOffset}};}
+\DoxyCodeLine{28   }
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 \textcolor{comment}{// extern SENSORS g\_sensors;}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

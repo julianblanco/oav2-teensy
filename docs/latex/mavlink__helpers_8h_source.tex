@@ -1,0 +1,966 @@
+\hypertarget{mavlink__helpers_8h_source}{}\doxysection{mavlink\+\_\+helpers.\+h}
+\label{mavlink__helpers_8h_source}\index{lib/mavlink\_helpers.h@{lib/mavlink\_helpers.h}}
+\mbox{\hyperlink{mavlink__helpers_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}string.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{checksum_8h}{checksum.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mavlink__types_8h}{mavlink\_types.h}}"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mavlink__conversions_8h}{mavlink\_conversions.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef MAVLINK\_HELPER}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define MAVLINK\_HELPER}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mavlink__sha256_8h}{mavlink\_sha256.h}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CXX\_NAMESPACE}}
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }mavlink \{}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{/*}}
+\DoxyCodeLine{20 \textcolor{comment}{ * Internal function to give access to the channel status for each channel}}
+\DoxyCodeLine{21 \textcolor{comment}{ */}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef MAVLINK\_GET\_CHANNEL\_STATUS}}
+\DoxyCodeLine{23 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(uint8\_t chan)}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#ifdef MAVLINK\_EXTERNAL\_RX\_STATUS}}
+\DoxyCodeLine{26     \textcolor{comment}{// No m\_mavlink\_status array defined in function,}}
+\DoxyCodeLine{27     \textcolor{comment}{// has to be defined externally}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{29     \textcolor{keyword}{static} \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} m\_mavlink\_status[\mbox{\hyperlink{mavlink__types_8h_aff625e94451bf446bdd56f5d0e081077}{MAVLINK\_COMM\_NUM\_BUFFERS}}];}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{31     \textcolor{keywordflow}{return} \&m\_mavlink\_status[chan];}
+\DoxyCodeLine{32 \}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{/*}}
+\DoxyCodeLine{36 \textcolor{comment}{ * Internal function to give access to the channel buffer for each channel}}
+\DoxyCodeLine{37 \textcolor{comment}{ */}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#ifndef MAVLINK\_GET\_CHANNEL\_BUFFER}}
+\DoxyCodeLine{39 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} mavlink\_message\_t* \mbox{\hyperlink{mavlink__helpers_8h_a149eb9e173ac477f46b8886dec6a385e}{mavlink\_get\_channel\_buffer}}(uint8\_t chan)}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#ifdef MAVLINK\_EXTERNAL\_RX\_BUFFER}}
+\DoxyCodeLine{43     \textcolor{comment}{// No m\_mavlink\_buffer array defined in function,}}
+\DoxyCodeLine{44     \textcolor{comment}{// has to be defined externally}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{46     \textcolor{keyword}{static} mavlink\_message\_t m\_mavlink\_buffer[\mbox{\hyperlink{mavlink__types_8h_aff625e94451bf446bdd56f5d0e081077}{MAVLINK\_COMM\_NUM\_BUFFERS}}];}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} \&m\_mavlink\_buffer[chan];}
+\DoxyCodeLine{49 \}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAVLINK\_GET\_CHANNEL\_BUFFER}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{55 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__helpers_8h_a7968a864b6526d84472c5bc5b78adce2}{mavlink\_reset\_channel\_status}}(uint8\_t chan)}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57     \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status = \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan);}
+\DoxyCodeLine{58     status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{64 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_a980deaa3a55c7857b88e70f9a26c9fbe}{mavlink\_sign\_packet}}(\mbox{\hyperlink{struct____mavlink__signing}{mavlink\_signing\_t}} *signing,}
+\DoxyCodeLine{65                        uint8\_t signature[\mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}}],}
+\DoxyCodeLine{66                        \textcolor{keyword}{const} uint8\_t *header, uint8\_t header\_len,}
+\DoxyCodeLine{67                        \textcolor{keyword}{const} uint8\_t *packet, uint8\_t packet\_len,}
+\DoxyCodeLine{68                        \textcolor{keyword}{const} uint8\_t crc[2])}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70     \mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}} ctx;}
+\DoxyCodeLine{71     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{72         uint64\_t t64;}
+\DoxyCodeLine{73         uint8\_t t8[8];}
+\DoxyCodeLine{74     \} tstamp;}
+\DoxyCodeLine{75     \textcolor{keywordflow}{if} (signing == NULL || !(signing-\/>\mbox{\hyperlink{struct____mavlink__signing_a5e08957249da64329f7ee29c1c503516}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_afb6d1bb7275533b1b9867e52312be28d}{MAVLINK\_SIGNING\_FLAG\_SIGN\_OUTGOING}})) \{}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78     signature[0] = signing-\/>\mbox{\hyperlink{struct____mavlink__signing_a03d44bb3079f7af6924d6868846ccc57}{link\_id}};}
+\DoxyCodeLine{79     tstamp.t64 = signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ac6010de27e406777d336935ba93ddac1}{timestamp}};}
+\DoxyCodeLine{80     memcpy(\&signature[1], tstamp.t8, 6);}
+\DoxyCodeLine{81     signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ac6010de27e406777d336935ba93ddac1}{timestamp}}++;}
+\DoxyCodeLine{82     }
+\DoxyCodeLine{83     \mbox{\hyperlink{mavlink__sha256_8h_a90934c0020a1cfa42a64223510770aa7}{mavlink\_sha256\_init}}(\&ctx);}
+\DoxyCodeLine{84     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ade31cece3d550b1bf2e41c9c38b9964f}{secret\_key}}, \textcolor{keyword}{sizeof}(signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ade31cece3d550b1bf2e41c9c38b9964f}{secret\_key}}));}
+\DoxyCodeLine{85     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, header, header\_len);}
+\DoxyCodeLine{86     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, packet, packet\_len);}
+\DoxyCodeLine{87     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, crc, 2);}
+\DoxyCodeLine{88     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, signature, 7);}
+\DoxyCodeLine{89     \mbox{\hyperlink{mavlink__sha256_8h_ad78a650bcfef77e0a4c4133c09f428d8}{mavlink\_sha256\_final\_48}}(\&ctx, \&signature[7]);}
+\DoxyCodeLine{90     }
+\DoxyCodeLine{91     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}};}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{99 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_a7371edd06b681c55e517602a3c2a1519}{\_mav\_trim\_payload}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *payload, uint8\_t length)}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     \textcolor{keywordflow}{while} (length > 1 \&\& payload[length-\/1] == 0) \{}
+\DoxyCodeLine{102         length-\/-\/;}
+\DoxyCodeLine{103     \}}
+\DoxyCodeLine{104     \textcolor{keywordflow}{return} length;}
+\DoxyCodeLine{105 \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{110 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{mavlink__helpers_8h_aef5e43c5ddc1fe12fe4549a695e8ec32}{mavlink\_signature\_check}}(\mbox{\hyperlink{struct____mavlink__signing}{mavlink\_signing\_t}} *signing,}
+\DoxyCodeLine{111                         \mbox{\hyperlink{struct____mavlink__signing__streams}{mavlink\_signing\_streams\_t}} *signing\_streams,}
+\DoxyCodeLine{112                         \textcolor{keyword}{const} mavlink\_message\_t *msg)}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114     \textcolor{keywordflow}{if} (signing == NULL) \{}
+\DoxyCodeLine{115         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117         \textcolor{keyword}{const} uint8\_t *p = (\textcolor{keyword}{const} uint8\_t *)\&msg-\/>magic;}
+\DoxyCodeLine{118     \textcolor{keyword}{const} uint8\_t *psig = msg-\/>signature;}
+\DoxyCodeLine{119         \textcolor{keyword}{const} uint8\_t *incoming\_signature = psig+7;}
+\DoxyCodeLine{120     \mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}} ctx;}
+\DoxyCodeLine{121     uint8\_t signature[6];}
+\DoxyCodeLine{122     uint16\_t i;}
+\DoxyCodeLine{123         }
+\DoxyCodeLine{124     \mbox{\hyperlink{mavlink__sha256_8h_a90934c0020a1cfa42a64223510770aa7}{mavlink\_sha256\_init}}(\&ctx);}
+\DoxyCodeLine{125     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ade31cece3d550b1bf2e41c9c38b9964f}{secret\_key}}, \textcolor{keyword}{sizeof}(signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ade31cece3d550b1bf2e41c9c38b9964f}{secret\_key}}));}
+\DoxyCodeLine{126     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, p, \mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}}+1+msg-\/>len);}
+\DoxyCodeLine{127     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, msg-\/>ck, 2);}
+\DoxyCodeLine{128     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\&ctx, psig, 1+6);}
+\DoxyCodeLine{129     \mbox{\hyperlink{mavlink__sha256_8h_ad78a650bcfef77e0a4c4133c09f428d8}{mavlink\_sha256\_final\_48}}(\&ctx, signature);}
+\DoxyCodeLine{130     \textcolor{keywordflow}{if} (memcmp(signature, incoming\_signature, 6) != 0) \{}
+\DoxyCodeLine{131         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{comment}{// now check timestamp}}
+\DoxyCodeLine{135     \textcolor{keyword}{union }tstamp \{}
+\DoxyCodeLine{136         uint64\_t t64;}
+\DoxyCodeLine{137         uint8\_t t8[8];}
+\DoxyCodeLine{138     \} tstamp;}
+\DoxyCodeLine{139     uint8\_t link\_id = psig[0];}
+\DoxyCodeLine{140     tstamp.t64 = 0;}
+\DoxyCodeLine{141     memcpy(tstamp.t8, psig+1, 6);}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143     \textcolor{keywordflow}{if} (signing\_streams == NULL) \{}
+\DoxyCodeLine{144         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{145     \}}
+\DoxyCodeLine{146     }
+\DoxyCodeLine{147     \textcolor{comment}{// find stream}}
+\DoxyCodeLine{148     \textcolor{keywordflow}{for} (i=0; i<signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a21844f3fe728695a8e33a4b003591979}{num\_signing\_streams}}; i++) \{}
+\DoxyCodeLine{149         \textcolor{keywordflow}{if} (msg-\/>sysid == signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_ab8826081c0e1c8635ab2b706e046b4f6}{sysid}} \&\&}
+\DoxyCodeLine{150             msg-\/>compid == signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_abdeaafd43daa73f208160ac46d510389}{compid}} \&\&}
+\DoxyCodeLine{151             link\_id == signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_a460c2c122f9a4350bcbdeaea3e5aa534}{link\_id}}) \{}
+\DoxyCodeLine{152             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{153         \}}
+\DoxyCodeLine{154     \}}
+\DoxyCodeLine{155     \textcolor{keywordflow}{if} (i == signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a21844f3fe728695a8e33a4b003591979}{num\_signing\_streams}}) \{}
+\DoxyCodeLine{156         \textcolor{keywordflow}{if} (signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a21844f3fe728695a8e33a4b003591979}{num\_signing\_streams}} >= \mbox{\hyperlink{mavlink__types_8h_aa50fb9588340e4be3b9c17e95494282c}{MAVLINK\_MAX\_SIGNING\_STREAMS}}) \{}
+\DoxyCodeLine{157             \textcolor{comment}{// over max number of streams}}
+\DoxyCodeLine{158             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{159         \}}
+\DoxyCodeLine{160         \textcolor{comment}{// new stream. Only accept if timestamp is not more than 1 minute old}}
+\DoxyCodeLine{161         \textcolor{keywordflow}{if} (tstamp.t64 + 6000*1000UL < signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ac6010de27e406777d336935ba93ddac1}{timestamp}}) \{}
+\DoxyCodeLine{162             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{163         \}}
+\DoxyCodeLine{164         \textcolor{comment}{// add new stream}}
+\DoxyCodeLine{165         signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_ab8826081c0e1c8635ab2b706e046b4f6}{sysid}} = msg-\/>sysid;}
+\DoxyCodeLine{166         signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_abdeaafd43daa73f208160ac46d510389}{compid}} = msg-\/>compid;}
+\DoxyCodeLine{167         signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_a460c2c122f9a4350bcbdeaea3e5aa534}{link\_id}} = link\_id;}
+\DoxyCodeLine{168         signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a21844f3fe728695a8e33a4b003591979}{num\_signing\_streams}}++;}
+\DoxyCodeLine{169     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{170         \textcolor{keyword}{union }tstamp last\_tstamp;}
+\DoxyCodeLine{171         last\_tstamp.t64 = 0;}
+\DoxyCodeLine{172         memcpy(last\_tstamp.t8, signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_ac2dacf1fa619460cfe828939921ec091}{timestamp\_bytes}}, 6);}
+\DoxyCodeLine{173         \textcolor{keywordflow}{if} (tstamp.t64 <= last\_tstamp.t64) \{}
+\DoxyCodeLine{174             \textcolor{comment}{// repeating old timestamp}}
+\DoxyCodeLine{175             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{176         \}}
+\DoxyCodeLine{177     \}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179     \textcolor{comment}{// remember last timestamp}}
+\DoxyCodeLine{180     memcpy(signing\_streams-\/>\mbox{\hyperlink{struct____mavlink__signing__streams_a5e82cb0c0bf05d877df823effa825105}{stream}}[i].\mbox{\hyperlink{struct____mavlink__signing__streams_1_1____mavlink__signing__stream_ac2dacf1fa619460cfe828939921ec091}{timestamp\_bytes}}, psig+1, 6);}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{comment}{// our next timestamp must be at least this timestamp}}
+\DoxyCodeLine{183     \textcolor{keywordflow}{if} (tstamp.t64 > signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ac6010de27e406777d336935ba93ddac1}{timestamp}}) \{}
+\DoxyCodeLine{184         signing-\/>\mbox{\hyperlink{struct____mavlink__signing_ac6010de27e406777d336935ba93ddac1}{timestamp}} = tstamp.t64;}
+\DoxyCodeLine{185     \}}
+\DoxyCodeLine{186     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{187 \}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189 }
+\DoxyCodeLine{202 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint16\_t \mbox{\hyperlink{mavlink__helpers_8h_ac22c74d53cb1f9f1dd7163dbbc7cbd87}{mavlink\_finalize\_message\_buffer}}(mavlink\_message\_t* msg, uint8\_t system\_id, uint8\_t component\_id,}
+\DoxyCodeLine{203                               \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* status, uint8\_t min\_length, uint8\_t length, uint8\_t crc\_extra)}
+\DoxyCodeLine{204 \{}
+\DoxyCodeLine{205     \textcolor{keywordtype}{bool} mavlink1 = (status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_afc85e2f2bc8ba350dbce678710d64619}{MAVLINK\_STATUS\_FLAG\_OUT\_MAVLINK1}}) != 0;}
+\DoxyCodeLine{206     \textcolor{keywordtype}{bool} signing =  (!mavlink1) \&\& status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}} \&\& (status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}-\/>\mbox{\hyperlink{struct____mavlink__signing_a5e08957249da64329f7ee29c1c503516}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_afb6d1bb7275533b1b9867e52312be28d}{MAVLINK\_SIGNING\_FLAG\_SIGN\_OUTGOING}});}
+\DoxyCodeLine{207     uint8\_t signature\_len = signing? \mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}} : 0;}
+\DoxyCodeLine{208         uint8\_t header\_len = \mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}}+1;}
+\DoxyCodeLine{209     uint8\_t buf[\mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}}+1];}
+\DoxyCodeLine{210     \textcolor{keywordflow}{if} (mavlink1) \{}
+\DoxyCodeLine{211         msg-\/>magic = \mbox{\hyperlink{mavlink__types_8h_ae0c516ced77f74d4dcc67dae1a3d6816}{MAVLINK\_STX\_MAVLINK1}};}
+\DoxyCodeLine{212         header\_len = \mbox{\hyperlink{mavlink__types_8h_a524421932f90f5325cc8f9d5b0d21b75}{MAVLINK\_CORE\_HEADER\_MAVLINK1\_LEN}}+1;}
+\DoxyCodeLine{213     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{214         msg-\/>magic = \mbox{\hyperlink{mavlink_8h_af97e9d670eb0963e3f3fb17a1f6bceeb}{MAVLINK\_STX}};}
+\DoxyCodeLine{215     \}}
+\DoxyCodeLine{216     msg-\/>len = mavlink1?min\_length:\mbox{\hyperlink{mavlink__helpers_8h_a7371edd06b681c55e517602a3c2a1519}{\_mav\_trim\_payload}}(\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), length);}
+\DoxyCodeLine{217     msg-\/>sysid = system\_id;}
+\DoxyCodeLine{218     msg-\/>compid = component\_id;}
+\DoxyCodeLine{219     msg-\/>incompat\_flags = 0;}
+\DoxyCodeLine{220     \textcolor{keywordflow}{if} (signing) \{}
+\DoxyCodeLine{221         msg-\/>incompat\_flags |= \mbox{\hyperlink{mavlink__types_8h_a4a189e27b7ad4e9fc6265d848e270cf2}{MAVLINK\_IFLAG\_SIGNED}};}
+\DoxyCodeLine{222     \}}
+\DoxyCodeLine{223     msg-\/>compat\_flags = 0;}
+\DoxyCodeLine{224     msg-\/>seq = status-\/>\mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}};}
+\DoxyCodeLine{225     status-\/>\mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}} + 1;}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     \textcolor{comment}{// form the header as a byte array for the crc}}
+\DoxyCodeLine{228     buf[0] = msg-\/>magic;}
+\DoxyCodeLine{229     buf[1] = msg-\/>len;}
+\DoxyCodeLine{230     \textcolor{keywordflow}{if} (mavlink1) \{}
+\DoxyCodeLine{231         buf[2] = msg-\/>seq;}
+\DoxyCodeLine{232         buf[3] = msg-\/>sysid;}
+\DoxyCodeLine{233         buf[4] = msg-\/>compid;}
+\DoxyCodeLine{234         buf[5] = msg-\/>msgid \& 0xFF;}
+\DoxyCodeLine{235     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{236         buf[2] = msg-\/>incompat\_flags;}
+\DoxyCodeLine{237         buf[3] = msg-\/>compat\_flags;}
+\DoxyCodeLine{238         buf[4] = msg-\/>seq;}
+\DoxyCodeLine{239         buf[5] = msg-\/>sysid;}
+\DoxyCodeLine{240         buf[6] = msg-\/>compid;}
+\DoxyCodeLine{241         buf[7] = msg-\/>msgid \& 0xFF;}
+\DoxyCodeLine{242         buf[8] = (msg-\/>msgid >> 8) \& 0xFF;}
+\DoxyCodeLine{243         buf[9] = (msg-\/>msgid >> 16) \& 0xFF;}
+\DoxyCodeLine{244     \}}
+\DoxyCodeLine{245     }
+\DoxyCodeLine{246     msg-\/>checksum = crc\_calculate(\&buf[1], header\_len-\/1);}
+\DoxyCodeLine{247     crc\_accumulate\_buffer(\&msg-\/>checksum, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), msg-\/>len);}
+\DoxyCodeLine{248     crc\_accumulate(crc\_extra, \&msg-\/>checksum);}
+\DoxyCodeLine{249     \mbox{\hyperlink{mavlink__types_8h_a27d6e3790999e8f43b7929901b6526ea}{mavlink\_ck\_a}}(msg) = (uint8\_t)(msg-\/>checksum \& 0xFF);}
+\DoxyCodeLine{250     \mbox{\hyperlink{mavlink__types_8h_ace276f8ae1f6abd493787bc94367edc3}{mavlink\_ck\_b}}(msg) = (uint8\_t)(msg-\/>checksum >> 8);}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252     \textcolor{keywordflow}{if} (signing) \{}
+\DoxyCodeLine{253         \mbox{\hyperlink{mavlink__helpers_8h_a980deaa3a55c7857b88e70f9a26c9fbe}{mavlink\_sign\_packet}}(status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}},}
+\DoxyCodeLine{254                     msg-\/>signature,}
+\DoxyCodeLine{255                     (\textcolor{keyword}{const} uint8\_t *)buf, header\_len,}
+\DoxyCodeLine{256                     (\textcolor{keyword}{const} uint8\_t *)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), msg-\/>len,}
+\DoxyCodeLine{257                     (\textcolor{keyword}{const} uint8\_t *)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg)+(uint16\_t)msg-\/>len);}
+\DoxyCodeLine{258     \}}
+\DoxyCodeLine{259     }
+\DoxyCodeLine{260     \textcolor{keywordflow}{return} msg-\/>len + header\_len + 2 + signature\_len;}
+\DoxyCodeLine{261 \}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint16\_t \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(mavlink\_message\_t* msg, uint8\_t system\_id, uint8\_t component\_id,}
+\DoxyCodeLine{264                               uint8\_t chan, uint8\_t min\_length, uint8\_t length, uint8\_t crc\_extra)}
+\DoxyCodeLine{265 \{}
+\DoxyCodeLine{266     \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status = \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan);}
+\DoxyCodeLine{267     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_ac22c74d53cb1f9f1dd7163dbbc7cbd87}{mavlink\_finalize\_message\_buffer}}(msg, system\_id, component\_id, status, min\_length, length, crc\_extra);}
+\DoxyCodeLine{268 \}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{273 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint16\_t \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(mavlink\_message\_t* msg, uint8\_t system\_id, uint8\_t component\_id, }
+\DoxyCodeLine{274                          uint8\_t min\_length, uint8\_t length, uint8\_t crc\_extra)}
+\DoxyCodeLine{275 \{}
+\DoxyCodeLine{276     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709cae41095bf35dfe1b8cbf7a683301e449a}{MAVLINK\_COMM\_0}}, min\_length, length, crc\_extra);}
+\DoxyCodeLine{277 \}}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \_mav\_parse\_error(\mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status)}
+\DoxyCodeLine{280 \{}
+\DoxyCodeLine{281     status-\/>\mbox{\hyperlink{struct____mavlink__status_ae7a52aa0c84929dbf181220c689f9ec8}{parse\_error}}++;}
+\DoxyCodeLine{282 \}}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{285 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \_mavlink\_send\_uart(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *buf, uint16\_t len);}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{290 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \_mav\_finalize\_message\_chan\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t msgid,}
+\DoxyCodeLine{291                                                     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *packet, }
+\DoxyCodeLine{292                             uint8\_t min\_length, uint8\_t length, uint8\_t crc\_extra)}
+\DoxyCodeLine{293 \{}
+\DoxyCodeLine{294     uint16\_t checksum;}
+\DoxyCodeLine{295     uint8\_t buf[\mbox{\hyperlink{mavlink__types_8h_a8089e674d6fef4c793a249289f4ca862}{MAVLINK\_NUM\_HEADER\_BYTES}}];}
+\DoxyCodeLine{296     uint8\_t ck[2];}
+\DoxyCodeLine{297     \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status = \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan);}
+\DoxyCodeLine{298         uint8\_t header\_len = \mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}};}
+\DoxyCodeLine{299     uint8\_t signature\_len = 0;}
+\DoxyCodeLine{300     uint8\_t signature[\mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}}];}
+\DoxyCodeLine{301     \textcolor{keywordtype}{bool} mavlink1 = (status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_afc85e2f2bc8ba350dbce678710d64619}{MAVLINK\_STATUS\_FLAG\_OUT\_MAVLINK1}}) != 0;}
+\DoxyCodeLine{302     \textcolor{keywordtype}{bool} signing =  (!mavlink1) \&\& status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}} \&\& (status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}-\/>\mbox{\hyperlink{struct____mavlink__signing_a5e08957249da64329f7ee29c1c503516}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_afb6d1bb7275533b1b9867e52312be28d}{MAVLINK\_SIGNING\_FLAG\_SIGN\_OUTGOING}});}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304         \textcolor{keywordflow}{if} (mavlink1) \{}
+\DoxyCodeLine{305             length = min\_length;}
+\DoxyCodeLine{306             \textcolor{keywordflow}{if} (msgid > 255) \{}
+\DoxyCodeLine{307                 \textcolor{comment}{// can't send 16 bit messages}}
+\DoxyCodeLine{308                 \_mav\_parse\_error(status);}
+\DoxyCodeLine{309                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{310             \}}
+\DoxyCodeLine{311             header\_len = \mbox{\hyperlink{mavlink__types_8h_a524421932f90f5325cc8f9d5b0d21b75}{MAVLINK\_CORE\_HEADER\_MAVLINK1\_LEN}};}
+\DoxyCodeLine{312             buf[0] = \mbox{\hyperlink{mavlink__types_8h_ae0c516ced77f74d4dcc67dae1a3d6816}{MAVLINK\_STX\_MAVLINK1}};}
+\DoxyCodeLine{313             buf[1] = length;}
+\DoxyCodeLine{314             buf[2] = status-\/>\mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}};}
+\DoxyCodeLine{315             buf[3] = mavlink\_system.sysid;}
+\DoxyCodeLine{316             buf[4] = mavlink\_system.compid;}
+\DoxyCodeLine{317             buf[5] = msgid \& 0xFF;}
+\DoxyCodeLine{318         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{319         uint8\_t incompat\_flags = 0;}
+\DoxyCodeLine{320         \textcolor{keywordflow}{if} (signing) \{}
+\DoxyCodeLine{321         incompat\_flags |= \mbox{\hyperlink{mavlink__types_8h_a4a189e27b7ad4e9fc6265d848e270cf2}{MAVLINK\_IFLAG\_SIGNED}};}
+\DoxyCodeLine{322         \}}
+\DoxyCodeLine{323             length = \mbox{\hyperlink{mavlink__helpers_8h_a7371edd06b681c55e517602a3c2a1519}{\_mav\_trim\_payload}}(packet, length);}
+\DoxyCodeLine{324             buf[0] = \mbox{\hyperlink{mavlink_8h_af97e9d670eb0963e3f3fb17a1f6bceeb}{MAVLINK\_STX}};}
+\DoxyCodeLine{325             buf[1] = length;}
+\DoxyCodeLine{326             buf[2] = incompat\_flags;}
+\DoxyCodeLine{327             buf[3] = 0; \textcolor{comment}{// compat\_flags}}
+\DoxyCodeLine{328             buf[4] = status-\/>\mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}};}
+\DoxyCodeLine{329             buf[5] = mavlink\_system.sysid;}
+\DoxyCodeLine{330             buf[6] = mavlink\_system.compid;}
+\DoxyCodeLine{331             buf[7] = msgid \& 0xFF;}
+\DoxyCodeLine{332             buf[8] = (msgid >> 8) \& 0xFF;}
+\DoxyCodeLine{333             buf[9] = (msgid >> 16) \& 0xFF;}
+\DoxyCodeLine{334         \}}
+\DoxyCodeLine{335     status-\/>\mbox{\hyperlink{struct____mavlink__status_a06482d6c3fbfa829526c9b2e2e895f32}{current\_tx\_seq}}++;}
+\DoxyCodeLine{336     checksum = crc\_calculate((\textcolor{keyword}{const} uint8\_t*)\&buf[1], header\_len);}
+\DoxyCodeLine{337     crc\_accumulate\_buffer(\&checksum, packet, length);}
+\DoxyCodeLine{338     crc\_accumulate(crc\_extra, \&checksum);}
+\DoxyCodeLine{339     ck[0] = (uint8\_t)(checksum \& 0xFF);}
+\DoxyCodeLine{340     ck[1] = (uint8\_t)(checksum >> 8);}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342     \textcolor{keywordflow}{if} (signing) \{}
+\DoxyCodeLine{343         \textcolor{comment}{// possibly add a signature}}
+\DoxyCodeLine{344         signature\_len = \mbox{\hyperlink{mavlink__helpers_8h_a980deaa3a55c7857b88e70f9a26c9fbe}{mavlink\_sign\_packet}}(status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}, signature, buf, header\_len+1,}
+\DoxyCodeLine{345                             (\textcolor{keyword}{const} uint8\_t *)packet, length, ck);}
+\DoxyCodeLine{346     \}}
+\DoxyCodeLine{347     }
+\DoxyCodeLine{348     \mbox{\hyperlink{protocol_8h_ab761006cae93e593accb4bc4f543413b}{MAVLINK\_START\_UART\_SEND}}(chan, header\_len + 3 + (uint16\_t)length + (uint16\_t)signature\_len);}
+\DoxyCodeLine{349     \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)buf, header\_len+1);}
+\DoxyCodeLine{350     \_mavlink\_send\_uart(chan, packet, length);}
+\DoxyCodeLine{351     \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)ck, 2);}
+\DoxyCodeLine{352     \textcolor{keywordflow}{if} (signature\_len != 0) \{}
+\DoxyCodeLine{353         \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)signature, signature\_len);}
+\DoxyCodeLine{354     \}}
+\DoxyCodeLine{355     \mbox{\hyperlink{protocol_8h_a18dca6a13e7d2a09fc80bd18e4f57367}{MAVLINK\_END\_UART\_SEND}}(chan, header\_len + 3 + (uint16\_t)length + (uint16\_t)signature\_len);}
+\DoxyCodeLine{356 \}}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{363 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \_mavlink\_resend\_uart(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_message\_t *msg)}
+\DoxyCodeLine{364 \{}
+\DoxyCodeLine{365     uint8\_t ck[2];}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{367     ck[0] = (uint8\_t)(msg-\/>checksum \& 0xFF);}
+\DoxyCodeLine{368     ck[1] = (uint8\_t)(msg-\/>checksum >> 8);}
+\DoxyCodeLine{369     \textcolor{comment}{// XXX use the right sequence here}}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{371         uint8\_t header\_len;}
+\DoxyCodeLine{372         uint8\_t signature\_len;}
+\DoxyCodeLine{373         }
+\DoxyCodeLine{374         \textcolor{keywordflow}{if} (msg-\/>magic == \mbox{\hyperlink{mavlink__types_8h_ae0c516ced77f74d4dcc67dae1a3d6816}{MAVLINK\_STX\_MAVLINK1}}) \{}
+\DoxyCodeLine{375             header\_len = \mbox{\hyperlink{mavlink__types_8h_a524421932f90f5325cc8f9d5b0d21b75}{MAVLINK\_CORE\_HEADER\_MAVLINK1\_LEN}} + 1;}
+\DoxyCodeLine{376             signature\_len = 0;}
+\DoxyCodeLine{377             \mbox{\hyperlink{protocol_8h_ab761006cae93e593accb4bc4f543413b}{MAVLINK\_START\_UART\_SEND}}(chan, header\_len + msg-\/>len + 2 + signature\_len);}
+\DoxyCodeLine{378             \textcolor{comment}{// we can't send the structure directly as it has extra mavlink2 elements in it}}
+\DoxyCodeLine{379             uint8\_t buf[\mbox{\hyperlink{mavlink__types_8h_a524421932f90f5325cc8f9d5b0d21b75}{MAVLINK\_CORE\_HEADER\_MAVLINK1\_LEN}} + 1];}
+\DoxyCodeLine{380             buf[0] = msg-\/>magic;}
+\DoxyCodeLine{381             buf[1] = msg-\/>len;}
+\DoxyCodeLine{382             buf[2] = msg-\/>seq;}
+\DoxyCodeLine{383             buf[3] = msg-\/>sysid;}
+\DoxyCodeLine{384             buf[4] = msg-\/>compid;}
+\DoxyCodeLine{385             buf[5] = msg-\/>msgid \& 0xFF;}
+\DoxyCodeLine{386             \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char}*)buf, header\_len);}
+\DoxyCodeLine{387         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{388             header\_len = \mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}} + 1;}
+\DoxyCodeLine{389             signature\_len = (msg-\/>incompat\_flags \& \mbox{\hyperlink{mavlink__types_8h_a4a189e27b7ad4e9fc6265d848e270cf2}{MAVLINK\_IFLAG\_SIGNED}})?\mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}}:0;}
+\DoxyCodeLine{390             \mbox{\hyperlink{protocol_8h_ab761006cae93e593accb4bc4f543413b}{MAVLINK\_START\_UART\_SEND}}(chan, header\_len + msg-\/>len + 2 + signature\_len);}
+\DoxyCodeLine{391             uint8\_t buf[\mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}} + 1];}
+\DoxyCodeLine{392             buf[0] = msg-\/>magic;}
+\DoxyCodeLine{393             buf[1] = msg-\/>len;}
+\DoxyCodeLine{394             buf[2] = msg-\/>incompat\_flags;}
+\DoxyCodeLine{395             buf[3] = msg-\/>compat\_flags;}
+\DoxyCodeLine{396             buf[4] = msg-\/>seq;}
+\DoxyCodeLine{397             buf[5] = msg-\/>sysid;}
+\DoxyCodeLine{398             buf[6] = msg-\/>compid;}
+\DoxyCodeLine{399             buf[7] = msg-\/>msgid \& 0xFF;}
+\DoxyCodeLine{400             buf[8] = (msg-\/>msgid >> 8) \& 0xFF;}
+\DoxyCodeLine{401             buf[9] = (msg-\/>msgid >> 16) \& 0xFF;}
+\DoxyCodeLine{402             \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)buf, header\_len);}
+\DoxyCodeLine{403         \}}
+\DoxyCodeLine{404     \_mavlink\_send\_uart(chan, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), msg-\/>len);}
+\DoxyCodeLine{405     \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)ck, 2);}
+\DoxyCodeLine{406         \textcolor{keywordflow}{if} (signature\_len != 0) \{}
+\DoxyCodeLine{407         \_mavlink\_send\_uart(chan, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)msg-\/>signature, \mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}});}
+\DoxyCodeLine{408         \}}
+\DoxyCodeLine{409         \mbox{\hyperlink{protocol_8h_a18dca6a13e7d2a09fc80bd18e4f57367}{MAVLINK\_END\_UART\_SEND}}(chan, header\_len + msg-\/>len + 2 + signature\_len);}
+\DoxyCodeLine{410 \}}
+\DoxyCodeLine{411 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{416 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint16\_t \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(uint8\_t *buf, \textcolor{keyword}{const} mavlink\_message\_t *msg)}
+\DoxyCodeLine{417 \{}
+\DoxyCodeLine{418     uint8\_t signature\_len, header\_len;}
+\DoxyCodeLine{419     uint8\_t *ck;}
+\DoxyCodeLine{420         uint8\_t length = msg-\/>len;}
+\DoxyCodeLine{421         }
+\DoxyCodeLine{422     \textcolor{keywordflow}{if} (msg-\/>magic == \mbox{\hyperlink{mavlink__types_8h_ae0c516ced77f74d4dcc67dae1a3d6816}{MAVLINK\_STX\_MAVLINK1}}) \{}
+\DoxyCodeLine{423         signature\_len = 0;}
+\DoxyCodeLine{424         header\_len = \mbox{\hyperlink{mavlink__types_8h_a524421932f90f5325cc8f9d5b0d21b75}{MAVLINK\_CORE\_HEADER\_MAVLINK1\_LEN}};}
+\DoxyCodeLine{425         buf[0] = msg-\/>magic;}
+\DoxyCodeLine{426         buf[1] = length;}
+\DoxyCodeLine{427         buf[2] = msg-\/>seq;}
+\DoxyCodeLine{428         buf[3] = msg-\/>sysid;}
+\DoxyCodeLine{429         buf[4] = msg-\/>compid;}
+\DoxyCodeLine{430         buf[5] = msg-\/>msgid \& 0xFF;}
+\DoxyCodeLine{431         memcpy(\&buf[6], \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), msg-\/>len);}
+\DoxyCodeLine{432         ck = buf + header\_len + 1 + (uint16\_t)msg-\/>len;}
+\DoxyCodeLine{433     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{434         length = \mbox{\hyperlink{mavlink__helpers_8h_a7371edd06b681c55e517602a3c2a1519}{\_mav\_trim\_payload}}(\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), length);}
+\DoxyCodeLine{435         header\_len = \mbox{\hyperlink{mavlink__types_8h_a21225a1e59e8bf4ebf886ee85894108c}{MAVLINK\_CORE\_HEADER\_LEN}};}
+\DoxyCodeLine{436         buf[0] = msg-\/>magic;}
+\DoxyCodeLine{437         buf[1] = length;}
+\DoxyCodeLine{438         buf[2] = msg-\/>incompat\_flags;}
+\DoxyCodeLine{439         buf[3] = msg-\/>compat\_flags;}
+\DoxyCodeLine{440         buf[4] = msg-\/>seq;}
+\DoxyCodeLine{441         buf[5] = msg-\/>sysid;}
+\DoxyCodeLine{442         buf[6] = msg-\/>compid;}
+\DoxyCodeLine{443         buf[7] = msg-\/>msgid \& 0xFF;}
+\DoxyCodeLine{444         buf[8] = (msg-\/>msgid >> 8) \& 0xFF;}
+\DoxyCodeLine{445         buf[9] = (msg-\/>msgid >> 16) \& 0xFF;}
+\DoxyCodeLine{446         memcpy(\&buf[10], \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), length);}
+\DoxyCodeLine{447         ck = buf + header\_len + 1 + (uint16\_t)length;}
+\DoxyCodeLine{448         signature\_len = (msg-\/>incompat\_flags \& \mbox{\hyperlink{mavlink__types_8h_a4a189e27b7ad4e9fc6265d848e270cf2}{MAVLINK\_IFLAG\_SIGNED}})?\mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}}:0;}
+\DoxyCodeLine{449     \}}
+\DoxyCodeLine{450     ck[0] = (uint8\_t)(msg-\/>checksum \& 0xFF);}
+\DoxyCodeLine{451     ck[1] = (uint8\_t)(msg-\/>checksum >> 8);}
+\DoxyCodeLine{452     \textcolor{keywordflow}{if} (signature\_len > 0) \{}
+\DoxyCodeLine{453         memcpy(\&ck[2], msg-\/>signature, signature\_len);}
+\DoxyCodeLine{454     \}}
+\DoxyCodeLine{455 }
+\DoxyCodeLine{456     \textcolor{keywordflow}{return} header\_len + 1 + 2 + (uint16\_t)length + (uint16\_t)signature\_len;}
+\DoxyCodeLine{457 \}}
+\DoxyCodeLine{458 }
+\DoxyCodeLine{459 \textcolor{keyword}{union }\mbox{\hyperlink{union____mavlink__bitfield}{\_\_mavlink\_bitfield}} \{}
+\DoxyCodeLine{460     uint8\_t \mbox{\hyperlink{union____mavlink__bitfield_ade669a5f63c53f0d61f636eff94417c0}{uint8}};}
+\DoxyCodeLine{461     int8\_t \mbox{\hyperlink{union____mavlink__bitfield_a50a846d427d7a1d7dc79235c87597622}{int8}};}
+\DoxyCodeLine{462     uint16\_t \mbox{\hyperlink{union____mavlink__bitfield_a0ca76ce4a09ee26387e50b6702c17894}{uint16}};}
+\DoxyCodeLine{463     int16\_t \mbox{\hyperlink{union____mavlink__bitfield_a99cd7f966d8a59b29d05197b39c5b229}{int16}};}
+\DoxyCodeLine{464     uint32\_t \mbox{\hyperlink{union____mavlink__bitfield_ab43ed56310c2d778ebaa7a5a21cb6587}{uint32}};}
+\DoxyCodeLine{465     int32\_t \mbox{\hyperlink{union____mavlink__bitfield_a07bd702e8b91679a25e632ad90d0a1ec}{int32}};}
+\DoxyCodeLine{466 \};}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{468 }
+\DoxyCodeLine{469 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__helpers_8h_ae7cbde569213151151d20c3766edd244}{mavlink\_start\_checksum}}(mavlink\_message\_t* msg)}
+\DoxyCodeLine{470 \{}
+\DoxyCodeLine{471     crc\_init(\&msg-\/>checksum);}
+\DoxyCodeLine{472 \}}
+\DoxyCodeLine{473 }
+\DoxyCodeLine{474 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(mavlink\_message\_t* msg, uint8\_t c)}
+\DoxyCodeLine{475 \{}
+\DoxyCodeLine{476     crc\_accumulate(c, \&msg-\/>checksum);}
+\DoxyCodeLine{477 \}}
+\DoxyCodeLine{478 }
+\DoxyCodeLine{479 \textcolor{comment}{/*}}
+\DoxyCodeLine{480 \textcolor{comment}{  return the crc\_entry value for a msgid}}
+\DoxyCodeLine{481 \textcolor{comment}{*/}}
+\DoxyCodeLine{482 \textcolor{preprocessor}{\#ifndef MAVLINK\_GET\_MSG\_ENTRY}}
+\DoxyCodeLine{483 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__msg__entry}{mavlink\_msg\_entry\_t}} *\mbox{\hyperlink{mavlink__helpers_8h_a0aa86f8c884de4668b1580592666e30b}{mavlink\_get\_msg\_entry}}(uint32\_t msgid)}
+\DoxyCodeLine{484 \{}
+\DoxyCodeLine{485     \textcolor{keyword}{static} \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__msg__entry}{mavlink\_msg\_entry\_t}} mavlink\_message\_crcs[] = \mbox{\hyperlink{common_8h_a3f709d5835acb54a11202a5fdc7a6bfe}{MAVLINK\_MESSAGE\_CRCS}};}
+\DoxyCodeLine{486         \textcolor{comment}{/*}}
+\DoxyCodeLine{487 \textcolor{comment}{      use a bisection search to find the right entry. A perfect hash may be better}}
+\DoxyCodeLine{488 \textcolor{comment}{      Note that this assumes the table is sorted by msgid}}
+\DoxyCodeLine{489 \textcolor{comment}{    */}}
+\DoxyCodeLine{490         uint32\_t low=0, high=\textcolor{keyword}{sizeof}(mavlink\_message\_crcs)/\textcolor{keyword}{sizeof}(mavlink\_message\_crcs[0]);}
+\DoxyCodeLine{491         \textcolor{keywordflow}{while} (low < high) \{}
+\DoxyCodeLine{492             uint32\_t mid = (low+1+high)/2;}
+\DoxyCodeLine{493             \textcolor{keywordflow}{if} (msgid < mavlink\_message\_crcs[mid].msgid) \{}
+\DoxyCodeLine{494                 high = mid-\/1;}
+\DoxyCodeLine{495                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{496             \}}
+\DoxyCodeLine{497             \textcolor{keywordflow}{if} (msgid > mavlink\_message\_crcs[mid].msgid) \{}
+\DoxyCodeLine{498                 low = mid;}
+\DoxyCodeLine{499                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{500             \}}
+\DoxyCodeLine{501             low = mid;}
+\DoxyCodeLine{502             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{503         \}}
+\DoxyCodeLine{504         \textcolor{keywordflow}{if} (mavlink\_message\_crcs[low].msgid != msgid) \{}
+\DoxyCodeLine{505             \textcolor{comment}{// msgid is not in the table}}
+\DoxyCodeLine{506             \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{507         \}}
+\DoxyCodeLine{508         \textcolor{keywordflow}{return} \&mavlink\_message\_crcs[low];}
+\DoxyCodeLine{509 \}}
+\DoxyCodeLine{510 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAVLINK\_GET\_MSG\_ENTRY}}
+\DoxyCodeLine{511 }
+\DoxyCodeLine{512 \textcolor{comment}{/*}}
+\DoxyCodeLine{513 \textcolor{comment}{  return the crc\_extra value for a message}}
+\DoxyCodeLine{514 \textcolor{comment}{*/}}
+\DoxyCodeLine{515 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_a9b66b361031695e632e313cb1481db71}{mavlink\_get\_crc\_extra}}(\textcolor{keyword}{const} mavlink\_message\_t *msg)}
+\DoxyCodeLine{516 \{}
+\DoxyCodeLine{517     \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__msg__entry}{mavlink\_msg\_entry\_t}} *e = \mbox{\hyperlink{mavlink__helpers_8h_a0aa86f8c884de4668b1580592666e30b}{mavlink\_get\_msg\_entry}}(msg-\/>msgid);}
+\DoxyCodeLine{518     \textcolor{keywordflow}{return} e?e-\/>\mbox{\hyperlink{struct____mavlink__msg__entry_ab85eed6dcef2052cffb9093b4e2fb026}{crc\_extra}}:0;}
+\DoxyCodeLine{519 \}}
+\DoxyCodeLine{520 }
+\DoxyCodeLine{521 \textcolor{comment}{/*}}
+\DoxyCodeLine{522 \textcolor{comment}{  return the expected message length}}
+\DoxyCodeLine{523 \textcolor{comment}{*/}}
+\DoxyCodeLine{524 \textcolor{preprocessor}{\#define MAVLINK\_HAVE\_EXPECTED\_MESSAGE\_LENGTH}}
+\DoxyCodeLine{525 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_ae2389ec05bcac8adc6cb48e53ae13f39}{mavlink\_expected\_message\_length}}(\textcolor{keyword}{const} mavlink\_message\_t *msg)}
+\DoxyCodeLine{526 \{}
+\DoxyCodeLine{527     \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__msg__entry}{mavlink\_msg\_entry\_t}} *e = \mbox{\hyperlink{mavlink__helpers_8h_a0aa86f8c884de4668b1580592666e30b}{mavlink\_get\_msg\_entry}}(msg-\/>msgid);}
+\DoxyCodeLine{528     \textcolor{keywordflow}{return} e?e-\/>\mbox{\hyperlink{struct____mavlink__msg__entry_a694a59ebf8db1111bdc87ae20e19e57d}{msg\_len}}:0;}
+\DoxyCodeLine{529 \}}
+\DoxyCodeLine{530 }
+\DoxyCodeLine{565 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_a0e22b58900ea14d70bff3aadb38dbb3d}{mavlink\_frame\_char\_buffer}}(mavlink\_message\_t* rxmsg, }
+\DoxyCodeLine{566                                                  \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* status,}
+\DoxyCodeLine{567                                                  uint8\_t c, }
+\DoxyCodeLine{568                                                  mavlink\_message\_t* r\_message, }
+\DoxyCodeLine{569                                                  \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* r\_mavlink\_status)}
+\DoxyCodeLine{570 \{}
+\DoxyCodeLine{571     \textcolor{comment}{/* Enable this option to check the length of each message.}}
+\DoxyCodeLine{572 \textcolor{comment}{       This allows invalid messages to be caught much sooner. Use if the transmission}}
+\DoxyCodeLine{573 \textcolor{comment}{       medium is prone to missing (or extra) characters (e.g. a radio that fades in}}
+\DoxyCodeLine{574 \textcolor{comment}{       and out). Only use if the channel will only contain messages types listed in}}
+\DoxyCodeLine{575 \textcolor{comment}{       the headers.}}
+\DoxyCodeLine{576 \textcolor{comment}{    */}}
+\DoxyCodeLine{577 \textcolor{preprocessor}{\#ifdef MAVLINK\_CHECK\_MESSAGE\_LENGTH}}
+\DoxyCodeLine{578 \textcolor{preprocessor}{\#ifndef MAVLINK\_MESSAGE\_LENGTH}}
+\DoxyCodeLine{579     \textcolor{keyword}{static} \textcolor{keyword}{const} uint8\_t mavlink\_message\_lengths[256] = \mbox{\hyperlink{common_8h_aa90005429262b658c881fa203c4de208}{MAVLINK\_MESSAGE\_LENGTHS}};}
+\DoxyCodeLine{580 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_LENGTH(msgid) mavlink\_message\_lengths[msgid]}}
+\DoxyCodeLine{581 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{582 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{583 }
+\DoxyCodeLine{584     \textcolor{keywordtype}{int} bufferIndex = 0;}
+\DoxyCodeLine{585 }
+\DoxyCodeLine{586     status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a5733fde28d47e85068019eab9d10643e}{MAVLINK\_FRAMING\_INCOMPLETE}};}
+\DoxyCodeLine{587 }
+\DoxyCodeLine{588     \textcolor{keywordflow}{switch} (status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}})}
+\DoxyCodeLine{589     \{}
+\DoxyCodeLine{590     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a939d196b8931cc1955518f4f7a43bfb7}{MAVLINK\_PARSE\_STATE\_UNINIT}}:}
+\DoxyCodeLine{591     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}}:}
+\DoxyCodeLine{592         \textcolor{keywordflow}{if} (c == \mbox{\hyperlink{mavlink_8h_af97e9d670eb0963e3f3fb17a1f6bceeb}{MAVLINK\_STX}})}
+\DoxyCodeLine{593         \{}
+\DoxyCodeLine{594             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aafe7ca693d7a00daa3ced9c8fe3c0f8b}{MAVLINK\_PARSE\_STATE\_GOT\_STX}};}
+\DoxyCodeLine{595             rxmsg-\/>len = 0;}
+\DoxyCodeLine{596             rxmsg-\/>magic = c;}
+\DoxyCodeLine{597                         status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \&= \string~MAVLINK\_STATUS\_FLAG\_IN\_MAVLINK1;}
+\DoxyCodeLine{598             \mbox{\hyperlink{mavlink__helpers_8h_ae7cbde569213151151d20c3766edd244}{mavlink\_start\_checksum}}(rxmsg);}
+\DoxyCodeLine{599         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (c == \mbox{\hyperlink{mavlink__types_8h_ae0c516ced77f74d4dcc67dae1a3d6816}{MAVLINK\_STX\_MAVLINK1}})}
+\DoxyCodeLine{600         \{}
+\DoxyCodeLine{601             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aafe7ca693d7a00daa3ced9c8fe3c0f8b}{MAVLINK\_PARSE\_STATE\_GOT\_STX}};}
+\DoxyCodeLine{602             rxmsg-\/>len = 0;}
+\DoxyCodeLine{603             rxmsg-\/>magic = c;}
+\DoxyCodeLine{604                         status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} |= \mbox{\hyperlink{mavlink__types_8h_abd8283d011bc0d66aa2fc9955d32c708}{MAVLINK\_STATUS\_FLAG\_IN\_MAVLINK1}};}
+\DoxyCodeLine{605             \mbox{\hyperlink{mavlink__helpers_8h_ae7cbde569213151151d20c3766edd244}{mavlink\_start\_checksum}}(rxmsg);}
+\DoxyCodeLine{606         \}}
+\DoxyCodeLine{607         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{608 }
+\DoxyCodeLine{609     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aafe7ca693d7a00daa3ced9c8fe3c0f8b}{MAVLINK\_PARSE\_STATE\_GOT\_STX}}:}
+\DoxyCodeLine{610             \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} }
+\DoxyCodeLine{611 \textcolor{comment}{/* Support shorter buffers than the}}
+\DoxyCodeLine{612 \textcolor{comment}{   default maximum packet size */}}
+\DoxyCodeLine{613 \#\mbox{\hyperlink{_p_x4_flow_8cpp_aa97707a0fb5c428dc2c90519b2a43486}{if}} (\mbox{\hyperlink{mavlink__types_8h_acdb4be921d71a2d1c5b63467c58bd08e}{MAVLINK\_MAX\_PAYLOAD\_LEN}} < 255)}
+\DoxyCodeLine{614                 || c > \mbox{\hyperlink{mavlink__types_8h_acdb4be921d71a2d1c5b63467c58bd08e}{MAVLINK\_MAX\_PAYLOAD\_LEN}}}
+\DoxyCodeLine{615 \#endif}
+\DoxyCodeLine{616                 )}
+\DoxyCodeLine{617         \{}
+\DoxyCodeLine{618             status-\/>\mbox{\hyperlink{struct____mavlink__status_ae0ceb5a136021ee78c953f2e86d772cb}{buffer\_overrun}}++;}
+\DoxyCodeLine{619             \_mav\_parse\_error(status);}
+\DoxyCodeLine{620             status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = 0;}
+\DoxyCodeLine{621             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{622         \}}
+\DoxyCodeLine{623         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{624         \{}
+\DoxyCodeLine{625             \textcolor{comment}{// NOT counting STX, LENGTH, SEQ, SYSID, COMPID, MSGID, CRC1 and CRC2}}
+\DoxyCodeLine{626             rxmsg-\/>len = c;}
+\DoxyCodeLine{627             status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}} = 0;}
+\DoxyCodeLine{628             \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{629                         \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_abd8283d011bc0d66aa2fc9955d32c708}{MAVLINK\_STATUS\_FLAG\_IN\_MAVLINK1}}) \{}
+\DoxyCodeLine{630                             rxmsg-\/>incompat\_flags = 0;}
+\DoxyCodeLine{631                             rxmsg-\/>compat\_flags = 0;}
+\DoxyCodeLine{632                             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a76bada2b3d4366042154c7cf7dcb31f8}{MAVLINK\_PARSE\_STATE\_GOT\_COMPAT\_FLAGS}};}
+\DoxyCodeLine{633                         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{634                             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a4b9ad9e12be9111207da32d6630d91d7}{MAVLINK\_PARSE\_STATE\_GOT\_LENGTH}};}
+\DoxyCodeLine{635                         \}}
+\DoxyCodeLine{636         \}}
+\DoxyCodeLine{637         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{638 }
+\DoxyCodeLine{639     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a4b9ad9e12be9111207da32d6630d91d7}{MAVLINK\_PARSE\_STATE\_GOT\_LENGTH}}:}
+\DoxyCodeLine{640         rxmsg-\/>incompat\_flags = c;}
+\DoxyCodeLine{641         \textcolor{keywordflow}{if} ((rxmsg-\/>incompat\_flags \& \string~\mbox{\hyperlink{mavlink__types_8h_a71da2b39f2359e150cd3b8bb07c87ec1}{MAVLINK\_IFLAG\_MASK}}) != 0) \{}
+\DoxyCodeLine{642             \textcolor{comment}{// message includes an incompatible feature flag}}
+\DoxyCodeLine{643             \_mav\_parse\_error(status);}
+\DoxyCodeLine{644             status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = 0;}
+\DoxyCodeLine{645             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{646             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{647         \}}
+\DoxyCodeLine{648         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{649         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a518457f4678af167fae567adbd6beab1}{MAVLINK\_PARSE\_STATE\_GOT\_INCOMPAT\_FLAGS}};}
+\DoxyCodeLine{650         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{651 }
+\DoxyCodeLine{652     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a518457f4678af167fae567adbd6beab1}{MAVLINK\_PARSE\_STATE\_GOT\_INCOMPAT\_FLAGS}}:}
+\DoxyCodeLine{653         rxmsg-\/>compat\_flags = c;}
+\DoxyCodeLine{654         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{655         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a76bada2b3d4366042154c7cf7dcb31f8}{MAVLINK\_PARSE\_STATE\_GOT\_COMPAT\_FLAGS}};}
+\DoxyCodeLine{656         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{657 }
+\DoxyCodeLine{658     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a76bada2b3d4366042154c7cf7dcb31f8}{MAVLINK\_PARSE\_STATE\_GOT\_COMPAT\_FLAGS}}:}
+\DoxyCodeLine{659         rxmsg-\/>seq = c;}
+\DoxyCodeLine{660         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{661         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a32d7342759d61c0cbb956aeb09b065cb}{MAVLINK\_PARSE\_STATE\_GOT\_SEQ}};}
+\DoxyCodeLine{662         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{663                 }
+\DoxyCodeLine{664     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a32d7342759d61c0cbb956aeb09b065cb}{MAVLINK\_PARSE\_STATE\_GOT\_SEQ}}:}
+\DoxyCodeLine{665         rxmsg-\/>sysid = c;}
+\DoxyCodeLine{666         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{667         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a6eff5ca7b6c333bda21347e31cce0430}{MAVLINK\_PARSE\_STATE\_GOT\_SYSID}};}
+\DoxyCodeLine{668         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{669 }
+\DoxyCodeLine{670     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a6eff5ca7b6c333bda21347e31cce0430}{MAVLINK\_PARSE\_STATE\_GOT\_SYSID}}:}
+\DoxyCodeLine{671         rxmsg-\/>compid = c;}
+\DoxyCodeLine{672         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{673                 status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1abdacceb394b783c6beb689b1f25fb6f6}{MAVLINK\_PARSE\_STATE\_GOT\_COMPID}};}
+\DoxyCodeLine{674         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{675 }
+\DoxyCodeLine{676     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1abdacceb394b783c6beb689b1f25fb6f6}{MAVLINK\_PARSE\_STATE\_GOT\_COMPID}}:}
+\DoxyCodeLine{677         rxmsg-\/>msgid = c;}
+\DoxyCodeLine{678         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{679                 \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_abd8283d011bc0d66aa2fc9955d32c708}{MAVLINK\_STATUS\_FLAG\_IN\_MAVLINK1}}) \{}
+\DoxyCodeLine{680                     \textcolor{keywordflow}{if}(rxmsg-\/>len > 0)\{}
+\DoxyCodeLine{681                         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a2e59b10e893077c17d4839ab079dc9ea}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID3}};}
+\DoxyCodeLine{682                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{683                         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a70250545e55394bc86332ff29f82e8bf}{MAVLINK\_PARSE\_STATE\_GOT\_PAYLOAD}};}
+\DoxyCodeLine{684                     \}}
+\DoxyCodeLine{685 \textcolor{preprocessor}{\#ifdef MAVLINK\_CHECK\_MESSAGE\_LENGTH}}
+\DoxyCodeLine{686                     \textcolor{keywordflow}{if} (rxmsg-\/>len != MAVLINK\_MESSAGE\_LENGTH(rxmsg-\/>msgid))}
+\DoxyCodeLine{687                     \{}
+\DoxyCodeLine{688             \_mav\_parse\_error(status);}
+\DoxyCodeLine{689             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{690             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{691                     \}}
+\DoxyCodeLine{692 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{693                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{694                     status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a1219128bff8717007397ad3957414093}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID1}};}
+\DoxyCodeLine{695                 \}}
+\DoxyCodeLine{696         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{697 }
+\DoxyCodeLine{698     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a1219128bff8717007397ad3957414093}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID1}}:}
+\DoxyCodeLine{699         rxmsg-\/>msgid |= c<<8;}
+\DoxyCodeLine{700         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{701         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aa064720fcc66e5393294f6086fe5333f}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID2}};}
+\DoxyCodeLine{702         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{703 }
+\DoxyCodeLine{704     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aa064720fcc66e5393294f6086fe5333f}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID2}}:}
+\DoxyCodeLine{705         rxmsg-\/>msgid |= ((uint32\_t)c)<<16;}
+\DoxyCodeLine{706         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{707         \textcolor{keywordflow}{if}(rxmsg-\/>len > 0)\{}
+\DoxyCodeLine{708             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a2e59b10e893077c17d4839ab079dc9ea}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID3}};}
+\DoxyCodeLine{709         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{710             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a70250545e55394bc86332ff29f82e8bf}{MAVLINK\_PARSE\_STATE\_GOT\_PAYLOAD}};}
+\DoxyCodeLine{711         \}}
+\DoxyCodeLine{712 \textcolor{preprocessor}{\#ifdef MAVLINK\_CHECK\_MESSAGE\_LENGTH}}
+\DoxyCodeLine{713             \textcolor{keywordflow}{if} (rxmsg-\/>len != MAVLINK\_MESSAGE\_LENGTH(rxmsg-\/>msgid))}
+\DoxyCodeLine{714         \{}
+\DoxyCodeLine{715             \_mav\_parse\_error(status);}
+\DoxyCodeLine{716             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{717             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{718                 \}}
+\DoxyCodeLine{719 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{720         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{721                 }
+\DoxyCodeLine{722     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a2e59b10e893077c17d4839ab079dc9ea}{MAVLINK\_PARSE\_STATE\_GOT\_MSGID3}}:}
+\DoxyCodeLine{723         \mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(rxmsg)[status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}}++] = (char)c;}
+\DoxyCodeLine{724         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, c);}
+\DoxyCodeLine{725         \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}} == rxmsg-\/>len)}
+\DoxyCodeLine{726         \{}
+\DoxyCodeLine{727             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a70250545e55394bc86332ff29f82e8bf}{MAVLINK\_PARSE\_STATE\_GOT\_PAYLOAD}};}
+\DoxyCodeLine{728         \}}
+\DoxyCodeLine{729         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{730 }
+\DoxyCodeLine{731     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a70250545e55394bc86332ff29f82e8bf}{MAVLINK\_PARSE\_STATE\_GOT\_PAYLOAD}}: \{}
+\DoxyCodeLine{732         \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__msg__entry}{mavlink\_msg\_entry\_t}} *e = \mbox{\hyperlink{mavlink__helpers_8h_a0aa86f8c884de4668b1580592666e30b}{mavlink\_get\_msg\_entry}}(rxmsg-\/>msgid);}
+\DoxyCodeLine{733         uint8\_t crc\_extra = e?e-\/>\mbox{\hyperlink{struct____mavlink__msg__entry_ab85eed6dcef2052cffb9093b4e2fb026}{crc\_extra}}:0;}
+\DoxyCodeLine{734         \mbox{\hyperlink{mavlink__helpers_8h_a3293deb7b51f9a9f0b30bf56c8739593}{mavlink\_update\_checksum}}(rxmsg, crc\_extra);}
+\DoxyCodeLine{735         \textcolor{keywordflow}{if} (c != (rxmsg-\/>checksum \& 0xFF)) \{}
+\DoxyCodeLine{736             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aae8c53898458dbd2f91e194b99ee8e68}{MAVLINK\_PARSE\_STATE\_GOT\_BAD\_CRC1}};}
+\DoxyCodeLine{737         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{738             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a6da96e625309597402e5e97699207469}{MAVLINK\_PARSE\_STATE\_GOT\_CRC1}};}
+\DoxyCodeLine{739         \}}
+\DoxyCodeLine{740                 rxmsg-\/>ck[0] = c;}
+\DoxyCodeLine{741 }
+\DoxyCodeLine{742         \textcolor{comment}{// zero-\/fill the packet to cope with short incoming packets}}
+\DoxyCodeLine{743         \textcolor{keywordflow}{if} (e \&\& status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}} < e-\/>\mbox{\hyperlink{struct____mavlink__msg__entry_a694a59ebf8db1111bdc87ae20e19e57d}{msg\_len}}) \{}
+\DoxyCodeLine{744             memset(\&\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(rxmsg)[status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}}], 0, e-\/>\mbox{\hyperlink{struct____mavlink__msg__entry_a694a59ebf8db1111bdc87ae20e19e57d}{msg\_len}} -\/ status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}});}
+\DoxyCodeLine{745         \}}
+\DoxyCodeLine{746         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{747         \}}
+\DoxyCodeLine{748 }
+\DoxyCodeLine{749     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a6da96e625309597402e5e97699207469}{MAVLINK\_PARSE\_STATE\_GOT\_CRC1}}:}
+\DoxyCodeLine{750     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aae8c53898458dbd2f91e194b99ee8e68}{MAVLINK\_PARSE\_STATE\_GOT\_BAD\_CRC1}}:}
+\DoxyCodeLine{751         \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} == \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aae8c53898458dbd2f91e194b99ee8e68}{MAVLINK\_PARSE\_STATE\_GOT\_BAD\_CRC1}} || c != (rxmsg-\/>checksum >> 8)) \{}
+\DoxyCodeLine{752             \textcolor{comment}{// got a bad CRC message}}
+\DoxyCodeLine{753             status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a99e415392cf893009bc8262f19ec2954}{MAVLINK\_FRAMING\_BAD\_CRC}};}
+\DoxyCodeLine{754         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{755             \textcolor{comment}{// Successfully got message}}
+\DoxyCodeLine{756             status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a0d71e3a0df12784f07a8ae12b5efed75}{MAVLINK\_FRAMING\_OK}};}
+\DoxyCodeLine{757         \}}
+\DoxyCodeLine{758         rxmsg-\/>ck[1] = c;}
+\DoxyCodeLine{759 }
+\DoxyCodeLine{760         \textcolor{keywordflow}{if} (rxmsg-\/>incompat\_flags \& \mbox{\hyperlink{mavlink__types_8h_a4a189e27b7ad4e9fc6265d848e270cf2}{MAVLINK\_IFLAG\_SIGNED}}) \{}
+\DoxyCodeLine{761             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a9eb5c868cdc345361a3ecded133af6cb}{MAVLINK\_PARSE\_STATE\_SIGNATURE\_WAIT}};}
+\DoxyCodeLine{762             status-\/>\mbox{\hyperlink{struct____mavlink__status_afbdd26652864ceeccf1155287752496c}{signature\_wait}} = \mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}};}
+\DoxyCodeLine{763 }
+\DoxyCodeLine{764             \textcolor{comment}{// If the CRC is already wrong, don't overwrite msg\_received,}}
+\DoxyCodeLine{765             \textcolor{comment}{// otherwise we can end up with garbage flagged as valid.}}
+\DoxyCodeLine{766             \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} != \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a99e415392cf893009bc8262f19ec2954}{MAVLINK\_FRAMING\_BAD\_CRC}}) \{}
+\DoxyCodeLine{767                 status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a5733fde28d47e85068019eab9d10643e}{MAVLINK\_FRAMING\_INCOMPLETE}};}
+\DoxyCodeLine{768             \}}
+\DoxyCodeLine{769         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{770             \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}} \&\&}
+\DoxyCodeLine{771                 (status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}-\/>\mbox{\hyperlink{struct____mavlink__signing_a74f675ae2e09c5a793c06d5005cd7d1b}{accept\_unsigned\_callback}} == NULL ||}
+\DoxyCodeLine{772                  !status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}-\/>\mbox{\hyperlink{struct____mavlink__signing_a74f675ae2e09c5a793c06d5005cd7d1b}{accept\_unsigned\_callback}}(status, rxmsg-\/>msgid))) \{}
+\DoxyCodeLine{773 }
+\DoxyCodeLine{774                 \textcolor{comment}{// If the CRC is already wrong, don't overwrite msg\_received.}}
+\DoxyCodeLine{775                 \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} != \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a99e415392cf893009bc8262f19ec2954}{MAVLINK\_FRAMING\_BAD\_CRC}}) \{}
+\DoxyCodeLine{776                     status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1ab815d4e6060c843954ef41f95add3a0b}{MAVLINK\_FRAMING\_BAD\_SIGNATURE}};}
+\DoxyCodeLine{777                 \}}
+\DoxyCodeLine{778             \}}
+\DoxyCodeLine{779             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{780             memcpy(r\_message, rxmsg, \textcolor{keyword}{sizeof}(mavlink\_message\_t));}
+\DoxyCodeLine{781         \}}
+\DoxyCodeLine{782         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{783     \textcolor{keywordflow}{case} \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a9eb5c868cdc345361a3ecded133af6cb}{MAVLINK\_PARSE\_STATE\_SIGNATURE\_WAIT}}:}
+\DoxyCodeLine{784         rxmsg-\/>signature[\mbox{\hyperlink{mavlink__types_8h_ac7ac67a62d03dcc9304716d6baee3fdb}{MAVLINK\_SIGNATURE\_BLOCK\_LEN}}-\/status-\/>\mbox{\hyperlink{struct____mavlink__status_afbdd26652864ceeccf1155287752496c}{signature\_wait}}] = c;}
+\DoxyCodeLine{785         status-\/>\mbox{\hyperlink{struct____mavlink__status_afbdd26652864ceeccf1155287752496c}{signature\_wait}}-\/-\/;}
+\DoxyCodeLine{786         \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_afbdd26652864ceeccf1155287752496c}{signature\_wait}} == 0) \{}
+\DoxyCodeLine{787             \textcolor{comment}{// we have the whole signature, check it is OK}}
+\DoxyCodeLine{788             \textcolor{keywordtype}{bool} sig\_ok = \mbox{\hyperlink{mavlink__helpers_8h_aef5e43c5ddc1fe12fe4549a695e8ec32}{mavlink\_signature\_check}}(status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}, status-\/>\mbox{\hyperlink{struct____mavlink__status_ab0e29fe56be92a4bbd722529ac76bd84}{signing\_streams}}, rxmsg);}
+\DoxyCodeLine{789             \textcolor{keywordflow}{if} (!sig\_ok \&\&}
+\DoxyCodeLine{790                 (status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}-\/>\mbox{\hyperlink{struct____mavlink__signing_a74f675ae2e09c5a793c06d5005cd7d1b}{accept\_unsigned\_callback}} \&\&}
+\DoxyCodeLine{791                  status-\/>\mbox{\hyperlink{struct____mavlink__status_a12ca1a2ade1b6b83d87a8cd7553884a9}{signing}}-\/>\mbox{\hyperlink{struct____mavlink__signing_a74f675ae2e09c5a793c06d5005cd7d1b}{accept\_unsigned\_callback}}(status, rxmsg-\/>msgid))) \{}
+\DoxyCodeLine{792                 \textcolor{comment}{// accepted via application level override}}
+\DoxyCodeLine{793                 sig\_ok = \textcolor{keyword}{true};}
+\DoxyCodeLine{794             \}}
+\DoxyCodeLine{795             \textcolor{keywordflow}{if} (sig\_ok) \{}
+\DoxyCodeLine{796                 status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a0d71e3a0df12784f07a8ae12b5efed75}{MAVLINK\_FRAMING\_OK}};}
+\DoxyCodeLine{797             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{798                 status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1ab815d4e6060c843954ef41f95add3a0b}{MAVLINK\_FRAMING\_BAD\_SIGNATURE}};}
+\DoxyCodeLine{799             \}}
+\DoxyCodeLine{800             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{801             memcpy(r\_message, rxmsg, \textcolor{keyword}{sizeof}(mavlink\_message\_t));}
+\DoxyCodeLine{802         \}}
+\DoxyCodeLine{803         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{804     \}}
+\DoxyCodeLine{805 }
+\DoxyCodeLine{806     bufferIndex++;}
+\DoxyCodeLine{807     \textcolor{comment}{// If a message has been sucessfully decoded, check index}}
+\DoxyCodeLine{808     \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} == \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a0d71e3a0df12784f07a8ae12b5efed75}{MAVLINK\_FRAMING\_OK}})}
+\DoxyCodeLine{809     \{}
+\DoxyCodeLine{810         \textcolor{comment}{//while(status-\/>current\_seq != rxmsg-\/>seq)}}
+\DoxyCodeLine{811         \textcolor{comment}{//\{}}
+\DoxyCodeLine{812         \textcolor{comment}{//  status-\/>packet\_rx\_drop\_count++;}}
+\DoxyCodeLine{813         \textcolor{comment}{//               status-\/>current\_seq++;}}
+\DoxyCodeLine{814         \textcolor{comment}{//\}}}
+\DoxyCodeLine{815         status-\/>\mbox{\hyperlink{struct____mavlink__status_affbdd32b3dff8ae35327a79ed6b17646}{current\_rx\_seq}} = rxmsg-\/>seq;}
+\DoxyCodeLine{816         \textcolor{comment}{// Initial condition: If no packet has been received so far, drop count is undefined}}
+\DoxyCodeLine{817         \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_aa088f67773cdf9ff541c5880e65cee68}{packet\_rx\_success\_count}} == 0) status-\/>\mbox{\hyperlink{struct____mavlink__status_a1a1f510b9484e705c971f20fd1d61912}{packet\_rx\_drop\_count}} = 0;}
+\DoxyCodeLine{818         \textcolor{comment}{// Count this packet as received}}
+\DoxyCodeLine{819         status-\/>\mbox{\hyperlink{struct____mavlink__status_aa088f67773cdf9ff541c5880e65cee68}{packet\_rx\_success\_count}}++;}
+\DoxyCodeLine{820     \}}
+\DoxyCodeLine{821 }
+\DoxyCodeLine{822        \textcolor{keywordflow}{if} (NULL != r\_message) \{}
+\DoxyCodeLine{823            r\_message-\/>len = rxmsg-\/>len; \textcolor{comment}{// Provide visibility on how far we are into current msg}}
+\DoxyCodeLine{824        \}}
+\DoxyCodeLine{825        \textcolor{keywordflow}{if} (NULL != r\_mavlink\_status) \{  }
+\DoxyCodeLine{826            r\_mavlink\_status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}};}
+\DoxyCodeLine{827            r\_mavlink\_status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_a3e582235849323267974003eb1793e25}{packet\_idx}};}
+\DoxyCodeLine{828            r\_mavlink\_status-\/>\mbox{\hyperlink{struct____mavlink__status_affbdd32b3dff8ae35327a79ed6b17646}{current\_rx\_seq}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_affbdd32b3dff8ae35327a79ed6b17646}{current\_rx\_seq}}+1;}
+\DoxyCodeLine{829            r\_mavlink\_status-\/>\mbox{\hyperlink{struct____mavlink__status_aa088f67773cdf9ff541c5880e65cee68}{packet\_rx\_success\_count}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_aa088f67773cdf9ff541c5880e65cee68}{packet\_rx\_success\_count}};}
+\DoxyCodeLine{830            r\_mavlink\_status-\/>\mbox{\hyperlink{struct____mavlink__status_a1a1f510b9484e705c971f20fd1d61912}{packet\_rx\_drop\_count}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_ae7a52aa0c84929dbf181220c689f9ec8}{parse\_error}};}
+\DoxyCodeLine{831            r\_mavlink\_status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} = status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}};}
+\DoxyCodeLine{832        \}}
+\DoxyCodeLine{833        status-\/>\mbox{\hyperlink{struct____mavlink__status_ae7a52aa0c84929dbf181220c689f9ec8}{parse\_error}} = 0;}
+\DoxyCodeLine{834 }
+\DoxyCodeLine{835     \textcolor{keywordflow}{if} (status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} == \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a99e415392cf893009bc8262f19ec2954}{MAVLINK\_FRAMING\_BAD\_CRC}}) \{}
+\DoxyCodeLine{836         \textcolor{comment}{/*}}
+\DoxyCodeLine{837 \textcolor{comment}{          the CRC came out wrong. We now need to overwrite the}}
+\DoxyCodeLine{838 \textcolor{comment}{          msg CRC with the one on the wire so that if the}}
+\DoxyCodeLine{839 \textcolor{comment}{          caller decides to forward the message anyway that}}
+\DoxyCodeLine{840 \textcolor{comment}{          mavlink\_msg\_to\_send\_buffer() won't overwrite the}}
+\DoxyCodeLine{841 \textcolor{comment}{          checksum}}
+\DoxyCodeLine{842 \textcolor{comment}{         */}}
+\DoxyCodeLine{843             \textcolor{keywordflow}{if} (NULL != r\_message) \{}
+\DoxyCodeLine{844                 r\_message-\/>checksum = rxmsg-\/>ck[0] | (rxmsg-\/>ck[1]<<8);}
+\DoxyCodeLine{845             \}}
+\DoxyCodeLine{846     \}}
+\DoxyCodeLine{847 }
+\DoxyCodeLine{848     \textcolor{keywordflow}{return} status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}};}
+\DoxyCodeLine{849 \}}
+\DoxyCodeLine{850 }
+\DoxyCodeLine{892 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_ab9ea03db8cd45ce94b64b508b087ebe6}{mavlink\_frame\_char}}(uint8\_t chan, uint8\_t c, mavlink\_message\_t* r\_message, \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* r\_mavlink\_status)}
+\DoxyCodeLine{893 \{}
+\DoxyCodeLine{894     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a0e22b58900ea14d70bff3aadb38dbb3d}{mavlink\_frame\_char\_buffer}}(\mbox{\hyperlink{mavlink__helpers_8h_a149eb9e173ac477f46b8886dec6a385e}{mavlink\_get\_channel\_buffer}}(chan),}
+\DoxyCodeLine{895                      \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan),}
+\DoxyCodeLine{896                      c,}
+\DoxyCodeLine{897                      r\_message,}
+\DoxyCodeLine{898                      r\_mavlink\_status);}
+\DoxyCodeLine{899 \}}
+\DoxyCodeLine{900 }
+\DoxyCodeLine{904 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__helpers_8h_a51eb86d1ef59cd0ed3973b4de307067e}{mavlink\_set\_proto\_version}}(uint8\_t chan, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version)}
+\DoxyCodeLine{905 \{}
+\DoxyCodeLine{906     \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status = \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan);}
+\DoxyCodeLine{907     \textcolor{keywordflow}{if} (version > 1) \{}
+\DoxyCodeLine{908         status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \&= \string~(\mbox{\hyperlink{mavlink__types_8h_afc85e2f2bc8ba350dbce678710d64619}{MAVLINK\_STATUS\_FLAG\_OUT\_MAVLINK1}});}
+\DoxyCodeLine{909     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{910         status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} |= \mbox{\hyperlink{mavlink__types_8h_afc85e2f2bc8ba350dbce678710d64619}{MAVLINK\_STATUS\_FLAG\_OUT\_MAVLINK1}};}
+\DoxyCodeLine{911     \}}
+\DoxyCodeLine{912 \}}
+\DoxyCodeLine{913 }
+\DoxyCodeLine{919 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{mavlink__helpers_8h_af5ff1c0936ef3c1831f30b2e28ab01c6}{mavlink\_get\_proto\_version}}(uint8\_t chan)}
+\DoxyCodeLine{920 \{}
+\DoxyCodeLine{921     \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}} *status = \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan);}
+\DoxyCodeLine{922     \textcolor{keywordflow}{if} ((status-\/>\mbox{\hyperlink{struct____mavlink__status_a2b67d268b29712b9607d1796228a77a2}{flags}} \& \mbox{\hyperlink{mavlink__types_8h_afc85e2f2bc8ba350dbce678710d64619}{MAVLINK\_STATUS\_FLAG\_OUT\_MAVLINK1}}) > 0) \{}
+\DoxyCodeLine{923         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{924     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{925         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{926     \}}
+\DoxyCodeLine{927 \}}
+\DoxyCodeLine{928 }
+\DoxyCodeLine{969 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_ad91e8323cefc65965574c09e72365d7d}{mavlink\_parse\_char}}(uint8\_t chan, uint8\_t c, mavlink\_message\_t* r\_message, \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* r\_mavlink\_status)}
+\DoxyCodeLine{970 \{}
+\DoxyCodeLine{971     uint8\_t msg\_received = \mbox{\hyperlink{mavlink__helpers_8h_ab9ea03db8cd45ce94b64b508b087ebe6}{mavlink\_frame\_char}}(chan, c, r\_message, r\_mavlink\_status);}
+\DoxyCodeLine{972     \textcolor{keywordflow}{if} (msg\_received == \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a99e415392cf893009bc8262f19ec2954}{MAVLINK\_FRAMING\_BAD\_CRC}} ||}
+\DoxyCodeLine{973     msg\_received == \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1ab815d4e6060c843954ef41f95add3a0b}{MAVLINK\_FRAMING\_BAD\_SIGNATURE}}) \{}
+\DoxyCodeLine{974         \textcolor{comment}{// we got a bad CRC. Treat as a parse failure}}
+\DoxyCodeLine{975         mavlink\_message\_t* rxmsg = \mbox{\hyperlink{mavlink__helpers_8h_a149eb9e173ac477f46b8886dec6a385e}{mavlink\_get\_channel\_buffer}}(chan);}
+\DoxyCodeLine{976         \mbox{\hyperlink{struct____mavlink__status}{mavlink\_status\_t}}* status = \mbox{\hyperlink{mavlink__helpers_8h_a5c933291bb5d4457ecb9d96c7ea18861}{mavlink\_get\_channel\_status}}(chan);}
+\DoxyCodeLine{977         \_mav\_parse\_error(status);}
+\DoxyCodeLine{978         status-\/>\mbox{\hyperlink{struct____mavlink__status_a183576e45facc9da8123b7866d458680}{msg\_received}} = \mbox{\hyperlink{mavlink__types_8h_a1c9d33c76dd3243f6bfe75ee078afff1a5733fde28d47e85068019eab9d10643e}{MAVLINK\_FRAMING\_INCOMPLETE}};}
+\DoxyCodeLine{979         status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1a0b9cd6ff26b5b2a126182a7897456444}{MAVLINK\_PARSE\_STATE\_IDLE}};}
+\DoxyCodeLine{980         \textcolor{keywordflow}{if} (c == \mbox{\hyperlink{mavlink_8h_af97e9d670eb0963e3f3fb17a1f6bceeb}{MAVLINK\_STX}})}
+\DoxyCodeLine{981         \{}
+\DoxyCodeLine{982             status-\/>\mbox{\hyperlink{struct____mavlink__status_aaf6742a61bbc641a4600184b3260fa0f}{parse\_state}} = \mbox{\hyperlink{mavlink__types_8h_a4eeb14ddb07e997fe1d671d6823e35a1aafe7ca693d7a00daa3ced9c8fe3c0f8b}{MAVLINK\_PARSE\_STATE\_GOT\_STX}};}
+\DoxyCodeLine{983             rxmsg-\/>len = 0;}
+\DoxyCodeLine{984             \mbox{\hyperlink{mavlink__helpers_8h_ae7cbde569213151151d20c3766edd244}{mavlink\_start\_checksum}}(rxmsg);}
+\DoxyCodeLine{985         \}}
+\DoxyCodeLine{986         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{987     \}}
+\DoxyCodeLine{988     \textcolor{keywordflow}{return} msg\_received;}
+\DoxyCodeLine{989 \}}
+\DoxyCodeLine{990 }
+\DoxyCodeLine{1001 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} uint8\_t \mbox{\hyperlink{mavlink__helpers_8h_ad102a58f323758552a9c439c1ede4403}{put\_bitfield\_n\_by\_index}}(int32\_t b, uint8\_t bits, uint8\_t packet\_index, uint8\_t bit\_index, uint8\_t* r\_bit\_index, uint8\_t* buffer)}
+\DoxyCodeLine{1002 \{}
+\DoxyCodeLine{1003     uint16\_t bits\_remain = bits;}
+\DoxyCodeLine{1004     \textcolor{comment}{// Transform number into network order}}
+\DoxyCodeLine{1005     int32\_t v;}
+\DoxyCodeLine{1006     uint8\_t i\_bit\_index, i\_byte\_index, curr\_bits\_n;}
+\DoxyCodeLine{1007 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP}}
+\DoxyCodeLine{1008     \textcolor{keyword}{union }\{}
+\DoxyCodeLine{1009         int32\_t i;}
+\DoxyCodeLine{1010         uint8\_t b[4];}
+\DoxyCodeLine{1011     \} bin, bout;}
+\DoxyCodeLine{1012     bin.i = b;}
+\DoxyCodeLine{1013     bout.b[0] = bin.b[3];}
+\DoxyCodeLine{1014     bout.b[1] = bin.b[2];}
+\DoxyCodeLine{1015     bout.b[2] = bin.b[1];}
+\DoxyCodeLine{1016     bout.b[3] = bin.b[0];}
+\DoxyCodeLine{1017     v = bout.i;}
+\DoxyCodeLine{1018 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{1019     v = b;}
+\DoxyCodeLine{1020 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{1021 }
+\DoxyCodeLine{1022     \textcolor{comment}{// buffer in}}
+\DoxyCodeLine{1023     \textcolor{comment}{// 01100000 01000000 00000000 11110001}}
+\DoxyCodeLine{1024     \textcolor{comment}{// buffer out}}
+\DoxyCodeLine{1025     \textcolor{comment}{// 11110001 00000000 01000000 01100000}}
+\DoxyCodeLine{1026 }
+\DoxyCodeLine{1027     \textcolor{comment}{// Existing partly filled byte (four free slots)}}
+\DoxyCodeLine{1028     \textcolor{comment}{// 0111xxxx}}
+\DoxyCodeLine{1029 }
+\DoxyCodeLine{1030     \textcolor{comment}{// Mask n free bits}}
+\DoxyCodeLine{1031     \textcolor{comment}{// 00001111 = 2\string^0 + 2\string^1 + 2\string^2 + 2\string^3 = 2\string^n -\/ 1}}
+\DoxyCodeLine{1032     \textcolor{comment}{// = ((uint32\_t)(1 << n)) -\/ 1; // = 2\string^n -\/ 1}}
+\DoxyCodeLine{1033 }
+\DoxyCodeLine{1034     \textcolor{comment}{// Shift n bits into the right position}}
+\DoxyCodeLine{1035     \textcolor{comment}{// out = in >> n;}}
+\DoxyCodeLine{1036 }
+\DoxyCodeLine{1037     \textcolor{comment}{// Mask and shift bytes}}
+\DoxyCodeLine{1038     i\_bit\_index = bit\_index;}
+\DoxyCodeLine{1039     i\_byte\_index = packet\_index;}
+\DoxyCodeLine{1040     \textcolor{keywordflow}{if} (bit\_index > 0)}
+\DoxyCodeLine{1041     \{}
+\DoxyCodeLine{1042         \textcolor{comment}{// If bits were available at start, they were available}}
+\DoxyCodeLine{1043         \textcolor{comment}{// in the byte before the current index}}
+\DoxyCodeLine{1044         i\_byte\_index-\/-\/;}
+\DoxyCodeLine{1045     \}}
+\DoxyCodeLine{1046 }
+\DoxyCodeLine{1047     \textcolor{comment}{// While bits have not been packed yet}}
+\DoxyCodeLine{1048     \textcolor{keywordflow}{while} (bits\_remain > 0)}
+\DoxyCodeLine{1049     \{}
+\DoxyCodeLine{1050         \textcolor{comment}{// Bits still have to be packed}}
+\DoxyCodeLine{1051         \textcolor{comment}{// there can be more than 8 bits, so}}
+\DoxyCodeLine{1052         \textcolor{comment}{// we might have to pack them into more than one byte}}
+\DoxyCodeLine{1053 }
+\DoxyCodeLine{1054         \textcolor{comment}{// First pack everything we can into the current 'open' byte}}
+\DoxyCodeLine{1055         \textcolor{comment}{//curr\_bits\_n = bits\_remain << 3; // Equals  bits\_remain mod 8}}
+\DoxyCodeLine{1056         \textcolor{comment}{//FIXME}}
+\DoxyCodeLine{1057         \textcolor{keywordflow}{if} (bits\_remain <= (uint8\_t)(8 -\/ i\_bit\_index))}
+\DoxyCodeLine{1058         \{}
+\DoxyCodeLine{1059             \textcolor{comment}{// Enough space}}
+\DoxyCodeLine{1060             curr\_bits\_n = (uint8\_t)bits\_remain;}
+\DoxyCodeLine{1061         \}}
+\DoxyCodeLine{1062         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{1063         \{}
+\DoxyCodeLine{1064             curr\_bits\_n = (8 -\/ i\_bit\_index);}
+\DoxyCodeLine{1065         \}}
+\DoxyCodeLine{1066         }
+\DoxyCodeLine{1067         \textcolor{comment}{// Pack these n bits into the current byte}}
+\DoxyCodeLine{1068         \textcolor{comment}{// Mask out whatever was at that position with ones (xxx11111)}}
+\DoxyCodeLine{1069         buffer[i\_byte\_index] \&= (0xFF >> (8 -\/ curr\_bits\_n));}
+\DoxyCodeLine{1070         \textcolor{comment}{// Put content to this position, by masking out the non-\/used part}}
+\DoxyCodeLine{1071         buffer[i\_byte\_index] |= ((0x00 << curr\_bits\_n) \& v);}
+\DoxyCodeLine{1072         }
+\DoxyCodeLine{1073         \textcolor{comment}{// Increment the bit index}}
+\DoxyCodeLine{1074         i\_bit\_index += curr\_bits\_n;}
+\DoxyCodeLine{1075 }
+\DoxyCodeLine{1076         \textcolor{comment}{// Now proceed to the next byte, if necessary}}
+\DoxyCodeLine{1077         bits\_remain -\/= curr\_bits\_n;}
+\DoxyCodeLine{1078         \textcolor{keywordflow}{if} (bits\_remain > 0)}
+\DoxyCodeLine{1079         \{}
+\DoxyCodeLine{1080             \textcolor{comment}{// Offer another 8 bits / one byte}}
+\DoxyCodeLine{1081             i\_byte\_index++;}
+\DoxyCodeLine{1082             i\_bit\_index = 0;}
+\DoxyCodeLine{1083         \}}
+\DoxyCodeLine{1084     \}}
+\DoxyCodeLine{1085     }
+\DoxyCodeLine{1086     *r\_bit\_index = i\_bit\_index;}
+\DoxyCodeLine{1087     \textcolor{comment}{// If a partly filled byte is present, mark this as consumed}}
+\DoxyCodeLine{1088     \textcolor{keywordflow}{if} (i\_bit\_index != 7) i\_byte\_index++;}
+\DoxyCodeLine{1089     \textcolor{keywordflow}{return} i\_byte\_index -\/ packet\_index;}
+\DoxyCodeLine{1090 \}}
+\DoxyCodeLine{1091 }
+\DoxyCodeLine{1092 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{1093 }
+\DoxyCodeLine{1094 \textcolor{comment}{// To make MAVLink work on your MCU, define comm\_send\_ch() if you wish}}
+\DoxyCodeLine{1095 \textcolor{comment}{// to send 1 byte at a time, or MAVLINK\_SEND\_UART\_BYTES() to send a}}
+\DoxyCodeLine{1096 \textcolor{comment}{// whole packet at a time}}
+\DoxyCodeLine{1097 }
+\DoxyCodeLine{1098 \textcolor{comment}{/*}}
+\DoxyCodeLine{1099 \textcolor{comment}{}}
+\DoxyCodeLine{1100 \textcolor{comment}{\#include "{}mavlink\_types.h"{}}}
+\DoxyCodeLine{1101 \textcolor{comment}{}}
+\DoxyCodeLine{1102 \textcolor{comment}{void comm\_send\_ch(mavlink\_channel\_t chan, uint8\_t ch)}}
+\DoxyCodeLine{1103 \textcolor{comment}{\{}}
+\DoxyCodeLine{1104 \textcolor{comment}{    if (chan == MAVLINK\_COMM\_0)}}
+\DoxyCodeLine{1105 \textcolor{comment}{    \{}}
+\DoxyCodeLine{1106 \textcolor{comment}{        uart0\_transmit(ch);}}
+\DoxyCodeLine{1107 \textcolor{comment}{    \}}}
+\DoxyCodeLine{1108 \textcolor{comment}{    if (chan == MAVLINK\_COMM\_1)}}
+\DoxyCodeLine{1109 \textcolor{comment}{    \{}}
+\DoxyCodeLine{1110 \textcolor{comment}{        uart1\_transmit(ch);}}
+\DoxyCodeLine{1111 \textcolor{comment}{    \}}}
+\DoxyCodeLine{1112 \textcolor{comment}{\}}}
+\DoxyCodeLine{1113 \textcolor{comment}{ */}}
+\DoxyCodeLine{1114 }
+\DoxyCodeLine{1115 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \_mavlink\_send\_uart(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *buf, uint16\_t len)}
+\DoxyCodeLine{1116 \{}
+\DoxyCodeLine{1117 \textcolor{preprocessor}{\#ifdef MAVLINK\_SEND\_UART\_BYTES}}
+\DoxyCodeLine{1118     \textcolor{comment}{/* this is the more efficient approach, if the platform}}
+\DoxyCodeLine{1119 \textcolor{comment}{       defines it */}}
+\DoxyCodeLine{1120     MAVLINK\_SEND\_UART\_BYTES(chan, (\textcolor{keyword}{const} uint8\_t *)buf, len);}
+\DoxyCodeLine{1121 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{1122     \textcolor{comment}{/* fallback to one byte at a time */}}
+\DoxyCodeLine{1123     uint16\_t i;}
+\DoxyCodeLine{1124     \textcolor{keywordflow}{for} (i = 0; i < len; i++) \{}
+\DoxyCodeLine{1125         comm\_send\_ch(chan, (uint8\_t)buf[i]);}
+\DoxyCodeLine{1126     \}}
+\DoxyCodeLine{1127 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{1128 \}}
+\DoxyCodeLine{1129 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{1130 }
+\DoxyCodeLine{1131 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CXX\_NAMESPACE}}
+\DoxyCodeLine{1132 \} \textcolor{comment}{// namespace mavlink}}
+\DoxyCodeLine{1133 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

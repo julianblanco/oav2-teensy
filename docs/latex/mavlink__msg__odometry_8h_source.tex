@@ -1,0 +1,394 @@
+\hypertarget{mavlink__msg__odometry_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+odometry.\+h}
+\label{mavlink__msg__odometry_8h_source}\index{lib/common/mavlink\_msg\_odometry.h@{lib/common/mavlink\_msg\_odometry.h}}
+\mbox{\hyperlink{mavlink__msg__odometry_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE ODOMETRY PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ODOMETRY 331}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__odometry_8h_a3e8e0e44773eca6883c17f1d9ad5ed31}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_odometry\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} x; \textcolor{comment}{/*< [m] X Position*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} y; \textcolor{comment}{/*< [m] Y Position*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} z; \textcolor{comment}{/*< [m] Z Position*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} q[4]; \textcolor{comment}{/*<  Quaternion components, w, x, y, z (1 0 0 0 is the null-\/rotation)*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} vx; \textcolor{comment}{/*< [m/s] X linear speed*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} vy; \textcolor{comment}{/*< [m/s] Y linear speed*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{float} vz; \textcolor{comment}{/*< [m/s] Z linear speed*/}}
+\DoxyCodeLine{16  \textcolor{keywordtype}{float} rollspeed; \textcolor{comment}{/*< [rad/s] Roll angular speed*/}}
+\DoxyCodeLine{17  \textcolor{keywordtype}{float} pitchspeed; \textcolor{comment}{/*< [rad/s] Pitch angular speed*/}}
+\DoxyCodeLine{18  \textcolor{keywordtype}{float} yawspeed; \textcolor{comment}{/*< [rad/s] Yaw angular speed*/}}
+\DoxyCodeLine{19  \textcolor{keywordtype}{float} pose\_covariance[21]; \textcolor{comment}{/*<  Pose (states: x, y, z, roll, pitch, yaw) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)*/}}
+\DoxyCodeLine{20  \textcolor{keywordtype}{float} twist\_covariance[21]; \textcolor{comment}{/*<  Twist (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)*/}}
+\DoxyCodeLine{21  uint8\_t frame\_id; \textcolor{comment}{/*<  Coordinate frame of reference for the pose data.*/}}
+\DoxyCodeLine{22  uint8\_t child\_frame\_id; \textcolor{comment}{/*<  Coordinate frame of reference for the velocity in free space (twist) data.*/}}
+\DoxyCodeLine{23 \}) mavlink\_odometry\_t;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ODOMETRY\_LEN 230}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN 230}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_331\_LEN 230}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_331\_MIN\_LEN 230}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ODOMETRY\_CRC 58}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_331\_CRC 58}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ODOMETRY\_FIELD\_Q\_LEN 4}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ODOMETRY\_FIELD\_POSE\_COVARIANCE\_LEN 21}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ODOMETRY\_FIELD\_TWIST\_COVARIANCE\_LEN 21}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_ODOMETRY \{ \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    331, \(\backslash\)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{    "{}ODOMETRY"{}}, \(\backslash\)}
+\DoxyCodeLine{41     15, \(\backslash\)}
+\DoxyCodeLine{42     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_odometry\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}frame\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 228, offsetof(mavlink\_odometry\_t, frame\_id) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}child\_frame\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 229, offsetof(mavlink\_odometry\_t, child\_frame\_id) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_odometry\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_odometry\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_odometry\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}q"{}, NULL, MAVLINK\_TYPE\_FLOAT, 4, 20, offsetof(mavlink\_odometry\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}vx"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_odometry\_t, vx) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}vy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 40, offsetof(mavlink\_odometry\_t, vy) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}vz"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 44, offsetof(mavlink\_odometry\_t, vz) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}rollspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 48, offsetof(mavlink\_odometry\_t, rollspeed) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}pitchspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 52, offsetof(mavlink\_odometry\_t, pitchspeed) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}yawspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 56, offsetof(mavlink\_odometry\_t, yawspeed) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}pose\_covariance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 21, 60, offsetof(mavlink\_odometry\_t, pose\_covariance) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}twist\_covariance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 21, 144, offsetof(mavlink\_odometry\_t, twist\_covariance) \}, \(\backslash\)}
+\DoxyCodeLine{57          \} \(\backslash\)}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_ODOMETRY \{ \(\backslash\)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{    "{}ODOMETRY"{}}, \(\backslash\)}
+\DoxyCodeLine{62     15, \(\backslash\)}
+\DoxyCodeLine{63     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_odometry\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}frame\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 228, offsetof(mavlink\_odometry\_t, frame\_id) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}child\_frame\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 229, offsetof(mavlink\_odometry\_t, child\_frame\_id) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_odometry\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_odometry\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_odometry\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}q"{}, NULL, MAVLINK\_TYPE\_FLOAT, 4, 20, offsetof(mavlink\_odometry\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}vx"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_odometry\_t, vx) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}vy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 40, offsetof(mavlink\_odometry\_t, vy) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}vz"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 44, offsetof(mavlink\_odometry\_t, vz) \}, \(\backslash\)}
+\DoxyCodeLine{73          \{ "{}rollspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 48, offsetof(mavlink\_odometry\_t, rollspeed) \}, \(\backslash\)}
+\DoxyCodeLine{74          \{ "{}pitchspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 52, offsetof(mavlink\_odometry\_t, pitchspeed) \}, \(\backslash\)}
+\DoxyCodeLine{75          \{ "{}yawspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 56, offsetof(mavlink\_odometry\_t, yawspeed) \}, \(\backslash\)}
+\DoxyCodeLine{76          \{ "{}pose\_covariance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 21, 60, offsetof(mavlink\_odometry\_t, pose\_covariance) \}, \(\backslash\)}
+\DoxyCodeLine{77          \{ "{}twist\_covariance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 21, 144, offsetof(mavlink\_odometry\_t, twist\_covariance) \}, \(\backslash\)}
+\DoxyCodeLine{78          \} \(\backslash\)}
+\DoxyCodeLine{79 \}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{105 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{106                                uint64\_t time\_usec, uint8\_t frame\_id, uint8\_t child\_frame\_id, \textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, \textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy, \textcolor{keywordtype}{float} vz, \textcolor{keywordtype}{float} rollspeed, \textcolor{keywordtype}{float} pitchspeed, \textcolor{keywordtype}{float} yawspeed, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pose\_covariance, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *twist\_covariance)}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{109     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}];}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, x);}
+\DoxyCodeLine{112     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, y);}
+\DoxyCodeLine{113     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, z);}
+\DoxyCodeLine{114     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, vx);}
+\DoxyCodeLine{115     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vy);}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, vz);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, rollspeed);}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pitchspeed);}
+\DoxyCodeLine{119     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, yawspeed);}
+\DoxyCodeLine{120     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, frame\_id);}
+\DoxyCodeLine{121     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 229, child\_frame\_id);}
+\DoxyCodeLine{122     \_mav\_put\_float\_array(buf, 20, q, 4);}
+\DoxyCodeLine{123     \_mav\_put\_float\_array(buf, 60, pose\_covariance, 21);}
+\DoxyCodeLine{124     \_mav\_put\_float\_array(buf, 144, twist\_covariance, 21);}
+\DoxyCodeLine{125         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}});}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{127     mavlink\_odometry\_t packet;}
+\DoxyCodeLine{128     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{129     packet.x = x;}
+\DoxyCodeLine{130     packet.y = y;}
+\DoxyCodeLine{131     packet.z = z;}
+\DoxyCodeLine{132     packet.vx = vx;}
+\DoxyCodeLine{133     packet.vy = vy;}
+\DoxyCodeLine{134     packet.vz = vz;}
+\DoxyCodeLine{135     packet.rollspeed = rollspeed;}
+\DoxyCodeLine{136     packet.pitchspeed = pitchspeed;}
+\DoxyCodeLine{137     packet.yawspeed = yawspeed;}
+\DoxyCodeLine{138     packet.frame\_id = frame\_id;}
+\DoxyCodeLine{139     packet.child\_frame\_id = child\_frame\_id;}
+\DoxyCodeLine{140     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{141     mav\_array\_memcpy(packet.pose\_covariance, pose\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{142     mav\_array\_memcpy(packet.twist\_covariance, twist\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{143         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}});}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}};}
+\DoxyCodeLine{147     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{148 \}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{173 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{174                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{175                                    uint64\_t time\_usec,uint8\_t frame\_id,uint8\_t child\_frame\_id,\textcolor{keywordtype}{float} x,\textcolor{keywordtype}{float} y,\textcolor{keywordtype}{float} z,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *q,\textcolor{keywordtype}{float} vx,\textcolor{keywordtype}{float} vy,\textcolor{keywordtype}{float} vz,\textcolor{keywordtype}{float} rollspeed,\textcolor{keywordtype}{float} pitchspeed,\textcolor{keywordtype}{float} yawspeed,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pose\_covariance,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *twist\_covariance)}
+\DoxyCodeLine{176 \{}
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{178     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}];}
+\DoxyCodeLine{179     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{180     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, x);}
+\DoxyCodeLine{181     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, y);}
+\DoxyCodeLine{182     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, z);}
+\DoxyCodeLine{183     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, vx);}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vy);}
+\DoxyCodeLine{185     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, vz);}
+\DoxyCodeLine{186     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, rollspeed);}
+\DoxyCodeLine{187     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pitchspeed);}
+\DoxyCodeLine{188     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, yawspeed);}
+\DoxyCodeLine{189     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, frame\_id);}
+\DoxyCodeLine{190     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 229, child\_frame\_id);}
+\DoxyCodeLine{191     \_mav\_put\_float\_array(buf, 20, q, 4);}
+\DoxyCodeLine{192     \_mav\_put\_float\_array(buf, 60, pose\_covariance, 21);}
+\DoxyCodeLine{193     \_mav\_put\_float\_array(buf, 144, twist\_covariance, 21);}
+\DoxyCodeLine{194         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}});}
+\DoxyCodeLine{195 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{196     mavlink\_odometry\_t packet;}
+\DoxyCodeLine{197     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{198     packet.x = x;}
+\DoxyCodeLine{199     packet.y = y;}
+\DoxyCodeLine{200     packet.z = z;}
+\DoxyCodeLine{201     packet.vx = vx;}
+\DoxyCodeLine{202     packet.vy = vy;}
+\DoxyCodeLine{203     packet.vz = vz;}
+\DoxyCodeLine{204     packet.rollspeed = rollspeed;}
+\DoxyCodeLine{205     packet.pitchspeed = pitchspeed;}
+\DoxyCodeLine{206     packet.yawspeed = yawspeed;}
+\DoxyCodeLine{207     packet.frame\_id = frame\_id;}
+\DoxyCodeLine{208     packet.child\_frame\_id = child\_frame\_id;}
+\DoxyCodeLine{209     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{210     mav\_array\_memcpy(packet.pose\_covariance, pose\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{211     mav\_array\_memcpy(packet.twist\_covariance, twist\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{212         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}});}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}};}
+\DoxyCodeLine{216     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{217 \}}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{227 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_odometry\_t* odometry)}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229     \textcolor{keywordflow}{return} mavlink\_msg\_odometry\_pack(system\_id, component\_id, msg, odometry-\/>time\_usec, odometry-\/>frame\_id, odometry-\/>child\_frame\_id, odometry-\/>x, odometry-\/>y, odometry-\/>z, odometry-\/>q, odometry-\/>vx, odometry-\/>vy, odometry-\/>vz, odometry-\/>rollspeed, odometry-\/>pitchspeed, odometry-\/>yawspeed, odometry-\/>pose\_covariance, odometry-\/>twist\_covariance);}
+\DoxyCodeLine{230 \}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{241 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_odometry\_t* odometry)}
+\DoxyCodeLine{242 \{}
+\DoxyCodeLine{243     \textcolor{keywordflow}{return} mavlink\_msg\_odometry\_pack\_chan(system\_id, component\_id, chan, msg, odometry-\/>time\_usec, odometry-\/>frame\_id, odometry-\/>child\_frame\_id, odometry-\/>x, odometry-\/>y, odometry-\/>z, odometry-\/>q, odometry-\/>vx, odometry-\/>vy, odometry-\/>vz, odometry-\/>rollspeed, odometry-\/>pitchspeed, odometry-\/>yawspeed, odometry-\/>pose\_covariance, odometry-\/>twist\_covariance);}
+\DoxyCodeLine{244 \}}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{266 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_odometry\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t frame\_id, uint8\_t child\_frame\_id, \textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, \textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy, \textcolor{keywordtype}{float} vz, \textcolor{keywordtype}{float} rollspeed, \textcolor{keywordtype}{float} pitchspeed, \textcolor{keywordtype}{float} yawspeed, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pose\_covariance, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *twist\_covariance)}
+\DoxyCodeLine{269 \{}
+\DoxyCodeLine{270 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{271     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}];}
+\DoxyCodeLine{272     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{273     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, x);}
+\DoxyCodeLine{274     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, y);}
+\DoxyCodeLine{275     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, z);}
+\DoxyCodeLine{276     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, vx);}
+\DoxyCodeLine{277     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vy);}
+\DoxyCodeLine{278     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, vz);}
+\DoxyCodeLine{279     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, rollspeed);}
+\DoxyCodeLine{280     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pitchspeed);}
+\DoxyCodeLine{281     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, yawspeed);}
+\DoxyCodeLine{282     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, frame\_id);}
+\DoxyCodeLine{283     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 229, child\_frame\_id);}
+\DoxyCodeLine{284     \_mav\_put\_float\_array(buf, 20, q, 4);}
+\DoxyCodeLine{285     \_mav\_put\_float\_array(buf, 60, pose\_covariance, 21);}
+\DoxyCodeLine{286     \_mav\_put\_float\_array(buf, 144, twist\_covariance, 21);}
+\DoxyCodeLine{287     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}}, buf, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{288 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{289     mavlink\_odometry\_t packet;}
+\DoxyCodeLine{290     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{291     packet.x = x;}
+\DoxyCodeLine{292     packet.y = y;}
+\DoxyCodeLine{293     packet.z = z;}
+\DoxyCodeLine{294     packet.vx = vx;}
+\DoxyCodeLine{295     packet.vy = vy;}
+\DoxyCodeLine{296     packet.vz = vz;}
+\DoxyCodeLine{297     packet.rollspeed = rollspeed;}
+\DoxyCodeLine{298     packet.pitchspeed = pitchspeed;}
+\DoxyCodeLine{299     packet.yawspeed = yawspeed;}
+\DoxyCodeLine{300     packet.frame\_id = frame\_id;}
+\DoxyCodeLine{301     packet.child\_frame\_id = child\_frame\_id;}
+\DoxyCodeLine{302     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{303     mav\_array\_memcpy(packet.pose\_covariance, pose\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{304     mav\_array\_memcpy(packet.twist\_covariance, twist\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{305     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{306 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{307 \}}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{314 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_odometry\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_odometry\_t* odometry)}
+\DoxyCodeLine{315 \{}
+\DoxyCodeLine{316 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{317     mavlink\_msg\_odometry\_send(chan, odometry-\/>time\_usec, odometry-\/>frame\_id, odometry-\/>child\_frame\_id, odometry-\/>x, odometry-\/>y, odometry-\/>z, odometry-\/>q, odometry-\/>vx, odometry-\/>vy, odometry-\/>vz, odometry-\/>rollspeed, odometry-\/>pitchspeed, odometry-\/>yawspeed, odometry-\/>pose\_covariance, odometry-\/>twist\_covariance);}
+\DoxyCodeLine{318 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{319     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)odometry, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{320 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{321 \}}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_ODOMETRY\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{324 \textcolor{comment}{/*}}
+\DoxyCodeLine{325 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{326 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{327 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{328 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{329 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{330 \textcolor{comment}{ */}}
+\DoxyCodeLine{331 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_odometry\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t frame\_id, uint8\_t child\_frame\_id, \textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, \textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy, \textcolor{keywordtype}{float} vz, \textcolor{keywordtype}{float} rollspeed, \textcolor{keywordtype}{float} pitchspeed, \textcolor{keywordtype}{float} yawspeed, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pose\_covariance, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *twist\_covariance)}
+\DoxyCodeLine{332 \{}
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{334     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{335     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{336     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, x);}
+\DoxyCodeLine{337     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, y);}
+\DoxyCodeLine{338     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, z);}
+\DoxyCodeLine{339     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, vx);}
+\DoxyCodeLine{340     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, vy);}
+\DoxyCodeLine{341     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, vz);}
+\DoxyCodeLine{342     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, rollspeed);}
+\DoxyCodeLine{343     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pitchspeed);}
+\DoxyCodeLine{344     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, yawspeed);}
+\DoxyCodeLine{345     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 228, frame\_id);}
+\DoxyCodeLine{346     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 229, child\_frame\_id);}
+\DoxyCodeLine{347     \_mav\_put\_float\_array(buf, 20, q, 4);}
+\DoxyCodeLine{348     \_mav\_put\_float\_array(buf, 60, pose\_covariance, 21);}
+\DoxyCodeLine{349     \_mav\_put\_float\_array(buf, 144, twist\_covariance, 21);}
+\DoxyCodeLine{350     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}}, buf, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{351 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{352     mavlink\_odometry\_t *packet = (mavlink\_odometry\_t *)msgbuf;}
+\DoxyCodeLine{353     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{354     packet-\/>x = x;}
+\DoxyCodeLine{355     packet-\/>y = y;}
+\DoxyCodeLine{356     packet-\/>z = z;}
+\DoxyCodeLine{357     packet-\/>vx = vx;}
+\DoxyCodeLine{358     packet-\/>vy = vy;}
+\DoxyCodeLine{359     packet-\/>vz = vz;}
+\DoxyCodeLine{360     packet-\/>rollspeed = rollspeed;}
+\DoxyCodeLine{361     packet-\/>pitchspeed = pitchspeed;}
+\DoxyCodeLine{362     packet-\/>yawspeed = yawspeed;}
+\DoxyCodeLine{363     packet-\/>frame\_id = frame\_id;}
+\DoxyCodeLine{364     packet-\/>child\_frame\_id = child\_frame\_id;}
+\DoxyCodeLine{365     mav\_array\_memcpy(packet-\/>q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{366     mav\_array\_memcpy(packet-\/>pose\_covariance, pose\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{367     mav\_array\_memcpy(packet-\/>twist\_covariance, twist\_covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*21);}
+\DoxyCodeLine{368     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__odometry_8h_af0e0541921f121aa338be10ad11a8052}{MAVLINK\_MSG\_ID\_ODOMETRY}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__odometry_8h_a6e20a0abaf518c32bde0af57ff9299c7}{MAVLINK\_MSG\_ID\_ODOMETRY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}, \mbox{\hyperlink{mavlink__msg__odometry_8h_a03528e1354df678342a61ce851ff79b9}{MAVLINK\_MSG\_ID\_ODOMETRY\_CRC}});}
+\DoxyCodeLine{369 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{370 \}}
+\DoxyCodeLine{371 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{373 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375 \textcolor{comment}{// MESSAGE ODOMETRY UNPACKING}}
+\DoxyCodeLine{376 }
+\DoxyCodeLine{377 }
+\DoxyCodeLine{383 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_odometry\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{384 \{}
+\DoxyCodeLine{385     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{386 \}}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{393 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_odometry\_get\_frame\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{394 \{}
+\DoxyCodeLine{395     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  228);}
+\DoxyCodeLine{396 \}}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{403 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_odometry\_get\_child\_frame\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{404 \{}
+\DoxyCodeLine{405     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  229);}
+\DoxyCodeLine{406 \}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{413 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{414 \{}
+\DoxyCodeLine{415     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  8);}
+\DoxyCodeLine{416 \}}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{423 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{424 \{}
+\DoxyCodeLine{425     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  12);}
+\DoxyCodeLine{426 \}}
+\DoxyCodeLine{427 }
+\DoxyCodeLine{433 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_z(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{434 \{}
+\DoxyCodeLine{435     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  16);}
+\DoxyCodeLine{436 \}}
+\DoxyCodeLine{437 }
+\DoxyCodeLine{443 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_get\_q(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *q)}
+\DoxyCodeLine{444 \{}
+\DoxyCodeLine{445     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, q, 4,  20);}
+\DoxyCodeLine{446 \}}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{453 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_vx(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{454 \{}
+\DoxyCodeLine{455     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  36);}
+\DoxyCodeLine{456 \}}
+\DoxyCodeLine{457 }
+\DoxyCodeLine{463 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_vy(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{464 \{}
+\DoxyCodeLine{465     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  40);}
+\DoxyCodeLine{466 \}}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{473 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_vz(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{474 \{}
+\DoxyCodeLine{475     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  44);}
+\DoxyCodeLine{476 \}}
+\DoxyCodeLine{477 }
+\DoxyCodeLine{483 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_rollspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{484 \{}
+\DoxyCodeLine{485     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  48);}
+\DoxyCodeLine{486 \}}
+\DoxyCodeLine{487 }
+\DoxyCodeLine{493 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_pitchspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{494 \{}
+\DoxyCodeLine{495     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  52);}
+\DoxyCodeLine{496 \}}
+\DoxyCodeLine{497 }
+\DoxyCodeLine{503 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_odometry\_get\_yawspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{504 \{}
+\DoxyCodeLine{505     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  56);}
+\DoxyCodeLine{506 \}}
+\DoxyCodeLine{507 }
+\DoxyCodeLine{513 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_get\_pose\_covariance(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pose\_covariance)}
+\DoxyCodeLine{514 \{}
+\DoxyCodeLine{515     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pose\_covariance, 21,  60);}
+\DoxyCodeLine{516 \}}
+\DoxyCodeLine{517 }
+\DoxyCodeLine{523 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_odometry\_get\_twist\_covariance(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *twist\_covariance)}
+\DoxyCodeLine{524 \{}
+\DoxyCodeLine{525     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, twist\_covariance, 21,  144);}
+\DoxyCodeLine{526 \}}
+\DoxyCodeLine{527 }
+\DoxyCodeLine{534 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_odometry\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_odometry\_t* odometry)}
+\DoxyCodeLine{535 \{}
+\DoxyCodeLine{536 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{537     odometry-\/>time\_usec = mavlink\_msg\_odometry\_get\_time\_usec(msg);}
+\DoxyCodeLine{538     odometry-\/>x = mavlink\_msg\_odometry\_get\_x(msg);}
+\DoxyCodeLine{539     odometry-\/>y = mavlink\_msg\_odometry\_get\_y(msg);}
+\DoxyCodeLine{540     odometry-\/>z = mavlink\_msg\_odometry\_get\_z(msg);}
+\DoxyCodeLine{541     mavlink\_msg\_odometry\_get\_q(msg, odometry-\/>q);}
+\DoxyCodeLine{542     odometry-\/>vx = mavlink\_msg\_odometry\_get\_vx(msg);}
+\DoxyCodeLine{543     odometry-\/>vy = mavlink\_msg\_odometry\_get\_vy(msg);}
+\DoxyCodeLine{544     odometry-\/>vz = mavlink\_msg\_odometry\_get\_vz(msg);}
+\DoxyCodeLine{545     odometry-\/>rollspeed = mavlink\_msg\_odometry\_get\_rollspeed(msg);}
+\DoxyCodeLine{546     odometry-\/>pitchspeed = mavlink\_msg\_odometry\_get\_pitchspeed(msg);}
+\DoxyCodeLine{547     odometry-\/>yawspeed = mavlink\_msg\_odometry\_get\_yawspeed(msg);}
+\DoxyCodeLine{548     mavlink\_msg\_odometry\_get\_pose\_covariance(msg, odometry-\/>pose\_covariance);}
+\DoxyCodeLine{549     mavlink\_msg\_odometry\_get\_twist\_covariance(msg, odometry-\/>twist\_covariance);}
+\DoxyCodeLine{550     odometry-\/>frame\_id = mavlink\_msg\_odometry\_get\_frame\_id(msg);}
+\DoxyCodeLine{551     odometry-\/>child\_frame\_id = mavlink\_msg\_odometry\_get\_child\_frame\_id(msg);}
+\DoxyCodeLine{552 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{553         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}};}
+\DoxyCodeLine{554         memset(odometry, 0, \mbox{\hyperlink{mavlink__msg__odometry_8h_a5c67d72a5edb76b0fa25eb98d178f8a7}{MAVLINK\_MSG\_ID\_ODOMETRY\_LEN}});}
+\DoxyCodeLine{555     memcpy(odometry, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{556 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{557 \}}
+
+\end{DoxyCode}

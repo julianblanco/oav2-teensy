@@ -1,0 +1,79 @@
+\hypertarget{attitude_8h_source}{}\doxysection{attitude.\+h}
+\label{attitude_8h_source}\index{include/attitude.h@{include/attitude.h}}
+\mbox{\hyperlink{attitude_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{ * Attitude}}
+\DoxyCodeLine{5 \textcolor{comment}{*/}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#ifndef \_attitude\_H\_}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define \_attitude\_H\_}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{task_8h}{task.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{comment}{// \#include "{}config.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13   \textcolor{comment}{// Public interface methods}}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15   \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_af4d51b6ab7c16f4c6441e47d84b43d82}{ATTITUDE}}();}
+\DoxyCodeLine{16   \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ae31d57e3e9072e754c4e9f2e12962c3f}{\string~ATTITUDE}}();}
+\DoxyCodeLine{17   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ab0e6b0701b0cef1919605d7985fcab25}{yaw}};}
+\DoxyCodeLine{18   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_abe6ae790be3d899238d9764cc389cfc3}{roll}};}
+\DoxyCodeLine{19   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ac4c8158c10232d1543325aea7993f782}{pitch}};}
+\DoxyCodeLine{20   cpp\_freertos::ReadWriteLockPreferWriter \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a727ac15c7cf255d8175074b655d7ce31}{lock}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{32   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}{setup}}();}
+\DoxyCodeLine{33   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ad67ef620f500081fbf17d47041a29edd}{start}}();}
+\DoxyCodeLine{34   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}{PIDAttitudeControl}}();}
+\DoxyCodeLine{35 \textcolor{keyword}{private}:}
+\DoxyCodeLine{36   \textcolor{keywordtype}{float} yawResponse = 0;}
+\DoxyCodeLine{37   \textcolor{keywordtype}{float} rollResponse = 0;}
+\DoxyCodeLine{38   \textcolor{keywordtype}{float} pitchResponse = 0;}
+\DoxyCodeLine{39   \textcolor{keywordtype}{float} throtResponse = 0;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41   \textcolor{keywordtype}{float} yawError = 0;}
+\DoxyCodeLine{42   \textcolor{keywordtype}{float} rollError = 0;}
+\DoxyCodeLine{43   \textcolor{keywordtype}{float} pitchError = 0;}
+\DoxyCodeLine{44   \textcolor{keywordtype}{float} throtError = 0;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \textcolor{keywordtype}{float} pYawResponse = 0;}
+\DoxyCodeLine{47   \textcolor{keywordtype}{float} pRollResponse = 0;}
+\DoxyCodeLine{48   \textcolor{keywordtype}{float} pPitchResponse = 0;}
+\DoxyCodeLine{49   \textcolor{keywordtype}{float} pThrotResponse = 0;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51   \textcolor{keywordtype}{float} iYawResponse = 0;}
+\DoxyCodeLine{52   \textcolor{keywordtype}{float} iRollResponse = 0;}
+\DoxyCodeLine{53   \textcolor{keywordtype}{float} iPitchResponse = 0;}
+\DoxyCodeLine{54   \textcolor{keywordtype}{float} iThrotResponse = 0;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56   \textcolor{keywordtype}{float} dYawResponse = 0;}
+\DoxyCodeLine{57   \textcolor{keywordtype}{float} dRollResponse = 0;}
+\DoxyCodeLine{58   \textcolor{keywordtype}{float} dPitchResponse = 0;}
+\DoxyCodeLine{59   \textcolor{keywordtype}{float} dThrotResponse = 0;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61   \textcolor{keywordtype}{float} yawErrorLast = 0;}
+\DoxyCodeLine{62   \textcolor{keywordtype}{float} rollErrorLast = 0;}
+\DoxyCodeLine{63   \textcolor{keywordtype}{float} pitchErrorLast = 0;}
+\DoxyCodeLine{64   \textcolor{keywordtype}{float} throtErrorLast = 0;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66   \textcolor{keywordtype}{float} yawKp = 0.1;}
+\DoxyCodeLine{67   \textcolor{keywordtype}{float} yawKi = 0;}
+\DoxyCodeLine{68   \textcolor{keywordtype}{float} yawKd = 0;}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70   \textcolor{keywordtype}{float} rollKp = 4;}
+\DoxyCodeLine{71   \textcolor{keywordtype}{float} rollKi = 0;}
+\DoxyCodeLine{72   \textcolor{keywordtype}{float} rollKd = 4;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74   \textcolor{keywordtype}{float} pitchKp = 4;}
+\DoxyCodeLine{75   \textcolor{keywordtype}{float} pitchKi = 0;}
+\DoxyCodeLine{76   \textcolor{keywordtype}{float} pitchKd = 4;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78   \textcolor{keywordtype}{float} throtKp = 10;}
+\DoxyCodeLine{79   \textcolor{keywordtype}{float} throtKi = 0;}
+\DoxyCodeLine{80   \textcolor{keywordtype}{float} throtKd = 0;}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \textcolor{comment}{// extern ATTITUDE g\_attitude;}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

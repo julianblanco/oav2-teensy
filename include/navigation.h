@@ -22,6 +22,12 @@ float crossTrackError(float distance2WP, float tracklegHead, float targetHead);
 float distanceToWaypoint(float Lat1, float Long1, float Lat2, float Long2);
 float courseToWaypoint(float lat1, float long1, float lat2, float long2);
 void convertToNED(float startLat, float startLong, float currentLat, float currentLong, float &North, float &East, float &Down);
+void minimum_snap_trajectory();
+void generate_ts();
+void  min_snap_optimization();
+void figure_eight_trajectory();
+void circling_trajectory();
+void basic_position_controller();
 #define waypointmindistance 2
 int flag_are_waypointing;
 float currentNorth ;

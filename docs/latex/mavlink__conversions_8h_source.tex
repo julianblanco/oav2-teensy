@@ -1,0 +1,155 @@
+\hypertarget{mavlink__conversions_8h_source}{}\doxysection{mavlink\+\_\+conversions.\+h}
+\label{mavlink__conversions_8h_source}\index{lib/mavlink\_conversions.h@{lib/mavlink\_conversions.h}}
+\mbox{\hyperlink{mavlink__conversions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef MAVLINK\_NO\_CONVERSION\_HELPERS}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{/* enable math defines on Windows */}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#ifdef \_MSC\_VER}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef \_USE\_MATH\_DEFINES}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define \_USE\_MATH\_DEFINES}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifndef M\_PI\_2}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{    \#define M\_PI\_2 ((float)asin(1))}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{39 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__conversions_8h_a1acebd1df006ab806149f3bf9cc5544e}{mavlink\_quaternion\_to\_dcm}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} quaternion[4], \textcolor{keywordtype}{float} dcm[3][3])}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     \textcolor{keywordtype}{double} a = quaternion[0];}
+\DoxyCodeLine{42     \textcolor{keywordtype}{double} b = quaternion[1];}
+\DoxyCodeLine{43     \textcolor{keywordtype}{double} c = quaternion[2];}
+\DoxyCodeLine{44     \textcolor{keywordtype}{double} d = quaternion[3];}
+\DoxyCodeLine{45     \textcolor{keywordtype}{double} aSq = a * a;}
+\DoxyCodeLine{46     \textcolor{keywordtype}{double} bSq = b * b;}
+\DoxyCodeLine{47     \textcolor{keywordtype}{double} cSq = c * c;}
+\DoxyCodeLine{48     \textcolor{keywordtype}{double} dSq = d * d;}
+\DoxyCodeLine{49     dcm[0][0] = aSq + bSq -\/ cSq -\/ dSq;}
+\DoxyCodeLine{50     dcm[0][1] = 2 * (b * c -\/ a * d);}
+\DoxyCodeLine{51     dcm[0][2] = 2 * (a * c + b * d);}
+\DoxyCodeLine{52     dcm[1][0] = 2 * (b * c + a * d);}
+\DoxyCodeLine{53     dcm[1][1] = aSq -\/ bSq + cSq -\/ dSq;}
+\DoxyCodeLine{54     dcm[1][2] = 2 * (c * d -\/ a * b);}
+\DoxyCodeLine{55     dcm[2][0] = 2 * (b * d -\/ a * c);}
+\DoxyCodeLine{56     dcm[2][1] = 2 * (a * b + c * d);}
+\DoxyCodeLine{57     dcm[2][2] = aSq -\/ bSq -\/ cSq + dSq;}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{69 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__conversions_8h_a034c8265f27e81fa17cf4cf483b7ad8c}{mavlink\_dcm\_to\_euler}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} dcm[3][3], \textcolor{keywordtype}{float}* roll, \textcolor{keywordtype}{float}* pitch, \textcolor{keywordtype}{float}* yaw)}
+\DoxyCodeLine{70 \{}
+\DoxyCodeLine{71     \textcolor{keywordtype}{float} phi, theta, psi;}
+\DoxyCodeLine{72     theta = asinf(-\/dcm[2][0]);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{keywordflow}{if} (fabsf(theta -\/ (\textcolor{keywordtype}{float})\mbox{\hyperlink{mavlink__conversions_8h_a958e4508ed28ee5cc04249144312c15f}{M\_PI\_2}}) < 1.0e-\/3f) \{}
+\DoxyCodeLine{75         phi = 0.0f;}
+\DoxyCodeLine{76         psi = (atan2f(dcm[1][2] -\/ dcm[0][1],}
+\DoxyCodeLine{77                 dcm[0][2] + dcm[1][1]) + phi);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (fabsf(theta + (\textcolor{keywordtype}{float})\mbox{\hyperlink{mavlink__conversions_8h_a958e4508ed28ee5cc04249144312c15f}{M\_PI\_2}}) < 1.0e-\/3f) \{}
+\DoxyCodeLine{80         phi = 0.0f;}
+\DoxyCodeLine{81         psi = atan2f(dcm[1][2] -\/ dcm[0][1],}
+\DoxyCodeLine{82                   dcm[0][2] + dcm[1][1] -\/ phi);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{85         phi = atan2f(dcm[2][1], dcm[2][2]);}
+\DoxyCodeLine{86         psi = atan2f(dcm[1][0], dcm[0][0]);}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     *roll = phi;}
+\DoxyCodeLine{90     *pitch = theta;}
+\DoxyCodeLine{91     *yaw = psi;}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 }
+\DoxyCodeLine{103 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__conversions_8h_a96913fc5846ae95f89c99423e4c0e6c1}{mavlink\_quaternion\_to\_euler}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} quaternion[4], \textcolor{keywordtype}{float}* roll, \textcolor{keywordtype}{float}* pitch, \textcolor{keywordtype}{float}* yaw)}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105     \textcolor{keywordtype}{float} dcm[3][3];}
+\DoxyCodeLine{106     \mbox{\hyperlink{mavlink__conversions_8h_a1acebd1df006ab806149f3bf9cc5544e}{mavlink\_quaternion\_to\_dcm}}(quaternion, dcm);}
+\DoxyCodeLine{107     \mbox{\hyperlink{mavlink__conversions_8h_a034c8265f27e81fa17cf4cf483b7ad8c}{mavlink\_dcm\_to\_euler}}((\textcolor{keyword}{const} \textcolor{keywordtype}{float}(*)[3])dcm, roll, pitch, yaw);}
+\DoxyCodeLine{108 \}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 }
+\DoxyCodeLine{119 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__conversions_8h_a286e44d134e0722c8fbc595f9d25d767}{mavlink\_euler\_to\_quaternion}}(\textcolor{keywordtype}{float} roll, \textcolor{keywordtype}{float} pitch, \textcolor{keywordtype}{float} yaw, \textcolor{keywordtype}{float} quaternion[4])}
+\DoxyCodeLine{120 \{}
+\DoxyCodeLine{121     \textcolor{keywordtype}{float} cosPhi\_2 = cosf(roll / 2);}
+\DoxyCodeLine{122     \textcolor{keywordtype}{float} sinPhi\_2 = sinf(roll / 2);}
+\DoxyCodeLine{123     \textcolor{keywordtype}{float} cosTheta\_2 = cosf(pitch / 2);}
+\DoxyCodeLine{124     \textcolor{keywordtype}{float} sinTheta\_2 = sinf(pitch / 2);}
+\DoxyCodeLine{125     \textcolor{keywordtype}{float} cosPsi\_2 = cosf(yaw / 2);}
+\DoxyCodeLine{126     \textcolor{keywordtype}{float} sinPsi\_2 = sinf(yaw / 2);}
+\DoxyCodeLine{127     quaternion[0] = (cosPhi\_2 * cosTheta\_2 * cosPsi\_2 +}
+\DoxyCodeLine{128             sinPhi\_2 * sinTheta\_2 * sinPsi\_2);}
+\DoxyCodeLine{129     quaternion[1] = (sinPhi\_2 * cosTheta\_2 * cosPsi\_2 -\/}
+\DoxyCodeLine{130             cosPhi\_2 * sinTheta\_2 * sinPsi\_2);}
+\DoxyCodeLine{131     quaternion[2] = (cosPhi\_2 * sinTheta\_2 * cosPsi\_2 +}
+\DoxyCodeLine{132             sinPhi\_2 * cosTheta\_2 * sinPsi\_2);}
+\DoxyCodeLine{133     quaternion[3] = (cosPhi\_2 * cosTheta\_2 * sinPsi\_2 -\/}
+\DoxyCodeLine{134             sinPhi\_2 * sinTheta\_2 * cosPsi\_2);}
+\DoxyCodeLine{135 \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 }
+\DoxyCodeLine{147 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__conversions_8h_a4e183fc5dc505bee17dfac58ab18d9f9}{mavlink\_dcm\_to\_quaternion}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} dcm[3][3], \textcolor{keywordtype}{float} quaternion[4])}
+\DoxyCodeLine{148 \{}
+\DoxyCodeLine{149     \textcolor{keywordtype}{float} tr = dcm[0][0] + dcm[1][1] + dcm[2][2];}
+\DoxyCodeLine{150     \textcolor{keywordflow}{if} (tr > 0.0f) \{}
+\DoxyCodeLine{151         \textcolor{keywordtype}{float} s = sqrtf(tr + 1.0f);}
+\DoxyCodeLine{152         quaternion[0] = s * 0.5f;}
+\DoxyCodeLine{153         s = 0.5f / s;}
+\DoxyCodeLine{154         quaternion[1] = (dcm[2][1] -\/ dcm[1][2]) * s;}
+\DoxyCodeLine{155         quaternion[2] = (dcm[0][2] -\/ dcm[2][0]) * s;}
+\DoxyCodeLine{156         quaternion[3] = (dcm[1][0] -\/ dcm[0][1]) * s;}
+\DoxyCodeLine{157     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{158         \textcolor{comment}{/* Find maximum diagonal element in dcm}}
+\DoxyCodeLine{159 \textcolor{comment}{         * store index in dcm\_i */}}
+\DoxyCodeLine{160         \textcolor{keywordtype}{int} dcm\_i = 0;}
+\DoxyCodeLine{161         \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{162         \textcolor{keywordflow}{for} (i = 1; i < 3; i++) \{}
+\DoxyCodeLine{163             \textcolor{keywordflow}{if} (dcm[i][i] > dcm[dcm\_i][dcm\_i]) \{}
+\DoxyCodeLine{164                 dcm\_i = i;}
+\DoxyCodeLine{165             \}}
+\DoxyCodeLine{166         \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168         \textcolor{keywordtype}{int} dcm\_j = (dcm\_i + 1) \% 3;}
+\DoxyCodeLine{169         \textcolor{keywordtype}{int} dcm\_k = (dcm\_i + 2) \% 3;}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171         \textcolor{keywordtype}{float} s = sqrtf((dcm[dcm\_i][dcm\_i] -\/ dcm[dcm\_j][dcm\_j] -\/}
+\DoxyCodeLine{172                     dcm[dcm\_k][dcm\_k]) + 1.0f);}
+\DoxyCodeLine{173         quaternion[dcm\_i + 1] = s * 0.5f;}
+\DoxyCodeLine{174         s = 0.5f / s;}
+\DoxyCodeLine{175         quaternion[dcm\_j + 1] = (dcm[dcm\_i][dcm\_j] + dcm[dcm\_j][dcm\_i]) * s;}
+\DoxyCodeLine{176         quaternion[dcm\_k + 1] = (dcm[dcm\_k][dcm\_i] + dcm[dcm\_i][dcm\_k]) * s;}
+\DoxyCodeLine{177         quaternion[0] = (dcm[dcm\_k][dcm\_j] -\/ dcm[dcm\_j][dcm\_k]) * s;}
+\DoxyCodeLine{178     \}}
+\DoxyCodeLine{179 \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 }
+\DoxyCodeLine{190 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__conversions_8h_a5a662d9d3db2fb392c9466dab354b287}{mavlink\_euler\_to\_dcm}}(\textcolor{keywordtype}{float} roll, \textcolor{keywordtype}{float} pitch, \textcolor{keywordtype}{float} yaw, \textcolor{keywordtype}{float} dcm[3][3])}
+\DoxyCodeLine{191 \{}
+\DoxyCodeLine{192     \textcolor{keywordtype}{float} cosPhi = cosf(roll);}
+\DoxyCodeLine{193     \textcolor{keywordtype}{float} sinPhi = sinf(roll);}
+\DoxyCodeLine{194     \textcolor{keywordtype}{float} cosThe = cosf(pitch);}
+\DoxyCodeLine{195     \textcolor{keywordtype}{float} sinThe = sinf(pitch);}
+\DoxyCodeLine{196     \textcolor{keywordtype}{float} cosPsi = cosf(yaw);}
+\DoxyCodeLine{197     \textcolor{keywordtype}{float} sinPsi = sinf(yaw);}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199     dcm[0][0] = cosThe * cosPsi;}
+\DoxyCodeLine{200     dcm[0][1] = -\/cosPhi * sinPsi + sinPhi * sinThe * cosPsi;}
+\DoxyCodeLine{201     dcm[0][2] = sinPhi * sinPsi + cosPhi * sinThe * cosPsi;}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203     dcm[1][0] = cosThe * sinPsi;}
+\DoxyCodeLine{204     dcm[1][1] = cosPhi * cosPsi + sinPhi * sinThe * sinPsi;}
+\DoxyCodeLine{205     dcm[1][2] = -\/sinPhi * cosPsi + cosPhi * sinThe * sinPsi;}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207     dcm[2][0] = -\/sinThe;}
+\DoxyCodeLine{208     dcm[2][1] = sinPhi * cosThe;}
+\DoxyCodeLine{209     dcm[2][2] = cosPhi * cosThe;}
+\DoxyCodeLine{210 \}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAVLINK\_NO\_CONVERSION\_HELPERS}}
+
+\end{DoxyCode}

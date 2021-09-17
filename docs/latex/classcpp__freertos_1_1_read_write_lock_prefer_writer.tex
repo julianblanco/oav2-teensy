@@ -1,0 +1,123 @@
+\hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer}{}\doxysection{cpp\+\_\+freertos\+::Read\+Write\+Lock\+Prefer\+Writer Class Reference}
+\label{classcpp__freertos_1_1_read_write_lock_prefer_writer}\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+
+
+{\ttfamily \#include $<$read\+\_\+write\+\_\+lock.\+hpp$>$}
+
+Inheritance diagram for cpp\+\_\+freertos\+::Read\+Write\+Lock\+Prefer\+Writer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcpp__freertos_1_1_read_write_lock_prefer_writer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a12576f50c5859afe331e6b9115092693}{Read\+Write\+Lock\+Prefer\+Writer}} ()
+\item 
+virtual \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a97d394b7ca4ac41c18146b99b7937f01}{$\sim$\+Read\+Write\+Lock\+Prefer\+Writer}} ()
+\item 
+virtual void \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a31e8525d2b0ef7c293e30e61dfe942ac}{Reader\+Lock}} ()
+\item 
+virtual void \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a2e3b7527e0db1bce0ceb2f6a7de54d63}{Reader\+Unlock}} ()
+\item 
+virtual void \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_afb3ac19f3df1fccf51e76c37b0f3f767}{Writer\+Lock}} ()
+\item 
+virtual void \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_aa6627a4dd7920c93c2470cbfaafb5088}{Writer\+Unlock}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Concrete derived class that implements a Reader/\+Writer lock that favors the Writers. That is, with enough aggressive writers, a Reader may starve. 
+
+Definition at line \mbox{\hyperlink{read__write__lock_8hpp_source_l00219}{219}} of file \mbox{\hyperlink{read__write__lock_8hpp_source}{read\+\_\+write\+\_\+lock.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer_a12576f50c5859afe331e6b9115092693}\label{classcpp__freertos_1_1_read_write_lock_prefer_writer_a12576f50c5859afe331e6b9115092693}} 
+\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}!ReadWriteLockPreferWriter@{ReadWriteLockPreferWriter}}
+\index{ReadWriteLockPreferWriter@{ReadWriteLockPreferWriter}!cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+\doxysubsubsection{\texorpdfstring{ReadWriteLockPreferWriter()}{ReadWriteLockPreferWriter()}}
+{\footnotesize\ttfamily Read\+Write\+Lock\+Prefer\+Writer\+::\+Read\+Write\+Lock\+Prefer\+Writer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Our derived constructor. 
+
+Definition at line \mbox{\hyperlink{cread__write__lock_8cpp_source_l00127}{127}} of file \mbox{\hyperlink{cread__write__lock_8cpp_source}{cread\+\_\+write\+\_\+lock.\+cpp}}.
+
+\mbox{\Hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer_a97d394b7ca4ac41c18146b99b7937f01}\label{classcpp__freertos_1_1_read_write_lock_prefer_writer_a97d394b7ca4ac41c18146b99b7937f01}} 
+\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}!````~ReadWriteLockPreferWriter@{$\sim$ReadWriteLockPreferWriter}}
+\index{````~ReadWriteLockPreferWriter@{$\sim$ReadWriteLockPreferWriter}!cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+\doxysubsubsection{\texorpdfstring{$\sim$ReadWriteLockPreferWriter()}{~ReadWriteLockPreferWriter()}}
+{\footnotesize\ttfamily Read\+Write\+Lock\+Prefer\+Writer\+::$\sim$\+Read\+Write\+Lock\+Prefer\+Writer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Our derived destructor. 
+
+Definition at line \mbox{\hyperlink{cread__write__lock_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{cread__write__lock_8cpp_source}{cread\+\_\+write\+\_\+lock.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer_a31e8525d2b0ef7c293e30e61dfe942ac}\label{classcpp__freertos_1_1_read_write_lock_prefer_writer_a31e8525d2b0ef7c293e30e61dfe942ac}} 
+\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}!ReaderLock@{ReaderLock}}
+\index{ReaderLock@{ReaderLock}!cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+\doxysubsubsection{\texorpdfstring{ReaderLock()}{ReaderLock()}}
+{\footnotesize\ttfamily void Read\+Write\+Lock\+Prefer\+Writer\+::\+Reader\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Take the lock as a Reader. This allows multiple reader access. 
+
+Implements \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_ab824802f557190853843ef28d4d40af3}{cpp\+\_\+freertos\+::\+Read\+Write\+Lock}}.
+
+
+
+Definition at line \mbox{\hyperlink{cread__write__lock_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{cread__write__lock_8cpp_source}{cread\+\_\+write\+\_\+lock.\+cpp}}.
+
+\mbox{\Hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer_a2e3b7527e0db1bce0ceb2f6a7de54d63}\label{classcpp__freertos_1_1_read_write_lock_prefer_writer_a2e3b7527e0db1bce0ceb2f6a7de54d63}} 
+\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}!ReaderUnlock@{ReaderUnlock}}
+\index{ReaderUnlock@{ReaderUnlock}!cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+\doxysubsubsection{\texorpdfstring{ReaderUnlock()}{ReaderUnlock()}}
+{\footnotesize\ttfamily void Read\+Write\+Lock\+Prefer\+Writer\+::\+Reader\+Unlock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Unlock the Reader. 
+
+Implements \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a3f1763bbcdb0caecd49efbb11b646203}{cpp\+\_\+freertos\+::\+Read\+Write\+Lock}}.
+
+
+
+Definition at line \mbox{\hyperlink{cread__write__lock_8cpp_source_l00186}{186}} of file \mbox{\hyperlink{cread__write__lock_8cpp_source}{cread\+\_\+write\+\_\+lock.\+cpp}}.
+
+\mbox{\Hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer_afb3ac19f3df1fccf51e76c37b0f3f767}\label{classcpp__freertos_1_1_read_write_lock_prefer_writer_afb3ac19f3df1fccf51e76c37b0f3f767}} 
+\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}!WriterLock@{WriterLock}}
+\index{WriterLock@{WriterLock}!cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+\doxysubsubsection{\texorpdfstring{WriterLock()}{WriterLock()}}
+{\footnotesize\ttfamily void Read\+Write\+Lock\+Prefer\+Writer\+::\+Writer\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Take the lock as a Writer. This allows only one thread access. 
+
+Implements \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a399370c41c10fb27caceb93ecaea62b5}{cpp\+\_\+freertos\+::\+Read\+Write\+Lock}}.
+
+
+
+Definition at line \mbox{\hyperlink{cread__write__lock_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{cread__write__lock_8cpp_source}{cread\+\_\+write\+\_\+lock.\+cpp}}.
+
+\mbox{\Hypertarget{classcpp__freertos_1_1_read_write_lock_prefer_writer_aa6627a4dd7920c93c2470cbfaafb5088}\label{classcpp__freertos_1_1_read_write_lock_prefer_writer_aa6627a4dd7920c93c2470cbfaafb5088}} 
+\index{cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}!WriterUnlock@{WriterUnlock}}
+\index{WriterUnlock@{WriterUnlock}!cpp\_freertos::ReadWriteLockPreferWriter@{cpp\_freertos::ReadWriteLockPreferWriter}}
+\doxysubsubsection{\texorpdfstring{WriterUnlock()}{WriterUnlock()}}
+{\footnotesize\ttfamily void Read\+Write\+Lock\+Prefer\+Writer\+::\+Writer\+Unlock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Unlock the Writer. 
+
+Implements \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a6b31619582053cff11b070a8d9c7e004}{cpp\+\_\+freertos\+::\+Read\+Write\+Lock}}.
+
+
+
+Definition at line \mbox{\hyperlink{cread__write__lock_8cpp_source_l00214}{214}} of file \mbox{\hyperlink{cread__write__lock_8cpp_source}{cread\+\_\+write\+\_\+lock.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{read__write__lock_8hpp}{read\+\_\+write\+\_\+lock.\+hpp}}\item 
+src/\mbox{\hyperlink{cread__write__lock_8cpp}{cread\+\_\+write\+\_\+lock.\+cpp}}\end{DoxyCompactItemize}

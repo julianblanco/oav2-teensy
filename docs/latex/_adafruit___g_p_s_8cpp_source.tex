@@ -1,0 +1,525 @@
+\hypertarget{_adafruit___g_p_s_8cpp_source}{}\doxysection{Adafruit\+\_\+\+GPS.\+cpp}
+\label{_adafruit___g_p_s_8cpp_source}\index{lib/Adafruit\_GPS\_Library/src/Adafruit\_GPS.cpp@{lib/Adafruit\_GPS\_Library/src/Adafruit\_GPS.cpp}}
+\mbox{\hyperlink{_adafruit___g_p_s_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00001}00001 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00029}00029 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00031}00031 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_adafruit___g_p_s_8h}{Adafruit\_GPS.h}}>}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00033}00033 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} strStartsWith(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *prefix);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00035}00035 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00043}00043 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00048}00048 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00049}00049 \textcolor{comment}{// void Adafruit\_GPS::parseLat(char *p) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00050}00050 \textcolor{comment}{//   char degreebuff[10];}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00051}00051 \textcolor{comment}{//   if (!isEmpty(p)) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00052}00052 \textcolor{comment}{//     strncpy(degreebuff, p, 2);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00053}00053 \textcolor{comment}{//     p += 2;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00054}00054 \textcolor{comment}{//     degreebuff[2] = '\(\backslash\)0';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00055}00055 \textcolor{comment}{//     long degree = atol(degreebuff) * 10000000;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00056}00056 \textcolor{comment}{//     strncpy(degreebuff, p, 2); // minutes}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00057}00057 \textcolor{comment}{//     p += 3;                    // skip decimal point}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00058}00058 \textcolor{comment}{//     strncpy(degreebuff + 2, p, 4);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00059}00059 \textcolor{comment}{//     degreebuff[6] = '\(\backslash\)0';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00060}00060 \textcolor{comment}{//     long minutes = 50 * atol(degreebuff) / 3;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00061}00061 \textcolor{comment}{//     latitude\_fixed = degree + minutes;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00062}00062 \textcolor{comment}{//     latitude = degree / 100000 + minutes * 0.000006F;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00063}00063 \textcolor{comment}{//     latitudeDegrees = (latitude -\/ 100 * int(latitude / 100)) / 60.0f;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00064}00064 \textcolor{comment}{//     latitudeDegrees += int(latitude / 100);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00065}00065 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00066}00066 \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00068}00068 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00074}00074 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00075}00075 \textcolor{comment}{// bool Adafruit\_GPS::parseLatDir(char *p) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00076}00076 \textcolor{comment}{//   if (p[0] == 'S') \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00077}00077 \textcolor{comment}{//     lat = 'S';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00078}00078 \textcolor{comment}{//     latitudeDegrees *= -\/1.0f;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00079}00079 \textcolor{comment}{//     latitude\_fixed *= -\/1;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00080}00080 \textcolor{comment}{//   \} else if (p[0] == 'N') \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00081}00081 \textcolor{comment}{//     lat = 'N';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00082}00082 \textcolor{comment}{//   \} else if (p[0] == ',') \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00083}00083 \textcolor{comment}{//     lat = 0;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00084}00084 \textcolor{comment}{//   \} else \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00085}00085 \textcolor{comment}{//     return false;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00086}00086 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00087}00087 \textcolor{comment}{//   return true;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00088}00088 \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00090}00090 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00095}00095 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00096}00096 \textcolor{comment}{// void Adafruit\_GPS::parseLon(char *p) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00097}00097 \textcolor{comment}{//   int32\_t degree;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00098}00098 \textcolor{comment}{//   long minutes;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00099}00099 \textcolor{comment}{//   char degreebuff[10];}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00100}00100 \textcolor{comment}{//   if (!isEmpty(p)) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00101}00101 \textcolor{comment}{//     strncpy(degreebuff, p, 3);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00102}00102 \textcolor{comment}{//     p += 3;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00103}00103 \textcolor{comment}{//     degreebuff[3] = '\(\backslash\)0';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00104}00104 \textcolor{comment}{//     degree = atol(degreebuff) * 10000000;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00105}00105 \textcolor{comment}{//     strncpy(degreebuff, p, 2); // minutes}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00106}00106 \textcolor{comment}{//     p += 3;                    // skip decimal point}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00107}00107 \textcolor{comment}{//     strncpy(degreebuff + 2, p, 4);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00108}00108 \textcolor{comment}{//     degreebuff[6] = '\(\backslash\)0';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00109}00109 \textcolor{comment}{//     minutes = 50 * atol(degreebuff) / 3;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00110}00110 \textcolor{comment}{//     longitude\_fixed = degree + minutes;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00111}00111 \textcolor{comment}{//     longitude = degree / 100000 + minutes * 0.000006F;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00112}00112 \textcolor{comment}{//     longitudeDegrees = (longitude -\/ 100 * int(longitude / 100)) / 60.0f;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00113}00113 \textcolor{comment}{//     longitudeDegrees += int(longitude / 100);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00114}00114 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00115}00115 \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00117}00117 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00123}00123 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00124}00124 \textcolor{comment}{// bool Adafruit\_GPS::parseLonDir(char *p) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00125}00125 \textcolor{comment}{//   if (!isEmpty(p)) \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00126}00126 \textcolor{comment}{//     if (p[0] == 'W') \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00127}00127 \textcolor{comment}{//       lon = 'W';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00128}00128 \textcolor{comment}{//       longitudeDegrees *= -\/1.0f;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00129}00129 \textcolor{comment}{//       longitude\_fixed *= -\/1;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00130}00130 \textcolor{comment}{//     \} else if (p[0] == 'E') \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00131}00131 \textcolor{comment}{//       lon = 'E';}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00132}00132 \textcolor{comment}{//     \} else if (p[0] == ',') \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00133}00133 \textcolor{comment}{//       lon = 0;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00134}00134 \textcolor{comment}{//     \} else \{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00135}00135 \textcolor{comment}{//       return false;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00136}00136 \textcolor{comment}{//     \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00137}00137 \textcolor{comment}{//   \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00138}00138 \textcolor{comment}{//   return true;}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00139}00139 \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00141}00141 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00147}00147 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00148}\mbox{\hyperlink{class_adafruit___g_p_s_ab86462ef1409d2bd8ff7a8405c70ff34}{00148}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ab86462ef1409d2bd8ff7a8405c70ff34}{Adafruit\_GPS::begin}}(uint32\_t baud\_or\_i2caddr) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00149}00149 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00150}00150   \textcolor{keywordflow}{if} (gpsSwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00151}00151     gpsSwSerial-\/>begin(baud\_or\_i2caddr);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00152}00152   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00153}00153 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00154}00154   \textcolor{keywordflow}{if} (gpsHwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00155}00155     gpsHwSerial-\/>begin(baud\_or\_i2caddr);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00156}00156   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00157}00157   \textcolor{keywordflow}{if} (gpsI2C) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00158}00158     gpsI2C-\/>begin();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00159}00159     \textcolor{keywordflow}{if} (baud\_or\_i2caddr > 0x7F) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00160}00160       \_i2caddr = \mbox{\hyperlink{_adafruit___g_p_s_8h_a09a011d0f9a94852f1cf93de299f6152}{GPS\_DEFAULT\_I2C\_ADDR}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00161}00161     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00162}00162       \_i2caddr = baud\_or\_i2caddr;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00163}00163     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00164}00164     \textcolor{comment}{// A basic scanner, see if it ACK's}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00165}00165     gpsI2C-\/>beginTransmission(\_i2caddr);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00166}00166     \textcolor{keywordflow}{return} (gpsI2C-\/>endTransmission() == 0);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00167}00167   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00168}00168   \textcolor{keywordflow}{if} (gpsSPI) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00169}00169     gpsSPI-\/>begin();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00170}00170     gpsSPI\_settings = SPISettings(baud\_or\_i2caddr, MSBFIRST, SPI\_MODE0);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00171}00171     \textcolor{keywordflow}{if} (gpsSPI\_cs >= 0) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00172}00172       pinMode(gpsSPI\_cs, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00173}00173       digitalWrite(gpsSPI\_cs, HIGH);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00174}00174     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00175}00175   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00176}00176 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00177}00177   delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00178}00178   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00179}00179 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00181}00181 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00186}00186 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00187}00187 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00188}00188 \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS::Adafruit\_GPS}}(SoftwareSerial *ser) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00189}00189   \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\_init}}();     \textcolor{comment}{// Set everything to common state, then...}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00190}00190   gpsSwSerial = ser; \textcolor{comment}{// ...override gpsSwSerial with value passed.}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00191}00191 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00192}00192 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00194}00194 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00199}00199 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00200}\mbox{\hyperlink{class_adafruit___g_p_s_a3dd74265015def9c893170f38bab1b61}{00200}} \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS::Adafruit\_GPS}}(HardwareSerial *ser) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00201}00201   \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\_init}}();     \textcolor{comment}{// Set everything to common state, then...}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00202}00202   gpsHwSerial = ser; \textcolor{comment}{// ...override gpsHwSerial with value passed.}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00203}00203 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00205}00205 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00210}00210 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00211}\mbox{\hyperlink{class_adafruit___g_p_s_a2a7f90b64349dca658dbc8e0c79c9938}{00211}} \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS::Adafruit\_GPS}}(TwoWire *theWire) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00212}00212   \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\_init}}();    \textcolor{comment}{// Set everything to common state, then...}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00213}00213   gpsI2C = theWire; \textcolor{comment}{// ...override gpsI2C}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00214}00214 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00216}00216 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00222}00222 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00223}\mbox{\hyperlink{class_adafruit___g_p_s_a8422d8a2c060c172c179ebefb03bb67a}{00223}} \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS::Adafruit\_GPS}}(SPIClass *theSPI, int8\_t cspin) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00224}00224   \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\_init}}();   \textcolor{comment}{// Set everything to common state, then...}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00225}00225   gpsSPI = theSPI; \textcolor{comment}{// ...override gpsSPI}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00226}00226   gpsSPI\_cs = cspin;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00227}00227 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00229}00229 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00233}00233 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00234}\mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{00234}} \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS::Adafruit\_GPS}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00235}00235   \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\_init}}(); \textcolor{comment}{// Set everything to common state, then...}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00236}00236   noComms = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00237}00237 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00238}00238 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00239}00239 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00243}00243 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00244}\mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{00244}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{Adafruit\_GPS::common\_init}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00245}00245 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00246}00246   gpsSwSerial = NULL; \textcolor{comment}{// Set both to NULL, then override correct}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00247}00247 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00248}00248   gpsHwSerial = NULL; \textcolor{comment}{// port pointer in corresponding constructor}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00249}00249   gpsI2C = NULL;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00250}00250   gpsSPI = NULL;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00251}00251   recvdflag = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00252}00252   paused = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00253}00253   lineidx = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00254}00254   currentline = line1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00255}00255   lastline = line2;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00256}00256 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00257}00257   \mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}} = \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}} = \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} = \mbox{\hyperlink{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}{year}} = \mbox{\hyperlink{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}{month}} = \mbox{\hyperlink{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}{day}} = \mbox{\hyperlink{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}{fixquality}} = \mbox{\hyperlink{class_adafruit___g_p_s_a95ed044ee9661cd7afd1b81595cb8dd0}{fixquality\_3d}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00258}00258       \mbox{\hyperlink{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}{satellites}} = 0;  \textcolor{comment}{// uint8\_t}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00259}00259   \mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}} = \mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}} = \mbox{\hyperlink{class_adafruit___g_p_s_a13af36459c90392c2378ce14248cfcfb}{mag}} = 0; \textcolor{comment}{// char}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00260}00260   \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}} = \textcolor{keyword}{false};         \textcolor{comment}{// bool}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00261}00261   \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}} = 0;    \textcolor{comment}{// uint16\_t}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00262}00262   \mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}} = \mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}} = \mbox{\hyperlink{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}{geoidheight}} = \mbox{\hyperlink{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}{altitude}} = \mbox{\hyperlink{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}{speed}} = \mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}} = \mbox{\hyperlink{class_adafruit___g_p_s_a2c53f008694ebee3871583cb44842033}{magvariation}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00263}00263       \mbox{\hyperlink{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}{HDOP}} = \mbox{\hyperlink{class_adafruit___g_p_s_af13a4d008ab2f74ff30bfc098315edea}{VDOP}} = \mbox{\hyperlink{class_adafruit___g_p_s_a27b5195e96aaef00fb5751a34f3fb82b}{PDOP}} = 0.0; \textcolor{comment}{// nmea\_float\_t}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00264}00264 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00265}00265   data\_init();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00266}00266 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00267}00267 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00269}00269 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00274}00274 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00275}\mbox{\hyperlink{class_adafruit___g_p_s_aa10e13a582969a5d49f1416fe147d1d2}{00275}} \mbox{\hyperlink{class_adafruit___g_p_s_aa10e13a582969a5d49f1416fe147d1d2}{Adafruit\_GPS::\string~Adafruit\_GPS}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00276}00276 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00277}00277   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < (int)\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}}; i++)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00278}00278     \mbox{\hyperlink{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}{removeHistory}}((\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}})i); \textcolor{comment}{// to free any history mallocs}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00279}00279 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00280}00280 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00282}00282 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00288}00288 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00289}\mbox{\hyperlink{class_adafruit___g_p_s_abe6399af00c0047527ea20e3f35a0182}{00289}} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_adafruit___g_p_s_abe6399af00c0047527ea20e3f35a0182}{Adafruit\_GPS::available}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00290}00290   \textcolor{keywordflow}{if} (paused)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00291}00291     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00292}00292 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00293}00293 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00294}00294   \textcolor{keywordflow}{if} (gpsSwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00295}00295     \textcolor{keywordflow}{return} gpsSwSerial-\/>available();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00296}00296   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00297}00297 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00298}00298   \textcolor{keywordflow}{if} (gpsHwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00299}00299     \textcolor{keywordflow}{return} gpsHwSerial-\/>available();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00300}00300   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00301}00301   \textcolor{keywordflow}{if} (gpsI2C || gpsSPI) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00302}00302     \textcolor{keywordflow}{return} 1; \textcolor{comment}{// I2C/SPI doesnt have 'availability' so always has a byte at}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00303}00303               \textcolor{comment}{// least to read!}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00304}00304   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00305}00305   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00306}00306 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00307}00307 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00308}00308 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00315}00315 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00316}\mbox{\hyperlink{class_adafruit___g_p_s_a079d9990da5971f336fab880cd141445}{00316}} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_adafruit___g_p_s_a079d9990da5971f336fab880cd141445}{Adafruit\_GPS::write}}(uint8\_t c) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00317}00317 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00318}00318   \textcolor{keywordflow}{if} (gpsSwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00319}00319     \textcolor{keywordflow}{return} gpsSwSerial-\/>write(c);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00320}00320   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00321}00321 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00322}00322   \textcolor{keywordflow}{if} (gpsHwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00323}00323     \textcolor{keywordflow}{return} gpsHwSerial-\/>write(c);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00324}00324   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00325}00325   \textcolor{keywordflow}{if} (gpsI2C) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00326}00326     gpsI2C-\/>beginTransmission(\_i2caddr);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00327}00327     \textcolor{keywordflow}{if} (gpsI2C-\/>write(c) != 1) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00328}00328       \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00329}00329     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00330}00330     \textcolor{keywordflow}{if} (gpsI2C-\/>endTransmission(\textcolor{keyword}{true}) == 0) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00331}00331       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00332}00332     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00333}00333   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00334}00334   \textcolor{keywordflow}{if} (gpsSPI) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00335}00335     gpsSPI-\/>beginTransaction(gpsSPI\_settings);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00336}00336     \textcolor{keywordflow}{if} (gpsSPI\_cs >= 0) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00337}00337       digitalWrite(gpsSPI\_cs, LOW);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00338}00338     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00339}00339     c = gpsSPI-\/>transfer(c);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00340}00340     \textcolor{keywordflow}{if} (gpsSPI\_cs >= 0) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00341}00341       digitalWrite(gpsSPI\_cs, HIGH);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00342}00342     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00343}00343     gpsSPI-\/>endTransaction();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00344}00344     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00345}00345   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00347}00347   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00348}00348 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00349}00349 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00350}00350 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00361}00361 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00362}\mbox{\hyperlink{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}{00362}} \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}{Adafruit\_GPS::read}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00363}00363   \textcolor{keyword}{static} uint32\_t firstChar = 0; \textcolor{comment}{// first character received in current sentence}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00364}00364   uint32\_t tStart = millis();    \textcolor{comment}{// as close as we can get to time char was sent}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00365}00365   \textcolor{keywordtype}{char} c = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00367}00367   \textcolor{keywordflow}{if} (paused || noComms)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00368}00368     \textcolor{keywordflow}{return} c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00370}00370 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00371}00371   \textcolor{keywordflow}{if} (gpsSwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00372}00372     \textcolor{keywordflow}{if} (!gpsSwSerial-\/>available())}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00373}00373       \textcolor{keywordflow}{return} c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00374}00374     c = gpsSwSerial-\/>read();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00375}00375   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00376}00376 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00377}00377   \textcolor{keywordflow}{if} (gpsHwSerial) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00378}00378     \textcolor{keywordflow}{if} (!gpsHwSerial-\/>available())}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00379}00379       \textcolor{keywordflow}{return} c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00380}00380     c = gpsHwSerial-\/>read();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00381}00381   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00382}00382   \textcolor{keywordflow}{if} (gpsI2C) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00383}00383     \textcolor{keywordflow}{if} (\_buff\_idx <= \_buff\_max) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00384}00384       c = \_i2cbuffer[\_buff\_idx];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00385}00385       \_buff\_idx++;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00386}00386     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00387}00387       \textcolor{comment}{// refill the buffer!}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00388}00388       \textcolor{keywordflow}{if} (gpsI2C-\/>requestFrom((uint8\_t)0x10, (uint8\_t)\mbox{\hyperlink{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}{GPS\_MAX\_I2C\_TRANSFER}},}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00389}00389                               (uint8\_t) \textcolor{keyword}{true}) == \mbox{\hyperlink{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}{GPS\_MAX\_I2C\_TRANSFER}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00390}00390         \textcolor{comment}{// got data!}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00391}00391         \_buff\_max = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00392}00392         \textcolor{keywordtype}{char} curr\_char = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00393}00393         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}{GPS\_MAX\_I2C\_TRANSFER}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00394}00394           curr\_char = gpsI2C-\/>read();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00395}00395           \textcolor{keywordflow}{if} ((curr\_char == 0x0A) \&\& (last\_char != 0x0D)) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00396}00396             \textcolor{comment}{// skip duplicate 0x0A's -\/ but keep as part of a CRLF}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00397}00397             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00398}00398           \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00399}00399           last\_char = curr\_char;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00400}00400           \_i2cbuffer[\_buff\_max] = curr\_char;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00401}00401           \_buff\_max++;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00402}00402         \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00403}00403         \_buff\_max-\/-\/; \textcolor{comment}{// back up to the last valid slot}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00404}00404         \textcolor{keywordflow}{if} ((\_buff\_max == 0) \&\& (\_i2cbuffer[0] == 0x0A)) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00405}00405           \_buff\_max = -\/1; \textcolor{comment}{// ahh there was nothing to read after all}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00406}00406         \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00407}00407         \_buff\_idx = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00408}00408       \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00409}00409       \textcolor{keywordflow}{return} c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00410}00410     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00411}00411   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00412}00412 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00413}00413   \textcolor{keywordflow}{if} (gpsSPI) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00414}00414     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00415}00415       gpsSPI-\/>beginTransaction(gpsSPI\_settings);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00416}00416       \textcolor{keywordflow}{if} (gpsSPI\_cs >= 0) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00417}00417         digitalWrite(gpsSPI\_cs, LOW);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00418}00418       \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00419}00419       c = gpsSPI-\/>transfer(0xFF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00420}00420       \textcolor{keywordflow}{if} (gpsSPI\_cs >= 0) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00421}00421         digitalWrite(gpsSPI\_cs, HIGH);}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00422}00422       \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00423}00423       gpsSPI-\/>endTransaction();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00424}00424       \textcolor{comment}{// skip duplicate 0x0A's -\/ but keep as part of a CRLF}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00425}00425     \} \textcolor{keywordflow}{while} (((c == 0x0A) \&\& (last\_char != 0x0D)) ||}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00426}00426              (!isprint(c) \&\& !isspace(c)));}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00427}00427     last\_char = c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00428}00428   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00429}00429   \textcolor{comment}{// Serial.print(c);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00430}00430 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00431}00431   currentline[lineidx++] = c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00432}00432   \textcolor{keywordflow}{if} (lineidx >= \mbox{\hyperlink{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}{MAXLINELENGTH}})}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00433}00433     lineidx = \mbox{\hyperlink{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}{MAXLINELENGTH}} -\/}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00434}00434               1; \textcolor{comment}{// ensure there is someplace to put the next received character}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00435}00435 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00436}00436   \textcolor{keywordflow}{if} (c == \textcolor{charliteral}{'\(\backslash\)n'}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00437}00437     currentline[lineidx] = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00438}00438 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00439}00439     \textcolor{keywordflow}{if} (currentline == line1) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00440}00440       currentline = line2;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00441}00441       lastline = line1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00442}00442     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00443}00443       currentline = line1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00444}00444       lastline = line2;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00445}00445     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00446}00446 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00447}00447     \textcolor{comment}{// Serial.println("{}-\/-\/-\/-\/"{});}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00448}00448     \textcolor{comment}{// Serial.println((char *)lastline);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00449}00449     \textcolor{comment}{// Serial.println("{}-\/-\/-\/-\/"{});}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00450}00450     lineidx = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00451}00451     recvdflag = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00452}00452     recvdTime = millis(); \textcolor{comment}{// time we got the end of the string}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00453}00453     sentTime = firstChar;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00454}00454     firstChar = 0; \textcolor{comment}{// there are no characters yet}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00455}00455     \textcolor{keywordflow}{return} c;      \textcolor{comment}{// wait until next character to set time}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00456}00456   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00457}00457 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00458}00458   \textcolor{keywordflow}{if} (firstChar == 0)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00459}00459     firstChar = tStart;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00460}00460   \textcolor{keywordflow}{return} c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00461}00461 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00462}00462 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00463}00463 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00468}00468 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00469}\mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{00469}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{Adafruit\_GPS::sendCommand}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str) \{ println(str); \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00470}00470 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00471}00471 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00476}00476 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00477}\mbox{\hyperlink{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}{00477}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}{Adafruit\_GPS::newNMEAreceived}}(\textcolor{keywordtype}{void}) \{ \textcolor{keywordflow}{return} recvdflag; \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00478}00478 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00479}00479 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00484}00484 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00485}\mbox{\hyperlink{class_adafruit___g_p_s_a0b3ca5f8bc2f3f6e8cdaef05bec5b034}{00485}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a0b3ca5f8bc2f3f6e8cdaef05bec5b034}{Adafruit\_GPS::pause}}(\textcolor{keywordtype}{bool} p) \{ paused = p; \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00486}00486 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00487}00487 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00492}00492 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00493}\mbox{\hyperlink{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}{00493}} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}{Adafruit\_GPS::lastNMEA}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00494}00494   recvdflag = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00495}00495   \textcolor{keywordflow}{return} (\textcolor{keywordtype}{char} *)lastline;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00496}00496 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00497}00497 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00498}00498 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00507}00507 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00508}\mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{00508}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{Adafruit\_GPS::waitForSentence}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *wait4me, uint8\_t max,}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00509}00509                                    \textcolor{keywordtype}{bool} usingInterrupts) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00510}00510   uint8\_t i = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00511}00511   \textcolor{keywordflow}{while} (i < max) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00512}00512     \textcolor{keywordflow}{if} (!usingInterrupts)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00513}00513       \mbox{\hyperlink{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}{read}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00514}00514 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00515}00515     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}{newNMEAreceived}}()) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00516}00516       \textcolor{keywordtype}{char} *nmea = \mbox{\hyperlink{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}{lastNMEA}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00517}00517       i++;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00518}00518 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00519}00519       \textcolor{keywordflow}{if} (strStartsWith(nmea, wait4me))}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00520}00520         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00521}00521     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00522}00522   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00523}00523 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00524}00524   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00525}00525 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00526}00526 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00527}00527 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00532}00532 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00533}\mbox{\hyperlink{class_adafruit___g_p_s_a325d15c43c09fa1bedcdadb39706e72b}{00533}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a325d15c43c09fa1bedcdadb39706e72b}{Adafruit\_GPS::LOCUS\_StartLogger}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00534}00534   \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{sendCommand}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a9d5efe2fb6c9312003116f35fff29dc9}{PMTK\_LOCUS\_STARTLOG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00535}00535   recvdflag = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00536}00536   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{waitForSentence}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a5fa8379e8ed611060b16d5f02b1c1dd8}{PMTK\_LOCUS\_STARTSTOPACK}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00537}00537 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00538}00538 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00539}00539 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00544}00544 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00545}\mbox{\hyperlink{class_adafruit___g_p_s_a48eaf7f5b46e3682b058a7f8f44fa385}{00545}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a48eaf7f5b46e3682b058a7f8f44fa385}{Adafruit\_GPS::LOCUS\_StopLogger}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00546}00546   \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{sendCommand}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a4c44c7abcfe149f1d72bdbb207c86eeb}{PMTK\_LOCUS\_STOPLOG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00547}00547   recvdflag = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00548}00548   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{waitForSentence}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a5fa8379e8ed611060b16d5f02b1c1dd8}{PMTK\_LOCUS\_STARTSTOPACK}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00549}00549 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00551}00551 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00556}00556 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00557}\mbox{\hyperlink{class_adafruit___g_p_s_adb6139e84c64156b5654dfce2a2e6e3f}{00557}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_adb6139e84c64156b5654dfce2a2e6e3f}{Adafruit\_GPS::LOCUS\_ReadStatus}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00558}00558   \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{sendCommand}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a905517539269b7556f0b2f6277c646d6}{PMTK\_LOCUS\_QUERY\_STATUS}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00559}00559 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00560}00560   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{waitForSentence}}(\textcolor{stringliteral}{"{}\$PMTKLOG"{}}))}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00561}00561     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00562}00562 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00563}00563   \textcolor{keywordtype}{char} *response = \mbox{\hyperlink{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}{lastNMEA}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00564}00564   uint16\_t parsed[10];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00565}00565   uint8\_t i;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00566}00566 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00567}00567   \textcolor{keywordflow}{for} (i = 0; i < 10; i++)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00568}00568     parsed[i] = -\/1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00569}00569 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00570}00570   response = strchr(response, \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00571}00571   \textcolor{keywordflow}{for} (i = 0; i < 10; i++) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00572}00572     \textcolor{keywordflow}{if} (!response || (response[0] == 0) || (response[0] == \textcolor{charliteral}{'*'}))}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00573}00573       \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00574}00574     response++;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00575}00575     parsed[i] = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00576}00576     \textcolor{keywordflow}{while} ((response[0] != \textcolor{charliteral}{','}) \&\& (response[0] != \textcolor{charliteral}{'*'}) \&\& (response[0] != 0)) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00577}00577       parsed[i] *= 10;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00578}00578       \textcolor{keywordtype}{char} c = response[0];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00579}00579       \textcolor{keywordflow}{if} (isDigit(c))}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00580}00580         parsed[i] += c -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00581}00581       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00582}00582         parsed[i] = c;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00583}00583       response++;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00584}00584     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00585}00585   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00586}00586   \mbox{\hyperlink{class_adafruit___g_p_s_adfeb77f544ca2a8f76e479ae077952eb}{LOCUS\_serial}} = parsed[0];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00587}00587   \mbox{\hyperlink{class_adafruit___g_p_s_ae3eddbc004d2945018eb1f71abecd0b8}{LOCUS\_type}} = parsed[1];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00588}00588   \textcolor{keywordflow}{if} (isAlpha(parsed[2])) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00589}00589     parsed[2] = parsed[2] -\/ \textcolor{charliteral}{'a'} + 10;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00590}00590   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00591}00591   \mbox{\hyperlink{class_adafruit___g_p_s_a16f2f26bc48f38e208307569e9d5f245}{LOCUS\_mode}} = parsed[2];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00592}00592   \mbox{\hyperlink{class_adafruit___g_p_s_ab306e67df47d2e02a69dddc97317ea8e}{LOCUS\_config}} = parsed[3];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00593}00593   \mbox{\hyperlink{class_adafruit___g_p_s_aaf51d53983b61ab9d5c7795fcb97b41c}{LOCUS\_interval}} = parsed[4];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00594}00594   \mbox{\hyperlink{class_adafruit___g_p_s_a9a09b0dc6344dbe3904dfa1c2bcdc538}{LOCUS\_distance}} = parsed[5];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00595}00595   \mbox{\hyperlink{class_adafruit___g_p_s_abc92488b6bcd0372c38b50f1384e4765}{LOCUS\_speed}} = parsed[6];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00596}00596   \mbox{\hyperlink{class_adafruit___g_p_s_ae8cfb553f10224487d0a45354984776c}{LOCUS\_status}} = !parsed[7];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00597}00597   \mbox{\hyperlink{class_adafruit___g_p_s_af6a8b70851f8625bde5a8b3eab6c9fd3}{LOCUS\_records}} = parsed[8];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00598}00598   \mbox{\hyperlink{class_adafruit___g_p_s_a911accd6b643a08c6cae3b844ccf6e69}{LOCUS\_percent}} = parsed[9];}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00599}00599 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00600}00600   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00601}00601 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00602}00602 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00603}00603 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00608}00608 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00609}\mbox{\hyperlink{class_adafruit___g_p_s_a32ddd41152a08354d2ee2b4311bbf013}{00609}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a32ddd41152a08354d2ee2b4311bbf013}{Adafruit\_GPS::standby}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00610}00610   \textcolor{keywordflow}{if} (inStandbyMode) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00611}00611     \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// Returns false if already in standby mode, so that you do}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00612}00612                   \textcolor{comment}{// not wake it up by sending commands to GPS}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00613}00613   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00614}00614     inStandbyMode = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00615}00615     \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{sendCommand}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a9772abe32307f50632edef118f08454a}{PMTK\_STANDBY}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00616}00616     \textcolor{comment}{// return waitForSentence(PMTK\_STANDBY\_SUCCESS);  // don't seem to be fast}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00617}00617     \textcolor{comment}{// enough to catch the message, or something else just is not working}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00618}00618     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00619}00619   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00620}00620 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00621}00621 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00622}00622 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00627}00627 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00628}\mbox{\hyperlink{class_adafruit___g_p_s_afc67f26f7b14d5cc851e13eb7f6aeae3}{00628}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_afc67f26f7b14d5cc851e13eb7f6aeae3}{Adafruit\_GPS::wakeup}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00629}00629   \textcolor{keywordflow}{if} (inStandbyMode) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00630}00630     inStandbyMode = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00631}00631     \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{sendCommand}}(\textcolor{stringliteral}{"{}"{}}); \textcolor{comment}{// send byte to wake it up}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00632}00632     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{waitForSentence}}(\mbox{\hyperlink{_adafruit___p_m_t_k_8h_a8b3fa1db8c1110419f51c72c2b017009}{PMTK\_AWAKE}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00633}00633   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00634}00634     \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// Returns false if not in standby mode, nothing to wakeup}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00635}00635   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00636}00636 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00637}00637 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00638}00638 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00646}00646 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00647}\mbox{\hyperlink{class_adafruit___g_p_s_aed7db1b8b55742a78f291687f1ebc9ca}{00647}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_aed7db1b8b55742a78f291687f1ebc9ca}{Adafruit\_GPS::secondsSinceFix}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00648}00648   \textcolor{keywordflow}{return} (millis() -\/ lastFix) / 1000.;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00649}00649 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00650}00650 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00651}00651 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00658}00658 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00659}\mbox{\hyperlink{class_adafruit___g_p_s_af01989c447efddb9fe1baa78e50373c5}{00659}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_af01989c447efddb9fe1baa78e50373c5}{Adafruit\_GPS::secondsSinceTime}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00660}00660   \textcolor{keywordflow}{return} (millis() -\/ lastTime) / 1000.;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00661}00661 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00662}00662 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00663}00663 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00670}00670 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00671}\mbox{\hyperlink{class_adafruit___g_p_s_a4b49f40ba946d1646d7937b25e8dda37}{00671}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a4b49f40ba946d1646d7937b25e8dda37}{Adafruit\_GPS::secondsSinceDate}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00672}00672   \textcolor{keywordflow}{return} (millis() -\/ lastDate) / 1000.;}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00673}00673 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00674}00674 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00675}00675 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00680}00680 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00681}\mbox{\hyperlink{class_adafruit___g_p_s_a1194f23fada702be6e58b24a62402d39}{00681}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a1194f23fada702be6e58b24a62402d39}{Adafruit\_GPS::resetSentTime}}() \{ sentTime = millis(); \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00682}00682 }
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00683}00683 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00690}00690 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00691}00691 \textcolor{keyword}{static} \textcolor{keywordtype}{bool} strStartsWith(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *prefix) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00692}00692   \textcolor{keywordflow}{while} (*prefix) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00693}00693     \textcolor{keywordflow}{if} (*prefix++ != *str++)}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00694}00694       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00695}00695   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00696}00696   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___g_p_s_8cpp_source_l00697}00697 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,213 @@
+\hypertarget{mavlink__msg__ping_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+ping.\+h}
+\label{mavlink__msg__ping_8h_source}\index{lib/common/mavlink\_msg\_ping.h@{lib/common/mavlink\_msg\_ping.h}}
+\mbox{\hyperlink{mavlink__msg__ping_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE PING PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PING 4}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__ping_8h_a0c7bd5af3e3456840d95b5b32eacdda0}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_ping\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint32\_t seq; \textcolor{comment}{/*<  PING sequence*/}}
+\DoxyCodeLine{10  uint8\_t target\_system; \textcolor{comment}{/*<  0: request ping from all receiving systems, if greater than 0: message is a ping response and number is the system id of the requesting system*/}}
+\DoxyCodeLine{11  uint8\_t target\_component; \textcolor{comment}{/*<  0: request ping from all receiving components, if greater than 0: message is a ping response and number is the system id of the requesting system*/}}
+\DoxyCodeLine{12 \}) mavlink\_ping\_t;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PING\_LEN 14}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PING\_MIN\_LEN 14}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_4\_LEN 14}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_4\_MIN\_LEN 14}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_PING\_CRC 237}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_4\_CRC 237}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_PING \{ \(\backslash\)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{    4, \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    "{}PING"{}}, \(\backslash\)}
+\DoxyCodeLine{28     4, \(\backslash\)}
+\DoxyCodeLine{29     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_ping\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{30          \{ "{}seq"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_ping\_t, seq) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 12, offsetof(mavlink\_ping\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 13, offsetof(mavlink\_ping\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{33          \} \(\backslash\)}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_PING \{ \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    "{}PING"{}}, \(\backslash\)}
+\DoxyCodeLine{38     4, \(\backslash\)}
+\DoxyCodeLine{39     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_ping\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}seq"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_ping\_t, seq) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 12, offsetof(mavlink\_ping\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 13, offsetof(mavlink\_ping\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{43          \} \(\backslash\)}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{59 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_ping\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{60                                uint64\_t time\_usec, uint32\_t seq, uint8\_t target\_system, uint8\_t target\_component)}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}];}
+\DoxyCodeLine{64     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{65     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, seq);}
+\DoxyCodeLine{66     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 12, target\_system);}
+\DoxyCodeLine{67     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 13, target\_component);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}});}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{71     mavlink\_ping\_t packet;}
+\DoxyCodeLine{72     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{73     packet.seq = seq;}
+\DoxyCodeLine{74     packet.target\_system = target\_system;}
+\DoxyCodeLine{75     packet.target\_component = target\_component;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}});}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}};}
+\DoxyCodeLine{81     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{82 \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{96 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_ping\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{97                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{98                                    uint64\_t time\_usec,uint32\_t seq,uint8\_t target\_system,uint8\_t target\_component)}
+\DoxyCodeLine{99 \{}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{101     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}];}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{103     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, seq);}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 12, target\_system);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 13, target\_component);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}});}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{109     mavlink\_ping\_t packet;}
+\DoxyCodeLine{110     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{111     packet.seq = seq;}
+\DoxyCodeLine{112     packet.target\_system = target\_system;}
+\DoxyCodeLine{113     packet.target\_component = target\_component;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}});}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}};}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{130 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_ping\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_ping\_t* ping)}
+\DoxyCodeLine{131 \{}
+\DoxyCodeLine{132     \textcolor{keywordflow}{return} mavlink\_msg\_ping\_pack(system\_id, component\_id, msg, ping-\/>time\_usec, ping-\/>seq, ping-\/>target\_system, ping-\/>target\_component);}
+\DoxyCodeLine{133 \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{144 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_ping\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_ping\_t* ping)}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146     \textcolor{keywordflow}{return} mavlink\_msg\_ping\_pack\_chan(system\_id, component\_id, chan, msg, ping-\/>time\_usec, ping-\/>seq, ping-\/>target\_system, ping-\/>target\_component);}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_ping\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint32\_t seq, uint8\_t target\_system, uint8\_t target\_component)}
+\DoxyCodeLine{161 \{}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{163     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}];}
+\DoxyCodeLine{164     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, seq);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 12, target\_system);}
+\DoxyCodeLine{167     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 13, target\_component);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}}, buf, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{171     mavlink\_ping\_t packet;}
+\DoxyCodeLine{172     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{173     packet.seq = seq;}
+\DoxyCodeLine{174     packet.target\_system = target\_system;}
+\DoxyCodeLine{175     packet.target\_component = target\_component;}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{179 \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{186 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_ping\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_ping\_t* ping)}
+\DoxyCodeLine{187 \{}
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{189     mavlink\_msg\_ping\_send(chan, ping-\/>time\_usec, ping-\/>seq, ping-\/>target\_system, ping-\/>target\_component);}
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{191     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)ping, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{193 \}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_PING\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{196 \textcolor{comment}{/*}}
+\DoxyCodeLine{197 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{198 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{199 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{200 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{201 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{202 \textcolor{comment}{ */}}
+\DoxyCodeLine{203 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_ping\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint32\_t seq, uint8\_t target\_system, uint8\_t target\_component)}
+\DoxyCodeLine{204 \{}
+\DoxyCodeLine{205 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{206     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{207     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{208     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, seq);}
+\DoxyCodeLine{209     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 12, target\_system);}
+\DoxyCodeLine{210     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 13, target\_component);}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}}, buf, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{214     mavlink\_ping\_t *packet = (mavlink\_ping\_t *)msgbuf;}
+\DoxyCodeLine{215     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{216     packet-\/>seq = seq;}
+\DoxyCodeLine{217     packet-\/>target\_system = target\_system;}
+\DoxyCodeLine{218     packet-\/>target\_component = target\_component;}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__ping_8h_a261f2e64dcf19de902111359f6d5514a}{MAVLINK\_MSG\_ID\_PING}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__ping_8h_ab6aaa2c9f12c1d107cc009cdff0b79ea}{MAVLINK\_MSG\_ID\_PING\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}, \mbox{\hyperlink{mavlink__msg__ping_8h_af7c3e7c135aad5a635a2b492c483966c}{MAVLINK\_MSG\_ID\_PING\_CRC}});}
+\DoxyCodeLine{221 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{222 \}}
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227 \textcolor{comment}{// MESSAGE PING UNPACKING}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229 }
+\DoxyCodeLine{235 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_ping\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{236 \{}
+\DoxyCodeLine{237     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{238 \}}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{245 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_ping\_get\_seq(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{246 \{}
+\DoxyCodeLine{247     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  8);}
+\DoxyCodeLine{248 \}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{255 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_ping\_get\_target\_system(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{256 \{}
+\DoxyCodeLine{257     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  12);}
+\DoxyCodeLine{258 \}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{265 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_ping\_get\_target\_component(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{266 \{}
+\DoxyCodeLine{267     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  13);}
+\DoxyCodeLine{268 \}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{276 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_ping\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_ping\_t* ping)}
+\DoxyCodeLine{277 \{}
+\DoxyCodeLine{278 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{279     ping-\/>time\_usec = mavlink\_msg\_ping\_get\_time\_usec(msg);}
+\DoxyCodeLine{280     ping-\/>seq = mavlink\_msg\_ping\_get\_seq(msg);}
+\DoxyCodeLine{281     ping-\/>target\_system = mavlink\_msg\_ping\_get\_target\_system(msg);}
+\DoxyCodeLine{282     ping-\/>target\_component = mavlink\_msg\_ping\_get\_target\_component(msg);}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{284         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}};}
+\DoxyCodeLine{285         memset(ping, 0, \mbox{\hyperlink{mavlink__msg__ping_8h_a13a7fb76e1b89475b7fe974e01bbf4ed}{MAVLINK\_MSG\_ID\_PING\_LEN}});}
+\DoxyCodeLine{286     memcpy(ping, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{287 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{288 \}}
+
+\end{DoxyCode}

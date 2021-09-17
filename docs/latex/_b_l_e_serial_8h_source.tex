@@ -1,0 +1,52 @@
+\hypertarget{_b_l_e_serial_8h_source}{}\doxysection{BLESerial.\+h}
+\label{_b_l_e_serial_8h_source}\index{lib/Adafruit\_NeoPixel/examples/StrandtestBLE/BLESerial.h@{lib/Adafruit\_NeoPixel/examples/StrandtestBLE/BLESerial.h}}
+\mbox{\hyperlink{_b_l_e_serial_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_BLE\_SERIAL\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_BLE\_SERIAL\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <BLEPeripheral.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_b_l_e_serial}{BLESerial}} : \textcolor{keyword}{public} BLEPeripheral, \textcolor{keyword}{public} Stream}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9   \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_b_l_e_serial_a4024e9e6ac2be460a0890c707460222b}{BLESerial}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} req, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} rdy, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} rst);}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_ae0893d4c84d93e0a53f95010c0dbb665}{begin}}(...);}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_a8888659cfb5c843eeba48069437a9807}{poll}}();}
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_a1515cf3b4238a2072a50a199ab0d4bdb}{end}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_l_e_serial_a0dba14ded5137ea3bb5b7b0458dcdd4e}{available}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{17     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_l_e_serial_a1b7740efb8e908f579b00ad4266677a5}{peek}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{18     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_l_e_serial_a4f37570c173dc1662b7e9eb4cc222a81}{read}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{19     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_aacf2cc3c53583783a8b83048df0f5180}{flush}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{20     \textcolor{keyword}{virtual} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_b_l_e_serial_a035af90f9516b10647627ac4674482f1}{write}}(uint8\_t \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{21     \textcolor{keyword}{using} \mbox{\hyperlink{_p_x4_flow_8cpp_aa397a63c56f62c056e43beb8d0e5e642}{Print::write}};}
+\DoxyCodeLine{22     \textcolor{keyword}{virtual} \textcolor{keyword}{operator} bool();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   \textcolor{keyword}{private}:}
+\DoxyCodeLine{25     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \_flushed;}
+\DoxyCodeLine{26     \textcolor{keyword}{static} \mbox{\hyperlink{class_b_l_e_serial}{BLESerial}}* \_instance;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{size\_t} \_rxHead;}
+\DoxyCodeLine{29     \textcolor{keywordtype}{size\_t} \_rxTail;}
+\DoxyCodeLine{30     \textcolor{keywordtype}{size\_t} \_rxCount() \textcolor{keyword}{const};}
+\DoxyCodeLine{31     uint8\_t \_rxBuffer[BLE\_ATTRIBUTE\_MAX\_VALUE\_LENGTH];}
+\DoxyCodeLine{32     \textcolor{keywordtype}{size\_t} \_txCount;}
+\DoxyCodeLine{33     uint8\_t \_txBuffer[BLE\_ATTRIBUTE\_MAX\_VALUE\_LENGTH];}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     BLEService \_uartService = BLEService(\textcolor{stringliteral}{"{}6E400001-\/B5A3-\/F393-\/E0A9-\/E50E24DCCA9E"{}});}
+\DoxyCodeLine{36     BLEDescriptor \_uartNameDescriptor = BLEDescriptor(\textcolor{stringliteral}{"{}2901"{}}, \textcolor{stringliteral}{"{}UART"{}});}
+\DoxyCodeLine{37     BLECharacteristic \_rxCharacteristic = BLECharacteristic(\textcolor{stringliteral}{"{}6E400002-\/B5A3-\/F393-\/E0A9-\/E50E24DCCA9E"{}}, BLEWriteWithoutResponse, BLE\_ATTRIBUTE\_MAX\_VALUE\_LENGTH);}
+\DoxyCodeLine{38     BLEDescriptor \_rxNameDescriptor = BLEDescriptor(\textcolor{stringliteral}{"{}2901"{}}, \textcolor{stringliteral}{"{}RX -\/ Receive Data (Write)"{}});}
+\DoxyCodeLine{39     BLECharacteristic \_txCharacteristic = BLECharacteristic(\textcolor{stringliteral}{"{}6E400003-\/B5A3-\/F393-\/E0A9-\/E50E24DCCA9E"{}}, BLENotify, BLE\_ATTRIBUTE\_MAX\_VALUE\_LENGTH);}
+\DoxyCodeLine{40     BLEDescriptor \_txNameDescriptor = BLEDescriptor(\textcolor{stringliteral}{"{}2901"{}}, \textcolor{stringliteral}{"{}TX -\/ Transfer Data (Notify)"{}});}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} \_received(\textcolor{keyword}{const} uint8\_t* data, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{43     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \_received(BLECentral\& \textcolor{comment}{/*central*/}, BLECharacteristic\& rxCharacteristic);}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

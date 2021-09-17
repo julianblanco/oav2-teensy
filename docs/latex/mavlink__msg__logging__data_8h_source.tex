@@ -1,0 +1,239 @@
+\hypertarget{mavlink__msg__logging__data_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+logging\+\_\+data.\+h}
+\label{mavlink__msg__logging__data_8h_source}\index{lib/common/mavlink\_msg\_logging\_data.h@{lib/common/mavlink\_msg\_logging\_data.h}}
+\mbox{\hyperlink{mavlink__msg__logging__data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE LOGGING\_DATA PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_LOGGING\_DATA 266}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__logging__data_8h_a121be14a6b84b629e261a4ee83f03f88}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_logging\_data\_t \{}
+\DoxyCodeLine{8  uint16\_t sequence; \textcolor{comment}{/*<  sequence number (can wrap)*/}}
+\DoxyCodeLine{9  uint8\_t target\_system; \textcolor{comment}{/*<  system ID of the target*/}}
+\DoxyCodeLine{10  uint8\_t target\_component; \textcolor{comment}{/*<  component ID of the target*/}}
+\DoxyCodeLine{11  uint8\_t length; \textcolor{comment}{/*< [bytes] data length*/}}
+\DoxyCodeLine{12  uint8\_t first\_message\_offset; \textcolor{comment}{/*< [bytes] offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).*/}}
+\DoxyCodeLine{13  uint8\_t data[249]; \textcolor{comment}{/*<  logged data*/}}
+\DoxyCodeLine{14 \}) mavlink\_logging\_data\_t;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN 255}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN 255}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_266\_LEN 255}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_266\_MIN\_LEN 255}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC 193}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_266\_CRC 193}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_LOGGING\_DATA\_FIELD\_DATA\_LEN 249}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_LOGGING\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    266, \(\backslash\)}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{    "{}LOGGING\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{30     6, \(\backslash\)}
+\DoxyCodeLine{31     \{  \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 2, offsetof(mavlink\_logging\_data\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 3, offsetof(mavlink\_logging\_data\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}sequence"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 0, offsetof(mavlink\_logging\_data\_t, sequence) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}length"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 4, offsetof(mavlink\_logging\_data\_t, length) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}first\_message\_offset"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 5, offsetof(mavlink\_logging\_data\_t, first\_message\_offset) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 249, 6, offsetof(mavlink\_logging\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{37          \} \(\backslash\)}
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_LOGGING\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{    "{}LOGGING\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{42     6, \(\backslash\)}
+\DoxyCodeLine{43     \{  \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 2, offsetof(mavlink\_logging\_data\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 3, offsetof(mavlink\_logging\_data\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}sequence"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 0, offsetof(mavlink\_logging\_data\_t, sequence) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}length"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 4, offsetof(mavlink\_logging\_data\_t, length) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}first\_message\_offset"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 5, offsetof(mavlink\_logging\_data\_t, first\_message\_offset) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 249, 6, offsetof(mavlink\_logging\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{49          \} \(\backslash\)}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{67 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_logging\_data\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{68                                uint8\_t target\_system, uint8\_t target\_component, uint16\_t sequence, uint8\_t length, uint8\_t first\_message\_offset, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}];}
+\DoxyCodeLine{72     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, sequence);}
+\DoxyCodeLine{73     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, target\_system);}
+\DoxyCodeLine{74     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 3, target\_component);}
+\DoxyCodeLine{75     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 4, length);}
+\DoxyCodeLine{76     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 5, first\_message\_offset);}
+\DoxyCodeLine{77     \_mav\_put\_uint8\_t\_array(buf, 6, data, 249);}
+\DoxyCodeLine{78         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}});}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{80     mavlink\_logging\_data\_t packet;}
+\DoxyCodeLine{81     packet.sequence = sequence;}
+\DoxyCodeLine{82     packet.target\_system = target\_system;}
+\DoxyCodeLine{83     packet.target\_component = target\_component;}
+\DoxyCodeLine{84     packet.length = length;}
+\DoxyCodeLine{85     packet.first\_message\_offset = first\_message\_offset;}
+\DoxyCodeLine{86     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*249);}
+\DoxyCodeLine{87         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}});}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}};}
+\DoxyCodeLine{91     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{92 \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{108 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_logging\_data\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{109                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{110                                    uint8\_t target\_system,uint8\_t target\_component,uint16\_t sequence,uint8\_t length,uint8\_t first\_message\_offset,\textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{113     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}];}
+\DoxyCodeLine{114     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, sequence);}
+\DoxyCodeLine{115     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, target\_system);}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 3, target\_component);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 4, length);}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 5, first\_message\_offset);}
+\DoxyCodeLine{119     \_mav\_put\_uint8\_t\_array(buf, 6, data, 249);}
+\DoxyCodeLine{120         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}});}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{122     mavlink\_logging\_data\_t packet;}
+\DoxyCodeLine{123     packet.sequence = sequence;}
+\DoxyCodeLine{124     packet.target\_system = target\_system;}
+\DoxyCodeLine{125     packet.target\_component = target\_component;}
+\DoxyCodeLine{126     packet.length = length;}
+\DoxyCodeLine{127     packet.first\_message\_offset = first\_message\_offset;}
+\DoxyCodeLine{128     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*249);}
+\DoxyCodeLine{129         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}});}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}};}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{134 \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{144 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_logging\_data\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_logging\_data\_t* logging\_data)}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146     \textcolor{keywordflow}{return} mavlink\_msg\_logging\_data\_pack(system\_id, component\_id, msg, logging\_data-\/>target\_system, logging\_data-\/>target\_component, logging\_data-\/>sequence, logging\_data-\/>length, logging\_data-\/>first\_message\_offset, logging\_data-\/>data);}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{158 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_logging\_data\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_logging\_data\_t* logging\_data)}
+\DoxyCodeLine{159 \{}
+\DoxyCodeLine{160     \textcolor{keywordflow}{return} mavlink\_msg\_logging\_data\_pack\_chan(system\_id, component\_id, chan, msg, logging\_data-\/>target\_system, logging\_data-\/>target\_component, logging\_data-\/>sequence, logging\_data-\/>length, logging\_data-\/>first\_message\_offset, logging\_data-\/>data);}
+\DoxyCodeLine{161 \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_logging\_data\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t target\_system, uint8\_t target\_component, uint16\_t sequence, uint8\_t length, uint8\_t first\_message\_offset, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{177 \{}
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{179     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}];}
+\DoxyCodeLine{180     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, sequence);}
+\DoxyCodeLine{181     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, target\_system);}
+\DoxyCodeLine{182     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 3, target\_component);}
+\DoxyCodeLine{183     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 4, length);}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 5, first\_message\_offset);}
+\DoxyCodeLine{185     \_mav\_put\_uint8\_t\_array(buf, 6, data, 249);}
+\DoxyCodeLine{186     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{188     mavlink\_logging\_data\_t packet;}
+\DoxyCodeLine{189     packet.sequence = sequence;}
+\DoxyCodeLine{190     packet.target\_system = target\_system;}
+\DoxyCodeLine{191     packet.target\_component = target\_component;}
+\DoxyCodeLine{192     packet.length = length;}
+\DoxyCodeLine{193     packet.first\_message\_offset = first\_message\_offset;}
+\DoxyCodeLine{194     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*249);}
+\DoxyCodeLine{195     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{197 \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{204 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_logging\_data\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_logging\_data\_t* logging\_data)}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{207     mavlink\_msg\_logging\_data\_send(chan, logging\_data-\/>target\_system, logging\_data-\/>target\_component, logging\_data-\/>sequence, logging\_data-\/>length, logging\_data-\/>first\_message\_offset, logging\_data-\/>data);}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{209     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)logging\_data, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{211 \}}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{214 \textcolor{comment}{/*}}
+\DoxyCodeLine{215 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{216 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{217 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{218 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{219 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{220 \textcolor{comment}{ */}}
+\DoxyCodeLine{221 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_logging\_data\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t target\_system, uint8\_t target\_component, uint16\_t sequence, uint8\_t length, uint8\_t first\_message\_offset, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{222 \{}
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{224     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{225     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 0, sequence);}
+\DoxyCodeLine{226     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 2, target\_system);}
+\DoxyCodeLine{227     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 3, target\_component);}
+\DoxyCodeLine{228     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 4, length);}
+\DoxyCodeLine{229     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 5, first\_message\_offset);}
+\DoxyCodeLine{230     \_mav\_put\_uint8\_t\_array(buf, 6, data, 249);}
+\DoxyCodeLine{231     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{233     mavlink\_logging\_data\_t *packet = (mavlink\_logging\_data\_t *)msgbuf;}
+\DoxyCodeLine{234     packet-\/>sequence = sequence;}
+\DoxyCodeLine{235     packet-\/>target\_system = target\_system;}
+\DoxyCodeLine{236     packet-\/>target\_component = target\_component;}
+\DoxyCodeLine{237     packet-\/>length = length;}
+\DoxyCodeLine{238     packet-\/>first\_message\_offset = first\_message\_offset;}
+\DoxyCodeLine{239     mav\_array\_memcpy(packet-\/>data, data, \textcolor{keyword}{sizeof}(uint8\_t)*249);}
+\DoxyCodeLine{240     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__logging__data_8h_ac782958265541396af3e4a3f6ca4a3df}{MAVLINK\_MSG\_ID\_LOGGING\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a55e9a2e90d4ec9b6832d994120b37dcf}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a7e76880835acc1070841ad5b89bed29a}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_CRC}});}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{242 \}}
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247 \textcolor{comment}{// MESSAGE LOGGING\_DATA UNPACKING}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249 }
+\DoxyCodeLine{255 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_logging\_data\_get\_target\_system(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{256 \{}
+\DoxyCodeLine{257     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  2);}
+\DoxyCodeLine{258 \}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{265 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_logging\_data\_get\_target\_component(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{266 \{}
+\DoxyCodeLine{267     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  3);}
+\DoxyCodeLine{268 \}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{275 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_logging\_data\_get\_sequence(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{276 \{}
+\DoxyCodeLine{277     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  0);}
+\DoxyCodeLine{278 \}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{285 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_logging\_data\_get\_length(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{286 \{}
+\DoxyCodeLine{287     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  4);}
+\DoxyCodeLine{288 \}}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{295 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_logging\_data\_get\_first\_message\_offset(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{296 \{}
+\DoxyCodeLine{297     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  5);}
+\DoxyCodeLine{298 \}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{305 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_logging\_data\_get\_data(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *data)}
+\DoxyCodeLine{306 \{}
+\DoxyCodeLine{307     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, data, 249,  6);}
+\DoxyCodeLine{308 \}}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{316 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_logging\_data\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_logging\_data\_t* logging\_data)}
+\DoxyCodeLine{317 \{}
+\DoxyCodeLine{318 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{319     logging\_data-\/>sequence = mavlink\_msg\_logging\_data\_get\_sequence(msg);}
+\DoxyCodeLine{320     logging\_data-\/>target\_system = mavlink\_msg\_logging\_data\_get\_target\_system(msg);}
+\DoxyCodeLine{321     logging\_data-\/>target\_component = mavlink\_msg\_logging\_data\_get\_target\_component(msg);}
+\DoxyCodeLine{322     logging\_data-\/>length = mavlink\_msg\_logging\_data\_get\_length(msg);}
+\DoxyCodeLine{323     logging\_data-\/>first\_message\_offset = mavlink\_msg\_logging\_data\_get\_first\_message\_offset(msg);}
+\DoxyCodeLine{324     mavlink\_msg\_logging\_data\_get\_data(msg, logging\_data-\/>data);}
+\DoxyCodeLine{325 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{326         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}};}
+\DoxyCodeLine{327         memset(logging\_data, 0, \mbox{\hyperlink{mavlink__msg__logging__data_8h_a6656080011fbc4d8c6d0dcbc652ae4c3}{MAVLINK\_MSG\_ID\_LOGGING\_DATA\_LEN}});}
+\DoxyCodeLine{328     memcpy(logging\_data, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{329 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{330 \}}
+
+\end{DoxyCode}

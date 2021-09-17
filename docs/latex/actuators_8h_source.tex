@@ -1,0 +1,45 @@
+\hypertarget{actuators_8h_source}{}\doxysection{actuators.\+h}
+\label{actuators_8h_source}\index{include/actuators.h@{include/actuators.h}}
+\mbox{\hyperlink{actuators_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{comment}{/*}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Record and Push imu for Laphable}}
+\DoxyCodeLine{4 \textcolor{comment}{*/}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#ifndef \_actuators\_H\_}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define \_actuators\_H\_}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{task_8h}{task.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <servo.h>}}
+\DoxyCodeLine{10 \textcolor{comment}{// \#include "{}config.h"{}}}
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13   \textcolor{comment}{// Public interface methods}}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15   \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aff30e03c65c4fc8fec0395045d44e913}{ACTUATORS}}();}
+\DoxyCodeLine{16   \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a538fa9f62ce66356bc01ac6e583200c0}{\string~ACTUATORS}}();}
+\DoxyCodeLine{25   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a87b1ce1e000e4e16eec89cc26f20e317}{setup}}();}
+\DoxyCodeLine{30   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ab3106d4cb972112c465e7ae09cde0309}{start}}();}
+\DoxyCodeLine{36   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_abadcb7ffe5899f92e28483881a839021}{update\_motors}}();}
+\DoxyCodeLine{42   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a73ee4347e9c828365b220b688fc7e368}{stop\_motors}}();}
+\DoxyCodeLine{48   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a0fec294c0aa91d9b28333303f2d91abf}{sendHITLmotorcommands}}();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50   Servo \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af85a626b8abb5e26010ecc934aa8c05c}{yawMotor}};}
+\DoxyCodeLine{51   Servo \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aadf0e04883d87406ac54cce97ab44961}{throttle}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53   Servo \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af1111ba10042ee37736131b0fd7c8763}{frontLeftMotor}};}
+\DoxyCodeLine{54   Servo \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a13f27c313504937673fced930ff182d1}{frontRightMotor}};}
+\DoxyCodeLine{55   Servo \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aa4ecd0aacdf94ad314695fde08138f73}{backLeftMotor}};}
+\DoxyCodeLine{56   Servo \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a5201b9cb021ab9e29ebea26366f63795}{backRightMotor}};}
+\DoxyCodeLine{57   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_abb10823a2e194f066e247ddc6e29fafb}{yawSignal}} = 1500;}
+\DoxyCodeLine{58   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_af56aea3f63a11c72c241fdff0477e604}{throttleSignal}} = 1500;}
+\DoxyCodeLine{59   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}} = 1000;}
+\DoxyCodeLine{60   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_ae336b7420be719e9096749dc308d4270}{frontRightMotorSignal}} = 1000;}
+\DoxyCodeLine{61   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a36cc06905b63f7dd4a384b8925f8049f}{backLeftMotorSignal}} = 1000;}
+\DoxyCodeLine{62   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_aaf57e5fe9e23e552fe5ce8f52c6439bf}{backRightMotorSignal}} = 1000;}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{// extern ACTUATORS g\_actuators;}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

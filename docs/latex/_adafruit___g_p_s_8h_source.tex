@@ -1,0 +1,274 @@
+\hypertarget{_adafruit___g_p_s_8h_source}{}\doxysection{Adafruit\+\_\+\+GPS.\+h}
+\label{_adafruit___g_p_s_8h_source}\index{lib/Adafruit\_GPS\_Library/src/Adafruit\_GPS.h@{lib/Adafruit\_GPS\_Library/src/Adafruit\_GPS.h}}
+\mbox{\hyperlink{_adafruit___g_p_s_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{22 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#ifndef \_ADAFRUIT\_GPS\_H}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define \_ADAFRUIT\_GPS\_H}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#ifndef NMEA\_EXTRAS }\textcolor{comment}{// inject on the compile command line to force extensions}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#ifndef ARDUINO\_ARCH\_AVR}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define NMEA\_EXTENSIONS }}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#if (NMEA\_EXTRAS > 0)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define NMEA\_EXTENSIONS }}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define USE\_SW\_SERIAL }}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define GPS\_DEFAULT\_I2C\_ADDR                                                   \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{  0x10 }}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define GPS\_MAX\_I2C\_TRANSFER                                                   \(\backslash\)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{  32 }}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define GPS\_MAX\_SPI\_TRANSFER                                                   \(\backslash\)}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{  100                     }}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define MAXLINELENGTH 120 }}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define NMEA\_MAX\_SENTENCE\_ID                                                   \(\backslash\)}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{  20 }}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define NMEA\_MAX\_SOURCE\_ID                                                     \(\backslash\)}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{  3 }}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#include <SoftwareSerial.h>}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_adafruit___p_m_t_k_8h}{Adafruit\_PMTK.h}}>}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_n_m_e_a__data_8h}{NMEA\_data.h}}>}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#include <SPI.h>}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{66 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{67   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa503c4b54b94d0e729566af15b72f76f2}{NMEA\_BAD}} = 0, }
+\DoxyCodeLine{68   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa8d5fd241c3361bef95f143797347c887}{NMEA\_HAS\_DOLLAR}} =}
+\DoxyCodeLine{69       1, }
+\DoxyCodeLine{70   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa9ec09ffff6d9cb41a22d2780523646ba}{NMEA\_HAS\_CHECKSUM}} = 2,   }
+\DoxyCodeLine{71   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa092e0bfd70702561109e85dc8c249810}{NMEA\_HAS\_NAME}} = 4,       }
+\DoxyCodeLine{72   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa7c0a1e04c3963914ac2932555fc5d09f}{NMEA\_HAS\_SOURCE}} = 10,    }
+\DoxyCodeLine{73   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaafaa5f6941eeb84fa807dfcdbd7ab6d5a}{NMEA\_HAS\_SENTENCE}} = 20,  }
+\DoxyCodeLine{74   \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa0ef458647860d3924572da69d68c1c71}{NMEA\_HAS\_SENTENCE\_P}} = 40 }
+\DoxyCodeLine{75 \} \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dca}{nmea\_check\_t}};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{81 \textcolor{keyword}{class }\mbox{\hyperlink{class_adafruit___g_p_s}{Adafruit\_GPS}} : \textcolor{keyword}{public} Print \{}
+\DoxyCodeLine{82 \textcolor{keyword}{public}:}
+\DoxyCodeLine{83   \textcolor{comment}{// Adafruit\_GPS.cpp}}
+\DoxyCodeLine{84   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ab86462ef1409d2bd8ff7a8405c70ff34}{begin}}(uint32\_t baud\_or\_i2caddr);}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{87   \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS}}(SoftwareSerial *ser); \textcolor{comment}{// Constructor when using SoftwareSerial}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{89   \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS}}(HardwareSerial *ser); \textcolor{comment}{// Constructor when using HardwareSerial}}
+\DoxyCodeLine{90   \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS}}(TwoWire *theWire);    \textcolor{comment}{// Constructor when using I2C}}
+\DoxyCodeLine{91   \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS}}(SPIClass *theSPI, int8\_t cspin); \textcolor{comment}{// Constructor when using SPI}}
+\DoxyCodeLine{92   \mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\_GPS}}(); \textcolor{comment}{// Constructor for no communications, just data storage}}
+\DoxyCodeLine{93   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{94   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_adafruit___g_p_s_aa10e13a582969a5d49f1416fe147d1d2}{\string~Adafruit\_GPS}}();}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_adafruit___g_p_s_abe6399af00c0047527ea20e3f35a0182}{available}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{97   \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_adafruit___g_p_s_a079d9990da5971f336fab880cd141445}{write}}(uint8\_t);}
+\DoxyCodeLine{98   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}{read}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{99   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{sendCommand}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{100   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}{newNMEAreceived}}();}
+\DoxyCodeLine{101   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a0b3ca5f8bc2f3f6e8cdaef05bec5b034}{pause}}(\textcolor{keywordtype}{bool} b);}
+\DoxyCodeLine{102   \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}{lastNMEA}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{103   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{waitForSentence}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *wait, uint8\_t max = \mbox{\hyperlink{_adafruit___p_m_t_k_8h_aeebf6a58258596ef38bd7ea07e056a94}{MAXWAITSENTENCE}},}
+\DoxyCodeLine{104                        \textcolor{keywordtype}{bool} usingInterrupts = \textcolor{keyword}{false});}
+\DoxyCodeLine{105   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a325d15c43c09fa1bedcdadb39706e72b}{LOCUS\_StartLogger}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{106   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a48eaf7f5b46e3682b058a7f8f44fa385}{LOCUS\_StopLogger}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{107   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_adb6139e84c64156b5654dfce2a2e6e3f}{LOCUS\_ReadStatus}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{108   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a32ddd41152a08354d2ee2b4311bbf013}{standby}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{109   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_afc67f26f7b14d5cc851e13eb7f6aeae3}{wakeup}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{110   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_aed7db1b8b55742a78f291687f1ebc9ca}{secondsSinceFix}}();}
+\DoxyCodeLine{111   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_af01989c447efddb9fe1baa78e50373c5}{secondsSinceTime}}();}
+\DoxyCodeLine{112   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a4b49f40ba946d1646d7937b25e8dda37}{secondsSinceDate}}();}
+\DoxyCodeLine{113   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a1194f23fada702be6e58b24a62402d39}{resetSentTime}}();}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115   \textcolor{comment}{// NMEA\_parse.cpp}}
+\DoxyCodeLine{116   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{parse}}(\textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{117   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}{check}}(\textcolor{keywordtype}{char} *nmea);}
+\DoxyCodeLine{118   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ac8ccb298fe5b1d096dbdb39be46554e0}{onList}}(\textcolor{keywordtype}{char} *nmea, \textcolor{keyword}{const} \textcolor{keywordtype}{char} **list);}
+\DoxyCodeLine{119   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}{parseHex}}(\textcolor{keywordtype}{char} c);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121   \textcolor{comment}{// NMEA\_build.cpp}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{123   \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{build}}(\textcolor{keywordtype}{char} *nmea, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}},}
+\DoxyCodeLine{124               \textcolor{keywordtype}{char} ref = \textcolor{charliteral}{'R'}, \textcolor{keywordtype}{bool} noCRLF = \textcolor{keyword}{false});}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{126   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}{addChecksum}}(\textcolor{keywordtype}{char} *buff);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128   \textcolor{comment}{// NMEA\_data.cpp}}
+\DoxyCodeLine{129   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} tag, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} v);}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{131   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a5195ba0c15098e7ebdeed7b58163fa39}{get}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx);}
+\DoxyCodeLine{132   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a272df8380267fd53ff611f552409e86d}{getSmoothed}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx);}
+\DoxyCodeLine{133   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \textcolor{keywordtype}{char} *label = NULL, \textcolor{keywordtype}{char} *fmt = NULL,}
+\DoxyCodeLine{134                      \textcolor{keywordtype}{char} *unit = NULL, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} response = 0,}
+\DoxyCodeLine{135                      \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\_value\_type\_t}} type = \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\_SIMPLE\_FLOAT}});}
+\DoxyCodeLine{136   \mbox{\hyperlink{structnmea__history__t}{nmea\_history\_t}} *\mbox{\hyperlink{class_adafruit___g_p_s_a39a2aecda4b5dcf8cab72ef93bdcc103}{initHistory}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} scale = 10.0,}
+\DoxyCodeLine{137                               \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} offset = 0.0,}
+\DoxyCodeLine{138                               \textcolor{keywordtype}{unsigned} historyInterval = 20,}
+\DoxyCodeLine{139                               \textcolor{keywordtype}{unsigned} historyN = 192);}
+\DoxyCodeLine{140   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}{removeHistory}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx);}
+\DoxyCodeLine{141   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_accf44cdc598df5c687e2f5fb32e9e752}{showDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \textcolor{keywordtype}{int} n = 7);}
+\DoxyCodeLine{142   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}{isCompoundAngle}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx);}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{144   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}{boatAngle}}(\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} s, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} c);}
+\DoxyCodeLine{145   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}{compassAngle}}(\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} s, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} c);}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} = 0; }
+\DoxyCodeLine{148   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}}[\mbox{\hyperlink{_adafruit___g_p_s_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\_MAX\_SOURCE\_ID}}] = \{}
+\DoxyCodeLine{149       0\}; }
+\DoxyCodeLine{150   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}[\mbox{\hyperlink{_adafruit___g_p_s_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\_MAX\_SENTENCE\_ID}}] = \{}
+\DoxyCodeLine{151       0\}; }
+\DoxyCodeLine{152   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a8c44f113dda3b54b41a7d05f516c9ec0}{lastSource}}[\mbox{\hyperlink{_adafruit___g_p_s_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\_MAX\_SOURCE\_ID}}] = \{}
+\DoxyCodeLine{153       0\}; }
+\DoxyCodeLine{155   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a35d9d4c069a8ac93cbcbc98cf1c86ba0}{lastSentence}}[\mbox{\hyperlink{_adafruit___g_p_s_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\_MAX\_SENTENCE\_ID}}] = \{}
+\DoxyCodeLine{156       0\}; }
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}};          }
+\DoxyCodeLine{160   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}};        }
+\DoxyCodeLine{161   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}};       }
+\DoxyCodeLine{162   uint16\_t \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}}; }
+\DoxyCodeLine{163   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}{year}};          }
+\DoxyCodeLine{164   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}{month}};         }
+\DoxyCodeLine{165   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}{day}};           }
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}};  }
+\DoxyCodeLine{169   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}; }
+\DoxyCodeLine{171 }
+\DoxyCodeLine{175   int32\_t \mbox{\hyperlink{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}{latitude\_fixed}};  }
+\DoxyCodeLine{177   int32\_t \mbox{\hyperlink{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}{longitude\_fixed}}; }
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}};  }
+\DoxyCodeLine{181   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}; }
+\DoxyCodeLine{182   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}{geoidheight}};      }
+\DoxyCodeLine{183   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}{altitude}};         }
+\DoxyCodeLine{184   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}{speed}};            }
+\DoxyCodeLine{185   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}};            }
+\DoxyCodeLine{186   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a2c53f008694ebee3871583cb44842033}{magvariation}}; }
+\DoxyCodeLine{187   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}{HDOP}}; }
+\DoxyCodeLine{189   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_af13a4d008ab2f74ff30bfc098315edea}{VDOP}}; }
+\DoxyCodeLine{191   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a27b5195e96aaef00fb5751a34f3fb82b}{PDOP}}; }
+\DoxyCodeLine{193   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}} = \textcolor{charliteral}{'X'};    }
+\DoxyCodeLine{194   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}} = \textcolor{charliteral}{'X'};    }
+\DoxyCodeLine{195   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_a13af36459c90392c2378ce14248cfcfb}{mag}} = \textcolor{charliteral}{'X'};    }
+\DoxyCodeLine{196   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}};          }
+\DoxyCodeLine{197   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}{fixquality}};    }
+\DoxyCodeLine{198   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a95ed044ee9661cd7afd1b81595cb8dd0}{fixquality\_3d}}; }
+\DoxyCodeLine{199   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}{satellites}};    }
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201   uint16\_t \mbox{\hyperlink{class_adafruit___g_p_s_adfeb77f544ca2a8f76e479ae077952eb}{LOCUS\_serial}};  }
+\DoxyCodeLine{202   uint16\_t \mbox{\hyperlink{class_adafruit___g_p_s_af6a8b70851f8625bde5a8b3eab6c9fd3}{LOCUS\_records}}; }
+\DoxyCodeLine{203   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_ae3eddbc004d2945018eb1f71abecd0b8}{LOCUS\_type}};     }
+\DoxyCodeLine{204   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a16f2f26bc48f38e208307569e9d5f245}{LOCUS\_mode}};     }
+\DoxyCodeLine{205   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_ab306e67df47d2e02a69dddc97317ea8e}{LOCUS\_config}};   }
+\DoxyCodeLine{206   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_aaf51d53983b61ab9d5c7795fcb97b41c}{LOCUS\_interval}}; }
+\DoxyCodeLine{207   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a9a09b0dc6344dbe3904dfa1c2bcdc538}{LOCUS\_distance}}; }
+\DoxyCodeLine{208   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_abc92488b6bcd0372c38b50f1384e4765}{LOCUS\_speed}};    }
+\DoxyCodeLine{209   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_ae8cfb553f10224487d0a45354984776c}{LOCUS\_status}};   }
+\DoxyCodeLine{210   uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_a911accd6b643a08c6cae3b844ccf6e69}{LOCUS\_percent}};  }
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{213   \textcolor{comment}{// NMEA additional public variables}}
+\DoxyCodeLine{214   \mbox{\hyperlink{structnmea__datavalue__t}{nmea\_datavalue\_t}}}
+\DoxyCodeLine{215       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}}]; }
+\DoxyCodeLine{217   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a907f295b8c05b8cf112435e0b2e72c0a}{depthToKeel}} =}
+\DoxyCodeLine{218       2.4; }
+\DoxyCodeLine{219   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}{depthToTransducer}} =}
+\DoxyCodeLine{220       0.0; }
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_aef3bc1b4cfce3547b90042c6e7f472c9}{toID}}[\mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\_MAX\_WP\_ID}}] = \{}
+\DoxyCodeLine{223       0\}; }
+\DoxyCodeLine{224   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_aa261e33c920ac4279babc6aba0da931f}{fromID}}[\mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\_MAX\_WP\_ID}}] = \{}
+\DoxyCodeLine{225       0\}; }
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227   \textcolor{keywordtype}{char} \mbox{\hyperlink{class_adafruit___g_p_s_ad293e1b1f3d1c2c35f24d56f41983876}{txtTXT}}[63] = \{0\}; }
+\DoxyCodeLine{228   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_adafruit___g_p_s_a6dc609e12336547d76ae984f0df4257b}{txtTot}} = 0;        }
+\DoxyCodeLine{229   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_adafruit___g_p_s_ad32955a01923ef7bc47535f32657e66c}{txtID}} = 0;         }
+\DoxyCodeLine{230   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_adafruit___g_p_s_aad5682d8705240af58b22ca430adc8ae}{txtN}} = 0;          }
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#endif                   }\textcolor{comment}{// NMEA\_EXTENSIONS}}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 \textcolor{keyword}{private}:}
+\DoxyCodeLine{234   \textcolor{comment}{//   void parseLat(char *);}}
+\DoxyCodeLine{235   \textcolor{comment}{//   bool parseLatDir(char *);}}
+\DoxyCodeLine{236   \textcolor{comment}{//   void parseLon(char *);}}
+\DoxyCodeLine{237   \textcolor{comment}{//   bool parseLonDir(char *);}}
+\DoxyCodeLine{238   \textcolor{comment}{// NMEA\_data.cpp}}
+\DoxyCodeLine{239   \textcolor{keywordtype}{void} data\_init();}
+\DoxyCodeLine{240   \textcolor{comment}{// NMEA\_parse.cpp}}
+\DoxyCodeLine{241   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *tokenOnList(\textcolor{keywordtype}{char} *token, \textcolor{keyword}{const} \textcolor{keywordtype}{char} **list);}
+\DoxyCodeLine{242   \textcolor{keywordtype}{bool} parseCoord(\textcolor{keywordtype}{char} *p, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} *angleDegrees = NULL,}
+\DoxyCodeLine{243                   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} *\mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}} = NULL, int32\_t *angle\_fixed = NULL,}
+\DoxyCodeLine{244                   \textcolor{keywordtype}{char} *dir = NULL);}
+\DoxyCodeLine{245   \textcolor{keywordtype}{char} *parseStr(\textcolor{keywordtype}{char} *buff, \textcolor{keywordtype}{char} *p, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{246   \textcolor{keywordtype}{bool} parseTime(\textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{247   \textcolor{keywordtype}{bool} parseFix(\textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{248   \textcolor{keywordtype}{bool} isEmpty(\textcolor{keywordtype}{char} *pStart);}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250   \textcolor{comment}{// used by check() for validity tests, room for future expansion}}
+\DoxyCodeLine{251   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sources[6] = \{\textcolor{stringliteral}{"{}II"{}}, \textcolor{stringliteral}{"{}WI"{}}, \textcolor{stringliteral}{"{}GP"{}},}
+\DoxyCodeLine{252                             \textcolor{stringliteral}{"{}GN"{}}, \textcolor{stringliteral}{"{}P"{}},  \textcolor{stringliteral}{"{}ZZZ"{}}\}; }
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{254   \textcolor{keyword}{const} \textcolor{keywordtype}{char}}
+\DoxyCodeLine{255       *sentences\_parsed[20] =}
+\DoxyCodeLine{256           \{}
+\DoxyCodeLine{257               \textcolor{stringliteral}{"{}GGA"{}}, \textcolor{stringliteral}{"{}GLL"{}}, \textcolor{stringliteral}{"{}GSA"{}}, \textcolor{stringliteral}{"{}RMC"{}}, \textcolor{stringliteral}{"{}DBT"{}}, \textcolor{stringliteral}{"{}HDM"{}}, \textcolor{stringliteral}{"{}HDT"{}},}
+\DoxyCodeLine{258               \textcolor{stringliteral}{"{}MDA"{}}, \textcolor{stringliteral}{"{}MTW"{}}, \textcolor{stringliteral}{"{}MWV"{}}, \textcolor{stringliteral}{"{}RMB"{}}, \textcolor{stringliteral}{"{}TXT"{}}, \textcolor{stringliteral}{"{}VHW"{}}, \textcolor{stringliteral}{"{}VLW"{}},}
+\DoxyCodeLine{259               \textcolor{stringliteral}{"{}VPW"{}}, \textcolor{stringliteral}{"{}VWR"{}}, \textcolor{stringliteral}{"{}WCV"{}}, \textcolor{stringliteral}{"{}XTE"{}}, \textcolor{stringliteral}{"{}ZZZ"{}}\}; }
+\DoxyCodeLine{260   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sentences\_known[15] = \{}
+\DoxyCodeLine{261       \textcolor{stringliteral}{"{}APB"{}}, \textcolor{stringliteral}{"{}DPT"{}}, \textcolor{stringliteral}{"{}GSV"{}}, \textcolor{stringliteral}{"{}HDG"{}}, \textcolor{stringliteral}{"{}MWD"{}}, \textcolor{stringliteral}{"{}ROT"{}},}
+\DoxyCodeLine{262       \textcolor{stringliteral}{"{}RPM"{}}, \textcolor{stringliteral}{"{}RSA"{}}, \textcolor{stringliteral}{"{}VDR"{}}, \textcolor{stringliteral}{"{}VTG"{}}, \textcolor{stringliteral}{"{}ZDA"{}}, \textcolor{stringliteral}{"{}ZZZ"{}}\}; }
+\DoxyCodeLine{263 \textcolor{preprocessor}{\#else }\textcolor{comment}{// make the lists short to save memory}}
+\DoxyCodeLine{264   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sentences\_parsed[5] = \{\textcolor{stringliteral}{"{}GGA"{}}, \textcolor{stringliteral}{"{}GLL"{}}, \textcolor{stringliteral}{"{}GSA"{}}, \textcolor{stringliteral}{"{}RMC"{}},}
+\DoxyCodeLine{265                                      \textcolor{stringliteral}{"{}ZZZ"{}}\}; }
+\DoxyCodeLine{266   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sentences\_known[4] = \{\textcolor{stringliteral}{"{}DBT"{}}, \textcolor{stringliteral}{"{}HDM"{}}, \textcolor{stringliteral}{"{}HDT"{}},}
+\DoxyCodeLine{267                                     \textcolor{stringliteral}{"{}ZZZ"{}}\}; }
+\DoxyCodeLine{268 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270   \textcolor{comment}{// Make all of these times far in the past by setting them near the middle of}}
+\DoxyCodeLine{271   \textcolor{comment}{// the millis() range. Timing assumes that sentences are parsed promptly.}}
+\DoxyCodeLine{272   uint32\_t lastUpdate =}
+\DoxyCodeLine{273       2000000000L; }
+\DoxyCodeLine{274   uint32\_t lastFix = 2000000000L;  }
+\DoxyCodeLine{275   uint32\_t lastTime = 2000000000L; }
+\DoxyCodeLine{276   uint32\_t lastDate = 2000000000L; }
+\DoxyCodeLine{277   uint32\_t recvdTime =}
+\DoxyCodeLine{278       2000000000L; }
+\DoxyCodeLine{279   uint32\_t sentTime = 2000000000L; }
+\DoxyCodeLine{281   \textcolor{keywordtype}{bool} paused;}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283   uint8\_t parseResponse(\textcolor{keywordtype}{char} *response);}
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#if (defined(\_\_AVR\_\_) || defined(ESP8266)) \&\& defined(USE\_SW\_SERIAL)}}
+\DoxyCodeLine{285   SoftwareSerial *gpsSwSerial;}
+\DoxyCodeLine{286 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{287   \textcolor{keywordtype}{bool} noComms = \textcolor{keyword}{false};}
+\DoxyCodeLine{288   HardwareSerial *gpsHwSerial;}
+\DoxyCodeLine{289   TwoWire *gpsI2C;}
+\DoxyCodeLine{290   SPIClass *gpsSPI;}
+\DoxyCodeLine{291   int8\_t gpsSPI\_cs = -\/1;}
+\DoxyCodeLine{292   SPISettings gpsSPI\_settings =}
+\DoxyCodeLine{293       SPISettings(1000000, MSBFIRST, SPI\_MODE0); \textcolor{comment}{// default}}
+\DoxyCodeLine{294   \textcolor{keywordtype}{char} \_spibuffer[\mbox{\hyperlink{_adafruit___g_p_s_8h_a2a9a79e8518d2e3ca5791a112a1976a5}{GPS\_MAX\_SPI\_TRANSFER}}]; \textcolor{comment}{// for when we write data, we need to}}
+\DoxyCodeLine{295                                          \textcolor{comment}{// read it too!}}
+\DoxyCodeLine{296   uint8\_t \_i2caddr;}
+\DoxyCodeLine{297   \textcolor{keywordtype}{char} \_i2cbuffer[\mbox{\hyperlink{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}{GPS\_MAX\_I2C\_TRANSFER}}];}
+\DoxyCodeLine{298   int8\_t \_buff\_max = -\/1, \_buff\_idx = 0;}
+\DoxyCodeLine{299   \textcolor{keywordtype}{char} last\_char = 0;}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{301   \textcolor{keyword}{volatile} \textcolor{keywordtype}{char} line1[\mbox{\hyperlink{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}{MAXLINELENGTH}}]; }
+\DoxyCodeLine{303   \textcolor{keyword}{volatile} \textcolor{keywordtype}{char} line2[\mbox{\hyperlink{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}{MAXLINELENGTH}}]; }
+\DoxyCodeLine{304   \textcolor{keyword}{volatile} uint8\_t lineidx = 0; }
+\DoxyCodeLine{305   \textcolor{keyword}{volatile} \textcolor{keywordtype}{char} *currentline;   }
+\DoxyCodeLine{306   \textcolor{keyword}{volatile} \textcolor{keywordtype}{char} *lastline;      }
+\DoxyCodeLine{307   \textcolor{keyword}{volatile} \textcolor{keywordtype}{bool} recvdflag;      }
+\DoxyCodeLine{308   \textcolor{keyword}{volatile} \textcolor{keywordtype}{bool} inStandbyMode;  }
+\DoxyCodeLine{309 \};}
+\DoxyCodeLine{310 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{311 }
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

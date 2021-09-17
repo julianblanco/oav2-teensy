@@ -1,0 +1,188 @@
+\hypertarget{vector_8h_source}{}\doxysection{vector.\+h}
+\label{vector_8h_source}\index{lib/Adafruit\_BNO055/utility/vector.h@{lib/Adafruit\_BNO055/utility/vector.h}}
+\mbox{\hyperlink{vector_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Inertial Measurement Unit Maths Library}}
+\DoxyCodeLine{3 \textcolor{comment}{    Copyright (C) 2013-\/2014  Samuel Cowen}}
+\DoxyCodeLine{4 \textcolor{comment}{    www.camelsoftware.com}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{    Bug fixes and cleanups by Gé Vissers (gvissers@gmail.com)}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{    This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{9 \textcolor{comment}{    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{10 \textcolor{comment}{    the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{11 \textcolor{comment}{    (at your option) any later version.}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{    This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{14 \textcolor{comment}{    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{15 \textcolor{comment}{    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{16 \textcolor{comment}{    GNU General Public License for more details.}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{19 \textcolor{comment}{    along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{20 \textcolor{comment}{*/}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef IMUMATH\_VECTOR\_HPP}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define IMUMATH\_VECTOR\_HPP}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceimu}{imu}} \{}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{template} <u\textcolor{keywordtype}{int}8\_t N> \textcolor{keyword}{class }\mbox{\hyperlink{classimu_1_1_vector}{Vector}} \{}
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33   \mbox{\hyperlink{classimu_1_1_vector_a667a1005471e4fcebf73ead95876a47b}{Vector}}() \{ memset(p\_vec, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * N); \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35   \mbox{\hyperlink{classimu_1_1_vector_a5c5865e4675a523be019b59e7dd6e71d}{Vector}}(\textcolor{keywordtype}{double} a) \{}
+\DoxyCodeLine{36     memset(p\_vec, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * N);}
+\DoxyCodeLine{37     p\_vec[0] = a;}
+\DoxyCodeLine{38   \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40   \mbox{\hyperlink{classimu_1_1_vector_ac866dc18a2dde71d4ed75fcf17985b37}{Vector}}(\textcolor{keywordtype}{double} a, \textcolor{keywordtype}{double} b) \{}
+\DoxyCodeLine{41     memset(p\_vec, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * N);}
+\DoxyCodeLine{42     p\_vec[0] = a;}
+\DoxyCodeLine{43     p\_vec[1] = b;}
+\DoxyCodeLine{44   \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46   \mbox{\hyperlink{classimu_1_1_vector_a2f4376bea64f28af31577f4a3714f685}{Vector}}(\textcolor{keywordtype}{double} a, \textcolor{keywordtype}{double} b, \textcolor{keywordtype}{double} c) \{}
+\DoxyCodeLine{47     memset(p\_vec, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * N);}
+\DoxyCodeLine{48     p\_vec[0] = a;}
+\DoxyCodeLine{49     p\_vec[1] = b;}
+\DoxyCodeLine{50     p\_vec[2] = c;}
+\DoxyCodeLine{51   \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53   \mbox{\hyperlink{classimu_1_1_vector_a22e00ac9fb47009559e09bd426699307}{Vector}}(\textcolor{keywordtype}{double} a, \textcolor{keywordtype}{double} b, \textcolor{keywordtype}{double} c, \textcolor{keywordtype}{double} d) \{}
+\DoxyCodeLine{54     memset(p\_vec, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * N);}
+\DoxyCodeLine{55     p\_vec[0] = a;}
+\DoxyCodeLine{56     p\_vec[1] = b;}
+\DoxyCodeLine{57     p\_vec[2] = c;}
+\DoxyCodeLine{58     p\_vec[3] = d;}
+\DoxyCodeLine{59   \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61   \mbox{\hyperlink{classimu_1_1_vector_ab24875305dcee04f43d98983805128dc}{Vector}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector<N>}} \&v) \{}
+\DoxyCodeLine{62     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}} = 0; \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}} < N; \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}++)}
+\DoxyCodeLine{63       p\_vec[\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}] = v.p\_vec[\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}];}
+\DoxyCodeLine{64   \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66   \mbox{\hyperlink{classimu_1_1_vector_a7c0e81f19910f0822e23075be2fe48e0}{\string~Vector}}() \{\}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68   uint8\_t \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}() \{ \textcolor{keywordflow}{return} N; \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_ab0ab23b4ec794463b7a01338dfd6f7b7}{magnitude}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{71     \textcolor{keywordtype}{double} res = 0;}
+\DoxyCodeLine{72     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{73       res += p\_vec[i] * p\_vec[i];}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keywordflow}{return} sqrt(res);}
+\DoxyCodeLine{76   \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_vector_a89ee6ee911143e28e21424607db1af12}{normalize}}() \{}
+\DoxyCodeLine{79     \textcolor{keywordtype}{double} mag = \mbox{\hyperlink{classimu_1_1_vector_ab0ab23b4ec794463b7a01338dfd6f7b7}{magnitude}}();}
+\DoxyCodeLine{80     \textcolor{keywordflow}{if} (isnan(mag) || mag == 0.0)}
+\DoxyCodeLine{81       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{84       p\_vec[i] /= mag;}
+\DoxyCodeLine{85   \}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_a331da97cba9de19da5d8988f2ed700de}{dot}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{88     \textcolor{keywordtype}{double} ret = 0;}
+\DoxyCodeLine{89     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{90       ret += p\_vec[i] * v.p\_vec[i];}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{93   \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95   \textcolor{comment}{// The cross product is only valid for vectors with 3 dimensions,}}
+\DoxyCodeLine{96   \textcolor{comment}{// with the exception of higher dimensional stuff that is beyond}}
+\DoxyCodeLine{97   \textcolor{comment}{// the intended scope of this library.}}
+\DoxyCodeLine{98   \textcolor{comment}{// Only a definition for N==3 is given below this class, using}}
+\DoxyCodeLine{99   \textcolor{comment}{// cross() with another value for N will result in a link error.}}
+\DoxyCodeLine{100   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}{cross}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) \textcolor{keyword}{const};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a35e9a5f168a7ca4e19a76bff718c9ea1}{scale}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{103     \mbox{\hyperlink{classimu_1_1_vector}{Vector}} ret;}
+\DoxyCodeLine{104     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{105       ret.p\_vec[i] = p\_vec[i] * scalar;}
+\DoxyCodeLine{106     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{107   \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a4bff7ce1e3a57fc4690ef4e526ca43cd}{invert}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{110     \mbox{\hyperlink{classimu_1_1_vector}{Vector}} ret;}
+\DoxyCodeLine{111     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{112       ret.p\_vec[i] = -\/p\_vec[i];}
+\DoxyCodeLine{113     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{114   \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&\mbox{\hyperlink{classimu_1_1_vector_abf85c8dff7dc1a810adae2d1e0e2b4d8}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v) \{}
+\DoxyCodeLine{117     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}} = 0; \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}} < N; \mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}++)}
+\DoxyCodeLine{118       p\_vec[\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}] = v.p\_vec[\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}];}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{120   \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_vector_a671ca2023c1ac08128f6e3acfd20efb9}{operator[]}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}) \{ \textcolor{keywordflow}{return} p\_vec[\mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}]; \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_a27accb010ad7e223c52c39935320d129}{operator[]}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} p\_vec[\mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}]; \}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_vector_a8424fd029df5fc1443779e45f1ab512a}{operator()}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}) \{ \textcolor{keywordflow}{return} p\_vec[\mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}]; \}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_a83ce30e976afd729290f25dfe404550e}{operator()}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} p\_vec[\mbox{\hyperlink{classimu_1_1_vector_acbe8633e10a39a8affc84be62cf8ea6d}{n}}]; \}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a803175c6245a043edf1e066e6ad1b47e}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{131     \mbox{\hyperlink{classimu_1_1_vector}{Vector}} ret;}
+\DoxyCodeLine{132     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{133       ret.p\_vec[i] = p\_vec[i] + v.p\_vec[i];}
+\DoxyCodeLine{134     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{135   \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_a20bc854a0668925149d53c0d73aac493}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{138     \mbox{\hyperlink{classimu_1_1_vector}{Vector}} ret;}
+\DoxyCodeLine{139     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{140       ret.p\_vec[i] = p\_vec[i] -\/ v.p\_vec[i];}
+\DoxyCodeLine{141     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{142   \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_ae94909f37c9805e852aaa0232fa59e4d}{operator*}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_vector_a35e9a5f168a7ca4e19a76bff718c9ea1}{scale}}(scalar); \}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146   \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \mbox{\hyperlink{classimu_1_1_vector_af72c8ca05d7e8b8e36e32dcf13e8f74b}{operator/}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{147     \mbox{\hyperlink{classimu_1_1_vector}{Vector}} ret;}
+\DoxyCodeLine{148     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{149       ret.p\_vec[i] = p\_vec[i] / scalar;}
+\DoxyCodeLine{150     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{151   \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_vector_aa8c89e5fc2b3a18925a9c5ffb0fa5732}{toDegrees}}() \{}
+\DoxyCodeLine{154     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{155       p\_vec[i] *= 57.2957795131; \textcolor{comment}{// 180/pi}}
+\DoxyCodeLine{156   \}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_vector_ab927756f1e3dcfad401deaa56742c197}{toRadians}}() \{}
+\DoxyCodeLine{159     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < N; i++)}
+\DoxyCodeLine{160       p\_vec[i] *= 0.01745329251; \textcolor{comment}{// pi/180}}
+\DoxyCodeLine{161   \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}() \{ \textcolor{keywordflow}{return} p\_vec[0]; \}}
+\DoxyCodeLine{164   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}() \{ \textcolor{keywordflow}{return} p\_vec[1]; \}}
+\DoxyCodeLine{165   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}() \{ \textcolor{keywordflow}{return} p\_vec[2]; \}}
+\DoxyCodeLine{166   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_a3b9364b9010622acb5ea6a41aa79ca32}{x}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} p\_vec[0]; \}}
+\DoxyCodeLine{167   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_a6fc3453407e6046419536cc4cecd68b3}{y}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} p\_vec[1]; \}}
+\DoxyCodeLine{168   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_vector_ad24eaaf80ce19b119fd5cc4589e8fdeb}{z}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} p\_vec[2]; \}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170 \textcolor{keyword}{private}:}
+\DoxyCodeLine{171   \textcolor{keywordtype}{double} p\_vec[N];}
+\DoxyCodeLine{172 \};}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 \textcolor{keyword}{template} <> \textcolor{keyword}{inline} \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \mbox{\hyperlink{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}{Vector<3>::cross}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{175   \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_vector}{Vector}}(p\_vec[1] * v.p\_vec[2] -\/ p\_vec[2] * v.p\_vec[1],}
+\DoxyCodeLine{176                 p\_vec[2] * v.p\_vec[0] -\/ p\_vec[0] * v.p\_vec[2],}
+\DoxyCodeLine{177                 p\_vec[0] * v.p\_vec[1] -\/ p\_vec[1] * v.p\_vec[0]);}
+\DoxyCodeLine{178 \}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \} \textcolor{comment}{// namespace imu}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

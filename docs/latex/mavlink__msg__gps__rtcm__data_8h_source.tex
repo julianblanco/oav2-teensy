@@ -1,0 +1,188 @@
+\hypertarget{mavlink__msg__gps__rtcm__data_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+gps\+\_\+rtcm\+\_\+data.\+h}
+\label{mavlink__msg__gps__rtcm__data_8h_source}\index{lib/common/mavlink\_msg\_gps\_rtcm\_data.h@{lib/common/mavlink\_msg\_gps\_rtcm\_data.h}}
+\mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE GPS\_RTCM\_DATA PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA 233}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_abde10064b756c6f89ba0290697ef06b4}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_gps\_rtcm\_data\_t \{}
+\DoxyCodeLine{8  uint8\_t flags; \textcolor{comment}{/*<  LSB: 1 means message is fragmented, next 2 bits are the fragment ID, the remaining 5 bits are used for the sequence ID. Messages are only to be flushed to the GPS when the entire message has been reconstructed on the autopilot. The fragment ID specifies which order the fragments should be assembled into a buffer, while the sequence ID is used to detect a mismatch between different buffers. The buffer is considered fully reconstructed when either all 4 fragments are present, or all the fragments before the first fragment with a non full payload is received. This management is used to ensure that normal GPS operation doesn't corrupt RTCM data, and to recover from a unreliable transport delivery order.*/}}
+\DoxyCodeLine{9  uint8\_t len; \textcolor{comment}{/*< [bytes] data length*/}}
+\DoxyCodeLine{10  uint8\_t data[180]; \textcolor{comment}{/*<  RTCM message (may be fragmented)*/}}
+\DoxyCodeLine{11 \}) mavlink\_gps\_rtcm\_data\_t;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN 182}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN 182}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_233\_LEN 182}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_233\_MIN\_LEN 182}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC 35}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_233\_CRC 35}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_RTCM\_DATA\_FIELD\_DATA\_LEN 180}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_RTCM\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{    233, \(\backslash\)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{    "{}GPS\_RTCM\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{27     3, \(\backslash\)}
+\DoxyCodeLine{28     \{  \{ "{}flags"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 0, offsetof(mavlink\_gps\_rtcm\_data\_t, flags) \}, \(\backslash\)}
+\DoxyCodeLine{29          \{ "{}len"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 1, offsetof(mavlink\_gps\_rtcm\_data\_t, len) \}, \(\backslash\)}
+\DoxyCodeLine{30          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 180, 2, offsetof(mavlink\_gps\_rtcm\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{31          \} \(\backslash\)}
+\DoxyCodeLine{32 \}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_RTCM\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{    "{}GPS\_RTCM\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{36     3, \(\backslash\)}
+\DoxyCodeLine{37     \{  \{ "{}flags"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 0, offsetof(mavlink\_gps\_rtcm\_data\_t, flags) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}len"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 1, offsetof(mavlink\_gps\_rtcm\_data\_t, len) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 180, 2, offsetof(mavlink\_gps\_rtcm\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{40          \} \(\backslash\)}
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{55 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_rtcm\_data\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{56                                uint8\_t flags, uint8\_t len, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}];}
+\DoxyCodeLine{60     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, flags);}
+\DoxyCodeLine{61     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, len);}
+\DoxyCodeLine{62     \_mav\_put\_uint8\_t\_array(buf, 2, data, 180);}
+\DoxyCodeLine{63         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}});}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{65     mavlink\_gps\_rtcm\_data\_t packet;}
+\DoxyCodeLine{66     packet.flags = flags;}
+\DoxyCodeLine{67     packet.len = len;}
+\DoxyCodeLine{68     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*180);}
+\DoxyCodeLine{69         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}});}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}};}
+\DoxyCodeLine{73     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{74 \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{87 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_rtcm\_data\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{88                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{89                                    uint8\_t flags,uint8\_t len,\textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{92     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}];}
+\DoxyCodeLine{93     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, flags);}
+\DoxyCodeLine{94     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, len);}
+\DoxyCodeLine{95     \_mav\_put\_uint8\_t\_array(buf, 2, data, 180);}
+\DoxyCodeLine{96         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}});}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{98     mavlink\_gps\_rtcm\_data\_t packet;}
+\DoxyCodeLine{99     packet.flags = flags;}
+\DoxyCodeLine{100     packet.len = len;}
+\DoxyCodeLine{101     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*180);}
+\DoxyCodeLine{102         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}});}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}};}
+\DoxyCodeLine{106     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{107 \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{117 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_rtcm\_data\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_rtcm\_data\_t* gps\_rtcm\_data)}
+\DoxyCodeLine{118 \{}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_rtcm\_data\_pack(system\_id, component\_id, msg, gps\_rtcm\_data-\/>flags, gps\_rtcm\_data-\/>len, gps\_rtcm\_data-\/>data);}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{131 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_rtcm\_data\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_rtcm\_data\_t* gps\_rtcm\_data)}
+\DoxyCodeLine{132 \{}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_rtcm\_data\_pack\_chan(system\_id, component\_id, chan, msg, gps\_rtcm\_data-\/>flags, gps\_rtcm\_data-\/>len, gps\_rtcm\_data-\/>data);}
+\DoxyCodeLine{134 \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_rtcm\_data\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t flags, uint8\_t len, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{147 \{}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{149     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}];}
+\DoxyCodeLine{150     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, flags);}
+\DoxyCodeLine{151     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, len);}
+\DoxyCodeLine{152     \_mav\_put\_uint8\_t\_array(buf, 2, data, 180);}
+\DoxyCodeLine{153     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{155     mavlink\_gps\_rtcm\_data\_t packet;}
+\DoxyCodeLine{156     packet.flags = flags;}
+\DoxyCodeLine{157     packet.len = len;}
+\DoxyCodeLine{158     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(uint8\_t)*180);}
+\DoxyCodeLine{159     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{161 \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{168 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_rtcm\_data\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_gps\_rtcm\_data\_t* gps\_rtcm\_data)}
+\DoxyCodeLine{169 \{}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{171     mavlink\_msg\_gps\_rtcm\_data\_send(chan, gps\_rtcm\_data-\/>flags, gps\_rtcm\_data-\/>len, gps\_rtcm\_data-\/>data);}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{173     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)gps\_rtcm\_data, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{175 \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{178 \textcolor{comment}{/*}}
+\DoxyCodeLine{179 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{180 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{181 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{182 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{183 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{184 \textcolor{comment}{ */}}
+\DoxyCodeLine{185 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_rtcm\_data\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t flags, uint8\_t len, \textcolor{keyword}{const} uint8\_t *data)}
+\DoxyCodeLine{186 \{}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{188     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{189     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, flags);}
+\DoxyCodeLine{190     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 1, len);}
+\DoxyCodeLine{191     \_mav\_put\_uint8\_t\_array(buf, 2, data, 180);}
+\DoxyCodeLine{192     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{194     mavlink\_gps\_rtcm\_data\_t *packet = (mavlink\_gps\_rtcm\_data\_t *)msgbuf;}
+\DoxyCodeLine{195     packet-\/>flags = flags;}
+\DoxyCodeLine{196     packet-\/>len = len;}
+\DoxyCodeLine{197     mav\_array\_memcpy(packet-\/>data, data, \textcolor{keyword}{sizeof}(uint8\_t)*180);}
+\DoxyCodeLine{198     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a9b319e09174ec50aa4abee1ea494ad15}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_a91b71b095dc45beda3228260c4f525b1}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_aba2eeb135c4fa85bfbaffc974314096f}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_CRC}});}
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{200 \}}
+\DoxyCodeLine{201 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 \textcolor{comment}{// MESSAGE GPS\_RTCM\_DATA UNPACKING}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 }
+\DoxyCodeLine{213 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_rtcm\_data\_get\_flags(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{214 \{}
+\DoxyCodeLine{215     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  0);}
+\DoxyCodeLine{216 \}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{223 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_rtcm\_data\_get\_len(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{224 \{}
+\DoxyCodeLine{225     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  1);}
+\DoxyCodeLine{226 \}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{233 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_rtcm\_data\_get\_data(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *data)}
+\DoxyCodeLine{234 \{}
+\DoxyCodeLine{235     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, data, 180,  2);}
+\DoxyCodeLine{236 \}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{244 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_rtcm\_data\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_gps\_rtcm\_data\_t* gps\_rtcm\_data)}
+\DoxyCodeLine{245 \{}
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{247     gps\_rtcm\_data-\/>flags = mavlink\_msg\_gps\_rtcm\_data\_get\_flags(msg);}
+\DoxyCodeLine{248     gps\_rtcm\_data-\/>len = mavlink\_msg\_gps\_rtcm\_data\_get\_len(msg);}
+\DoxyCodeLine{249     mavlink\_msg\_gps\_rtcm\_data\_get\_data(msg, gps\_rtcm\_data-\/>data);}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{251         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}};}
+\DoxyCodeLine{252         memset(gps\_rtcm\_data, 0, \mbox{\hyperlink{mavlink__msg__gps__rtcm__data_8h_adef700cf10797e13067823d43e3a832b}{MAVLINK\_MSG\_ID\_GPS\_RTCM\_DATA\_LEN}});}
+\DoxyCodeLine{253     memcpy(gps\_rtcm\_data, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{255 \}}
+
+\end{DoxyCode}

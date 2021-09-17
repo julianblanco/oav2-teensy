@@ -1,0 +1,237 @@
+\hypertarget{protocol_8h}{}\doxysection{lib/protocol.h File Reference}
+\label{protocol_8h}\index{lib/protocol.h@{lib/protocol.h}}
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mavlink\+\_\+types.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mavlink\+\_\+helpers.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a8294f9c8a98c407a6f24e2de6ebecbba}{MAVLINK\+\_\+\+NEED\+\_\+\+BYTE\+\_\+\+SWAP}}~(\mbox{\hyperlink{mavlink_8h_a2db62f1ccd5d8ffb120d7689f207942f}{MAVLINK\+\_\+\+ENDIAN}} != \mbox{\hyperlink{mavlink__types_8h_af43ffe0aa4007fb568c277f8942eb759}{MAVLINK\+\_\+\+LITTLE\+\_\+\+ENDIAN}})
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a1378e871245e049d35394229752d79d7}{MAVLINK\+\_\+\+STACK\+\_\+\+BUFFER}}~0
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a33f043343a6390ef58ea5351906a9d74}{MAVLINK\+\_\+\+AVOID\+\_\+\+GCC\+\_\+\+STACK\+\_\+\+BUG}}~defined(\+\_\+\+\_\+\+GNUC\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_aad5dd4313a4e19ae3bddccfbebda5b62}{MAVLINK\+\_\+\+ASSERT}}(x)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_ab761006cae93e593accb4bc4f543413b}{MAVLINK\+\_\+\+START\+\_\+\+UART\+\_\+\+SEND}}(chan,  length)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a18dca6a13e7d2a09fc80bd18e4f57367}{MAVLINK\+\_\+\+END\+\_\+\+UART\+\_\+\+SEND}}(chan,  length)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\+\_\+\+HELPER}}~static inline
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\+\_\+mav\+\_\+put\+\_\+uint8\+\_\+t}}(buf,  wire\+\_\+offset,  b)~buf\mbox{[}wire\+\_\+offset\mbox{]} = (uint8\+\_\+t)b
+\item 
+\#define \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\+\_\+mav\+\_\+put\+\_\+int8\+\_\+t}}(buf,  wire\+\_\+offset,  b)~buf\mbox{[}wire\+\_\+offset\mbox{]} = (int8\+\_\+t)b
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a9ce78106f21ac1c13c1242f5ad11612b}{\+\_\+mav\+\_\+put\+\_\+char}}(buf,  wire\+\_\+offset,  b)~buf\mbox{[}wire\+\_\+offset\mbox{]} = b
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\+\_\+mav\+\_\+put\+\_\+uint16\+\_\+t}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+2(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\+\_\+mav\+\_\+put\+\_\+int16\+\_\+t}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+2(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\+\_\+mav\+\_\+put\+\_\+uint32\+\_\+t}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+4(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\+\_\+mav\+\_\+put\+\_\+int32\+\_\+t}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+4(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\+\_\+mav\+\_\+put\+\_\+uint64\+\_\+t}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+8(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}{\+\_\+mav\+\_\+put\+\_\+int64\+\_\+t}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+8(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\+\_\+mav\+\_\+put\+\_\+float}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+4(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_ab99f10b1bf768f4122b1caa067d24ba8}{\+\_\+mav\+\_\+put\+\_\+double}}(buf,  wire\+\_\+offset,  b)~byte\+\_\+swap\+\_\+8(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a7b9a101961be6123bd351fb54832b82c}{\+\_\+\+MAV\+\_\+\+PUT\+\_\+\+ARRAY}}(TYPE,  V)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a2ce2c9077675f00ed5854c12c6aa239a}{\+\_\+\+MAV\+\_\+\+RETURN\+\_\+char}}(msg,  wire\+\_\+offset)~(char)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\+\_\+\+MAV\+\_\+\+PAYLOAD}}(msg)\mbox{[}wire\+\_\+offset\mbox{]}
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\+\_\+\+MAV\+\_\+\+RETURN\+\_\+int8\+\_\+t}}(msg,  wire\+\_\+offset)~(int8\+\_\+t)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\+\_\+\+MAV\+\_\+\+PAYLOAD}}(msg)\mbox{[}wire\+\_\+offset\mbox{]}
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\+\_\+\+MAV\+\_\+\+RETURN\+\_\+uint8\+\_\+t}}(msg,  wire\+\_\+offset)~(uint8\+\_\+t)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\+\_\+\+MAV\+\_\+\+PAYLOAD}}(msg)\mbox{[}wire\+\_\+offset\mbox{]}
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a148ead634653eb40dfa0644f11336d24}{\+\_\+\+MAV\+\_\+\+MSG\+\_\+\+RETURN\+\_\+\+TYPE}}(TYPE,  SIZE)
+\item 
+\#define \mbox{\hyperlink{protocol_8h_a056ba05a9133c8e4362514ffc523a24b}{\+\_\+\+MAV\+\_\+\+RETURN\+\_\+\+ARRAY}}(TYPE,  V)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{protocol_8h_a148ead634653eb40dfa0644f11336d24}\label{protocol_8h_a148ead634653eb40dfa0644f11336d24}} 
+\index{protocol.h@{protocol.h}!\_MAV\_MSG\_RETURN\_TYPE@{\_MAV\_MSG\_RETURN\_TYPE}}
+\index{\_MAV\_MSG\_RETURN\_TYPE@{\_MAV\_MSG\_RETURN\_TYPE}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_MAV\_MSG\_RETURN\_TYPE}{\_MAV\_MSG\_RETURN\_TYPE}}
+{\footnotesize\ttfamily \#define \+\_\+\+MAV\+\_\+\+MSG\+\_\+\+RETURN\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{TYPE,  }\item[{}]{SIZE }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keyword}{inline} TYPE \_MAV\_RETURN\_\#\# TYPE(\textcolor{keyword}{const} mavlink\_message\_t *msg, uint8\_t ofs) \(\backslash\)}
+\DoxyCodeLine{\{ TYPE r; byte\_swap\_\#\# SIZE((\textcolor{keywordtype}{char}*)\&r, \&\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg)[ofs]); \textcolor{keywordflow}{return} r; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{protocol_8h_a7b9a101961be6123bd351fb54832b82c}\label{protocol_8h_a7b9a101961be6123bd351fb54832b82c}} 
+\index{protocol.h@{protocol.h}!\_MAV\_PUT\_ARRAY@{\_MAV\_PUT\_ARRAY}}
+\index{\_MAV\_PUT\_ARRAY@{\_MAV\_PUT\_ARRAY}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_MAV\_PUT\_ARRAY}{\_MAV\_PUT\_ARRAY}}
+{\footnotesize\ttfamily \#define \+\_\+\+MAV\+\_\+\+PUT\+\_\+\+ARRAY(\begin{DoxyParamCaption}\item[{}]{TYPE,  }\item[{}]{V }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \_mav\_put\_ \#\# TYPE \#\#\_array(\textcolor{keywordtype}{char} *buf, uint8\_t wire\_offset, \textcolor{keyword}{const} TYPE *b, uint8\_t array\_length) \(\backslash\)}
+\DoxyCodeLine{\{ \(\backslash\)}
+\DoxyCodeLine{    if (b == NULL) \{ \(\backslash\)}
+\DoxyCodeLine{        memset(\&buf[wire\_offset], 0, array\_length*\textcolor{keyword}{sizeof}(TYPE)); \(\backslash\)}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{else} \{ \(\backslash\)}
+\DoxyCodeLine{        uint16\_t i; \(\backslash\)}
+\DoxyCodeLine{        for (i=0; i<array\_length; i++) \{ \(\backslash\)}
+\DoxyCodeLine{            \_mav\_put\_\#\# TYPE (buf, wire\_offset+(i*\textcolor{keyword}{sizeof}(TYPE)), b[i]); \(\backslash\)}
+\DoxyCodeLine{        \} \(\backslash\)}
+\DoxyCodeLine{    \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{protocol_8h_a9ce78106f21ac1c13c1242f5ad11612b}\label{protocol_8h_a9ce78106f21ac1c13c1242f5ad11612b}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_char@{\_mav\_put\_char}}
+\index{\_mav\_put\_char@{\_mav\_put\_char}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_char}{\_mav\_put\_char}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+char(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~buf\mbox{[}wire\+\_\+offset\mbox{]} = b}
+
+\mbox{\Hypertarget{protocol_8h_ab99f10b1bf768f4122b1caa067d24ba8}\label{protocol_8h_ab99f10b1bf768f4122b1caa067d24ba8}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_double@{\_mav\_put\_double}}
+\index{\_mav\_put\_double@{\_mav\_put\_double}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_double}{\_mav\_put\_double}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+double(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+8(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}\label{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_float@{\_mav\_put\_float}}
+\index{\_mav\_put\_float@{\_mav\_put\_float}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_float}{\_mav\_put\_float}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+float(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+4(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}\label{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_int16\_t@{\_mav\_put\_int16\_t}}
+\index{\_mav\_put\_int16\_t@{\_mav\_put\_int16\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_int16\_t}{\_mav\_put\_int16\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+int16\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+2(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}\label{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_int32\_t@{\_mav\_put\_int32\_t}}
+\index{\_mav\_put\_int32\_t@{\_mav\_put\_int32\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_int32\_t}{\_mav\_put\_int32\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+int32\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+4(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}\label{protocol_8h_a75b8a7e267c9e3b37c706378a8ae8599}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_int64\_t@{\_mav\_put\_int64\_t}}
+\index{\_mav\_put\_int64\_t@{\_mav\_put\_int64\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_int64\_t}{\_mav\_put\_int64\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+int64\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+8(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_af10c521f49722953319172c5dd3d030e}\label{protocol_8h_af10c521f49722953319172c5dd3d030e}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_int8\_t@{\_mav\_put\_int8\_t}}
+\index{\_mav\_put\_int8\_t@{\_mav\_put\_int8\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_int8\_t}{\_mav\_put\_int8\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+int8\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~buf\mbox{[}wire\+\_\+offset\mbox{]} = (int8\+\_\+t)b}
+
+\mbox{\Hypertarget{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}\label{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_uint16\_t@{\_mav\_put\_uint16\_t}}
+\index{\_mav\_put\_uint16\_t@{\_mav\_put\_uint16\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_uint16\_t}{\_mav\_put\_uint16\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+uint16\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+2(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}\label{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_uint32\_t@{\_mav\_put\_uint32\_t}}
+\index{\_mav\_put\_uint32\_t@{\_mav\_put\_uint32\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_uint32\_t}{\_mav\_put\_uint32\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+uint32\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+4(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}\label{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_uint64\_t@{\_mav\_put\_uint64\_t}}
+\index{\_mav\_put\_uint64\_t@{\_mav\_put\_uint64\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_uint64\_t}{\_mav\_put\_uint64\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+uint64\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~byte\+\_\+swap\+\_\+8(\&buf\mbox{[}wire\+\_\+offset\mbox{]}, (const char $\ast$)\&b)}
+
+\mbox{\Hypertarget{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}\label{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}} 
+\index{protocol.h@{protocol.h}!\_mav\_put\_uint8\_t@{\_mav\_put\_uint8\_t}}
+\index{\_mav\_put\_uint8\_t@{\_mav\_put\_uint8\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_mav\_put\_uint8\_t}{\_mav\_put\_uint8\_t}}
+{\footnotesize\ttfamily \#define \+\_\+mav\+\_\+put\+\_\+uint8\+\_\+t(\begin{DoxyParamCaption}\item[{}]{buf,  }\item[{}]{wire\+\_\+offset,  }\item[{}]{b }\end{DoxyParamCaption})~buf\mbox{[}wire\+\_\+offset\mbox{]} = (uint8\+\_\+t)b}
+
+\mbox{\Hypertarget{protocol_8h_a056ba05a9133c8e4362514ffc523a24b}\label{protocol_8h_a056ba05a9133c8e4362514ffc523a24b}} 
+\index{protocol.h@{protocol.h}!\_MAV\_RETURN\_ARRAY@{\_MAV\_RETURN\_ARRAY}}
+\index{\_MAV\_RETURN\_ARRAY@{\_MAV\_RETURN\_ARRAY}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_MAV\_RETURN\_ARRAY}{\_MAV\_RETURN\_ARRAY}}
+{\footnotesize\ttfamily \#define \+\_\+\+MAV\+\_\+\+RETURN\+\_\+\+ARRAY(\begin{DoxyParamCaption}\item[{}]{TYPE,  }\item[{}]{V }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t \_MAV\_RETURN\_\#\# TYPE \#\#\_array(\textcolor{keyword}{const} mavlink\_message\_t *msg, TYPE *value, \(\backslash\)}
+\DoxyCodeLine{                             uint8\_t array\_length, uint8\_t wire\_offset) \(\backslash\)}
+\DoxyCodeLine{\{ \(\backslash\)}
+\DoxyCodeLine{    uint16\_t i; \(\backslash\)}
+\DoxyCodeLine{    for (i=0; i<array\_length; i++) \{ \(\backslash\)}
+\DoxyCodeLine{        value[i] = \_MAV\_RETURN\_\#\# TYPE (msg, wire\_offset+(i*\textcolor{keyword}{sizeof}(value[0]))); \(\backslash\)}
+\DoxyCodeLine{    \} \(\backslash\)}
+\DoxyCodeLine{    return array\_length*\textcolor{keyword}{sizeof}(value[0]); \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{protocol_8h_a2ce2c9077675f00ed5854c12c6aa239a}\label{protocol_8h_a2ce2c9077675f00ed5854c12c6aa239a}} 
+\index{protocol.h@{protocol.h}!\_MAV\_RETURN\_char@{\_MAV\_RETURN\_char}}
+\index{\_MAV\_RETURN\_char@{\_MAV\_RETURN\_char}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_MAV\_RETURN\_char}{\_MAV\_RETURN\_char}}
+{\footnotesize\ttfamily \#define \+\_\+\+MAV\+\_\+\+RETURN\+\_\+char(\begin{DoxyParamCaption}\item[{}]{msg,  }\item[{}]{wire\+\_\+offset }\end{DoxyParamCaption})~(char)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\+\_\+\+MAV\+\_\+\+PAYLOAD}}(msg)\mbox{[}wire\+\_\+offset\mbox{]}}
+
+\mbox{\Hypertarget{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}\label{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}} 
+\index{protocol.h@{protocol.h}!\_MAV\_RETURN\_int8\_t@{\_MAV\_RETURN\_int8\_t}}
+\index{\_MAV\_RETURN\_int8\_t@{\_MAV\_RETURN\_int8\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_MAV\_RETURN\_int8\_t}{\_MAV\_RETURN\_int8\_t}}
+{\footnotesize\ttfamily \#define \+\_\+\+MAV\+\_\+\+RETURN\+\_\+int8\+\_\+t(\begin{DoxyParamCaption}\item[{}]{msg,  }\item[{}]{wire\+\_\+offset }\end{DoxyParamCaption})~(int8\+\_\+t)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\+\_\+\+MAV\+\_\+\+PAYLOAD}}(msg)\mbox{[}wire\+\_\+offset\mbox{]}}
+
+\mbox{\Hypertarget{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}\label{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}} 
+\index{protocol.h@{protocol.h}!\_MAV\_RETURN\_uint8\_t@{\_MAV\_RETURN\_uint8\_t}}
+\index{\_MAV\_RETURN\_uint8\_t@{\_MAV\_RETURN\_uint8\_t}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{\_MAV\_RETURN\_uint8\_t}{\_MAV\_RETURN\_uint8\_t}}
+{\footnotesize\ttfamily \#define \+\_\+\+MAV\+\_\+\+RETURN\+\_\+uint8\+\_\+t(\begin{DoxyParamCaption}\item[{}]{msg,  }\item[{}]{wire\+\_\+offset }\end{DoxyParamCaption})~(uint8\+\_\+t)\mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\+\_\+\+MAV\+\_\+\+PAYLOAD}}(msg)\mbox{[}wire\+\_\+offset\mbox{]}}
+
+\mbox{\Hypertarget{protocol_8h_aad5dd4313a4e19ae3bddccfbebda5b62}\label{protocol_8h_aad5dd4313a4e19ae3bddccfbebda5b62}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_ASSERT@{MAVLINK\_ASSERT}}
+\index{MAVLINK\_ASSERT@{MAVLINK\_ASSERT}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_ASSERT}{MAVLINK\_ASSERT}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+ASSERT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{protocol_8h_a33f043343a6390ef58ea5351906a9d74}\label{protocol_8h_a33f043343a6390ef58ea5351906a9d74}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_AVOID\_GCC\_STACK\_BUG@{MAVLINK\_AVOID\_GCC\_STACK\_BUG}}
+\index{MAVLINK\_AVOID\_GCC\_STACK\_BUG@{MAVLINK\_AVOID\_GCC\_STACK\_BUG}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_AVOID\_GCC\_STACK\_BUG}{MAVLINK\_AVOID\_GCC\_STACK\_BUG}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+AVOID\+\_\+\+GCC\+\_\+\+STACK\+\_\+\+BUG~defined(\+\_\+\+\_\+\+GNUC\+\_\+\+\_\+)}
+
+\mbox{\Hypertarget{protocol_8h_a18dca6a13e7d2a09fc80bd18e4f57367}\label{protocol_8h_a18dca6a13e7d2a09fc80bd18e4f57367}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_END\_UART\_SEND@{MAVLINK\_END\_UART\_SEND}}
+\index{MAVLINK\_END\_UART\_SEND@{MAVLINK\_END\_UART\_SEND}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_END\_UART\_SEND}{MAVLINK\_END\_UART\_SEND}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+END\+\_\+\+UART\+\_\+\+SEND(\begin{DoxyParamCaption}\item[{}]{chan,  }\item[{}]{length }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{protocol_8h_a8201ad9cec6e1480d1f018161aaa5c6f}\label{protocol_8h_a8201ad9cec6e1480d1f018161aaa5c6f}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_HELPER@{MAVLINK\_HELPER}}
+\index{MAVLINK\_HELPER@{MAVLINK\_HELPER}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_HELPER}{MAVLINK\_HELPER}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+HELPER~static inline}
+
+\mbox{\Hypertarget{protocol_8h_a8294f9c8a98c407a6f24e2de6ebecbba}\label{protocol_8h_a8294f9c8a98c407a6f24e2de6ebecbba}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_NEED\_BYTE\_SWAP@{MAVLINK\_NEED\_BYTE\_SWAP}}
+\index{MAVLINK\_NEED\_BYTE\_SWAP@{MAVLINK\_NEED\_BYTE\_SWAP}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_NEED\_BYTE\_SWAP}{MAVLINK\_NEED\_BYTE\_SWAP}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+NEED\+\_\+\+BYTE\+\_\+\+SWAP~(\mbox{\hyperlink{mavlink_8h_a2db62f1ccd5d8ffb120d7689f207942f}{MAVLINK\+\_\+\+ENDIAN}} != \mbox{\hyperlink{mavlink__types_8h_af43ffe0aa4007fb568c277f8942eb759}{MAVLINK\+\_\+\+LITTLE\+\_\+\+ENDIAN}})}
+
+\mbox{\Hypertarget{protocol_8h_a1378e871245e049d35394229752d79d7}\label{protocol_8h_a1378e871245e049d35394229752d79d7}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_STACK\_BUFFER@{MAVLINK\_STACK\_BUFFER}}
+\index{MAVLINK\_STACK\_BUFFER@{MAVLINK\_STACK\_BUFFER}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_STACK\_BUFFER}{MAVLINK\_STACK\_BUFFER}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+STACK\+\_\+\+BUFFER~0}
+
+\mbox{\Hypertarget{protocol_8h_ab761006cae93e593accb4bc4f543413b}\label{protocol_8h_ab761006cae93e593accb4bc4f543413b}} 
+\index{protocol.h@{protocol.h}!MAVLINK\_START\_UART\_SEND@{MAVLINK\_START\_UART\_SEND}}
+\index{MAVLINK\_START\_UART\_SEND@{MAVLINK\_START\_UART\_SEND}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_START\_UART\_SEND}{MAVLINK\_START\_UART\_SEND}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+START\+\_\+\+UART\+\_\+\+SEND(\begin{DoxyParamCaption}\item[{}]{chan,  }\item[{}]{length }\end{DoxyParamCaption})}
+

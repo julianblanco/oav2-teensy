@@ -1,0 +1,107 @@
+\hypertarget{mavlink__msg__optical__flow__rad_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+optical\+\_\+flow\+\_\+rad.h File Reference}
+\label{mavlink__msg__optical__flow__rad_8h}\index{lib/common/mavlink\_msg\_optical\_flow\_rad.h@{lib/common/mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD}}~106
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD\+\_\+\+LEN}}~44
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD\+\_\+\+MIN\+\_\+\+LEN}}~44
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a8119a588f23d34b5ea97feaae58ad941}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+106\+\_\+\+LEN}}~44
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a38b04ae6948231eb21ce66f0e76385f9}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+106\+\_\+\+MIN\+\_\+\+LEN}}~44
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD\+\_\+\+CRC}}~138
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ae4ea5fb754959296ea19e5998e5d9239}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+106\+\_\+\+CRC}}~138
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_ab6ed036e3dc70fad509f5902c431143e}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__optical__flow__rad_8h_afd1f34fc3faf5dc18f3541faf98ecf74}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+optical\+\_\+flow\+\_\+rad\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint32\+\_\+t integration\+\_\+time\+\_\+us;float integrated\+\_\+x;float integrated\+\_\+y;float integrated\+\_\+xgyro;float integrated\+\_\+ygyro;float integrated\+\_\+zgyro;uint32\+\_\+t time\+\_\+delta\+\_\+distance\+\_\+us;float distance;int16\+\_\+t temperature;uint8\+\_\+t sensor\+\_\+id;uint8\+\_\+t quality;\}) mavlink\+\_\+optical\+\_\+flow\+\_\+rad\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_ab6ed036e3dc70fad509f5902c431143e}\label{mavlink__msg__optical__flow__rad_8h_ab6ed036e3dc70fad509f5902c431143e}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD@{MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD}}
+\index{MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD@{MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD}{MAVLINK\_MESSAGE\_INFO\_OPTICAL\_FLOW\_RAD}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}OPTICAL\_FLOW\_RAD"{}}, \(\backslash\)}
+\DoxyCodeLine{    12, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_optical\_flow\_rad\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}sensor\_id"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 42, offsetof(mavlink\_optical\_flow\_rad\_t, sensor\_id) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}integration\_time\_us"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 8, offsetof(mavlink\_optical\_flow\_rad\_t, integration\_time\_us) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}integrated\_x"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_x) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}integrated\_y"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_y) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}integrated\_xgyro"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 20, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}integrated\_ygyro"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 24, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}integrated\_zgyro"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 28, offsetof(mavlink\_optical\_flow\_rad\_t, integrated\_zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}temperature"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 40, offsetof(mavlink\_optical\_flow\_rad\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}quality"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 43, offsetof(mavlink\_optical\_flow\_rad\_t, quality) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}time\_delta\_distance\_us"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 32, offsetof(mavlink\_optical\_flow\_rad\_t, time\_delta\_distance\_us) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}distance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 36, offsetof(mavlink\_optical\_flow\_rad\_t, distance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_ae4ea5fb754959296ea19e5998e5d9239}\label{mavlink__msg__optical__flow__rad_8h_ae4ea5fb754959296ea19e5998e5d9239}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_106\_CRC@{MAVLINK\_MSG\_ID\_106\_CRC}}
+\index{MAVLINK\_MSG\_ID\_106\_CRC@{MAVLINK\_MSG\_ID\_106\_CRC}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_106\_CRC}{MAVLINK\_MSG\_ID\_106\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+106\+\_\+\+CRC~138}
+
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_a8119a588f23d34b5ea97feaae58ad941}\label{mavlink__msg__optical__flow__rad_8h_a8119a588f23d34b5ea97feaae58ad941}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_106\_LEN@{MAVLINK\_MSG\_ID\_106\_LEN}}
+\index{MAVLINK\_MSG\_ID\_106\_LEN@{MAVLINK\_MSG\_ID\_106\_LEN}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_106\_LEN}{MAVLINK\_MSG\_ID\_106\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+106\+\_\+\+LEN~44}
+
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_a38b04ae6948231eb21ce66f0e76385f9}\label{mavlink__msg__optical__flow__rad_8h_a38b04ae6948231eb21ce66f0e76385f9}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_106\_MIN\_LEN@{MAVLINK\_MSG\_ID\_106\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_106\_MIN\_LEN@{MAVLINK\_MSG\_ID\_106\_MIN\_LEN}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_106\_MIN\_LEN}{MAVLINK\_MSG\_ID\_106\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+106\+\_\+\+MIN\+\_\+\+LEN~44}
+
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}\label{mavlink__msg__optical__flow__rad_8h_a2e1c0f7737a0bd69c918caaee5acafce}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}
+\index{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD~106}
+
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}\label{mavlink__msg__optical__flow__rad_8h_a62abbb6a6fbe3a65beb87b39892cfe8c}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}}
+\index{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD\+\_\+\+CRC~138}
+
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}\label{mavlink__msg__optical__flow__rad_8h_ad22e3f49679df393d79d4e0fc2b98116}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}
+\index{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD\+\_\+\+LEN~44}
+
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}\label{mavlink__msg__optical__flow__rad_8h_af8a4603c750e59f3b35372583b256ec7}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN@{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}{MAVLINK\_MSG\_ID\_OPTICAL\_FLOW\_RAD\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OPTICAL\+\_\+\+FLOW\+\_\+\+RAD\+\_\+\+MIN\+\_\+\+LEN~44}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__optical__flow__rad_8h_afd1f34fc3faf5dc18f3541faf98ecf74}\label{mavlink__msg__optical__flow__rad_8h_afd1f34fc3faf5dc18f3541faf98ecf74}} 
+\index{mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_optical\_flow\_rad.h@{mavlink\_msg\_optical\_flow\_rad.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+optical\+\_\+flow\+\_\+rad\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint32\+\_\+t integration\+\_\+time\+\_\+us;float integrated\+\_\+x;float integrated\+\_\+y;float integrated\+\_\+xgyro;float integrated\+\_\+ygyro;float integrated\+\_\+zgyro;uint32\+\_\+t time\+\_\+delta\+\_\+distance\+\_\+us;float distance;int16\+\_\+t temperature;uint8\+\_\+t sensor\+\_\+id;uint8\+\_\+t quality;\}}]{ }\end{DoxyParamCaption})}
+

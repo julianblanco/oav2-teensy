@@ -1,0 +1,102 @@
+\hypertarget{mavlink__msg__altitude_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+altitude.h File Reference}
+\label{mavlink__msg__altitude_8h}\index{lib/common/mavlink\_msg\_altitude.h@{lib/common/mavlink\_msg\_altitude.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_afb746b0bab65a6f4bd96575030dabacd}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE}}~141
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_a740fa91c62c6e8813c3bd6b52c15b02d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_aceb71587d0cb63f5b1c61be31f409e23}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE\+\_\+\+MIN\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_ae07cae45b194b5a971b97f1d34448dd1}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+141\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_a02c182a30ecc115b3aa0053e3ff15ca3}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+141\+\_\+\+MIN\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_aca9a2438677393fdb851b20dd63edc70}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE\+\_\+\+CRC}}~47
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_a1e9cb7c984b072ffcd35dce6b2b66210}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+141\+\_\+\+CRC}}~47
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__altitude_8h_ae6dd77363ccf67dc3fa6b1cc0ce36ce9}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+ALTITUDE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__altitude_8h_ad458e1fcbc1c3c032b3734ba19111790}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+altitude\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float altitude\+\_\+monotonic;float altitude\+\_\+amsl;float altitude\+\_\+local;float altitude\+\_\+relative;float altitude\+\_\+terrain;float bottom\+\_\+clearance;\}) mavlink\+\_\+altitude\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_ae6dd77363ccf67dc3fa6b1cc0ce36ce9}\label{mavlink__msg__altitude_8h_ae6dd77363ccf67dc3fa6b1cc0ce36ce9}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MESSAGE\_INFO\_ALTITUDE@{MAVLINK\_MESSAGE\_INFO\_ALTITUDE}}
+\index{MAVLINK\_MESSAGE\_INFO\_ALTITUDE@{MAVLINK\_MESSAGE\_INFO\_ALTITUDE}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_ALTITUDE}{MAVLINK\_MESSAGE\_INFO\_ALTITUDE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+ALTITUDE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}ALTITUDE"{}}, \(\backslash\)}
+\DoxyCodeLine{    7, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_altitude\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_monotonic"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_altitude\_t, altitude\_monotonic) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_amsl"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_altitude\_t, altitude\_amsl) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_local"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_altitude\_t, altitude\_local) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_relative"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 20, offsetof(mavlink\_altitude\_t, altitude\_relative) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_terrain"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 24, offsetof(mavlink\_altitude\_t, altitude\_terrain) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}bottom\_clearance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 28, offsetof(mavlink\_altitude\_t, bottom\_clearance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_a1e9cb7c984b072ffcd35dce6b2b66210}\label{mavlink__msg__altitude_8h_a1e9cb7c984b072ffcd35dce6b2b66210}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_141\_CRC@{MAVLINK\_MSG\_ID\_141\_CRC}}
+\index{MAVLINK\_MSG\_ID\_141\_CRC@{MAVLINK\_MSG\_ID\_141\_CRC}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_141\_CRC}{MAVLINK\_MSG\_ID\_141\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+141\+\_\+\+CRC~47}
+
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_ae07cae45b194b5a971b97f1d34448dd1}\label{mavlink__msg__altitude_8h_ae07cae45b194b5a971b97f1d34448dd1}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_141\_LEN@{MAVLINK\_MSG\_ID\_141\_LEN}}
+\index{MAVLINK\_MSG\_ID\_141\_LEN@{MAVLINK\_MSG\_ID\_141\_LEN}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_141\_LEN}{MAVLINK\_MSG\_ID\_141\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+141\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_a02c182a30ecc115b3aa0053e3ff15ca3}\label{mavlink__msg__altitude_8h_a02c182a30ecc115b3aa0053e3ff15ca3}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_141\_MIN\_LEN@{MAVLINK\_MSG\_ID\_141\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_141\_MIN\_LEN@{MAVLINK\_MSG\_ID\_141\_MIN\_LEN}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_141\_MIN\_LEN}{MAVLINK\_MSG\_ID\_141\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+141\+\_\+\+MIN\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_afb746b0bab65a6f4bd96575030dabacd}\label{mavlink__msg__altitude_8h_afb746b0bab65a6f4bd96575030dabacd}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_ALTITUDE@{MAVLINK\_MSG\_ID\_ALTITUDE}}
+\index{MAVLINK\_MSG\_ID\_ALTITUDE@{MAVLINK\_MSG\_ID\_ALTITUDE}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ALTITUDE}{MAVLINK\_MSG\_ID\_ALTITUDE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE~141}
+
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_aca9a2438677393fdb851b20dd63edc70}\label{mavlink__msg__altitude_8h_aca9a2438677393fdb851b20dd63edc70}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_ALTITUDE\_CRC@{MAVLINK\_MSG\_ID\_ALTITUDE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_ALTITUDE\_CRC@{MAVLINK\_MSG\_ID\_ALTITUDE\_CRC}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ALTITUDE\_CRC}{MAVLINK\_MSG\_ID\_ALTITUDE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE\+\_\+\+CRC~47}
+
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_a740fa91c62c6e8813c3bd6b52c15b02d}\label{mavlink__msg__altitude_8h_a740fa91c62c6e8813c3bd6b52c15b02d}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_ALTITUDE\_LEN@{MAVLINK\_MSG\_ID\_ALTITUDE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_ALTITUDE\_LEN@{MAVLINK\_MSG\_ID\_ALTITUDE\_LEN}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ALTITUDE\_LEN}{MAVLINK\_MSG\_ID\_ALTITUDE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_aceb71587d0cb63f5b1c61be31f409e23}\label{mavlink__msg__altitude_8h_aceb71587d0cb63f5b1c61be31f409e23}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVLINK\_MSG\_ID\_ALTITUDE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_ALTITUDE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_ALTITUDE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_ALTITUDE\_MIN\_LEN}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_ALTITUDE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_ALTITUDE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+ALTITUDE\+\_\+\+MIN\+\_\+\+LEN~32}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__altitude_8h_ad458e1fcbc1c3c032b3734ba19111790}\label{mavlink__msg__altitude_8h_ad458e1fcbc1c3c032b3734ba19111790}} 
+\index{mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_altitude.h@{mavlink\_msg\_altitude.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+altitude\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float altitude\+\_\+monotonic;float altitude\+\_\+amsl;float altitude\+\_\+local;float altitude\+\_\+relative;float altitude\+\_\+terrain;float bottom\+\_\+clearance;\}}]{ }\end{DoxyParamCaption})}
+

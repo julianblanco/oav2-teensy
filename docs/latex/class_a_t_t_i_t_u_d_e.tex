@@ -1,0 +1,117 @@
+\hypertarget{class_a_t_t_i_t_u_d_e}{}\doxysection{ATTITUDE Class Reference}
+\label{class_a_t_t_i_t_u_d_e}\index{ATTITUDE@{ATTITUDE}}
+
+
+{\ttfamily \#include $<$attitude.\+h$>$}
+
+Inheritance diagram for ATTITUDE\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_t_t_i_t_u_d_e}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_af4d51b6ab7c16f4c6441e47d84b43d82}{ATTITUDE}} ()
+\item 
+\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ae31d57e3e9072e754c4e9f2e12962c3f}{$\sim$\+ATTITUDE}} ()
+\item 
+int \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}{setup}} ()
+\item 
+int \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ad67ef620f500081fbf17d47041a29edd}{start}} ()
+\item 
+void \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}{PIDAttitude\+Control}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ab0e6b0701b0cef1919605d7985fcab25}{yaw}}
+\item 
+float \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_abe6ae790be3d899238d9764cc389cfc3}{roll}}
+\item 
+float \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ac4c8158c10232d1543325aea7993f782}{pitch}}
+\item 
+cpp\+\_\+freertos\+::\+Read\+Write\+Lock\+Prefer\+Writer \mbox{\hyperlink{class_a_t_t_i_t_u_d_e_a727ac15c7cf255d8175074b655d7ce31}{lock}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_af4d51b6ab7c16f4c6441e47d84b43d82}\label{class_a_t_t_i_t_u_d_e_af4d51b6ab7c16f4c6441e47d84b43d82}} 
+\index{ATTITUDE@{ATTITUDE}!ATTITUDE@{ATTITUDE}}
+\index{ATTITUDE@{ATTITUDE}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{ATTITUDE()}{ATTITUDE()}}
+{\footnotesize\ttfamily ATTITUDE\+::\+ATTITUDE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_ae31d57e3e9072e754c4e9f2e12962c3f}\label{class_a_t_t_i_t_u_d_e_ae31d57e3e9072e754c4e9f2e12962c3f}} 
+\index{ATTITUDE@{ATTITUDE}!````~ATTITUDE@{$\sim$ATTITUDE}}
+\index{````~ATTITUDE@{$\sim$ATTITUDE}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{$\sim$ATTITUDE()}{~ATTITUDE()}}
+{\footnotesize\ttfamily ATTITUDE\+::$\sim$\+ATTITUDE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}\label{class_a_t_t_i_t_u_d_e_a4def2d4e6f9c01018e31047915e87119}} 
+\index{ATTITUDE@{ATTITUDE}!PIDAttitudeControl@{PIDAttitudeControl}}
+\index{PIDAttitudeControl@{PIDAttitudeControl}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{PIDAttitudeControl()}{PIDAttitudeControl()}}
+{\footnotesize\ttfamily void ATTITUDE\+::\+PIDAttitude\+Control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}\label{class_a_t_t_i_t_u_d_e_a663814358326a9b801811b6a1f7bfbbb}} 
+\index{ATTITUDE@{ATTITUDE}!setup@{setup}}
+\index{setup@{setup}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int ATTITUDE\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Setup the imu
+
+This method will initialize all needed IMUs including, but not limited to\+:
+\begin{DoxyItemize}
+\item BNO055
+\item BNO080
+\item MPU6050
+\item 
+\end{DoxyItemize}\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_ad67ef620f500081fbf17d47041a29edd}\label{class_a_t_t_i_t_u_d_e_ad67ef620f500081fbf17d47041a29edd}} 
+\index{ATTITUDE@{ATTITUDE}!start@{start}}
+\index{start@{start}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int ATTITUDE\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{Task}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_a727ac15c7cf255d8175074b655d7ce31}\label{class_a_t_t_i_t_u_d_e_a727ac15c7cf255d8175074b655d7ce31}} 
+\index{ATTITUDE@{ATTITUDE}!lock@{lock}}
+\index{lock@{lock}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{lock}{lock}}
+{\footnotesize\ttfamily cpp\+\_\+freertos\+::\+Read\+Write\+Lock\+Prefer\+Writer ATTITUDE\+::lock}
+
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_ac4c8158c10232d1543325aea7993f782}\label{class_a_t_t_i_t_u_d_e_ac4c8158c10232d1543325aea7993f782}} 
+\index{ATTITUDE@{ATTITUDE}!pitch@{pitch}}
+\index{pitch@{pitch}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{pitch}{pitch}}
+{\footnotesize\ttfamily float ATTITUDE\+::pitch}
+
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_abe6ae790be3d899238d9764cc389cfc3}\label{class_a_t_t_i_t_u_d_e_abe6ae790be3d899238d9764cc389cfc3}} 
+\index{ATTITUDE@{ATTITUDE}!roll@{roll}}
+\index{roll@{roll}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{roll}{roll}}
+{\footnotesize\ttfamily float ATTITUDE\+::roll}
+
+\mbox{\Hypertarget{class_a_t_t_i_t_u_d_e_ab0e6b0701b0cef1919605d7985fcab25}\label{class_a_t_t_i_t_u_d_e_ab0e6b0701b0cef1919605d7985fcab25}} 
+\index{ATTITUDE@{ATTITUDE}!yaw@{yaw}}
+\index{yaw@{yaw}!ATTITUDE@{ATTITUDE}}
+\doxysubsubsection{\texorpdfstring{yaw}{yaw}}
+{\footnotesize\ttfamily float ATTITUDE\+::yaw}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{attitude_8h}{attitude.\+h}}\end{DoxyCompactItemize}

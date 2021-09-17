@@ -1,0 +1,451 @@
+\hypertarget{mavlink__msg__servo__output__raw_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+servo\+\_\+output\+\_\+raw.\+h}
+\label{mavlink__msg__servo__output__raw_8h_source}\index{lib/common/mavlink\_msg\_servo\_output\_raw.h@{lib/common/mavlink\_msg\_servo\_output\_raw.h}}
+\mbox{\hyperlink{mavlink__msg__servo__output__raw_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE SERVO\_OUTPUT\_RAW PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW 36}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a892e003f73875bccdf45f6b4eefd2c88}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_servo\_output\_raw\_t \{}
+\DoxyCodeLine{8  uint32\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint16\_t servo1\_raw; \textcolor{comment}{/*< [us] Servo output 1 value*/}}
+\DoxyCodeLine{10  uint16\_t servo2\_raw; \textcolor{comment}{/*< [us] Servo output 2 value*/}}
+\DoxyCodeLine{11  uint16\_t servo3\_raw; \textcolor{comment}{/*< [us] Servo output 3 value*/}}
+\DoxyCodeLine{12  uint16\_t servo4\_raw; \textcolor{comment}{/*< [us] Servo output 4 value*/}}
+\DoxyCodeLine{13  uint16\_t servo5\_raw; \textcolor{comment}{/*< [us] Servo output 5 value*/}}
+\DoxyCodeLine{14  uint16\_t servo6\_raw; \textcolor{comment}{/*< [us] Servo output 6 value*/}}
+\DoxyCodeLine{15  uint16\_t servo7\_raw; \textcolor{comment}{/*< [us] Servo output 7 value*/}}
+\DoxyCodeLine{16  uint16\_t servo8\_raw; \textcolor{comment}{/*< [us] Servo output 8 value*/}}
+\DoxyCodeLine{17  uint8\_t port; \textcolor{comment}{/*<  Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows to encode more than 8 servos.*/}}
+\DoxyCodeLine{18  uint16\_t servo9\_raw; \textcolor{comment}{/*< [us] Servo output 9 value*/}}
+\DoxyCodeLine{19  uint16\_t servo10\_raw; \textcolor{comment}{/*< [us] Servo output 10 value*/}}
+\DoxyCodeLine{20  uint16\_t servo11\_raw; \textcolor{comment}{/*< [us] Servo output 11 value*/}}
+\DoxyCodeLine{21  uint16\_t servo12\_raw; \textcolor{comment}{/*< [us] Servo output 12 value*/}}
+\DoxyCodeLine{22  uint16\_t servo13\_raw; \textcolor{comment}{/*< [us] Servo output 13 value*/}}
+\DoxyCodeLine{23  uint16\_t servo14\_raw; \textcolor{comment}{/*< [us] Servo output 14 value*/}}
+\DoxyCodeLine{24  uint16\_t servo15\_raw; \textcolor{comment}{/*< [us] Servo output 15 value*/}}
+\DoxyCodeLine{25  uint16\_t servo16\_raw; \textcolor{comment}{/*< [us] Servo output 16 value*/}}
+\DoxyCodeLine{26 \}) mavlink\_servo\_output\_raw\_t;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN 37}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN 21}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_36\_LEN 37}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_36\_MIN\_LEN 21}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC 222}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_36\_CRC 222}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SERVO\_OUTPUT\_RAW \{ \(\backslash\)}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{    36, \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{    "{}SERVO\_OUTPUT\_RAW"{}}, \(\backslash\)}
+\DoxyCodeLine{42     18, \(\backslash\)}
+\DoxyCodeLine{43     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_servo\_output\_raw\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}port"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 20, offsetof(mavlink\_servo\_output\_raw\_t, port) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}servo1\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 4, offsetof(mavlink\_servo\_output\_raw\_t, servo1\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}servo2\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 6, offsetof(mavlink\_servo\_output\_raw\_t, servo2\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}servo3\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_servo\_output\_raw\_t, servo3\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}servo4\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 10, offsetof(mavlink\_servo\_output\_raw\_t, servo4\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}servo5\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_servo\_output\_raw\_t, servo5\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}servo6\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 14, offsetof(mavlink\_servo\_output\_raw\_t, servo6\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}servo7\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 16, offsetof(mavlink\_servo\_output\_raw\_t, servo7\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}servo8\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_servo\_output\_raw\_t, servo8\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}servo9\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 21, offsetof(mavlink\_servo\_output\_raw\_t, servo9\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}servo10\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 23, offsetof(mavlink\_servo\_output\_raw\_t, servo10\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}servo11\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 25, offsetof(mavlink\_servo\_output\_raw\_t, servo11\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}servo12\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 27, offsetof(mavlink\_servo\_output\_raw\_t, servo12\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}servo13\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 29, offsetof(mavlink\_servo\_output\_raw\_t, servo13\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}servo14\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 31, offsetof(mavlink\_servo\_output\_raw\_t, servo14\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}servo15\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 33, offsetof(mavlink\_servo\_output\_raw\_t, servo15\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}servo16\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 35, offsetof(mavlink\_servo\_output\_raw\_t, servo16\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{61          \} \(\backslash\)}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SERVO\_OUTPUT\_RAW \{ \(\backslash\)}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{    "{}SERVO\_OUTPUT\_RAW"{}}, \(\backslash\)}
+\DoxyCodeLine{66     18, \(\backslash\)}
+\DoxyCodeLine{67     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_servo\_output\_raw\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}port"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 20, offsetof(mavlink\_servo\_output\_raw\_t, port) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}servo1\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 4, offsetof(mavlink\_servo\_output\_raw\_t, servo1\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}servo2\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 6, offsetof(mavlink\_servo\_output\_raw\_t, servo2\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}servo3\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_servo\_output\_raw\_t, servo3\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}servo4\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 10, offsetof(mavlink\_servo\_output\_raw\_t, servo4\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{73          \{ "{}servo5\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_servo\_output\_raw\_t, servo5\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{74          \{ "{}servo6\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 14, offsetof(mavlink\_servo\_output\_raw\_t, servo6\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{75          \{ "{}servo7\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 16, offsetof(mavlink\_servo\_output\_raw\_t, servo7\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{76          \{ "{}servo8\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_servo\_output\_raw\_t, servo8\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{77          \{ "{}servo9\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 21, offsetof(mavlink\_servo\_output\_raw\_t, servo9\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{78          \{ "{}servo10\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 23, offsetof(mavlink\_servo\_output\_raw\_t, servo10\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{79          \{ "{}servo11\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 25, offsetof(mavlink\_servo\_output\_raw\_t, servo11\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{80          \{ "{}servo12\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 27, offsetof(mavlink\_servo\_output\_raw\_t, servo12\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{81          \{ "{}servo13\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 29, offsetof(mavlink\_servo\_output\_raw\_t, servo13\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{82          \{ "{}servo14\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 31, offsetof(mavlink\_servo\_output\_raw\_t, servo14\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{83          \{ "{}servo15\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 33, offsetof(mavlink\_servo\_output\_raw\_t, servo15\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{84          \{ "{}servo16\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 35, offsetof(mavlink\_servo\_output\_raw\_t, servo16\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{85          \} \(\backslash\)}
+\DoxyCodeLine{86 \}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{115 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{116                                uint32\_t time\_usec, uint8\_t port, uint16\_t servo1\_raw, uint16\_t servo2\_raw, uint16\_t servo3\_raw, uint16\_t servo4\_raw, uint16\_t servo5\_raw, uint16\_t servo6\_raw, uint16\_t servo7\_raw, uint16\_t servo8\_raw, uint16\_t servo9\_raw, uint16\_t servo10\_raw, uint16\_t servo11\_raw, uint16\_t servo12\_raw, uint16\_t servo13\_raw, uint16\_t servo14\_raw, uint16\_t servo15\_raw, uint16\_t servo16\_raw)}
+\DoxyCodeLine{117 \{}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{119     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}];}
+\DoxyCodeLine{120     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{121     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 4, servo1\_raw);}
+\DoxyCodeLine{122     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 6, servo2\_raw);}
+\DoxyCodeLine{123     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, servo3\_raw);}
+\DoxyCodeLine{124     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, servo4\_raw);}
+\DoxyCodeLine{125     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, servo5\_raw);}
+\DoxyCodeLine{126     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, servo6\_raw);}
+\DoxyCodeLine{127     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, servo7\_raw);}
+\DoxyCodeLine{128     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, servo8\_raw);}
+\DoxyCodeLine{129     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 20, port);}
+\DoxyCodeLine{130     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 21, servo9\_raw);}
+\DoxyCodeLine{131     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 23, servo10\_raw);}
+\DoxyCodeLine{132     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 25, servo11\_raw);}
+\DoxyCodeLine{133     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 27, servo12\_raw);}
+\DoxyCodeLine{134     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 29, servo13\_raw);}
+\DoxyCodeLine{135     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 31, servo14\_raw);}
+\DoxyCodeLine{136     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 33, servo15\_raw);}
+\DoxyCodeLine{137     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 35, servo16\_raw);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}});}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{141     mavlink\_servo\_output\_raw\_t packet;}
+\DoxyCodeLine{142     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{143     packet.servo1\_raw = servo1\_raw;}
+\DoxyCodeLine{144     packet.servo2\_raw = servo2\_raw;}
+\DoxyCodeLine{145     packet.servo3\_raw = servo3\_raw;}
+\DoxyCodeLine{146     packet.servo4\_raw = servo4\_raw;}
+\DoxyCodeLine{147     packet.servo5\_raw = servo5\_raw;}
+\DoxyCodeLine{148     packet.servo6\_raw = servo6\_raw;}
+\DoxyCodeLine{149     packet.servo7\_raw = servo7\_raw;}
+\DoxyCodeLine{150     packet.servo8\_raw = servo8\_raw;}
+\DoxyCodeLine{151     packet.port = port;}
+\DoxyCodeLine{152     packet.servo9\_raw = servo9\_raw;}
+\DoxyCodeLine{153     packet.servo10\_raw = servo10\_raw;}
+\DoxyCodeLine{154     packet.servo11\_raw = servo11\_raw;}
+\DoxyCodeLine{155     packet.servo12\_raw = servo12\_raw;}
+\DoxyCodeLine{156     packet.servo13\_raw = servo13\_raw;}
+\DoxyCodeLine{157     packet.servo14\_raw = servo14\_raw;}
+\DoxyCodeLine{158     packet.servo15\_raw = servo15\_raw;}
+\DoxyCodeLine{159     packet.servo16\_raw = servo16\_raw;}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}});}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}};}
+\DoxyCodeLine{165     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{166 \}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{194 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{195                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{196                                    uint32\_t time\_usec,uint8\_t port,uint16\_t servo1\_raw,uint16\_t servo2\_raw,uint16\_t servo3\_raw,uint16\_t servo4\_raw,uint16\_t servo5\_raw,uint16\_t servo6\_raw,uint16\_t servo7\_raw,uint16\_t servo8\_raw,uint16\_t servo9\_raw,uint16\_t servo10\_raw,uint16\_t servo11\_raw,uint16\_t servo12\_raw,uint16\_t servo13\_raw,uint16\_t servo14\_raw,uint16\_t servo15\_raw,uint16\_t servo16\_raw)}
+\DoxyCodeLine{197 \{}
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{199     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}];}
+\DoxyCodeLine{200     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{201     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 4, servo1\_raw);}
+\DoxyCodeLine{202     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 6, servo2\_raw);}
+\DoxyCodeLine{203     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, servo3\_raw);}
+\DoxyCodeLine{204     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, servo4\_raw);}
+\DoxyCodeLine{205     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, servo5\_raw);}
+\DoxyCodeLine{206     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, servo6\_raw);}
+\DoxyCodeLine{207     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, servo7\_raw);}
+\DoxyCodeLine{208     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, servo8\_raw);}
+\DoxyCodeLine{209     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 20, port);}
+\DoxyCodeLine{210     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 21, servo9\_raw);}
+\DoxyCodeLine{211     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 23, servo10\_raw);}
+\DoxyCodeLine{212     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 25, servo11\_raw);}
+\DoxyCodeLine{213     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 27, servo12\_raw);}
+\DoxyCodeLine{214     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 29, servo13\_raw);}
+\DoxyCodeLine{215     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 31, servo14\_raw);}
+\DoxyCodeLine{216     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 33, servo15\_raw);}
+\DoxyCodeLine{217     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 35, servo16\_raw);}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}});}
+\DoxyCodeLine{220 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{221     mavlink\_servo\_output\_raw\_t packet;}
+\DoxyCodeLine{222     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{223     packet.servo1\_raw = servo1\_raw;}
+\DoxyCodeLine{224     packet.servo2\_raw = servo2\_raw;}
+\DoxyCodeLine{225     packet.servo3\_raw = servo3\_raw;}
+\DoxyCodeLine{226     packet.servo4\_raw = servo4\_raw;}
+\DoxyCodeLine{227     packet.servo5\_raw = servo5\_raw;}
+\DoxyCodeLine{228     packet.servo6\_raw = servo6\_raw;}
+\DoxyCodeLine{229     packet.servo7\_raw = servo7\_raw;}
+\DoxyCodeLine{230     packet.servo8\_raw = servo8\_raw;}
+\DoxyCodeLine{231     packet.port = port;}
+\DoxyCodeLine{232     packet.servo9\_raw = servo9\_raw;}
+\DoxyCodeLine{233     packet.servo10\_raw = servo10\_raw;}
+\DoxyCodeLine{234     packet.servo11\_raw = servo11\_raw;}
+\DoxyCodeLine{235     packet.servo12\_raw = servo12\_raw;}
+\DoxyCodeLine{236     packet.servo13\_raw = servo13\_raw;}
+\DoxyCodeLine{237     packet.servo14\_raw = servo14\_raw;}
+\DoxyCodeLine{238     packet.servo15\_raw = servo15\_raw;}
+\DoxyCodeLine{239     packet.servo16\_raw = servo16\_raw;}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}});}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}};}
+\DoxyCodeLine{245     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{246 \}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{256 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_servo\_output\_raw\_t* servo\_output\_raw)}
+\DoxyCodeLine{257 \{}
+\DoxyCodeLine{258     \textcolor{keywordflow}{return} mavlink\_msg\_servo\_output\_raw\_pack(system\_id, component\_id, msg, servo\_output\_raw-\/>time\_usec, servo\_output\_raw-\/>port, servo\_output\_raw-\/>servo1\_raw, servo\_output\_raw-\/>servo2\_raw, servo\_output\_raw-\/>servo3\_raw, servo\_output\_raw-\/>servo4\_raw, servo\_output\_raw-\/>servo5\_raw, servo\_output\_raw-\/>servo6\_raw, servo\_output\_raw-\/>servo7\_raw, servo\_output\_raw-\/>servo8\_raw, servo\_output\_raw-\/>servo9\_raw, servo\_output\_raw-\/>servo10\_raw, servo\_output\_raw-\/>servo11\_raw, servo\_output\_raw-\/>servo12\_raw, servo\_output\_raw-\/>servo13\_raw, servo\_output\_raw-\/>servo14\_raw, servo\_output\_raw-\/>servo15\_raw, servo\_output\_raw-\/>servo16\_raw);}
+\DoxyCodeLine{259 \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{270 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_servo\_output\_raw\_t* servo\_output\_raw)}
+\DoxyCodeLine{271 \{}
+\DoxyCodeLine{272     \textcolor{keywordflow}{return} mavlink\_msg\_servo\_output\_raw\_pack\_chan(system\_id, component\_id, chan, msg, servo\_output\_raw-\/>time\_usec, servo\_output\_raw-\/>port, servo\_output\_raw-\/>servo1\_raw, servo\_output\_raw-\/>servo2\_raw, servo\_output\_raw-\/>servo3\_raw, servo\_output\_raw-\/>servo4\_raw, servo\_output\_raw-\/>servo5\_raw, servo\_output\_raw-\/>servo6\_raw, servo\_output\_raw-\/>servo7\_raw, servo\_output\_raw-\/>servo8\_raw, servo\_output\_raw-\/>servo9\_raw, servo\_output\_raw-\/>servo10\_raw, servo\_output\_raw-\/>servo11\_raw, servo\_output\_raw-\/>servo12\_raw, servo\_output\_raw-\/>servo13\_raw, servo\_output\_raw-\/>servo14\_raw, servo\_output\_raw-\/>servo15\_raw, servo\_output\_raw-\/>servo16\_raw);}
+\DoxyCodeLine{273 \}}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_servo\_output\_raw\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_usec, uint8\_t port, uint16\_t servo1\_raw, uint16\_t servo2\_raw, uint16\_t servo3\_raw, uint16\_t servo4\_raw, uint16\_t servo5\_raw, uint16\_t servo6\_raw, uint16\_t servo7\_raw, uint16\_t servo8\_raw, uint16\_t servo9\_raw, uint16\_t servo10\_raw, uint16\_t servo11\_raw, uint16\_t servo12\_raw, uint16\_t servo13\_raw, uint16\_t servo14\_raw, uint16\_t servo15\_raw, uint16\_t servo16\_raw)}
+\DoxyCodeLine{301 \{}
+\DoxyCodeLine{302 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{303     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}];}
+\DoxyCodeLine{304     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{305     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 4, servo1\_raw);}
+\DoxyCodeLine{306     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 6, servo2\_raw);}
+\DoxyCodeLine{307     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, servo3\_raw);}
+\DoxyCodeLine{308     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, servo4\_raw);}
+\DoxyCodeLine{309     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, servo5\_raw);}
+\DoxyCodeLine{310     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, servo6\_raw);}
+\DoxyCodeLine{311     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, servo7\_raw);}
+\DoxyCodeLine{312     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, servo8\_raw);}
+\DoxyCodeLine{313     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 20, port);}
+\DoxyCodeLine{314     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 21, servo9\_raw);}
+\DoxyCodeLine{315     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 23, servo10\_raw);}
+\DoxyCodeLine{316     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 25, servo11\_raw);}
+\DoxyCodeLine{317     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 27, servo12\_raw);}
+\DoxyCodeLine{318     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 29, servo13\_raw);}
+\DoxyCodeLine{319     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 31, servo14\_raw);}
+\DoxyCodeLine{320     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 33, servo15\_raw);}
+\DoxyCodeLine{321     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 35, servo16\_raw);}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{323     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}}, buf, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{324 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{325     mavlink\_servo\_output\_raw\_t packet;}
+\DoxyCodeLine{326     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{327     packet.servo1\_raw = servo1\_raw;}
+\DoxyCodeLine{328     packet.servo2\_raw = servo2\_raw;}
+\DoxyCodeLine{329     packet.servo3\_raw = servo3\_raw;}
+\DoxyCodeLine{330     packet.servo4\_raw = servo4\_raw;}
+\DoxyCodeLine{331     packet.servo5\_raw = servo5\_raw;}
+\DoxyCodeLine{332     packet.servo6\_raw = servo6\_raw;}
+\DoxyCodeLine{333     packet.servo7\_raw = servo7\_raw;}
+\DoxyCodeLine{334     packet.servo8\_raw = servo8\_raw;}
+\DoxyCodeLine{335     packet.port = port;}
+\DoxyCodeLine{336     packet.servo9\_raw = servo9\_raw;}
+\DoxyCodeLine{337     packet.servo10\_raw = servo10\_raw;}
+\DoxyCodeLine{338     packet.servo11\_raw = servo11\_raw;}
+\DoxyCodeLine{339     packet.servo12\_raw = servo12\_raw;}
+\DoxyCodeLine{340     packet.servo13\_raw = servo13\_raw;}
+\DoxyCodeLine{341     packet.servo14\_raw = servo14\_raw;}
+\DoxyCodeLine{342     packet.servo15\_raw = servo15\_raw;}
+\DoxyCodeLine{343     packet.servo16\_raw = servo16\_raw;}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{346 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{347 \}}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{354 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_servo\_output\_raw\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_servo\_output\_raw\_t* servo\_output\_raw)}
+\DoxyCodeLine{355 \{}
+\DoxyCodeLine{356 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{357     mavlink\_msg\_servo\_output\_raw\_send(chan, servo\_output\_raw-\/>time\_usec, servo\_output\_raw-\/>port, servo\_output\_raw-\/>servo1\_raw, servo\_output\_raw-\/>servo2\_raw, servo\_output\_raw-\/>servo3\_raw, servo\_output\_raw-\/>servo4\_raw, servo\_output\_raw-\/>servo5\_raw, servo\_output\_raw-\/>servo6\_raw, servo\_output\_raw-\/>servo7\_raw, servo\_output\_raw-\/>servo8\_raw, servo\_output\_raw-\/>servo9\_raw, servo\_output\_raw-\/>servo10\_raw, servo\_output\_raw-\/>servo11\_raw, servo\_output\_raw-\/>servo12\_raw, servo\_output\_raw-\/>servo13\_raw, servo\_output\_raw-\/>servo14\_raw, servo\_output\_raw-\/>servo15\_raw, servo\_output\_raw-\/>servo16\_raw);}
+\DoxyCodeLine{358 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{359     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)servo\_output\_raw, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{360 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{361 \}}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{364 \textcolor{comment}{/*}}
+\DoxyCodeLine{365 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{366 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{367 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{368 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{369 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{370 \textcolor{comment}{ */}}
+\DoxyCodeLine{371 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_servo\_output\_raw\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_usec, uint8\_t port, uint16\_t servo1\_raw, uint16\_t servo2\_raw, uint16\_t servo3\_raw, uint16\_t servo4\_raw, uint16\_t servo5\_raw, uint16\_t servo6\_raw, uint16\_t servo7\_raw, uint16\_t servo8\_raw, uint16\_t servo9\_raw, uint16\_t servo10\_raw, uint16\_t servo11\_raw, uint16\_t servo12\_raw, uint16\_t servo13\_raw, uint16\_t servo14\_raw, uint16\_t servo15\_raw, uint16\_t servo16\_raw)}
+\DoxyCodeLine{372 \{}
+\DoxyCodeLine{373 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{374     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{375     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{376     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 4, servo1\_raw);}
+\DoxyCodeLine{377     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 6, servo2\_raw);}
+\DoxyCodeLine{378     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, servo3\_raw);}
+\DoxyCodeLine{379     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, servo4\_raw);}
+\DoxyCodeLine{380     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, servo5\_raw);}
+\DoxyCodeLine{381     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, servo6\_raw);}
+\DoxyCodeLine{382     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, servo7\_raw);}
+\DoxyCodeLine{383     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, servo8\_raw);}
+\DoxyCodeLine{384     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 20, port);}
+\DoxyCodeLine{385     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 21, servo9\_raw);}
+\DoxyCodeLine{386     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 23, servo10\_raw);}
+\DoxyCodeLine{387     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 25, servo11\_raw);}
+\DoxyCodeLine{388     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 27, servo12\_raw);}
+\DoxyCodeLine{389     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 29, servo13\_raw);}
+\DoxyCodeLine{390     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 31, servo14\_raw);}
+\DoxyCodeLine{391     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 33, servo15\_raw);}
+\DoxyCodeLine{392     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 35, servo16\_raw);}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}}, buf, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{395 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{396     mavlink\_servo\_output\_raw\_t *packet = (mavlink\_servo\_output\_raw\_t *)msgbuf;}
+\DoxyCodeLine{397     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{398     packet-\/>servo1\_raw = servo1\_raw;}
+\DoxyCodeLine{399     packet-\/>servo2\_raw = servo2\_raw;}
+\DoxyCodeLine{400     packet-\/>servo3\_raw = servo3\_raw;}
+\DoxyCodeLine{401     packet-\/>servo4\_raw = servo4\_raw;}
+\DoxyCodeLine{402     packet-\/>servo5\_raw = servo5\_raw;}
+\DoxyCodeLine{403     packet-\/>servo6\_raw = servo6\_raw;}
+\DoxyCodeLine{404     packet-\/>servo7\_raw = servo7\_raw;}
+\DoxyCodeLine{405     packet-\/>servo8\_raw = servo8\_raw;}
+\DoxyCodeLine{406     packet-\/>port = port;}
+\DoxyCodeLine{407     packet-\/>servo9\_raw = servo9\_raw;}
+\DoxyCodeLine{408     packet-\/>servo10\_raw = servo10\_raw;}
+\DoxyCodeLine{409     packet-\/>servo11\_raw = servo11\_raw;}
+\DoxyCodeLine{410     packet-\/>servo12\_raw = servo12\_raw;}
+\DoxyCodeLine{411     packet-\/>servo13\_raw = servo13\_raw;}
+\DoxyCodeLine{412     packet-\/>servo14\_raw = servo14\_raw;}
+\DoxyCodeLine{413     packet-\/>servo15\_raw = servo15\_raw;}
+\DoxyCodeLine{414     packet-\/>servo16\_raw = servo16\_raw;}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{416     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a1f0e94912593cc2fe007f50fca06cbd2}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a70138a8dd216fb016f7fb33572ea3764}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_a7df1dc86e85ae25fa4e42a1c5ed15407}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_CRC}});}
+\DoxyCodeLine{417 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{418 \}}
+\DoxyCodeLine{419 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{420 }
+\DoxyCodeLine{421 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{422 }
+\DoxyCodeLine{423 \textcolor{comment}{// MESSAGE SERVO\_OUTPUT\_RAW UNPACKING}}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425 }
+\DoxyCodeLine{431 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_servo\_output\_raw\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{432 \{}
+\DoxyCodeLine{433     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{434 \}}
+\DoxyCodeLine{435 }
+\DoxyCodeLine{441 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_servo\_output\_raw\_get\_port(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{442 \{}
+\DoxyCodeLine{443     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  20);}
+\DoxyCodeLine{444 \}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{451 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo1\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{452 \{}
+\DoxyCodeLine{453     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  4);}
+\DoxyCodeLine{454 \}}
+\DoxyCodeLine{455 }
+\DoxyCodeLine{461 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo2\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{462 \{}
+\DoxyCodeLine{463     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  6);}
+\DoxyCodeLine{464 \}}
+\DoxyCodeLine{465 }
+\DoxyCodeLine{471 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo3\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{472 \{}
+\DoxyCodeLine{473     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  8);}
+\DoxyCodeLine{474 \}}
+\DoxyCodeLine{475 }
+\DoxyCodeLine{481 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo4\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{482 \{}
+\DoxyCodeLine{483     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  10);}
+\DoxyCodeLine{484 \}}
+\DoxyCodeLine{485 }
+\DoxyCodeLine{491 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo5\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{492 \{}
+\DoxyCodeLine{493     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  12);}
+\DoxyCodeLine{494 \}}
+\DoxyCodeLine{495 }
+\DoxyCodeLine{501 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo6\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{502 \{}
+\DoxyCodeLine{503     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  14);}
+\DoxyCodeLine{504 \}}
+\DoxyCodeLine{505 }
+\DoxyCodeLine{511 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo7\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{512 \{}
+\DoxyCodeLine{513     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  16);}
+\DoxyCodeLine{514 \}}
+\DoxyCodeLine{515 }
+\DoxyCodeLine{521 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo8\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{522 \{}
+\DoxyCodeLine{523     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  18);}
+\DoxyCodeLine{524 \}}
+\DoxyCodeLine{525 }
+\DoxyCodeLine{531 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo9\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{532 \{}
+\DoxyCodeLine{533     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  21);}
+\DoxyCodeLine{534 \}}
+\DoxyCodeLine{535 }
+\DoxyCodeLine{541 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo10\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{542 \{}
+\DoxyCodeLine{543     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  23);}
+\DoxyCodeLine{544 \}}
+\DoxyCodeLine{545 }
+\DoxyCodeLine{551 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo11\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{552 \{}
+\DoxyCodeLine{553     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  25);}
+\DoxyCodeLine{554 \}}
+\DoxyCodeLine{555 }
+\DoxyCodeLine{561 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo12\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{562 \{}
+\DoxyCodeLine{563     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  27);}
+\DoxyCodeLine{564 \}}
+\DoxyCodeLine{565 }
+\DoxyCodeLine{571 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo13\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{572 \{}
+\DoxyCodeLine{573     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  29);}
+\DoxyCodeLine{574 \}}
+\DoxyCodeLine{575 }
+\DoxyCodeLine{581 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo14\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{582 \{}
+\DoxyCodeLine{583     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  31);}
+\DoxyCodeLine{584 \}}
+\DoxyCodeLine{585 }
+\DoxyCodeLine{591 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo15\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{592 \{}
+\DoxyCodeLine{593     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  33);}
+\DoxyCodeLine{594 \}}
+\DoxyCodeLine{595 }
+\DoxyCodeLine{601 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_servo\_output\_raw\_get\_servo16\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{602 \{}
+\DoxyCodeLine{603     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  35);}
+\DoxyCodeLine{604 \}}
+\DoxyCodeLine{605 }
+\DoxyCodeLine{612 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_servo\_output\_raw\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_servo\_output\_raw\_t* servo\_output\_raw)}
+\DoxyCodeLine{613 \{}
+\DoxyCodeLine{614 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{615     servo\_output\_raw-\/>time\_usec = mavlink\_msg\_servo\_output\_raw\_get\_time\_usec(msg);}
+\DoxyCodeLine{616     servo\_output\_raw-\/>servo1\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo1\_raw(msg);}
+\DoxyCodeLine{617     servo\_output\_raw-\/>servo2\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo2\_raw(msg);}
+\DoxyCodeLine{618     servo\_output\_raw-\/>servo3\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo3\_raw(msg);}
+\DoxyCodeLine{619     servo\_output\_raw-\/>servo4\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo4\_raw(msg);}
+\DoxyCodeLine{620     servo\_output\_raw-\/>servo5\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo5\_raw(msg);}
+\DoxyCodeLine{621     servo\_output\_raw-\/>servo6\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo6\_raw(msg);}
+\DoxyCodeLine{622     servo\_output\_raw-\/>servo7\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo7\_raw(msg);}
+\DoxyCodeLine{623     servo\_output\_raw-\/>servo8\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo8\_raw(msg);}
+\DoxyCodeLine{624     servo\_output\_raw-\/>port = mavlink\_msg\_servo\_output\_raw\_get\_port(msg);}
+\DoxyCodeLine{625     servo\_output\_raw-\/>servo9\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo9\_raw(msg);}
+\DoxyCodeLine{626     servo\_output\_raw-\/>servo10\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo10\_raw(msg);}
+\DoxyCodeLine{627     servo\_output\_raw-\/>servo11\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo11\_raw(msg);}
+\DoxyCodeLine{628     servo\_output\_raw-\/>servo12\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo12\_raw(msg);}
+\DoxyCodeLine{629     servo\_output\_raw-\/>servo13\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo13\_raw(msg);}
+\DoxyCodeLine{630     servo\_output\_raw-\/>servo14\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo14\_raw(msg);}
+\DoxyCodeLine{631     servo\_output\_raw-\/>servo15\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo15\_raw(msg);}
+\DoxyCodeLine{632     servo\_output\_raw-\/>servo16\_raw = mavlink\_msg\_servo\_output\_raw\_get\_servo16\_raw(msg);}
+\DoxyCodeLine{633 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{634         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}};}
+\DoxyCodeLine{635         memset(servo\_output\_raw, 0, \mbox{\hyperlink{mavlink__msg__servo__output__raw_8h_ad7f580ca373e20d37ba8ced56c3d19a0}{MAVLINK\_MSG\_ID\_SERVO\_OUTPUT\_RAW\_LEN}});}
+\DoxyCodeLine{636     memcpy(servo\_output\_raw, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{637 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{638 \}}
+
+\end{DoxyCode}

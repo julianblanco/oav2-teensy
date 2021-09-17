@@ -1,0 +1,383 @@
+\hypertarget{mavlink__msg__hil__rc__inputs__raw_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+hil\+\_\+rc\+\_\+inputs\+\_\+raw.\+h}
+\label{mavlink__msg__hil__rc__inputs__raw_8h_source}\index{lib/common/mavlink\_msg\_hil\_rc\_inputs\_raw.h@{lib/common/mavlink\_msg\_hil\_rc\_inputs\_raw.h}}
+\mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE HIL\_RC\_INPUTS\_RAW PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW 92}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_adc58bf83422dd53679e56f0790354268}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_hil\_rc\_inputs\_raw\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  uint16\_t chan1\_raw; \textcolor{comment}{/*< [us] RC channel 1 value*/}}
+\DoxyCodeLine{10  uint16\_t chan2\_raw; \textcolor{comment}{/*< [us] RC channel 2 value*/}}
+\DoxyCodeLine{11  uint16\_t chan3\_raw; \textcolor{comment}{/*< [us] RC channel 3 value*/}}
+\DoxyCodeLine{12  uint16\_t chan4\_raw; \textcolor{comment}{/*< [us] RC channel 4 value*/}}
+\DoxyCodeLine{13  uint16\_t chan5\_raw; \textcolor{comment}{/*< [us] RC channel 5 value*/}}
+\DoxyCodeLine{14  uint16\_t chan6\_raw; \textcolor{comment}{/*< [us] RC channel 6 value*/}}
+\DoxyCodeLine{15  uint16\_t chan7\_raw; \textcolor{comment}{/*< [us] RC channel 7 value*/}}
+\DoxyCodeLine{16  uint16\_t chan8\_raw; \textcolor{comment}{/*< [us] RC channel 8 value*/}}
+\DoxyCodeLine{17  uint16\_t chan9\_raw; \textcolor{comment}{/*< [us] RC channel 9 value*/}}
+\DoxyCodeLine{18  uint16\_t chan10\_raw; \textcolor{comment}{/*< [us] RC channel 10 value*/}}
+\DoxyCodeLine{19  uint16\_t chan11\_raw; \textcolor{comment}{/*< [us] RC channel 11 value*/}}
+\DoxyCodeLine{20  uint16\_t chan12\_raw; \textcolor{comment}{/*< [us] RC channel 12 value*/}}
+\DoxyCodeLine{21  uint8\_t rssi; \textcolor{comment}{/*<  Receive signal strength indicator. Values: [0-\/100], 255: invalid/unknown.*/}}
+\DoxyCodeLine{22 \}) mavlink\_hil\_rc\_inputs\_raw\_t;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN 33}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN 33}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_92\_LEN 33}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_92\_MIN\_LEN 33}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC 54}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_92\_CRC 54}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW \{ \(\backslash\)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{    92, \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    "{}HIL\_RC\_INPUTS\_RAW"{}}, \(\backslash\)}
+\DoxyCodeLine{38     14, \(\backslash\)}
+\DoxyCodeLine{39     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}chan1\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan1\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}chan2\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 10, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan2\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}chan3\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan3\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}chan4\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 14, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan4\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}chan5\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 16, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan5\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}chan6\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan6\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}chan7\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 20, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan7\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}chan8\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan8\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}chan9\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 24, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan9\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}chan10\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 26, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan10\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}chan11\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 28, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan11\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}chan12\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 30, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan12\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}rssi"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 32, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, rssi) \}, \(\backslash\)}
+\DoxyCodeLine{53          \} \(\backslash\)}
+\DoxyCodeLine{54 \}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_HIL\_RC\_INPUTS\_RAW \{ \(\backslash\)}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{    "{}HIL\_RC\_INPUTS\_RAW"{}}, \(\backslash\)}
+\DoxyCodeLine{58     14, \(\backslash\)}
+\DoxyCodeLine{59     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}chan1\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan1\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}chan2\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 10, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan2\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}chan3\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan3\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}chan4\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 14, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan4\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}chan5\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 16, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan5\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}chan6\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan6\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}chan7\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 20, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan7\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}chan8\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan8\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}chan9\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 24, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan9\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}chan10\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 26, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan10\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}chan11\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 28, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan11\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}chan12\_raw"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 30, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, chan12\_raw) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}rssi"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 32, offsetof(mavlink\_hil\_rc\_inputs\_raw\_t, rssi) \}, \(\backslash\)}
+\DoxyCodeLine{73          \} \(\backslash\)}
+\DoxyCodeLine{74 \}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{99 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{100                                uint64\_t time\_usec, uint16\_t chan1\_raw, uint16\_t chan2\_raw, uint16\_t chan3\_raw, uint16\_t chan4\_raw, uint16\_t chan5\_raw, uint16\_t chan6\_raw, uint16\_t chan7\_raw, uint16\_t chan8\_raw, uint16\_t chan9\_raw, uint16\_t chan10\_raw, uint16\_t chan11\_raw, uint16\_t chan12\_raw, uint8\_t rssi)}
+\DoxyCodeLine{101 \{}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{103     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}];}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, chan1\_raw);}
+\DoxyCodeLine{106     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, chan2\_raw);}
+\DoxyCodeLine{107     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, chan3\_raw);}
+\DoxyCodeLine{108     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, chan4\_raw);}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, chan5\_raw);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, chan6\_raw);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, chan7\_raw);}
+\DoxyCodeLine{112     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, chan8\_raw);}
+\DoxyCodeLine{113     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, chan9\_raw);}
+\DoxyCodeLine{114     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, chan10\_raw);}
+\DoxyCodeLine{115     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, chan11\_raw);}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 30, chan12\_raw);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, rssi);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}});}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{121     mavlink\_hil\_rc\_inputs\_raw\_t packet;}
+\DoxyCodeLine{122     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{123     packet.chan1\_raw = chan1\_raw;}
+\DoxyCodeLine{124     packet.chan2\_raw = chan2\_raw;}
+\DoxyCodeLine{125     packet.chan3\_raw = chan3\_raw;}
+\DoxyCodeLine{126     packet.chan4\_raw = chan4\_raw;}
+\DoxyCodeLine{127     packet.chan5\_raw = chan5\_raw;}
+\DoxyCodeLine{128     packet.chan6\_raw = chan6\_raw;}
+\DoxyCodeLine{129     packet.chan7\_raw = chan7\_raw;}
+\DoxyCodeLine{130     packet.chan8\_raw = chan8\_raw;}
+\DoxyCodeLine{131     packet.chan9\_raw = chan9\_raw;}
+\DoxyCodeLine{132     packet.chan10\_raw = chan10\_raw;}
+\DoxyCodeLine{133     packet.chan11\_raw = chan11\_raw;}
+\DoxyCodeLine{134     packet.chan12\_raw = chan12\_raw;}
+\DoxyCodeLine{135     packet.rssi = rssi;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}});}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}};}
+\DoxyCodeLine{141     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{142 \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{166 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{167                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{168                                    uint64\_t time\_usec,uint16\_t chan1\_raw,uint16\_t chan2\_raw,uint16\_t chan3\_raw,uint16\_t chan4\_raw,uint16\_t chan5\_raw,uint16\_t chan6\_raw,uint16\_t chan7\_raw,uint16\_t chan8\_raw,uint16\_t chan9\_raw,uint16\_t chan10\_raw,uint16\_t chan11\_raw,uint16\_t chan12\_raw,uint8\_t rssi)}
+\DoxyCodeLine{169 \{}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{171     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}];}
+\DoxyCodeLine{172     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{173     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, chan1\_raw);}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, chan2\_raw);}
+\DoxyCodeLine{175     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, chan3\_raw);}
+\DoxyCodeLine{176     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, chan4\_raw);}
+\DoxyCodeLine{177     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, chan5\_raw);}
+\DoxyCodeLine{178     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, chan6\_raw);}
+\DoxyCodeLine{179     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, chan7\_raw);}
+\DoxyCodeLine{180     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, chan8\_raw);}
+\DoxyCodeLine{181     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, chan9\_raw);}
+\DoxyCodeLine{182     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, chan10\_raw);}
+\DoxyCodeLine{183     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, chan11\_raw);}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 30, chan12\_raw);}
+\DoxyCodeLine{185     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, rssi);}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}});}
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{189     mavlink\_hil\_rc\_inputs\_raw\_t packet;}
+\DoxyCodeLine{190     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{191     packet.chan1\_raw = chan1\_raw;}
+\DoxyCodeLine{192     packet.chan2\_raw = chan2\_raw;}
+\DoxyCodeLine{193     packet.chan3\_raw = chan3\_raw;}
+\DoxyCodeLine{194     packet.chan4\_raw = chan4\_raw;}
+\DoxyCodeLine{195     packet.chan5\_raw = chan5\_raw;}
+\DoxyCodeLine{196     packet.chan6\_raw = chan6\_raw;}
+\DoxyCodeLine{197     packet.chan7\_raw = chan7\_raw;}
+\DoxyCodeLine{198     packet.chan8\_raw = chan8\_raw;}
+\DoxyCodeLine{199     packet.chan9\_raw = chan9\_raw;}
+\DoxyCodeLine{200     packet.chan10\_raw = chan10\_raw;}
+\DoxyCodeLine{201     packet.chan11\_raw = chan11\_raw;}
+\DoxyCodeLine{202     packet.chan12\_raw = chan12\_raw;}
+\DoxyCodeLine{203     packet.rssi = rssi;}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}});}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}};}
+\DoxyCodeLine{209     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{210 \}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{220 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_hil\_rc\_inputs\_raw\_t* hil\_rc\_inputs\_raw)}
+\DoxyCodeLine{221 \{}
+\DoxyCodeLine{222     \textcolor{keywordflow}{return} mavlink\_msg\_hil\_rc\_inputs\_raw\_pack(system\_id, component\_id, msg, hil\_rc\_inputs\_raw-\/>time\_usec, hil\_rc\_inputs\_raw-\/>chan1\_raw, hil\_rc\_inputs\_raw-\/>chan2\_raw, hil\_rc\_inputs\_raw-\/>chan3\_raw, hil\_rc\_inputs\_raw-\/>chan4\_raw, hil\_rc\_inputs\_raw-\/>chan5\_raw, hil\_rc\_inputs\_raw-\/>chan6\_raw, hil\_rc\_inputs\_raw-\/>chan7\_raw, hil\_rc\_inputs\_raw-\/>chan8\_raw, hil\_rc\_inputs\_raw-\/>chan9\_raw, hil\_rc\_inputs\_raw-\/>chan10\_raw, hil\_rc\_inputs\_raw-\/>chan11\_raw, hil\_rc\_inputs\_raw-\/>chan12\_raw, hil\_rc\_inputs\_raw-\/>rssi);}
+\DoxyCodeLine{223 \}}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{234 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_hil\_rc\_inputs\_raw\_t* hil\_rc\_inputs\_raw)}
+\DoxyCodeLine{235 \{}
+\DoxyCodeLine{236     \textcolor{keywordflow}{return} mavlink\_msg\_hil\_rc\_inputs\_raw\_pack\_chan(system\_id, component\_id, chan, msg, hil\_rc\_inputs\_raw-\/>time\_usec, hil\_rc\_inputs\_raw-\/>chan1\_raw, hil\_rc\_inputs\_raw-\/>chan2\_raw, hil\_rc\_inputs\_raw-\/>chan3\_raw, hil\_rc\_inputs\_raw-\/>chan4\_raw, hil\_rc\_inputs\_raw-\/>chan5\_raw, hil\_rc\_inputs\_raw-\/>chan6\_raw, hil\_rc\_inputs\_raw-\/>chan7\_raw, hil\_rc\_inputs\_raw-\/>chan8\_raw, hil\_rc\_inputs\_raw-\/>chan9\_raw, hil\_rc\_inputs\_raw-\/>chan10\_raw, hil\_rc\_inputs\_raw-\/>chan11\_raw, hil\_rc\_inputs\_raw-\/>chan12\_raw, hil\_rc\_inputs\_raw-\/>rssi);}
+\DoxyCodeLine{237 \}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_hil\_rc\_inputs\_raw\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint16\_t chan1\_raw, uint16\_t chan2\_raw, uint16\_t chan3\_raw, uint16\_t chan4\_raw, uint16\_t chan5\_raw, uint16\_t chan6\_raw, uint16\_t chan7\_raw, uint16\_t chan8\_raw, uint16\_t chan9\_raw, uint16\_t chan10\_raw, uint16\_t chan11\_raw, uint16\_t chan12\_raw, uint8\_t rssi)}
+\DoxyCodeLine{261 \{}
+\DoxyCodeLine{262 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{263     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}];}
+\DoxyCodeLine{264     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{265     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, chan1\_raw);}
+\DoxyCodeLine{266     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, chan2\_raw);}
+\DoxyCodeLine{267     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, chan3\_raw);}
+\DoxyCodeLine{268     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, chan4\_raw);}
+\DoxyCodeLine{269     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, chan5\_raw);}
+\DoxyCodeLine{270     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, chan6\_raw);}
+\DoxyCodeLine{271     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, chan7\_raw);}
+\DoxyCodeLine{272     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, chan8\_raw);}
+\DoxyCodeLine{273     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, chan9\_raw);}
+\DoxyCodeLine{274     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, chan10\_raw);}
+\DoxyCodeLine{275     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, chan11\_raw);}
+\DoxyCodeLine{276     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 30, chan12\_raw);}
+\DoxyCodeLine{277     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, rssi);}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}, buf, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{280 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{281     mavlink\_hil\_rc\_inputs\_raw\_t packet;}
+\DoxyCodeLine{282     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{283     packet.chan1\_raw = chan1\_raw;}
+\DoxyCodeLine{284     packet.chan2\_raw = chan2\_raw;}
+\DoxyCodeLine{285     packet.chan3\_raw = chan3\_raw;}
+\DoxyCodeLine{286     packet.chan4\_raw = chan4\_raw;}
+\DoxyCodeLine{287     packet.chan5\_raw = chan5\_raw;}
+\DoxyCodeLine{288     packet.chan6\_raw = chan6\_raw;}
+\DoxyCodeLine{289     packet.chan7\_raw = chan7\_raw;}
+\DoxyCodeLine{290     packet.chan8\_raw = chan8\_raw;}
+\DoxyCodeLine{291     packet.chan9\_raw = chan9\_raw;}
+\DoxyCodeLine{292     packet.chan10\_raw = chan10\_raw;}
+\DoxyCodeLine{293     packet.chan11\_raw = chan11\_raw;}
+\DoxyCodeLine{294     packet.chan12\_raw = chan12\_raw;}
+\DoxyCodeLine{295     packet.rssi = rssi;}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{299 \}}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{306 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_hil\_rc\_inputs\_raw\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_hil\_rc\_inputs\_raw\_t* hil\_rc\_inputs\_raw)}
+\DoxyCodeLine{307 \{}
+\DoxyCodeLine{308 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{309     mavlink\_msg\_hil\_rc\_inputs\_raw\_send(chan, hil\_rc\_inputs\_raw-\/>time\_usec, hil\_rc\_inputs\_raw-\/>chan1\_raw, hil\_rc\_inputs\_raw-\/>chan2\_raw, hil\_rc\_inputs\_raw-\/>chan3\_raw, hil\_rc\_inputs\_raw-\/>chan4\_raw, hil\_rc\_inputs\_raw-\/>chan5\_raw, hil\_rc\_inputs\_raw-\/>chan6\_raw, hil\_rc\_inputs\_raw-\/>chan7\_raw, hil\_rc\_inputs\_raw-\/>chan8\_raw, hil\_rc\_inputs\_raw-\/>chan9\_raw, hil\_rc\_inputs\_raw-\/>chan10\_raw, hil\_rc\_inputs\_raw-\/>chan11\_raw, hil\_rc\_inputs\_raw-\/>chan12\_raw, hil\_rc\_inputs\_raw-\/>rssi);}
+\DoxyCodeLine{310 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{311     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)hil\_rc\_inputs\_raw, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{313 \}}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{316 \textcolor{comment}{/*}}
+\DoxyCodeLine{317 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{318 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{319 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{320 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{321 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{322 \textcolor{comment}{ */}}
+\DoxyCodeLine{323 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_hil\_rc\_inputs\_raw\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint16\_t chan1\_raw, uint16\_t chan2\_raw, uint16\_t chan3\_raw, uint16\_t chan4\_raw, uint16\_t chan5\_raw, uint16\_t chan6\_raw, uint16\_t chan7\_raw, uint16\_t chan8\_raw, uint16\_t chan9\_raw, uint16\_t chan10\_raw, uint16\_t chan11\_raw, uint16\_t chan12\_raw, uint8\_t rssi)}
+\DoxyCodeLine{324 \{}
+\DoxyCodeLine{325 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{326     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{327     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{328     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, chan1\_raw);}
+\DoxyCodeLine{329     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 10, chan2\_raw);}
+\DoxyCodeLine{330     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, chan3\_raw);}
+\DoxyCodeLine{331     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, chan4\_raw);}
+\DoxyCodeLine{332     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, chan5\_raw);}
+\DoxyCodeLine{333     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, chan6\_raw);}
+\DoxyCodeLine{334     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, chan7\_raw);}
+\DoxyCodeLine{335     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, chan8\_raw);}
+\DoxyCodeLine{336     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, chan9\_raw);}
+\DoxyCodeLine{337     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, chan10\_raw);}
+\DoxyCodeLine{338     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, chan11\_raw);}
+\DoxyCodeLine{339     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 30, chan12\_raw);}
+\DoxyCodeLine{340     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, rssi);}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}, buf, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{343 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{344     mavlink\_hil\_rc\_inputs\_raw\_t *packet = (mavlink\_hil\_rc\_inputs\_raw\_t *)msgbuf;}
+\DoxyCodeLine{345     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{346     packet-\/>chan1\_raw = chan1\_raw;}
+\DoxyCodeLine{347     packet-\/>chan2\_raw = chan2\_raw;}
+\DoxyCodeLine{348     packet-\/>chan3\_raw = chan3\_raw;}
+\DoxyCodeLine{349     packet-\/>chan4\_raw = chan4\_raw;}
+\DoxyCodeLine{350     packet-\/>chan5\_raw = chan5\_raw;}
+\DoxyCodeLine{351     packet-\/>chan6\_raw = chan6\_raw;}
+\DoxyCodeLine{352     packet-\/>chan7\_raw = chan7\_raw;}
+\DoxyCodeLine{353     packet-\/>chan8\_raw = chan8\_raw;}
+\DoxyCodeLine{354     packet-\/>chan9\_raw = chan9\_raw;}
+\DoxyCodeLine{355     packet-\/>chan10\_raw = chan10\_raw;}
+\DoxyCodeLine{356     packet-\/>chan11\_raw = chan11\_raw;}
+\DoxyCodeLine{357     packet-\/>chan12\_raw = chan12\_raw;}
+\DoxyCodeLine{358     packet-\/>rssi = rssi;}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a74c38a8351b9911fc4c16f99d894d316}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_a97c7a5c63fae3965c875fc28bb783c1e}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_aaa5cbf803c3738f414c05179cd88df9c}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_CRC}});}
+\DoxyCodeLine{361 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{362 \}}
+\DoxyCodeLine{363 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{364 }
+\DoxyCodeLine{365 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{367 \textcolor{comment}{// MESSAGE HIL\_RC\_INPUTS\_RAW UNPACKING}}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369 }
+\DoxyCodeLine{375 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{376 \{}
+\DoxyCodeLine{377     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{378 \}}
+\DoxyCodeLine{379 }
+\DoxyCodeLine{385 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan1\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{386 \{}
+\DoxyCodeLine{387     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  8);}
+\DoxyCodeLine{388 \}}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{395 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan2\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{396 \{}
+\DoxyCodeLine{397     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  10);}
+\DoxyCodeLine{398 \}}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{405 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan3\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{406 \{}
+\DoxyCodeLine{407     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  12);}
+\DoxyCodeLine{408 \}}
+\DoxyCodeLine{409 }
+\DoxyCodeLine{415 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan4\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{416 \{}
+\DoxyCodeLine{417     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  14);}
+\DoxyCodeLine{418 \}}
+\DoxyCodeLine{419 }
+\DoxyCodeLine{425 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan5\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{426 \{}
+\DoxyCodeLine{427     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  16);}
+\DoxyCodeLine{428 \}}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{435 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan6\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{436 \{}
+\DoxyCodeLine{437     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  18);}
+\DoxyCodeLine{438 \}}
+\DoxyCodeLine{439 }
+\DoxyCodeLine{445 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan7\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{446 \{}
+\DoxyCodeLine{447     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  20);}
+\DoxyCodeLine{448 \}}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{455 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan8\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{456 \{}
+\DoxyCodeLine{457     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  22);}
+\DoxyCodeLine{458 \}}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{465 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan9\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{466 \{}
+\DoxyCodeLine{467     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  24);}
+\DoxyCodeLine{468 \}}
+\DoxyCodeLine{469 }
+\DoxyCodeLine{475 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan10\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{476 \{}
+\DoxyCodeLine{477     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  26);}
+\DoxyCodeLine{478 \}}
+\DoxyCodeLine{479 }
+\DoxyCodeLine{485 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan11\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{486 \{}
+\DoxyCodeLine{487     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  28);}
+\DoxyCodeLine{488 \}}
+\DoxyCodeLine{489 }
+\DoxyCodeLine{495 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan12\_raw(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{496 \{}
+\DoxyCodeLine{497     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  30);}
+\DoxyCodeLine{498 \}}
+\DoxyCodeLine{499 }
+\DoxyCodeLine{505 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_rssi(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{506 \{}
+\DoxyCodeLine{507     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  32);}
+\DoxyCodeLine{508 \}}
+\DoxyCodeLine{509 }
+\DoxyCodeLine{516 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_hil\_rc\_inputs\_raw\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_hil\_rc\_inputs\_raw\_t* hil\_rc\_inputs\_raw)}
+\DoxyCodeLine{517 \{}
+\DoxyCodeLine{518 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{519     hil\_rc\_inputs\_raw-\/>time\_usec = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_time\_usec(msg);}
+\DoxyCodeLine{520     hil\_rc\_inputs\_raw-\/>chan1\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan1\_raw(msg);}
+\DoxyCodeLine{521     hil\_rc\_inputs\_raw-\/>chan2\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan2\_raw(msg);}
+\DoxyCodeLine{522     hil\_rc\_inputs\_raw-\/>chan3\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan3\_raw(msg);}
+\DoxyCodeLine{523     hil\_rc\_inputs\_raw-\/>chan4\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan4\_raw(msg);}
+\DoxyCodeLine{524     hil\_rc\_inputs\_raw-\/>chan5\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan5\_raw(msg);}
+\DoxyCodeLine{525     hil\_rc\_inputs\_raw-\/>chan6\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan6\_raw(msg);}
+\DoxyCodeLine{526     hil\_rc\_inputs\_raw-\/>chan7\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan7\_raw(msg);}
+\DoxyCodeLine{527     hil\_rc\_inputs\_raw-\/>chan8\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan8\_raw(msg);}
+\DoxyCodeLine{528     hil\_rc\_inputs\_raw-\/>chan9\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan9\_raw(msg);}
+\DoxyCodeLine{529     hil\_rc\_inputs\_raw-\/>chan10\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan10\_raw(msg);}
+\DoxyCodeLine{530     hil\_rc\_inputs\_raw-\/>chan11\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan11\_raw(msg);}
+\DoxyCodeLine{531     hil\_rc\_inputs\_raw-\/>chan12\_raw = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_chan12\_raw(msg);}
+\DoxyCodeLine{532     hil\_rc\_inputs\_raw-\/>rssi = mavlink\_msg\_hil\_rc\_inputs\_raw\_get\_rssi(msg);}
+\DoxyCodeLine{533 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{534         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}};}
+\DoxyCodeLine{535         memset(hil\_rc\_inputs\_raw, 0, \mbox{\hyperlink{mavlink__msg__hil__rc__inputs__raw_8h_af70e6b4883ddae3a984ec268c237b79b}{MAVLINK\_MSG\_ID\_HIL\_RC\_INPUTS\_RAW\_LEN}});}
+\DoxyCodeLine{536     memcpy(hil\_rc\_inputs\_raw, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{537 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{538 \}}
+
+\end{DoxyCode}

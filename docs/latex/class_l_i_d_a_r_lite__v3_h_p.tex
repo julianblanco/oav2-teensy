@@ -1,0 +1,106 @@
+\hypertarget{class_l_i_d_a_r_lite__v3_h_p}{}\doxysection{LIDARLite\+\_\+v3\+HP Class Reference}
+\label{class_l_i_d_a_r_lite__v3_h_p}\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+
+
+{\ttfamily \#include $<$LIDARLite\+\_\+v3\+HP.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a2237d2ed986c7d6b94c6fcc7f308f496}{configure}} (uint8\+\_\+t configuration=0, uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab20ac4dcea0f410d61a266fa5caaf887}{set\+I2\+Caddr}} (uint8\+\_\+t new\+Address, uint8\+\_\+t disable\+Default, uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab8b101735ca8485cfec6c5e7c775caba}{read\+Distance}} (uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}{wait\+For\+Busy}} (uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a52ad5c92b845d9bcc2f037f566b55b34}{get\+Busy\+Flag}} (uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_af14570aedf5b12007d3e941418c617a2}{take\+Range}} (uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a666dde149f854e4eff4f50462d117166}{reset\+Reference\+Filter}} (uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}{write}} (uint8\+\_\+t reg\+Addr, uint8\+\_\+t $\ast$data\+Bytes, uint16\+\_\+t num\+Bytes, uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}{read}} (uint8\+\_\+t reg\+Addr, uint8\+\_\+t $\ast$data\+Bytes, uint16\+\_\+t num\+Bytes, uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_a838b1877ad8012aed804e1075a613e49}{correlation\+Record\+To\+Serial}} (uint16\+\_\+t number\+Of\+Readings=1024, uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\item 
+void \mbox{\hyperlink{class_l_i_d_a_r_lite__v3_h_p_aa20bc46c13b2ae13863365cc0c3d2375}{peak\+Stack\+Read}} (int16\+\_\+t $\ast$peak\+Array, int16\+\_\+t $\ast$dist\+Array, uint8\+\_\+t lidarlite\+Address=\mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_a2237d2ed986c7d6b94c6fcc7f308f496}\label{class_l_i_d_a_r_lite__v3_h_p_a2237d2ed986c7d6b94c6fcc7f308f496}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!configure@{configure}}
+\index{configure@{configure}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{configure()}{configure()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::configure (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{configuration = {\ttfamily 0},  }\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_a838b1877ad8012aed804e1075a613e49}\label{class_l_i_d_a_r_lite__v3_h_p_a838b1877ad8012aed804e1075a613e49}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!correlationRecordToSerial@{correlationRecordToSerial}}
+\index{correlationRecordToSerial@{correlationRecordToSerial}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{correlationRecordToSerial()}{correlationRecordToSerial()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::correlation\+Record\+To\+Serial (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{number\+Of\+Readings = {\ttfamily 1024},  }\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_a52ad5c92b845d9bcc2f037f566b55b34}\label{class_l_i_d_a_r_lite__v3_h_p_a52ad5c92b845d9bcc2f037f566b55b34}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!getBusyFlag@{getBusyFlag}}
+\index{getBusyFlag@{getBusyFlag}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{getBusyFlag()}{getBusyFlag()}}
+{\footnotesize\ttfamily uint8\+\_\+t LIDARLite\+\_\+v3\+HP\+::get\+Busy\+Flag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_aa20bc46c13b2ae13863365cc0c3d2375}\label{class_l_i_d_a_r_lite__v3_h_p_aa20bc46c13b2ae13863365cc0c3d2375}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!peakStackRead@{peakStackRead}}
+\index{peakStackRead@{peakStackRead}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{peakStackRead()}{peakStackRead()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::peak\+Stack\+Read (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{peak\+Array,  }\item[{int16\+\_\+t $\ast$}]{dist\+Array,  }\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}\label{class_l_i_d_a_r_lite__v3_h_p_a380fd329c9ad4da4c529421124d8f0ad}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!read@{read}}
+\index{read@{read}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Addr,  }\item[{uint8\+\_\+t $\ast$}]{data\+Bytes,  }\item[{uint16\+\_\+t}]{num\+Bytes,  }\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_ab8b101735ca8485cfec6c5e7c775caba}\label{class_l_i_d_a_r_lite__v3_h_p_ab8b101735ca8485cfec6c5e7c775caba}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!readDistance@{readDistance}}
+\index{readDistance@{readDistance}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{readDistance()}{readDistance()}}
+{\footnotesize\ttfamily uint16\+\_\+t LIDARLite\+\_\+v3\+HP\+::read\+Distance (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_a666dde149f854e4eff4f50462d117166}\label{class_l_i_d_a_r_lite__v3_h_p_a666dde149f854e4eff4f50462d117166}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!resetReferenceFilter@{resetReferenceFilter}}
+\index{resetReferenceFilter@{resetReferenceFilter}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{resetReferenceFilter()}{resetReferenceFilter()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::reset\+Reference\+Filter (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_ab20ac4dcea0f410d61a266fa5caaf887}\label{class_l_i_d_a_r_lite__v3_h_p_ab20ac4dcea0f410d61a266fa5caaf887}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!setI2Caddr@{setI2Caddr}}
+\index{setI2Caddr@{setI2Caddr}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{setI2Caddr()}{setI2Caddr()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::set\+I2\+Caddr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+Address,  }\item[{uint8\+\_\+t}]{disable\+Default,  }\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_af14570aedf5b12007d3e941418c617a2}\label{class_l_i_d_a_r_lite__v3_h_p_af14570aedf5b12007d3e941418c617a2}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!takeRange@{takeRange}}
+\index{takeRange@{takeRange}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{takeRange()}{takeRange()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::take\+Range (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}\label{class_l_i_d_a_r_lite__v3_h_p_a5bf1ff29b3c15a4260648f7a52d63956}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!waitForBusy@{waitForBusy}}
+\index{waitForBusy@{waitForBusy}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{waitForBusy()}{waitForBusy()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::wait\+For\+Busy (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}\label{class_l_i_d_a_r_lite__v3_h_p_ab0d6cd3176bcfb98b30c4a2ab90ff845}} 
+\index{LIDARLite\_v3HP@{LIDARLite\_v3HP}!write@{write}}
+\index{write@{write}!LIDARLite\_v3HP@{LIDARLite\_v3HP}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void LIDARLite\+\_\+v3\+HP\+::write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Addr,  }\item[{uint8\+\_\+t $\ast$}]{data\+Bytes,  }\item[{uint16\+\_\+t}]{num\+Bytes,  }\item[{uint8\+\_\+t}]{lidarlite\+Address = {\ttfamily \mbox{\hyperlink{_l_i_d_a_r_lite__v4_l_e_d_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\+\_\+\+ADDR\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+LIDAR-\/\+Lite/src/\mbox{\hyperlink{_l_i_d_a_r_lite__v3_h_p_8h}{LIDARLite\+\_\+v3\+HP.\+h}}\item 
+lib/\+LIDAR-\/\+Lite/src/\mbox{\hyperlink{_l_i_d_a_r_lite__v3_h_p_8cpp}{LIDARLite\+\_\+v3\+HP.\+cpp}}\end{DoxyCompactItemize}

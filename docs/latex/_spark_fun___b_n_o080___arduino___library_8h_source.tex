@@ -1,0 +1,315 @@
+\hypertarget{_spark_fun___b_n_o080___arduino___library_8h_source}{}\doxysection{Spark\+Fun\+\_\+\+BNO080\+\_\+\+Arduino\+\_\+\+Library.\+h}
+\label{_spark_fun___b_n_o080___arduino___library_8h_source}\index{lib/Sparkfun\_BNO080/SparkFun\_BNO080\_Arduino\_Library.h@{lib/Sparkfun\_BNO080/SparkFun\_BNO080\_Arduino\_Library.h}}
+\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{  This is a library written for the BNO080}}
+\DoxyCodeLine{3 \textcolor{comment}{  SparkFun sells these at its website: www.sparkfun.com}}
+\DoxyCodeLine{4 \textcolor{comment}{  Do you like this library? Help support SparkFun. Buy a board!}}
+\DoxyCodeLine{5 \textcolor{comment}{  https://www.sparkfun.com/products/14686}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{  Written by Nathan Seidle @ SparkFun Electronics, December 28th, 2017}}
+\DoxyCodeLine{8 \textcolor{comment}{}}
+\DoxyCodeLine{9 \textcolor{comment}{  The BNO080 IMU is a powerful triple axis gyro/accel/magnetometer coupled with an ARM processor}}
+\DoxyCodeLine{10 \textcolor{comment}{  to maintain and complete all the complex calculations for various VR, inertial, step counting,}}
+\DoxyCodeLine{11 \textcolor{comment}{  and movement operations.}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{  This library handles the initialization of the BNO080 and is able to query the sensor}}
+\DoxyCodeLine{14 \textcolor{comment}{  for different readings.}}
+\DoxyCodeLine{15 \textcolor{comment}{}}
+\DoxyCodeLine{16 \textcolor{comment}{  https://github.com/sparkfun/SparkFun\_BNO080\_Arduino\_Library}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{  Development environment specifics:}}
+\DoxyCodeLine{19 \textcolor{comment}{  Arduino IDE 1.8.3}}
+\DoxyCodeLine{20 \textcolor{comment}{}}
+\DoxyCodeLine{21 \textcolor{comment}{  SparkFun code, firmware, and software is released under the MIT License.}}
+\DoxyCodeLine{22 \textcolor{comment}{    Please see LICENSE.md for further details.}}
+\DoxyCodeLine{23 \textcolor{comment}{*/}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#if (ARDUINO >= 100)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}WProgram.h"{}}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <SPI.h>}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{//The default I2C address for the BNO080 on the SparkX breakout is 0x4B. 0x4A is also possible.}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define BNO080\_DEFAULT\_ADDRESS 0x4B}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{//Platform specific configurations}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{comment}{//Define the size of the I2C buffer based on the platform the user has}}
+\DoxyCodeLine{42 \textcolor{comment}{//-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#if defined(\_\_AVR\_ATmega328P\_\_) || defined(\_\_AVR\_ATmega168\_\_)}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{comment}{//I2C\_BUFFER\_LENGTH is defined in Wire.H}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define I2C\_BUFFER\_LENGTH BUFFER\_LENGTH}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{//The catch-\/all default is 32}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define I2C\_BUFFER\_LENGTH 32}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{54 \textcolor{comment}{//-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=-\/=}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{//Registers}}
+\DoxyCodeLine{57 \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_afc9d3ee182df68415e3bef92303d3e59}{CHANNEL\_COMMAND}} = 0;}
+\DoxyCodeLine{58 \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a0d9917e3ab2ed4c6b2d023aa56b738ff}{CHANNEL\_EXECUTABLE}} = 1;}
+\DoxyCodeLine{59 \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a1cc1aa80c1d67443ff5b807eacfe220a}{CHANNEL\_CONTROL}} = 2;}
+\DoxyCodeLine{60 \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a3b6c741fcebfd86c794d8cd14e408895}{CHANNEL\_REPORTS}} = 3;}
+\DoxyCodeLine{61 \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a4fa2d655790cc168428be0ae773f6107}{CHANNEL\_WAKE\_REPORTS}} = 4;}
+\DoxyCodeLine{62 \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a964a2d9a5070c559f566d0115494fb16}{CHANNEL\_GYRO}} = 5;}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{comment}{//All the ways we can configure or talk to the BNO080, figure 34, page 36 reference manual}}
+\DoxyCodeLine{65 \textcolor{comment}{//These are used for low level communication with the sensor, on channel 2}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define SHTP\_REPORT\_COMMAND\_RESPONSE 0xF1}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define SHTP\_REPORT\_COMMAND\_REQUEST 0xF2}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define SHTP\_REPORT\_FRS\_READ\_RESPONSE 0xF3}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define SHTP\_REPORT\_FRS\_READ\_REQUEST 0xF4}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define SHTP\_REPORT\_PRODUCT\_ID\_RESPONSE 0xF8}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define SHTP\_REPORT\_PRODUCT\_ID\_REQUEST 0xF9}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define SHTP\_REPORT\_BASE\_TIMESTAMP 0xFB}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define SHTP\_REPORT\_SET\_FEATURE\_COMMAND 0xFD}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{//All the different sensors and features we can get reports from}}
+\DoxyCodeLine{76 \textcolor{comment}{//These are used when enabling a given sensor}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_ACCELEROMETER 0x01}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_GYROSCOPE 0x02}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_MAGNETIC\_FIELD 0x03}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_LINEAR\_ACCELERATION 0x04}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_ROTATION\_VECTOR 0x05}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_GRAVITY 0x06}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_GAME\_ROTATION\_VECTOR 0x08}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_GEOMAGNETIC\_ROTATION\_VECTOR 0x09}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_GYRO\_INTEGRATED\_ROTATION\_VECTOR 0x2A}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_TAP\_DETECTOR 0x10}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_STEP\_COUNTER 0x11}}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_STABILITY\_CLASSIFIER 0x13}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_RAW\_ACCELEROMETER 0x14}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_RAW\_GYROSCOPE 0x15}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_RAW\_MAGNETOMETER 0x16}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_PERSONAL\_ACTIVITY\_CLASSIFIER 0x1E}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_AR\_VR\_STABILIZED\_ROTATION\_VECTOR 0x28}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define SENSOR\_REPORTID\_AR\_VR\_STABILIZED\_GAME\_ROTATION\_VECTOR 0x29}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \textcolor{comment}{//Record IDs from figure 29, page 29 reference manual}}
+\DoxyCodeLine{97 \textcolor{comment}{//These are used to read the metadata for each sensor type}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define FRS\_RECORDID\_ACCELEROMETER 0xE302}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define FRS\_RECORDID\_GYROSCOPE\_CALIBRATED 0xE306}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define FRS\_RECORDID\_MAGNETIC\_FIELD\_CALIBRATED 0xE309}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define FRS\_RECORDID\_ROTATION\_VECTOR 0xE30B}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{comment}{// Reset complete packet (BNO08X Datasheet p.24 Figure 1-\/27)}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define EXECUTABLE\_RESET\_COMPLETE 0x1}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{comment}{//Command IDs from section 6.4, page 42}}
+\DoxyCodeLine{107 \textcolor{comment}{//These are used to calibrate, initialize, set orientation, tare etc the sensor}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define COMMAND\_ERRORS 1}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define COMMAND\_COUNTER 2}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define COMMAND\_TARE 3}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define COMMAND\_INITIALIZE 4}}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#define COMMAND\_DCD 6}}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#define COMMAND\_ME\_CALIBRATE 7}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define COMMAND\_DCD\_PERIOD\_SAVE 9}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#define COMMAND\_OSCILLATOR 10}}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#define COMMAND\_CLEAR\_DCD 11}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#define CALIBRATE\_ACCEL 0}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#define CALIBRATE\_GYRO 1}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#define CALIBRATE\_MAG 2}}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#define CALIBRATE\_PLANAR\_ACCEL 3}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#define CALIBRATE\_ACCEL\_GYRO\_MAG 4}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#define CALIBRATE\_STOP 5}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#define MAX\_PACKET\_SIZE 128 }\textcolor{comment}{//Packets can be up to 32k but we don't have that much RAM.}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#define MAX\_METADATA\_SIZE 9 }\textcolor{comment}{//This is in words. There can be many but we mostly only care about the first 9 (Qs, range, etc)}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{keyword}{class }\mbox{\hyperlink{class_b_n_o080}{BNO080}}}
+\DoxyCodeLine{129 \{}
+\DoxyCodeLine{130 \textcolor{keyword}{public}:}
+\DoxyCodeLine{131     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_ad19719be69ae4fc038015627a6f37484}{begin}}(uint8\_t deviceAddress = \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a68a3909c1deb2c0e80c8db9a8e1d0e6c}{BNO080\_DEFAULT\_ADDRESS}}, TwoWire \&wirePort = Wire, uint8\_t intPin = 255); \textcolor{comment}{//By default use the default I2C addres, and use Wire port, and don't declare an INT pin}}
+\DoxyCodeLine{132     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_a5343cc95079c6a5df312083790e3f8d6}{beginSPI}}(uint8\_t user\_CSPin, uint8\_t user\_WAKPin, uint8\_t user\_INTPin, uint8\_t user\_RSTPin, uint32\_t spiPortSpeed = 3000000, SPIClass \&spiPort = SPI);}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a23c277b1b520c52b7ea0c2d9d8f9260a}{enableDebugging}}(Stream \&debugPort = Serial); \textcolor{comment}{//Turn on debug printing. If user doesn't specify then Serial will be used.}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a9a809f442316379dbef61e78d70f6b3a}{softReset}}();    \textcolor{comment}{//Try to reset the IMU via software}}
+\DoxyCodeLine{137     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_n_o080_a12f2611bc5055c4c1c9bbf8cb25e85cc}{hasReset}}(); \textcolor{comment}{//Returns true if the sensor has reported a reset. Reading this will unflag the reset.}}
+\DoxyCodeLine{138     uint8\_t \mbox{\hyperlink{class_b_n_o080_a961e7277e517faa62f7d5a79bdcd1144}{resetReason}}(); \textcolor{comment}{//Query the IMU for the reason it last reset}}
+\DoxyCodeLine{139     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_afa2b3d816602f475a9926a67dda59f8a}{modeOn}}();      \textcolor{comment}{//Use the executable channel to turn the BNO on}}
+\DoxyCodeLine{140     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a2e739c5b634e76de8f52255e84e328c7}{modeSleep}}();    \textcolor{comment}{//Use the executable channel to put the BNO to sleep}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a387ca93b51c1683425b051a35850053f}{qToFloat}}(int16\_t fixedPointValue, uint8\_t qPoint); \textcolor{comment}{//Given a Q value, converts fixed point floating to regular floating point number}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_a556329e4879fa527bdc949e120acc29d}{waitForI2C}}(); \textcolor{comment}{//Delay based polling for I2C traffic}}
+\DoxyCodeLine{145     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_a56c8f0231b384f4da094ba465814b185}{waitForSPI}}(); \textcolor{comment}{//Delay based polling for INT pin to go low}}
+\DoxyCodeLine{146     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_a4f372d517d3125e73a23498f53cbe0aa}{receivePacket}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{147     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_a804cc98072cb62027b171c07b93afb66}{getData}}(uint16\_t bytesRemaining); \textcolor{comment}{//Given a number of bytes, send the requests in I2C\_BUFFER\_LENGTH chunks}}
+\DoxyCodeLine{148     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_a51bc2b125d590dc988ae277ea66a8625}{sendPacket}}(uint8\_t channelNumber, uint8\_t dataLength);}
+\DoxyCodeLine{149     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a5d0a36bd71601dd845090be70640c206}{printPacket}}(\textcolor{keywordtype}{void}); \textcolor{comment}{//Prints the current shtp header and data packets}}
+\DoxyCodeLine{150     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_aeda2faa4404e22925d3f77c41ebdf9ea}{printHeader}}(\textcolor{keywordtype}{void}); \textcolor{comment}{//Prints the current shtp header (only)}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a6e909dff75a75500117287304004aac6}{enableRotationVector}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{153     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_adc3ee3b4cbd07e1551e35666b4e28d3a}{enableGameRotationVector}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{154     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a74283c1a3ba091e836c61cbe2a229027}{enableARVRStabilizedRotationVector}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{155     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_ad3bdf7fa9ad4fc58c59fbffde6b8f4ff}{enableARVRStabilizedGameRotationVector}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{156     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_ab9a29cc60eabf2c469cd5f1b0941b76c}{enableAccelerometer}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{157     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a75b2431da025dad40ccee2e1200542e1}{enableLinearAccelerometer}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{158     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a124433a4ea2a13234b392f9e9b213ff9}{enableGyro}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{159     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_aea14b1dd736b91c44046bc0354410ca5}{enableMagnetometer}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{160     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_afdadd1bfd427b2df480e363a87c18224}{enableTapDetector}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{161     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a5029bc88c6458e7eb12f882f29bde8c4}{enableStepCounter}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{162     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_ad1dc067860fc633e939f68cde1cf1eef}{enableStabilityClassifier}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{163     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a84168ad137c4d8c16ef177a4e49258d4}{enableActivityClassifier}}(uint16\_t timeBetweenReports, uint32\_t activitiesToEnable, uint8\_t (\&activityConfidences)[9]);}
+\DoxyCodeLine{164     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a9d6e45212e89d11e2467d4d52170fb85}{enableRawAccelerometer}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{165     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a7b5f60a5834a345143048c260f9b8a96}{enableRawGyro}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{166     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a50a475a12f12c56d4b42771ddeca1444}{enableRawMagnetometer}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{167     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a1ec9fdeb488a2e71e8e872cb8d7a00a2}{enableGyroIntegratedRotationVector}}(uint16\_t timeBetweenReports);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_n_o080_a27933a4623309a040eb0d456723ff57b}{dataAvailable}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{170     uint16\_t \mbox{\hyperlink{class_b_n_o080_a625a039215cb3b87ccf93166aff227fd}{getReadings}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{171     uint16\_t \mbox{\hyperlink{class_b_n_o080_a68a96babd44486e723d7e9582d761999}{parseInputReport}}(\textcolor{keywordtype}{void});   \textcolor{comment}{//Parse sensor readings out of report}}
+\DoxyCodeLine{172     uint16\_t \mbox{\hyperlink{class_b_n_o080_aa6c766b3c547ed6db90225769d7e2d57}{parseCommandReport}}(\textcolor{keywordtype}{void}); \textcolor{comment}{//Parse command responses out of report}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a093d683bed10bb6d1282de0d2fcb73b5}{getQuat}}(\textcolor{keywordtype}{float} \&i, \textcolor{keywordtype}{float} \&j, \textcolor{keywordtype}{float} \&k, \textcolor{keywordtype}{float} \&real, \textcolor{keywordtype}{float} \&radAccuracy, uint8\_t \&accuracy);}
+\DoxyCodeLine{175     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_aa75bbd109ac767de5d588ad1151322c8}{getQuatI}}();}
+\DoxyCodeLine{176     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a2ca55d6200af2629d1d80e6c5577cb63}{getQuatJ}}();}
+\DoxyCodeLine{177     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_abeb09e3600b140d7447d9e6a9ac81ad8}{getQuatK}}();}
+\DoxyCodeLine{178     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a3b0b23d3d061baff2858ffa440bc2b77}{getQuatReal}}();}
+\DoxyCodeLine{179     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a10b5cd695195620c7238cd48a7e366f5}{getQuatRadianAccuracy}}();}
+\DoxyCodeLine{180     uint8\_t \mbox{\hyperlink{class_b_n_o080_a35edcb9c8ffa4919d143472532ea7956}{getQuatAccuracy}}();}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a29cf25109f3eb010d2bddbe591065335}{getAccel}}(\textcolor{keywordtype}{float} \&x, \textcolor{keywordtype}{float} \&y, \textcolor{keywordtype}{float} \&z, uint8\_t \&accuracy);}
+\DoxyCodeLine{183     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a6509931a6833636ca3d41dd2e7729a34}{getAccelX}}();}
+\DoxyCodeLine{184     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a636cfd2999e8fed0c6f3a3ff2d68204d}{getAccelY}}();}
+\DoxyCodeLine{185     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a2aa682da9ee80a807ffc93c8ea72f88e}{getAccelZ}}();}
+\DoxyCodeLine{186     uint8\_t \mbox{\hyperlink{class_b_n_o080_af148326f8725c3dc10ce276e5480bea5}{getAccelAccuracy}}();}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a0a5141c88ced60c31e0c338853e52829}{getLinAccel}}(\textcolor{keywordtype}{float} \&x, \textcolor{keywordtype}{float} \&y, \textcolor{keywordtype}{float} \&z, uint8\_t \&accuracy);}
+\DoxyCodeLine{189     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a3458038df1c1b4c0ed12722f1f939b58}{getLinAccelX}}();}
+\DoxyCodeLine{190     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a9e61b5f8dca1adbae9525ec453419e31}{getLinAccelY}}();}
+\DoxyCodeLine{191     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_aa17dbccf10e19a9b3117ba3ff99b3c7f}{getLinAccelZ}}();}
+\DoxyCodeLine{192     uint8\_t \mbox{\hyperlink{class_b_n_o080_ae809a29b91fd6b0c37b41f800855880e}{getLinAccelAccuracy}}();}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a5d066ff0810bd1d87a64476f6de6d2c5}{getGyro}}(\textcolor{keywordtype}{float} \&x, \textcolor{keywordtype}{float} \&y, \textcolor{keywordtype}{float} \&z, uint8\_t \&accuracy);}
+\DoxyCodeLine{195     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_acad841ad609af8026335ad07f56e2ef3}{getGyroX}}();}
+\DoxyCodeLine{196     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_afeb354f551c52c7709f4caf20f1b5f18}{getGyroY}}();}
+\DoxyCodeLine{197     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a8b4406899924d5fe0205907cf4e7783e}{getGyroZ}}();}
+\DoxyCodeLine{198     uint8\_t \mbox{\hyperlink{class_b_n_o080_a400d326f7673bad3e2be02badfa78c82}{getGyroAccuracy}}();}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a0025aceb101762a6ab3aed78ddad0ada}{getFastGyro}}(\textcolor{keywordtype}{float} \&x, \textcolor{keywordtype}{float} \&y, \textcolor{keywordtype}{float} \&z);}
+\DoxyCodeLine{201     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a55474a98c3c0734d09fc5be006b3086e}{getFastGyroX}}();}
+\DoxyCodeLine{202     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_af89939247c6e12fb34d57dce9fa492bd}{getFastGyroY}}();}
+\DoxyCodeLine{203     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a0037949cf2230aa5a1d6c059be66c960}{getFastGyroZ}}();}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a96183a25295ed8e35a1b7ebed5a4f5ba}{getMag}}(\textcolor{keywordtype}{float} \&x, \textcolor{keywordtype}{float} \&y, \textcolor{keywordtype}{float} \&z, uint8\_t \&accuracy);}
+\DoxyCodeLine{206     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a2b54726ef90be75bad808b6f04120b10}{getMagX}}();}
+\DoxyCodeLine{207     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a21bc0a5b447bb855043767859e5953b9}{getMagY}}();}
+\DoxyCodeLine{208     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a03d28ed03226c2c14537231dee4d91ee}{getMagZ}}();}
+\DoxyCodeLine{209     uint8\_t \mbox{\hyperlink{class_b_n_o080_a07fe198c493796f6e026492b933f926d}{getMagAccuracy}}();}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a933fcd3a41851f578df8237f38d944c5}{calibrateAccelerometer}}();}
+\DoxyCodeLine{212     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a0f71618628851ae54a204397c5401cbb}{calibrateGyro}}();}
+\DoxyCodeLine{213     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_ad94649d7f56f8195e983caf3f63cb447}{calibrateMagnetometer}}();}
+\DoxyCodeLine{214     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a83577aca12955f9bf690880daf1653a2}{calibratePlanarAccelerometer}}();}
+\DoxyCodeLine{215     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_abf24202e9c1868616c01e777889bf65d}{calibrateAll}}();}
+\DoxyCodeLine{216     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a9c05e1b2dcb1fed66b4ce12d95b2bad0}{endCalibration}}();}
+\DoxyCodeLine{217     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a4852ae0323e71d6ca93901d474791701}{saveCalibration}}();}
+\DoxyCodeLine{218     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a97e1b8c973150fc7d52bfd66ec235e68}{requestCalibrationStatus}}(); \textcolor{comment}{//Sends command to get status}}
+\DoxyCodeLine{219     \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_b_n_o080_ae3ffb842020d42406fd930a00b44e4dd}{calibrationComplete}}();   \textcolor{comment}{//Checks ME Cal response for byte 5, R0 -\/ Status}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221     uint8\_t \mbox{\hyperlink{class_b_n_o080_a37272a3d02fcac31ce4bf5088e114e1f}{getTapDetector}}();}
+\DoxyCodeLine{222     uint32\_t \mbox{\hyperlink{class_b_n_o080_af87e1bc2d96a98d80f8434459f0c3f4c}{getTimeStamp}}();}
+\DoxyCodeLine{223     uint16\_t \mbox{\hyperlink{class_b_n_o080_a57cec6a57eb647c06438428ce0749783}{getStepCount}}();}
+\DoxyCodeLine{224     uint8\_t \mbox{\hyperlink{class_b_n_o080_aa9e642757216421e9807db2300ca430d}{getStabilityClassifier}}();}
+\DoxyCodeLine{225     uint8\_t \mbox{\hyperlink{class_b_n_o080_a8a86e2e18a58e950702130b5041952f0}{getActivityClassifier}}();}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     int16\_t \mbox{\hyperlink{class_b_n_o080_a96fc13328ad9d7f8fd5c1f718c1edab4}{getRawAccelX}}();}
+\DoxyCodeLine{228     int16\_t \mbox{\hyperlink{class_b_n_o080_a2a8356f53e5de5771507e7a5c3ea4dfe}{getRawAccelY}}();}
+\DoxyCodeLine{229     int16\_t \mbox{\hyperlink{class_b_n_o080_ab4bc599ee09013e9ef7581322187437a}{getRawAccelZ}}();}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231     int16\_t \mbox{\hyperlink{class_b_n_o080_af24c206f9b83dad7d6d508101b73a0ba}{getRawGyroX}}();}
+\DoxyCodeLine{232     int16\_t \mbox{\hyperlink{class_b_n_o080_af28fe02b1c1f2a3d811f40547c8f7418}{getRawGyroY}}();}
+\DoxyCodeLine{233     int16\_t \mbox{\hyperlink{class_b_n_o080_ae95386a4c0f1181235aad24ae3c8343e}{getRawGyroZ}}();}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235     int16\_t \mbox{\hyperlink{class_b_n_o080_a99d1706bc33727d063e4754adb17f099}{getRawMagX}}();}
+\DoxyCodeLine{236     int16\_t \mbox{\hyperlink{class_b_n_o080_a71a50fff2033289542b9a205a52aaf19}{getRawMagY}}();}
+\DoxyCodeLine{237     int16\_t \mbox{\hyperlink{class_b_n_o080_a25ec31714609d54bdda62a190b77eadb}{getRawMagZ}}();}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a86b811ca425cdb5b321150424ba19a57}{getRoll}}();}
+\DoxyCodeLine{240     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_abf25adb17497676c420a246cf5c9cb20}{getPitch}}();}
+\DoxyCodeLine{241     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a22d262a234f238d94531d98eab5d2986}{getYaw}}();}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_ad8ee71b985377d624e34dda56516ec97}{setFeatureCommand}}(uint8\_t reportID, uint16\_t timeBetweenReports);}
+\DoxyCodeLine{244     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_ad8ee71b985377d624e34dda56516ec97}{setFeatureCommand}}(uint8\_t reportID, uint16\_t timeBetweenReports, uint32\_t specificConfig);}
+\DoxyCodeLine{245     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a722813f9f8022f1f4a005d9c464a5224}{sendCommand}}(uint8\_t command);}
+\DoxyCodeLine{246     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_a20c4a32ab3832a2a8f1b3a5c344aafb2}{sendCalibrateCommand}}(uint8\_t thingToCalibrate);}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248     \textcolor{comment}{//Metadata functions}}
+\DoxyCodeLine{249     int16\_t \mbox{\hyperlink{class_b_n_o080_a417ab857b87660296d82b4f1b5efe451}{getQ1}}(uint16\_t recordID);}
+\DoxyCodeLine{250     int16\_t \mbox{\hyperlink{class_b_n_o080_ac38f6b2173b0543169abe8cd9df783b8}{getQ2}}(uint16\_t recordID);}
+\DoxyCodeLine{251     int16\_t \mbox{\hyperlink{class_b_n_o080_a2e2406c687a515cf7d5a501e7c7fd706}{getQ3}}(uint16\_t recordID);}
+\DoxyCodeLine{252     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_aa76af2c1862480e2a593c8bbd1c2b6c0}{getResolution}}(uint16\_t recordID);}
+\DoxyCodeLine{253     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_b_n_o080_a9db2e2aaaa89a45bbc6e85bd0b78de08}{getRange}}(uint16\_t recordID);}
+\DoxyCodeLine{254     uint32\_t \mbox{\hyperlink{class_b_n_o080_a23aa9a5e3aedd4464bf1e17c63756aac}{readFRSword}}(uint16\_t recordID, uint8\_t wordNumber);}
+\DoxyCodeLine{255     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_n_o080_aaf7c5f79f6d611ce7a9f5f370270b208}{frsReadRequest}}(uint16\_t recordID, uint16\_t readOffset, uint16\_t blockSize);}
+\DoxyCodeLine{256     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_b_n_o080_a0ab36a84ef36e30dbb40d5f40ad80e8b}{readFRSdata}}(uint16\_t recordID, uint8\_t startLocation, uint8\_t wordsToRead);}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     \textcolor{comment}{//Global Variables}}
+\DoxyCodeLine{259     uint8\_t \mbox{\hyperlink{class_b_n_o080_ab6c6c3724fcdca98233dc3dc8114dc6b}{shtpHeader}}[4]; \textcolor{comment}{//Each packet has a header of 4 bytes}}
+\DoxyCodeLine{260     uint8\_t \mbox{\hyperlink{class_b_n_o080_a1dc1f807ca4810d927a4ce9fcaec45ab}{shtpData}}[\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a879456c3b8e2853f7044d764e9c180d4}{MAX\_PACKET\_SIZE}}];}
+\DoxyCodeLine{261     uint8\_t \mbox{\hyperlink{class_b_n_o080_affdd3ab68081775957bcc48f51cb0a22}{sequenceNumber}}[6] = \{0, 0, 0, 0, 0, 0\}; \textcolor{comment}{//There are 6 com channels. Each channel has its own seqnum}}
+\DoxyCodeLine{262     uint8\_t \mbox{\hyperlink{class_b_n_o080_a86fa467e394e0c130f011d0762522337}{commandSequenceNumber}} = 0;             \textcolor{comment}{//Commands have a seqNum as well. These are inside command packet, the header uses its own seqNum per channel}}
+\DoxyCodeLine{263     uint32\_t \mbox{\hyperlink{class_b_n_o080_afb9a6d02c6d2e12328f59f6196badfe4}{metaData}}[\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_aa6cd4fc5568a0b0fb40391a2fea3b69e}{MAX\_METADATA\_SIZE}}];          \textcolor{comment}{//There is more than 10 words in a metadata record but we'll stop at Q point 3}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265 \textcolor{keyword}{private}:}
+\DoxyCodeLine{266     \textcolor{comment}{//Variables}}
+\DoxyCodeLine{267     TwoWire *\_i2cPort;      \textcolor{comment}{//The generic connection to user's chosen I2C hardware}}
+\DoxyCodeLine{268     uint8\_t \_deviceAddress; \textcolor{comment}{//Keeps track of I2C address. setI2CAddress changes this.}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270     Stream *\_debugPort;          \textcolor{comment}{//The stream to send debug messages to if enabled. Usually Serial.}}
+\DoxyCodeLine{271     \textcolor{keywordtype}{boolean} \_printDebug = \textcolor{keyword}{false}; \textcolor{comment}{//Flag to print debugging variables}}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273     SPIClass *\_spiPort;          \textcolor{comment}{//The generic connection to user's chosen SPI hardware}}
+\DoxyCodeLine{274     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \_spiPortSpeed; \textcolor{comment}{//Optional user defined port speed}}
+\DoxyCodeLine{275     uint8\_t \_cs;                 \textcolor{comment}{//Pins needed for SPI}}
+\DoxyCodeLine{276     uint8\_t \_wake;}
+\DoxyCodeLine{277     uint8\_t \_int;}
+\DoxyCodeLine{278     uint8\_t \_rst;}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280     \textcolor{keywordtype}{bool} \_hasReset = \textcolor{keyword}{false};     \textcolor{comment}{// Keeps track of any Reset Complete packets we receive. }}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282     \textcolor{comment}{//These are the raw sensor values (without Q applied) pulled from the user requested Input Report}}
+\DoxyCodeLine{283     uint16\_t rawAccelX, rawAccelY, rawAccelZ, accelAccuracy;}
+\DoxyCodeLine{284     uint16\_t rawLinAccelX, rawLinAccelY, rawLinAccelZ, accelLinAccuracy;}
+\DoxyCodeLine{285     uint16\_t rawGyroX, rawGyroY, rawGyroZ, gyroAccuracy;}
+\DoxyCodeLine{286     uint16\_t rawMagX, rawMagY, rawMagZ, magAccuracy;}
+\DoxyCodeLine{287     uint16\_t rawQuatI, rawQuatJ, rawQuatK, rawQuatReal, rawQuatRadianAccuracy, quatAccuracy;}
+\DoxyCodeLine{288     uint16\_t rawFastGyroX, rawFastGyroY, rawFastGyroZ;}
+\DoxyCodeLine{289     uint8\_t tapDetector;}
+\DoxyCodeLine{290     uint16\_t stepCount;}
+\DoxyCodeLine{291     uint32\_t timeStamp;}
+\DoxyCodeLine{292     uint8\_t stabilityClassifier;}
+\DoxyCodeLine{293     uint8\_t activityClassifier;}
+\DoxyCodeLine{294     uint8\_t *\_activityConfidences;                        \textcolor{comment}{//Array that store the confidences of the 9 possible activities}}
+\DoxyCodeLine{295     uint8\_t calibrationStatus;                            \textcolor{comment}{//Byte R0 of ME Calibration Response}}
+\DoxyCodeLine{296     uint16\_t memsRawAccelX, memsRawAccelY, memsRawAccelZ; \textcolor{comment}{//Raw readings from MEMS sensor}}
+\DoxyCodeLine{297     uint16\_t memsRawGyroX, memsRawGyroY, memsRawGyroZ;  \textcolor{comment}{//Raw readings from MEMS sensor}}
+\DoxyCodeLine{298     uint16\_t memsRawMagX, memsRawMagY, memsRawMagZ;       \textcolor{comment}{//Raw readings from MEMS sensor}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300     \textcolor{comment}{//These Q values are defined in the datasheet but can also be obtained by querying the meta data records}}
+\DoxyCodeLine{301     \textcolor{comment}{//See the read metadata example for more info}}
+\DoxyCodeLine{302     int16\_t rotationVector\_Q1 = 14;}
+\DoxyCodeLine{303     int16\_t rotationVectorAccuracy\_Q1 = 12; \textcolor{comment}{//Heading accuracy estimate in radians. The Q point is 12.}}
+\DoxyCodeLine{304     int16\_t accelerometer\_Q1 = 8;}
+\DoxyCodeLine{305     int16\_t linear\_accelerometer\_Q1 = 8;}
+\DoxyCodeLine{306     int16\_t gyro\_Q1 = 9;}
+\DoxyCodeLine{307     int16\_t magnetometer\_Q1 = 4;}
+\DoxyCodeLine{308     int16\_t angular\_velocity\_Q1 = 10;}
+\DoxyCodeLine{309 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,185 @@
+\hypertarget{class_i_m_u}{}\doxysection{IMU Class Reference}
+\label{class_i_m_u}\index{IMU@{IMU}}
+
+
+{\ttfamily \#include $<$imu.\+h$>$}
+
+Inheritance diagram for IMU\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_m_u}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_i_m_u_a5d36c5fa0688efe1a013679dbdcef4cc}{IMU}} ()
+\item 
+\mbox{\hyperlink{class_i_m_u_ad1f213d1e6aa08988ff683feab721559}{$\sim$\+IMU}} ()
+\item 
+int \mbox{\hyperlink{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}{setup}} ()
+\item 
+int \mbox{\hyperlink{class_i_m_u_a79913151edc7437f211b1b638e1172e9}{start}} ()
+\item 
+void \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{get\+IMUdata}} ()
+\item 
+void \mbox{\hyperlink{class_i_m_u_a3137b5219e41ad390031f5869f8c2269}{getmpu6050data}} ()
+\item 
+void \mbox{\hyperlink{class_i_m_u_a795368e5bbf84e833e66b922782e206d}{getbno080data}} ()
+\item 
+void \mbox{\hyperlink{class_i_m_u_a82ad5080a2d3b0a76b68fd909220cc65}{getbno055data}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}}
+\item 
+float \mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}}
+\item 
+float \mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}}
+\item 
+Adafruit\+\_\+\+BNO055 \mbox{\hyperlink{class_i_m_u_adce5d46d0b84d522fa2b93e592364529}{bno055imu}}
+\item 
+\mbox{\hyperlink{config_8h_a3963085bfd77a0ac7e0ab6625daab728}{BNO080}} \mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}
+\item 
+imu\+::\+Vector$<$ 3 $>$ \mbox{\hyperlink{class_i_m_u_a94930a7795d239a15326b4782a6ce968}{euler}}
+\item 
+cpp\+\_\+freertos\+::\+Read\+Write\+Lock\+Prefer\+Writer \mbox{\hyperlink{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}{lock}}
+\item 
+float \mbox{\hyperlink{class_i_m_u_a9f92a6d75cfb6dac7efb51dde00d1bf8}{heading\+Offset}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_i_m_u_a5d36c5fa0688efe1a013679dbdcef4cc}\label{class_i_m_u_a5d36c5fa0688efe1a013679dbdcef4cc}} 
+\index{IMU@{IMU}!IMU@{IMU}}
+\index{IMU@{IMU}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{IMU()}{IMU()}}
+{\footnotesize\ttfamily IMU\+::\+IMU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_m_u_ad1f213d1e6aa08988ff683feab721559}\label{class_i_m_u_ad1f213d1e6aa08988ff683feab721559}} 
+\index{IMU@{IMU}!````~IMU@{$\sim$IMU}}
+\index{````~IMU@{$\sim$IMU}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{$\sim$IMU()}{~IMU()}}
+{\footnotesize\ttfamily IMU\+::$\sim$\+IMU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_i_m_u_a82ad5080a2d3b0a76b68fd909220cc65}\label{class_i_m_u_a82ad5080a2d3b0a76b68fd909220cc65}} 
+\index{IMU@{IMU}!getbno055data@{getbno055data}}
+\index{getbno055data@{getbno055data}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{getbno055data()}{getbno055data()}}
+{\footnotesize\ttfamily void IMU\+::getbno055data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This will get roll, pitch, and yaw data from the bno055. It is called by get\+IMUdata in the imu sampling loop. ~\newline
+~\newline
+ This function updates the roll, pitch, yaw variables in the class object \mbox{\Hypertarget{class_i_m_u_a795368e5bbf84e833e66b922782e206d}\label{class_i_m_u_a795368e5bbf84e833e66b922782e206d}} 
+\index{IMU@{IMU}!getbno080data@{getbno080data}}
+\index{getbno080data@{getbno080data}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{getbno080data()}{getbno080data()}}
+{\footnotesize\ttfamily void IMU\+::getbno080data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This will get roll,pitch, and yaw data from the bno080. It is called by get\+IMUdata in the imu sampling loop. ~\newline
+~\newline
+ This function updates the roll, pitch, yaw variables in the class object \mbox{\Hypertarget{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}\label{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}} 
+\index{IMU@{IMU}!getIMUdata@{getIMUdata}}
+\index{getIMUdata@{getIMUdata}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{getIMUdata()}{getIMUdata()}}
+{\footnotesize\ttfamily void IMU\+::get\+IMUdata (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This will begin sampling the IMUs based on what \mbox{\hyperlink{class_i_m_u}{IMU}} (or IMUs) are declared \mbox{\Hypertarget{class_i_m_u_a3137b5219e41ad390031f5869f8c2269}\label{class_i_m_u_a3137b5219e41ad390031f5869f8c2269}} 
+\index{IMU@{IMU}!getmpu6050data@{getmpu6050data}}
+\index{getmpu6050data@{getmpu6050data}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{getmpu6050data()}{getmpu6050data()}}
+{\footnotesize\ttfamily void IMU\+::getmpu6050data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This will get data from the mpu6050 at the standard address and then call madgwick. roll, pitch and yaw come from the output of the madgwick filter. It is called by get\+IMUdata in the imu sampling loop. ~\newline
+~\newline
+ This function updates the roll, pitch, yaw variables in the class object \mbox{\Hypertarget{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}\label{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}} 
+\index{IMU@{IMU}!setup@{setup}}
+\index{setup@{setup}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int IMU\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Setup the imu
+
+This method will initialize all needed IMUs including, but not limited to\+:
+\begin{DoxyItemize}
+\item BNO055
+\item BNO080
+\item MPU6050
+\item 
+\end{DoxyItemize}\mbox{\Hypertarget{class_i_m_u_a79913151edc7437f211b1b638e1172e9}\label{class_i_m_u_a79913151edc7437f211b1b638e1172e9}} 
+\index{IMU@{IMU}!start@{start}}
+\index{start@{start}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int IMU\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Start the \mbox{\hyperlink{class_i_m_u}{IMU}} loop. This runs after the setup function and will lock the \mbox{\hyperlink{class_i_m_u}{IMU}} Lock, call ~\newline
+ get\+IMUdata, then lock the \mbox{\hyperlink{class_i_m_u}{IMU}} lock
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Implements \mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{Task}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_i_m_u_adce5d46d0b84d522fa2b93e592364529}\label{class_i_m_u_adce5d46d0b84d522fa2b93e592364529}} 
+\index{IMU@{IMU}!bno055imu@{bno055imu}}
+\index{bno055imu@{bno055imu}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{bno055imu}{bno055imu}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+BNO055 IMU\+::bno055imu}
+
+\mbox{\Hypertarget{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}\label{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}} 
+\index{IMU@{IMU}!bno080imu@{bno080imu}}
+\index{bno080imu@{bno080imu}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{bno080imu}{bno080imu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{config_8h_a3963085bfd77a0ac7e0ab6625daab728}{BNO080}} IMU\+::bno080imu}
+
+\mbox{\Hypertarget{class_i_m_u_a94930a7795d239a15326b4782a6ce968}\label{class_i_m_u_a94930a7795d239a15326b4782a6ce968}} 
+\index{IMU@{IMU}!euler@{euler}}
+\index{euler@{euler}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{euler}{euler}}
+{\footnotesize\ttfamily imu\+::\+Vector$<$3$>$ IMU\+::euler}
+
+\mbox{\Hypertarget{class_i_m_u_a9f92a6d75cfb6dac7efb51dde00d1bf8}\label{class_i_m_u_a9f92a6d75cfb6dac7efb51dde00d1bf8}} 
+\index{IMU@{IMU}!headingOffset@{headingOffset}}
+\index{headingOffset@{headingOffset}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{headingOffset}{headingOffset}}
+{\footnotesize\ttfamily float IMU\+::heading\+Offset}
+
+\mbox{\Hypertarget{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}\label{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}} 
+\index{IMU@{IMU}!lock@{lock}}
+\index{lock@{lock}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{lock}{lock}}
+{\footnotesize\ttfamily cpp\+\_\+freertos\+::\+Read\+Write\+Lock\+Prefer\+Writer IMU\+::lock}
+
+\mbox{\Hypertarget{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}\label{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}} 
+\index{IMU@{IMU}!pitch@{pitch}}
+\index{pitch@{pitch}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{pitch}{pitch}}
+{\footnotesize\ttfamily float IMU\+::pitch}
+
+\mbox{\Hypertarget{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}\label{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}} 
+\index{IMU@{IMU}!roll@{roll}}
+\index{roll@{roll}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{roll}{roll}}
+{\footnotesize\ttfamily float IMU\+::roll}
+
+\mbox{\Hypertarget{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}\label{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}} 
+\index{IMU@{IMU}!yaw@{yaw}}
+\index{yaw@{yaw}!IMU@{IMU}}
+\doxysubsubsection{\texorpdfstring{yaw}{yaw}}
+{\footnotesize\ttfamily float IMU\+::yaw}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{imu_8h}{imu.\+h}}\end{DoxyCompactItemize}

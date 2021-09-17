@@ -1,0 +1,222 @@
+\hypertarget{mavlink__msg__terrain__data_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+terrain\+\_\+data.\+h}
+\label{mavlink__msg__terrain__data_8h_source}\index{lib/common/mavlink\_msg\_terrain\_data.h@{lib/common/mavlink\_msg\_terrain\_data.h}}
+\mbox{\hyperlink{mavlink__msg__terrain__data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE TERRAIN\_DATA PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TERRAIN\_DATA 134}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a28c2cefa28ae3de8dfb487ef296d44b0}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_terrain\_data\_t \{}
+\DoxyCodeLine{8  int32\_t lat; \textcolor{comment}{/*< [degE7] Latitude of SW corner of first grid*/}}
+\DoxyCodeLine{9  int32\_t lon; \textcolor{comment}{/*< [degE7] Longitude of SW corner of first grid*/}}
+\DoxyCodeLine{10  uint16\_t grid\_spacing; \textcolor{comment}{/*< [m] Grid spacing*/}}
+\DoxyCodeLine{11  int16\_t data[16]; \textcolor{comment}{/*< [m] Terrain data AMSL*/}}
+\DoxyCodeLine{12  uint8\_t gridbit; \textcolor{comment}{/*<  bit within the terrain request mask*/}}
+\DoxyCodeLine{13 \}) mavlink\_terrain\_data\_t;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN 43}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN 43}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_134\_LEN 43}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_134\_MIN\_LEN 43}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC 229}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_134\_CRC 229}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TERRAIN\_DATA\_FIELD\_DATA\_LEN 16}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TERRAIN\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    134, \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    "{}TERRAIN\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{29     5, \(\backslash\)}
+\DoxyCodeLine{30     \{  \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 0, offsetof(mavlink\_terrain\_data\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_terrain\_data\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}grid\_spacing"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_terrain\_data\_t, grid\_spacing) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}gridbit"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 42, offsetof(mavlink\_terrain\_data\_t, gridbit) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 16, 10, offsetof(mavlink\_terrain\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{35          \} \(\backslash\)}
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TERRAIN\_DATA \{ \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    "{}TERRAIN\_DATA"{}}, \(\backslash\)}
+\DoxyCodeLine{40     5, \(\backslash\)}
+\DoxyCodeLine{41     \{  \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 0, offsetof(mavlink\_terrain\_data\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_terrain\_data\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}grid\_spacing"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_terrain\_data\_t, grid\_spacing) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}gridbit"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 42, offsetof(mavlink\_terrain\_data\_t, gridbit) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}data"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 16, 10, offsetof(mavlink\_terrain\_data\_t, data) \}, \(\backslash\)}
+\DoxyCodeLine{46          \} \(\backslash\)}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{63 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_terrain\_data\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{64                                int32\_t lat, int32\_t lon, uint16\_t grid\_spacing, uint8\_t gridbit, \textcolor{keyword}{const} int16\_t *data)}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{67     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}];}
+\DoxyCodeLine{68     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, lat);}
+\DoxyCodeLine{69     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lon);}
+\DoxyCodeLine{70     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, grid\_spacing);}
+\DoxyCodeLine{71     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, gridbit);}
+\DoxyCodeLine{72     \_mav\_put\_int16\_t\_array(buf, 10, data, 16);}
+\DoxyCodeLine{73         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}});}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{75     mavlink\_terrain\_data\_t packet;}
+\DoxyCodeLine{76     packet.lat = lat;}
+\DoxyCodeLine{77     packet.lon = lon;}
+\DoxyCodeLine{78     packet.grid\_spacing = grid\_spacing;}
+\DoxyCodeLine{79     packet.gridbit = gridbit;}
+\DoxyCodeLine{80     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(int16\_t)*16);}
+\DoxyCodeLine{81         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}});}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}};}
+\DoxyCodeLine{85     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{86 \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{101 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_terrain\_data\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{102                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{103                                    int32\_t lat,int32\_t lon,uint16\_t grid\_spacing,uint8\_t gridbit,\textcolor{keyword}{const} int16\_t *data)}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{106     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}];}
+\DoxyCodeLine{107     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, lat);}
+\DoxyCodeLine{108     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lon);}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, grid\_spacing);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, gridbit);}
+\DoxyCodeLine{111     \_mav\_put\_int16\_t\_array(buf, 10, data, 16);}
+\DoxyCodeLine{112         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}});}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{114     mavlink\_terrain\_data\_t packet;}
+\DoxyCodeLine{115     packet.lat = lat;}
+\DoxyCodeLine{116     packet.lon = lon;}
+\DoxyCodeLine{117     packet.grid\_spacing = grid\_spacing;}
+\DoxyCodeLine{118     packet.gridbit = gridbit;}
+\DoxyCodeLine{119     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(int16\_t)*16);}
+\DoxyCodeLine{120         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}});}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}};}
+\DoxyCodeLine{124     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{125 \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{135 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_terrain\_data\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_terrain\_data\_t* terrain\_data)}
+\DoxyCodeLine{136 \{}
+\DoxyCodeLine{137     \textcolor{keywordflow}{return} mavlink\_msg\_terrain\_data\_pack(system\_id, component\_id, msg, terrain\_data-\/>lat, terrain\_data-\/>lon, terrain\_data-\/>grid\_spacing, terrain\_data-\/>gridbit, terrain\_data-\/>data);}
+\DoxyCodeLine{138 \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{149 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_terrain\_data\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_terrain\_data\_t* terrain\_data)}
+\DoxyCodeLine{150 \{}
+\DoxyCodeLine{151     \textcolor{keywordflow}{return} mavlink\_msg\_terrain\_data\_pack\_chan(system\_id, component\_id, chan, msg, terrain\_data-\/>lat, terrain\_data-\/>lon, terrain\_data-\/>grid\_spacing, terrain\_data-\/>gridbit, terrain\_data-\/>data);}
+\DoxyCodeLine{152 \}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{164 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_terrain\_data\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, int32\_t lat, int32\_t lon, uint16\_t grid\_spacing, uint8\_t gridbit, \textcolor{keyword}{const} int16\_t *data)}
+\DoxyCodeLine{167 \{}
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{169     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}];}
+\DoxyCodeLine{170     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, lat);}
+\DoxyCodeLine{171     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lon);}
+\DoxyCodeLine{172     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, grid\_spacing);}
+\DoxyCodeLine{173     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, gridbit);}
+\DoxyCodeLine{174     \_mav\_put\_int16\_t\_array(buf, 10, data, 16);}
+\DoxyCodeLine{175     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{176 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{177     mavlink\_terrain\_data\_t packet;}
+\DoxyCodeLine{178     packet.lat = lat;}
+\DoxyCodeLine{179     packet.lon = lon;}
+\DoxyCodeLine{180     packet.grid\_spacing = grid\_spacing;}
+\DoxyCodeLine{181     packet.gridbit = gridbit;}
+\DoxyCodeLine{182     mav\_array\_memcpy(packet.data, data, \textcolor{keyword}{sizeof}(int16\_t)*16);}
+\DoxyCodeLine{183     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{184 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{185 \}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{192 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_terrain\_data\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_terrain\_data\_t* terrain\_data)}
+\DoxyCodeLine{193 \{}
+\DoxyCodeLine{194 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{195     mavlink\_msg\_terrain\_data\_send(chan, terrain\_data-\/>lat, terrain\_data-\/>lon, terrain\_data-\/>grid\_spacing, terrain\_data-\/>gridbit, terrain\_data-\/>data);}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{197     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)terrain\_data, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{199 \}}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{202 \textcolor{comment}{/*}}
+\DoxyCodeLine{203 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{204 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{205 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{206 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{207 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{208 \textcolor{comment}{ */}}
+\DoxyCodeLine{209 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_terrain\_data\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  int32\_t lat, int32\_t lon, uint16\_t grid\_spacing, uint8\_t gridbit, \textcolor{keyword}{const} int16\_t *data)}
+\DoxyCodeLine{210 \{}
+\DoxyCodeLine{211 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{212     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{213     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, lat);}
+\DoxyCodeLine{214     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lon);}
+\DoxyCodeLine{215     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, grid\_spacing);}
+\DoxyCodeLine{216     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 42, gridbit);}
+\DoxyCodeLine{217     \_mav\_put\_int16\_t\_array(buf, 10, data, 16);}
+\DoxyCodeLine{218     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}}, buf, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{219 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{220     mavlink\_terrain\_data\_t *packet = (mavlink\_terrain\_data\_t *)msgbuf;}
+\DoxyCodeLine{221     packet-\/>lat = lat;}
+\DoxyCodeLine{222     packet-\/>lon = lon;}
+\DoxyCodeLine{223     packet-\/>grid\_spacing = grid\_spacing;}
+\DoxyCodeLine{224     packet-\/>gridbit = gridbit;}
+\DoxyCodeLine{225     mav\_array\_memcpy(packet-\/>data, data, \textcolor{keyword}{sizeof}(int16\_t)*16);}
+\DoxyCodeLine{226     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a128d207b2166c3b33c10ac0c9b933eb8}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_ade1b4a1c82a0d257659b26954a66c5c6}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a8fc9936a0533f9c900adfd53f2e34779}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_CRC}});}
+\DoxyCodeLine{227 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{228 \}}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 \textcolor{comment}{// MESSAGE TERRAIN\_DATA UNPACKING}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 }
+\DoxyCodeLine{241 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_terrain\_data\_get\_lat(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{242 \{}
+\DoxyCodeLine{243     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  0);}
+\DoxyCodeLine{244 \}}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{251 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_terrain\_data\_get\_lon(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{252 \{}
+\DoxyCodeLine{253     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  4);}
+\DoxyCodeLine{254 \}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{261 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_terrain\_data\_get\_grid\_spacing(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{262 \{}
+\DoxyCodeLine{263     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  8);}
+\DoxyCodeLine{264 \}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{271 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_terrain\_data\_get\_gridbit(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{272 \{}
+\DoxyCodeLine{273     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  42);}
+\DoxyCodeLine{274 \}}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{281 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_terrain\_data\_get\_data(\textcolor{keyword}{const} mavlink\_message\_t* msg, int16\_t *data)}
+\DoxyCodeLine{282 \{}
+\DoxyCodeLine{283     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t\_array(msg, data, 16,  10);}
+\DoxyCodeLine{284 \}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{292 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_terrain\_data\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_terrain\_data\_t* terrain\_data)}
+\DoxyCodeLine{293 \{}
+\DoxyCodeLine{294 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{295     terrain\_data-\/>lat = mavlink\_msg\_terrain\_data\_get\_lat(msg);}
+\DoxyCodeLine{296     terrain\_data-\/>lon = mavlink\_msg\_terrain\_data\_get\_lon(msg);}
+\DoxyCodeLine{297     terrain\_data-\/>grid\_spacing = mavlink\_msg\_terrain\_data\_get\_grid\_spacing(msg);}
+\DoxyCodeLine{298     mavlink\_msg\_terrain\_data\_get\_data(msg, terrain\_data-\/>data);}
+\DoxyCodeLine{299     terrain\_data-\/>gridbit = mavlink\_msg\_terrain\_data\_get\_gridbit(msg);}
+\DoxyCodeLine{300 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{301         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}};}
+\DoxyCodeLine{302         memset(terrain\_data, 0, \mbox{\hyperlink{mavlink__msg__terrain__data_8h_a70f395aa6486c858cb8b0d149dfe5c60}{MAVLINK\_MSG\_ID\_TERRAIN\_DATA\_LEN}});}
+\DoxyCodeLine{303     memcpy(terrain\_data, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{304 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{305 \}}
+
+\end{DoxyCode}

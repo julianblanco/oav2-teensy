@@ -1,0 +1,218 @@
+\hypertarget{quaternion_8h_source}{}\doxysection{quaternion.\+h}
+\label{quaternion_8h_source}\index{lib/Adafruit\_BNO055/utility/quaternion.h@{lib/Adafruit\_BNO055/utility/quaternion.h}}
+\mbox{\hyperlink{quaternion_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Inertial Measurement Unit Maths Library}}
+\DoxyCodeLine{3 \textcolor{comment}{    Copyright (C) 2013-\/2014  Samuel Cowen}}
+\DoxyCodeLine{4 \textcolor{comment}{        www.camelsoftware.com}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{    Bug fixes and cleanups by Gé Vissers (gvissers@gmail.com)}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{    This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{9 \textcolor{comment}{    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{10 \textcolor{comment}{    the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{11 \textcolor{comment}{    (at your option) any later version.}}
+\DoxyCodeLine{12 \textcolor{comment}{}}
+\DoxyCodeLine{13 \textcolor{comment}{    This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{14 \textcolor{comment}{    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{15 \textcolor{comment}{    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{16 \textcolor{comment}{    GNU General Public License for more details.}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{19 \textcolor{comment}{    along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{20 \textcolor{comment}{*/}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef IMUMATH\_QUATERNION\_HPP}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define IMUMATH\_QUATERNION\_HPP}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{matrix_8h}{matrix.h}}"{}}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceimu}{imu}} \{}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{class }\mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \{}
+\DoxyCodeLine{35 \textcolor{keyword}{public}:}
+\DoxyCodeLine{36   \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}() : \_w(1.0), \_x(0.0), \_y(0.0), \_z(0.0) \{\}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38   \mbox{\hyperlink{classimu_1_1_quaternion_a003a0efa788e9d4ee7814fd7a152fc8f}{Quaternion}}(\textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a093f8e136585630132a8b6d64fee53c0}{w}}, \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a1bb9df4af46d16c7d8f8a36c6b820954}{x}}, \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_afea5aeb6bc1d529d9044f7c3c15bbdac}{y}}, \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a5fef769fb1ce94a2f878621a3f35a7f3}{z}})}
+\DoxyCodeLine{39       : \_w(\mbox{\hyperlink{classimu_1_1_quaternion_a093f8e136585630132a8b6d64fee53c0}{w}}), \_x(\mbox{\hyperlink{classimu_1_1_quaternion_a1bb9df4af46d16c7d8f8a36c6b820954}{x}}), \_y(\mbox{\hyperlink{classimu_1_1_quaternion_afea5aeb6bc1d529d9044f7c3c15bbdac}{y}}), \_z(\mbox{\hyperlink{classimu_1_1_quaternion_a5fef769fb1ce94a2f878621a3f35a7f3}{z}}) \{\}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41   \mbox{\hyperlink{classimu_1_1_quaternion_a09308874d4d7b73014d395d65cdbf698}{Quaternion}}(\textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a093f8e136585630132a8b6d64fee53c0}{w}}, \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} vec)}
+\DoxyCodeLine{42       : \_w(\mbox{\hyperlink{classimu_1_1_quaternion_a093f8e136585630132a8b6d64fee53c0}{w}}), \_x(vec.\mbox{\hyperlink{classimu_1_1_quaternion_a1bb9df4af46d16c7d8f8a36c6b820954}{x}}()), \_y(vec.\mbox{\hyperlink{classimu_1_1_quaternion_afea5aeb6bc1d529d9044f7c3c15bbdac}{y}}()), \_z(vec.\mbox{\hyperlink{classimu_1_1_quaternion_a5fef769fb1ce94a2f878621a3f35a7f3}{z}}()) \{\}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_quaternion_a093f8e136585630132a8b6d64fee53c0}{w}}() \{ \textcolor{keywordflow}{return} \_w; \}}
+\DoxyCodeLine{45   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_quaternion_a1bb9df4af46d16c7d8f8a36c6b820954}{x}}() \{ \textcolor{keywordflow}{return} \_x; \}}
+\DoxyCodeLine{46   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_quaternion_afea5aeb6bc1d529d9044f7c3c15bbdac}{y}}() \{ \textcolor{keywordflow}{return} \_y; \}}
+\DoxyCodeLine{47   \textcolor{keywordtype}{double} \&\mbox{\hyperlink{classimu_1_1_quaternion_a5fef769fb1ce94a2f878621a3f35a7f3}{z}}() \{ \textcolor{keywordflow}{return} \_z; \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a0a1c66b4eda6ef415d00e9867093a5f7}{w}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_w; \}}
+\DoxyCodeLine{50   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a554d711b55d091d09156b5e2af272f54}{x}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_x; \}}
+\DoxyCodeLine{51   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_a07a9741c901280c0478dd8ed79c2ff45}{y}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_y; \}}
+\DoxyCodeLine{52   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_af7c7db050aac2917bf8f480c61a2e5d5}{z}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_z; \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54   \textcolor{keywordtype}{double} \mbox{\hyperlink{classimu_1_1_quaternion_acb16b0c7b11ad32898128bd4d2b5778c}{magnitude}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{55     \textcolor{keywordflow}{return} sqrt(\_w * \_w + \_x * \_x + \_y * \_y + \_z * \_z);}
+\DoxyCodeLine{56   \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_quaternion_a02870e5bfac393523596d72c5dc02b7a}{normalize}}() \{}
+\DoxyCodeLine{59     \textcolor{keywordtype}{double} mag = \mbox{\hyperlink{classimu_1_1_quaternion_acb16b0c7b11ad32898128bd4d2b5778c}{magnitude}}();}
+\DoxyCodeLine{60     *\textcolor{keyword}{this} = this-\/>\mbox{\hyperlink{classimu_1_1_quaternion_ad5ecfc1a8261db27f327c8e9ebf16db0}{scale}}(1 / mag);}
+\DoxyCodeLine{61   \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_a440431653433eb567585e75c517d595b}{conjugate}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}(\_w, -\/\_x, -\/\_y, -\/\_z); \}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_quaternion_aaac546f44b46ee6ebe5303969ad8c0df}{fromAxisAngle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \&axis, \textcolor{keywordtype}{double} theta) \{}
+\DoxyCodeLine{66     \_w = cos(theta / 2);}
+\DoxyCodeLine{67     \textcolor{comment}{// only need to calculate sine of half theta once}}
+\DoxyCodeLine{68     \textcolor{keywordtype}{double} sht = sin(theta / 2);}
+\DoxyCodeLine{69     \_x = axis.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}() * sht;}
+\DoxyCodeLine{70     \_y = axis.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}() * sht;}
+\DoxyCodeLine{71     \_z = axis.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}() * sht;}
+\DoxyCodeLine{72   \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_quaternion_acd5ad62c15a3920bd18e2f576a15b7e6}{fromMatrix}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_matrix}{Matrix<3>}} \&m) \{}
+\DoxyCodeLine{75     \textcolor{keywordtype}{double} tr = m.\mbox{\hyperlink{classimu_1_1_matrix_aac2eaf43d5637f96484ce1122fd7abc0}{trace}}();}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{double} S;}
+\DoxyCodeLine{78     \textcolor{keywordflow}{if} (tr > 0) \{}
+\DoxyCodeLine{79       S = sqrt(tr + 1.0) * 2;}
+\DoxyCodeLine{80       \_w = 0.25 * S;}
+\DoxyCodeLine{81       \_x = (m(2, 1) -\/ m(1, 2)) / S;}
+\DoxyCodeLine{82       \_y = (m(0, 2) -\/ m(2, 0)) / S;}
+\DoxyCodeLine{83       \_z = (m(1, 0) -\/ m(0, 1)) / S;}
+\DoxyCodeLine{84     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m(0, 0) > m(1, 1) \&\& m(0, 0) > m(2, 2)) \{}
+\DoxyCodeLine{85       S = sqrt(1.0 + m(0, 0) -\/ m(1, 1) -\/ m(2, 2)) * 2;}
+\DoxyCodeLine{86       \_w = (m(2, 1) -\/ m(1, 2)) / S;}
+\DoxyCodeLine{87       \_x = 0.25 * S;}
+\DoxyCodeLine{88       \_y = (m(0, 1) + m(1, 0)) / S;}
+\DoxyCodeLine{89       \_z = (m(0, 2) + m(2, 0)) / S;}
+\DoxyCodeLine{90     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (m(1, 1) > m(2, 2)) \{}
+\DoxyCodeLine{91       S = sqrt(1.0 + m(1, 1) -\/ m(0, 0) -\/ m(2, 2)) * 2;}
+\DoxyCodeLine{92       \_w = (m(0, 2) -\/ m(2, 0)) / S;}
+\DoxyCodeLine{93       \_x = (m(0, 1) + m(1, 0)) / S;}
+\DoxyCodeLine{94       \_y = 0.25 * S;}
+\DoxyCodeLine{95       \_z = (m(1, 2) + m(2, 1)) / S;}
+\DoxyCodeLine{96     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{97       S = sqrt(1.0 + m(2, 2) -\/ m(0, 0) -\/ m(1, 1)) * 2;}
+\DoxyCodeLine{98       \_w = (m(1, 0) -\/ m(0, 1)) / S;}
+\DoxyCodeLine{99       \_x = (m(0, 2) + m(2, 0)) / S;}
+\DoxyCodeLine{100       \_y = (m(1, 2) + m(2, 1)) / S;}
+\DoxyCodeLine{101       \_z = 0.25 * S;}
+\DoxyCodeLine{102     \}}
+\DoxyCodeLine{103   \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105   \textcolor{keywordtype}{void} \mbox{\hyperlink{classimu_1_1_quaternion_a2de40f8f609904e107e32b9485e92f88}{toAxisAngle}}(\mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \&axis, \textcolor{keywordtype}{double} \&angle)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{106     \textcolor{keywordtype}{double} sqw = sqrt(1 -\/ \_w * \_w);}
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (sqw == 0) \textcolor{comment}{// it's a singularity and divide by zero, avoid}}
+\DoxyCodeLine{108       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     angle = 2 * acos(\_w);}
+\DoxyCodeLine{111     axis.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}() = \_x / sqw;}
+\DoxyCodeLine{112     axis.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}() = \_y / sqw;}
+\DoxyCodeLine{113     axis.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}() = \_z / sqw;}
+\DoxyCodeLine{114   \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116   \mbox{\hyperlink{classimu_1_1_matrix}{Matrix<3>}} \mbox{\hyperlink{classimu_1_1_quaternion_ac512b0a5923c0c7ab36f52fcaa017396}{toMatrix}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{117     \mbox{\hyperlink{classimu_1_1_matrix}{Matrix<3>}} ret;}
+\DoxyCodeLine{118     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(0, 0) = 1 -\/ 2 * \_y * \_y -\/ 2 * \_z * \_z;}
+\DoxyCodeLine{119     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(0, 1) = 2 * \_x * \_y -\/ 2 * \_w * \_z;}
+\DoxyCodeLine{120     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(0, 2) = 2 * \_x * \_z + 2 * \_w * \_y;}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(1, 0) = 2 * \_x * \_y + 2 * \_w * \_z;}
+\DoxyCodeLine{123     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(1, 1) = 1 -\/ 2 * \_x * \_x -\/ 2 * \_z * \_z;}
+\DoxyCodeLine{124     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(1, 2) = 2 * \_y * \_z -\/ 2 * \_w * \_x;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(2, 0) = 2 * \_x * \_z -\/ 2 * \_w * \_y;}
+\DoxyCodeLine{127     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(2, 1) = 2 * \_y * \_z + 2 * \_w * \_x;}
+\DoxyCodeLine{128     ret.\mbox{\hyperlink{classimu_1_1_matrix_a4634bf3ef971e1f4193e2abeb115646a}{cell}}(2, 2) = 1 -\/ 2 * \_x * \_x -\/ 2 * \_y * \_y;}
+\DoxyCodeLine{129     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{130   \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132   \textcolor{comment}{// Returns euler angles that represent the quaternion.  Angles are}}
+\DoxyCodeLine{133   \textcolor{comment}{// returned in rotation order and right-\/handed about the specified}}
+\DoxyCodeLine{134   \textcolor{comment}{// axes:}}
+\DoxyCodeLine{135   \textcolor{comment}{//}}
+\DoxyCodeLine{136   \textcolor{comment}{//   v[0] is applied 1st about z (ie, roll)}}
+\DoxyCodeLine{137   \textcolor{comment}{//   v[1] is applied 2nd about y (ie, pitch)}}
+\DoxyCodeLine{138   \textcolor{comment}{//   v[2] is applied 3rd about x (ie, yaw)}}
+\DoxyCodeLine{139   \textcolor{comment}{//}}
+\DoxyCodeLine{140   \textcolor{comment}{// Note that this means result.x() is not a rotation about x;}}
+\DoxyCodeLine{141   \textcolor{comment}{// similarly for result.z().}}
+\DoxyCodeLine{142   \textcolor{comment}{//}}
+\DoxyCodeLine{143   \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \mbox{\hyperlink{classimu_1_1_quaternion_abca15a0b46c7ba59ec0a56c6a1530d55}{toEuler}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{144     \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} ret;}
+\DoxyCodeLine{145     \textcolor{keywordtype}{double} sqw = \_w * \_w;}
+\DoxyCodeLine{146     \textcolor{keywordtype}{double} sqx = \_x * \_x;}
+\DoxyCodeLine{147     \textcolor{keywordtype}{double} sqy = \_y * \_y;}
+\DoxyCodeLine{148     \textcolor{keywordtype}{double} sqz = \_z * \_z;}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     ret.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}() = atan2(2.0 * (\_x * \_y + \_z * \_w), (sqx -\/ sqy -\/ sqz + sqw));}
+\DoxyCodeLine{151     ret.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}() = asin(-\/2.0 * (\_x * \_z -\/ \_y * \_w) / (sqx + sqy + sqz + sqw));}
+\DoxyCodeLine{152     ret.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}() = atan2(2.0 * (\_y * \_z + \_x * \_w), (-\/sqx -\/ sqy + sqz + sqw));}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{155   \}}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157   \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \mbox{\hyperlink{classimu_1_1_quaternion_ab46fcdc7d435e304732508fc9790518a}{toAngularVelocity}}(\textcolor{keywordtype}{double} dt)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{158     \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} ret;}
+\DoxyCodeLine{159     \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} one(1.0, 0.0, 0.0, 0.0);}
+\DoxyCodeLine{160     \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} delta = one -\/ *\textcolor{keyword}{this};}
+\DoxyCodeLine{161     \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} r = (delta / dt);}
+\DoxyCodeLine{162     r = r * 2;}
+\DoxyCodeLine{163     r = r * one;}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165     ret.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}() = r.\mbox{\hyperlink{classimu_1_1_quaternion_a1bb9df4af46d16c7d8f8a36c6b820954}{x}}();}
+\DoxyCodeLine{166     ret.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}() = r.\mbox{\hyperlink{classimu_1_1_quaternion_afea5aeb6bc1d529d9044f7c3c15bbdac}{y}}();}
+\DoxyCodeLine{167     ret.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}() = r.\mbox{\hyperlink{classimu_1_1_quaternion_a5fef769fb1ce94a2f878621a3f35a7f3}{z}}();}
+\DoxyCodeLine{168     \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{169   \}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171   \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \mbox{\hyperlink{classimu_1_1_quaternion_ae3b882806f897624f387f2813aeff6d1}{rotateVector}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector<2>}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{172     \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_ae3b882806f897624f387f2813aeff6d1}{rotateVector}}(\mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}}(v.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}(), v.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}()));}
+\DoxyCodeLine{173   \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175   \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \mbox{\hyperlink{classimu_1_1_quaternion_a345cf94dbc7ff91a389fc69f4e218083}{rotateVector}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} \&v)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{176     \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} qv(\_x, \_y, \_z);}
+\DoxyCodeLine{177     \mbox{\hyperlink{classimu_1_1_vector}{Vector<3>}} t = qv.\mbox{\hyperlink{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}{cross}}(v) * 2.0;}
+\DoxyCodeLine{178     \textcolor{keywordflow}{return} v + t * \_w + qv.\mbox{\hyperlink{classimu_1_1_vector_aeb3083b3c6dff29c4710745b5631276e}{cross}}(t);}
+\DoxyCodeLine{179   \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_a362ebf43a6edf1210847a620f690875b}{operator*}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \&q)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{182     \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}(\_w * q.\_w -\/ \_x * q.\_x -\/ \_y * q.\_y -\/ \_z * q.\_z,}
+\DoxyCodeLine{183                       \_w * q.\_x + \_x * q.\_w + \_y * q.\_z -\/ \_z * q.\_y,}
+\DoxyCodeLine{184                       \_w * q.\_y -\/ \_x * q.\_z + \_y * q.\_w + \_z * q.\_x,}
+\DoxyCodeLine{185                       \_w * q.\_z + \_x * q.\_y -\/ \_y * q.\_x + \_z * q.\_w);}
+\DoxyCodeLine{186   \}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_a536527ee269f4224e5047eea3fe94dd9}{operator+}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \&q)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{189     \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}(\_w + q.\_w, \_x + q.\_x, \_y + q.\_y, \_z + q.\_z);}
+\DoxyCodeLine{190   \}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_a03a42d0a60301ce82be34913bfc2d8e9}{operator-\/}}(\textcolor{keyword}{const} \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \&q)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{193     \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}(\_w -\/ q.\_w, \_x -\/ q.\_x, \_y -\/ q.\_y, \_z -\/ q.\_z);}
+\DoxyCodeLine{194   \}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_a58fc8f5966657ef5909b309ff1cc852f}{operator/}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{197     \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}(\_w / scalar, \_x / scalar, \_y / scalar, \_z / scalar);}
+\DoxyCodeLine{198   \}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_ae7d41ff8eb63adee8e54c64f8a88ad15}{operator*}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_ad5ecfc1a8261db27f327c8e9ebf16db0}{scale}}(scalar); \}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202   \mbox{\hyperlink{classimu_1_1_quaternion}{Quaternion}} \mbox{\hyperlink{classimu_1_1_quaternion_ad5ecfc1a8261db27f327c8e9ebf16db0}{scale}}(\textcolor{keywordtype}{double} scalar)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{203     \textcolor{keywordflow}{return} \mbox{\hyperlink{classimu_1_1_quaternion_a621ed3a7619d16099641706ff82aef38}{Quaternion}}(\_w * scalar, \_x * scalar, \_y * scalar, \_z * scalar);}
+\DoxyCodeLine{204   \}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 \textcolor{keyword}{private}:}
+\DoxyCodeLine{207   \textcolor{keywordtype}{double} \_w, \_x, \_y, \_z;}
+\DoxyCodeLine{208 \};}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 \} \textcolor{comment}{// namespace imu}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

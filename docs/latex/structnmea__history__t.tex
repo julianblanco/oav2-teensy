@@ -1,0 +1,96 @@
+\hypertarget{structnmea__history__t}{}\doxysection{nmea\+\_\+history\+\_\+t Struct Reference}
+\label{structnmea__history__t}\index{nmea\_history\_t@{nmea\_history\_t}}
+
+
+{\ttfamily \#include $<$NMEA\+\_\+data.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int16\+\_\+t $\ast$ \mbox{\hyperlink{structnmea__history__t_a59f3003809801affc387b54971f5d32b}{data}} = NULL
+\begin{DoxyCompactList}\small\item\em array of ints, oldest first \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}{n}} = 0
+\begin{DoxyCompactList}\small\item\em number of history array elements \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structnmea__history__t_a44a9259e5426c52c809e44ae22d67fa6}{last\+History}} = 0
+\begin{DoxyCompactList}\small\item\em millis() when history was last updated \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structnmea__history__t_a2c672bfbc9e54c4f202a75fed5f3fd11}{history\+Interval}} = 20
+\begin{DoxyCompactList}\small\item\em seconds between history updates \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{structnmea__history__t_a4c98f18694ee688d7c4ff2d4d6941739}{scale}} = 1.\+0
+\begin{DoxyCompactList}\small\item\em history = (smoothed -\/ offset) $\ast$ scale \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{structnmea__history__t_a54afeb9a77cf9595d8516aded551bf44}{offset}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em value = (float) history / scale + offset \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct to contain all the details associated with the history of an NMEA data value as an optional extension to the data value struct. The history is stored as scaled integers to save space while caputuring a reasonable level of resolution. The integer is set equal to scale $\ast$ (X -\/ offset) and can be converted back to an approximate float value with X = I / scale + offset
+
+Only some tags have history in order to save memory. Most of the memory cost is directly in the array.
+
+192 history values taken every 20 seconds covers just over an hour. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structnmea__history__t_a59f3003809801affc387b54971f5d32b}\label{structnmea__history__t_a59f3003809801affc387b54971f5d32b}} 
+\index{nmea\_history\_t@{nmea\_history\_t}!data@{data}}
+\index{data@{data}!nmea\_history\_t@{nmea\_history\_t}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily int16\+\_\+t$\ast$ nmea\+\_\+history\+\_\+t\+::data = NULL}
+
+
+
+array of ints, oldest first 
+
+\mbox{\Hypertarget{structnmea__history__t_a2c672bfbc9e54c4f202a75fed5f3fd11}\label{structnmea__history__t_a2c672bfbc9e54c4f202a75fed5f3fd11}} 
+\index{nmea\_history\_t@{nmea\_history\_t}!historyInterval@{historyInterval}}
+\index{historyInterval@{historyInterval}!nmea\_history\_t@{nmea\_history\_t}}
+\doxysubsubsection{\texorpdfstring{historyInterval}{historyInterval}}
+{\footnotesize\ttfamily uint16\+\_\+t nmea\+\_\+history\+\_\+t\+::history\+Interval = 20}
+
+
+
+seconds between history updates 
+
+\mbox{\Hypertarget{structnmea__history__t_a44a9259e5426c52c809e44ae22d67fa6}\label{structnmea__history__t_a44a9259e5426c52c809e44ae22d67fa6}} 
+\index{nmea\_history\_t@{nmea\_history\_t}!lastHistory@{lastHistory}}
+\index{lastHistory@{lastHistory}!nmea\_history\_t@{nmea\_history\_t}}
+\doxysubsubsection{\texorpdfstring{lastHistory}{lastHistory}}
+{\footnotesize\ttfamily uint32\+\_\+t nmea\+\_\+history\+\_\+t\+::last\+History = 0}
+
+
+
+millis() when history was last updated 
+
+\mbox{\Hypertarget{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}\label{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}} 
+\index{nmea\_history\_t@{nmea\_history\_t}!n@{n}}
+\index{n@{n}!nmea\_history\_t@{nmea\_history\_t}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily unsigned nmea\+\_\+history\+\_\+t\+::n = 0}
+
+
+
+number of history array elements 
+
+\mbox{\Hypertarget{structnmea__history__t_a54afeb9a77cf9595d8516aded551bf44}\label{structnmea__history__t_a54afeb9a77cf9595d8516aded551bf44}} 
+\index{nmea\_history\_t@{nmea\_history\_t}!offset@{offset}}
+\index{offset@{offset}!nmea\_history\_t@{nmea\_history\_t}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} nmea\+\_\+history\+\_\+t\+::offset = 0.\+0}
+
+
+
+value = (float) history / scale + offset 
+
+\mbox{\Hypertarget{structnmea__history__t_a4c98f18694ee688d7c4ff2d4d6941739}\label{structnmea__history__t_a4c98f18694ee688d7c4ff2d4d6941739}} 
+\index{nmea\_history\_t@{nmea\_history\_t}!scale@{scale}}
+\index{scale@{scale}!nmea\_history\_t@{nmea\_history\_t}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} nmea\+\_\+history\+\_\+t\+::scale = 1.\+0}
+
+
+
+history = (smoothed -\/ offset) $\ast$ scale 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_n_m_e_a__data_8h}{NMEA\+\_\+data.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,904 @@
+\hypertarget{class_b_n_o080}{}\doxysection{BNO080 Class Reference}
+\label{class_b_n_o080}\index{BNO080@{BNO080}}
+
+
+{\ttfamily \#include $<$Spark\+Fun\+\_\+\+BNO080\+\_\+\+Arduino\+\_\+\+Library.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_ad19719be69ae4fc038015627a6f37484}{begin}} (uint8\+\_\+t device\+Address=\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a68a3909c1deb2c0e80c8db9a8e1d0e6c}{BNO080\+\_\+\+DEFAULT\+\_\+\+ADDRESS}}, Two\+Wire \&wire\+Port=Wire, uint8\+\_\+t int\+Pin=255)
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_a5343cc95079c6a5df312083790e3f8d6}{begin\+SPI}} (uint8\+\_\+t user\+\_\+\+CSPin, uint8\+\_\+t user\+\_\+\+WAKPin, uint8\+\_\+t user\+\_\+\+INTPin, uint8\+\_\+t user\+\_\+\+RSTPin, uint32\+\_\+t spi\+Port\+Speed=3000000, SPIClass \&spi\+Port=SPI)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a23c277b1b520c52b7ea0c2d9d8f9260a}{enable\+Debugging}} (Stream \&debug\+Port=Serial)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a9a809f442316379dbef61e78d70f6b3a}{soft\+Reset}} ()
+\item 
+bool \mbox{\hyperlink{class_b_n_o080_a12f2611bc5055c4c1c9bbf8cb25e85cc}{has\+Reset}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a961e7277e517faa62f7d5a79bdcd1144}{reset\+Reason}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_afa2b3d816602f475a9926a67dda59f8a}{mode\+On}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a2e739c5b634e76de8f52255e84e328c7}{mode\+Sleep}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a387ca93b51c1683425b051a35850053f}{q\+To\+Float}} (int16\+\_\+t fixed\+Point\+Value, uint8\+\_\+t q\+Point)
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_a556329e4879fa527bdc949e120acc29d}{wait\+For\+I2C}} ()
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_a56c8f0231b384f4da094ba465814b185}{wait\+For\+SPI}} ()
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_a4f372d517d3125e73a23498f53cbe0aa}{receive\+Packet}} (void)
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_a804cc98072cb62027b171c07b93afb66}{get\+Data}} (uint16\+\_\+t bytes\+Remaining)
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_a51bc2b125d590dc988ae277ea66a8625}{send\+Packet}} (uint8\+\_\+t channel\+Number, uint8\+\_\+t data\+Length)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a5d0a36bd71601dd845090be70640c206}{print\+Packet}} (void)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_aeda2faa4404e22925d3f77c41ebdf9ea}{print\+Header}} (void)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a6e909dff75a75500117287304004aac6}{enable\+Rotation\+Vector}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_adc3ee3b4cbd07e1551e35666b4e28d3a}{enable\+Game\+Rotation\+Vector}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a74283c1a3ba091e836c61cbe2a229027}{enable\+ARVRStabilized\+Rotation\+Vector}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_ad3bdf7fa9ad4fc58c59fbffde6b8f4ff}{enable\+ARVRStabilized\+Game\+Rotation\+Vector}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_ab9a29cc60eabf2c469cd5f1b0941b76c}{enable\+Accelerometer}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a75b2431da025dad40ccee2e1200542e1}{enable\+Linear\+Accelerometer}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a124433a4ea2a13234b392f9e9b213ff9}{enable\+Gyro}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_aea14b1dd736b91c44046bc0354410ca5}{enable\+Magnetometer}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_afdadd1bfd427b2df480e363a87c18224}{enable\+Tap\+Detector}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a5029bc88c6458e7eb12f882f29bde8c4}{enable\+Step\+Counter}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_ad1dc067860fc633e939f68cde1cf1eef}{enable\+Stability\+Classifier}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a84168ad137c4d8c16ef177a4e49258d4}{enable\+Activity\+Classifier}} (uint16\+\_\+t time\+Between\+Reports, uint32\+\_\+t activities\+To\+Enable, uint8\+\_\+t(\&activity\+Confidences)\mbox{[}9\mbox{]})
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a9d6e45212e89d11e2467d4d52170fb85}{enable\+Raw\+Accelerometer}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a7b5f60a5834a345143048c260f9b8a96}{enable\+Raw\+Gyro}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a50a475a12f12c56d4b42771ddeca1444}{enable\+Raw\+Magnetometer}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a1ec9fdeb488a2e71e8e872cb8d7a00a2}{enable\+Gyro\+Integrated\+Rotation\+Vector}} (uint16\+\_\+t time\+Between\+Reports)
+\item 
+bool \mbox{\hyperlink{class_b_n_o080_a27933a4623309a040eb0d456723ff57b}{data\+Available}} (void)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a625a039215cb3b87ccf93166aff227fd}{get\+Readings}} (void)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a68a96babd44486e723d7e9582d761999}{parse\+Input\+Report}} (void)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_b_n_o080_aa6c766b3c547ed6db90225769d7e2d57}{parse\+Command\+Report}} (void)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a093d683bed10bb6d1282de0d2fcb73b5}{get\+Quat}} (float \&i, float \&j, float \&k, float \&real, float \&rad\+Accuracy, uint8\+\_\+t \&accuracy)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_aa75bbd109ac767de5d588ad1151322c8}{get\+QuatI}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a2ca55d6200af2629d1d80e6c5577cb63}{get\+QuatJ}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_abeb09e3600b140d7447d9e6a9ac81ad8}{get\+QuatK}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a3b0b23d3d061baff2858ffa440bc2b77}{get\+Quat\+Real}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a10b5cd695195620c7238cd48a7e366f5}{get\+Quat\+Radian\+Accuracy}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a35edcb9c8ffa4919d143472532ea7956}{get\+Quat\+Accuracy}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a29cf25109f3eb010d2bddbe591065335}{get\+Accel}} (float \&x, float \&y, float \&z, uint8\+\_\+t \&accuracy)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a6509931a6833636ca3d41dd2e7729a34}{get\+AccelX}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a636cfd2999e8fed0c6f3a3ff2d68204d}{get\+AccelY}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a2aa682da9ee80a807ffc93c8ea72f88e}{get\+AccelZ}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_af148326f8725c3dc10ce276e5480bea5}{get\+Accel\+Accuracy}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a0a5141c88ced60c31e0c338853e52829}{get\+Lin\+Accel}} (float \&x, float \&y, float \&z, uint8\+\_\+t \&accuracy)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a3458038df1c1b4c0ed12722f1f939b58}{get\+Lin\+AccelX}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a9e61b5f8dca1adbae9525ec453419e31}{get\+Lin\+AccelY}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_aa17dbccf10e19a9b3117ba3ff99b3c7f}{get\+Lin\+AccelZ}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_ae809a29b91fd6b0c37b41f800855880e}{get\+Lin\+Accel\+Accuracy}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a5d066ff0810bd1d87a64476f6de6d2c5}{get\+Gyro}} (float \&x, float \&y, float \&z, uint8\+\_\+t \&accuracy)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_acad841ad609af8026335ad07f56e2ef3}{get\+GyroX}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_afeb354f551c52c7709f4caf20f1b5f18}{get\+GyroY}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a8b4406899924d5fe0205907cf4e7783e}{get\+GyroZ}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a400d326f7673bad3e2be02badfa78c82}{get\+Gyro\+Accuracy}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a0025aceb101762a6ab3aed78ddad0ada}{get\+Fast\+Gyro}} (float \&x, float \&y, float \&z)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a55474a98c3c0734d09fc5be006b3086e}{get\+Fast\+GyroX}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_af89939247c6e12fb34d57dce9fa492bd}{get\+Fast\+GyroY}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a0037949cf2230aa5a1d6c059be66c960}{get\+Fast\+GyroZ}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a96183a25295ed8e35a1b7ebed5a4f5ba}{get\+Mag}} (float \&x, float \&y, float \&z, uint8\+\_\+t \&accuracy)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a2b54726ef90be75bad808b6f04120b10}{get\+MagX}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a21bc0a5b447bb855043767859e5953b9}{get\+MagY}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a03d28ed03226c2c14537231dee4d91ee}{get\+MagZ}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a07fe198c493796f6e026492b933f926d}{get\+Mag\+Accuracy}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a933fcd3a41851f578df8237f38d944c5}{calibrate\+Accelerometer}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a0f71618628851ae54a204397c5401cbb}{calibrate\+Gyro}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_ad94649d7f56f8195e983caf3f63cb447}{calibrate\+Magnetometer}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a83577aca12955f9bf690880daf1653a2}{calibrate\+Planar\+Accelerometer}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_abf24202e9c1868616c01e777889bf65d}{calibrate\+All}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a9c05e1b2dcb1fed66b4ce12d95b2bad0}{end\+Calibration}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a4852ae0323e71d6ca93901d474791701}{save\+Calibration}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a97e1b8c973150fc7d52bfd66ec235e68}{request\+Calibration\+Status}} ()
+\item 
+boolean \mbox{\hyperlink{class_b_n_o080_ae3ffb842020d42406fd930a00b44e4dd}{calibration\+Complete}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a37272a3d02fcac31ce4bf5088e114e1f}{get\+Tap\+Detector}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_b_n_o080_af87e1bc2d96a98d80f8434459f0c3f4c}{get\+Time\+Stamp}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a57cec6a57eb647c06438428ce0749783}{get\+Step\+Count}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_aa9e642757216421e9807db2300ca430d}{get\+Stability\+Classifier}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a8a86e2e18a58e950702130b5041952f0}{get\+Activity\+Classifier}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a96fc13328ad9d7f8fd5c1f718c1edab4}{get\+Raw\+AccelX}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a2a8356f53e5de5771507e7a5c3ea4dfe}{get\+Raw\+AccelY}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_ab4bc599ee09013e9ef7581322187437a}{get\+Raw\+AccelZ}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_af24c206f9b83dad7d6d508101b73a0ba}{get\+Raw\+GyroX}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_af28fe02b1c1f2a3d811f40547c8f7418}{get\+Raw\+GyroY}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_ae95386a4c0f1181235aad24ae3c8343e}{get\+Raw\+GyroZ}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a99d1706bc33727d063e4754adb17f099}{get\+Raw\+MagX}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a71a50fff2033289542b9a205a52aaf19}{get\+Raw\+MagY}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a25ec31714609d54bdda62a190b77eadb}{get\+Raw\+MagZ}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a86b811ca425cdb5b321150424ba19a57}{get\+Roll}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_abf25adb17497676c420a246cf5c9cb20}{get\+Pitch}} ()
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a22d262a234f238d94531d98eab5d2986}{get\+Yaw}} ()
+\item 
+void \mbox{\hyperlink{class_b_n_o080_ad8ee71b985377d624e34dda56516ec97}{set\+Feature\+Command}} (uint8\+\_\+t report\+ID, uint16\+\_\+t time\+Between\+Reports)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_ac6c46a2c3e28f36b47123c761186e74d}{set\+Feature\+Command}} (uint8\+\_\+t report\+ID, uint16\+\_\+t time\+Between\+Reports, uint32\+\_\+t specific\+Config)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a722813f9f8022f1f4a005d9c464a5224}{send\+Command}} (uint8\+\_\+t command)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_a20c4a32ab3832a2a8f1b3a5c344aafb2}{send\+Calibrate\+Command}} (uint8\+\_\+t thing\+To\+Calibrate)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a417ab857b87660296d82b4f1b5efe451}{get\+Q1}} (uint16\+\_\+t record\+ID)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_ac38f6b2173b0543169abe8cd9df783b8}{get\+Q2}} (uint16\+\_\+t record\+ID)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_b_n_o080_a2e2406c687a515cf7d5a501e7c7fd706}{get\+Q3}} (uint16\+\_\+t record\+ID)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_aa76af2c1862480e2a593c8bbd1c2b6c0}{get\+Resolution}} (uint16\+\_\+t record\+ID)
+\item 
+float \mbox{\hyperlink{class_b_n_o080_a9db2e2aaaa89a45bbc6e85bd0b78de08}{get\+Range}} (uint16\+\_\+t record\+ID)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_b_n_o080_a23aa9a5e3aedd4464bf1e17c63756aac}{read\+FRSword}} (uint16\+\_\+t record\+ID, uint8\+\_\+t word\+Number)
+\item 
+void \mbox{\hyperlink{class_b_n_o080_aaf7c5f79f6d611ce7a9f5f370270b208}{frs\+Read\+Request}} (uint16\+\_\+t record\+ID, uint16\+\_\+t read\+Offset, uint16\+\_\+t block\+Size)
+\item 
+bool \mbox{\hyperlink{class_b_n_o080_a0ab36a84ef36e30dbb40d5f40ad80e8b}{read\+FRSdata}} (uint16\+\_\+t record\+ID, uint8\+\_\+t start\+Location, uint8\+\_\+t words\+To\+Read)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_ab6c6c3724fcdca98233dc3dc8114dc6b}{shtp\+Header}} \mbox{[}4\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a1dc1f807ca4810d927a4ce9fcaec45ab}{shtp\+Data}} \mbox{[}\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a879456c3b8e2853f7044d764e9c180d4}{MAX\+\_\+\+PACKET\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_affdd3ab68081775957bcc48f51cb0a22}{sequence\+Number}} \mbox{[}6\mbox{]} = \{0, 0, 0, 0, 0, 0\}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_n_o080_a86fa467e394e0c130f011d0762522337}{command\+Sequence\+Number}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_b_n_o080_afb9a6d02c6d2e12328f59f6196badfe4}{meta\+Data}} \mbox{[}\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_aa6cd4fc5568a0b0fb40391a2fea3b69e}{MAX\+\_\+\+METADATA\+\_\+\+SIZE}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_n_o080_ad19719be69ae4fc038015627a6f37484}\label{class_b_n_o080_ad19719be69ae4fc038015627a6f37484}} 
+\index{BNO080@{BNO080}!begin@{begin}}
+\index{begin@{begin}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily boolean BNO080\+::begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{device\+Address = {\ttfamily \mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a68a3909c1deb2c0e80c8db9a8e1d0e6c}{BNO080\+\_\+\+DEFAULT\+\_\+\+ADDRESS}}},  }\item[{Two\+Wire \&}]{wire\+Port = {\ttfamily Wire},  }\item[{uint8\+\_\+t}]{int\+Pin = {\ttfamily 255} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a5343cc95079c6a5df312083790e3f8d6}\label{class_b_n_o080_a5343cc95079c6a5df312083790e3f8d6}} 
+\index{BNO080@{BNO080}!beginSPI@{beginSPI}}
+\index{beginSPI@{beginSPI}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{beginSPI()}{beginSPI()}}
+{\footnotesize\ttfamily boolean BNO080\+::begin\+SPI (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{user\+\_\+\+CSPin,  }\item[{uint8\+\_\+t}]{user\+\_\+\+WAKPin,  }\item[{uint8\+\_\+t}]{user\+\_\+\+INTPin,  }\item[{uint8\+\_\+t}]{user\+\_\+\+RSTPin,  }\item[{uint32\+\_\+t}]{spi\+Port\+Speed = {\ttfamily 3000000},  }\item[{SPIClass \&}]{spi\+Port = {\ttfamily SPI} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a933fcd3a41851f578df8237f38d944c5}\label{class_b_n_o080_a933fcd3a41851f578df8237f38d944c5}} 
+\index{BNO080@{BNO080}!calibrateAccelerometer@{calibrateAccelerometer}}
+\index{calibrateAccelerometer@{calibrateAccelerometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{calibrateAccelerometer()}{calibrateAccelerometer()}}
+{\footnotesize\ttfamily void BNO080\+::calibrate\+Accelerometer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_abf24202e9c1868616c01e777889bf65d}\label{class_b_n_o080_abf24202e9c1868616c01e777889bf65d}} 
+\index{BNO080@{BNO080}!calibrateAll@{calibrateAll}}
+\index{calibrateAll@{calibrateAll}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{calibrateAll()}{calibrateAll()}}
+{\footnotesize\ttfamily void BNO080\+::calibrate\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a0f71618628851ae54a204397c5401cbb}\label{class_b_n_o080_a0f71618628851ae54a204397c5401cbb}} 
+\index{BNO080@{BNO080}!calibrateGyro@{calibrateGyro}}
+\index{calibrateGyro@{calibrateGyro}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{calibrateGyro()}{calibrateGyro()}}
+{\footnotesize\ttfamily void BNO080\+::calibrate\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ad94649d7f56f8195e983caf3f63cb447}\label{class_b_n_o080_ad94649d7f56f8195e983caf3f63cb447}} 
+\index{BNO080@{BNO080}!calibrateMagnetometer@{calibrateMagnetometer}}
+\index{calibrateMagnetometer@{calibrateMagnetometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{calibrateMagnetometer()}{calibrateMagnetometer()}}
+{\footnotesize\ttfamily void BNO080\+::calibrate\+Magnetometer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a83577aca12955f9bf690880daf1653a2}\label{class_b_n_o080_a83577aca12955f9bf690880daf1653a2}} 
+\index{BNO080@{BNO080}!calibratePlanarAccelerometer@{calibratePlanarAccelerometer}}
+\index{calibratePlanarAccelerometer@{calibratePlanarAccelerometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{calibratePlanarAccelerometer()}{calibratePlanarAccelerometer()}}
+{\footnotesize\ttfamily void BNO080\+::calibrate\+Planar\+Accelerometer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ae3ffb842020d42406fd930a00b44e4dd}\label{class_b_n_o080_ae3ffb842020d42406fd930a00b44e4dd}} 
+\index{BNO080@{BNO080}!calibrationComplete@{calibrationComplete}}
+\index{calibrationComplete@{calibrationComplete}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{calibrationComplete()}{calibrationComplete()}}
+{\footnotesize\ttfamily boolean BNO080\+::calibration\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a27933a4623309a040eb0d456723ff57b}\label{class_b_n_o080_a27933a4623309a040eb0d456723ff57b}} 
+\index{BNO080@{BNO080}!dataAvailable@{dataAvailable}}
+\index{dataAvailable@{dataAvailable}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{dataAvailable()}{dataAvailable()}}
+{\footnotesize\ttfamily bool BNO080\+::data\+Available (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ab9a29cc60eabf2c469cd5f1b0941b76c}\label{class_b_n_o080_ab9a29cc60eabf2c469cd5f1b0941b76c}} 
+\index{BNO080@{BNO080}!enableAccelerometer@{enableAccelerometer}}
+\index{enableAccelerometer@{enableAccelerometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableAccelerometer()}{enableAccelerometer()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Accelerometer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a84168ad137c4d8c16ef177a4e49258d4}\label{class_b_n_o080_a84168ad137c4d8c16ef177a4e49258d4}} 
+\index{BNO080@{BNO080}!enableActivityClassifier@{enableActivityClassifier}}
+\index{enableActivityClassifier@{enableActivityClassifier}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableActivityClassifier()}{enableActivityClassifier()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Activity\+Classifier (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports,  }\item[{uint32\+\_\+t}]{activities\+To\+Enable,  }\item[{uint8\+\_\+t(\&)}]{activity\+Confidences\mbox{[}9\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ad3bdf7fa9ad4fc58c59fbffde6b8f4ff}\label{class_b_n_o080_ad3bdf7fa9ad4fc58c59fbffde6b8f4ff}} 
+\index{BNO080@{BNO080}!enableARVRStabilizedGameRotationVector@{enableARVRStabilizedGameRotationVector}}
+\index{enableARVRStabilizedGameRotationVector@{enableARVRStabilizedGameRotationVector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableARVRStabilizedGameRotationVector()}{enableARVRStabilizedGameRotationVector()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+ARVRStabilized\+Game\+Rotation\+Vector (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a74283c1a3ba091e836c61cbe2a229027}\label{class_b_n_o080_a74283c1a3ba091e836c61cbe2a229027}} 
+\index{BNO080@{BNO080}!enableARVRStabilizedRotationVector@{enableARVRStabilizedRotationVector}}
+\index{enableARVRStabilizedRotationVector@{enableARVRStabilizedRotationVector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableARVRStabilizedRotationVector()}{enableARVRStabilizedRotationVector()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+ARVRStabilized\+Rotation\+Vector (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a23c277b1b520c52b7ea0c2d9d8f9260a}\label{class_b_n_o080_a23c277b1b520c52b7ea0c2d9d8f9260a}} 
+\index{BNO080@{BNO080}!enableDebugging@{enableDebugging}}
+\index{enableDebugging@{enableDebugging}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableDebugging()}{enableDebugging()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Debugging (\begin{DoxyParamCaption}\item[{Stream \&}]{debug\+Port = {\ttfamily Serial} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_adc3ee3b4cbd07e1551e35666b4e28d3a}\label{class_b_n_o080_adc3ee3b4cbd07e1551e35666b4e28d3a}} 
+\index{BNO080@{BNO080}!enableGameRotationVector@{enableGameRotationVector}}
+\index{enableGameRotationVector@{enableGameRotationVector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableGameRotationVector()}{enableGameRotationVector()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Game\+Rotation\+Vector (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a124433a4ea2a13234b392f9e9b213ff9}\label{class_b_n_o080_a124433a4ea2a13234b392f9e9b213ff9}} 
+\index{BNO080@{BNO080}!enableGyro@{enableGyro}}
+\index{enableGyro@{enableGyro}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableGyro()}{enableGyro()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Gyro (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a1ec9fdeb488a2e71e8e872cb8d7a00a2}\label{class_b_n_o080_a1ec9fdeb488a2e71e8e872cb8d7a00a2}} 
+\index{BNO080@{BNO080}!enableGyroIntegratedRotationVector@{enableGyroIntegratedRotationVector}}
+\index{enableGyroIntegratedRotationVector@{enableGyroIntegratedRotationVector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableGyroIntegratedRotationVector()}{enableGyroIntegratedRotationVector()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Gyro\+Integrated\+Rotation\+Vector (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a75b2431da025dad40ccee2e1200542e1}\label{class_b_n_o080_a75b2431da025dad40ccee2e1200542e1}} 
+\index{BNO080@{BNO080}!enableLinearAccelerometer@{enableLinearAccelerometer}}
+\index{enableLinearAccelerometer@{enableLinearAccelerometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableLinearAccelerometer()}{enableLinearAccelerometer()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Linear\+Accelerometer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aea14b1dd736b91c44046bc0354410ca5}\label{class_b_n_o080_aea14b1dd736b91c44046bc0354410ca5}} 
+\index{BNO080@{BNO080}!enableMagnetometer@{enableMagnetometer}}
+\index{enableMagnetometer@{enableMagnetometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableMagnetometer()}{enableMagnetometer()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Magnetometer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a9d6e45212e89d11e2467d4d52170fb85}\label{class_b_n_o080_a9d6e45212e89d11e2467d4d52170fb85}} 
+\index{BNO080@{BNO080}!enableRawAccelerometer@{enableRawAccelerometer}}
+\index{enableRawAccelerometer@{enableRawAccelerometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableRawAccelerometer()}{enableRawAccelerometer()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Raw\+Accelerometer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a7b5f60a5834a345143048c260f9b8a96}\label{class_b_n_o080_a7b5f60a5834a345143048c260f9b8a96}} 
+\index{BNO080@{BNO080}!enableRawGyro@{enableRawGyro}}
+\index{enableRawGyro@{enableRawGyro}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableRawGyro()}{enableRawGyro()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Raw\+Gyro (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a50a475a12f12c56d4b42771ddeca1444}\label{class_b_n_o080_a50a475a12f12c56d4b42771ddeca1444}} 
+\index{BNO080@{BNO080}!enableRawMagnetometer@{enableRawMagnetometer}}
+\index{enableRawMagnetometer@{enableRawMagnetometer}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableRawMagnetometer()}{enableRawMagnetometer()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Raw\+Magnetometer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a6e909dff75a75500117287304004aac6}\label{class_b_n_o080_a6e909dff75a75500117287304004aac6}} 
+\index{BNO080@{BNO080}!enableRotationVector@{enableRotationVector}}
+\index{enableRotationVector@{enableRotationVector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableRotationVector()}{enableRotationVector()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Rotation\+Vector (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ad1dc067860fc633e939f68cde1cf1eef}\label{class_b_n_o080_ad1dc067860fc633e939f68cde1cf1eef}} 
+\index{BNO080@{BNO080}!enableStabilityClassifier@{enableStabilityClassifier}}
+\index{enableStabilityClassifier@{enableStabilityClassifier}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableStabilityClassifier()}{enableStabilityClassifier()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Stability\+Classifier (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a5029bc88c6458e7eb12f882f29bde8c4}\label{class_b_n_o080_a5029bc88c6458e7eb12f882f29bde8c4}} 
+\index{BNO080@{BNO080}!enableStepCounter@{enableStepCounter}}
+\index{enableStepCounter@{enableStepCounter}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableStepCounter()}{enableStepCounter()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Step\+Counter (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_afdadd1bfd427b2df480e363a87c18224}\label{class_b_n_o080_afdadd1bfd427b2df480e363a87c18224}} 
+\index{BNO080@{BNO080}!enableTapDetector@{enableTapDetector}}
+\index{enableTapDetector@{enableTapDetector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{enableTapDetector()}{enableTapDetector()}}
+{\footnotesize\ttfamily void BNO080\+::enable\+Tap\+Detector (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a9c05e1b2dcb1fed66b4ce12d95b2bad0}\label{class_b_n_o080_a9c05e1b2dcb1fed66b4ce12d95b2bad0}} 
+\index{BNO080@{BNO080}!endCalibration@{endCalibration}}
+\index{endCalibration@{endCalibration}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{endCalibration()}{endCalibration()}}
+{\footnotesize\ttfamily void BNO080\+::end\+Calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aaf7c5f79f6d611ce7a9f5f370270b208}\label{class_b_n_o080_aaf7c5f79f6d611ce7a9f5f370270b208}} 
+\index{BNO080@{BNO080}!frsReadRequest@{frsReadRequest}}
+\index{frsReadRequest@{frsReadRequest}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{frsReadRequest()}{frsReadRequest()}}
+{\footnotesize\ttfamily void BNO080\+::frs\+Read\+Request (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID,  }\item[{uint16\+\_\+t}]{read\+Offset,  }\item[{uint16\+\_\+t}]{block\+Size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a29cf25109f3eb010d2bddbe591065335}\label{class_b_n_o080_a29cf25109f3eb010d2bddbe591065335}} 
+\index{BNO080@{BNO080}!getAccel@{getAccel}}
+\index{getAccel@{getAccel}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getAccel()}{getAccel()}}
+{\footnotesize\ttfamily void BNO080\+::get\+Accel (\begin{DoxyParamCaption}\item[{float \&}]{x,  }\item[{float \&}]{y,  }\item[{float \&}]{z,  }\item[{uint8\+\_\+t \&}]{accuracy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_af148326f8725c3dc10ce276e5480bea5}\label{class_b_n_o080_af148326f8725c3dc10ce276e5480bea5}} 
+\index{BNO080@{BNO080}!getAccelAccuracy@{getAccelAccuracy}}
+\index{getAccelAccuracy@{getAccelAccuracy}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getAccelAccuracy()}{getAccelAccuracy()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Accel\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a6509931a6833636ca3d41dd2e7729a34}\label{class_b_n_o080_a6509931a6833636ca3d41dd2e7729a34}} 
+\index{BNO080@{BNO080}!getAccelX@{getAccelX}}
+\index{getAccelX@{getAccelX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getAccelX()}{getAccelX()}}
+{\footnotesize\ttfamily float BNO080\+::get\+AccelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a636cfd2999e8fed0c6f3a3ff2d68204d}\label{class_b_n_o080_a636cfd2999e8fed0c6f3a3ff2d68204d}} 
+\index{BNO080@{BNO080}!getAccelY@{getAccelY}}
+\index{getAccelY@{getAccelY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getAccelY()}{getAccelY()}}
+{\footnotesize\ttfamily float BNO080\+::get\+AccelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a2aa682da9ee80a807ffc93c8ea72f88e}\label{class_b_n_o080_a2aa682da9ee80a807ffc93c8ea72f88e}} 
+\index{BNO080@{BNO080}!getAccelZ@{getAccelZ}}
+\index{getAccelZ@{getAccelZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getAccelZ()}{getAccelZ()}}
+{\footnotesize\ttfamily float BNO080\+::get\+AccelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a8a86e2e18a58e950702130b5041952f0}\label{class_b_n_o080_a8a86e2e18a58e950702130b5041952f0}} 
+\index{BNO080@{BNO080}!getActivityClassifier@{getActivityClassifier}}
+\index{getActivityClassifier@{getActivityClassifier}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getActivityClassifier()}{getActivityClassifier()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Activity\+Classifier (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a804cc98072cb62027b171c07b93afb66}\label{class_b_n_o080_a804cc98072cb62027b171c07b93afb66}} 
+\index{BNO080@{BNO080}!getData@{getData}}
+\index{getData@{getData}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily boolean BNO080\+::get\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{bytes\+Remaining }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a0025aceb101762a6ab3aed78ddad0ada}\label{class_b_n_o080_a0025aceb101762a6ab3aed78ddad0ada}} 
+\index{BNO080@{BNO080}!getFastGyro@{getFastGyro}}
+\index{getFastGyro@{getFastGyro}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getFastGyro()}{getFastGyro()}}
+{\footnotesize\ttfamily void BNO080\+::get\+Fast\+Gyro (\begin{DoxyParamCaption}\item[{float \&}]{x,  }\item[{float \&}]{y,  }\item[{float \&}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a55474a98c3c0734d09fc5be006b3086e}\label{class_b_n_o080_a55474a98c3c0734d09fc5be006b3086e}} 
+\index{BNO080@{BNO080}!getFastGyroX@{getFastGyroX}}
+\index{getFastGyroX@{getFastGyroX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getFastGyroX()}{getFastGyroX()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Fast\+GyroX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_af89939247c6e12fb34d57dce9fa492bd}\label{class_b_n_o080_af89939247c6e12fb34d57dce9fa492bd}} 
+\index{BNO080@{BNO080}!getFastGyroY@{getFastGyroY}}
+\index{getFastGyroY@{getFastGyroY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getFastGyroY()}{getFastGyroY()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Fast\+GyroY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a0037949cf2230aa5a1d6c059be66c960}\label{class_b_n_o080_a0037949cf2230aa5a1d6c059be66c960}} 
+\index{BNO080@{BNO080}!getFastGyroZ@{getFastGyroZ}}
+\index{getFastGyroZ@{getFastGyroZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getFastGyroZ()}{getFastGyroZ()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Fast\+GyroZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a5d066ff0810bd1d87a64476f6de6d2c5}\label{class_b_n_o080_a5d066ff0810bd1d87a64476f6de6d2c5}} 
+\index{BNO080@{BNO080}!getGyro@{getGyro}}
+\index{getGyro@{getGyro}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getGyro()}{getGyro()}}
+{\footnotesize\ttfamily void BNO080\+::get\+Gyro (\begin{DoxyParamCaption}\item[{float \&}]{x,  }\item[{float \&}]{y,  }\item[{float \&}]{z,  }\item[{uint8\+\_\+t \&}]{accuracy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a400d326f7673bad3e2be02badfa78c82}\label{class_b_n_o080_a400d326f7673bad3e2be02badfa78c82}} 
+\index{BNO080@{BNO080}!getGyroAccuracy@{getGyroAccuracy}}
+\index{getGyroAccuracy@{getGyroAccuracy}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getGyroAccuracy()}{getGyroAccuracy()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Gyro\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_acad841ad609af8026335ad07f56e2ef3}\label{class_b_n_o080_acad841ad609af8026335ad07f56e2ef3}} 
+\index{BNO080@{BNO080}!getGyroX@{getGyroX}}
+\index{getGyroX@{getGyroX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getGyroX()}{getGyroX()}}
+{\footnotesize\ttfamily float BNO080\+::get\+GyroX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_afeb354f551c52c7709f4caf20f1b5f18}\label{class_b_n_o080_afeb354f551c52c7709f4caf20f1b5f18}} 
+\index{BNO080@{BNO080}!getGyroY@{getGyroY}}
+\index{getGyroY@{getGyroY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getGyroY()}{getGyroY()}}
+{\footnotesize\ttfamily float BNO080\+::get\+GyroY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a8b4406899924d5fe0205907cf4e7783e}\label{class_b_n_o080_a8b4406899924d5fe0205907cf4e7783e}} 
+\index{BNO080@{BNO080}!getGyroZ@{getGyroZ}}
+\index{getGyroZ@{getGyroZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getGyroZ()}{getGyroZ()}}
+{\footnotesize\ttfamily float BNO080\+::get\+GyroZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a0a5141c88ced60c31e0c338853e52829}\label{class_b_n_o080_a0a5141c88ced60c31e0c338853e52829}} 
+\index{BNO080@{BNO080}!getLinAccel@{getLinAccel}}
+\index{getLinAccel@{getLinAccel}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getLinAccel()}{getLinAccel()}}
+{\footnotesize\ttfamily void BNO080\+::get\+Lin\+Accel (\begin{DoxyParamCaption}\item[{float \&}]{x,  }\item[{float \&}]{y,  }\item[{float \&}]{z,  }\item[{uint8\+\_\+t \&}]{accuracy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ae809a29b91fd6b0c37b41f800855880e}\label{class_b_n_o080_ae809a29b91fd6b0c37b41f800855880e}} 
+\index{BNO080@{BNO080}!getLinAccelAccuracy@{getLinAccelAccuracy}}
+\index{getLinAccelAccuracy@{getLinAccelAccuracy}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getLinAccelAccuracy()}{getLinAccelAccuracy()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Lin\+Accel\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a3458038df1c1b4c0ed12722f1f939b58}\label{class_b_n_o080_a3458038df1c1b4c0ed12722f1f939b58}} 
+\index{BNO080@{BNO080}!getLinAccelX@{getLinAccelX}}
+\index{getLinAccelX@{getLinAccelX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getLinAccelX()}{getLinAccelX()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Lin\+AccelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a9e61b5f8dca1adbae9525ec453419e31}\label{class_b_n_o080_a9e61b5f8dca1adbae9525ec453419e31}} 
+\index{BNO080@{BNO080}!getLinAccelY@{getLinAccelY}}
+\index{getLinAccelY@{getLinAccelY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getLinAccelY()}{getLinAccelY()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Lin\+AccelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aa17dbccf10e19a9b3117ba3ff99b3c7f}\label{class_b_n_o080_aa17dbccf10e19a9b3117ba3ff99b3c7f}} 
+\index{BNO080@{BNO080}!getLinAccelZ@{getLinAccelZ}}
+\index{getLinAccelZ@{getLinAccelZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getLinAccelZ()}{getLinAccelZ()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Lin\+AccelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a96183a25295ed8e35a1b7ebed5a4f5ba}\label{class_b_n_o080_a96183a25295ed8e35a1b7ebed5a4f5ba}} 
+\index{BNO080@{BNO080}!getMag@{getMag}}
+\index{getMag@{getMag}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getMag()}{getMag()}}
+{\footnotesize\ttfamily void BNO080\+::get\+Mag (\begin{DoxyParamCaption}\item[{float \&}]{x,  }\item[{float \&}]{y,  }\item[{float \&}]{z,  }\item[{uint8\+\_\+t \&}]{accuracy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a07fe198c493796f6e026492b933f926d}\label{class_b_n_o080_a07fe198c493796f6e026492b933f926d}} 
+\index{BNO080@{BNO080}!getMagAccuracy@{getMagAccuracy}}
+\index{getMagAccuracy@{getMagAccuracy}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getMagAccuracy()}{getMagAccuracy()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Mag\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a2b54726ef90be75bad808b6f04120b10}\label{class_b_n_o080_a2b54726ef90be75bad808b6f04120b10}} 
+\index{BNO080@{BNO080}!getMagX@{getMagX}}
+\index{getMagX@{getMagX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getMagX()}{getMagX()}}
+{\footnotesize\ttfamily float BNO080\+::get\+MagX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a21bc0a5b447bb855043767859e5953b9}\label{class_b_n_o080_a21bc0a5b447bb855043767859e5953b9}} 
+\index{BNO080@{BNO080}!getMagY@{getMagY}}
+\index{getMagY@{getMagY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getMagY()}{getMagY()}}
+{\footnotesize\ttfamily float BNO080\+::get\+MagY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a03d28ed03226c2c14537231dee4d91ee}\label{class_b_n_o080_a03d28ed03226c2c14537231dee4d91ee}} 
+\index{BNO080@{BNO080}!getMagZ@{getMagZ}}
+\index{getMagZ@{getMagZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getMagZ()}{getMagZ()}}
+{\footnotesize\ttfamily float BNO080\+::get\+MagZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_abf25adb17497676c420a246cf5c9cb20}\label{class_b_n_o080_abf25adb17497676c420a246cf5c9cb20}} 
+\index{BNO080@{BNO080}!getPitch@{getPitch}}
+\index{getPitch@{getPitch}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getPitch()}{getPitch()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a417ab857b87660296d82b4f1b5efe451}\label{class_b_n_o080_a417ab857b87660296d82b4f1b5efe451}} 
+\index{BNO080@{BNO080}!getQ1@{getQ1}}
+\index{getQ1@{getQ1}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQ1()}{getQ1()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Q1 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ac38f6b2173b0543169abe8cd9df783b8}\label{class_b_n_o080_ac38f6b2173b0543169abe8cd9df783b8}} 
+\index{BNO080@{BNO080}!getQ2@{getQ2}}
+\index{getQ2@{getQ2}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQ2()}{getQ2()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Q2 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a2e2406c687a515cf7d5a501e7c7fd706}\label{class_b_n_o080_a2e2406c687a515cf7d5a501e7c7fd706}} 
+\index{BNO080@{BNO080}!getQ3@{getQ3}}
+\index{getQ3@{getQ3}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQ3()}{getQ3()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Q3 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a093d683bed10bb6d1282de0d2fcb73b5}\label{class_b_n_o080_a093d683bed10bb6d1282de0d2fcb73b5}} 
+\index{BNO080@{BNO080}!getQuat@{getQuat}}
+\index{getQuat@{getQuat}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuat()}{getQuat()}}
+{\footnotesize\ttfamily void BNO080\+::get\+Quat (\begin{DoxyParamCaption}\item[{float \&}]{i,  }\item[{float \&}]{j,  }\item[{float \&}]{k,  }\item[{float \&}]{real,  }\item[{float \&}]{rad\+Accuracy,  }\item[{uint8\+\_\+t \&}]{accuracy }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a35edcb9c8ffa4919d143472532ea7956}\label{class_b_n_o080_a35edcb9c8ffa4919d143472532ea7956}} 
+\index{BNO080@{BNO080}!getQuatAccuracy@{getQuatAccuracy}}
+\index{getQuatAccuracy@{getQuatAccuracy}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuatAccuracy()}{getQuatAccuracy()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Quat\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aa75bbd109ac767de5d588ad1151322c8}\label{class_b_n_o080_aa75bbd109ac767de5d588ad1151322c8}} 
+\index{BNO080@{BNO080}!getQuatI@{getQuatI}}
+\index{getQuatI@{getQuatI}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuatI()}{getQuatI()}}
+{\footnotesize\ttfamily float BNO080\+::get\+QuatI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a2ca55d6200af2629d1d80e6c5577cb63}\label{class_b_n_o080_a2ca55d6200af2629d1d80e6c5577cb63}} 
+\index{BNO080@{BNO080}!getQuatJ@{getQuatJ}}
+\index{getQuatJ@{getQuatJ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuatJ()}{getQuatJ()}}
+{\footnotesize\ttfamily float BNO080\+::get\+QuatJ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_abeb09e3600b140d7447d9e6a9ac81ad8}\label{class_b_n_o080_abeb09e3600b140d7447d9e6a9ac81ad8}} 
+\index{BNO080@{BNO080}!getQuatK@{getQuatK}}
+\index{getQuatK@{getQuatK}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuatK()}{getQuatK()}}
+{\footnotesize\ttfamily float BNO080\+::get\+QuatK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a10b5cd695195620c7238cd48a7e366f5}\label{class_b_n_o080_a10b5cd695195620c7238cd48a7e366f5}} 
+\index{BNO080@{BNO080}!getQuatRadianAccuracy@{getQuatRadianAccuracy}}
+\index{getQuatRadianAccuracy@{getQuatRadianAccuracy}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuatRadianAccuracy()}{getQuatRadianAccuracy()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Quat\+Radian\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a3b0b23d3d061baff2858ffa440bc2b77}\label{class_b_n_o080_a3b0b23d3d061baff2858ffa440bc2b77}} 
+\index{BNO080@{BNO080}!getQuatReal@{getQuatReal}}
+\index{getQuatReal@{getQuatReal}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getQuatReal()}{getQuatReal()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Quat\+Real (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a9db2e2aaaa89a45bbc6e85bd0b78de08}\label{class_b_n_o080_a9db2e2aaaa89a45bbc6e85bd0b78de08}} 
+\index{BNO080@{BNO080}!getRange@{getRange}}
+\index{getRange@{getRange}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRange()}{getRange()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Range (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a96fc13328ad9d7f8fd5c1f718c1edab4}\label{class_b_n_o080_a96fc13328ad9d7f8fd5c1f718c1edab4}} 
+\index{BNO080@{BNO080}!getRawAccelX@{getRawAccelX}}
+\index{getRawAccelX@{getRawAccelX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawAccelX()}{getRawAccelX()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+AccelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a2a8356f53e5de5771507e7a5c3ea4dfe}\label{class_b_n_o080_a2a8356f53e5de5771507e7a5c3ea4dfe}} 
+\index{BNO080@{BNO080}!getRawAccelY@{getRawAccelY}}
+\index{getRawAccelY@{getRawAccelY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawAccelY()}{getRawAccelY()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+AccelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ab4bc599ee09013e9ef7581322187437a}\label{class_b_n_o080_ab4bc599ee09013e9ef7581322187437a}} 
+\index{BNO080@{BNO080}!getRawAccelZ@{getRawAccelZ}}
+\index{getRawAccelZ@{getRawAccelZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawAccelZ()}{getRawAccelZ()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+AccelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_af24c206f9b83dad7d6d508101b73a0ba}\label{class_b_n_o080_af24c206f9b83dad7d6d508101b73a0ba}} 
+\index{BNO080@{BNO080}!getRawGyroX@{getRawGyroX}}
+\index{getRawGyroX@{getRawGyroX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawGyroX()}{getRawGyroX()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+GyroX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_af28fe02b1c1f2a3d811f40547c8f7418}\label{class_b_n_o080_af28fe02b1c1f2a3d811f40547c8f7418}} 
+\index{BNO080@{BNO080}!getRawGyroY@{getRawGyroY}}
+\index{getRawGyroY@{getRawGyroY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawGyroY()}{getRawGyroY()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+GyroY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ae95386a4c0f1181235aad24ae3c8343e}\label{class_b_n_o080_ae95386a4c0f1181235aad24ae3c8343e}} 
+\index{BNO080@{BNO080}!getRawGyroZ@{getRawGyroZ}}
+\index{getRawGyroZ@{getRawGyroZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawGyroZ()}{getRawGyroZ()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+GyroZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a99d1706bc33727d063e4754adb17f099}\label{class_b_n_o080_a99d1706bc33727d063e4754adb17f099}} 
+\index{BNO080@{BNO080}!getRawMagX@{getRawMagX}}
+\index{getRawMagX@{getRawMagX}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawMagX()}{getRawMagX()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+MagX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a71a50fff2033289542b9a205a52aaf19}\label{class_b_n_o080_a71a50fff2033289542b9a205a52aaf19}} 
+\index{BNO080@{BNO080}!getRawMagY@{getRawMagY}}
+\index{getRawMagY@{getRawMagY}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawMagY()}{getRawMagY()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+MagY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a25ec31714609d54bdda62a190b77eadb}\label{class_b_n_o080_a25ec31714609d54bdda62a190b77eadb}} 
+\index{BNO080@{BNO080}!getRawMagZ@{getRawMagZ}}
+\index{getRawMagZ@{getRawMagZ}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRawMagZ()}{getRawMagZ()}}
+{\footnotesize\ttfamily int16\+\_\+t BNO080\+::get\+Raw\+MagZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a625a039215cb3b87ccf93166aff227fd}\label{class_b_n_o080_a625a039215cb3b87ccf93166aff227fd}} 
+\index{BNO080@{BNO080}!getReadings@{getReadings}}
+\index{getReadings@{getReadings}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getReadings()}{getReadings()}}
+{\footnotesize\ttfamily uint16\+\_\+t BNO080\+::get\+Readings (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aa76af2c1862480e2a593c8bbd1c2b6c0}\label{class_b_n_o080_aa76af2c1862480e2a593c8bbd1c2b6c0}} 
+\index{BNO080@{BNO080}!getResolution@{getResolution}}
+\index{getResolution@{getResolution}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getResolution()}{getResolution()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Resolution (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a86b811ca425cdb5b321150424ba19a57}\label{class_b_n_o080_a86b811ca425cdb5b321150424ba19a57}} 
+\index{BNO080@{BNO080}!getRoll@{getRoll}}
+\index{getRoll@{getRoll}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getRoll()}{getRoll()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Roll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aa9e642757216421e9807db2300ca430d}\label{class_b_n_o080_aa9e642757216421e9807db2300ca430d}} 
+\index{BNO080@{BNO080}!getStabilityClassifier@{getStabilityClassifier}}
+\index{getStabilityClassifier@{getStabilityClassifier}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getStabilityClassifier()}{getStabilityClassifier()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Stability\+Classifier (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a57cec6a57eb647c06438428ce0749783}\label{class_b_n_o080_a57cec6a57eb647c06438428ce0749783}} 
+\index{BNO080@{BNO080}!getStepCount@{getStepCount}}
+\index{getStepCount@{getStepCount}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getStepCount()}{getStepCount()}}
+{\footnotesize\ttfamily uint16\+\_\+t BNO080\+::get\+Step\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a37272a3d02fcac31ce4bf5088e114e1f}\label{class_b_n_o080_a37272a3d02fcac31ce4bf5088e114e1f}} 
+\index{BNO080@{BNO080}!getTapDetector@{getTapDetector}}
+\index{getTapDetector@{getTapDetector}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getTapDetector()}{getTapDetector()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::get\+Tap\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_af87e1bc2d96a98d80f8434459f0c3f4c}\label{class_b_n_o080_af87e1bc2d96a98d80f8434459f0c3f4c}} 
+\index{BNO080@{BNO080}!getTimeStamp@{getTimeStamp}}
+\index{getTimeStamp@{getTimeStamp}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getTimeStamp()}{getTimeStamp()}}
+{\footnotesize\ttfamily uint32\+\_\+t BNO080\+::get\+Time\+Stamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a22d262a234f238d94531d98eab5d2986}\label{class_b_n_o080_a22d262a234f238d94531d98eab5d2986}} 
+\index{BNO080@{BNO080}!getYaw@{getYaw}}
+\index{getYaw@{getYaw}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{getYaw()}{getYaw()}}
+{\footnotesize\ttfamily float BNO080\+::get\+Yaw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a12f2611bc5055c4c1c9bbf8cb25e85cc}\label{class_b_n_o080_a12f2611bc5055c4c1c9bbf8cb25e85cc}} 
+\index{BNO080@{BNO080}!hasReset@{hasReset}}
+\index{hasReset@{hasReset}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{hasReset()}{hasReset()}}
+{\footnotesize\ttfamily bool BNO080\+::has\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_afa2b3d816602f475a9926a67dda59f8a}\label{class_b_n_o080_afa2b3d816602f475a9926a67dda59f8a}} 
+\index{BNO080@{BNO080}!modeOn@{modeOn}}
+\index{modeOn@{modeOn}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{modeOn()}{modeOn()}}
+{\footnotesize\ttfamily void BNO080\+::mode\+On (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a2e739c5b634e76de8f52255e84e328c7}\label{class_b_n_o080_a2e739c5b634e76de8f52255e84e328c7}} 
+\index{BNO080@{BNO080}!modeSleep@{modeSleep}}
+\index{modeSleep@{modeSleep}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{modeSleep()}{modeSleep()}}
+{\footnotesize\ttfamily void BNO080\+::mode\+Sleep (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aa6c766b3c547ed6db90225769d7e2d57}\label{class_b_n_o080_aa6c766b3c547ed6db90225769d7e2d57}} 
+\index{BNO080@{BNO080}!parseCommandReport@{parseCommandReport}}
+\index{parseCommandReport@{parseCommandReport}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{parseCommandReport()}{parseCommandReport()}}
+{\footnotesize\ttfamily uint16\+\_\+t BNO080\+::parse\+Command\+Report (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a68a96babd44486e723d7e9582d761999}\label{class_b_n_o080_a68a96babd44486e723d7e9582d761999}} 
+\index{BNO080@{BNO080}!parseInputReport@{parseInputReport}}
+\index{parseInputReport@{parseInputReport}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{parseInputReport()}{parseInputReport()}}
+{\footnotesize\ttfamily uint16\+\_\+t BNO080\+::parse\+Input\+Report (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_aeda2faa4404e22925d3f77c41ebdf9ea}\label{class_b_n_o080_aeda2faa4404e22925d3f77c41ebdf9ea}} 
+\index{BNO080@{BNO080}!printHeader@{printHeader}}
+\index{printHeader@{printHeader}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{printHeader()}{printHeader()}}
+{\footnotesize\ttfamily void BNO080\+::print\+Header (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a5d0a36bd71601dd845090be70640c206}\label{class_b_n_o080_a5d0a36bd71601dd845090be70640c206}} 
+\index{BNO080@{BNO080}!printPacket@{printPacket}}
+\index{printPacket@{printPacket}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{printPacket()}{printPacket()}}
+{\footnotesize\ttfamily void BNO080\+::print\+Packet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a387ca93b51c1683425b051a35850053f}\label{class_b_n_o080_a387ca93b51c1683425b051a35850053f}} 
+\index{BNO080@{BNO080}!qToFloat@{qToFloat}}
+\index{qToFloat@{qToFloat}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{qToFloat()}{qToFloat()}}
+{\footnotesize\ttfamily float BNO080\+::q\+To\+Float (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{fixed\+Point\+Value,  }\item[{uint8\+\_\+t}]{q\+Point }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a0ab36a84ef36e30dbb40d5f40ad80e8b}\label{class_b_n_o080_a0ab36a84ef36e30dbb40d5f40ad80e8b}} 
+\index{BNO080@{BNO080}!readFRSdata@{readFRSdata}}
+\index{readFRSdata@{readFRSdata}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{readFRSdata()}{readFRSdata()}}
+{\footnotesize\ttfamily bool BNO080\+::read\+FRSdata (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID,  }\item[{uint8\+\_\+t}]{start\+Location,  }\item[{uint8\+\_\+t}]{words\+To\+Read }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a23aa9a5e3aedd4464bf1e17c63756aac}\label{class_b_n_o080_a23aa9a5e3aedd4464bf1e17c63756aac}} 
+\index{BNO080@{BNO080}!readFRSword@{readFRSword}}
+\index{readFRSword@{readFRSword}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{readFRSword()}{readFRSword()}}
+{\footnotesize\ttfamily uint32\+\_\+t BNO080\+::read\+FRSword (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{record\+ID,  }\item[{uint8\+\_\+t}]{word\+Number }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a4f372d517d3125e73a23498f53cbe0aa}\label{class_b_n_o080_a4f372d517d3125e73a23498f53cbe0aa}} 
+\index{BNO080@{BNO080}!receivePacket@{receivePacket}}
+\index{receivePacket@{receivePacket}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{receivePacket()}{receivePacket()}}
+{\footnotesize\ttfamily boolean BNO080\+::receive\+Packet (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a97e1b8c973150fc7d52bfd66ec235e68}\label{class_b_n_o080_a97e1b8c973150fc7d52bfd66ec235e68}} 
+\index{BNO080@{BNO080}!requestCalibrationStatus@{requestCalibrationStatus}}
+\index{requestCalibrationStatus@{requestCalibrationStatus}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{requestCalibrationStatus()}{requestCalibrationStatus()}}
+{\footnotesize\ttfamily void BNO080\+::request\+Calibration\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a961e7277e517faa62f7d5a79bdcd1144}\label{class_b_n_o080_a961e7277e517faa62f7d5a79bdcd1144}} 
+\index{BNO080@{BNO080}!resetReason@{resetReason}}
+\index{resetReason@{resetReason}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{resetReason()}{resetReason()}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::reset\+Reason (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a4852ae0323e71d6ca93901d474791701}\label{class_b_n_o080_a4852ae0323e71d6ca93901d474791701}} 
+\index{BNO080@{BNO080}!saveCalibration@{saveCalibration}}
+\index{saveCalibration@{saveCalibration}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{saveCalibration()}{saveCalibration()}}
+{\footnotesize\ttfamily void BNO080\+::save\+Calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a20c4a32ab3832a2a8f1b3a5c344aafb2}\label{class_b_n_o080_a20c4a32ab3832a2a8f1b3a5c344aafb2}} 
+\index{BNO080@{BNO080}!sendCalibrateCommand@{sendCalibrateCommand}}
+\index{sendCalibrateCommand@{sendCalibrateCommand}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{sendCalibrateCommand()}{sendCalibrateCommand()}}
+{\footnotesize\ttfamily void BNO080\+::send\+Calibrate\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{thing\+To\+Calibrate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a722813f9f8022f1f4a005d9c464a5224}\label{class_b_n_o080_a722813f9f8022f1f4a005d9c464a5224}} 
+\index{BNO080@{BNO080}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily void BNO080\+::send\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a51bc2b125d590dc988ae277ea66a8625}\label{class_b_n_o080_a51bc2b125d590dc988ae277ea66a8625}} 
+\index{BNO080@{BNO080}!sendPacket@{sendPacket}}
+\index{sendPacket@{sendPacket}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{sendPacket()}{sendPacket()}}
+{\footnotesize\ttfamily boolean BNO080\+::send\+Packet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel\+Number,  }\item[{uint8\+\_\+t}]{data\+Length }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ad8ee71b985377d624e34dda56516ec97}\label{class_b_n_o080_ad8ee71b985377d624e34dda56516ec97}} 
+\index{BNO080@{BNO080}!setFeatureCommand@{setFeatureCommand}}
+\index{setFeatureCommand@{setFeatureCommand}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{setFeatureCommand()}{setFeatureCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void BNO080\+::set\+Feature\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{report\+ID,  }\item[{uint16\+\_\+t}]{time\+Between\+Reports }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_ac6c46a2c3e28f36b47123c761186e74d}\label{class_b_n_o080_ac6c46a2c3e28f36b47123c761186e74d}} 
+\index{BNO080@{BNO080}!setFeatureCommand@{setFeatureCommand}}
+\index{setFeatureCommand@{setFeatureCommand}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{setFeatureCommand()}{setFeatureCommand()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void BNO080\+::set\+Feature\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{report\+ID,  }\item[{uint16\+\_\+t}]{time\+Between\+Reports,  }\item[{uint32\+\_\+t}]{specific\+Config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a9a809f442316379dbef61e78d70f6b3a}\label{class_b_n_o080_a9a809f442316379dbef61e78d70f6b3a}} 
+\index{BNO080@{BNO080}!softReset@{softReset}}
+\index{softReset@{softReset}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{softReset()}{softReset()}}
+{\footnotesize\ttfamily void BNO080\+::soft\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a556329e4879fa527bdc949e120acc29d}\label{class_b_n_o080_a556329e4879fa527bdc949e120acc29d}} 
+\index{BNO080@{BNO080}!waitForI2C@{waitForI2C}}
+\index{waitForI2C@{waitForI2C}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{waitForI2C()}{waitForI2C()}}
+{\footnotesize\ttfamily boolean BNO080\+::wait\+For\+I2C (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_n_o080_a56c8f0231b384f4da094ba465814b185}\label{class_b_n_o080_a56c8f0231b384f4da094ba465814b185}} 
+\index{BNO080@{BNO080}!waitForSPI@{waitForSPI}}
+\index{waitForSPI@{waitForSPI}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{waitForSPI()}{waitForSPI()}}
+{\footnotesize\ttfamily boolean BNO080\+::wait\+For\+SPI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_b_n_o080_a86fa467e394e0c130f011d0762522337}\label{class_b_n_o080_a86fa467e394e0c130f011d0762522337}} 
+\index{BNO080@{BNO080}!commandSequenceNumber@{commandSequenceNumber}}
+\index{commandSequenceNumber@{commandSequenceNumber}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{commandSequenceNumber}{commandSequenceNumber}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::command\+Sequence\+Number = 0}
+
+\mbox{\Hypertarget{class_b_n_o080_afb9a6d02c6d2e12328f59f6196badfe4}\label{class_b_n_o080_afb9a6d02c6d2e12328f59f6196badfe4}} 
+\index{BNO080@{BNO080}!metaData@{metaData}}
+\index{metaData@{metaData}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{metaData}{metaData}}
+{\footnotesize\ttfamily uint32\+\_\+t BNO080\+::meta\+Data\mbox{[}\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_aa6cd4fc5568a0b0fb40391a2fea3b69e}{MAX\+\_\+\+METADATA\+\_\+\+SIZE}}\mbox{]}}
+
+\mbox{\Hypertarget{class_b_n_o080_affdd3ab68081775957bcc48f51cb0a22}\label{class_b_n_o080_affdd3ab68081775957bcc48f51cb0a22}} 
+\index{BNO080@{BNO080}!sequenceNumber@{sequenceNumber}}
+\index{sequenceNumber@{sequenceNumber}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{sequenceNumber}{sequenceNumber}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::sequence\+Number\mbox{[}6\mbox{]} = \{0, 0, 0, 0, 0, 0\}}
+
+\mbox{\Hypertarget{class_b_n_o080_a1dc1f807ca4810d927a4ce9fcaec45ab}\label{class_b_n_o080_a1dc1f807ca4810d927a4ce9fcaec45ab}} 
+\index{BNO080@{BNO080}!shtpData@{shtpData}}
+\index{shtpData@{shtpData}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{shtpData}{shtpData}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::shtp\+Data\mbox{[}\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h_a879456c3b8e2853f7044d764e9c180d4}{MAX\+\_\+\+PACKET\+\_\+\+SIZE}}\mbox{]}}
+
+\mbox{\Hypertarget{class_b_n_o080_ab6c6c3724fcdca98233dc3dc8114dc6b}\label{class_b_n_o080_ab6c6c3724fcdca98233dc3dc8114dc6b}} 
+\index{BNO080@{BNO080}!shtpHeader@{shtpHeader}}
+\index{shtpHeader@{shtpHeader}!BNO080@{BNO080}}
+\doxysubsubsection{\texorpdfstring{shtpHeader}{shtpHeader}}
+{\footnotesize\ttfamily uint8\+\_\+t BNO080\+::shtp\+Header\mbox{[}4\mbox{]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Sparkfun\+\_\+\+BNO080/\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8h}{Spark\+Fun\+\_\+\+BNO080\+\_\+\+Arduino\+\_\+\+Library.\+h}}\item 
+lib/\+Sparkfun\+\_\+\+BNO080/\mbox{\hyperlink{_spark_fun___b_n_o080___arduino___library_8cpp}{Spark\+Fun\+\_\+\+BNO080\+\_\+\+Arduino\+\_\+\+Library.\+cpp}}\end{DoxyCompactItemize}

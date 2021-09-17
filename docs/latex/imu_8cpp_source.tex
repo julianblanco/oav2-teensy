@@ -1,0 +1,374 @@
+\hypertarget{imu_8cpp_source}{}\doxysection{imu.\+cpp}
+\label{imu_8cpp_source}\index{src/imu.cpp@{src/imu.cpp}}
+\mbox{\hyperlink{imu_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{imu_8h}{imu.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00002}00002 \textcolor{preprocessor}{ \#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00003}\mbox{\hyperlink{class_i_m_u_a5d36c5fa0688efe1a013679dbdcef4cc}{00003}} \mbox{\hyperlink{class_i_m_u_a5d36c5fa0688efe1a013679dbdcef4cc}{IMU::IMU}}()\{\}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00004}\mbox{\hyperlink{class_i_m_u_ad1f213d1e6aa08988ff683feab721559}{00004}} \mbox{\hyperlink{class_i_m_u_ad1f213d1e6aa08988ff683feab721559}{IMU::\string~IMU}}() \{\}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00006}\mbox{\hyperlink{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}{00006}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_i_m_u_a9c8e93740773d1d5904d7ffbbbaa8f2c}{IMU::setup}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00008}00008 Wire.begin();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#ifdef MPU6050}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00011}00011   mpu6050init();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00012}00012   delay(100);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00013}00013   calculate\_IMU\_error();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00014}00014   calibrateAttitude(); \textcolor{comment}{//helps to warm up IMU and Madgwick filter}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#ifdef BNO055}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00018}00018   \mbox{\hyperlink{imu_8cpp_ab70561cd9ebe6f972ffa41faa889f7a3}{bno050init}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00020}00020 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00021}00021 \textcolor{preprocessor}{\#ifdef BNO080}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00023}00023   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}.\mbox{\hyperlink{class_b_n_o080_ad19719be69ae4fc038015627a6f37484}{begin}}() == \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00024}00024   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00025}00025     Serial.println(\textcolor{stringliteral}{"{}BNO080 not detected at default I2C address. Check your jumpers and the hookup guide. Freezing..."{}});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00026}00026     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00027}00027       ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00028}00028   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00029}00029   Wire.setClock(400000); \textcolor{comment}{//Increase I2C data rate to 400kHz}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00031}00031   \mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}.\mbox{\hyperlink{class_b_n_o080_a6e909dff75a75500117287304004aac6}{enableRotationVector}}(1); \textcolor{comment}{//Send data update every 50ms}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00032}00032 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00033}00033   \mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{Task::setup}}(\textcolor{stringliteral}{"{}imu"{}}, 9);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00034}00034   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00037}\mbox{\hyperlink{class_i_m_u_a79913151edc7437f211b1b638e1172e9}{00037}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_i_m_u_a79913151edc7437f211b1b638e1172e9}{IMU::start}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00039}00039   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00040}00040   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00041}00041     \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}{lock}}.\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_afb3ac19f3df1fccf51e76c37b0f3f767}{WriterLock}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00042}00042     \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{getIMUdata}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00043}00043     \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a79a6f177f24c6f36191f2fd1665dc84a}{lock}}.\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_aa6627a4dd7920c93c2470cbfaafb5088}{WriterUnlock}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00044}00044     \mbox{\hyperlink{config_8h_a2474ae4ac8596b106a6b115f11e37602}{LOOPFREQ}}(500);\textcolor{comment}{//hz}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00045}00045   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00048}\mbox{\hyperlink{imu_8cpp_ab70561cd9ebe6f972ffa41faa889f7a3}{00048}} \textcolor{keywordtype}{int} \mbox{\hyperlink{imu_8cpp_ab70561cd9ebe6f972ffa41faa889f7a3}{bno050init}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00050}00050   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00053}\mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{00053}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{IMU::getIMUdata}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00055}00055   \textcolor{comment}{// getbno055data();}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00056}00056   \mbox{\hyperlink{class_i_m_u_a795368e5bbf84e833e66b922782e206d}{getbno080data}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00057}00057 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00059}\mbox{\hyperlink{class_i_m_u_a82ad5080a2d3b0a76b68fd909220cc65}{00059}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_a82ad5080a2d3b0a76b68fd909220cc65}{IMU::getbno055data}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00060}00060 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00061}00061   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a94930a7795d239a15326b4782a6ce968}{euler}} = \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_adce5d46d0b84d522fa2b93e592364529}{bno055imu}}.\mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25af512e6567f6decb1c18af65b5cb1d539}{Adafruit\_BNO055::VECTOR\_EULER}}); \textcolor{comment}{//lowercase imu is from namespace in utility.h}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00062}00062   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}} = \mbox{\hyperlink{helper_8h_acceb3156a9e8f6e4285adc31afda4074}{correct\_heading\_wrap}}(\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a94930a7795d239a15326b4782a6ce968}{euler}}.x() -\/ \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a9f92a6d75cfb6dac7efb51dde00d1bf8}{headingOffset}});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00063}00063   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}} = -\/1 * \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a94930a7795d239a15326b4782a6ce968}{euler}}.y();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00064}00064   \textcolor{comment}{//rollInput=fmod((euler.z()+(360+90)), 360)-\/180;}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00065}00065   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}} = \mbox{\hyperlink{class_i_m_u_a94930a7795d239a15326b4782a6ce968}{euler}}.z();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00066}00066 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00068}\mbox{\hyperlink{class_i_m_u_a795368e5bbf84e833e66b922782e206d}{00068}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_a795368e5bbf84e833e66b922782e206d}{IMU::getbno080data}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00069}00069 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00070}00070   \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}.\mbox{\hyperlink{class_b_n_o080_a27933a4623309a040eb0d456723ff57b}{dataAvailable}}() == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00071}00071   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00072}00072     \mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}} = (\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}.\mbox{\hyperlink{class_b_n_o080_a86b811ca425cdb5b321150424ba19a57}{getRoll}}()) * 180.0 / PI;   \textcolor{comment}{// Convert roll to degrees}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00073}00073     \mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}} = (\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}.\mbox{\hyperlink{class_b_n_o080_abf25adb17497676c420a246cf5c9cb20}{getPitch}}()) * 180.0 / PI; \textcolor{comment}{// Convert pitch to degrees}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00074}00074     \mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}} = (\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_a9f155691560c5731ffd9c32fcc6e12f9}{bno080imu}}.\mbox{\hyperlink{class_b_n_o080_a22d262a234f238d94531d98eab5d2986}{getYaw}}()) * 180.0 / PI;     \textcolor{comment}{// Convert yaw / heading to degrees}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00075}00075   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00076}00076 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00077}\mbox{\hyperlink{class_i_m_u_a3137b5219e41ad390031f5869f8c2269}{00077}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_i_m_u_a3137b5219e41ad390031f5869f8c2269}{IMU::getmpu6050data}}()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00078}00078 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00079}00079   prev\_time = current\_time;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00080}00080   current\_time = micros();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00081}00081   dt = (current\_time -\/ prev\_time) / 1000000.0; \textcolor{comment}{// convert from microseconds to seconds}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00082}00082   \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{getIMUdata}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00083}00083   Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt); \textcolor{comment}{//updates roll\_IMU, pitch\_IMU, and yaw\_IMU (degrees)}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00084}00084   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}} = pitch\_IMU;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00085}00085   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}} = -\/roll\_IMU;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00086}00086   \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}} = -\/yaw\_IMU;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00087}00087 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00088}00088 \textcolor{keywordtype}{void} IMU::requestdatafrompu6050()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00089}00089 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00090}00090   \textcolor{comment}{//DESCRIPTION: Request full dataset from IMU and LP filter gyro and accelerometer data}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00091}00091   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00092}00092 \textcolor{comment}{   * Reads accelerometer and gyro data from IMU as AccX, AccY, AccZ, GyroX, GyroY, GyroZ. These values are scaled }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00093}00093 \textcolor{comment}{   * according to the IMU datasheet to put them into correct units of g's and degree/sec. A simple first-\/order }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00094}00094 \textcolor{comment}{   * low-\/pass filter is used to get rid of high frequency noise in these raw signals. Generally you want to cut }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00095}00095 \textcolor{comment}{   * off everything past 80Hz, but if your loop rate is not fast enough, the low pass filter will cause a lag in}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00096}00096 \textcolor{comment}{   * the readings. The filter parameters B\_gyro and B\_accel are set to be good for a 2kHz loop rate. Finally, }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00097}00097 \textcolor{comment}{   * the constant errors found in calculate\_IMU\_error() on startup are subtracted from the readings.}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00098}00098 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00099}00099   int16\_t AcX, AcY, AcZ, GyX, GyY, GyZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00100}00100   \textcolor{keywordtype}{float} B\_accel = 0.14; \textcolor{comment}{//0.01}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00101}00101   \textcolor{keywordtype}{float} B\_gyro = 0.89;  \textcolor{comment}{//.9 for 1khz? //0.13 sets cutoff just past 80Hz for about 3000Hz loop rate}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00103}00103   \textcolor{comment}{//Get accel data}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00104}00104   Wire.beginTransmission(MPU);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00105}00105   Wire.write(0x3B); \textcolor{comment}{//Start with register 0x3B (ACCEL\_XOUT\_H)}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00106}00106   Wire.endTransmission(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00107}00107   Wire.requestFrom(MPU, 6, \textcolor{keyword}{true}); \textcolor{comment}{//Read 6 registers total, each axis value is stored in 2 registers}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00108}00108   \textcolor{comment}{//For a range of +-\/2g, we need to divide the raw values by 16384, according to the datasheet}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00109}00109   AcX = (Wire.read() << 8 | Wire.read()); \textcolor{comment}{//X-\/axis value}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00110}00110   AcY = (Wire.read() << 8 | Wire.read()); \textcolor{comment}{//Y-\/axis value}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00111}00111   AcZ = (Wire.read() << 8 | Wire.read()); \textcolor{comment}{//Z-\/axis value}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00112}00112   AccX = AcX / 16384.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00113}00113   AccY = AcY / 16384.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00114}00114   AccZ = AcZ / 16384.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00115}00115   \textcolor{comment}{//LP filter accelerometer data}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00117}00117   AccX = (1.0 -\/ B\_accel) * AccX\_prev + B\_accel * AccX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00118}00118   AccY = (1.0 -\/ B\_accel) * AccY\_prev + B\_accel * AccY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00119}00119   AccZ = (1.0 -\/ B\_accel) * AccZ\_prev + B\_accel * AccZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00120}00120   AccX\_prev = AccX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00121}00121   AccY\_prev = AccY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00122}00122   AccZ\_prev = AccZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00123}00123   \textcolor{comment}{//Correct the outputs with the calculated error values}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00124}00124   AccX = AccX -\/ AccErrorX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00125}00125   AccY = AccY -\/ AccErrorY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00126}00126   AccZ = AccZ -\/ AccErrorZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00128}00128   \textcolor{comment}{//Get gyro data}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00129}00129   Wire.beginTransmission(MPU);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00130}00130   Wire.write(0x43); \textcolor{comment}{//Gyro data first register address 0x43}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00131}00131   Wire.endTransmission(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00132}00132   Wire.requestFrom(MPU, 6, \textcolor{keyword}{true}); \textcolor{comment}{//Read 4 registers total, each axis value is stored in 2 registers}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00133}00133   \textcolor{comment}{//For a 250deg/s range we have to divide first the raw value by 131.0, according to the datasheet}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00134}00134   GyX = (Wire.read() << 8 | Wire.read());}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00135}00135   GyY = (Wire.read() << 8 | Wire.read());}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00136}00136   GyZ = (Wire.read() << 8 | Wire.read());}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00137}00137   GyroX = GyX / 131.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00138}00138   GyroY = GyY / 131.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00139}00139   GyroZ = GyZ / 131.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00140}00140   \textcolor{comment}{//LP filter gyro data}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00142}00142   GyroX = (1.0 -\/ B\_gyro) * GyroX\_prev + B\_gyro * GyroX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00143}00143   GyroY = (1.0 -\/ B\_gyro) * GyroY\_prev + B\_gyro * GyroY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00144}00144   GyroZ = (1.0 -\/ B\_gyro) * GyroZ\_prev + B\_gyro * GyroZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00145}00145   GyroX\_prev = GyroX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00146}00146   GyroY\_prev = GyroY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00147}00147   GyroZ\_prev = GyroZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00148}00148   \textcolor{comment}{//Correct the outputs with the calculated error values}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00149}00149   GyroX = GyroX -\/ GyroErrorX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00150}00150   GyroY = GyroY -\/ GyroErrorY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00151}00151   GyroZ = GyroZ -\/ GyroErrorZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00152}00152 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00154}00154 \textcolor{keywordtype}{void} IMU::calculate\_mpu6050\_IMU\_error()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00155}00155 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00156}00156   \textcolor{comment}{//DESCRIPTION: Computes IMU error on startup. Note: vehicle should be powered up on flat surface}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00157}00157   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00158}00158 \textcolor{comment}{   * Don't worry too much about what this is doing. The error values it computes are applied to the raw gyro and }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00159}00159 \textcolor{comment}{   * accelerometer values AccX, AccY, AccZ, GyroX, GyroY, GyroZ in getIMUdata(). This eliminates drift in the}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00160}00160 \textcolor{comment}{   * measurement. }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00161}00161 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00162}00162   int16\_t AcX, AcY, AcZ, GyX, GyY, GyZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00164}00164   \textcolor{comment}{//Read accelerometer values 12000 times}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00165}00165   \textcolor{keywordtype}{int} c = 0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00166}00166   \textcolor{keywordflow}{while} (c < 12000)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00167}00167   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00168}00168     Wire.beginTransmission(MPU);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00169}00169     Wire.write(0x3B);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00170}00170     Wire.endTransmission(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00171}00171     Wire.requestFrom(MPU, 6, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00172}00172     AcX = (Wire.read() << 8 | Wire.read());}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00173}00173     AcY = (Wire.read() << 8 | Wire.read());}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00174}00174     AcZ = (Wire.read() << 8 | Wire.read());}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00175}00175     AccX = AcX / 16384.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00176}00176     AccY = AcY / 16384.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00177}00177     AccZ = AcZ / 16384.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00178}00178     \textcolor{comment}{// Sum all readings}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00179}00179     AccErrorX = AccErrorX + AccX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00180}00180     AccErrorY = AccErrorY + AccY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00181}00181     AccErrorZ = AccErrorZ + AccZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00182}00182     c++;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00183}00183   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00184}00184   \textcolor{comment}{//Divide the sum by 12000 to get the error value}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00185}00185   AccErrorX = AccErrorX / 12000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00186}00186   AccErrorY = AccErrorY / 12000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00187}00187   AccErrorZ = AccErrorZ / 12000.0 -\/ 1.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00188}00188   c = 0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00189}00189   \textcolor{comment}{//Read gyro values 12000 times}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00190}00190   \textcolor{keywordflow}{while} (c < 12000)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00191}00191   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00192}00192     Wire.beginTransmission(MPU);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00193}00193     Wire.write(0x43);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00194}00194     Wire.endTransmission(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00195}00195     Wire.requestFrom(MPU, 6, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00196}00196     GyX = Wire.read() << 8 | Wire.read();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00197}00197     GyY = Wire.read() << 8 | Wire.read();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00198}00198     GyZ = Wire.read() << 8 | Wire.read();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00199}00199     GyroX = GyX / 131.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00200}00200     GyroY = GyY / 131.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00201}00201     GyroZ = GyZ / 131.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00202}00202     \textcolor{comment}{// Sum all readings}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00203}00203     GyroErrorX = GyroErrorX + GyroX;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00204}00204     GyroErrorY = GyroErrorY + GyroY;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00205}00205     GyroErrorZ = GyroErrorZ + GyroZ;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00206}00206     c++;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00207}00207   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00208}00208   \textcolor{comment}{//Divide the sum by 12000 to get the error value}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00209}00209   GyroErrorX = GyroErrorX / 12000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00210}00210   GyroErrorY = GyroErrorY / 12000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00211}00211   GyroErrorZ = GyroErrorZ / 12000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00212}00212 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00214}00214 \textcolor{keywordtype}{void} IMU::mpu6050init()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00215}00215 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00216}00216   \textcolor{comment}{//DESCRIPTION: Initialize IMU I2C connection}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00217}00217   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00218}00218 \textcolor{comment}{   * Don't worry about how this works}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00219}00219 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00220}00220   Wire.begin(); \textcolor{comment}{//Initialize communication}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00221}00221   delay(20);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00222}00222   Wire.setClock(1000000);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00223}00223   delay(20);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00224}00224   Wire.beginTransmission(MPU); \textcolor{comment}{//Start communication with MPU6050 // MPU=0x68}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00225}00225   Wire.write(0x6B);            \textcolor{comment}{//Talk to the register 6B}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00226}00226   Wire.write(0x00);            \textcolor{comment}{//Make reset -\/ place a 0 into the 6B register}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00227}00227   Wire.endTransmission(\textcolor{keyword}{true});  \textcolor{comment}{//End the transmission}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00228}00228 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00229}00229 \textcolor{keywordtype}{void} IMU::Madgwick(\textcolor{keywordtype}{float} gx, \textcolor{keywordtype}{float} gy, \textcolor{keywordtype}{float} gz, \textcolor{keywordtype}{float} ax, \textcolor{keywordtype}{float} ay, \textcolor{keywordtype}{float} az, \textcolor{keywordtype}{float} invSampleFreq)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00230}00230 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00231}00231   \textcolor{comment}{//DESCRIPTION: Attitude estimation through sensor fusion}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00232}00232   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00233}00233 \textcolor{comment}{   * This function fuses the accelerometer and gyro readings AccX, AccY, AccZ, GyroX, GyroY, GyroZ for attitude estimation.}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00234}00234 \textcolor{comment}{   * Don't worry about the math. There is a tunable parameter called beta in the variable declaration section which basically}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00235}00235 \textcolor{comment}{   * adjusts the weight of accelerometer and gyro data in the state estimate. Higher beta leads to noisier estimate, lower }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00236}00236 \textcolor{comment}{   * beta leads to slower to respond estimate. It is currently tuned for 2kHz loop rate. This function updates the roll\_IMU,}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00237}00237 \textcolor{comment}{   * pitch\_IMU, and yaw\_IMU variables which are in degrees. }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00238}00238 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00239}00239   \textcolor{keywordtype}{float} recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00240}00240   \textcolor{keywordtype}{float} s0, s1, s2, s3;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00241}00241   \textcolor{keywordtype}{float} qDot1, qDot2, qDot3, qDot4;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00242}00242   \textcolor{keywordtype}{float} \_2q0, \_2q1, \_2q2, \_2q3, \_4q0, \_4q1, \_4q2, \_8q1, \_8q2, q0q0, q1q1, q2q2, q3q3;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00244}00244   \textcolor{comment}{//Convert gyroscope degrees/sec to radians/sec}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00245}00245   gx *= 0.0174533f;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00246}00246   gy *= 0.0174533f;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00247}00247   gz *= 0.0174533f;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00249}00249   \textcolor{comment}{//Rate of change of quaternion from gyroscope}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00250}00250   qDot1 = 0.5f * (-\/q1 * gx -\/ q2 * gy -\/ q3 * gz);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00251}00251   qDot2 = 0.5f * (q0 * gx + q2 * gz -\/ q3 * gy);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00252}00252   qDot3 = 0.5f * (q0 * gy -\/ q1 * gz + q3 * gx);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00253}00253   qDot4 = 0.5f * (q0 * gz + q1 * gy -\/ q2 * gx);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00254}00254 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00255}00255   \textcolor{comment}{//Compute feedback only if accelerometer measurement valid (avoids NaN in accelerometer normalisation)}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00256}00256   \textcolor{keywordflow}{if} (!((ax == 0.0f) \&\& (ay == 0.0f) \&\& (az == 0.0f)))}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00257}00257   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00258}00258     \textcolor{comment}{//Normalise accelerometer measurement}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00259}00259     recipNorm = \mbox{\hyperlink{helper_8h_a5e5346796220b271615a52428f6ec6ca}{invSqrt}}(ax * ax + ay * ay + az * az);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00260}00260     ax *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00261}00261     ay *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00262}00262     az *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00264}00264     \textcolor{comment}{//Auxiliary variables to avoid repeated arithmetic}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00265}00265     \_2q0 = 2.0f * q0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00266}00266     \_2q1 = 2.0f * q1;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00267}00267     \_2q2 = 2.0f * q2;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00268}00268     \_2q3 = 2.0f * q3;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00269}00269     \_4q0 = 4.0f * q0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00270}00270     \_4q1 = 4.0f * q1;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00271}00271     \_4q2 = 4.0f * q2;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00272}00272     \_8q1 = 8.0f * q1;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00273}00273     \_8q2 = 8.0f * q2;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00274}00274     q0q0 = q0 * q0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00275}00275     q1q1 = q1 * q1;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00276}00276     q2q2 = q2 * q2;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00277}00277     q3q3 = q3 * q3;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00278}00278 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00279}00279     \textcolor{comment}{//Gradient decent algorithm corrective step}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00280}00280     s0 = \_4q0 * q2q2 + \_2q2 * ax + \_4q0 * q1q1 -\/ \_2q1 * ay;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00281}00281     s1 = \_4q1 * q3q3 -\/ \_2q3 * ax + 4.0f * q0q0 * q1 -\/ \_2q0 * ay -\/ \_4q1 + \_8q1 * q1q1 + \_8q1 * q2q2 + \_4q1 * az;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00282}00282     s2 = 4.0f * q0q0 * q2 + \_2q0 * ax + \_4q2 * q3q3 -\/ \_2q3 * ay -\/ \_4q2 + \_8q2 * q1q1 + \_8q2 * q2q2 + \_4q2 * az;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00283}00283     s3 = 4.0f * q1q1 * q3 -\/ \_2q1 * ax + 4.0f * q2q2 * q3 -\/ \_2q2 * ay;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00284}00284     recipNorm = \mbox{\hyperlink{helper_8h_a5e5346796220b271615a52428f6ec6ca}{invSqrt}}(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3); \textcolor{comment}{//normalise step magnitude}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00285}00285     s0 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00286}00286     s1 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00287}00287     s2 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00288}00288     s3 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00289}00289 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00290}00290     \textcolor{comment}{//Apply feedback step}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00291}00291     qDot1 -\/= beta * s0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00292}00292     qDot2 -\/= beta * s1;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00293}00293     qDot3 -\/= beta * s2;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00294}00294     qDot4 -\/= beta * s3;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00295}00295   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00297}00297   \textcolor{comment}{//Integrate rate of change of quaternion to yield quaternion}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00298}00298   q0 += qDot1 * invSampleFreq;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00299}00299   q1 += qDot2 * invSampleFreq;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00300}00300   q2 += qDot3 * invSampleFreq;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00301}00301   q3 += qDot4 * invSampleFreq;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00303}00303   \textcolor{comment}{//Normalise quaternion}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00304}00304   recipNorm = \mbox{\hyperlink{helper_8h_a5e5346796220b271615a52428f6ec6ca}{invSqrt}}(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00305}00305   q0 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00306}00306   q1 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00307}00307   q2 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00308}00308   q3 *= recipNorm;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00309}00309 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00310}00310   \textcolor{comment}{//compute angles}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00311}00311   roll\_IMU = atan2(q0 * q1 + q2 * q3, 0.5f -\/ q1 * q1 -\/ q2 * q2) * 57.29577951; \textcolor{comment}{//degrees}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00312}00312   pitch\_IMU = asin(-\/2.0f * (q1 * q3 -\/ q0 * q2)) * 57.29577951;                 \textcolor{comment}{//degrees}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00313}00313   yaw\_IMU = atan2(q1 * q2 + q0 * q3, 0.5f -\/ q2 * q2 -\/ q3 * q3) * 57.29577951;  \textcolor{comment}{//degrees}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00314}00314   \textcolor{comment}{//   eulerPQR = derive\_ang\_velocity(const Eigen::Ref<const Eigen::Matrix<double,1,3>>\& e\_)}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00315}00315 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00316}00316 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00317}00317 \textcolor{keywordtype}{int} IMU::calibratempu6050Attitude()}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00318}00318 \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00319}00319   \textcolor{comment}{//DESCRIPTION: Extra function to calibrate IMU attitude estimate on startup, can be used to warm up everything before entering main loop}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00320}00320   \textcolor{comment}{//Assuming vehicle is powered up on level surface!}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00321}00321   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00322}00322 \textcolor{comment}{   * This function is used on startup to warm up the attitude estimation. Originally used to eliminate additional error in the signal}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00323}00323 \textcolor{comment}{   * but no longer used for that purpose as it is not needed on the Teensy. This function is what causes startup to take a few seconds}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00324}00324 \textcolor{comment}{   * to boot. The roll\_correction and pitch\_correction values can be applied to the roll and pitch attitude estimates using }}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00325}00325 \textcolor{comment}{   * correctRollPitch() in the main loop after the madgwick filter function. Again, we don't use this for that purpose but just to warm}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00326}00326 \textcolor{comment}{   * up the IMU and attitude estimation algorithm.}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00327}00327 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00328}00328   \textcolor{comment}{//Warm up IMU and madgwick filter}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00329}00329   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= 10000; i++)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00330}00330   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00331}00331     prev\_time = current\_time;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00332}00332     current\_time = micros();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00333}00333     dt = (current\_time -\/ prev\_time) / 1000000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00334}00334     \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{getIMUdata}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00335}00335     Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00336}00336     \mbox{\hyperlink{helper_8h_a8c3d15fb636e1c90bdc9bcaad48b5d0a}{loopRate}}(2000,current\_time); \textcolor{comment}{//do not exceed 2000Hz}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00337}00337   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00338}00338   \textcolor{comment}{//Grab mean roll and pitch values after everything is warmed up}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00339}00339   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 1; j <= 2000; j++)}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00340}00340   \{}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00341}00341     prev\_time = current\_time;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00342}00342     current\_time = micros();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00343}00343     dt = (current\_time -\/ prev\_time) / 1000000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00344}00344     \mbox{\hyperlink{class_i_m_u_ac3f585cf4dc58bd6dcfe71fc771d2870}{getIMUdata}}();}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00345}00345     Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00346}00346     roll\_correction = roll\_IMU + roll\_correction;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00347}00347     pitch\_correction = pitch\_IMU + pitch\_correction;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00348}00348     \mbox{\hyperlink{helper_8h_a8c3d15fb636e1c90bdc9bcaad48b5d0a}{loopRate}}(2000,current\_time); \textcolor{comment}{//do not exceed 2000Hz}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00349}00349   \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00350}00350   \textcolor{comment}{//These are applied to roll and pitch after Madgwick filter in main loop if desired using correctRollPitch()}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00351}00351   roll\_correction = roll\_correction / 2000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00352}00352   pitch\_correction = pitch\_correction / 2000.0;}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00353}00353   \textcolor{keywordflow}{return} (0);}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00354}00354 \}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00355}00355 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00357}00357 \textcolor{comment}{// Eigen::Matrix<double,1,3> derive\_ang\_velocity(const Eigen::Ref<const Eigen::Matrix<double,1,3>>\& e\_)}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00358}00358 \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00359}00359 \textcolor{comment}{//     Eigen::Matrix<double,3,3> tfm\_;             // transformation matrix}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00360}00360 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00361}00361 \textcolor{comment}{//     tfm\_(0,0) = cos(e\_(1)); tfm\_(0,1) = 0.0; tfm\_(0,2) = (-\/1.0*cos(e\_(0))*sin(e\_(1)));}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00362}00362 \textcolor{comment}{//     tfm\_(1,0) = 0.0; tfm\_(1,1) = 1.0; tfm\_(1,2) = sin(e\_(0));}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00363}00363 \textcolor{comment}{//     tfm\_(2,0) = sin(e\_(1)); tfm\_(2,1) = 0.0; tfm\_(2,2) = (cos(e\_(0))*cos(e\_(1)));}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00364}00364 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00365}00365 \textcolor{comment}{//     \_derived\_pqr\_att = tfm\_ * (e\_ -\/ \_prev\_derived\_euler\_att).transpose();       // angular velocity vector}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00367}00367 \textcolor{comment}{//     return(\_derived\_pqr\_att);}}
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00368}00368 }
+\DoxyCodeLine{\Hypertarget{imu_8cpp_source_l00369}00369 \textcolor{comment}{// \} // end derive\_ang\_velocity()}}
+
+\end{DoxyCode}

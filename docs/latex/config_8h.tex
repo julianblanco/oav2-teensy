@@ -1,0 +1,157 @@
+\hypertarget{config_8h}{}\doxysection{include/config.h File Reference}
+\label{config_8h}\index{include/config.h@{include/config.h}}
+{\ttfamily \#include \char`\"{}telemetry.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}imu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}navigation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}actuators.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}attitude.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensors.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{config_8h_a2474ae4ac8596b106a6b115f11e37602}{LOOPFREQ}}(frequency)~v\+Task\+Delay((config\+TICK\+\_\+\+RATE\+\_\+\+HZ) / (frequency));
+\item 
+\#define \mbox{\hyperlink{config_8h_a3963085bfd77a0ac7e0ab6625daab728}{BNO080}}
+\item 
+\#define \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}~Serial2
+\item 
+\#define \mbox{\hyperlink{config_8h_af8a2a51e35fb1ff152b8e4cde308426f}{sbsuserial}}~Serial1
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{config_8h_af54be6b6893ec95b6e22fb3841ff01c6}{vechicle\+\_\+type}}
+\item 
+int \mbox{\hyperlink{config_8h_a6b8ea81e63be1d2ca4064295b74cd3d5}{low\+PWMmotor}}
+\item 
+int \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{high\+PWMmotor}}
+\item 
+int \mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\+\_\+current\+\_\+mode}}
+\item 
+int \mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\+\_\+armed}}
+\item 
+int \mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{throttle\+Idle}}
+\item 
+int \mbox{\hyperlink{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}{g\+\_\+vehicle\+\_\+type}}
+\item 
+\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} \mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\+\_\+telemetry}}
+\item 
+\mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} \mbox{\hyperlink{config_8h_affbe32f3d7302137c38bf9a99a0746aa}{g\+\_\+attitude}}
+\item 
+\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\+\_\+actuators}}
+\item 
+\mbox{\hyperlink{class_i_m_u}{IMU}} \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\+\_\+imu}}
+\item 
+\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n}{NAVIGATION}} \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\+\_\+navigation}}
+\item 
+\mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} \mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\+\_\+sensors}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{config_8h_a3963085bfd77a0ac7e0ab6625daab728}\label{config_8h_a3963085bfd77a0ac7e0ab6625daab728}} 
+\index{config.h@{config.h}!BNO080@{BNO080}}
+\index{BNO080@{BNO080}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{BNO080}{BNO080}}
+{\footnotesize\ttfamily \#define BNO080}
+
+\mbox{\Hypertarget{config_8h_a2474ae4ac8596b106a6b115f11e37602}\label{config_8h_a2474ae4ac8596b106a6b115f11e37602}} 
+\index{config.h@{config.h}!LOOPFREQ@{LOOPFREQ}}
+\index{LOOPFREQ@{LOOPFREQ}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{LOOPFREQ}{LOOPFREQ}}
+{\footnotesize\ttfamily \#define LOOPFREQ(\begin{DoxyParamCaption}\item[{}]{frequency }\end{DoxyParamCaption})~v\+Task\+Delay((config\+TICK\+\_\+\+RATE\+\_\+\+HZ) / (frequency));}
+
+\mbox{\Hypertarget{config_8h_ae4cac965615797cfee457c273762c776}\label{config_8h_ae4cac965615797cfee457c273762c776}} 
+\index{config.h@{config.h}!mavlinkserial@{mavlinkserial}}
+\index{mavlinkserial@{mavlinkserial}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{mavlinkserial}{mavlinkserial}}
+{\footnotesize\ttfamily \#define mavlinkserial~Serial2}
+
+\mbox{\Hypertarget{config_8h_af8a2a51e35fb1ff152b8e4cde308426f}\label{config_8h_af8a2a51e35fb1ff152b8e4cde308426f}} 
+\index{config.h@{config.h}!sbsuserial@{sbsuserial}}
+\index{sbsuserial@{sbsuserial}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{sbsuserial}{sbsuserial}}
+{\footnotesize\ttfamily \#define sbsuserial~Serial1}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{config_8h_a61ae9c488a5b998500849309eccc4ab9}\label{config_8h_a61ae9c488a5b998500849309eccc4ab9}} 
+\index{config.h@{config.h}!g\_actuators@{g\_actuators}}
+\index{g\_actuators@{g\_actuators}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_actuators}{g\_actuators}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} g\+\_\+actuators\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_ace661a16158ce369f36f263359d1baca}\label{config_8h_ace661a16158ce369f36f263359d1baca}} 
+\index{config.h@{config.h}!g\_armed@{g\_armed}}
+\index{g\_armed@{g\_armed}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_armed}{g\_armed}}
+{\footnotesize\ttfamily int g\+\_\+armed\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_affbe32f3d7302137c38bf9a99a0746aa}\label{config_8h_affbe32f3d7302137c38bf9a99a0746aa}} 
+\index{config.h@{config.h}!g\_attitude@{g\_attitude}}
+\index{g\_attitude@{g\_attitude}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_attitude}{g\_attitude}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} g\+\_\+attitude\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_aefec37c5e938e2536e7f0a016cf855aa}\label{config_8h_aefec37c5e938e2536e7f0a016cf855aa}} 
+\index{config.h@{config.h}!g\_current\_mode@{g\_current\_mode}}
+\index{g\_current\_mode@{g\_current\_mode}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_current\_mode}{g\_current\_mode}}
+{\footnotesize\ttfamily int g\+\_\+current\+\_\+mode\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_ab2e2ba186f9665ae5a3018f157925910}\label{config_8h_ab2e2ba186f9665ae5a3018f157925910}} 
+\index{config.h@{config.h}!g\_imu@{g\_imu}}
+\index{g\_imu@{g\_imu}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_imu}{g\_imu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_i_m_u}{IMU}} g\+\_\+imu\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_a79498913145b8bd48d078e46ae5243ef}\label{config_8h_a79498913145b8bd48d078e46ae5243ef}} 
+\index{config.h@{config.h}!g\_navigation@{g\_navigation}}
+\index{g\_navigation@{g\_navigation}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_navigation}{g\_navigation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n}{NAVIGATION}} g\+\_\+navigation\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}\label{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}} 
+\index{config.h@{config.h}!g\_sensors@{g\_sensors}}
+\index{g\_sensors@{g\_sensors}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_sensors}{g\_sensors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} g\+\_\+sensors\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_a6f2452f706068c239589d713af9bb760}\label{config_8h_a6f2452f706068c239589d713af9bb760}} 
+\index{config.h@{config.h}!g\_telemetry@{g\_telemetry}}
+\index{g\_telemetry@{g\_telemetry}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_telemetry}{g\_telemetry}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} g\+\_\+telemetry\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}\label{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}} 
+\index{config.h@{config.h}!g\_vehicle\_type@{g\_vehicle\_type}}
+\index{g\_vehicle\_type@{g\_vehicle\_type}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{g\_vehicle\_type}{g\_vehicle\_type}}
+{\footnotesize\ttfamily int g\+\_\+vehicle\+\_\+type\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_a93fc6d29671974eecc37efe724bb1596}\label{config_8h_a93fc6d29671974eecc37efe724bb1596}} 
+\index{config.h@{config.h}!highPWMmotor@{highPWMmotor}}
+\index{highPWMmotor@{highPWMmotor}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{highPWMmotor}{highPWMmotor}}
+{\footnotesize\ttfamily int high\+PWMmotor\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_a6b8ea81e63be1d2ca4064295b74cd3d5}\label{config_8h_a6b8ea81e63be1d2ca4064295b74cd3d5}} 
+\index{config.h@{config.h}!lowPWMmotor@{lowPWMmotor}}
+\index{lowPWMmotor@{lowPWMmotor}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{lowPWMmotor}{lowPWMmotor}}
+{\footnotesize\ttfamily int low\+PWMmotor\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_a59a9eab06aebc898c20b1e1f678d227c}\label{config_8h_a59a9eab06aebc898c20b1e1f678d227c}} 
+\index{config.h@{config.h}!throttleIdle@{throttleIdle}}
+\index{throttleIdle@{throttleIdle}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{throttleIdle}{throttleIdle}}
+{\footnotesize\ttfamily int throttle\+Idle\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{config_8h_af54be6b6893ec95b6e22fb3841ff01c6}\label{config_8h_af54be6b6893ec95b6e22fb3841ff01c6}} 
+\index{config.h@{config.h}!vechicle\_type@{vechicle\_type}}
+\index{vechicle\_type@{vechicle\_type}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{vechicle\_type}{vechicle\_type}}
+{\footnotesize\ttfamily bool vechicle\+\_\+type\hspace{0.3cm}{\ttfamily [extern]}}
+

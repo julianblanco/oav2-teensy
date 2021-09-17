@@ -1,0 +1,509 @@
+\hypertarget{class_t_e_l_e_m_e_t_r_y}{}\doxysection{TELEMETRY Class Reference}
+\label{class_t_e_l_e_m_e_t_r_y}\index{TELEMETRY@{TELEMETRY}}
+
+
+{\ttfamily \#include $<$telemetry.\+h$>$}
+
+Inheritance diagram for TELEMETRY\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_t_e_l_e_m_e_t_r_y}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8d71bbae0ded31d5ae14f327af2937d0}{TELEMETRY}} ()
+\item 
+\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3d94218bce8b18485ade636164c7cf0a}{$\sim$\+TELEMETRY}} ()
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7188055bd9eb0db0dbd5927e5501e68}{start}} ()
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}{setup}} ()
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_af73f5dea2c9451095247b22947e2cdab}{mavlink\+\_\+send\+\_\+and\+\_\+parse}} ()
+\item 
+void \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}{sbus\+Parse}} ()
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aae69e62ec0b163c45a626255c2e74d7a}{init\+\_\+sdcard}} ()
+\item 
+void \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}{quickdebug}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Sbus\+Rx \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}{x8r}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}} \mbox{[}MAVLINK\+\_\+\+MAX\+\_\+\+PACKET\+\_\+\+LEN\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a9723daa944e31cecffa9124c0c3e660e}{buf0}} \mbox{[}MAVLINK\+\_\+\+MAX\+\_\+\+PACKET\+\_\+\+LEN\mbox{]}
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a6861e9f3c0409e5f237cab5c11c3aa7f}{RCThrottle}}
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}}
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae318aeb6180a1af78163c3bea0b9b0a9}{RCRoll}}
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a71ee60d145c7ca14dbefb5113a20cf6f}{RCPitch}}
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a07ecc00c8eb6acdf05c215c5ec013e3a}{RCArm}}
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad26a0cf9223b54c59f4d68c81293685a}{RCMode}}
+\item 
+bool \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1a5d4dc668d7866414919c6365cfba9e}{fail\+Safe}}
+\item 
+bool \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a69fefd9568f821320eea668e5ab010e3}{lost\+Frame}}
+\item 
+long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3ca42a3faf4a5353fddd21dbb7586983}{timeelapsed}}
+\item 
+long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8877ccf0f4de1b0bdc8a252d39218471}{lastread}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_af7f6f50c13e3ceaf8a724f3002678df9}{system\+\_\+type}} = MAV\+\_\+\+TYPE\+\_\+\+GROUND\+\_\+\+ROVER
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aca1ff0c3720df69e4c31606e23b27649}{autopilot\+\_\+type}} = MAV\+\_\+\+AUTOPILOT\+\_\+\+GENERIC
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a47af55c2e4933452a4a05f120c70f6d0}{system\+\_\+mode}} = MAV\+\_\+\+MODE\+\_\+\+MANUAL\+\_\+\+DISARMED
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac61d17d488ead97c1ccd48ec5e087794}{system\+\_\+state}} = MAV\+\_\+\+STATE\+\_\+\+ACTIVE
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7995e97cf097e885c016007ede878955}{heartbeat\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae63ef78fcc0924602ff76ef471a12fd0}{battery\+\_\+status\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a852802978a4890bc86cefb9582951191}{radio\+\_\+status\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7f7b9c3ac10a901afdfc3f629dacfa4c}{local\+\_\+position\+\_\+ned\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a9de1541a8269db9dbd308bbf6f8fb7b5}{global\+\_\+position\+\_\+int\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a64c52eb6edd899925afe4bf2ae214a99}{position\+\_\+target\+\_\+local\+\_\+ned\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a88e8597e7a41525c140ecfd4dc79ac59}{position\+\_\+target\+\_\+global\+\_\+int\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa138137f1948230b249ae03b303c6a2c}{highres\+\_\+imu\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a29fc3d86e007826e5df79527bdb8a612}{attitude\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7ab5d93dacf4eddc245c6446b66f612}{sys\+\_\+status\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a91648e5e8f5313b2bea6ddc77523cc7d}{alt\+Msg}}
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a43dcf373e15c9a254d4c1e3170d32179}{ping\+Msg}}
+\item 
+mavlink\+\_\+manual\+\_\+control\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac433d2bef462db5ca348836f1168b366}{manual\+\_\+control}}
+\item 
+mavlink\+\_\+set\+\_\+mode\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8e4a2185537c8c8f553e256cf5bf44dc}{mode}}
+\item 
+mavlink\+\_\+heartbeat\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}
+\item 
+mavlink\+\_\+system\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\+\_\+system}}
+\item 
+float \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3df116ff3a6068b9f64d9453b1432c66}{position}} \mbox{[}6\mbox{]}
+\item 
+bool \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a0880eebf17fb2026753b51348386120b}{Manual\+Mode}} = false
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a0b9b84b6bcee02af881dbc25510f9f8a}{Latitude}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a34dea735d535506ad3991c13b812ce75}{Longitude}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a53294915b1e0878f9e69e6b28f98d19c}{Altitude}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3794da7165e4a35b2635a24cc9ca3a77}{Velocity}}
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ab5653201549153c0d66bc79451f42553}{Microseconds}}
+\item 
+long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}{parsed}}
+\item 
+long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a678aa4cce25112ee6d9518dd9a6fbc22}{lastparsed}}
+\item 
+long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a5d32246cea8fb8c5d172bc7d9f093d19}{timebetweenparsed}}
+\item 
+unsigned long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ab8ad44e27b2ac9c10ca5fee13290102a}{heartbeat\+Timer\+\_\+\+TX}} = millis()
+\item 
+unsigned long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae5b88a27d2d16ff4b0446260fc27074e}{heartbeat\+Timer\+\_\+\+RX}} = millis()
+\item 
+unsigned long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a49d3c67f39994c77d297e02487fbaf10}{heartbeat\+Interval\+\_\+\+TX}} = 0.\+5L $\ast$ 1000L
+\item 
+unsigned long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aeda2b81f61edc15bc9321a86cc197fc4}{heartbeat\+Interval\+\_\+\+RX}} = 2L $\ast$ 1000L
+\item 
+unsigned long \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{current\+Time}} = current\+Time
+\item 
+int \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac7a8a0a92c81b1c560808dba45dc5681}{data}} = 0
+\item 
+mavlink\+\_\+message\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{received\+Msg}}
+\item 
+mavlink\+\_\+status\+\_\+t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a964c1dd8e89a82eb17a3b4624ff132cd}{mav\+\_\+status}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a8d71bbae0ded31d5ae14f327af2937d0}\label{class_t_e_l_e_m_e_t_r_y_a8d71bbae0ded31d5ae14f327af2937d0}} 
+\index{TELEMETRY@{TELEMETRY}!TELEMETRY@{TELEMETRY}}
+\index{TELEMETRY@{TELEMETRY}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{TELEMETRY()}{TELEMETRY()}}
+{\footnotesize\ttfamily TELEMETRY\+::\+TELEMETRY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a3d94218bce8b18485ade636164c7cf0a}\label{class_t_e_l_e_m_e_t_r_y_a3d94218bce8b18485ade636164c7cf0a}} 
+\index{TELEMETRY@{TELEMETRY}!````~TELEMETRY@{$\sim$TELEMETRY}}
+\index{````~TELEMETRY@{$\sim$TELEMETRY}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{$\sim$TELEMETRY()}{~TELEMETRY()}}
+{\footnotesize\ttfamily TELEMETRY\+::$\sim$\+TELEMETRY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_aae69e62ec0b163c45a626255c2e74d7a}\label{class_t_e_l_e_m_e_t_r_y_aae69e62ec0b163c45a626255c2e74d7a}} 
+\index{TELEMETRY@{TELEMETRY}!init\_sdcard@{init\_sdcard}}
+\index{init\_sdcard@{init\_sdcard}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{init\_sdcard()}{init\_sdcard()}}
+{\footnotesize\ttfamily int TELEMETRY\+::init\+\_\+sdcard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_af73f5dea2c9451095247b22947e2cdab}\label{class_t_e_l_e_m_e_t_r_y_af73f5dea2c9451095247b22947e2cdab}} 
+\index{TELEMETRY@{TELEMETRY}!mavlink\_send\_and\_parse@{mavlink\_send\_and\_parse}}
+\index{mavlink\_send\_and\_parse@{mavlink\_send\_and\_parse}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{mavlink\_send\_and\_parse()}{mavlink\_send\_and\_parse()}}
+{\footnotesize\ttfamily int TELEMETRY\+::mavlink\+\_\+send\+\_\+and\+\_\+parse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}\label{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}} 
+\index{TELEMETRY@{TELEMETRY}!quickdebug@{quickdebug}}
+\index{quickdebug@{quickdebug}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{quickdebug()}{quickdebug()}}
+{\footnotesize\ttfamily void TELEMETRY\+::quickdebug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}\label{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}} 
+\index{TELEMETRY@{TELEMETRY}!sbusParse@{sbusParse}}
+\index{sbusParse@{sbusParse}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{sbusParse()}{sbusParse()}}
+{\footnotesize\ttfamily void TELEMETRY\+::sbus\+Parse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}\label{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}} 
+\index{TELEMETRY@{TELEMETRY}!setup@{setup}}
+\index{setup@{setup}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int TELEMETRY\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ad7188055bd9eb0db0dbd5927e5501e68}\label{class_t_e_l_e_m_e_t_r_y_ad7188055bd9eb0db0dbd5927e5501e68}} 
+\index{TELEMETRY@{TELEMETRY}!start@{start}}
+\index{start@{start}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int TELEMETRY\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{Task}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a53294915b1e0878f9e69e6b28f98d19c}\label{class_t_e_l_e_m_e_t_r_y_a53294915b1e0878f9e69e6b28f98d19c}} 
+\index{TELEMETRY@{TELEMETRY}!Altitude@{Altitude}}
+\index{Altitude@{Altitude}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{Altitude}{Altitude}}
+{\footnotesize\ttfamily int32\+\_\+t TELEMETRY\+::\+Altitude}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a91648e5e8f5313b2bea6ddc77523cc7d}\label{class_t_e_l_e_m_e_t_r_y_a91648e5e8f5313b2bea6ddc77523cc7d}} 
+\index{TELEMETRY@{TELEMETRY}!altMsg@{altMsg}}
+\index{altMsg@{altMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{altMsg}{altMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::alt\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a29fc3d86e007826e5df79527bdb8a612}\label{class_t_e_l_e_m_e_t_r_y_a29fc3d86e007826e5df79527bdb8a612}} 
+\index{TELEMETRY@{TELEMETRY}!attitudeMsg@{attitudeMsg}}
+\index{attitudeMsg@{attitudeMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{attitudeMsg}{attitudeMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::attitude\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_aca1ff0c3720df69e4c31606e23b27649}\label{class_t_e_l_e_m_e_t_r_y_aca1ff0c3720df69e4c31606e23b27649}} 
+\index{TELEMETRY@{TELEMETRY}!autopilot\_type@{autopilot\_type}}
+\index{autopilot\_type@{autopilot\_type}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{autopilot\_type}{autopilot\_type}}
+{\footnotesize\ttfamily uint8\+\_\+t TELEMETRY\+::autopilot\+\_\+type = MAV\+\_\+\+AUTOPILOT\+\_\+\+GENERIC}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ae63ef78fcc0924602ff76ef471a12fd0}\label{class_t_e_l_e_m_e_t_r_y_ae63ef78fcc0924602ff76ef471a12fd0}} 
+\index{TELEMETRY@{TELEMETRY}!battery\_statusMsg@{battery\_statusMsg}}
+\index{battery\_statusMsg@{battery\_statusMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{battery\_statusMsg}{battery\_statusMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::battery\+\_\+status\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}\label{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}} 
+\index{TELEMETRY@{TELEMETRY}!buf@{buf}}
+\index{buf@{buf}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{buf}{buf}}
+{\footnotesize\ttfamily uint8\+\_\+t TELEMETRY\+::buf\mbox{[}MAVLINK\+\_\+\+MAX\+\_\+\+PACKET\+\_\+\+LEN\mbox{]}}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a9723daa944e31cecffa9124c0c3e660e}\label{class_t_e_l_e_m_e_t_r_y_a9723daa944e31cecffa9124c0c3e660e}} 
+\index{TELEMETRY@{TELEMETRY}!buf0@{buf0}}
+\index{buf0@{buf0}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{buf0}{buf0}}
+{\footnotesize\ttfamily uint8\+\_\+t TELEMETRY\+::buf0\mbox{[}MAVLINK\+\_\+\+MAX\+\_\+\+PACKET\+\_\+\+LEN\mbox{]}}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}\label{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}} 
+\index{TELEMETRY@{TELEMETRY}!currentTime@{currentTime}}
+\index{currentTime@{currentTime}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{currentTime}{currentTime}}
+{\footnotesize\ttfamily unsigned long TELEMETRY\+::current\+Time = current\+Time}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ac7a8a0a92c81b1c560808dba45dc5681}\label{class_t_e_l_e_m_e_t_r_y_ac7a8a0a92c81b1c560808dba45dc5681}} 
+\index{TELEMETRY@{TELEMETRY}!data@{data}}
+\index{data@{data}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily int TELEMETRY\+::data = 0}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a1a5d4dc668d7866414919c6365cfba9e}\label{class_t_e_l_e_m_e_t_r_y_a1a5d4dc668d7866414919c6365cfba9e}} 
+\index{TELEMETRY@{TELEMETRY}!failSafe@{failSafe}}
+\index{failSafe@{failSafe}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{failSafe}{failSafe}}
+{\footnotesize\ttfamily bool TELEMETRY\+::fail\+Safe}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a9de1541a8269db9dbd308bbf6f8fb7b5}\label{class_t_e_l_e_m_e_t_r_y_a9de1541a8269db9dbd308bbf6f8fb7b5}} 
+\index{TELEMETRY@{TELEMETRY}!global\_position\_intMsg@{global\_position\_intMsg}}
+\index{global\_position\_intMsg@{global\_position\_intMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{global\_position\_intMsg}{global\_position\_intMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::global\+\_\+position\+\_\+int\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}\label{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}} 
+\index{TELEMETRY@{TELEMETRY}!heartbeat@{heartbeat}}
+\index{heartbeat@{heartbeat}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{heartbeat}{heartbeat}}
+{\footnotesize\ttfamily mavlink\+\_\+heartbeat\+\_\+t TELEMETRY\+::heartbeat}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_aeda2b81f61edc15bc9321a86cc197fc4}\label{class_t_e_l_e_m_e_t_r_y_aeda2b81f61edc15bc9321a86cc197fc4}} 
+\index{TELEMETRY@{TELEMETRY}!heartbeatInterval\_RX@{heartbeatInterval\_RX}}
+\index{heartbeatInterval\_RX@{heartbeatInterval\_RX}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{heartbeatInterval\_RX}{heartbeatInterval\_RX}}
+{\footnotesize\ttfamily unsigned long TELEMETRY\+::heartbeat\+Interval\+\_\+\+RX = 2L $\ast$ 1000L}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a49d3c67f39994c77d297e02487fbaf10}\label{class_t_e_l_e_m_e_t_r_y_a49d3c67f39994c77d297e02487fbaf10}} 
+\index{TELEMETRY@{TELEMETRY}!heartbeatInterval\_TX@{heartbeatInterval\_TX}}
+\index{heartbeatInterval\_TX@{heartbeatInterval\_TX}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{heartbeatInterval\_TX}{heartbeatInterval\_TX}}
+{\footnotesize\ttfamily unsigned long TELEMETRY\+::heartbeat\+Interval\+\_\+\+TX = 0.\+5L $\ast$ 1000L}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a7995e97cf097e885c016007ede878955}\label{class_t_e_l_e_m_e_t_r_y_a7995e97cf097e885c016007ede878955}} 
+\index{TELEMETRY@{TELEMETRY}!heartbeatMsg@{heartbeatMsg}}
+\index{heartbeatMsg@{heartbeatMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{heartbeatMsg}{heartbeatMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::heartbeat\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ae5b88a27d2d16ff4b0446260fc27074e}\label{class_t_e_l_e_m_e_t_r_y_ae5b88a27d2d16ff4b0446260fc27074e}} 
+\index{TELEMETRY@{TELEMETRY}!heartbeatTimer\_RX@{heartbeatTimer\_RX}}
+\index{heartbeatTimer\_RX@{heartbeatTimer\_RX}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{heartbeatTimer\_RX}{heartbeatTimer\_RX}}
+{\footnotesize\ttfamily unsigned long TELEMETRY\+::heartbeat\+Timer\+\_\+\+RX = millis()}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ab8ad44e27b2ac9c10ca5fee13290102a}\label{class_t_e_l_e_m_e_t_r_y_ab8ad44e27b2ac9c10ca5fee13290102a}} 
+\index{TELEMETRY@{TELEMETRY}!heartbeatTimer\_TX@{heartbeatTimer\_TX}}
+\index{heartbeatTimer\_TX@{heartbeatTimer\_TX}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{heartbeatTimer\_TX}{heartbeatTimer\_TX}}
+{\footnotesize\ttfamily unsigned long TELEMETRY\+::heartbeat\+Timer\+\_\+\+TX = millis()}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_aa138137f1948230b249ae03b303c6a2c}\label{class_t_e_l_e_m_e_t_r_y_aa138137f1948230b249ae03b303c6a2c}} 
+\index{TELEMETRY@{TELEMETRY}!highres\_imuMsg@{highres\_imuMsg}}
+\index{highres\_imuMsg@{highres\_imuMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{highres\_imuMsg}{highres\_imuMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::highres\+\_\+imu\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a678aa4cce25112ee6d9518dd9a6fbc22}\label{class_t_e_l_e_m_e_t_r_y_a678aa4cce25112ee6d9518dd9a6fbc22}} 
+\index{TELEMETRY@{TELEMETRY}!lastparsed@{lastparsed}}
+\index{lastparsed@{lastparsed}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{lastparsed}{lastparsed}}
+{\footnotesize\ttfamily long TELEMETRY\+::lastparsed}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a8877ccf0f4de1b0bdc8a252d39218471}\label{class_t_e_l_e_m_e_t_r_y_a8877ccf0f4de1b0bdc8a252d39218471}} 
+\index{TELEMETRY@{TELEMETRY}!lastread@{lastread}}
+\index{lastread@{lastread}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{lastread}{lastread}}
+{\footnotesize\ttfamily long TELEMETRY\+::lastread}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a0b9b84b6bcee02af881dbc25510f9f8a}\label{class_t_e_l_e_m_e_t_r_y_a0b9b84b6bcee02af881dbc25510f9f8a}} 
+\index{TELEMETRY@{TELEMETRY}!Latitude@{Latitude}}
+\index{Latitude@{Latitude}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{Latitude}{Latitude}}
+{\footnotesize\ttfamily int32\+\_\+t TELEMETRY\+::\+Latitude}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a7f7b9c3ac10a901afdfc3f629dacfa4c}\label{class_t_e_l_e_m_e_t_r_y_a7f7b9c3ac10a901afdfc3f629dacfa4c}} 
+\index{TELEMETRY@{TELEMETRY}!local\_position\_nedMsg@{local\_position\_nedMsg}}
+\index{local\_position\_nedMsg@{local\_position\_nedMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{local\_position\_nedMsg}{local\_position\_nedMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::local\+\_\+position\+\_\+ned\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a34dea735d535506ad3991c13b812ce75}\label{class_t_e_l_e_m_e_t_r_y_a34dea735d535506ad3991c13b812ce75}} 
+\index{TELEMETRY@{TELEMETRY}!Longitude@{Longitude}}
+\index{Longitude@{Longitude}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{Longitude}{Longitude}}
+{\footnotesize\ttfamily int32\+\_\+t TELEMETRY\+::\+Longitude}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a69fefd9568f821320eea668e5ab010e3}\label{class_t_e_l_e_m_e_t_r_y_a69fefd9568f821320eea668e5ab010e3}} 
+\index{TELEMETRY@{TELEMETRY}!lostFrame@{lostFrame}}
+\index{lostFrame@{lostFrame}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{lostFrame}{lostFrame}}
+{\footnotesize\ttfamily bool TELEMETRY\+::lost\+Frame}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ac433d2bef462db5ca348836f1168b366}\label{class_t_e_l_e_m_e_t_r_y_ac433d2bef462db5ca348836f1168b366}} 
+\index{TELEMETRY@{TELEMETRY}!manual\_control@{manual\_control}}
+\index{manual\_control@{manual\_control}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{manual\_control}{manual\_control}}
+{\footnotesize\ttfamily mavlink\+\_\+manual\+\_\+control\+\_\+t TELEMETRY\+::manual\+\_\+control}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a0880eebf17fb2026753b51348386120b}\label{class_t_e_l_e_m_e_t_r_y_a0880eebf17fb2026753b51348386120b}} 
+\index{TELEMETRY@{TELEMETRY}!ManualMode@{ManualMode}}
+\index{ManualMode@{ManualMode}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{ManualMode}{ManualMode}}
+{\footnotesize\ttfamily bool TELEMETRY\+::\+Manual\+Mode = false}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a964c1dd8e89a82eb17a3b4624ff132cd}\label{class_t_e_l_e_m_e_t_r_y_a964c1dd8e89a82eb17a3b4624ff132cd}} 
+\index{TELEMETRY@{TELEMETRY}!mav\_status@{mav\_status}}
+\index{mav\_status@{mav\_status}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{mav\_status}{mav\_status}}
+{\footnotesize\ttfamily mavlink\+\_\+status\+\_\+t TELEMETRY\+::mav\+\_\+status}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}\label{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}} 
+\index{TELEMETRY@{TELEMETRY}!mavlink\_system@{mavlink\_system}}
+\index{mavlink\_system@{mavlink\_system}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{mavlink\_system}{mavlink\_system}}
+{\footnotesize\ttfamily mavlink\+\_\+system\+\_\+t TELEMETRY\+::mavlink\+\_\+system}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ab5653201549153c0d66bc79451f42553}\label{class_t_e_l_e_m_e_t_r_y_ab5653201549153c0d66bc79451f42553}} 
+\index{TELEMETRY@{TELEMETRY}!Microseconds@{Microseconds}}
+\index{Microseconds@{Microseconds}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{Microseconds}{Microseconds}}
+{\footnotesize\ttfamily int64\+\_\+t TELEMETRY\+::\+Microseconds}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a8e4a2185537c8c8f553e256cf5bf44dc}\label{class_t_e_l_e_m_e_t_r_y_a8e4a2185537c8c8f553e256cf5bf44dc}} 
+\index{TELEMETRY@{TELEMETRY}!mode@{mode}}
+\index{mode@{mode}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily mavlink\+\_\+set\+\_\+mode\+\_\+t TELEMETRY\+::mode}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}\label{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}} 
+\index{TELEMETRY@{TELEMETRY}!parsed@{parsed}}
+\index{parsed@{parsed}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{parsed}{parsed}}
+{\footnotesize\ttfamily long TELEMETRY\+::parsed}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a43dcf373e15c9a254d4c1e3170d32179}\label{class_t_e_l_e_m_e_t_r_y_a43dcf373e15c9a254d4c1e3170d32179}} 
+\index{TELEMETRY@{TELEMETRY}!pingMsg@{pingMsg}}
+\index{pingMsg@{pingMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{pingMsg}{pingMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::ping\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a3df116ff3a6068b9f64d9453b1432c66}\label{class_t_e_l_e_m_e_t_r_y_a3df116ff3a6068b9f64d9453b1432c66}} 
+\index{TELEMETRY@{TELEMETRY}!position@{position}}
+\index{position@{position}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily float TELEMETRY\+::position\mbox{[}6\mbox{]}}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a88e8597e7a41525c140ecfd4dc79ac59}\label{class_t_e_l_e_m_e_t_r_y_a88e8597e7a41525c140ecfd4dc79ac59}} 
+\index{TELEMETRY@{TELEMETRY}!position\_target\_global\_intMsg@{position\_target\_global\_intMsg}}
+\index{position\_target\_global\_intMsg@{position\_target\_global\_intMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{position\_target\_global\_intMsg}{position\_target\_global\_intMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::position\+\_\+target\+\_\+global\+\_\+int\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a64c52eb6edd899925afe4bf2ae214a99}\label{class_t_e_l_e_m_e_t_r_y_a64c52eb6edd899925afe4bf2ae214a99}} 
+\index{TELEMETRY@{TELEMETRY}!position\_target\_local\_nedMsg@{position\_target\_local\_nedMsg}}
+\index{position\_target\_local\_nedMsg@{position\_target\_local\_nedMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{position\_target\_local\_nedMsg}{position\_target\_local\_nedMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::position\+\_\+target\+\_\+local\+\_\+ned\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a852802978a4890bc86cefb9582951191}\label{class_t_e_l_e_m_e_t_r_y_a852802978a4890bc86cefb9582951191}} 
+\index{TELEMETRY@{TELEMETRY}!radio\_statusMsg@{radio\_statusMsg}}
+\index{radio\_statusMsg@{radio\_statusMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{radio\_statusMsg}{radio\_statusMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::radio\+\_\+status\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a07ecc00c8eb6acdf05c215c5ec013e3a}\label{class_t_e_l_e_m_e_t_r_y_a07ecc00c8eb6acdf05c215c5ec013e3a}} 
+\index{TELEMETRY@{TELEMETRY}!RCArm@{RCArm}}
+\index{RCArm@{RCArm}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{RCArm}{RCArm}}
+{\footnotesize\ttfamily int TELEMETRY\+::\+RCArm}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ad26a0cf9223b54c59f4d68c81293685a}\label{class_t_e_l_e_m_e_t_r_y_ad26a0cf9223b54c59f4d68c81293685a}} 
+\index{TELEMETRY@{TELEMETRY}!RCMode@{RCMode}}
+\index{RCMode@{RCMode}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{RCMode}{RCMode}}
+{\footnotesize\ttfamily int TELEMETRY\+::\+RCMode}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a71ee60d145c7ca14dbefb5113a20cf6f}\label{class_t_e_l_e_m_e_t_r_y_a71ee60d145c7ca14dbefb5113a20cf6f}} 
+\index{TELEMETRY@{TELEMETRY}!RCPitch@{RCPitch}}
+\index{RCPitch@{RCPitch}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{RCPitch}{RCPitch}}
+{\footnotesize\ttfamily int TELEMETRY\+::\+RCPitch}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ae318aeb6180a1af78163c3bea0b9b0a9}\label{class_t_e_l_e_m_e_t_r_y_ae318aeb6180a1af78163c3bea0b9b0a9}} 
+\index{TELEMETRY@{TELEMETRY}!RCRoll@{RCRoll}}
+\index{RCRoll@{RCRoll}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{RCRoll}{RCRoll}}
+{\footnotesize\ttfamily int TELEMETRY\+::\+RCRoll}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a6861e9f3c0409e5f237cab5c11c3aa7f}\label{class_t_e_l_e_m_e_t_r_y_a6861e9f3c0409e5f237cab5c11c3aa7f}} 
+\index{TELEMETRY@{TELEMETRY}!RCThrottle@{RCThrottle}}
+\index{RCThrottle@{RCThrottle}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{RCThrottle}{RCThrottle}}
+{\footnotesize\ttfamily int TELEMETRY\+::\+RCThrottle}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}\label{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}} 
+\index{TELEMETRY@{TELEMETRY}!RCYaw@{RCYaw}}
+\index{RCYaw@{RCYaw}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{RCYaw}{RCYaw}}
+{\footnotesize\ttfamily int TELEMETRY\+::\+RCYaw}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}\label{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}} 
+\index{TELEMETRY@{TELEMETRY}!receivedMsg@{receivedMsg}}
+\index{receivedMsg@{receivedMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{receivedMsg}{receivedMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::received\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ad7ab5d93dacf4eddc245c6446b66f612}\label{class_t_e_l_e_m_e_t_r_y_ad7ab5d93dacf4eddc245c6446b66f612}} 
+\index{TELEMETRY@{TELEMETRY}!sys\_statusMsg@{sys\_statusMsg}}
+\index{sys\_statusMsg@{sys\_statusMsg}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{sys\_statusMsg}{sys\_statusMsg}}
+{\footnotesize\ttfamily mavlink\+\_\+message\+\_\+t TELEMETRY\+::sys\+\_\+status\+Msg}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a47af55c2e4933452a4a05f120c70f6d0}\label{class_t_e_l_e_m_e_t_r_y_a47af55c2e4933452a4a05f120c70f6d0}} 
+\index{TELEMETRY@{TELEMETRY}!system\_mode@{system\_mode}}
+\index{system\_mode@{system\_mode}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{system\_mode}{system\_mode}}
+{\footnotesize\ttfamily uint8\+\_\+t TELEMETRY\+::system\+\_\+mode = MAV\+\_\+\+MODE\+\_\+\+MANUAL\+\_\+\+DISARMED}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_ac61d17d488ead97c1ccd48ec5e087794}\label{class_t_e_l_e_m_e_t_r_y_ac61d17d488ead97c1ccd48ec5e087794}} 
+\index{TELEMETRY@{TELEMETRY}!system\_state@{system\_state}}
+\index{system\_state@{system\_state}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{system\_state}{system\_state}}
+{\footnotesize\ttfamily uint8\+\_\+t TELEMETRY\+::system\+\_\+state = MAV\+\_\+\+STATE\+\_\+\+ACTIVE}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_af7f6f50c13e3ceaf8a724f3002678df9}\label{class_t_e_l_e_m_e_t_r_y_af7f6f50c13e3ceaf8a724f3002678df9}} 
+\index{TELEMETRY@{TELEMETRY}!system\_type@{system\_type}}
+\index{system\_type@{system\_type}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{system\_type}{system\_type}}
+{\footnotesize\ttfamily uint8\+\_\+t TELEMETRY\+::system\+\_\+type = MAV\+\_\+\+TYPE\+\_\+\+GROUND\+\_\+\+ROVER}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a5d32246cea8fb8c5d172bc7d9f093d19}\label{class_t_e_l_e_m_e_t_r_y_a5d32246cea8fb8c5d172bc7d9f093d19}} 
+\index{TELEMETRY@{TELEMETRY}!timebetweenparsed@{timebetweenparsed}}
+\index{timebetweenparsed@{timebetweenparsed}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{timebetweenparsed}{timebetweenparsed}}
+{\footnotesize\ttfamily long TELEMETRY\+::timebetweenparsed}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a3ca42a3faf4a5353fddd21dbb7586983}\label{class_t_e_l_e_m_e_t_r_y_a3ca42a3faf4a5353fddd21dbb7586983}} 
+\index{TELEMETRY@{TELEMETRY}!timeelapsed@{timeelapsed}}
+\index{timeelapsed@{timeelapsed}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{timeelapsed}{timeelapsed}}
+{\footnotesize\ttfamily long TELEMETRY\+::timeelapsed}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a3794da7165e4a35b2635a24cc9ca3a77}\label{class_t_e_l_e_m_e_t_r_y_a3794da7165e4a35b2635a24cc9ca3a77}} 
+\index{TELEMETRY@{TELEMETRY}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{Velocity}{Velocity}}
+{\footnotesize\ttfamily int16\+\_\+t TELEMETRY\+::\+Velocity}
+
+\mbox{\Hypertarget{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}\label{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}} 
+\index{TELEMETRY@{TELEMETRY}!x8r@{x8r}}
+\index{x8r@{x8r}!TELEMETRY@{TELEMETRY}}
+\doxysubsubsection{\texorpdfstring{x8r}{x8r}}
+{\footnotesize\ttfamily Sbus\+Rx TELEMETRY\+::x8r}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{telemetry_8h}{telemetry.\+h}}\end{DoxyCompactItemize}

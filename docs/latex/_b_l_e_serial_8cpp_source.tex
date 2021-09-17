@@ -1,0 +1,139 @@
+\hypertarget{_b_l_e_serial_8cpp_source}{}\doxysection{BLESerial.\+cpp}
+\label{_b_l_e_serial_8cpp_source}\index{lib/Adafruit\_NeoPixel/examples/StrandtestBLE/BLESerial.cpp@{lib/Adafruit\_NeoPixel/examples/StrandtestBLE/BLESerial.cpp}}
+\mbox{\hyperlink{_b_l_e_serial_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_b_l_e_serial_8h}{BLESerial.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00003}00003 \textcolor{comment}{// \#define BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00005}00005 \mbox{\hyperlink{class_b_l_e_serial}{BLESerial}}* BLESerial::\_instance = NULL;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00007}\mbox{\hyperlink{class_b_l_e_serial_a4024e9e6ac2be460a0890c707460222b}{00007}} \mbox{\hyperlink{class_b_l_e_serial_a4024e9e6ac2be460a0890c707460222b}{BLESerial::BLESerial}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} req, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} rdy, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} rst) :}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00008}00008   BLEPeripheral(req, rdy, rst)}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00010}00010   this-\/>\_txCount = 0;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00011}00011   this-\/>\_rxHead = this-\/>\_rxTail = 0;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00012}00012   this-\/>\_flushed = 0;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00013}00013   BLESerial::\_instance = \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00015}00015   addAttribute(this-\/>\_uartService);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00016}00016   addAttribute(this-\/>\_uartNameDescriptor);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00017}00017   setAdvertisedServiceUuid(this-\/>\_uartService.uuid());}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00018}00018   addAttribute(this-\/>\_rxCharacteristic);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00019}00019   addAttribute(this-\/>\_rxNameDescriptor);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00020}00020   this-\/>\_rxCharacteristic.setEventHandler(BLEWritten, BLESerial::\_received);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00021}00021   addAttribute(this-\/>\_txCharacteristic);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00022}00022   addAttribute(this-\/>\_txNameDescriptor);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00023}00023 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00025}\mbox{\hyperlink{class_b_l_e_serial_ae0893d4c84d93e0a53f95010c0dbb665}{00025}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_ae0893d4c84d93e0a53f95010c0dbb665}{BLESerial::begin}}(...) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00026}00026   BLEPeripheral::begin();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00027}00027 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00028}00028     Serial.println(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::begin()"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00029}00029 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00032}\mbox{\hyperlink{class_b_l_e_serial_a8888659cfb5c843eeba48069437a9807}{00032}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_a8888659cfb5c843eeba48069437a9807}{BLESerial::poll}}() \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00033}00033   \textcolor{keywordflow}{if} (millis() < this-\/>\_flushed + 100) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00034}00034     BLEPeripheral::poll();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00035}00035   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00036}00036     \mbox{\hyperlink{class_b_l_e_serial_aacf2cc3c53583783a8b83048df0f5180}{flush}}();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00037}00037   \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00038}00038 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00040}\mbox{\hyperlink{class_b_l_e_serial_a1515cf3b4238a2072a50a199ab0d4bdb}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_a1515cf3b4238a2072a50a199ab0d4bdb}{BLESerial::end}}() \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00041}00041   this-\/>\_rxCharacteristic.setEventHandler(BLEWritten, NULL);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00042}00042   this-\/>\_rxHead = this-\/>\_rxTail = 0;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00043}00043   \mbox{\hyperlink{class_b_l_e_serial_aacf2cc3c53583783a8b83048df0f5180}{flush}}();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00044}00044   BLEPeripheral::disconnect();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00047}\mbox{\hyperlink{class_b_l_e_serial_a0dba14ded5137ea3bb5b7b0458dcdd4e}{00047}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_l_e_serial_a0dba14ded5137ea3bb5b7b0458dcdd4e}{BLESerial::available}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00048}00048   BLEPeripheral::poll();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00049}00049   \textcolor{keywordtype}{int} retval = (this-\/>\_rxHead -\/ this-\/>\_rxTail + \textcolor{keyword}{sizeof}(this-\/>\_rxBuffer)) \% \textcolor{keyword}{sizeof}(this-\/>\_rxBuffer);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00050}00050 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00051}00051     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::available() = "{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00052}00052     Serial.println(retval);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00053}00053 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00054}00054   \textcolor{keywordflow}{return} retval;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00055}00055 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00057}\mbox{\hyperlink{class_b_l_e_serial_a1b7740efb8e908f579b00ad4266677a5}{00057}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_l_e_serial_a1b7740efb8e908f579b00ad4266677a5}{BLESerial::peek}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00058}00058   BLEPeripheral::poll();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00059}00059   \textcolor{keywordflow}{if} (this-\/>\_rxTail == this-\/>\_rxHead) \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00060}00060   uint8\_t \textcolor{keywordtype}{byte} = this-\/>\_rxBuffer[this-\/>\_rxTail];}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00061}00061 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00062}00062     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::peek() = "{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00063}00063     Serial.print((\textcolor{keywordtype}{char}) \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00064}00064     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{} 0x"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00065}00065     Serial.println(\textcolor{keywordtype}{byte}, HEX);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00066}00066 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00067}00067   \textcolor{keywordflow}{return} byte;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00068}00068 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00070}\mbox{\hyperlink{class_b_l_e_serial_a4f37570c173dc1662b7e9eb4cc222a81}{00070}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_b_l_e_serial_a4f37570c173dc1662b7e9eb4cc222a81}{BLESerial::read}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00071}00071   BLEPeripheral::poll();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00072}00072   \textcolor{keywordflow}{if} (this-\/>\_rxTail == this-\/>\_rxHead) \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00073}00073   this-\/>\_rxTail = (this-\/>\_rxTail + 1) \% \textcolor{keyword}{sizeof}(this-\/>\_rxBuffer);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00074}00074   uint8\_t \textcolor{keywordtype}{byte} = this-\/>\_rxBuffer[this-\/>\_rxTail];}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00075}00075 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00076}00076     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::read() = "{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00077}00077     Serial.print((\textcolor{keywordtype}{char}) byte);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00078}00078     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{} 0x"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00079}00079     Serial.println(\textcolor{keywordtype}{byte}, HEX);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00080}00080 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00081}00081   \textcolor{keywordflow}{return} byte;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00082}00082 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00084}\mbox{\hyperlink{class_b_l_e_serial_aacf2cc3c53583783a8b83048df0f5180}{00084}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_b_l_e_serial_aacf2cc3c53583783a8b83048df0f5180}{BLESerial::flush}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00085}00085   \textcolor{keywordflow}{if} (this-\/>\_txCount == 0) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00086}00086   this-\/>\_txCharacteristic.setValue(this-\/>\_txBuffer, this-\/>\_txCount);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00087}00087   this-\/>\_flushed = millis();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00088}00088   this-\/>\_txCount = 0;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00089}00089   BLEPeripheral::poll();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00090}00090 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00091}00091     Serial.println(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::flush()"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00092}00092 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00093}00093 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00095}\mbox{\hyperlink{class_b_l_e_serial_a035af90f9516b10647627ac4674482f1}{00095}} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_b_l_e_serial_a035af90f9516b10647627ac4674482f1}{BLESerial::write}}(uint8\_t \textcolor{keywordtype}{byte}) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00096}00096   BLEPeripheral::poll();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00097}00097   \textcolor{keywordflow}{if} (this-\/>\_txCharacteristic.subscribed() == \textcolor{keyword}{false}) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00098}00098   this-\/>\_txBuffer[this-\/>\_txCount++] = byte;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00099}00099   \textcolor{keywordflow}{if} (this-\/>\_txCount == \textcolor{keyword}{sizeof}(this-\/>\_txBuffer)) \mbox{\hyperlink{class_b_l_e_serial_aacf2cc3c53583783a8b83048df0f5180}{flush}}();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00100}00100 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00101}00101     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::write("{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00102}00102     Serial.print((\textcolor{keywordtype}{char}) \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00103}00103     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{} 0x"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00104}00104     Serial.print(\textcolor{keywordtype}{byte}, HEX);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00105}00105     Serial.println(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}) = 1"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00106}00106 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00107}00107   \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00108}00108 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00110}\mbox{\hyperlink{class_b_l_e_serial_a9fba963418b065af2b3ea65b4f96a57e}{00110}} BLESerial::operator bool() \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00111}00111   \textcolor{keywordtype}{bool} retval = BLEPeripheral::connected();}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00112}00112 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00113}00113     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::operator bool() = "{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00114}00114     Serial.println(retval);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00115}00115 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00116}00116   \textcolor{keywordflow}{return} retval;}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00117}00117 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00119}00119 \textcolor{keywordtype}{void} BLESerial::\_received(\textcolor{keyword}{const} uint8\_t* data, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00120}00120   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00121}00121     this-\/>\_rxHead = (this-\/>\_rxHead + 1) \% \textcolor{keyword}{sizeof}(this-\/>\_rxBuffer);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00122}00122     this-\/>\_rxBuffer[this-\/>\_rxHead] = data[i];}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00123}00123   \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00124}00124 \textcolor{preprocessor}{  \#ifdef BLE\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00125}00125     Serial.print(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{}BLESerial::received("{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00126}00126     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) Serial.print((\textcolor{keywordtype}{char}) data[i]);}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00127}00127     Serial.println(\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}(\textcolor{stringliteral}{"{})"{}}));}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00128}00128 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00129}00129 \}}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00131}00131 \textcolor{keywordtype}{void} BLESerial::\_received(BLECentral\& \textcolor{comment}{/*central*/}, BLECharacteristic\& rxCharacteristic) \{}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00132}00132   BLESerial::\_instance-\/>\_received(rxCharacteristic.value(), rxCharacteristic.valueLength());}
+\DoxyCodeLine{\Hypertarget{_b_l_e_serial_8cpp_source_l00133}00133 \}}
+
+\end{DoxyCode}

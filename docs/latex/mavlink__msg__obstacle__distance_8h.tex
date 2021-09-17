@@ -1,0 +1,109 @@
+\hypertarget{mavlink__msg__obstacle__distance_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+obstacle\+\_\+distance.h File Reference}
+\label{mavlink__msg__obstacle__distance_8h}\index{lib/common/mavlink\_msg\_obstacle\_distance.h@{lib/common/mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE}}~330
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+LEN}}~158
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+MIN\+\_\+\+LEN}}~158
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a46410702ae72a42079d9b9b82a10e2be}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+330\+\_\+\+LEN}}~158
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a11b3c97d7cd2d9bedad500838677ae4e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+330\+\_\+\+MIN\+\_\+\+LEN}}~158
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+CRC}}~23
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_aefb530908eb7cdf8b2ba949a554fb099}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+330\+\_\+\+CRC}}~23
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_ab99da6438d0d46844334a75624d3a478}{MAVLINK\+\_\+\+MSG\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+FIELD\+\_\+\+DISTANCES\+\_\+\+LEN}}~72
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a19b47579cb6764fd555734505a03d6b8}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+OBSTACLE\+\_\+\+DISTANCE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__obstacle__distance_8h_a46afd732b297b30b0e2389b03e5cf457}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+obstacle\+\_\+distance\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint16\+\_\+t distances\mbox{[}72\mbox{]};uint16\+\_\+t min\+\_\+distance;uint16\+\_\+t max\+\_\+distance;uint8\+\_\+t sensor\+\_\+type;uint8\+\_\+t increment;\}) mavlink\+\_\+obstacle\+\_\+distance\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a19b47579cb6764fd555734505a03d6b8}\label{mavlink__msg__obstacle__distance_8h_a19b47579cb6764fd555734505a03d6b8}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE@{MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE}}
+\index{MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE@{MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE}{MAVLINK\_MESSAGE\_INFO\_OBSTACLE\_DISTANCE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+OBSTACLE\+\_\+\+DISTANCE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}OBSTACLE\_DISTANCE"{}}, \(\backslash\)}
+\DoxyCodeLine{    6, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_obstacle\_distance\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}sensor\_type"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 156, offsetof(mavlink\_obstacle\_distance\_t, sensor\_type) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}distances"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 72, 8, offsetof(mavlink\_obstacle\_distance\_t, distances) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}increment"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 157, offsetof(mavlink\_obstacle\_distance\_t, increment) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}min\_distance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 152, offsetof(mavlink\_obstacle\_distance\_t, min\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}max\_distance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 154, offsetof(mavlink\_obstacle\_distance\_t, max\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_aefb530908eb7cdf8b2ba949a554fb099}\label{mavlink__msg__obstacle__distance_8h_aefb530908eb7cdf8b2ba949a554fb099}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_330\_CRC@{MAVLINK\_MSG\_ID\_330\_CRC}}
+\index{MAVLINK\_MSG\_ID\_330\_CRC@{MAVLINK\_MSG\_ID\_330\_CRC}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_330\_CRC}{MAVLINK\_MSG\_ID\_330\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+330\+\_\+\+CRC~23}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a46410702ae72a42079d9b9b82a10e2be}\label{mavlink__msg__obstacle__distance_8h_a46410702ae72a42079d9b9b82a10e2be}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_330\_LEN@{MAVLINK\_MSG\_ID\_330\_LEN}}
+\index{MAVLINK\_MSG\_ID\_330\_LEN@{MAVLINK\_MSG\_ID\_330\_LEN}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_330\_LEN}{MAVLINK\_MSG\_ID\_330\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+330\+\_\+\+LEN~158}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a11b3c97d7cd2d9bedad500838677ae4e}\label{mavlink__msg__obstacle__distance_8h_a11b3c97d7cd2d9bedad500838677ae4e}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_330\_MIN\_LEN@{MAVLINK\_MSG\_ID\_330\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_330\_MIN\_LEN@{MAVLINK\_MSG\_ID\_330\_MIN\_LEN}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_330\_MIN\_LEN}{MAVLINK\_MSG\_ID\_330\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+330\+\_\+\+MIN\+\_\+\+LEN~158}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}\label{mavlink__msg__obstacle__distance_8h_afce48628dc51c41b3d3975b69dddfe49}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}
+\index{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE~330}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}\label{mavlink__msg__obstacle__distance_8h_a8b3e263efcd955afe7aa9bb8bfc3b532}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+CRC~23}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}\label{mavlink__msg__obstacle__distance_8h_a6352689f176c852db025b1e4c4f5db41}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+LEN~158}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}\label{mavlink__msg__obstacle__distance_8h_a443e0936147a68ba5d567fa35b745f72}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_OBSTACLE\_DISTANCE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+MIN\+\_\+\+LEN~158}
+
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_ab99da6438d0d46844334a75624d3a478}\label{mavlink__msg__obstacle__distance_8h_ab99da6438d0d46844334a75624d3a478}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN@{MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN}}
+\index{MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN@{MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN}{MAVLINK\_MSG\_OBSTACLE\_DISTANCE\_FIELD\_DISTANCES\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+OBSTACLE\+\_\+\+DISTANCE\+\_\+\+FIELD\+\_\+\+DISTANCES\+\_\+\+LEN~72}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__obstacle__distance_8h_a46afd732b297b30b0e2389b03e5cf457}\label{mavlink__msg__obstacle__distance_8h_a46afd732b297b30b0e2389b03e5cf457}} 
+\index{mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_obstacle\_distance.h@{mavlink\_msg\_obstacle\_distance.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+obstacle\+\_\+distance\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint16\+\_\+t distances\mbox{[}72\mbox{]};uint16\+\_\+t min\+\_\+distance;uint16\+\_\+t max\+\_\+distance;uint8\+\_\+t sensor\+\_\+type;uint8\+\_\+t increment;\}}]{ }\end{DoxyParamCaption})}
+

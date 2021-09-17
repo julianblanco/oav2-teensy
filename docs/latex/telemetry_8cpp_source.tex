@@ -1,0 +1,481 @@
+\hypertarget{telemetry_8cpp_source}{}\doxysection{telemetry.\+cpp}
+\label{telemetry_8cpp_source}\index{src/telemetry.cpp@{src/telemetry.cpp}}
+\mbox{\hyperlink{telemetry_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{telemetry_8h}{telemetry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00003}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8d71bbae0ded31d5ae14f327af2937d0}{00003}} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8d71bbae0ded31d5ae14f327af2937d0}{TELEMETRY::TELEMETRY}}() : x8r(\&\mbox{\hyperlink{config_8h_af8a2a51e35fb1ff152b8e4cde308426f}{sbsuserial}}) \{\}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00004}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3d94218bce8b18485ade636164c7cf0a}{00004}} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3d94218bce8b18485ade636164c7cf0a}{TELEMETRY::\string~TELEMETRY}}() \{\}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00006}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}{00006}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}{TELEMETRY::setup}}()}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00008}00008   \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00010}00010   Serial.begin(115200);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00011}00011   \textcolor{comment}{// Serial1.begin(57600);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00012}00012   Serial2.begin(115200);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00013}00013   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}{x8r}}.\mbox{\hyperlink{class_sbus_rx_af47c4b075c10603e9d16e77b2ff7ee71}{Begin}}();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#ifdef MPU6050}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00015}00015   mpu6050init();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#ifdef BNO055}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00018}00018 \textcolor{comment}{//shit}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00020}00020   \mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{Task::setup}}(\textcolor{stringliteral}{"{}telemetry"{}}, 4);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00021}00021 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00023}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7188055bd9eb0db0dbd5927e5501e68}{00023}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7188055bd9eb0db0dbd5927e5501e68}{TELEMETRY::start}}()}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00024}00024 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00025}00025   \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00026}00026   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00027}00027   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00028}00028     count++;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00029}00029     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}{sbusParse}}();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00030}00030     \textcolor{keywordflow}{if} (count > 10)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00031}00031     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00032}00032       \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}{quickdebug}}();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00033}00033       count = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00034}00034     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00035}00035     \textcolor{comment}{// vTaskDelay(100*(configTICK\_RATE\_HZ) / 1000L);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00036}00036     \mbox{\hyperlink{config_8h_a2474ae4ac8596b106a6b115f11e37602}{LOOPFREQ}}(100);\textcolor{comment}{//hz}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00037}00037   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00038}00038 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00040}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}{00040}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}{TELEMETRY::sbusParse}}()}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00041}00041 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00042}00042   \textcolor{comment}{// Serial.println("{}sbus"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00043}00043   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}{x8r}}.\mbox{\hyperlink{class_sbus_rx_a8492ed6a4b9e6ac63120e74a27e3aa39}{Read}}())}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00044}00044   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00047}00047     \textcolor{comment}{// for (int i = 0; i < x8r.rx\_channels().size(); i++) \{}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00048}00048     \textcolor{comment}{//   Serial.print(x8r.rx\_channels()[i]);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00049}00049     \textcolor{comment}{//   Serial.print("{},"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00050}00050     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00051}00051     \textcolor{comment}{// Serial.println();}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00052}00052     \textcolor{keyword}{auto} l\_channels = \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}{x8r}}.\mbox{\hyperlink{class_sbus_rx_a56fb0eeb5478dbad644d94fd5ada7e0c}{rx\_channels}}();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00053}00053     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a6861e9f3c0409e5f237cab5c11c3aa7f}{RCThrottle}} = l\_channels[0]; \textcolor{comment}{//172-\/1811 1017}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00054}00054     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae318aeb6180a1af78163c3bea0b9b0a9}{RCRoll}} = l\_channels[1];     \textcolor{comment}{//172-\/1811 mid988}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00055}00055     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a71ee60d145c7ca14dbefb5113a20cf6f}{RCPitch}} = l\_channels[2];    \textcolor{comment}{//172-\/1811 985}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00056}00056     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}} = l\_channels[3];      \textcolor{comment}{//172-\/1811 1000}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00057}00057     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad26a0cf9223b54c59f4d68c81293685a}{RCMode}} = l\_channels[4];     \textcolor{comment}{//down 992 Up172}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00058}00058     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a07ecc00c8eb6acdf05c215c5ec013e3a}{RCArm}} = l\_channels[5];      \textcolor{comment}{//down 992 Up172}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (l\_channels[0] > 0) \textcolor{comment}{//if no signal.... needs to be verified across radis}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00061}00061     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00062}00062       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a07ecc00c8eb6acdf05c215c5ec013e3a}{RCArm}} > 500)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00063}00063       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00064}00064         \mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}} = 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00065}00065       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00066}00066       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00067}00067       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00068}00068         \mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}} = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00069}00069       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00071}00071       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad26a0cf9223b54c59f4d68c81293685a}{RCMode}} < 500)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00072}00072       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00073}00073         \mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} = 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00074}00074       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00075}00075       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00076}00076       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00077}00077         \mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} = 2;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00078}00078       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00079}00079       \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} == 1)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00080}00080       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00082}00082         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}} > 1040) \textcolor{comment}{//(1021-\/1811)}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00083}00083         \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00084}00084           \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}} = \mbox{\hyperlink{helper_8h_acceb3156a9e8f6e4285adc31afda4074}{correct\_heading\_wrap}}(\mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}} + (.0001 * pow(map(\mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\_telemetry}}.\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}}, 1021, 1811, 0, 100), 2)));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00085}00085         \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00086}00086         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}} < 1000)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00087}00087         \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00088}00088           \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}} = \mbox{\hyperlink{helper_8h_acceb3156a9e8f6e4285adc31afda4074}{correct\_heading\_wrap}}(\mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}} -\/ (.0001 * pow(map(\mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\_telemetry}}.\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}}, 170, 1021, 0, 100), 2)));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00089}00089         \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00090}00090         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}} = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00092}00092         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}{desiredThrottle}} = map(\mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\_telemetry}}.\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a6861e9f3c0409e5f237cab5c11c3aa7f}{RCThrottle}}, 172, 1811, 0, 300); \textcolor{comment}{//172-\/1811}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00093}00093         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}{desiredRoll}} = map(\mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\_telemetry}}.\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae318aeb6180a1af78163c3bea0b9b0a9}{RCRoll}}, 172, 1811, -\/20, 20);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00094}00094         \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2d3c7982e23531114b4595c55bc7ba0b}{desiredPitch}} = map(\mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\_telemetry}}.\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a71ee60d145c7ca14dbefb5113a20cf6f}{RCPitch}}, 172, 1811, -\/20, 20);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00095}00095       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00096}00096       \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8877ccf0f4de1b0bdc8a252d39218471}{lastread}} = millis();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00098}00098     \textcolor{keywordflow}{else} \textcolor{comment}{//no rc signal -\/-\/ failsafe}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00099}00099     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00100}00100       \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3ca42a3faf4a5353fddd21dbb7586983}{timeelapsed}} = millis() -\/ \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8877ccf0f4de1b0bdc8a252d39218471}{lastread}};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00102}00102       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3ca42a3faf4a5353fddd21dbb7586983}{timeelapsed}} > 2000)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00103}00103       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00104}00104         Serial.println(\textcolor{stringliteral}{"{}lost connection"{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00105}00105         \mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}} = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00106}00106         \mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}} = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00107}00107       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00108}00108     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00109}00109   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00110}00110 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00111}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_af73f5dea2c9451095247b22947e2cdab}{00111}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_af73f5dea2c9451095247b22947e2cdab}{TELEMETRY::mavlink\_send\_and\_parse}}()}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00112}00112 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00114}00114   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}} = micros();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00115}00115   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00116}00116   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid = 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00117}00117   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid = \mbox{\hyperlink{common_8h_a441d65e499381efbd6da4afeab901a5da0a6958100fb471043e81feb18c8479ed}{MAV\_COMP\_ID\_AUTOPILOT1}};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00118}00118   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}.system\_status = \mbox{\hyperlink{common_8h_a3ca5e79cdc1f95d953a6d1d7ab1e90bba3321eca253d688977042fe637dd79666}{MAV\_STATE\_ACTIVE}};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00119}00119   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}.custom\_mode = 65536;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00120}00120   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}.base\_mode = 81;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00122}00122   \textcolor{comment}{// // Pack the message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00123}00123   mavlink\_msg\_heartbeat\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7995e97cf097e885c016007ede878955}{heartbeatMsg}}, 2, 12, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}.base\_mode, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}.custom\_mode, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}}.system\_status);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00124}00124   \textcolor{comment}{// // Copy the message to send buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00125}00125   uint16\_t len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7995e97cf097e885c016007ede878955}{heartbeatMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00126}00126   \textcolor{comment}{// Serial2.println("{}Heartbeat"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00127}00127   \textcolor{comment}{// //Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00128}00128   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00129}00129   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00131}00131   mavlink\_msg\_gps\_raw\_int\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a9de1541a8269db9dbd308bbf6f8fb7b5}{global\_position\_intMsg}}, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}}, 3, 392919390, -\/772862310, 10, 0xFFFF, 0xFFFF, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3794da7165e4a35b2635a24cc9ca3a77}{Velocity}}, 0xFFFF, 7, 0, 0, 0, 0, 0); \textcolor{comment}{//fix\_type must be 3 for some odd reason}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00132}00132   \textcolor{comment}{// /// Copy the message to send buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00133}00133   len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a9de1541a8269db9dbd308bbf6f8fb7b5}{global\_position\_intMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00134}00134   \textcolor{comment}{//Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00135}00135   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00136}00136   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00138}00138   mavlink\_msg\_altitude\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a91648e5e8f5313b2bea6ddc77523cc7d}{altMsg}}, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}}, 12, 13, 14, 15, 16, 17);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00139}00139   len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a91648e5e8f5313b2bea6ddc77523cc7d}{altMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00140}00140   \textcolor{comment}{//Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00141}00141   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00142}00142   \textcolor{comment}{//Reset Buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00143}00143   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00145}00145   mavlink\_msg\_local\_position\_ned\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7f7b9c3ac10a901afdfc3f629dacfa4c}{local\_position\_nedMsg}}, 1, 1, 2, 3, 0, 0, 0);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00146}00146   len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7f7b9c3ac10a901afdfc3f629dacfa4c}{local\_position\_nedMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00147}00147   \textcolor{comment}{//Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00148}00148   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00149}00149   \textcolor{comment}{//Reset Buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00150}00150   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00152}00152   mavlink\_msg\_attitude\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a29fc3d86e007826e5df79527bdb8a612}{attitudeMsg}}, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}}, \mbox{\hyperlink{config_8h_affbe32f3d7302137c38bf9a99a0746aa}{g\_attitude}}.\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_abe6ae790be3d899238d9764cc389cfc3}{roll}} * 3.14 / 180, \mbox{\hyperlink{config_8h_affbe32f3d7302137c38bf9a99a0746aa}{g\_attitude}}.\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ac4c8158c10232d1543325aea7993f782}{pitch}} * 3.14 / 180, \mbox{\hyperlink{config_8h_affbe32f3d7302137c38bf9a99a0746aa}{g\_attitude}}.\mbox{\hyperlink{class_a_t_t_i_t_u_d_e_ab0e6b0701b0cef1919605d7985fcab25}{yaw}} * 3.14 / 180, 4, 5, 6);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00153}00153   len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a29fc3d86e007826e5df79527bdb8a612}{attitudeMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00154}00154   \textcolor{comment}{//Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00155}00155   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00156}00156   \textcolor{comment}{//Reset Buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00157}00157   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00159}00159   mavlink\_msg\_highres\_imu\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa138137f1948230b249ae03b303c6a2c}{highres\_imuMsg}}, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}}, 0, 0, 0, 0, 1, 2, 1, 2, 3, 0, 0, 0, 10, 9);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00160}00160   len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa138137f1948230b249ae03b303c6a2c}{highres\_imuMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00161}00161   \textcolor{comment}{//Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00162}00162   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00163}00163   \textcolor{comment}{//Reset Buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00164}00164   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00166}00166   mavlink\_msg\_sys\_status\_pack(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.sysid, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}}.compid, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7ab5d93dacf4eddc245c6446b66f612}{sys\_statusMsg}}, 1, 1, 1, 1, 2000, 1900, 1900, 0, 0, 0, 1, 0, 0);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00167}00167   len = \mbox{\hyperlink{mavlink__helpers_8h_a6b5a88f220e384657abe007bc429338b}{mavlink\_msg\_to\_send\_buffer}}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7ab5d93dacf4eddc245c6446b66f612}{sys\_statusMsg}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00168}00168   \textcolor{comment}{//Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00169}00169   \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.write(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00170}00170   \textcolor{comment}{//Reset Buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00171}00171   memset(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}, 0xFF, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}));}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00173}00173   \textcolor{comment}{//   //Read Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00174}00174   \textcolor{keywordflow}{if} (\mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.available())}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00176}00176   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00177}00177     \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac7a8a0a92c81b1c560808dba45dc5681}{data}} = \mbox{\hyperlink{config_8h_ae4cac965615797cfee457c273762c776}{mavlinkserial}}.read();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00179}00179     \textcolor{keywordflow}{if} (\mbox{\hyperlink{mavlink__helpers_8h_ad91e8323cefc65965574c09e72365d7d}{mavlink\_parse\_char}}(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709cae41095bf35dfe1b8cbf7a683301e449a}{MAVLINK\_COMM\_0}}, \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac7a8a0a92c81b1c560808dba45dc5681}{data}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{receivedMsg}}, \&\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a964c1dd8e89a82eb17a3b4624ff132cd}{mav\_status}}))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00180}00180     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00181}00181       \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}{parsed}} = micros();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00182}00182       \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a5d32246cea8fb8c5d172bc7d9f093d19}{timebetweenparsed}} = \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}{parsed}} -\/ \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a678aa4cce25112ee6d9518dd9a6fbc22}{lastparsed}};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00183}00183       \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a678aa4cce25112ee6d9518dd9a6fbc22}{lastparsed}} = \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}{parsed}};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00184}00184       \textcolor{comment}{// Serial.print(1000000/timebetweenparsed);Serial.println("{} hz"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00185}00185       Serial.print(\textcolor{stringliteral}{"{}  Sys ID: "{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00186}00186       Serial.print(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{receivedMsg}}.sysid, DEC);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00187}00187       Serial.print(\textcolor{stringliteral}{"{}  Comp ID: "{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00188}00188       Serial.print(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{receivedMsg}}.compid, DEC);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00189}00189       Serial.print(\textcolor{stringliteral}{"{}  Len ID: "{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00190}00190       Serial.print(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{receivedMsg}}.len, DEC);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00191}00191       Serial.print(\textcolor{stringliteral}{"{}  Msg ID: "{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00192}00192       Serial.print(\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{receivedMsg}}.msgid, DEC);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00193}00193       Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00194}00194     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00195}00195   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00197}00197   \textcolor{comment}{// mavlink\_msg\_ping\_pack(mavlink\_system.sysid, mavlink\_system.compid, \&pingMsg, currentTime, 0, 0, 0);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00198}00198   \textcolor{comment}{// len = mavlink\_msg\_to\_send\_buffer(buf, \&pingMsg);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00199}00199   \textcolor{comment}{// //Write Message}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00200}00200   \textcolor{comment}{// Serial2.write(buf, len);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00201}00201   \textcolor{comment}{// //Reset Buffer}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00202}00202   \textcolor{comment}{// memset(buf, 0xFF, sizeof(buf));}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00204}00204   \textcolor{comment}{// time1 = micros();}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00205}00205 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00207}00207 \textcolor{keywordtype}{void} \mbox{\hyperlink{telemetry_8cpp_a9eaae4745b319f4b92b7f41b10f93eaf}{tokenCreator}}(\textcolor{keywordtype}{char} *instr);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00208}\mbox{\hyperlink{telemetry_8cpp_a03b3265eefc003be804d9bc86af2d8f8}{00208}} \textcolor{keywordtype}{void} \mbox{\hyperlink{telemetry_8cpp_a03b3265eefc003be804d9bc86af2d8f8}{stringparse}}(\textcolor{keywordtype}{char} buffer[200], \textcolor{keywordtype}{int} ind);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00209}00209 \textcolor{keyword}{static} \textcolor{keywordtype}{void} readComputer(\textcolor{keywordtype}{void} *pvParameters)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00210}00210 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00211}00211   \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00212}00212   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00214}00214     \textcolor{keyword}{static} \textcolor{keywordtype}{boolean} recvInProgress = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00216}00216     \textcolor{keyword}{static} \textcolor{keywordtype}{byte} ndx = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00217}00217     \textcolor{keywordtype}{char} startMarker = \textcolor{charliteral}{'<'};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00218}00218     \textcolor{keywordtype}{char} endMarker = \textcolor{charliteral}{'>'};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00219}00219     \textcolor{keywordtype}{char} rc;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00220}00220     \textcolor{keyword}{const} \textcolor{keywordtype}{byte} numChars = 74;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00221}00221     \textcolor{keywordtype}{char} receivedChars[numChars]; \textcolor{comment}{// IF BROKEN LOOK HERE, array of chars -\/> string}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00222}00222     \textcolor{keywordflow}{if} (Serial.available())}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00223}00223     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00224}00224       rc = Serial.read();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00225}00225       \textcolor{comment}{// Serial2.println(rc);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00227}00227       \textcolor{keywordflow}{if} (recvInProgress == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00228}00228       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00229}00229         \textcolor{keywordflow}{if} (rc != endMarker)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00230}00230         \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00231}00231           receivedChars[ndx] = rc;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00232}00232           ndx++;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00233}00233           \textcolor{keywordflow}{if} (ndx >= numChars)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00234}00234           \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00235}00235             ndx = numChars -\/ 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00236}00236           \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00237}00237         \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00238}00238         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00239}00239         \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00240}00240           receivedChars[ndx] = \textcolor{charliteral}{'\(\backslash\)0'}; \textcolor{comment}{// terminate the string}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00241}00241           recvInProgress = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00242}00242           ndx = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00243}00243           \mbox{\hyperlink{telemetry_8cpp_a9eaae4745b319f4b92b7f41b10f93eaf}{tokenCreator}}(receivedChars);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00244}00244         \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00245}00245       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00246}00246 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00247}00247       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (rc == startMarker)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00248}00248       \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00249}00249         recvInProgress = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00250}00250       \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00251}00251     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00252}00252     delayMicroseconds(1);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00253}00253     \textcolor{comment}{//  vTaskDelay(( configTICK\_RATE\_HZ) / 1000L);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00254}00254   \} \textcolor{comment}{//end while1}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00255}00255 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00256}00256 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00257}\mbox{\hyperlink{telemetry_8cpp_a9eaae4745b319f4b92b7f41b10f93eaf}{00257}} \textcolor{keywordtype}{void} \mbox{\hyperlink{telemetry_8cpp_a9eaae4745b319f4b92b7f41b10f93eaf}{tokenCreator}}(\textcolor{keywordtype}{char} *instr)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00258}00258 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00259}00259   \textcolor{keywordtype}{char} *pch;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00260}00260   pch = strtok(instr, \textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00261}00261   \textcolor{keywordtype}{int} index = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00262}00262   \textcolor{comment}{//  Serial2.println("{}tok"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00263}00263   \textcolor{keywordflow}{while} (pch != NULL)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00264}00264   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00266}00266     \mbox{\hyperlink{telemetry_8cpp_a03b3265eefc003be804d9bc86af2d8f8}{stringparse}}(pch, index);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00267}00267     pch = strtok(NULL, \textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00268}00268     index++;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00269}00269   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00270}00270 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00272}\mbox{\hyperlink{telemetry_8cpp_a9a8ac2899c68e0789e47f6090cdc3add}{00272}} \textcolor{keywordtype}{void} \mbox{\hyperlink{telemetry_8cpp_a03b3265eefc003be804d9bc86af2d8f8}{stringparse}}(\textcolor{keywordtype}{char} buffer[80], \textcolor{keywordtype}{int} ind)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00273}00273 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00274}00274   \textcolor{comment}{// Serial2.println(buffer);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00275}00275   \textcolor{comment}{// Serial2.println(ind);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00276}00276   \textcolor{keyword}{static} \textcolor{keywordtype}{int} choice = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00277}00277   \textcolor{keywordflow}{if} ((strcmp(buffer, \textcolor{stringliteral}{"{}\$OA008"{}}) == 0))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00278}00278   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00279}00279     choice = 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00280}00280     \textcolor{comment}{// Serial2.println("{}sucess"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00281}00281     \textcolor{comment}{// time1 = millis();}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00282}00282     \textcolor{comment}{// timebetweenparses = time1 -\/ time2;}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00283}00283     \textcolor{comment}{// time2 = time1;}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00284}00284   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00285}00285   \textcolor{keywordflow}{if} ((strcmp(buffer, \textcolor{stringliteral}{"{}\$OA009"{}}) == 0))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00286}00286     choice = 2;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00287}00287   \textcolor{comment}{// Serial2.println(choice);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00288}00288   \textcolor{keywordflow}{if} (choice == 1)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00289}00289   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00290}00290     \textcolor{comment}{// Serial2.println("{}Choice1"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00291}00291     \textcolor{keywordflow}{if} (ind == 1)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00292}00292       \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}} = atof(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00293}00293     \textcolor{keywordflow}{if} (ind == 2)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00294}00294       \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}} = atof(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00295}00295     \textcolor{keywordflow}{if} (ind == 3)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00296}00296       \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}} = atof(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00297}00297     \textcolor{keywordflow}{if} (ind == 4)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00298}00298       \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ac7a5683a4b4c2ca3b01887ec5996fa9e}{currentNorth}} = atof(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00299}00299     \textcolor{keywordflow}{if} (ind == 5)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00300}00300       \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a77ac6adfd10c8299e411031279e3cb2c}{currentEast}} = atof(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00301}00301     \textcolor{keywordflow}{if} (ind == 6)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00302}00302     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00303}00303       \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a88baa8bf2fc9d5f552357b43fcd8a9f5}{currentDown}} = atof(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00304}00304       \textcolor{comment}{// Serial2.println("{}Yay"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00305}00305     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00306}00306   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00307}00307 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00308}00308 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00309}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}{00309}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}{TELEMETRY::quickdebug}}()}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00310}00310 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00312}00312   Serial.print(\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_acd6447159ca43d07412eedd0ae1ace58}{roll}}, 3);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00313}00313   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00314}00314   Serial.print(\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_afbeac482b873f4eabfc8f85009ce2c42}{pitch}}, 3);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00315}00315   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00316}00316   Serial.print(\mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}}.\mbox{\hyperlink{class_i_m_u_abafcc13ad5e5bbe902188b5d15b83240}{yaw}}, 3);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00317}00317   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00318}00318   Serial.print(\mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desiredYaw}}, 3);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00319}00319   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00320}00320   Serial.print(\mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}{desiredRoll}}, 3);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00321}00321   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00322}00322   Serial.print(\mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}}.\mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s_a8ec9b363dfe0e0976f8b1dcf694bab4d}{frontLeftMotorSignal}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00323}00323   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00324}00324   Serial.print(\mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}}.\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}{desiredThrottle}}, 3);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00325}00325   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00326}00326   Serial.print(\mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00327}00327   Serial.print(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00328}00328   Serial.println(\mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00329}00329 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00330}00330 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00331}\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aae69e62ec0b163c45a626255c2e74d7a}{00331}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aae69e62ec0b163c45a626255c2e74d7a}{TELEMETRY::init\_sdcard}}()}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00332}00332 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00333}00333   \textcolor{comment}{// const char *const animation = "{}\(\backslash\)\(\backslash\)|/-\/"{};}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00334}00334   \textcolor{comment}{// int frame = 0;}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00335}00335 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00336}00336   \textcolor{comment}{// // Wait for an SD card to be inserted}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00337}00337   \textcolor{comment}{// this-\/>log("{}[-\/] waiting for sd card insertion..."{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00338}00338   \textcolor{keywordflow}{while} (!m\_sd.begin(\mbox{\hyperlink{telemetry_8h_a6d6d590619f05e527b2617fee215f0a5}{CONFIG\_SD}}))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00339}00339   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00340}00340     \textcolor{comment}{// Silly, but erases previous message, allows us to give a lil spinny-\/boi}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00341}00341     \textcolor{comment}{// this-\/>log("{}\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00342}00342     \textcolor{comment}{// this-\/>log("{}[\%c] waiting for sd card insertion..."{}, animation[frame]);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00343}00343     \textcolor{comment}{// frame = (frame + 1) \% 4;}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00344}00344     delay(1000);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00345}00345   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00347}00347   \textcolor{comment}{// Again, silly, but I like it, okay?}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00348}00348   \textcolor{comment}{// this-\/>log("{}\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00349}00349   \textcolor{comment}{// this-\/>log("{}                                    "{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00350}00350   \textcolor{comment}{// this-\/>log("{}\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b\(\backslash\)b"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00351}00351   \textcolor{comment}{// this-\/>log("{}[+] initialized sd card\(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00352}00352 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00353}00353   \textcolor{comment}{// We track the recording file. If drop off is disabled, then this never changes.}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00354}00354   \textcolor{keywordflow}{if} (m\_sd.exists(\textcolor{stringliteral}{"{}/first\_recording"{}}))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00355}00355   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00356}00356     \textcolor{keywordtype}{char} buffer[64];}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00357}00357     \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file = m\_sd.open(\textcolor{stringliteral}{"{}/first\_recording"{}}, O\_RDONLY);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00358}00358     file.read(buffer, 64);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00359}00359     file.close();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00360}00360 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00361}00361     m\_first\_recording = atoi(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00362}00362   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00363}00363   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00364}00364   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00365}00365     m\_first\_recording = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00366}00366     \textcolor{comment}{// Touch the marker file}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00367}00367     \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file = m\_sd.open(\textcolor{stringliteral}{"{}/first\_recording"{}}, O\_WRONLY | O\_CREAT);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00368}00368     file.write(\textcolor{stringliteral}{"{}0\(\backslash\)n"{}}, 2);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00369}00369     file.close();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00370}00370   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00371}00371 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00372}00372   \textcolor{comment}{// This is updated after every recording, and helps start up times when the SD card}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00373}00373   \textcolor{comment}{// has a lot of recordings (e.g. >1k).}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00374}00374   \textcolor{keywordflow}{if} (m\_sd.exists(\textcolor{stringliteral}{"{}/next\_recording"{}}))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00375}00375   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00376}00376     \textcolor{keywordtype}{char} buffer[64];}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00377}00377     \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file = m\_sd.open(\textcolor{stringliteral}{"{}/next\_recording"{}}, O\_RDONLY);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00378}00378     file.read(buffer, 64);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00379}00379     file.close();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00380}00380 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00381}00381     m\_next\_recording = atoi(buffer);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00382}00382   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00383}00383   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00384}00384   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00385}00385     m\_next\_recording = 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00386}00386     \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file = m\_sd.open(\textcolor{stringliteral}{"{}/next\_recording"{}}, O\_WRONLY | O\_CREAT);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00387}00387     file.write(\textcolor{stringliteral}{"{}0\(\backslash\)n"{}}, 2);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00388}00388     file.close();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00389}00389   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00390}00390 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00391}00391   \textcolor{comment}{// this-\/>log("{}[+] first saved recording: \%ld\(\backslash\)n"{}, m\_first\_recording);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00392}00392   \textcolor{comment}{// this-\/>log("{}[+] next recording slot: \%ld\(\backslash\)n"{}, m\_next\_recording);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00393}00393 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00394}00394   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00395}00395 \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00397}00397 \textcolor{keywordtype}{int} TELEMETRY::generate\_new\_dir(\textcolor{keywordtype}{char} *recording\_dir, \textcolor{keywordtype}{size\_t} length)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00398}00398 \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00399}00399   \textcolor{keywordtype}{size\_t} needed;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00400}00400   \textcolor{keywordtype}{size\_t} blocks\_left = m\_sd.freeClusterCount() * m\_sd.sectorsPerCluster();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00401}00401 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00402}00402   \textcolor{comment}{// // Check if we have enough for this recording + 2 blocks for accounting information}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00403}00403   \textcolor{comment}{// while (blocks\_left < (CONFIG\_RECORDING\_TOTAL\_BLOCKS + 2))}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00404}00404   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00405}00405 \textcolor{preprocessor}{\#if CONFIG\_SD\_CARD\_ROLLOFF}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00406}00406   \textcolor{keywordtype}{char} channel\_path[256];}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00407}00407 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00408}00408   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = m\_first\_recording;; \textcolor{keywordtype}{id}++)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00409}00409   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00410}00410     \textcolor{comment}{// Produce a new folder path}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00411}00411     needed = snprintf(recording\_dir, length, \mbox{\hyperlink{telemetry_8h_abaf94b849770f1a5f8d7c256c5fc2e76}{CONFIG\_RECORDING\_DIRECTORY}}, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00412}00412 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00413}00413     \textcolor{comment}{// Ignore non-\/existent entries}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00414}00414     \textcolor{keywordflow}{if} (!m\_sd.exists(recording\_dir))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00415}00415       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00416}00416 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00417}00417     \textcolor{comment}{// Remove channel data}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00418}00418     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ch = 0;; ch++)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00419}00419     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00420}00420       snprintf(channel\_path, 256, CONFIG\_CHANNEL\_PATH, recording\_dir, ch);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00421}00421       \textcolor{keywordflow}{if} (!m\_sd.exists(channel\_path))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00422}00422         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00423}00423       m\_sd.remove(channel\_path);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00424}00424     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00425}00425 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00426}00426     \textcolor{comment}{// Remove the recording directory}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00427}00427     m\_sd.rmdir(recording\_dir);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00428}00428 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00429}00429     \textcolor{comment}{// Update first recording ID}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00430}00430     m\_first\_recording = \textcolor{keywordtype}{id} + 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00431}00431 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00432}00432     \textcolor{comment}{// Update first recording tracker on disk}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00433}00433     \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file = m\_sd.open(\textcolor{stringliteral}{"{}/first\_recording"{}}, O\_WRONLY);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00434}00434     \textcolor{keywordtype}{char} buffer[64];}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00435}00435     \textcolor{keywordtype}{size\_t} len = snprintf(buffer, 64, \textcolor{stringliteral}{"{}\%ld\(\backslash\)n"{}}, m\_first\_recording);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00436}00436     file.write(buffer, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00437}00437     file.close();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00438}00438 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00439}00439     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00440}00440   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00441}00441 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00442}00442   \textcolor{comment}{// this-\/>panic("{}sd card full and rolloff disabled!"{}, -\/1);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00443}00443 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00444}00444   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00445}00445 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00446}00446   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = m\_next\_recording;; \textcolor{keywordtype}{id}++)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00447}00447   \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00448}00448     \textcolor{comment}{// Produce a new folder path}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00449}00449     \textcolor{comment}{// needed = snprintf(recording\_dir, length, CONFIG\_RECORDING\_DIRECTORY, id);}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00450}00450 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00451}00451     \textcolor{comment}{// Could we fit it in our buffer?}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00452}00452     \textcolor{keywordflow}{if} (needed > length)}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00453}00453     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00454}00454       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00455}00455     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00456}00456 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00457}00457     \textcolor{comment}{// Does it exist?}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00458}00458     \textcolor{keywordflow}{if} (!m\_sd.exists(recording\_dir))}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00459}00459     \{}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00460}00460       \textcolor{comment}{// Create the new directory}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00461}00461       m\_sd.mkdir(recording\_dir);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00462}00462       \textcolor{comment}{// Increment counter}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00463}00463       m\_next\_recording = \textcolor{keywordtype}{id} + 1;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00464}00464 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00465}00465       \textcolor{comment}{// Update the next recording tracker on disk}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00466}00466       \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file = m\_sd.open(\textcolor{stringliteral}{"{}/next\_recording"{}}, O\_WRONLY);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00467}00467       \textcolor{keywordtype}{char} buffer[64];}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00468}00468       \textcolor{keywordtype}{size\_t} len = snprintf(buffer, 64, \textcolor{stringliteral}{"{}\%ld\(\backslash\)n"{}}, m\_next\_recording);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00469}00469       file.write(buffer, len);}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00470}00470       file.close();}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00471}00471 }
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00472}00472       \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00473}00473     \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00474}00474   \}}
+\DoxyCodeLine{\Hypertarget{telemetry_8cpp_source_l00475}00475 \}}
+
+\end{DoxyCode}

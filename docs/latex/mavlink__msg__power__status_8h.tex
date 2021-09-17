@@ -1,0 +1,98 @@
+\hypertarget{mavlink__msg__power__status_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+power\+\_\+status.h File Reference}
+\label{mavlink__msg__power__status_8h}\index{lib/common/mavlink\_msg\_power\_status.h@{lib/common/mavlink\_msg\_power\_status.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_a1fa13e37144813e734677298e602c753}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS}}~125
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_ad8033e6b82eb4649c9bff46a864b0b3a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_a38110032ae7e44f75f6661d2074c2d10}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS\+\_\+\+MIN\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_a73bd56d73d220f8bed3b9d0e64575246}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+125\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_ae3f797f65a2896c130a8f9ef0b60e699}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+125\+\_\+\+MIN\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_a48fcf75e542df660e4ee3e46b9a4f6d3}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS\+\_\+\+CRC}}~203
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_a706c5ef0e208622279b0faadd4e27857}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+125\+\_\+\+CRC}}~203
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__power__status_8h_aacf1a016ac02b90b07b3074072b8d7df}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+POWER\+\_\+\+STATUS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__power__status_8h_a316d10060c1c752f9c367430db5b4009}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+power\+\_\+status\+\_\+t \{ uint16\+\_\+t Vcc;uint16\+\_\+t Vservo;uint16\+\_\+t flags;\}) mavlink\+\_\+power\+\_\+status\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_aacf1a016ac02b90b07b3074072b8d7df}\label{mavlink__msg__power__status_8h_aacf1a016ac02b90b07b3074072b8d7df}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MESSAGE\_INFO\_POWER\_STATUS@{MAVLINK\_MESSAGE\_INFO\_POWER\_STATUS}}
+\index{MAVLINK\_MESSAGE\_INFO\_POWER\_STATUS@{MAVLINK\_MESSAGE\_INFO\_POWER\_STATUS}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_POWER\_STATUS}{MAVLINK\_MESSAGE\_INFO\_POWER\_STATUS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+POWER\+\_\+\+STATUS}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}POWER\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{    3, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}Vcc"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 0, offsetof(mavlink\_power\_status\_t, Vcc) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}Vservo"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 2, offsetof(mavlink\_power\_status\_t, Vservo) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}flags"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 4, offsetof(mavlink\_power\_status\_t, flags) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_a706c5ef0e208622279b0faadd4e27857}\label{mavlink__msg__power__status_8h_a706c5ef0e208622279b0faadd4e27857}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_125\_CRC@{MAVLINK\_MSG\_ID\_125\_CRC}}
+\index{MAVLINK\_MSG\_ID\_125\_CRC@{MAVLINK\_MSG\_ID\_125\_CRC}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_125\_CRC}{MAVLINK\_MSG\_ID\_125\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+125\+\_\+\+CRC~203}
+
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_a73bd56d73d220f8bed3b9d0e64575246}\label{mavlink__msg__power__status_8h_a73bd56d73d220f8bed3b9d0e64575246}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_125\_LEN@{MAVLINK\_MSG\_ID\_125\_LEN}}
+\index{MAVLINK\_MSG\_ID\_125\_LEN@{MAVLINK\_MSG\_ID\_125\_LEN}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_125\_LEN}{MAVLINK\_MSG\_ID\_125\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+125\+\_\+\+LEN~6}
+
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_ae3f797f65a2896c130a8f9ef0b60e699}\label{mavlink__msg__power__status_8h_ae3f797f65a2896c130a8f9ef0b60e699}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_125\_MIN\_LEN@{MAVLINK\_MSG\_ID\_125\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_125\_MIN\_LEN@{MAVLINK\_MSG\_ID\_125\_MIN\_LEN}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_125\_MIN\_LEN}{MAVLINK\_MSG\_ID\_125\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+125\+\_\+\+MIN\+\_\+\+LEN~6}
+
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_a1fa13e37144813e734677298e602c753}\label{mavlink__msg__power__status_8h_a1fa13e37144813e734677298e602c753}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_POWER\_STATUS@{MAVLINK\_MSG\_ID\_POWER\_STATUS}}
+\index{MAVLINK\_MSG\_ID\_POWER\_STATUS@{MAVLINK\_MSG\_ID\_POWER\_STATUS}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_POWER\_STATUS}{MAVLINK\_MSG\_ID\_POWER\_STATUS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS~125}
+
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_a48fcf75e542df660e4ee3e46b9a4f6d3}\label{mavlink__msg__power__status_8h_a48fcf75e542df660e4ee3e46b9a4f6d3}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_POWER\_STATUS\_CRC@{MAVLINK\_MSG\_ID\_POWER\_STATUS\_CRC}}
+\index{MAVLINK\_MSG\_ID\_POWER\_STATUS\_CRC@{MAVLINK\_MSG\_ID\_POWER\_STATUS\_CRC}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_POWER\_STATUS\_CRC}{MAVLINK\_MSG\_ID\_POWER\_STATUS\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS\+\_\+\+CRC~203}
+
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_ad8033e6b82eb4649c9bff46a864b0b3a}\label{mavlink__msg__power__status_8h_ad8033e6b82eb4649c9bff46a864b0b3a}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_POWER\_STATUS\_LEN@{MAVLINK\_MSG\_ID\_POWER\_STATUS\_LEN}}
+\index{MAVLINK\_MSG\_ID\_POWER\_STATUS\_LEN@{MAVLINK\_MSG\_ID\_POWER\_STATUS\_LEN}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_POWER\_STATUS\_LEN}{MAVLINK\_MSG\_ID\_POWER\_STATUS\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS\+\_\+\+LEN~6}
+
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_a38110032ae7e44f75f6661d2074c2d10}\label{mavlink__msg__power__status_8h_a38110032ae7e44f75f6661d2074c2d10}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVLINK\_MSG\_ID\_POWER\_STATUS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_POWER\_STATUS\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_POWER\_STATUS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_POWER\_STATUS\_MIN\_LEN}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_POWER\_STATUS\_MIN\_LEN}{MAVLINK\_MSG\_ID\_POWER\_STATUS\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+POWER\+\_\+\+STATUS\+\_\+\+MIN\+\_\+\+LEN~6}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__power__status_8h_a316d10060c1c752f9c367430db5b4009}\label{mavlink__msg__power__status_8h_a316d10060c1c752f9c367430db5b4009}} 
+\index{mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_power\_status.h@{mavlink\_msg\_power\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+power\+\_\+status\+\_\+t \{ uint16\+\_\+t Vcc;uint16\+\_\+t Vservo;uint16\+\_\+t flags;\}}]{ }\end{DoxyParamCaption})}
+

@@ -1,0 +1,101 @@
+\hypertarget{mavlink__msg__heartbeat_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+heartbeat.h File Reference}
+\label{mavlink__msg__heartbeat_8h}\index{lib/common/mavlink\_msg\_heartbeat.h@{lib/common/mavlink\_msg\_heartbeat.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a90afa03af7f54ab856cc70fc56e0b905}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT}}~0
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a2478225967b29302fa747bd2268d95e4}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT\+\_\+\+LEN}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a09f3ea7a7b3170b7a4ffbcd2295807c9}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT\+\_\+\+MIN\+\_\+\+LEN}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a86a84155451c0aa73fc3fc8215bd0032}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+0\+\_\+\+LEN}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a412f8424c3445e7760f72448fe1fd195}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+0\+\_\+\+MIN\+\_\+\+LEN}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a1d6f3a798f18f7c434074e5f32208f60}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT\+\_\+\+CRC}}~50
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_acb2bf2866eb926f089c52a58b082713e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+0\+\_\+\+CRC}}~50
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__heartbeat_8h_a0fa39f8cc69d7d07d33f36a5666be63a}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HEARTBEAT}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__heartbeat_8h_a152d3b008ab4f0f852db949f7c8cef67}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+heartbeat\+\_\+t \{ uint32\+\_\+t custom\+\_\+mode;uint8\+\_\+t type;uint8\+\_\+t autopilot;uint8\+\_\+t base\+\_\+mode;uint8\+\_\+t system\+\_\+status;uint8\+\_\+t mavlink\+\_\+version;\}) mavlink\+\_\+heartbeat\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a0fa39f8cc69d7d07d33f36a5666be63a}\label{mavlink__msg__heartbeat_8h_a0fa39f8cc69d7d07d33f36a5666be63a}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MESSAGE\_INFO\_HEARTBEAT@{MAVLINK\_MESSAGE\_INFO\_HEARTBEAT}}
+\index{MAVLINK\_MESSAGE\_INFO\_HEARTBEAT@{MAVLINK\_MESSAGE\_INFO\_HEARTBEAT}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_HEARTBEAT}{MAVLINK\_MESSAGE\_INFO\_HEARTBEAT}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HEARTBEAT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}HEARTBEAT"{}}, \(\backslash\)}
+\DoxyCodeLine{    6, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}type"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 4, offsetof(mavlink\_heartbeat\_t, type) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}autopilot"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 5, offsetof(mavlink\_heartbeat\_t, autopilot) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}base\_mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 6, offsetof(mavlink\_heartbeat\_t, base\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}custom\_mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_heartbeat\_t, custom\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}system\_status"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 7, offsetof(mavlink\_heartbeat\_t, system\_status) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}mavlink\_version"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 8, offsetof(mavlink\_heartbeat\_t, mavlink\_version) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_acb2bf2866eb926f089c52a58b082713e}\label{mavlink__msg__heartbeat_8h_acb2bf2866eb926f089c52a58b082713e}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_0\_CRC@{MAVLINK\_MSG\_ID\_0\_CRC}}
+\index{MAVLINK\_MSG\_ID\_0\_CRC@{MAVLINK\_MSG\_ID\_0\_CRC}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_0\_CRC}{MAVLINK\_MSG\_ID\_0\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+0\+\_\+\+CRC~50}
+
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a86a84155451c0aa73fc3fc8215bd0032}\label{mavlink__msg__heartbeat_8h_a86a84155451c0aa73fc3fc8215bd0032}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_0\_LEN@{MAVLINK\_MSG\_ID\_0\_LEN}}
+\index{MAVLINK\_MSG\_ID\_0\_LEN@{MAVLINK\_MSG\_ID\_0\_LEN}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_0\_LEN}{MAVLINK\_MSG\_ID\_0\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+0\+\_\+\+LEN~9}
+
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a412f8424c3445e7760f72448fe1fd195}\label{mavlink__msg__heartbeat_8h_a412f8424c3445e7760f72448fe1fd195}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_0\_MIN\_LEN@{MAVLINK\_MSG\_ID\_0\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_0\_MIN\_LEN@{MAVLINK\_MSG\_ID\_0\_MIN\_LEN}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_0\_MIN\_LEN}{MAVLINK\_MSG\_ID\_0\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+0\+\_\+\+MIN\+\_\+\+LEN~9}
+
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a90afa03af7f54ab856cc70fc56e0b905}\label{mavlink__msg__heartbeat_8h_a90afa03af7f54ab856cc70fc56e0b905}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_HEARTBEAT@{MAVLINK\_MSG\_ID\_HEARTBEAT}}
+\index{MAVLINK\_MSG\_ID\_HEARTBEAT@{MAVLINK\_MSG\_ID\_HEARTBEAT}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HEARTBEAT}{MAVLINK\_MSG\_ID\_HEARTBEAT}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT~0}
+
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a1d6f3a798f18f7c434074e5f32208f60}\label{mavlink__msg__heartbeat_8h_a1d6f3a798f18f7c434074e5f32208f60}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_HEARTBEAT\_CRC@{MAVLINK\_MSG\_ID\_HEARTBEAT\_CRC}}
+\index{MAVLINK\_MSG\_ID\_HEARTBEAT\_CRC@{MAVLINK\_MSG\_ID\_HEARTBEAT\_CRC}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HEARTBEAT\_CRC}{MAVLINK\_MSG\_ID\_HEARTBEAT\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT\+\_\+\+CRC~50}
+
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a2478225967b29302fa747bd2268d95e4}\label{mavlink__msg__heartbeat_8h_a2478225967b29302fa747bd2268d95e4}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_HEARTBEAT\_LEN@{MAVLINK\_MSG\_ID\_HEARTBEAT\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HEARTBEAT\_LEN@{MAVLINK\_MSG\_ID\_HEARTBEAT\_LEN}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HEARTBEAT\_LEN}{MAVLINK\_MSG\_ID\_HEARTBEAT\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT\+\_\+\+LEN~9}
+
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a09f3ea7a7b3170b7a4ffbcd2295807c9}\label{mavlink__msg__heartbeat_8h_a09f3ea7a7b3170b7a4ffbcd2295807c9}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVLINK\_MSG\_ID\_HEARTBEAT\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HEARTBEAT\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HEARTBEAT\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HEARTBEAT\_MIN\_LEN}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HEARTBEAT\_MIN\_LEN}{MAVLINK\_MSG\_ID\_HEARTBEAT\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HEARTBEAT\+\_\+\+MIN\+\_\+\+LEN~9}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__heartbeat_8h_a152d3b008ab4f0f852db949f7c8cef67}\label{mavlink__msg__heartbeat_8h_a152d3b008ab4f0f852db949f7c8cef67}} 
+\index{mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_heartbeat.h@{mavlink\_msg\_heartbeat.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+heartbeat\+\_\+t \{ uint32\+\_\+t custom\+\_\+mode;uint8\+\_\+t type;uint8\+\_\+t autopilot;uint8\+\_\+t base\+\_\+mode;uint8\+\_\+t system\+\_\+status;uint8\+\_\+t mavlink\+\_\+version;\}}]{ }\end{DoxyParamCaption})}
+

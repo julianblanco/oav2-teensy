@@ -1,0 +1,162 @@
+\hypertarget{mavlink__msg__auth__key_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+auth\+\_\+key.\+h}
+\label{mavlink__msg__auth__key_8h_source}\index{lib/common/mavlink\_msg\_auth\_key.h@{lib/common/mavlink\_msg\_auth\_key.h}}
+\mbox{\hyperlink{mavlink__msg__auth__key_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE AUTH\_KEY PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTH\_KEY 7}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__auth__key_8h_ae75ce357477c9d225ccbfccc1a1f0307}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_auth\_key\_t \{}
+\DoxyCodeLine{8  \textcolor{keywordtype}{char} key[32]; \textcolor{comment}{/*<  key*/}}
+\DoxyCodeLine{9 \}) mavlink\_auth\_key\_t;}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN 32}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN 32}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_7\_LEN 32}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_7\_MIN\_LEN 32}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC 119}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_7\_CRC 119}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_AUTH\_KEY\_FIELD\_KEY\_LEN 32}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_AUTH\_KEY \{ \(\backslash\)}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{    7, \(\backslash\)}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{    "{}AUTH\_KEY"{}}, \(\backslash\)}
+\DoxyCodeLine{25     1, \(\backslash\)}
+\DoxyCodeLine{26     \{  \{ "{}key"{}, NULL, MAVLINK\_TYPE\_CHAR, 32, 0, offsetof(mavlink\_auth\_key\_t, key) \}, \(\backslash\)}
+\DoxyCodeLine{27          \} \(\backslash\)}
+\DoxyCodeLine{28 \}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_AUTH\_KEY \{ \(\backslash\)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{    "{}AUTH\_KEY"{}}, \(\backslash\)}
+\DoxyCodeLine{32     1, \(\backslash\)}
+\DoxyCodeLine{33     \{  \{ "{}key"{}, NULL, MAVLINK\_TYPE\_CHAR, 32, 0, offsetof(mavlink\_auth\_key\_t, key) \}, \(\backslash\)}
+\DoxyCodeLine{34          \} \(\backslash\)}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{47 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_auth\_key\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{48                                \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key)}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}];}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \_mav\_put\_char\_array(buf, 0, key, 32);}
+\DoxyCodeLine{54         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}});}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{56     mavlink\_auth\_key\_t packet;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     mav\_array\_memcpy(packet.key, key, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*32);}
+\DoxyCodeLine{59         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}});}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}};}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{64 \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{75 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_auth\_key\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{76                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{77                                    \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key)}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{80     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}];}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \_mav\_put\_char\_array(buf, 0, key, 32);}
+\DoxyCodeLine{83         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}});}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{85     mavlink\_auth\_key\_t packet;}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     mav\_array\_memcpy(packet.key, key, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*32);}
+\DoxyCodeLine{88         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}});}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}};}
+\DoxyCodeLine{92     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{93 \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{103 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_auth\_key\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_auth\_key\_t* auth\_key)}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105     \textcolor{keywordflow}{return} mavlink\_msg\_auth\_key\_pack(system\_id, component\_id, msg, auth\_key-\/>key);}
+\DoxyCodeLine{106 \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{117 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_auth\_key\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_auth\_key\_t* auth\_key)}
+\DoxyCodeLine{118 \{}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} mavlink\_msg\_auth\_key\_pack\_chan(system\_id, component\_id, chan, msg, auth\_key-\/>key);}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_auth\_key\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key)}
+\DoxyCodeLine{131 \{}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{133     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}];}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \_mav\_put\_char\_array(buf, 0, key, 32);}
+\DoxyCodeLine{136     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}}, buf, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{138     mavlink\_auth\_key\_t packet;}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     mav\_array\_memcpy(packet.key, key, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*32);}
+\DoxyCodeLine{141     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{143 \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{150 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_auth\_key\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_auth\_key\_t* auth\_key)}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{152 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{153     mavlink\_msg\_auth\_key\_send(chan, auth\_key-\/>key);}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{155     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)auth\_key, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{157 \}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{160 \textcolor{comment}{/*}}
+\DoxyCodeLine{161 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{162 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{163 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{164 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{165 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{166 \textcolor{comment}{ */}}
+\DoxyCodeLine{167 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_auth\_key\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key)}
+\DoxyCodeLine{168 \{}
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{170     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \_mav\_put\_char\_array(buf, 0, key, 32);}
+\DoxyCodeLine{173     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}}, buf, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{175     mavlink\_auth\_key\_t *packet = (mavlink\_auth\_key\_t *)msgbuf;}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     mav\_array\_memcpy(packet-\/>key, key, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*32);}
+\DoxyCodeLine{178     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__auth__key_8h_aee03b8b73c2cc2e914f7f1151e4f4571}{MAVLINK\_MSG\_ID\_AUTH\_KEY}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a1f857b05a7a88c396baad38d1694ed67}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9f7ecb81c075aa3e950662076a23344e}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_CRC}});}
+\DoxyCodeLine{179 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{180 \}}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185 \textcolor{comment}{// MESSAGE AUTH\_KEY UNPACKING}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187 }
+\DoxyCodeLine{193 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_auth\_key\_get\_key(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *key)}
+\DoxyCodeLine{194 \{}
+\DoxyCodeLine{195     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, key, 32,  0);}
+\DoxyCodeLine{196 \}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{204 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_auth\_key\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_auth\_key\_t* auth\_key)}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{207     mavlink\_msg\_auth\_key\_get\_key(msg, auth\_key-\/>key);}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{209         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}};}
+\DoxyCodeLine{210         memset(auth\_key, 0, \mbox{\hyperlink{mavlink__msg__auth__key_8h_a9337fb6ac2a73f06562e503b73de4f9a}{MAVLINK\_MSG\_ID\_AUTH\_KEY\_LEN}});}
+\DoxyCodeLine{211     memcpy(auth\_key, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{213 \}}
+
+\end{DoxyCode}

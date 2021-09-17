@@ -1,0 +1,14 @@
+{
+  "name": "Eigen",
+  "version": "git",
+  "description": "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
+  "keywords": ["eigen"],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/libeigen/eigen/"
+  },
+  "build": {
+    "includeDir": "",
+    "srcDir": "Eigen/src"
+  }
+}

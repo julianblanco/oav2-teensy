@@ -1,0 +1,176 @@
+\hypertarget{_adafruit___g_p_s_8h}{}\doxysection{lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\+Adafruit\+\_\+\+GPS.h File Reference}
+\label{_adafruit___g_p_s_8h}\index{lib/Adafruit\_GPS\_Library/src/Adafruit\_GPS.h@{lib/Adafruit\_GPS\_Library/src/Adafruit\_GPS.h}}
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Adafruit\+\_\+\+PMTK.\+h$>$}\newline
+{\ttfamily \#include $<$NMEA\+\_\+data.\+h$>$}\newline
+{\ttfamily \#include $<$SPI.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_adafruit___g_p_s}{Adafruit\+\_\+\+GPS}}
+\begin{DoxyCompactList}\small\item\em The GPS class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_aca54bdead693302e0ed647eaa65c56af}{NMEA\+\_\+\+EXTENSIONS}}
+\begin{DoxyCompactList}\small\item\em if defined will include more NMEA sentences \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_a7d44b2886944eb862b51948f2acc8d23}{USE\+\_\+\+SW\+\_\+\+SERIAL}}
+\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_a09a011d0f9a94852f1cf93de299f6152}{GPS\+\_\+\+DEFAULT\+\_\+\+I2\+C\+\_\+\+ADDR}}~  0x10
+\begin{DoxyCompactList}\small\item\em The default address for I2C transport of GPS data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}{GPS\+\_\+\+MAX\+\_\+\+I2\+C\+\_\+\+TRANSFER}}~  32
+\begin{DoxyCompactList}\small\item\em The max number of bytes we\textquotesingle{}ll try to read at once. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_a2a9a79e8518d2e3ca5791a112a1976a5}{GPS\+\_\+\+MAX\+\_\+\+SPI\+\_\+\+TRANSFER}}~  100
+\begin{DoxyCompactList}\small\item\em The max number of bytes we\textquotesingle{}ll try to read at once. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}{MAXLINELENGTH}}~120
+\begin{DoxyCompactList}\small\item\em how long are max NMEA lines to parse? \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID}}~  20
+\begin{DoxyCompactList}\small\item\em maximum length of a sentence ID name, including terminating 0 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___g_p_s_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID}}~  3
+\begin{DoxyCompactList}\small\item\em maximum length of a source ID name, including terminating 0 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dca}{nmea\+\_\+check\+\_\+t}} \{ \newline
+\mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa503c4b54b94d0e729566af15b72f76f2}{NMEA\+\_\+\+BAD}} = 0
+, \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa8d5fd241c3361bef95f143797347c887}{NMEA\+\_\+\+HAS\+\_\+\+DOLLAR}}
+, \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa9ec09ffff6d9cb41a22d2780523646ba}{NMEA\+\_\+\+HAS\+\_\+\+CHECKSUM}} = 2
+, \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa092e0bfd70702561109e85dc8c249810}{NMEA\+\_\+\+HAS\+\_\+\+NAME}} = 4
+, \newline
+\mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa7c0a1e04c3963914ac2932555fc5d09f}{NMEA\+\_\+\+HAS\+\_\+\+SOURCE}} = 10
+, \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaafaa5f6941eeb84fa807dfcdbd7ab6d5a}{NMEA\+\_\+\+HAS\+\_\+\+SENTENCE}} = 20
+, \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa0ef458647860d3924572da69d68c1c71}{NMEA\+\_\+\+HAS\+\_\+\+SENTENCE\+\_\+P}} = 40
+ \}
+\begin{DoxyCompactList}\small\item\em type for resulting code from running check() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the Adafruit GPS library -\/ the ultimate GPS library for the ultimate GPS module!
+
+Tested and works great with the Adafruit Ultimate GPS module using MTK33x9 chipset -\/-\/-\/---\texorpdfstring{$>$}{>} \href{http://www.adafruit.com/products/746}{\texttt{ http\+://www.\+adafruit.\+com/products/746}} Pick one up today at the Adafruit electronics shop and help support open source hardware \& software! -\/ada
+
+Adafruit invests time and resources providing this open source code, please support Adafruit and open-\/source hardware by purchasing products from Adafruit!
+
+Written by Limor Fried/\+Ladyada for Adafruit Industries. BSD license, check license.\+txt for more information All text above must be included in any redistribution 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_a09a011d0f9a94852f1cf93de299f6152}\label{_adafruit___g_p_s_8h_a09a011d0f9a94852f1cf93de299f6152}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!GPS\_DEFAULT\_I2C\_ADDR@{GPS\_DEFAULT\_I2C\_ADDR}}
+\index{GPS\_DEFAULT\_I2C\_ADDR@{GPS\_DEFAULT\_I2C\_ADDR}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{GPS\_DEFAULT\_I2C\_ADDR}{GPS\_DEFAULT\_I2C\_ADDR}}
+{\footnotesize\ttfamily \#define GPS\+\_\+\+DEFAULT\+\_\+\+I2\+C\+\_\+\+ADDR~  0x10}
+
+
+
+The default address for I2C transport of GPS data. 
+
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}\label{_adafruit___g_p_s_8h_aa4f51a6693bb8e084e5b879528dee0bf}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!GPS\_MAX\_I2C\_TRANSFER@{GPS\_MAX\_I2C\_TRANSFER}}
+\index{GPS\_MAX\_I2C\_TRANSFER@{GPS\_MAX\_I2C\_TRANSFER}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{GPS\_MAX\_I2C\_TRANSFER}{GPS\_MAX\_I2C\_TRANSFER}}
+{\footnotesize\ttfamily \#define GPS\+\_\+\+MAX\+\_\+\+I2\+C\+\_\+\+TRANSFER~  32}
+
+
+
+The max number of bytes we\textquotesingle{}ll try to read at once. 
+
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_a2a9a79e8518d2e3ca5791a112a1976a5}\label{_adafruit___g_p_s_8h_a2a9a79e8518d2e3ca5791a112a1976a5}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!GPS\_MAX\_SPI\_TRANSFER@{GPS\_MAX\_SPI\_TRANSFER}}
+\index{GPS\_MAX\_SPI\_TRANSFER@{GPS\_MAX\_SPI\_TRANSFER}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{GPS\_MAX\_SPI\_TRANSFER}{GPS\_MAX\_SPI\_TRANSFER}}
+{\footnotesize\ttfamily \#define GPS\+\_\+\+MAX\+\_\+\+SPI\+\_\+\+TRANSFER~  100}
+
+
+
+The max number of bytes we\textquotesingle{}ll try to read at once. 
+
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}\label{_adafruit___g_p_s_8h_a083ec68ee7d55f29605714c8cc4b17f3}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!MAXLINELENGTH@{MAXLINELENGTH}}
+\index{MAXLINELENGTH@{MAXLINELENGTH}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{MAXLINELENGTH}{MAXLINELENGTH}}
+{\footnotesize\ttfamily \#define MAXLINELENGTH~120}
+
+
+
+how long are max NMEA lines to parse? 
+
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_aca54bdead693302e0ed647eaa65c56af}\label{_adafruit___g_p_s_8h_aca54bdead693302e0ed647eaa65c56af}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_EXTENSIONS@{NMEA\_EXTENSIONS}}
+\index{NMEA\_EXTENSIONS@{NMEA\_EXTENSIONS}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_EXTENSIONS}{NMEA\_EXTENSIONS}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+EXTENSIONS}
+
+
+
+if defined will include more NMEA sentences 
+
+Comment out the definition of NMEA\+\_\+\+EXTENSIONS to make the library use as little memory as possible for GPS functionality only. The ARDUINO\+\_\+\+ARCH\+\_\+\+AVR test should leave it out of any compilations for the UNO and similar. \mbox{\Hypertarget{_adafruit___g_p_s_8h_aaec49a2365b37bf9aa5c063076818a98}\label{_adafruit___g_p_s_8h_aaec49a2365b37bf9aa5c063076818a98}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_MAX\_SENTENCE\_ID@{NMEA\_MAX\_SENTENCE\_ID}}
+\index{NMEA\_MAX\_SENTENCE\_ID@{NMEA\_MAX\_SENTENCE\_ID}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_MAX\_SENTENCE\_ID}{NMEA\_MAX\_SENTENCE\_ID}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID~  20}
+
+
+
+maximum length of a sentence ID name, including terminating 0 
+
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}\label{_adafruit___g_p_s_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_MAX\_SOURCE\_ID@{NMEA\_MAX\_SOURCE\_ID}}
+\index{NMEA\_MAX\_SOURCE\_ID@{NMEA\_MAX\_SOURCE\_ID}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{NMEA\_MAX\_SOURCE\_ID}{NMEA\_MAX\_SOURCE\_ID}}
+{\footnotesize\ttfamily \#define NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID~  3}
+
+
+
+maximum length of a source ID name, including terminating 0 
+
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_a7d44b2886944eb862b51948f2acc8d23}\label{_adafruit___g_p_s_8h_a7d44b2886944eb862b51948f2acc8d23}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!USE\_SW\_SERIAL@{USE\_SW\_SERIAL}}
+\index{USE\_SW\_SERIAL@{USE\_SW\_SERIAL}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{USE\_SW\_SERIAL}{USE\_SW\_SERIAL}}
+{\footnotesize\ttfamily \#define USE\+\_\+\+SW\+\_\+\+SERIAL}
+
+comment this out if you don\textquotesingle{}t want to include software serial in the library 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dca}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dca}} 
+\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!nmea\_check\_t@{nmea\_check\_t}}
+\index{nmea\_check\_t@{nmea\_check\_t}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}
+\doxysubsubsection{\texorpdfstring{nmea\_check\_t}{nmea\_check\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dca}{nmea\+\_\+check\+\_\+t}}}
+
+
+
+type for resulting code from running check() 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_BAD@{NMEA\_BAD}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_BAD@{NMEA\_BAD}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa503c4b54b94d0e729566af15b72f76f2}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa503c4b54b94d0e729566af15b72f76f2}} 
+NMEA\+\_\+\+BAD&passed none of the checks \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HAS\_DOLLAR@{NMEA\_HAS\_DOLLAR}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_HAS\_DOLLAR@{NMEA\_HAS\_DOLLAR}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa8d5fd241c3361bef95f143797347c887}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa8d5fd241c3361bef95f143797347c887}} 
+NMEA\+\_\+\+HAS\+\_\+\+DOLLAR&has a dollar sign or exclamation mark in the first position \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HAS\_CHECKSUM@{NMEA\_HAS\_CHECKSUM}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_HAS\_CHECKSUM@{NMEA\_HAS\_CHECKSUM}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa9ec09ffff6d9cb41a22d2780523646ba}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa9ec09ffff6d9cb41a22d2780523646ba}} 
+NMEA\+\_\+\+HAS\+\_\+\+CHECKSUM&has a valid checksum at the end \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HAS\_NAME@{NMEA\_HAS\_NAME}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_HAS\_NAME@{NMEA\_HAS\_NAME}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa092e0bfd70702561109e85dc8c249810}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa092e0bfd70702561109e85dc8c249810}} 
+NMEA\+\_\+\+HAS\+\_\+\+NAME&there is a token after the \$ followed by a comma \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HAS\_SOURCE@{NMEA\_HAS\_SOURCE}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_HAS\_SOURCE@{NMEA\_HAS\_SOURCE}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa7c0a1e04c3963914ac2932555fc5d09f}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa7c0a1e04c3963914ac2932555fc5d09f}} 
+NMEA\+\_\+\+HAS\+\_\+\+SOURCE&has a recognized source ID \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HAS\_SENTENCE@{NMEA\_HAS\_SENTENCE}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_HAS\_SENTENCE@{NMEA\_HAS\_SENTENCE}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaafaa5f6941eeb84fa807dfcdbd7ab6d5a}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaafaa5f6941eeb84fa807dfcdbd7ab6d5a}} 
+NMEA\+\_\+\+HAS\+\_\+\+SENTENCE&has a recognized sentence ID \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NMEA\_HAS\_SENTENCE\_P@{NMEA\_HAS\_SENTENCE\_P}!Adafruit\_GPS.h@{Adafruit\_GPS.h}}\index{Adafruit\_GPS.h@{Adafruit\_GPS.h}!NMEA\_HAS\_SENTENCE\_P@{NMEA\_HAS\_SENTENCE\_P}}}\mbox{\Hypertarget{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa0ef458647860d3924572da69d68c1c71}\label{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa0ef458647860d3924572da69d68c1c71}} 
+NMEA\+\_\+\+HAS\+\_\+\+SENTENCE\+\_\+P&has a recognized parseable sentence ID \\
+\hline
+
+\end{DoxyEnumFields}

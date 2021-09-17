@@ -1,0 +1,281 @@
+\hypertarget{mavlink__msg__attitude__quaternion_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+attitude\+\_\+quaternion.\+h}
+\label{mavlink__msg__attitude__quaternion_8h_source}\index{lib/common/mavlink\_msg\_attitude\_quaternion.h@{lib/common/mavlink\_msg\_attitude\_quaternion.h}}
+\mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE ATTITUDE\_QUATERNION PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION 31}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae76e8365711cbb2558b4532fbe8d95fe}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_attitude\_quaternion\_t \{}
+\DoxyCodeLine{8  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} q1; \textcolor{comment}{/*<  Quaternion component 1, w (1 in null-\/rotation)*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} q2; \textcolor{comment}{/*<  Quaternion component 2, x (0 in null-\/rotation)*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} q3; \textcolor{comment}{/*<  Quaternion component 3, y (0 in null-\/rotation)*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} q4; \textcolor{comment}{/*<  Quaternion component 4, z (0 in null-\/rotation)*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} rollspeed; \textcolor{comment}{/*< [rad/s] Roll angular speed*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} pitchspeed; \textcolor{comment}{/*< [rad/s] Pitch angular speed*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{float} yawspeed; \textcolor{comment}{/*< [rad/s] Yaw angular speed*/}}
+\DoxyCodeLine{16 \}) mavlink\_attitude\_quaternion\_t;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN 32}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN 32}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_31\_LEN 32}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_31\_MIN\_LEN 32}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC 246}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_31\_CRC 246}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_ATTITUDE\_QUATERNION \{ \(\backslash\)}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{    31, \(\backslash\)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{    "{}ATTITUDE\_QUATERNION"{}}, \(\backslash\)}
+\DoxyCodeLine{32     8, \(\backslash\)}
+\DoxyCodeLine{33     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_attitude\_quaternion\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}q1"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 4, offsetof(mavlink\_attitude\_quaternion\_t, q1) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}q2"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_attitude\_quaternion\_t, q2) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}q3"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_attitude\_quaternion\_t, q3) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}q4"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_attitude\_quaternion\_t, q4) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}rollspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_attitude\_quaternion\_t, rollspeed) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}pitchspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_attitude\_quaternion\_t, pitchspeed) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}yawspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_attitude\_quaternion\_t, yawspeed) \}, \(\backslash\)}
+\DoxyCodeLine{41          \} \(\backslash\)}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_ATTITUDE\_QUATERNION \{ \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{    "{}ATTITUDE\_QUATERNION"{}}, \(\backslash\)}
+\DoxyCodeLine{46     8, \(\backslash\)}
+\DoxyCodeLine{47     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_attitude\_quaternion\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}q1"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 4, offsetof(mavlink\_attitude\_quaternion\_t, q1) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}q2"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_attitude\_quaternion\_t, q2) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}q3"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_attitude\_quaternion\_t, q3) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}q4"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_attitude\_quaternion\_t, q4) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}rollspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_attitude\_quaternion\_t, rollspeed) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}pitchspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_attitude\_quaternion\_t, pitchspeed) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}yawspeed"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_attitude\_quaternion\_t, yawspeed) \}, \(\backslash\)}
+\DoxyCodeLine{55          \} \(\backslash\)}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{75 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_attitude\_quaternion\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{76                                uint32\_t time\_boot\_ms, \textcolor{keywordtype}{float} q1, \textcolor{keywordtype}{float} q2, \textcolor{keywordtype}{float} q3, \textcolor{keywordtype}{float} q4, \textcolor{keywordtype}{float} rollspeed, \textcolor{keywordtype}{float} pitchspeed, \textcolor{keywordtype}{float} yawspeed)}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{79     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}];}
+\DoxyCodeLine{80     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{81     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, q1);}
+\DoxyCodeLine{82     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, q2);}
+\DoxyCodeLine{83     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, q3);}
+\DoxyCodeLine{84     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, q4);}
+\DoxyCodeLine{85     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, rollspeed);}
+\DoxyCodeLine{86     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, pitchspeed);}
+\DoxyCodeLine{87     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, yawspeed);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}});}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{91     mavlink\_attitude\_quaternion\_t packet;}
+\DoxyCodeLine{92     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{93     packet.q1 = q1;}
+\DoxyCodeLine{94     packet.q2 = q2;}
+\DoxyCodeLine{95     packet.q3 = q3;}
+\DoxyCodeLine{96     packet.q4 = q4;}
+\DoxyCodeLine{97     packet.rollspeed = rollspeed;}
+\DoxyCodeLine{98     packet.pitchspeed = pitchspeed;}
+\DoxyCodeLine{99     packet.yawspeed = yawspeed;}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}});}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}};}
+\DoxyCodeLine{105     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{106 \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{124 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_attitude\_quaternion\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{125                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{126                                    uint32\_t time\_boot\_ms,\textcolor{keywordtype}{float} q1,\textcolor{keywordtype}{float} q2,\textcolor{keywordtype}{float} q3,\textcolor{keywordtype}{float} q4,\textcolor{keywordtype}{float} rollspeed,\textcolor{keywordtype}{float} pitchspeed,\textcolor{keywordtype}{float} yawspeed)}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{129     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}];}
+\DoxyCodeLine{130     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{131     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, q1);}
+\DoxyCodeLine{132     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, q2);}
+\DoxyCodeLine{133     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, q3);}
+\DoxyCodeLine{134     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, q4);}
+\DoxyCodeLine{135     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, rollspeed);}
+\DoxyCodeLine{136     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, pitchspeed);}
+\DoxyCodeLine{137     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, yawspeed);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}});}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{141     mavlink\_attitude\_quaternion\_t packet;}
+\DoxyCodeLine{142     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{143     packet.q1 = q1;}
+\DoxyCodeLine{144     packet.q2 = q2;}
+\DoxyCodeLine{145     packet.q3 = q3;}
+\DoxyCodeLine{146     packet.q4 = q4;}
+\DoxyCodeLine{147     packet.rollspeed = rollspeed;}
+\DoxyCodeLine{148     packet.pitchspeed = pitchspeed;}
+\DoxyCodeLine{149     packet.yawspeed = yawspeed;}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}});}
+\DoxyCodeLine{152 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}};}
+\DoxyCodeLine{155     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{156 \}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{166 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_attitude\_quaternion\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_attitude\_quaternion\_t* attitude\_quaternion)}
+\DoxyCodeLine{167 \{}
+\DoxyCodeLine{168     \textcolor{keywordflow}{return} mavlink\_msg\_attitude\_quaternion\_pack(system\_id, component\_id, msg, attitude\_quaternion-\/>time\_boot\_ms, attitude\_quaternion-\/>q1, attitude\_quaternion-\/>q2, attitude\_quaternion-\/>q3, attitude\_quaternion-\/>q4, attitude\_quaternion-\/>rollspeed, attitude\_quaternion-\/>pitchspeed, attitude\_quaternion-\/>yawspeed);}
+\DoxyCodeLine{169 \}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_attitude\_quaternion\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_attitude\_quaternion\_t* attitude\_quaternion)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182     \textcolor{keywordflow}{return} mavlink\_msg\_attitude\_quaternion\_pack\_chan(system\_id, component\_id, chan, msg, attitude\_quaternion-\/>time\_boot\_ms, attitude\_quaternion-\/>q1, attitude\_quaternion-\/>q2, attitude\_quaternion-\/>q3, attitude\_quaternion-\/>q4, attitude\_quaternion-\/>rollspeed, attitude\_quaternion-\/>pitchspeed, attitude\_quaternion-\/>yawspeed);}
+\DoxyCodeLine{183 \}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_attitude\_quaternion\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, \textcolor{keywordtype}{float} q1, \textcolor{keywordtype}{float} q2, \textcolor{keywordtype}{float} q3, \textcolor{keywordtype}{float} q4, \textcolor{keywordtype}{float} rollspeed, \textcolor{keywordtype}{float} pitchspeed, \textcolor{keywordtype}{float} yawspeed)}
+\DoxyCodeLine{201 \{}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{203     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}];}
+\DoxyCodeLine{204     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{205     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, q1);}
+\DoxyCodeLine{206     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, q2);}
+\DoxyCodeLine{207     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, q3);}
+\DoxyCodeLine{208     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, q4);}
+\DoxyCodeLine{209     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, rollspeed);}
+\DoxyCodeLine{210     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, pitchspeed);}
+\DoxyCodeLine{211     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, yawspeed);}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}}, buf, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{215     mavlink\_attitude\_quaternion\_t packet;}
+\DoxyCodeLine{216     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{217     packet.q1 = q1;}
+\DoxyCodeLine{218     packet.q2 = q2;}
+\DoxyCodeLine{219     packet.q3 = q3;}
+\DoxyCodeLine{220     packet.q4 = q4;}
+\DoxyCodeLine{221     packet.rollspeed = rollspeed;}
+\DoxyCodeLine{222     packet.pitchspeed = pitchspeed;}
+\DoxyCodeLine{223     packet.yawspeed = yawspeed;}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{227 \}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{234 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_attitude\_quaternion\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_attitude\_quaternion\_t* attitude\_quaternion)}
+\DoxyCodeLine{235 \{}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{237     mavlink\_msg\_attitude\_quaternion\_send(chan, attitude\_quaternion-\/>time\_boot\_ms, attitude\_quaternion-\/>q1, attitude\_quaternion-\/>q2, attitude\_quaternion-\/>q3, attitude\_quaternion-\/>q4, attitude\_quaternion-\/>rollspeed, attitude\_quaternion-\/>pitchspeed, attitude\_quaternion-\/>yawspeed);}
+\DoxyCodeLine{238 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{239     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)attitude\_quaternion, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{240 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{241 \}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{244 \textcolor{comment}{/*}}
+\DoxyCodeLine{245 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{246 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{247 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{248 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{249 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{250 \textcolor{comment}{ */}}
+\DoxyCodeLine{251 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_attitude\_quaternion\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, \textcolor{keywordtype}{float} q1, \textcolor{keywordtype}{float} q2, \textcolor{keywordtype}{float} q3, \textcolor{keywordtype}{float} q4, \textcolor{keywordtype}{float} rollspeed, \textcolor{keywordtype}{float} pitchspeed, \textcolor{keywordtype}{float} yawspeed)}
+\DoxyCodeLine{252 \{}
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{254     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{255     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{256     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, q1);}
+\DoxyCodeLine{257     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, q2);}
+\DoxyCodeLine{258     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, q3);}
+\DoxyCodeLine{259     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, q4);}
+\DoxyCodeLine{260     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, rollspeed);}
+\DoxyCodeLine{261     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, pitchspeed);}
+\DoxyCodeLine{262     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, yawspeed);}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}}, buf, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{265 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{266     mavlink\_attitude\_quaternion\_t *packet = (mavlink\_attitude\_quaternion\_t *)msgbuf;}
+\DoxyCodeLine{267     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{268     packet-\/>q1 = q1;}
+\DoxyCodeLine{269     packet-\/>q2 = q2;}
+\DoxyCodeLine{270     packet-\/>q3 = q3;}
+\DoxyCodeLine{271     packet-\/>q4 = q4;}
+\DoxyCodeLine{272     packet-\/>rollspeed = rollspeed;}
+\DoxyCodeLine{273     packet-\/>pitchspeed = pitchspeed;}
+\DoxyCodeLine{274     packet-\/>yawspeed = yawspeed;}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a53c49fea848c9768c04604dd4f965052}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ae9c4a3331a8f4df3fcc89bf5711d02fb}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_ab54140756a2428eddaa18aaca48ace5b}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_CRC}});}
+\DoxyCodeLine{277 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{278 \}}
+\DoxyCodeLine{279 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283 \textcolor{comment}{// MESSAGE ATTITUDE\_QUATERNION UNPACKING}}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285 }
+\DoxyCodeLine{291 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_attitude\_quaternion\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{292 \{}
+\DoxyCodeLine{293     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{294 \}}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{301 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_q1(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{302 \{}
+\DoxyCodeLine{303     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  4);}
+\DoxyCodeLine{304 \}}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{311 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_q2(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{312 \{}
+\DoxyCodeLine{313     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  8);}
+\DoxyCodeLine{314 \}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{321 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_q3(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{322 \{}
+\DoxyCodeLine{323     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  12);}
+\DoxyCodeLine{324 \}}
+\DoxyCodeLine{325 }
+\DoxyCodeLine{331 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_q4(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{332 \{}
+\DoxyCodeLine{333     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  16);}
+\DoxyCodeLine{334 \}}
+\DoxyCodeLine{335 }
+\DoxyCodeLine{341 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_rollspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{342 \{}
+\DoxyCodeLine{343     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  20);}
+\DoxyCodeLine{344 \}}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{351 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_pitchspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{352 \{}
+\DoxyCodeLine{353     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  24);}
+\DoxyCodeLine{354 \}}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{361 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_attitude\_quaternion\_get\_yawspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{362 \{}
+\DoxyCodeLine{363     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  28);}
+\DoxyCodeLine{364 \}}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{372 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_attitude\_quaternion\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_attitude\_quaternion\_t* attitude\_quaternion)}
+\DoxyCodeLine{373 \{}
+\DoxyCodeLine{374 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{375     attitude\_quaternion-\/>time\_boot\_ms = mavlink\_msg\_attitude\_quaternion\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{376     attitude\_quaternion-\/>q1 = mavlink\_msg\_attitude\_quaternion\_get\_q1(msg);}
+\DoxyCodeLine{377     attitude\_quaternion-\/>q2 = mavlink\_msg\_attitude\_quaternion\_get\_q2(msg);}
+\DoxyCodeLine{378     attitude\_quaternion-\/>q3 = mavlink\_msg\_attitude\_quaternion\_get\_q3(msg);}
+\DoxyCodeLine{379     attitude\_quaternion-\/>q4 = mavlink\_msg\_attitude\_quaternion\_get\_q4(msg);}
+\DoxyCodeLine{380     attitude\_quaternion-\/>rollspeed = mavlink\_msg\_attitude\_quaternion\_get\_rollspeed(msg);}
+\DoxyCodeLine{381     attitude\_quaternion-\/>pitchspeed = mavlink\_msg\_attitude\_quaternion\_get\_pitchspeed(msg);}
+\DoxyCodeLine{382     attitude\_quaternion-\/>yawspeed = mavlink\_msg\_attitude\_quaternion\_get\_yawspeed(msg);}
+\DoxyCodeLine{383 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{384         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}};}
+\DoxyCodeLine{385         memset(attitude\_quaternion, 0, \mbox{\hyperlink{mavlink__msg__attitude__quaternion_8h_a35953cfed5bf0a10907235df27dc7ae0}{MAVLINK\_MSG\_ID\_ATTITUDE\_QUATERNION\_LEN}});}
+\DoxyCodeLine{386     memcpy(attitude\_quaternion, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{387 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{388 \}}
+
+\end{DoxyCode}

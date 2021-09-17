@@ -1,0 +1,119 @@
+\hypertarget{mavlink__msg__high__latency_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+high\+\_\+latency.h File Reference}
+\label{mavlink__msg__high__latency_8h}\index{lib/common/mavlink\_msg\_high\_latency.h@{lib/common/mavlink\_msg\_high\_latency.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_a1eabbb829254e91793b2961b7ccf13f6}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY}}~234
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_af50532155429c24df311b957d6457c96}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY\+\_\+\+LEN}}~40
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_aee1e9652942e8094ee109be162c36a0a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY\+\_\+\+MIN\+\_\+\+LEN}}~40
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_a3e3a6ff0334d81ef8b6198f14c47ce29}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+234\+\_\+\+LEN}}~40
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_a3ce64e943556541848326a4ca3932a3f}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+234\+\_\+\+MIN\+\_\+\+LEN}}~40
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_a514fc1a73b4c281836da669f734e12d9}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY\+\_\+\+CRC}}~150
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_a1d013f76dcbe360c69b06b3d93736e6e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+234\+\_\+\+CRC}}~150
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__high__latency_8h_a48e26d484dc3773c025ee21f977f7662}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HIGH\+\_\+\+LATENCY}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__high__latency_8h_a3b8c389133f3a24413151be5f04227cd}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+high\+\_\+latency\+\_\+t \{ uint32\+\_\+t custom\+\_\+mode;int32\+\_\+t latitude;int32\+\_\+t longitude;int16\+\_\+t roll;int16\+\_\+t pitch;uint16\+\_\+t heading;int16\+\_\+t heading\+\_\+sp;int16\+\_\+t altitude\+\_\+amsl;int16\+\_\+t altitude\+\_\+sp;uint16\+\_\+t wp\+\_\+distance;uint8\+\_\+t base\+\_\+mode;uint8\+\_\+t landed\+\_\+state;int8\+\_\+t throttle;uint8\+\_\+t airspeed;uint8\+\_\+t airspeed\+\_\+sp;uint8\+\_\+t groundspeed;int8\+\_\+t climb\+\_\+rate;uint8\+\_\+t gps\+\_\+nsat;uint8\+\_\+t gps\+\_\+fix\+\_\+type;uint8\+\_\+t battery\+\_\+remaining;int8\+\_\+t temperature;int8\+\_\+t temperature\+\_\+air;uint8\+\_\+t failsafe;uint8\+\_\+t wp\+\_\+num;\}) mavlink\+\_\+high\+\_\+latency\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a48e26d484dc3773c025ee21f977f7662}\label{mavlink__msg__high__latency_8h_a48e26d484dc3773c025ee21f977f7662}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY@{MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY}}
+\index{MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY@{MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY}{MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+HIGH\+\_\+\+LATENCY}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}HIGH\_LATENCY"{}}, \(\backslash\)}
+\DoxyCodeLine{    24, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}base\_mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 26, offsetof(mavlink\_high\_latency\_t, base\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}custom\_mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_high\_latency\_t, custom\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}landed\_state"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 27, offsetof(mavlink\_high\_latency\_t, landed\_state) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}roll"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 12, offsetof(mavlink\_high\_latency\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 14, offsetof(mavlink\_high\_latency\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}heading"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 16, offsetof(mavlink\_high\_latency\_t, heading) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}throttle"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aadfce75c32e04fc5d552c06e222bc19a}{MAVLINK\_TYPE\_INT8\_T}}, 0, 28, offsetof(mavlink\_high\_latency\_t, throttle) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}heading\_sp"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 18, offsetof(mavlink\_high\_latency\_t, heading\_sp) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}latitude"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 4, offsetof(mavlink\_high\_latency\_t, latitude) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}longitude"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 8, offsetof(mavlink\_high\_latency\_t, longitude) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_amsl"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 20, offsetof(mavlink\_high\_latency\_t, altitude\_amsl) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}altitude\_sp"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 22, offsetof(mavlink\_high\_latency\_t, altitude\_sp) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}airspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 29, offsetof(mavlink\_high\_latency\_t, airspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}airspeed\_sp"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 30, offsetof(mavlink\_high\_latency\_t, airspeed\_sp) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}groundspeed"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 31, offsetof(mavlink\_high\_latency\_t, groundspeed) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}climb\_rate"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aadfce75c32e04fc5d552c06e222bc19a}{MAVLINK\_TYPE\_INT8\_T}}, 0, 32, offsetof(mavlink\_high\_latency\_t, climb\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}gps\_nsat"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 33, offsetof(mavlink\_high\_latency\_t, gps\_nsat) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}gps\_fix\_type"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 34, offsetof(mavlink\_high\_latency\_t, gps\_fix\_type) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}battery\_remaining"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 35, offsetof(mavlink\_high\_latency\_t, battery\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}temperature"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aadfce75c32e04fc5d552c06e222bc19a}{MAVLINK\_TYPE\_INT8\_T}}, 0, 36, offsetof(mavlink\_high\_latency\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}temperature\_air"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aadfce75c32e04fc5d552c06e222bc19a}{MAVLINK\_TYPE\_INT8\_T}}, 0, 37, offsetof(mavlink\_high\_latency\_t, temperature\_air) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}failsafe"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 38, offsetof(mavlink\_high\_latency\_t, failsafe) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}wp\_num"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 39, offsetof(mavlink\_high\_latency\_t, wp\_num) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}wp\_distance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 24, offsetof(mavlink\_high\_latency\_t, wp\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a1d013f76dcbe360c69b06b3d93736e6e}\label{mavlink__msg__high__latency_8h_a1d013f76dcbe360c69b06b3d93736e6e}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_234\_CRC@{MAVLINK\_MSG\_ID\_234\_CRC}}
+\index{MAVLINK\_MSG\_ID\_234\_CRC@{MAVLINK\_MSG\_ID\_234\_CRC}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_234\_CRC}{MAVLINK\_MSG\_ID\_234\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+234\+\_\+\+CRC~150}
+
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a3e3a6ff0334d81ef8b6198f14c47ce29}\label{mavlink__msg__high__latency_8h_a3e3a6ff0334d81ef8b6198f14c47ce29}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_234\_LEN@{MAVLINK\_MSG\_ID\_234\_LEN}}
+\index{MAVLINK\_MSG\_ID\_234\_LEN@{MAVLINK\_MSG\_ID\_234\_LEN}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_234\_LEN}{MAVLINK\_MSG\_ID\_234\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+234\+\_\+\+LEN~40}
+
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a3ce64e943556541848326a4ca3932a3f}\label{mavlink__msg__high__latency_8h_a3ce64e943556541848326a4ca3932a3f}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_234\_MIN\_LEN@{MAVLINK\_MSG\_ID\_234\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_234\_MIN\_LEN@{MAVLINK\_MSG\_ID\_234\_MIN\_LEN}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_234\_MIN\_LEN}{MAVLINK\_MSG\_ID\_234\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+234\+\_\+\+MIN\+\_\+\+LEN~40}
+
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a1eabbb829254e91793b2961b7ccf13f6}\label{mavlink__msg__high__latency_8h_a1eabbb829254e91793b2961b7ccf13f6}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_HIGH\_LATENCY@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY}}
+\index{MAVLINK\_MSG\_ID\_HIGH\_LATENCY@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIGH\_LATENCY}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY~234}
+
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a514fc1a73b4c281836da669f734e12d9}\label{mavlink__msg__high__latency_8h_a514fc1a73b4c281836da669f734e12d9}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_CRC@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_CRC}}
+\index{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_CRC@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_CRC}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_CRC}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY\+\_\+\+CRC~150}
+
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_af50532155429c24df311b957d6457c96}\label{mavlink__msg__high__latency_8h_af50532155429c24df311b957d6457c96}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_LEN@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_LEN@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_LEN}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_LEN}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY\+\_\+\+LEN~40}
+
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_aee1e9652942e8094ee109be162c36a0a}\label{mavlink__msg__high__latency_8h_aee1e9652942e8094ee109be162c36a0a}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_MIN\_LEN@{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_MIN\_LEN}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_MIN\_LEN}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+HIGH\+\_\+\+LATENCY\+\_\+\+MIN\+\_\+\+LEN~40}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__high__latency_8h_a3b8c389133f3a24413151be5f04227cd}\label{mavlink__msg__high__latency_8h_a3b8c389133f3a24413151be5f04227cd}} 
+\index{mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_high\_latency.h@{mavlink\_msg\_high\_latency.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+high\+\_\+latency\+\_\+t \{ uint32\+\_\+t custom\+\_\+mode;int32\+\_\+t latitude;int32\+\_\+t longitude;int16\+\_\+t roll;int16\+\_\+t pitch;uint16\+\_\+t heading;int16\+\_\+t heading\+\_\+sp;int16\+\_\+t altitude\+\_\+amsl;int16\+\_\+t altitude\+\_\+sp;uint16\+\_\+t wp\+\_\+distance;uint8\+\_\+t base\+\_\+mode;uint8\+\_\+t landed\+\_\+state;int8\+\_\+t throttle;uint8\+\_\+t airspeed;uint8\+\_\+t airspeed\+\_\+sp;uint8\+\_\+t groundspeed;int8\+\_\+t climb\+\_\+rate;uint8\+\_\+t gps\+\_\+nsat;uint8\+\_\+t gps\+\_\+fix\+\_\+type;uint8\+\_\+t battery\+\_\+remaining;int8\+\_\+t temperature;int8\+\_\+t temperature\+\_\+air;uint8\+\_\+t failsafe;uint8\+\_\+t wp\+\_\+num;\}}]{ }\end{DoxyParamCaption})}
+

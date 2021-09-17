@@ -1,0 +1,258 @@
+\hypertarget{mavlink__sha256_8h_source}{}\doxysection{mavlink\+\_\+sha256.\+h}
+\label{mavlink__sha256_8h_source}\index{lib/mavlink\_sha256.h@{lib/mavlink\_sha256.h}}
+\mbox{\hyperlink{mavlink__sha256_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{/*}}
+\DoxyCodeLine{4 \textcolor{comment}{  sha-\/256 implementation for MAVLink based on Heimdal sources, with}}
+\DoxyCodeLine{5 \textcolor{comment}{  modifications to suit mavlink headers}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 \textcolor{comment}{/*}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Copyright (c) 1995 -\/ 2001 Kungliga Tekniska Högskolan}}
+\DoxyCodeLine{9 \textcolor{comment}{ * (Royal Institute of Technology, Stockholm, Sweden).}}
+\DoxyCodeLine{10 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{11 \textcolor{comment}{ * }}
+\DoxyCodeLine{12 \textcolor{comment}{ * Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{13 \textcolor{comment}{ * modification, are permitted provided that the following conditions}}
+\DoxyCodeLine{14 \textcolor{comment}{ * are met:}}
+\DoxyCodeLine{15 \textcolor{comment}{ * }}
+\DoxyCodeLine{16 \textcolor{comment}{ * 1. Redistributions of source code must retain the above copyright}}
+\DoxyCodeLine{17 \textcolor{comment}{ *    notice, this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{18 \textcolor{comment}{ * }}
+\DoxyCodeLine{19 \textcolor{comment}{ * 2. Redistributions in binary form must reproduce the above copyright}}
+\DoxyCodeLine{20 \textcolor{comment}{ *    notice, this list of conditions and the following disclaimer in the}}
+\DoxyCodeLine{21 \textcolor{comment}{ *    documentation and/or other materials provided with the distribution.}}
+\DoxyCodeLine{22 \textcolor{comment}{ * }}
+\DoxyCodeLine{23 \textcolor{comment}{ * 3. Neither the name of the Institute nor the names of its contributors}}
+\DoxyCodeLine{24 \textcolor{comment}{ *    may be used to endorse or promote products derived from this software}}
+\DoxyCodeLine{25 \textcolor{comment}{ *    without specific prior written permission.}}
+\DoxyCodeLine{26 \textcolor{comment}{ * }}
+\DoxyCodeLine{27 \textcolor{comment}{ * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND}}
+\DoxyCodeLine{28 \textcolor{comment}{ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE}}
+\DoxyCodeLine{29 \textcolor{comment}{ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE}}
+\DoxyCodeLine{30 \textcolor{comment}{ * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE}}
+\DoxyCodeLine{31 \textcolor{comment}{ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL}}
+\DoxyCodeLine{32 \textcolor{comment}{ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS}}
+\DoxyCodeLine{33 \textcolor{comment}{ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)}}
+\DoxyCodeLine{34 \textcolor{comment}{ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT}}
+\DoxyCodeLine{35 \textcolor{comment}{ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY}}
+\DoxyCodeLine{36 \textcolor{comment}{ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF}}
+\DoxyCodeLine{37 \textcolor{comment}{ * SUCH DAMAGE.}}
+\DoxyCodeLine{38 \textcolor{comment}{ */}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{/*}}
+\DoxyCodeLine{41 \textcolor{comment}{  allow implementation to provide their own sha256 with the same API}}
+\DoxyCodeLine{42 \textcolor{comment}{*/}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#ifndef HAVE\_MAVLINK\_SHA256}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CXX\_NAMESPACE}}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }mavlink \{}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#ifndef MAVLINK\_HELPER}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define MAVLINK\_HELPER}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{54   uint32\_t sz[2];}
+\DoxyCodeLine{55   uint32\_t counter[8];}
+\DoxyCodeLine{56   \textcolor{keyword}{union }\{}
+\DoxyCodeLine{57       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} save\_bytes[64];}
+\DoxyCodeLine{58       uint32\_t save\_u32[16];}
+\DoxyCodeLine{59   \} u;}
+\DoxyCodeLine{60 \} \mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define Ch(x,y,z) (((x) \& (y)) \string^ ((\string~(x)) \& (z)))}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define Maj(x,y,z) (((x) \& (y)) \string^ ((x) \& (z)) \string^ ((y) \& (z)))}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define ROTR(x,n)   (((x)>>(n)) | ((x) << (32 -\/ (n))))}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define Sigma0(x)   (ROTR(x,2)  \string^ ROTR(x,13) \string^ ROTR(x,22))}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define Sigma1(x)   (ROTR(x,6)  \string^ ROTR(x,11) \string^ ROTR(x,25))}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define sigma0(x)   (ROTR(x,7)  \string^ ROTR(x,18) \string^ ((x)>>3))}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define sigma1(x)   (ROTR(x,17) \string^ ROTR(x,19) \string^ ((x)>>10))}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define A m-\/>counter[0]}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define B m-\/>counter[1]}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define C m-\/>counter[2]}}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define D m-\/>counter[3]}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define E m-\/>counter[4]}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define F m-\/>counter[5]}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define G m-\/>counter[6]}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define H m-\/>counter[7]}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{static} \textcolor{keyword}{const} uint32\_t mavlink\_sha256\_constant\_256[64] = \{}
+\DoxyCodeLine{82     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,}
+\DoxyCodeLine{83     0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,}
+\DoxyCodeLine{84     0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,}
+\DoxyCodeLine{85     0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,}
+\DoxyCodeLine{86     0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,}
+\DoxyCodeLine{87     0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,}
+\DoxyCodeLine{88     0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,}
+\DoxyCodeLine{89     0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,}
+\DoxyCodeLine{90     0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,}
+\DoxyCodeLine{91     0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,}
+\DoxyCodeLine{92     0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,}
+\DoxyCodeLine{93     0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,}
+\DoxyCodeLine{94     0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,}
+\DoxyCodeLine{95     0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,}
+\DoxyCodeLine{96     0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,}
+\DoxyCodeLine{97     0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2}
+\DoxyCodeLine{98 \};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__sha256_8h_a90934c0020a1cfa42a64223510770aa7}{mavlink\_sha256\_init}}(\mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}} *m)}
+\DoxyCodeLine{101 \{}
+\DoxyCodeLine{102     m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] = 0;}
+\DoxyCodeLine{103     m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[1] = 0;}
+\DoxyCodeLine{104     \mbox{\hyperlink{mavlink__sha256_8h_a955f504eccf76b4eb2489c0adab03121}{A}} = 0x6a09e667;}
+\DoxyCodeLine{105     \mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}} = 0xbb67ae85;}
+\DoxyCodeLine{106     \mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}} = 0x3c6ef372;}
+\DoxyCodeLine{107     \mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}} = 0xa54ff53a;}
+\DoxyCodeLine{108     \mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}} = 0x510e527f;}
+\DoxyCodeLine{109     \mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}} = 0x9b05688c;}
+\DoxyCodeLine{110     \mbox{\hyperlink{mavlink__sha256_8h_aed9ea78689ecce0b7264c02c7f8a9a54}{G}} = 0x1f83d9ab;}
+\DoxyCodeLine{111     \mbox{\hyperlink{mavlink__sha256_8h_abec92cc72a096640b821b8cd56a02495}{H}} = 0x5be0cd19;}
+\DoxyCodeLine{112 \}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_sha256\_calc(\mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}} *m, uint32\_t *in)}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116     uint32\_t AA, BB, CC, DD, EE, FF, GG, HH;}
+\DoxyCodeLine{117     uint32\_t data[64];}
+\DoxyCodeLine{118     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     AA = \mbox{\hyperlink{mavlink__sha256_8h_a955f504eccf76b4eb2489c0adab03121}{A}};}
+\DoxyCodeLine{121     BB = \mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}};}
+\DoxyCodeLine{122     CC = \mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}};}
+\DoxyCodeLine{123     DD = \mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}};}
+\DoxyCodeLine{124     EE = \mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}};}
+\DoxyCodeLine{125     FF = \mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}};}
+\DoxyCodeLine{126     GG = \mbox{\hyperlink{mavlink__sha256_8h_aed9ea78689ecce0b7264c02c7f8a9a54}{G}};}
+\DoxyCodeLine{127     HH = \mbox{\hyperlink{mavlink__sha256_8h_abec92cc72a096640b821b8cd56a02495}{H}};}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     \textcolor{keywordflow}{for} (i = 0; i < 16; ++i)}
+\DoxyCodeLine{130     data[i] = in[i];}
+\DoxyCodeLine{131     \textcolor{keywordflow}{for} (i = 16; i < 64; ++i)}
+\DoxyCodeLine{132     data[i] = \mbox{\hyperlink{mavlink__sha256_8h_a0347251dc63b7abe5d4c500544c24a97}{sigma1}}(data[i-\/2]) + data[i-\/7] + }
+\DoxyCodeLine{133         \mbox{\hyperlink{mavlink__sha256_8h_a672bd39bdf2f6dc295a23ddd109175ff}{sigma0}}(data[i-\/15]) + data[i -\/ 16];}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135     \textcolor{keywordflow}{for} (i = 0; i < 64; i++) \{}
+\DoxyCodeLine{136     uint32\_t T1, T2;}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     T1 = HH + \mbox{\hyperlink{mavlink__sha256_8h_a6d34508d6d962274083fcd992fb4e340}{Sigma1}}(EE) + \mbox{\hyperlink{mavlink__sha256_8h_ab0a0d1ad13c7e4d3cb38c89f7127c85a}{Ch}}(EE, FF, GG) + mavlink\_sha256\_constant\_256[i] + data[i];}
+\DoxyCodeLine{139     T2 = \mbox{\hyperlink{mavlink__sha256_8h_a613f88ad88919b6ed21ff223070f9a21}{Sigma0}}(AA) + \mbox{\hyperlink{mavlink__sha256_8h_a447cd1d7fb703b62666400976be24bf3}{Maj}}(AA,BB,CC);}
+\DoxyCodeLine{140                  }
+\DoxyCodeLine{141     HH = GG;}
+\DoxyCodeLine{142     GG = FF;}
+\DoxyCodeLine{143     FF = EE;}
+\DoxyCodeLine{144     EE = DD + T1;}
+\DoxyCodeLine{145     DD = CC;}
+\DoxyCodeLine{146     CC = BB;}
+\DoxyCodeLine{147     BB = AA;}
+\DoxyCodeLine{148     AA = T1 + T2;}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     \mbox{\hyperlink{mavlink__sha256_8h_a955f504eccf76b4eb2489c0adab03121}{A}} += AA;}
+\DoxyCodeLine{152     \mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}} += BB;}
+\DoxyCodeLine{153     \mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}} += CC;}
+\DoxyCodeLine{154     \mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}} += DD;}
+\DoxyCodeLine{155     \mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}} += EE;}
+\DoxyCodeLine{156     \mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}} += FF;}
+\DoxyCodeLine{157     \mbox{\hyperlink{mavlink__sha256_8h_aed9ea78689ecce0b7264c02c7f8a9a54}{G}} += GG;}
+\DoxyCodeLine{158     \mbox{\hyperlink{mavlink__sha256_8h_abec92cc72a096640b821b8cd56a02495}{H}} += HH;}
+\DoxyCodeLine{159 \}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(\mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}} *m, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *v, uint32\_t len)}
+\DoxyCodeLine{162 \{}
+\DoxyCodeLine{163     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *p = (\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *)v;}
+\DoxyCodeLine{164     uint32\_t old\_sz = m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0];}
+\DoxyCodeLine{165     uint32\_t offset;}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167     m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] += len * 8;}
+\DoxyCodeLine{168     \textcolor{keywordflow}{if} (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] < old\_sz)}
+\DoxyCodeLine{169     ++m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[1];}
+\DoxyCodeLine{170     offset = (old\_sz / 8) \% 64;}
+\DoxyCodeLine{171     \textcolor{keywordflow}{while}(len > 0)\{}
+\DoxyCodeLine{172     uint32\_t l = 64 -\/ offset;}
+\DoxyCodeLine{173         \textcolor{keywordflow}{if} (len < l) \{}
+\DoxyCodeLine{174             l = len;}
+\DoxyCodeLine{175         \}}
+\DoxyCodeLine{176     memcpy(m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a52ce6955f2751414e12425f9ee12ea73}{u}}.\mbox{\hyperlink{structmavlink__sha256__ctx_a27810458c04071b0bda70321220f98fa}{save\_bytes}} + offset, p, l);}
+\DoxyCodeLine{177     offset += l;}
+\DoxyCodeLine{178     p += l;}
+\DoxyCodeLine{179     len -\/= l;}
+\DoxyCodeLine{180     \textcolor{keywordflow}{if}(offset == 64)\{}
+\DoxyCodeLine{181         \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{182         uint32\_t current[16];}
+\DoxyCodeLine{183         \textcolor{keyword}{const} uint32\_t *u = m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a52ce6955f2751414e12425f9ee12ea73}{u}}.\mbox{\hyperlink{structmavlink__sha256__ctx_a60e965634bd711dde27d9803a71ba1b7}{save\_u32}};}
+\DoxyCodeLine{184         \textcolor{keywordflow}{for} (i = 0; i < 16; i++)\{}
+\DoxyCodeLine{185                 \textcolor{keyword}{const} uint8\_t *p1 = (\textcolor{keyword}{const} uint8\_t *)\&u[i];}
+\DoxyCodeLine{186                 uint8\_t *p2 = (uint8\_t *)\&current[i];}
+\DoxyCodeLine{187                 p2[0] = p1[3];}
+\DoxyCodeLine{188                 p2[1] = p1[2];}
+\DoxyCodeLine{189                 p2[2] = p1[1];}
+\DoxyCodeLine{190                 p2[3] = p1[0];}
+\DoxyCodeLine{191         \}}
+\DoxyCodeLine{192         mavlink\_sha256\_calc(m, current);}
+\DoxyCodeLine{193         offset = 0;}
+\DoxyCodeLine{194     \}}
+\DoxyCodeLine{195     \}}
+\DoxyCodeLine{196 \}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198 \textcolor{comment}{/*}}
+\DoxyCodeLine{199 \textcolor{comment}{  get first 48 bits of final sha256 hash}}
+\DoxyCodeLine{200 \textcolor{comment}{ */}}
+\DoxyCodeLine{201 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keywordtype}{void} \mbox{\hyperlink{mavlink__sha256_8h_ad78a650bcfef77e0a4c4133c09f428d8}{mavlink\_sha256\_final\_48}}(\mbox{\hyperlink{structmavlink__sha256__ctx}{mavlink\_sha256\_ctx}} *m, uint8\_t result[6])}
+\DoxyCodeLine{202 \{}
+\DoxyCodeLine{203     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} zeros[72];}
+\DoxyCodeLine{204     \textcolor{keywordtype}{unsigned} offset = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] / 8) \% 64;}
+\DoxyCodeLine{205     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} dstart = (120 -\/ offset -\/ 1) \% 64 + 1;}
+\DoxyCodeLine{206     uint8\_t *p = (uint8\_t *)\&m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_ac11ac388c0a250e0d72ff7613cb5c6d3}{counter}}[0];}
+\DoxyCodeLine{207     }
+\DoxyCodeLine{208     *zeros = 0x80;}
+\DoxyCodeLine{209     memset (zeros + 1, 0, \textcolor{keyword}{sizeof}(zeros) -\/ 1);}
+\DoxyCodeLine{210     zeros[dstart+7] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] >> 0) \& 0xff;}
+\DoxyCodeLine{211     zeros[dstart+6] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] >> 8) \& 0xff;}
+\DoxyCodeLine{212     zeros[dstart+5] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] >> 16) \& 0xff;}
+\DoxyCodeLine{213     zeros[dstart+4] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[0] >> 24) \& 0xff;}
+\DoxyCodeLine{214     zeros[dstart+3] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[1] >> 0) \& 0xff;}
+\DoxyCodeLine{215     zeros[dstart+2] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[1] >> 8) \& 0xff;}
+\DoxyCodeLine{216     zeros[dstart+1] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[1] >> 16) \& 0xff;}
+\DoxyCodeLine{217     zeros[dstart+0] = (m-\/>\mbox{\hyperlink{structmavlink__sha256__ctx_a03ee3df8ed24380ea86030ffbe9a489b}{sz}}[1] >> 24) \& 0xff;}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219     \mbox{\hyperlink{mavlink__sha256_8h_a35f7fe5c2f55141716914e9ff8f59b69}{mavlink\_sha256\_update}}(m, zeros, dstart + 8);}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221     \textcolor{comment}{// this ordering makes the result consistent with taking the first}}
+\DoxyCodeLine{222     \textcolor{comment}{// 6 bytes of more conventional sha256 functions. It assumes}}
+\DoxyCodeLine{223     \textcolor{comment}{// little-\/endian ordering of m-\/>counter}}
+\DoxyCodeLine{224     result[0] = p[3];}
+\DoxyCodeLine{225     result[1] = p[2];}
+\DoxyCodeLine{226     result[2] = p[1];}
+\DoxyCodeLine{227     result[3] = p[0];}
+\DoxyCodeLine{228     result[4] = p[7];}
+\DoxyCodeLine{229     result[5] = p[6];}
+\DoxyCodeLine{230 \}}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232 \textcolor{comment}{// prevent conflicts with users of the header}}
+\DoxyCodeLine{233 \textcolor{preprocessor}{\#undef A}}
+\DoxyCodeLine{234 \textcolor{preprocessor}{\#undef B}}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#undef C}}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#undef D}}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#undef E}}
+\DoxyCodeLine{238 \textcolor{preprocessor}{\#undef F}}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#undef G}}
+\DoxyCodeLine{240 \textcolor{preprocessor}{\#undef H}}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#undef Ch}}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#undef ROTR}}
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#undef Sigma0}}
+\DoxyCodeLine{244 \textcolor{preprocessor}{\#undef Sigma1}}
+\DoxyCodeLine{245 \textcolor{preprocessor}{\#undef sigma0}}
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#undef sigma1}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CXX\_NAMESPACE}}
+\DoxyCodeLine{249 \} \textcolor{comment}{// namespace mavlink}}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// HAVE\_MAVLINK\_SHA256}}
+
+\end{DoxyCode}

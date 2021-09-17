@@ -1,0 +1,357 @@
+\hypertarget{class_n_a_v_i_g_a_t_i_o_n}{}\doxysection{NAVIGATION Class Reference}
+\label{class_n_a_v_i_g_a_t_i_o_n}\index{NAVIGATION@{NAVIGATION}}
+
+
+{\ttfamily \#include $<$navigation.\+h$>$}
+
+Inheritance diagram for NAVIGATION\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_n_a_v_i_g_a_t_i_o_n}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a48555355a38b059ddd0c108ecd9017a1}{NAVIGATION}} ()
+\item 
+\mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ad0810a0fd35f81bb29f24fbf8bbb098a}{$\sim$\+NAVIGATION}} ()
+\item 
+int \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a711336d565a5e4002ee15f1079b4d092}{start}} ()
+\item 
+int \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2ab6f0f056a33af30c82c52ab7eb6a45}{setup}} ()
+\item 
+void \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a30058cca18999f55774e367eab3f0a2f}{heading\+From\+GPS}} ()
+\item 
+void \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adca619030a46aa1f8ed529817b41f6d4}{NEDposition\+Control}} ()
+\item 
+void \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a0515f419a0ca0932285137cd51a0bf25}{quickdebug}} ()
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a6b5a0c4089acd1e691416c0540ca6085}{cross\+Track\+Correction}} (float distance\+XT, float target\+Head, float distance2\+WP)
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_adc92d3881934dc7b97549468b5aa688d}{cross\+Track\+Error}} (float distance2\+WP, float trackleg\+Head, float target\+Head)
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}{distance\+To\+Waypoint}} (float Lat1, float Long1, float Lat2, float Long2)
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}{course\+To\+Waypoint}} (float lat1, float long1, float lat2, float long2)
+\item 
+void \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ace932d9e8527bd6654d55c3df83bf154}{convert\+To\+NED}} (float start\+Lat, float start\+Long, float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4a94205003e3379d200372cf99802397}{current\+Lat}}, float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae7c5f87923f4a0ba2f7bf62cd3a51d90}{current\+Long}}, float \&North, float \&East, float \&Down)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a0d35b0ca4be8783734bd66135193a0e7}{flag\+\_\+are\+\_\+waypointing}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ac7a5683a4b4c2ca3b01887ec5996fa9e}{current\+North}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a77ac6adfd10c8299e411031279e3cb2c}{current\+East}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a88baa8bf2fc9d5f552357b43fcd8a9f5}{current\+Down}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a71185b4747cce98956f47013f9d9908a}{desired\+North}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a26e02d6926c0ed733354025feaf29460}{desired\+East}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a183896811f4123cb466ee0338f4feef8}{desired\+Down}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a4a94205003e3379d200372cf99802397}{current\+Lat}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae7c5f87923f4a0ba2f7bf62cd3a51d90}{current\+Long}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}{desired\+Yaw}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}{desired\+Roll}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a2d3c7982e23531114b4595c55bc7ba0b}{desired\+Pitch}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}{desired\+Throttle}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_acc49dc62fa6e56fa5e88ab83cc981c37}{north\+Kp}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a78b6ca4c120f48033c972a47af80d601}{north\+Ki}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ac527d793faa1d09c340cececd60b1f82}{north\+Kd}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aac6c24d75db547d3810b1eff3aae0735}{east\+Kp}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a394cfe845a5127ebc3d58f0b5e2c25d1}{east\+Ki}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ae3fd1e729e9cce6f7be9407935ae4187}{east\+Kd}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_ace334efa608e37d7fa3c85aaa805c1e5}{down\+Kp}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a6c9eca3203970f254cf14e4f658ed08c}{down\+Ki}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_aec84dc30b1950208a5b5dee5bc102e24}{down\+Kd}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}{wplat}} \mbox{[}$\,$\mbox{]}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}{wplong}} \mbox{[}$\,$\mbox{]}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}{desired\+Lat}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}{desired\+Long}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_a52f165f8d2b35b5f9482ac6cf6201a71}{home\+Lat}}
+\item 
+float \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n_acf2b2933f6a981c635a11115a096bbad}{home\+Long}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a48555355a38b059ddd0c108ecd9017a1}\label{class_n_a_v_i_g_a_t_i_o_n_a48555355a38b059ddd0c108ecd9017a1}} 
+\index{NAVIGATION@{NAVIGATION}!NAVIGATION@{NAVIGATION}}
+\index{NAVIGATION@{NAVIGATION}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{NAVIGATION()}{NAVIGATION()}}
+{\footnotesize\ttfamily NAVIGATION\+::\+NAVIGATION (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ad0810a0fd35f81bb29f24fbf8bbb098a}\label{class_n_a_v_i_g_a_t_i_o_n_ad0810a0fd35f81bb29f24fbf8bbb098a}} 
+\index{NAVIGATION@{NAVIGATION}!````~NAVIGATION@{$\sim$NAVIGATION}}
+\index{````~NAVIGATION@{$\sim$NAVIGATION}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{$\sim$NAVIGATION()}{~NAVIGATION()}}
+{\footnotesize\ttfamily NAVIGATION\+::$\sim$\+NAVIGATION (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ace932d9e8527bd6654d55c3df83bf154}\label{class_n_a_v_i_g_a_t_i_o_n_ace932d9e8527bd6654d55c3df83bf154}} 
+\index{NAVIGATION@{NAVIGATION}!convertToNED@{convertToNED}}
+\index{convertToNED@{convertToNED}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{convertToNED()}{convertToNED()}}
+{\footnotesize\ttfamily void NAVIGATION\+::convert\+To\+NED (\begin{DoxyParamCaption}\item[{float}]{start\+Lat,  }\item[{float}]{start\+Long,  }\item[{float}]{current\+Lat,  }\item[{float}]{current\+Long,  }\item[{float \&}]{North,  }\item[{float \&}]{East,  }\item[{float \&}]{Down }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}\label{class_n_a_v_i_g_a_t_i_o_n_ae6c88ce01fa7a36d60fd4e525e4d1f34}} 
+\index{NAVIGATION@{NAVIGATION}!courseToWaypoint@{courseToWaypoint}}
+\index{courseToWaypoint@{courseToWaypoint}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{courseToWaypoint()}{courseToWaypoint()}}
+{\footnotesize\ttfamily float NAVIGATION\+::course\+To\+Waypoint (\begin{DoxyParamCaption}\item[{float}]{lat1,  }\item[{float}]{long1,  }\item[{float}]{lat2,  }\item[{float}]{long2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a6b5a0c4089acd1e691416c0540ca6085}\label{class_n_a_v_i_g_a_t_i_o_n_a6b5a0c4089acd1e691416c0540ca6085}} 
+\index{NAVIGATION@{NAVIGATION}!crossTrackCorrection@{crossTrackCorrection}}
+\index{crossTrackCorrection@{crossTrackCorrection}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{crossTrackCorrection()}{crossTrackCorrection()}}
+{\footnotesize\ttfamily float NAVIGATION\+::cross\+Track\+Correction (\begin{DoxyParamCaption}\item[{float}]{distance\+XT,  }\item[{float}]{target\+Head,  }\item[{float}]{distance2\+WP }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_adc92d3881934dc7b97549468b5aa688d}\label{class_n_a_v_i_g_a_t_i_o_n_adc92d3881934dc7b97549468b5aa688d}} 
+\index{NAVIGATION@{NAVIGATION}!crossTrackError@{crossTrackError}}
+\index{crossTrackError@{crossTrackError}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{crossTrackError()}{crossTrackError()}}
+{\footnotesize\ttfamily float NAVIGATION\+::cross\+Track\+Error (\begin{DoxyParamCaption}\item[{float}]{distance2\+WP,  }\item[{float}]{trackleg\+Head,  }\item[{float}]{target\+Head }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}\label{class_n_a_v_i_g_a_t_i_o_n_a4f8490d484cf8c069bc2ef598193f147}} 
+\index{NAVIGATION@{NAVIGATION}!distanceToWaypoint@{distanceToWaypoint}}
+\index{distanceToWaypoint@{distanceToWaypoint}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{distanceToWaypoint()}{distanceToWaypoint()}}
+{\footnotesize\ttfamily float NAVIGATION\+::distance\+To\+Waypoint (\begin{DoxyParamCaption}\item[{float}]{Lat1,  }\item[{float}]{Long1,  }\item[{float}]{Lat2,  }\item[{float}]{Long2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a30058cca18999f55774e367eab3f0a2f}\label{class_n_a_v_i_g_a_t_i_o_n_a30058cca18999f55774e367eab3f0a2f}} 
+\index{NAVIGATION@{NAVIGATION}!headingFromGPS@{headingFromGPS}}
+\index{headingFromGPS@{headingFromGPS}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{headingFromGPS()}{headingFromGPS()}}
+{\footnotesize\ttfamily void NAVIGATION\+::heading\+From\+GPS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_adca619030a46aa1f8ed529817b41f6d4}\label{class_n_a_v_i_g_a_t_i_o_n_adca619030a46aa1f8ed529817b41f6d4}} 
+\index{NAVIGATION@{NAVIGATION}!NEDpositionControl@{NEDpositionControl}}
+\index{NEDpositionControl@{NEDpositionControl}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{NEDpositionControl()}{NEDpositionControl()}}
+{\footnotesize\ttfamily void NAVIGATION\+::\+NEDposition\+Control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a0515f419a0ca0932285137cd51a0bf25}\label{class_n_a_v_i_g_a_t_i_o_n_a0515f419a0ca0932285137cd51a0bf25}} 
+\index{NAVIGATION@{NAVIGATION}!quickdebug@{quickdebug}}
+\index{quickdebug@{quickdebug}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{quickdebug()}{quickdebug()}}
+{\footnotesize\ttfamily void NAVIGATION\+::quickdebug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a2ab6f0f056a33af30c82c52ab7eb6a45}\label{class_n_a_v_i_g_a_t_i_o_n_a2ab6f0f056a33af30c82c52ab7eb6a45}} 
+\index{NAVIGATION@{NAVIGATION}!setup@{setup}}
+\index{setup@{setup}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int NAVIGATION\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a711336d565a5e4002ee15f1079b4d092}\label{class_n_a_v_i_g_a_t_i_o_n_a711336d565a5e4002ee15f1079b4d092}} 
+\index{NAVIGATION@{NAVIGATION}!start@{start}}
+\index{start@{start}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int NAVIGATION\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{Task}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a88baa8bf2fc9d5f552357b43fcd8a9f5}\label{class_n_a_v_i_g_a_t_i_o_n_a88baa8bf2fc9d5f552357b43fcd8a9f5}} 
+\index{NAVIGATION@{NAVIGATION}!currentDown@{currentDown}}
+\index{currentDown@{currentDown}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{currentDown}{currentDown}}
+{\footnotesize\ttfamily float NAVIGATION\+::current\+Down}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a77ac6adfd10c8299e411031279e3cb2c}\label{class_n_a_v_i_g_a_t_i_o_n_a77ac6adfd10c8299e411031279e3cb2c}} 
+\index{NAVIGATION@{NAVIGATION}!currentEast@{currentEast}}
+\index{currentEast@{currentEast}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{currentEast}{currentEast}}
+{\footnotesize\ttfamily float NAVIGATION\+::current\+East}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a4a94205003e3379d200372cf99802397}\label{class_n_a_v_i_g_a_t_i_o_n_a4a94205003e3379d200372cf99802397}} 
+\index{NAVIGATION@{NAVIGATION}!currentLat@{currentLat}}
+\index{currentLat@{currentLat}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{currentLat}{currentLat}}
+{\footnotesize\ttfamily float NAVIGATION\+::current\+Lat}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ae7c5f87923f4a0ba2f7bf62cd3a51d90}\label{class_n_a_v_i_g_a_t_i_o_n_ae7c5f87923f4a0ba2f7bf62cd3a51d90}} 
+\index{NAVIGATION@{NAVIGATION}!currentLong@{currentLong}}
+\index{currentLong@{currentLong}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{currentLong}{currentLong}}
+{\footnotesize\ttfamily float NAVIGATION\+::current\+Long}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ac7a5683a4b4c2ca3b01887ec5996fa9e}\label{class_n_a_v_i_g_a_t_i_o_n_ac7a5683a4b4c2ca3b01887ec5996fa9e}} 
+\index{NAVIGATION@{NAVIGATION}!currentNorth@{currentNorth}}
+\index{currentNorth@{currentNorth}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{currentNorth}{currentNorth}}
+{\footnotesize\ttfamily float NAVIGATION\+::current\+North}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a183896811f4123cb466ee0338f4feef8}\label{class_n_a_v_i_g_a_t_i_o_n_a183896811f4123cb466ee0338f4feef8}} 
+\index{NAVIGATION@{NAVIGATION}!desiredDown@{desiredDown}}
+\index{desiredDown@{desiredDown}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredDown}{desiredDown}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Down}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a26e02d6926c0ed733354025feaf29460}\label{class_n_a_v_i_g_a_t_i_o_n_a26e02d6926c0ed733354025feaf29460}} 
+\index{NAVIGATION@{NAVIGATION}!desiredEast@{desiredEast}}
+\index{desiredEast@{desiredEast}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredEast}{desiredEast}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+East}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}\label{class_n_a_v_i_g_a_t_i_o_n_a38ffe5809947d58f26cc956c6a7c8b78}} 
+\index{NAVIGATION@{NAVIGATION}!desiredLat@{desiredLat}}
+\index{desiredLat@{desiredLat}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredLat}{desiredLat}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Lat}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}\label{class_n_a_v_i_g_a_t_i_o_n_a54297f6ccad7e7f35d2efc8e60e38b26}} 
+\index{NAVIGATION@{NAVIGATION}!desiredLong@{desiredLong}}
+\index{desiredLong@{desiredLong}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredLong}{desiredLong}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Long}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a71185b4747cce98956f47013f9d9908a}\label{class_n_a_v_i_g_a_t_i_o_n_a71185b4747cce98956f47013f9d9908a}} 
+\index{NAVIGATION@{NAVIGATION}!desiredNorth@{desiredNorth}}
+\index{desiredNorth@{desiredNorth}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredNorth}{desiredNorth}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+North}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a2d3c7982e23531114b4595c55bc7ba0b}\label{class_n_a_v_i_g_a_t_i_o_n_a2d3c7982e23531114b4595c55bc7ba0b}} 
+\index{NAVIGATION@{NAVIGATION}!desiredPitch@{desiredPitch}}
+\index{desiredPitch@{desiredPitch}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredPitch}{desiredPitch}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Pitch}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}\label{class_n_a_v_i_g_a_t_i_o_n_af6e03f0a7be5df85d3fdc38647804676}} 
+\index{NAVIGATION@{NAVIGATION}!desiredRoll@{desiredRoll}}
+\index{desiredRoll@{desiredRoll}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredRoll}{desiredRoll}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Roll}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}\label{class_n_a_v_i_g_a_t_i_o_n_a673d96707fa5b287ec59f6b8ad54fe6c}} 
+\index{NAVIGATION@{NAVIGATION}!desiredThrottle@{desiredThrottle}}
+\index{desiredThrottle@{desiredThrottle}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredThrottle}{desiredThrottle}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Throttle}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}\label{class_n_a_v_i_g_a_t_i_o_n_aa5d02349f320b41d8b9e721c3dfc978a}} 
+\index{NAVIGATION@{NAVIGATION}!desiredYaw@{desiredYaw}}
+\index{desiredYaw@{desiredYaw}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{desiredYaw}{desiredYaw}}
+{\footnotesize\ttfamily float NAVIGATION\+::desired\+Yaw}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_aec84dc30b1950208a5b5dee5bc102e24}\label{class_n_a_v_i_g_a_t_i_o_n_aec84dc30b1950208a5b5dee5bc102e24}} 
+\index{NAVIGATION@{NAVIGATION}!downKd@{downKd}}
+\index{downKd@{downKd}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{downKd}{downKd}}
+{\footnotesize\ttfamily float NAVIGATION\+::down\+Kd}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a6c9eca3203970f254cf14e4f658ed08c}\label{class_n_a_v_i_g_a_t_i_o_n_a6c9eca3203970f254cf14e4f658ed08c}} 
+\index{NAVIGATION@{NAVIGATION}!downKi@{downKi}}
+\index{downKi@{downKi}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{downKi}{downKi}}
+{\footnotesize\ttfamily float NAVIGATION\+::down\+Ki}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ace334efa608e37d7fa3c85aaa805c1e5}\label{class_n_a_v_i_g_a_t_i_o_n_ace334efa608e37d7fa3c85aaa805c1e5}} 
+\index{NAVIGATION@{NAVIGATION}!downKp@{downKp}}
+\index{downKp@{downKp}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{downKp}{downKp}}
+{\footnotesize\ttfamily float NAVIGATION\+::down\+Kp}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ae3fd1e729e9cce6f7be9407935ae4187}\label{class_n_a_v_i_g_a_t_i_o_n_ae3fd1e729e9cce6f7be9407935ae4187}} 
+\index{NAVIGATION@{NAVIGATION}!eastKd@{eastKd}}
+\index{eastKd@{eastKd}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{eastKd}{eastKd}}
+{\footnotesize\ttfamily float NAVIGATION\+::east\+Kd}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a394cfe845a5127ebc3d58f0b5e2c25d1}\label{class_n_a_v_i_g_a_t_i_o_n_a394cfe845a5127ebc3d58f0b5e2c25d1}} 
+\index{NAVIGATION@{NAVIGATION}!eastKi@{eastKi}}
+\index{eastKi@{eastKi}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{eastKi}{eastKi}}
+{\footnotesize\ttfamily float NAVIGATION\+::east\+Ki}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_aac6c24d75db547d3810b1eff3aae0735}\label{class_n_a_v_i_g_a_t_i_o_n_aac6c24d75db547d3810b1eff3aae0735}} 
+\index{NAVIGATION@{NAVIGATION}!eastKp@{eastKp}}
+\index{eastKp@{eastKp}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{eastKp}{eastKp}}
+{\footnotesize\ttfamily float NAVIGATION\+::east\+Kp}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a0d35b0ca4be8783734bd66135193a0e7}\label{class_n_a_v_i_g_a_t_i_o_n_a0d35b0ca4be8783734bd66135193a0e7}} 
+\index{NAVIGATION@{NAVIGATION}!flag\_are\_waypointing@{flag\_are\_waypointing}}
+\index{flag\_are\_waypointing@{flag\_are\_waypointing}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{flag\_are\_waypointing}{flag\_are\_waypointing}}
+{\footnotesize\ttfamily int NAVIGATION\+::flag\+\_\+are\+\_\+waypointing}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a52f165f8d2b35b5f9482ac6cf6201a71}\label{class_n_a_v_i_g_a_t_i_o_n_a52f165f8d2b35b5f9482ac6cf6201a71}} 
+\index{NAVIGATION@{NAVIGATION}!homeLat@{homeLat}}
+\index{homeLat@{homeLat}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{homeLat}{homeLat}}
+{\footnotesize\ttfamily float NAVIGATION\+::home\+Lat}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_acf2b2933f6a981c635a11115a096bbad}\label{class_n_a_v_i_g_a_t_i_o_n_acf2b2933f6a981c635a11115a096bbad}} 
+\index{NAVIGATION@{NAVIGATION}!homeLong@{homeLong}}
+\index{homeLong@{homeLong}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{homeLong}{homeLong}}
+{\footnotesize\ttfamily float NAVIGATION\+::home\+Long}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_ac527d793faa1d09c340cececd60b1f82}\label{class_n_a_v_i_g_a_t_i_o_n_ac527d793faa1d09c340cececd60b1f82}} 
+\index{NAVIGATION@{NAVIGATION}!northKd@{northKd}}
+\index{northKd@{northKd}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{northKd}{northKd}}
+{\footnotesize\ttfamily float NAVIGATION\+::north\+Kd}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a78b6ca4c120f48033c972a47af80d601}\label{class_n_a_v_i_g_a_t_i_o_n_a78b6ca4c120f48033c972a47af80d601}} 
+\index{NAVIGATION@{NAVIGATION}!northKi@{northKi}}
+\index{northKi@{northKi}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{northKi}{northKi}}
+{\footnotesize\ttfamily float NAVIGATION\+::north\+Ki}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_acc49dc62fa6e56fa5e88ab83cc981c37}\label{class_n_a_v_i_g_a_t_i_o_n_acc49dc62fa6e56fa5e88ab83cc981c37}} 
+\index{NAVIGATION@{NAVIGATION}!northKp@{northKp}}
+\index{northKp@{northKp}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{northKp}{northKp}}
+{\footnotesize\ttfamily float NAVIGATION\+::north\+Kp}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}\label{class_n_a_v_i_g_a_t_i_o_n_a578fc20aaead59611d7ec50bba79645a}} 
+\index{NAVIGATION@{NAVIGATION}!wplat@{wplat}}
+\index{wplat@{wplat}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{wplat}{wplat}}
+{\footnotesize\ttfamily float NAVIGATION\+::wplat\mbox{[}$\,$\mbox{]}}
+
+\mbox{\Hypertarget{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}\label{class_n_a_v_i_g_a_t_i_o_n_a91e6150ae8685b1fd9692b2ddf08ef5f}} 
+\index{NAVIGATION@{NAVIGATION}!wplong@{wplong}}
+\index{wplong@{wplong}!NAVIGATION@{NAVIGATION}}
+\doxysubsubsection{\texorpdfstring{wplong}{wplong}}
+{\footnotesize\ttfamily float NAVIGATION\+::wplong\mbox{[}$\,$\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{navigation_8h}{navigation.\+h}}\end{DoxyCompactItemize}

@@ -107,3 +107,31 @@ void ATTITUDE::PIDAttitudeControl()
     g_actuators.frontLeftMotorSignal = 1000;
   }
 }
+
+
+//// Attitude controller; uses error feedback (approximates SO(3))
+// same reference papers as above
+void ATTITUDE::basic_attitude_controller()
+{
+    // quaternion is being normalized by Gazebo
+    _derived_euler_att = quat2euler(_sensor_quat);
+
+    Eigen::Array3d att_deltas_;
+
+    // calculate attitude deltas for mapping to motor thrusts
+    att_deltas_(0) = 1.0*(_Kp_ang(0) * (_desired_euler_att(0) - _derived_euler_att(0)))
+                            + 1.0*(_Kd_ang(0) * (_desired_pqr_att(0) - _derived_pqr_att(0)));
+    att_deltas_(1) = 1.0*(_Kp_ang(1) * (_desired_euler_att(1) - _derived_euler_att(1)))
+                            + 1.0*(_Kd_ang(1) * (_desired_pqr_att(1) - _derived_pqr_att(1)));
+    att_deltas_(2) = 1.0*(_Kp_ang(2) * (_desired_euler_att(2) - _derived_euler_att(2)))
+                            + 1.0*(_Kd_ang(2) * (_desired_pqr_att(2) - _derived_pqr_att(2)));
+
+    _final_att_deltas = att_deltas_;        // for logging purposes
+
+    // 4x1 vector to be multiplied by the thrust mapping matrix
+    Eigen::Matrix<double,4,1> all_deltas_;
+    all_deltas_ << (_hover_point + _desired_tot_thrust_delta), att_deltas_(0), att_deltas_(1), att_deltas_(2);
+
+    _desired_thrust =  (_motor_mapping * all_deltas_);          // derive desired rotor rates
+
+} // end basic_attitude_controller()

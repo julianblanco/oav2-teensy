@@ -1,0 +1,1437 @@
+\hypertarget{class_adafruit___g_p_s}{}\doxysection{Adafruit\+\_\+\+GPS Class Reference}
+\label{class_adafruit___g_p_s}\index{Adafruit\_GPS@{Adafruit\_GPS}}
+
+
+The GPS class.  
+
+
+
+
+{\ttfamily \#include $<$Adafruit\+\_\+\+GPS.\+h$>$}
+
+Inheritance diagram for Adafruit\+\_\+\+GPS\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_adafruit___g_p_s}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_ab86462ef1409d2bd8ff7a8405c70ff34}{begin}} (uint32\+\_\+t baud\+\_\+or\+\_\+i2caddr)
+\begin{DoxyCompactList}\small\item\em Is the field empty, or should we try conversion? Won\textquotesingle{}t work for a text field that starts with an asterisk or a comma, but that probably violates the NMEA-\/183 standard. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_adafruit___g_p_s_a3dd74265015def9c893170f38bab1b61}{Adafruit\+\_\+\+GPS}} (Hardware\+Serial $\ast$ser)
+\begin{DoxyCompactList}\small\item\em Constructor when using Software\+Serial. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_adafruit___g_p_s_a2a7f90b64349dca658dbc8e0c79c9938}{Adafruit\+\_\+\+GPS}} (Two\+Wire $\ast$the\+Wire)
+\begin{DoxyCompactList}\small\item\em Constructor when using I2C. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_adafruit___g_p_s_a8422d8a2c060c172c179ebefb03bb67a}{Adafruit\+\_\+\+GPS}} (SPIClass $\ast$the\+SPI, int8\+\_\+t cspin)
+\begin{DoxyCompactList}\small\item\em Constructor when using SPI. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}{Adafruit\+\_\+\+GPS}} ()
+\begin{DoxyCompactList}\small\item\em Constructor when there are no communications attached. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}{common\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialization code used by all constructor types. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_adafruit___g_p_s_aa10e13a582969a5d49f1416fe147d1d2}{$\sim$\+Adafruit\+\_\+\+GPS}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the object. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_abe6399af00c0047527ea20e3f35a0182}{available}} (void)
+\begin{DoxyCompactList}\small\item\em How many bytes are available to read -\/ part of \textquotesingle{}Print\textquotesingle{}-\/class functionality. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a079d9990da5971f336fab880cd141445}{write}} (uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Write a byte to the underlying transport -\/ part of \textquotesingle{}Print\textquotesingle{}-\/class functionality. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}{read}} (void)
+\begin{DoxyCompactList}\small\item\em Read one character from the GPS device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}{send\+Command}} (const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Send a command to the GPS device. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}{new\+NMEAreceived}} ()
+\begin{DoxyCompactList}\small\item\em Check to see if a new NMEA line has been received. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_a0b3ca5f8bc2f3f6e8cdaef05bec5b034}{pause}} (bool b)
+\begin{DoxyCompactList}\small\item\em Pause/unpause receiving new data. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}{last\+NMEA}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the last NMEA line received and unsets the received flag. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}{wait\+For\+Sentence}} (const char $\ast$wait, uint8\+\_\+t max=\mbox{\hyperlink{_adafruit___p_m_t_k_8h_aeebf6a58258596ef38bd7ea07e056a94}{MAXWAITSENTENCE}}, bool using\+Interrupts=false)
+\begin{DoxyCompactList}\small\item\em Wait for a specified sentence from the device. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a325d15c43c09fa1bedcdadb39706e72b}{LOCUS\+\_\+\+Start\+Logger}} (void)
+\begin{DoxyCompactList}\small\item\em Start the LOCUS logger. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a48eaf7f5b46e3682b058a7f8f44fa385}{LOCUS\+\_\+\+Stop\+Logger}} (void)
+\begin{DoxyCompactList}\small\item\em Stop the LOCUS logger. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_adb6139e84c64156b5654dfce2a2e6e3f}{LOCUS\+\_\+\+Read\+Status}} (void)
+\begin{DoxyCompactList}\small\item\em Read the logger status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a32ddd41152a08354d2ee2b4311bbf013}{standby}} (void)
+\begin{DoxyCompactList}\small\item\em Standby Mode Switches. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_afc67f26f7b14d5cc851e13eb7f6aeae3}{wakeup}} (void)
+\begin{DoxyCompactList}\small\item\em Wake the sensor up. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_aed7db1b8b55742a78f291687f1ebc9ca}{seconds\+Since\+Fix}} ()
+\begin{DoxyCompactList}\small\item\em Time in seconds since the last position fix was obtained. The time returned is limited to 2$^\wedge$32 milliseconds, which is about 49.\+7 days. It will wrap around to zero if no position fix is received for this long. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_af01989c447efddb9fe1baa78e50373c5}{seconds\+Since\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Time in seconds since the last GPS time was obtained. The time returned is limited to 2$^\wedge$32 milliseconds, which is about 49.\+7 days. It will wrap around to zero if no GPS time is received for this long. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a4b49f40ba946d1646d7937b25e8dda37}{seconds\+Since\+Date}} ()
+\begin{DoxyCompactList}\small\item\em Time in seconds since the last GPS date was obtained. The time returned is limited to 2$^\wedge$32 milliseconds, which is about 49.\+7 days. It will wrap around to zero if no GPS date is received for this long. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_a1194f23fada702be6e58b24a62402d39}{reset\+Sent\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Fakes time of receipt of a sentence. Use between \mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{build()}} and \mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{parse()}} to make the timing look like the sentence arrived from the GPS. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{parse}} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Parse a standard NMEA string and update the relevant variables. Sentences start with a \$, then a two character source identifier, then a three character sentence identifier that defines the format, then a comma and more comma separated fields defined by the sentence name. There are many sentences listed that are not yet supported, including proprietary sentences that start with P, like the \$\+PMTK commands to the GPS modules. See the \mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{build()}} function and \href{http://fort21.ru/download/NMEAdescription.pdf}{\texttt{ http\+://fort21.\+ru/download/\+NMEAdescription.\+pdf}} for sentence descriptions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}{check}} (char $\ast$nmea)
+\begin{DoxyCompactList}\small\item\em Check an NMEA string for basic format, valid source ID and valid and valid sentence ID. Update the values of this\+Check, this\+Source and this\+Sentence. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_ac8ccb298fe5b1d096dbdb39be46554e0}{on\+List}} (char $\ast$nmea, const char $\ast$$\ast$list)
+\begin{DoxyCompactList}\small\item\em Check if an NMEA string is valid and is on a list, perhaps to decide if it should be passed to a particular NMEA device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}{parse\+Hex}} (char c)
+\begin{DoxyCompactList}\small\item\em Parse a hex character and return the appropriate decimal value. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{build}} (char $\ast$nmea, const char $\ast$\mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{this\+Source}}, const char $\ast$\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{this\+Sentence}}, char ref=\textquotesingle{}R\textquotesingle{}, bool no\+CRLF=false)
+\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}{add\+Checksum}} (char $\ast$buff)
+\begin{DoxyCompactList}\small\item\em Add $\ast$\+CS where CS is the two character hex checksum for all but the first character in the string. The checksum is the result of an exclusive or of all the characters in the string. Also useful if you are creating new PMTK strings for controlling a GPS module and need a checksum added. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{new\+Data\+Value}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} tag, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} v)
+\begin{DoxyCompactList}\small\item\em Update the value and history information with a new value. Call whenever a new data value is received. The function does nothing if the NMEA extensions are not enabled. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a5195ba0c15098e7ebdeed7b58163fa39}{get}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx)
+\begin{DoxyCompactList}\small\item\em Clearer approach to retrieving NMEA values by allowing calls that look like nmea.\+get(\+NMEA\+\_\+\+TWA) instead of val\mbox{[}NMEA\+\_\+\+TWA\mbox{]}.latest. Use \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{new\+Data\+Value()}} to set the values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a272df8380267fd53ff611f552409e86d}{get\+Smoothed}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx)
+\begin{DoxyCompactList}\small\item\em Clearer approach to retrieving NMEA values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{init\+Data\+Value}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx, char $\ast$label=NULL, char $\ast$fmt=NULL, char $\ast$unit=NULL, unsigned long response=0, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\+\_\+value\+\_\+type\+\_\+t}} type=\mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\+\_\+\+SIMPLE\+\_\+\+FLOAT}})
+\begin{DoxyCompactList}\small\item\em Initialize the contents of a data value table entry. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnmea__history__t}{nmea\+\_\+history\+\_\+t}} $\ast$ \mbox{\hyperlink{class_adafruit___g_p_s_a39a2aecda4b5dcf8cab72ef93bdcc103}{init\+History}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} scale=10.\+0, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} offset=0.\+0, unsigned history\+Interval=20, unsigned historyN=192)
+\begin{DoxyCompactList}\small\item\em Attempt to add history to a data value table entry. If it fails to malloc the space, history will not be added. Test the pointer for a check if needed. Select scale and offset values carefully so that operations and results will fit inside 16 bit integer limits. For example a scale of 1.\+0 and an offset of 100000.\+0 would be a good choice for atmospheric pressure in Pa with values ranging $\sim$ +/-\/ 3500, while a scale of 10.\+0 would be pushing the integer limits. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}{remove\+History}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx)
+\begin{DoxyCompactList}\small\item\em Remove history from a data value table entry, if it has been added. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___g_p_s_accf44cdc598df5c687e2f5fb32e9e752}{show\+Data\+Value}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx, int n=7)
+\begin{DoxyCompactList}\small\item\em Print out the current state of a data value. Primarily useful as a debugging aid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}{is\+Compound\+Angle}} (\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}} idx)
+\begin{DoxyCompactList}\small\item\em Check if it is a compound angle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}{boat\+Angle}} (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} s, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} c)
+\begin{DoxyCompactList}\small\item\em Estimate a direction in -\/180 to 180 degree range from the values of the sine and cosine of the compound angle, which could be noisy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}{compass\+Angle}} (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} s, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} c)
+\begin{DoxyCompactList}\small\item\em Estimate a direction in 0 to 360 degree range from the values of the sine and cosine of the compound angle, which could be noisy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{this\+Check}} = 0
+\begin{DoxyCompactList}\small\item\em the results of the check on the current sentence \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{this\+Source}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em the first two letters of the current sentence, e.\+g. WI, GP \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{this\+Sentence}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em the next three letters of the current sentence, e.\+g. GLL, RMC \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a8c44f113dda3b54b41a7d05f516c9ec0}{last\+Source}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID}}\mbox{]}
+\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a35d9d4c069a8ac93cbcbc98cf1c86ba0}{last\+Sentence}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}}
+\begin{DoxyCompactList}\small\item\em GMT hours. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}}
+\begin{DoxyCompactList}\small\item\em GMT minutes. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}}
+\begin{DoxyCompactList}\small\item\em GMT seconds. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}}
+\begin{DoxyCompactList}\small\item\em GMT milliseconds. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}{year}}
+\begin{DoxyCompactList}\small\item\em GMT year. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}{month}}
+\begin{DoxyCompactList}\small\item\em GMT month. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}{day}}
+\begin{DoxyCompactList}\small\item\em GMT day. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}
+\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}{latitude\+\_\+fixed}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}{longitude\+\_\+fixed}}
+\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitude\+Degrees}}
+\begin{DoxyCompactList}\small\item\em Latitude in decimal degrees. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitude\+Degrees}}
+\begin{DoxyCompactList}\small\item\em Longitude in decimal degrees. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}{geoidheight}}
+\begin{DoxyCompactList}\small\item\em Diff between geoid height and WGS84 height. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}{altitude}}
+\begin{DoxyCompactList}\small\item\em Altitude in meters above MSL. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}{speed}}
+\begin{DoxyCompactList}\small\item\em Current speed over ground in knots. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}}
+\begin{DoxyCompactList}\small\item\em Course in degrees from true north. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a2c53f008694ebee3871583cb44842033}{magvariation}}
+\begin{DoxyCompactList}\small\item\em Magnetic variation in degrees (vs. true north) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}{HDOP}}
+\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_af13a4d008ab2f74ff30bfc098315edea}{VDOP}}
+\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a27b5195e96aaef00fb5751a34f3fb82b}{PDOP}}
+\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}} = \textquotesingle{}X\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em N/S. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}} = \textquotesingle{}X\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em E/W. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_a13af36459c90392c2378ce14248cfcfb}{mag}} = \textquotesingle{}X\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Magnetic variation direction. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}}
+\begin{DoxyCompactList}\small\item\em Have a fix? \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}{fixquality}}
+\begin{DoxyCompactList}\small\item\em Fix quality (0, 1, 2 = Invalid, GPS, DGPS) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a95ed044ee9661cd7afd1b81595cb8dd0}{fixquality\+\_\+3d}}
+\begin{DoxyCompactList}\small\item\em 3D fix quality (1, 3, 3 = Nofix, 2D fix, 3D fix) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}{satellites}}
+\begin{DoxyCompactList}\small\item\em Number of satellites in use. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_adfeb77f544ca2a8f76e479ae077952eb}{LOCUS\+\_\+serial}}
+\begin{DoxyCompactList}\small\item\em Log serial number. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_af6a8b70851f8625bde5a8b3eab6c9fd3}{LOCUS\+\_\+records}}
+\begin{DoxyCompactList}\small\item\em Log number of data record. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_ae3eddbc004d2945018eb1f71abecd0b8}{LOCUS\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Log type, 0\+: Overlap, 1\+: Full\+Stop. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a16f2f26bc48f38e208307569e9d5f245}{LOCUS\+\_\+mode}}
+\begin{DoxyCompactList}\small\item\em Logging mode, 0x08 interval logger. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_ab306e67df47d2e02a69dddc97317ea8e}{LOCUS\+\_\+config}}
+\begin{DoxyCompactList}\small\item\em Contents of configuration. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_aaf51d53983b61ab9d5c7795fcb97b41c}{LOCUS\+\_\+interval}}
+\begin{DoxyCompactList}\small\item\em Interval setting. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a9a09b0dc6344dbe3904dfa1c2bcdc538}{LOCUS\+\_\+distance}}
+\begin{DoxyCompactList}\small\item\em Distance setting. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_abc92488b6bcd0372c38b50f1384e4765}{LOCUS\+\_\+speed}}
+\begin{DoxyCompactList}\small\item\em Speed setting. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_ae8cfb553f10224487d0a45354984776c}{LOCUS\+\_\+status}}
+\begin{DoxyCompactList}\small\item\em 0\+: Logging, 1\+: Stop logging \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___g_p_s_a911accd6b643a08c6cae3b844ccf6e69}{LOCUS\+\_\+percent}}
+\begin{DoxyCompactList}\small\item\em Log life used percentage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnmea__datavalue__t}{nmea\+\_\+datavalue\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\+\_\+\+MAX\+\_\+\+INDEX}}\mbox{]}
+\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a907f295b8c05b8cf112435e0b2e72c0a}{depth\+To\+Keel}}
+\begin{DoxyCompactList}\small\item\em depth from surface to bottom of keel in metres \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}{depth\+To\+Transducer}}
+\begin{DoxyCompactList}\small\item\em depth of transducer below the surface in metres \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_aef3bc1b4cfce3547b90042c6e7f472c9}{to\+ID}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\+\_\+\+MAX\+\_\+\+WP\+\_\+\+ID}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em id of waypoint going to on this segment of the route \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_aa261e33c920ac4279babc6aba0da931f}{from\+ID}} \mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\+\_\+\+MAX\+\_\+\+WP\+\_\+\+ID}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em id of waypoint coming from on this segment of the route \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_adafruit___g_p_s_ad293e1b1f3d1c2c35f24d56f41983876}{txt\+TXT}} \mbox{[}63\mbox{]} = \{0\}
+\begin{DoxyCompactList}\small\item\em text content from most recent TXT sentence \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_adafruit___g_p_s_a6dc609e12336547d76ae984f0df4257b}{txt\+Tot}} = 0
+\begin{DoxyCompactList}\small\item\em total TXT sentences in group \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_adafruit___g_p_s_ad32955a01923ef7bc47535f32657e66c}{txt\+ID}} = 0
+\begin{DoxyCompactList}\small\item\em id of the text message \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_adafruit___g_p_s_aad5682d8705240af58b22ca430adc8ae}{txtN}} = 0
+\begin{DoxyCompactList}\small\item\em the TXT sentence number \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The GPS class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a3dd74265015def9c893170f38bab1b61}\label{class_adafruit___g_p_s_a3dd74265015def9c893170f38bab1b61}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{Adafruit\_GPS()}{Adafruit\_GPS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+GPS\+::\+Adafruit\+\_\+\+GPS (\begin{DoxyParamCaption}\item[{Hardware\+Serial $\ast$}]{ser }\end{DoxyParamCaption})}
+
+
+
+Constructor when using Software\+Serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ser} & Pointer to Software\+Serial device\\
+\hline
+\end{DoxyParams}
+Constructor when using Hardware\+Serial 
+\begin{DoxyParams}{Parameters}
+{\em ser} & Pointer to a Hardware\+Serial object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a2a7f90b64349dca658dbc8e0c79c9938}\label{class_adafruit___g_p_s_a2a7f90b64349dca658dbc8e0c79c9938}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{Adafruit\_GPS()}{Adafruit\_GPS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+GPS\+::\+Adafruit\+\_\+\+GPS (\begin{DoxyParamCaption}\item[{Two\+Wire $\ast$}]{the\+Wire }\end{DoxyParamCaption})}
+
+
+
+Constructor when using I2C. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the\+Wire} & Pointer to an I2C Two\+Wire object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a8422d8a2c060c172c179ebefb03bb67a}\label{class_adafruit___g_p_s_a8422d8a2c060c172c179ebefb03bb67a}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{Adafruit\_GPS()}{Adafruit\_GPS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+GPS\+::\+Adafruit\+\_\+\+GPS (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{the\+SPI,  }\item[{int8\+\_\+t}]{cspin }\end{DoxyParamCaption})}
+
+
+
+Constructor when using SPI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the\+SPI} & Pointer to an SPI device object \\
+\hline
+{\em cspin} & The pin connected to the GPS CS, can be -\/1 if unused \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}\label{class_adafruit___g_p_s_af226e78bbf45802c02c61493c66f4989}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\index{Adafruit\_GPS@{Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{Adafruit\_GPS()}{Adafruit\_GPS()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+GPS\+::\+Adafruit\+\_\+\+GPS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor when there are no communications attached. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_aa10e13a582969a5d49f1416fe147d1d2}\label{class_adafruit___g_p_s_aa10e13a582969a5d49f1416fe147d1d2}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!````~Adafruit\_GPS@{$\sim$Adafruit\_GPS}}
+\index{````~Adafruit\_GPS@{$\sim$Adafruit\_GPS}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{$\sim$Adafruit\_GPS()}{~Adafruit\_GPS()}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+GPS\+::$\sim$\+Adafruit\+\_\+\+GPS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroy the object. 
+
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}\label{class_adafruit___g_p_s_a1b9f2a5d34f47bf3b8410e63154eca80}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!addChecksum@{addChecksum}}
+\index{addChecksum@{addChecksum}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{addChecksum()}{addChecksum()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::add\+Checksum (\begin{DoxyParamCaption}\item[{char $\ast$}]{buff }\end{DoxyParamCaption})}
+
+
+
+Add $\ast$\+CS where CS is the two character hex checksum for all but the first character in the string. The checksum is the result of an exclusive or of all the characters in the string. Also useful if you are creating new PMTK strings for controlling a GPS module and need a checksum added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buff} & Pointer to the string, which must be long enough \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_abe6399af00c0047527ea20e3f35a0182}\label{class_adafruit___g_p_s_abe6399af00c0047527ea20e3f35a0182}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!available@{available}}
+\index{available@{available}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily size\+\_\+t Adafruit\+\_\+\+GPS\+::available (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+How many bytes are available to read -\/ part of \textquotesingle{}Print\textquotesingle{}-\/class functionality. 
+
+\begin{DoxyReturn}{Returns}
+Bytes available, 0 if none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_ab86462ef1409d2bd8ff7a8405c70ff34}\label{class_adafruit___g_p_s_ab86462ef1409d2bd8ff7a8405c70ff34}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!begin@{begin}}
+\index{begin@{begin}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::begin (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{baud\+\_\+or\+\_\+i2caddr }\end{DoxyParamCaption})}
+
+
+
+Is the field empty, or should we try conversion? Won\textquotesingle{}t work for a text field that starts with an asterisk or a comma, but that probably violates the NMEA-\/183 standard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Start} & Pointer to the location of the token in the NMEA string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if empty field, false if something there
+\end{DoxyReturn}
+Parse a part of an NMEA string for latitude angle 
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the location of the token in the NMEA string\\
+\hline
+\end{DoxyParams}
+Parse a part of an NMEA string for latitude direction 
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the location of the token in the NMEA string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we parsed it, false if it has invalid data
+\end{DoxyReturn}
+Parse a part of an NMEA string for longitude angle 
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the location of the token in the NMEA string\\
+\hline
+\end{DoxyParams}
+Parse a part of an NMEA string for longitude direction 
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the location of the token in the NMEA string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we parsed it, false if it has invalid data
+\end{DoxyReturn}
+Start the HW or SW serial port 
+\begin{DoxyParams}{Parameters}
+{\em baud\+\_\+or\+\_\+i2caddr} & Baud rate if using serial, I2C address if using I2C \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True on successful hardware init, False on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}\label{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!boatAngle@{boatAngle}}
+\index{boatAngle@{boatAngle}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{boatAngle()}{boatAngle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::boat\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{s,  }\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Estimate a direction in -\/180 to 180 degree range from the values of the sine and cosine of the compound angle, which could be noisy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The sin of the angle \\
+\hline
+{\em c} & The cosine of the angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The angle in -\/180 to 180 degree range. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}\label{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!build@{build}}
+\index{build@{build}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily char $\ast$ Adafruit\+\_\+\+GPS\+::build (\begin{DoxyParamCaption}\item[{char $\ast$}]{nmea,  }\item[{const char $\ast$}]{this\+Source,  }\item[{const char $\ast$}]{this\+Sentence,  }\item[{char}]{ref = {\ttfamily \textquotesingle{}R\textquotesingle{}},  }\item[{bool}]{no\+CRLF = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}\label{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!check@{check}}
+\index{check@{check}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::check (\begin{DoxyParamCaption}\item[{char $\ast$}]{nmea }\end{DoxyParamCaption})}
+
+
+
+Check an NMEA string for basic format, valid source ID and valid and valid sentence ID. Update the values of this\+Check, this\+Source and this\+Sentence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nmea} & Pointer to the NMEA string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if well formed, false if it has problems 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}\label{class_adafruit___g_p_s_ab8a2fe20ce1874b10a6e9f007c236b30}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!common\_init@{common\_init}}
+\index{common\_init@{common\_init}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{common\_init()}{common\_init()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::common\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialization code used by all constructor types. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}\label{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!compassAngle@{compassAngle}}
+\index{compassAngle@{compassAngle}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{compassAngle()}{compassAngle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::compass\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{s,  }\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Estimate a direction in 0 to 360 degree range from the values of the sine and cosine of the compound angle, which could be noisy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The sin of the angle \\
+\hline
+{\em c} & The cosine of the angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The angle in 0 to 360 degree range. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a5195ba0c15098e7ebdeed7b58163fa39}\label{class_adafruit___g_p_s_a5195ba0c15098e7ebdeed7b58163fa39}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!get@{get}}
+\index{get@{get}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx }\end{DoxyParamCaption})}
+
+
+
+Clearer approach to retrieving NMEA values by allowing calls that look like nmea.\+get(\+NMEA\+\_\+\+TWA) instead of val\mbox{[}NMEA\+\_\+\+TWA\mbox{]}.latest. Use \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{new\+Data\+Value()}} to set the values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & the NMEA value\textquotesingle{}s index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the latest NMEA value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a272df8380267fd53ff611f552409e86d}\label{class_adafruit___g_p_s_a272df8380267fd53ff611f552409e86d}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!getSmoothed@{getSmoothed}}
+\index{getSmoothed@{getSmoothed}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{getSmoothed()}{getSmoothed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::get\+Smoothed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx }\end{DoxyParamCaption})}
+
+
+
+Clearer approach to retrieving NMEA values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & the NMEA value\textquotesingle{}s index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the latest NMEA value, smoothed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}\label{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!initDataValue@{initDataValue}}
+\index{initDataValue@{initDataValue}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{initDataValue()}{initDataValue()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::init\+Data\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx,  }\item[{char $\ast$}]{label = {\ttfamily NULL},  }\item[{char $\ast$}]{fmt = {\ttfamily NULL},  }\item[{char $\ast$}]{unit = {\ttfamily NULL},  }\item[{unsigned long}]{response = {\ttfamily 0},  }\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\+\_\+value\+\_\+type\+\_\+t}}}]{type = {\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\+\_\+\+SIMPLE\+\_\+\+FLOAT}}} }\end{DoxyParamCaption})}
+
+
+
+Initialize the contents of a data value table entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The data index for the value to be initialized \\
+\hline
+{\em label} & Pointer to a label string that describes the value \\
+\hline
+{\em fmt} & Pointer to a sprintf format to use for the value, e.\+g. \char`\"{}\%6.\+2f\char`\"{} \\
+\hline
+{\em unit} & Pointer to a string for the units, e.\+g. \char`\"{}\+Deg Mag\char`\"{} \\
+\hline
+{\em response} & Time constant for smoothing in ms. The longer the time constant, the more slowly the smoothed value will move towards a new value. \\
+\hline
+{\em type} & The type of data contained in the value. simple float 0, angle 0-\/360 1, angle +/-\/180 2, angle with history centered +/-\/ around the latest angle 3, lat/lon DDMM.\+mm 10, time HHMMSS 20. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a39a2aecda4b5dcf8cab72ef93bdcc103}\label{class_adafruit___g_p_s_a39a2aecda4b5dcf8cab72ef93bdcc103}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!initHistory@{initHistory}}
+\index{initHistory@{initHistory}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{initHistory()}{initHistory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnmea__history__t}{nmea\+\_\+history\+\_\+t}} $\ast$ Adafruit\+\_\+\+GPS\+::init\+History (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx,  }\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{scale = {\ttfamily 10.0},  }\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{offset = {\ttfamily 0.0},  }\item[{unsigned}]{history\+Interval = {\ttfamily 20},  }\item[{unsigned}]{historyN = {\ttfamily 192} }\end{DoxyParamCaption})}
+
+
+
+Attempt to add history to a data value table entry. If it fails to malloc the space, history will not be added. Test the pointer for a check if needed. Select scale and offset values carefully so that operations and results will fit inside 16 bit integer limits. For example a scale of 1.\+0 and an offset of 100000.\+0 would be a good choice for atmospheric pressure in Pa with values ranging $\sim$ +/-\/ 3500, while a scale of 10.\+0 would be pushing the integer limits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The data index for the value to have history recorded \\
+\hline
+{\em scale} & Value for scaling the integer history list \\
+\hline
+{\em offset} & Value for scaling the integer history list \\
+\hline
+{\em history\+Interval} & Approximate Time in seconds between historical values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the history 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}\label{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!isCompoundAngle@{isCompoundAngle}}
+\index{isCompoundAngle@{isCompoundAngle}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{isCompoundAngle()}{isCompoundAngle()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::is\+Compound\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx }\end{DoxyParamCaption})}
+
+
+
+Check if it is a compound angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The index for the data value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a compound angle requiring 3 contiguos data values. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}\label{class_adafruit___g_p_s_a6938dadca5d72ec6e89e86a5b01b9b67}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!lastNMEA@{lastNMEA}}
+\index{lastNMEA@{lastNMEA}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{lastNMEA()}{lastNMEA()}}
+{\footnotesize\ttfamily char $\ast$ Adafruit\+\_\+\+GPS\+::last\+NMEA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns the last NMEA line received and unsets the received flag. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the last line string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_adb6139e84c64156b5654dfce2a2e6e3f}\label{class_adafruit___g_p_s_adb6139e84c64156b5654dfce2a2e6e3f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_ReadStatus@{LOCUS\_ReadStatus}}
+\index{LOCUS\_ReadStatus@{LOCUS\_ReadStatus}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_ReadStatus()}{LOCUS\_ReadStatus()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+\+Read\+Status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read the logger status. 
+
+\begin{DoxyReturn}{Returns}
+True if we read the data, false if there was no response 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a325d15c43c09fa1bedcdadb39706e72b}\label{class_adafruit___g_p_s_a325d15c43c09fa1bedcdadb39706e72b}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_StartLogger@{LOCUS\_StartLogger}}
+\index{LOCUS\_StartLogger@{LOCUS\_StartLogger}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_StartLogger()}{LOCUS\_StartLogger()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+\+Start\+Logger (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Start the LOCUS logger. 
+
+\begin{DoxyReturn}{Returns}
+True on success, false if it failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a48eaf7f5b46e3682b058a7f8f44fa385}\label{class_adafruit___g_p_s_a48eaf7f5b46e3682b058a7f8f44fa385}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_StopLogger@{LOCUS\_StopLogger}}
+\index{LOCUS\_StopLogger@{LOCUS\_StopLogger}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_StopLogger()}{LOCUS\_StopLogger()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+\+Stop\+Logger (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stop the LOCUS logger. 
+
+\begin{DoxyReturn}{Returns}
+True on success, false if it failed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}\label{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!newDataValue@{newDataValue}}
+\index{newDataValue@{newDataValue}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{newDataValue()}{newDataValue()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::new\+Data\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx,  }\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}}}]{v }\end{DoxyParamCaption})}
+
+
+
+Update the value and history information with a new value. Call whenever a new data value is received. The function does nothing if the NMEA extensions are not enabled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The data index for which a new value has been received \\
+\hline
+{\em v} & The new value received \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}\label{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!newNMEAreceived@{newNMEAreceived}}
+\index{newNMEAreceived@{newNMEAreceived}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{newNMEAreceived()}{newNMEAreceived()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::new\+NMEAreceived (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Check to see if a new NMEA line has been received. 
+
+\begin{DoxyReturn}{Returns}
+True if received, false if not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_ac8ccb298fe5b1d096dbdb39be46554e0}\label{class_adafruit___g_p_s_ac8ccb298fe5b1d096dbdb39be46554e0}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!onList@{onList}}
+\index{onList@{onList}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{onList()}{onList()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::on\+List (\begin{DoxyParamCaption}\item[{char $\ast$}]{nmea,  }\item[{const char $\ast$$\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Check if an NMEA string is valid and is on a list, perhaps to decide if it should be passed to a particular NMEA device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nmea} & Pointer to the NMEA string \\
+\hline
+{\em list} & A list of strings, with the final entry \char`\"{}\+ZZ\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if on the list, false if it fails check or is not on the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}\label{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!parse@{parse}}
+\index{parse@{parse}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::parse (\begin{DoxyParamCaption}\item[{char $\ast$}]{nmea }\end{DoxyParamCaption})}
+
+
+
+Parse a standard NMEA string and update the relevant variables. Sentences start with a \$, then a two character source identifier, then a three character sentence identifier that defines the format, then a comma and more comma separated fields defined by the sentence name. There are many sentences listed that are not yet supported, including proprietary sentences that start with P, like the \$\+PMTK commands to the GPS modules. See the \mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{build()}} function and \href{http://fort21.ru/download/NMEAdescription.pdf}{\texttt{ http\+://fort21.\+ru/download/\+NMEAdescription.\+pdf}} for sentence descriptions. 
+
+Encapsulated data sentences are supported by NMEA-\/183, and start with ! instead of \$. \href{https://gpsd.gitlab.io/gpsd/AIVDM.html}{\texttt{ https\+://gpsd.\+gitlab.\+io/gpsd/\+AIVDM.\+html}} provides details about encapsulated data sentences used in AIS.
+
+\mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{parse()}} permits, but does not require Carriage Return and Line Feed at the end of sentences. The end of the sentence is recognized by the $\ast$ for the checksum. \mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{parse()}} will not recognize a sentence without a valid checksum.
+
+NMEA\+\_\+\+EXTENSIONS must be defined in order to parse more than basic GPS module sentences.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nmea} & Pointer to the NMEA string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successfully parsed, false if fails check or parsing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}\label{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!parseHex@{parseHex}}
+\index{parseHex@{parseHex}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{parseHex()}{parseHex()}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::parse\+Hex (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Parse a hex character and return the appropriate decimal value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Hex character, e.\+g. \textquotesingle{}0\textquotesingle{} or \textquotesingle{}B\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer value of the hex character. Returns 0 if c is not a proper character 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a0b3ca5f8bc2f3f6e8cdaef05bec5b034}\label{class_adafruit___g_p_s_a0b3ca5f8bc2f3f6e8cdaef05bec5b034}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!pause@{pause}}
+\index{pause@{pause}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::pause (\begin{DoxyParamCaption}\item[{bool}]{p }\end{DoxyParamCaption})}
+
+
+
+Pause/unpause receiving new data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & True = pause, false = unpause \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}\label{class_adafruit___g_p_s_a776378bc3e4e8a098dce88d6a4ffb0b8}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!read@{read}}
+\index{read@{read}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read one character from the GPS device. 
+
+Call very frequently and multiple times per opportunity or the buffer may overflow if there are frequent NMEA sentences. An 82 character NMEA sentence 10 times per second will require 820 calls per second, and once a loop() may not be enough. Check for \mbox{\hyperlink{class_adafruit___g_p_s_ac44f7d0517543bdd1c22a89d2d11ea78}{new\+NMEAreceived()}} after at least every 10 calls, or you may miss some short sentences. \begin{DoxyReturn}{Returns}
+The character that we received, or 0 if nothing was available 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}\label{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!removeHistory@{removeHistory}}
+\index{removeHistory@{removeHistory}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{removeHistory()}{removeHistory()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::remove\+History (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx }\end{DoxyParamCaption})}
+
+
+
+Remove history from a data value table entry, if it has been added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The data index for the value to have history removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a1194f23fada702be6e58b24a62402d39}\label{class_adafruit___g_p_s_a1194f23fada702be6e58b24a62402d39}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!resetSentTime@{resetSentTime}}
+\index{resetSentTime@{resetSentTime}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{resetSentTime()}{resetSentTime()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::reset\+Sent\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fakes time of receipt of a sentence. Use between \mbox{\hyperlink{class_adafruit___g_p_s_aa98fd519cac1b6f0dd93b7b74e619616}{build()}} and \mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{parse()}} to make the timing look like the sentence arrived from the GPS. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a4b49f40ba946d1646d7937b25e8dda37}\label{class_adafruit___g_p_s_a4b49f40ba946d1646d7937b25e8dda37}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!secondsSinceDate@{secondsSinceDate}}
+\index{secondsSinceDate@{secondsSinceDate}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{secondsSinceDate()}{secondsSinceDate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::seconds\+Since\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Time in seconds since the last GPS date was obtained. The time returned is limited to 2$^\wedge$32 milliseconds, which is about 49.\+7 days. It will wrap around to zero if no GPS date is received for this long. 
+
+\begin{DoxyReturn}{Returns}
+nmea\+\_\+float\+\_\+t value in seconds since last GPS date. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_aed7db1b8b55742a78f291687f1ebc9ca}\label{class_adafruit___g_p_s_aed7db1b8b55742a78f291687f1ebc9ca}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!secondsSinceFix@{secondsSinceFix}}
+\index{secondsSinceFix@{secondsSinceFix}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{secondsSinceFix()}{secondsSinceFix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::seconds\+Since\+Fix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Time in seconds since the last position fix was obtained. The time returned is limited to 2$^\wedge$32 milliseconds, which is about 49.\+7 days. It will wrap around to zero if no position fix is received for this long. 
+
+\begin{DoxyReturn}{Returns}
+nmea\+\_\+float\+\_\+t value in seconds since last fix. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_af01989c447efddb9fe1baa78e50373c5}\label{class_adafruit___g_p_s_af01989c447efddb9fe1baa78e50373c5}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!secondsSinceTime@{secondsSinceTime}}
+\index{secondsSinceTime@{secondsSinceTime}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{secondsSinceTime()}{secondsSinceTime()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::seconds\+Since\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Time in seconds since the last GPS time was obtained. The time returned is limited to 2$^\wedge$32 milliseconds, which is about 49.\+7 days. It will wrap around to zero if no GPS time is received for this long. 
+
+\begin{DoxyReturn}{Returns}
+nmea\+\_\+float\+\_\+t value in seconds since last GPS time. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}\label{class_adafruit___g_p_s_abd7e2f17f11188dfc99fff55e3560dfb}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::send\+Command (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Send a command to the GPS device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Pointer to a string holding the command to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___g_p_s_accf44cdc598df5c687e2f5fb32e9e752}\label{class_adafruit___g_p_s_accf44cdc598df5c687e2f5fb32e9e752}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!showDataValue@{showDataValue}}
+\index{showDataValue@{showDataValue}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{showDataValue()}{showDataValue()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+GPS\+::show\+Data\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\+\_\+index\+\_\+t}}}]{idx,  }\item[{int}]{n = {\ttfamily 7} }\end{DoxyParamCaption})}
+
+
+
+Print out the current state of a data value. Primarily useful as a debugging aid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The index for the data value \\
+\hline
+{\em n} & The number of history values to include \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a32ddd41152a08354d2ee2b4311bbf013}\label{class_adafruit___g_p_s_a32ddd41152a08354d2ee2b4311bbf013}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!standby@{standby}}
+\index{standby@{standby}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{standby()}{standby()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::standby (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Standby Mode Switches. 
+
+\begin{DoxyReturn}{Returns}
+False if already in standby, true if it entered standby 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}\label{class_adafruit___g_p_s_a13d67a0055576c31de0ca3db0641ca1d}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!waitForSentence@{waitForSentence}}
+\index{waitForSentence@{waitForSentence}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{waitForSentence()}{waitForSentence()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::wait\+For\+Sentence (\begin{DoxyParamCaption}\item[{const char $\ast$}]{wait4me,  }\item[{uint8\+\_\+t}]{max = {\ttfamily \mbox{\hyperlink{_adafruit___p_m_t_k_8h_aeebf6a58258596ef38bd7ea07e056a94}{MAXWAITSENTENCE}}},  }\item[{bool}]{using\+Interrupts = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Wait for a specified sentence from the device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait4me} & Pointer to a string holding the desired response \\
+\hline
+{\em max} & How long to wait, default is MAXWAITSENTENCE \\
+\hline
+{\em using\+Interrupts} & True if using interrupts to read from the GPS (default is false) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we got what we wanted, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_afc67f26f7b14d5cc851e13eb7f6aeae3}\label{class_adafruit___g_p_s_afc67f26f7b14d5cc851e13eb7f6aeae3}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!wakeup@{wakeup}}
+\index{wakeup@{wakeup}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{wakeup()}{wakeup()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::wakeup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Wake the sensor up. 
+
+\begin{DoxyReturn}{Returns}
+True if woken up, false if not in standby or failed to wake 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___g_p_s_a079d9990da5971f336fab880cd141445}\label{class_adafruit___g_p_s_a079d9990da5971f336fab880cd141445}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!write@{write}}
+\index{write@{write}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily size\+\_\+t Adafruit\+\_\+\+GPS\+::write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{c }\end{DoxyParamCaption})}
+
+
+
+Write a byte to the underlying transport -\/ part of \textquotesingle{}Print\textquotesingle{}-\/class functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & A single byte to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bytes written -\/ 1 on success, 0 on failure 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}\label{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!altitude@{altitude}}
+\index{altitude@{altitude}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{altitude}{altitude}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::altitude}
+
+
+
+Altitude in meters above MSL. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}\label{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!angle@{angle}}
+\index{angle@{angle}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{angle}{angle}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::angle}
+
+
+
+Course in degrees from true north. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}\label{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!day@{day}}
+\index{day@{day}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{day}{day}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::day}
+
+
+
+GMT day. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a907f295b8c05b8cf112435e0b2e72c0a}\label{class_adafruit___g_p_s_a907f295b8c05b8cf112435e0b2e72c0a}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!depthToKeel@{depthToKeel}}
+\index{depthToKeel@{depthToKeel}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{depthToKeel}{depthToKeel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::depth\+To\+Keel}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      2.4}
+
+\end{DoxyCode}
+
+
+depth from surface to bottom of keel in metres 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}\label{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!depthToTransducer@{depthToTransducer}}
+\index{depthToTransducer@{depthToTransducer}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{depthToTransducer}{depthToTransducer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::depth\+To\+Transducer}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      0.0}
+
+\end{DoxyCode}
+
+
+depth of transducer below the surface in metres 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}\label{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!fix@{fix}}
+\index{fix@{fix}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{fix}{fix}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+GPS\+::fix}
+
+
+
+Have a fix? 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}\label{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!fixquality@{fixquality}}
+\index{fixquality@{fixquality}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{fixquality}{fixquality}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::fixquality}
+
+
+
+Fix quality (0, 1, 2 = Invalid, GPS, DGPS) 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a95ed044ee9661cd7afd1b81595cb8dd0}\label{class_adafruit___g_p_s_a95ed044ee9661cd7afd1b81595cb8dd0}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!fixquality\_3d@{fixquality\_3d}}
+\index{fixquality\_3d@{fixquality\_3d}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{fixquality\_3d}{fixquality\_3d}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::fixquality\+\_\+3d}
+
+
+
+3D fix quality (1, 3, 3 = Nofix, 2D fix, 3D fix) 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_aa261e33c920ac4279babc6aba0da931f}\label{class_adafruit___g_p_s_aa261e33c920ac4279babc6aba0da931f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!fromID@{fromID}}
+\index{fromID@{fromID}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{fromID}{fromID}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::from\+ID\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\+\_\+\+MAX\+\_\+\+WP\+\_\+\+ID}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      0\}}
+
+\end{DoxyCode}
+
+
+id of waypoint coming from on this segment of the route 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}\label{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!geoidheight@{geoidheight}}
+\index{geoidheight@{geoidheight}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{geoidheight}{geoidheight}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::geoidheight}
+
+
+
+Diff between geoid height and WGS84 height. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}\label{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!HDOP@{HDOP}}
+\index{HDOP@{HDOP}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{HDOP}{HDOP}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::\+HDOP}
+
+Horizontal Dilution of Precision -\/ relative accuracy of horizontal position \mbox{\Hypertarget{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}\label{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!hour@{hour}}
+\index{hour@{hour}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{hour}{hour}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::hour}
+
+
+
+GMT hours. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a35d9d4c069a8ac93cbcbc98cf1c86ba0}\label{class_adafruit___g_p_s_a35d9d4c069a8ac93cbcbc98cf1c86ba0}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!lastSentence@{lastSentence}}
+\index{lastSentence@{lastSentence}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{lastSentence}{lastSentence}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::last\+Sentence\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      0\}}
+
+\end{DoxyCode}
+the next three letters of the most recent successfully parsed sentence, e.\+g. GLL, RMC \mbox{\Hypertarget{class_adafruit___g_p_s_a8c44f113dda3b54b41a7d05f516c9ec0}\label{class_adafruit___g_p_s_a8c44f113dda3b54b41a7d05f516c9ec0}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!lastSource@{lastSource}}
+\index{lastSource@{lastSource}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{lastSource}{lastSource}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::last\+Source\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      0\}}
+
+\end{DoxyCode}
+the results of the check on the most recent successfully parsed sentence \mbox{\Hypertarget{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}\label{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!lat@{lat}}
+\index{lat@{lat}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{lat}{lat}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::lat = \textquotesingle{}X\textquotesingle{}}
+
+
+
+N/S. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}\label{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!latitude@{latitude}}
+\index{latitude@{latitude}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{latitude}{latitude}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::latitude}
+
+Floating point latitude value in degrees/minutes as received from the GPS (DDMM.\+MMMM) \mbox{\Hypertarget{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}\label{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!latitude\_fixed@{latitude\_fixed}}
+\index{latitude\_fixed@{latitude\_fixed}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{latitude\_fixed}{latitude\_fixed}}
+{\footnotesize\ttfamily int32\+\_\+t Adafruit\+\_\+\+GPS\+::latitude\+\_\+fixed}
+
+Fixed point latitude and longitude value with degrees stored in units of 1/10000000 of a degree. See pull \#13 for more details\+: \href{https://github.com/adafruit/Adafruit-GPS-Library/pull/13}{\texttt{ https\+://github.\+com/adafruit/\+Adafruit-\/\+GPS-\/\+Library/pull/13}} Fixed point latitude in decimal degrees. Divide by 10000000.\+0 to get a double. \mbox{\Hypertarget{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}\label{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!latitudeDegrees@{latitudeDegrees}}
+\index{latitudeDegrees@{latitudeDegrees}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{latitudeDegrees}{latitudeDegrees}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::latitude\+Degrees}
+
+
+
+Latitude in decimal degrees. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ab306e67df47d2e02a69dddc97317ea8e}\label{class_adafruit___g_p_s_ab306e67df47d2e02a69dddc97317ea8e}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_config@{LOCUS\_config}}
+\index{LOCUS\_config@{LOCUS\_config}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_config}{LOCUS\_config}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+config}
+
+
+
+Contents of configuration. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a9a09b0dc6344dbe3904dfa1c2bcdc538}\label{class_adafruit___g_p_s_a9a09b0dc6344dbe3904dfa1c2bcdc538}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_distance@{LOCUS\_distance}}
+\index{LOCUS\_distance@{LOCUS\_distance}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_distance}{LOCUS\_distance}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+distance}
+
+
+
+Distance setting. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_aaf51d53983b61ab9d5c7795fcb97b41c}\label{class_adafruit___g_p_s_aaf51d53983b61ab9d5c7795fcb97b41c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_interval@{LOCUS\_interval}}
+\index{LOCUS\_interval@{LOCUS\_interval}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_interval}{LOCUS\_interval}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+interval}
+
+
+
+Interval setting. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a16f2f26bc48f38e208307569e9d5f245}\label{class_adafruit___g_p_s_a16f2f26bc48f38e208307569e9d5f245}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_mode@{LOCUS\_mode}}
+\index{LOCUS\_mode@{LOCUS\_mode}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_mode}{LOCUS\_mode}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+mode}
+
+
+
+Logging mode, 0x08 interval logger. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a911accd6b643a08c6cae3b844ccf6e69}\label{class_adafruit___g_p_s_a911accd6b643a08c6cae3b844ccf6e69}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_percent@{LOCUS\_percent}}
+\index{LOCUS\_percent@{LOCUS\_percent}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_percent}{LOCUS\_percent}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+percent}
+
+
+
+Log life used percentage. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_af6a8b70851f8625bde5a8b3eab6c9fd3}\label{class_adafruit___g_p_s_af6a8b70851f8625bde5a8b3eab6c9fd3}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_records@{LOCUS\_records}}
+\index{LOCUS\_records@{LOCUS\_records}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_records}{LOCUS\_records}}
+{\footnotesize\ttfamily uint16\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+records}
+
+
+
+Log number of data record. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_adfeb77f544ca2a8f76e479ae077952eb}\label{class_adafruit___g_p_s_adfeb77f544ca2a8f76e479ae077952eb}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_serial@{LOCUS\_serial}}
+\index{LOCUS\_serial@{LOCUS\_serial}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_serial}{LOCUS\_serial}}
+{\footnotesize\ttfamily uint16\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+serial}
+
+
+
+Log serial number. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_abc92488b6bcd0372c38b50f1384e4765}\label{class_adafruit___g_p_s_abc92488b6bcd0372c38b50f1384e4765}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_speed@{LOCUS\_speed}}
+\index{LOCUS\_speed@{LOCUS\_speed}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_speed}{LOCUS\_speed}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+speed}
+
+
+
+Speed setting. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ae8cfb553f10224487d0a45354984776c}\label{class_adafruit___g_p_s_ae8cfb553f10224487d0a45354984776c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_status@{LOCUS\_status}}
+\index{LOCUS\_status@{LOCUS\_status}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_status}{LOCUS\_status}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+status}
+
+
+
+0\+: Logging, 1\+: Stop logging 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ae3eddbc004d2945018eb1f71abecd0b8}\label{class_adafruit___g_p_s_ae3eddbc004d2945018eb1f71abecd0b8}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!LOCUS\_type@{LOCUS\_type}}
+\index{LOCUS\_type@{LOCUS\_type}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_type}{LOCUS\_type}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::\+LOCUS\+\_\+type}
+
+
+
+Log type, 0\+: Overlap, 1\+: Full\+Stop. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}\label{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!lon@{lon}}
+\index{lon@{lon}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{lon}{lon}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::lon = \textquotesingle{}X\textquotesingle{}}
+
+
+
+E/W. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}\label{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!longitude@{longitude}}
+\index{longitude@{longitude}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{longitude}{longitude}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::longitude}
+
+Floating point longitude value in degrees/minutes as received from the GPS (DDDMM.\+MMMM) \mbox{\Hypertarget{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}\label{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!longitude\_fixed@{longitude\_fixed}}
+\index{longitude\_fixed@{longitude\_fixed}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{longitude\_fixed}{longitude\_fixed}}
+{\footnotesize\ttfamily int32\+\_\+t Adafruit\+\_\+\+GPS\+::longitude\+\_\+fixed}
+
+Fixed point longitude in decimal degrees Divide by 10000000.\+0 to get a double. \mbox{\Hypertarget{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}\label{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!longitudeDegrees@{longitudeDegrees}}
+\index{longitudeDegrees@{longitudeDegrees}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{longitudeDegrees}{longitudeDegrees}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::longitude\+Degrees}
+
+
+
+Longitude in decimal degrees. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a13af36459c90392c2378ce14248cfcfb}\label{class_adafruit___g_p_s_a13af36459c90392c2378ce14248cfcfb}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!mag@{mag}}
+\index{mag@{mag}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{mag}{mag}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::mag = \textquotesingle{}X\textquotesingle{}}
+
+
+
+Magnetic variation direction. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a2c53f008694ebee3871583cb44842033}\label{class_adafruit___g_p_s_a2c53f008694ebee3871583cb44842033}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!magvariation@{magvariation}}
+\index{magvariation@{magvariation}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{magvariation}{magvariation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::magvariation}
+
+
+
+Magnetic variation in degrees (vs. true north) 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}\label{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!milliseconds@{milliseconds}}
+\index{milliseconds@{milliseconds}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{milliseconds}{milliseconds}}
+{\footnotesize\ttfamily uint16\+\_\+t Adafruit\+\_\+\+GPS\+::milliseconds}
+
+
+
+GMT milliseconds. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}\label{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!minute@{minute}}
+\index{minute@{minute}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{minute}{minute}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::minute}
+
+
+
+GMT minutes. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}\label{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!month@{month}}
+\index{month@{month}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{month}{month}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::month}
+
+
+
+GMT month. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a27b5195e96aaef00fb5751a34f3fb82b}\label{class_adafruit___g_p_s_a27b5195e96aaef00fb5751a34f3fb82b}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!PDOP@{PDOP}}
+\index{PDOP@{PDOP}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{PDOP}{PDOP}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::\+PDOP}
+
+Position Dilution of Precision -\/ Complex maths derives a simple, single number for each kind of DOP \mbox{\Hypertarget{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}\label{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!satellites@{satellites}}
+\index{satellites@{satellites}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{satellites}{satellites}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::satellites}
+
+
+
+Number of satellites in use. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}\label{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!seconds@{seconds}}
+\index{seconds@{seconds}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{seconds}{seconds}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::seconds}
+
+
+
+GMT seconds. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}\label{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!speed@{speed}}
+\index{speed@{speed}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::speed}
+
+
+
+Current speed over ground in knots. 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}\label{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!thisCheck@{thisCheck}}
+\index{thisCheck@{thisCheck}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{thisCheck}{thisCheck}}
+{\footnotesize\ttfamily int Adafruit\+\_\+\+GPS\+::this\+Check = 0}
+
+
+
+the results of the check on the current sentence 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}\label{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!thisSentence@{thisSentence}}
+\index{thisSentence@{thisSentence}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{thisSentence}{thisSentence}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::this\+Sentence\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\+\_\+\+MAX\+\_\+\+SENTENCE\+\_\+\+ID}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      0\}}
+
+\end{DoxyCode}
+
+
+the next three letters of the current sentence, e.\+g. GLL, RMC 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}\label{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!thisSource@{thisSource}}
+\index{thisSource@{thisSource}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{thisSource}{thisSource}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::this\+Source\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ae3b647e67968a2613fcf3fe5c0a9fb40}{NMEA\+\_\+\+MAX\+\_\+\+SOURCE\+\_\+\+ID}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      0\}}
+
+\end{DoxyCode}
+
+
+the first two letters of the current sentence, e.\+g. WI, GP 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_aef3bc1b4cfce3547b90042c6e7f472c9}\label{class_adafruit___g_p_s_aef3bc1b4cfce3547b90042c6e7f472c9}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!toID@{toID}}
+\index{toID@{toID}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{toID}{toID}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::to\+ID\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\+\_\+\+MAX\+\_\+\+WP\+\_\+\+ID}}\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{      0\}}
+
+\end{DoxyCode}
+
+
+id of waypoint going to on this segment of the route 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ad32955a01923ef7bc47535f32657e66c}\label{class_adafruit___g_p_s_ad32955a01923ef7bc47535f32657e66c}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!txtID@{txtID}}
+\index{txtID@{txtID}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{txtID}{txtID}}
+{\footnotesize\ttfamily int Adafruit\+\_\+\+GPS\+::txt\+ID = 0}
+
+
+
+id of the text message 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_aad5682d8705240af58b22ca430adc8ae}\label{class_adafruit___g_p_s_aad5682d8705240af58b22ca430adc8ae}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!txtN@{txtN}}
+\index{txtN@{txtN}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{txtN}{txtN}}
+{\footnotesize\ttfamily int Adafruit\+\_\+\+GPS\+::txtN = 0}
+
+
+
+the TXT sentence number 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a6dc609e12336547d76ae984f0df4257b}\label{class_adafruit___g_p_s_a6dc609e12336547d76ae984f0df4257b}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!txtTot@{txtTot}}
+\index{txtTot@{txtTot}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{txtTot}{txtTot}}
+{\footnotesize\ttfamily int Adafruit\+\_\+\+GPS\+::txt\+Tot = 0}
+
+
+
+total TXT sentences in group 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_ad293e1b1f3d1c2c35f24d56f41983876}\label{class_adafruit___g_p_s_ad293e1b1f3d1c2c35f24d56f41983876}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!txtTXT@{txtTXT}}
+\index{txtTXT@{txtTXT}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{txtTXT}{txtTXT}}
+{\footnotesize\ttfamily char Adafruit\+\_\+\+GPS\+::txt\+TXT\mbox{[}63\mbox{]} = \{0\}}
+
+
+
+text content from most recent TXT sentence 
+
+\mbox{\Hypertarget{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}\label{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!val@{val}}
+\index{val@{val}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{val}{val}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnmea__datavalue__t}{nmea\+\_\+datavalue\+\_\+t}} Adafruit\+\_\+\+GPS\+::val\mbox{[}\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\+\_\+\+MAX\+\_\+\+INDEX}}\mbox{]}}
+
+an array of data value structs, val\mbox{[}0\mbox{]} = most recent HDOP so that ockam indexing works \mbox{\Hypertarget{class_adafruit___g_p_s_af13a4d008ab2f74ff30bfc098315edea}\label{class_adafruit___g_p_s_af13a4d008ab2f74ff30bfc098315edea}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!VDOP@{VDOP}}
+\index{VDOP@{VDOP}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{VDOP}{VDOP}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} Adafruit\+\_\+\+GPS\+::\+VDOP}
+
+Vertical Dilution of Precision -\/ relative accuracy of vertical position \mbox{\Hypertarget{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}\label{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}} 
+\index{Adafruit\_GPS@{Adafruit\_GPS}!year@{year}}
+\index{year@{year}!Adafruit\_GPS@{Adafruit\_GPS}}
+\doxysubsubsection{\texorpdfstring{year}{year}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+GPS\+::year}
+
+
+
+GMT year. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_adafruit___g_p_s_8h}{Adafruit\+\_\+\+GPS.\+h}}\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_adafruit___g_p_s_8cpp}{Adafruit\+\_\+\+GPS.\+cpp}}\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_n_m_e_a__build_8cpp}{NMEA\+\_\+build.\+cpp}}\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_n_m_e_a__data_8cpp}{NMEA\+\_\+data.\+cpp}}\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_n_m_e_a__parse_8cpp}{NMEA\+\_\+parse.\+cpp}}\end{DoxyCompactItemize}

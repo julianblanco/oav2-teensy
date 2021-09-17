@@ -1,0 +1,325 @@
+\hypertarget{mavlink__msg__camera__image__captured_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+camera\+\_\+image\+\_\+captured.\+h}
+\label{mavlink__msg__camera__image__captured_8h_source}\index{lib/common/mavlink\_msg\_camera\_image\_captured.h@{lib/common/mavlink\_msg\_camera\_image\_captured.h}}
+\mbox{\hyperlink{mavlink__msg__camera__image__captured_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE CAMERA\_IMAGE\_CAPTURED PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED 263}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_ac84055ea6f6e2c4b672c053738c362f4}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_camera\_image\_captured\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_utc; \textcolor{comment}{/*< [us] Timestamp (time since UNIX epoch) in UTC. 0 for unknown.*/}}
+\DoxyCodeLine{9  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{10  int32\_t lat; \textcolor{comment}{/*< [degE7] Latitude where image was taken*/}}
+\DoxyCodeLine{11  int32\_t lon; \textcolor{comment}{/*< [degE7] Longitude where capture was taken*/}}
+\DoxyCodeLine{12  int32\_t alt; \textcolor{comment}{/*< [mm] Altitude (AMSL) where image was taken*/}}
+\DoxyCodeLine{13  int32\_t relative\_alt; \textcolor{comment}{/*< [mm] Altitude above ground*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} q[4]; \textcolor{comment}{/*<  Quaternion of camera orientation (w, x, y, z order, zero-\/rotation is 0, 0, 0, 0)*/}}
+\DoxyCodeLine{15  int32\_t image\_index; \textcolor{comment}{/*<  Zero based index of this image (image count since armed -\/1)*/}}
+\DoxyCodeLine{16  uint8\_t camera\_id; \textcolor{comment}{/*<  Camera ID (1 for first, 2 for second, etc.)*/}}
+\DoxyCodeLine{17  int8\_t capture\_result; \textcolor{comment}{/*<  Boolean indicating success (1) or failure (0) while capturing this image.*/}}
+\DoxyCodeLine{18  \textcolor{keywordtype}{char} file\_url[205]; \textcolor{comment}{/*<  URL of image taken. Either local storage or http://foo.jpg if camera provides an HTTP interface.*/}}
+\DoxyCodeLine{19 \}) mavlink\_camera\_image\_captured\_t;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN 255}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN 255}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_263\_LEN 255}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_263\_MIN\_LEN 255}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC 133}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_263\_CRC 133}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN 4}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN 205}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED \{ \(\backslash\)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    263, \(\backslash\)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{    "{}CAMERA\_IMAGE\_CAPTURED"{}}, \(\backslash\)}
+\DoxyCodeLine{36     11, \(\backslash\)}
+\DoxyCodeLine{37     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_camera\_image\_captured\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}time\_utc"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_camera\_image\_captured\_t, time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}camera\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 48, offsetof(mavlink\_camera\_image\_captured\_t, camera\_id) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_camera\_image\_captured\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 16, offsetof(mavlink\_camera\_image\_captured\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 20, offsetof(mavlink\_camera\_image\_captured\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}relative\_alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 24, offsetof(mavlink\_camera\_image\_captured\_t, relative\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}q"{}, NULL, MAVLINK\_TYPE\_FLOAT, 4, 28, offsetof(mavlink\_camera\_image\_captured\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}image\_index"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 44, offsetof(mavlink\_camera\_image\_captured\_t, image\_index) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}capture\_result"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 49, offsetof(mavlink\_camera\_image\_captured\_t, capture\_result) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}file\_url"{}, NULL, MAVLINK\_TYPE\_CHAR, 205, 50, offsetof(mavlink\_camera\_image\_captured\_t, file\_url) \}, \(\backslash\)}
+\DoxyCodeLine{48          \} \(\backslash\)}
+\DoxyCodeLine{49 \}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED \{ \(\backslash\)}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{    "{}CAMERA\_IMAGE\_CAPTURED"{}}, \(\backslash\)}
+\DoxyCodeLine{53     11, \(\backslash\)}
+\DoxyCodeLine{54     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_camera\_image\_captured\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}time\_utc"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_camera\_image\_captured\_t, time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}camera\_id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 48, offsetof(mavlink\_camera\_image\_captured\_t, camera\_id) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_camera\_image\_captured\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 16, offsetof(mavlink\_camera\_image\_captured\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 20, offsetof(mavlink\_camera\_image\_captured\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}relative\_alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 24, offsetof(mavlink\_camera\_image\_captured\_t, relative\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}q"{}, NULL, MAVLINK\_TYPE\_FLOAT, 4, 28, offsetof(mavlink\_camera\_image\_captured\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}image\_index"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 44, offsetof(mavlink\_camera\_image\_captured\_t, image\_index) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}capture\_result"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 49, offsetof(mavlink\_camera\_image\_captured\_t, capture\_result) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}file\_url"{}, NULL, MAVLINK\_TYPE\_CHAR, 205, 50, offsetof(mavlink\_camera\_image\_captured\_t, file\_url) \}, \(\backslash\)}
+\DoxyCodeLine{65          \} \(\backslash\)}
+\DoxyCodeLine{66 \}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{88 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_camera\_image\_captured\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{89                                uint32\_t time\_boot\_ms, uint64\_t time\_utc, uint8\_t camera\_id, int32\_t lat, int32\_t lon, int32\_t alt, int32\_t relative\_alt, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, int32\_t image\_index, int8\_t capture\_result, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *file\_url)}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{92     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}];}
+\DoxyCodeLine{93     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_utc);}
+\DoxyCodeLine{94     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_boot\_ms);}
+\DoxyCodeLine{95     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{96     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{97     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, alt);}
+\DoxyCodeLine{98     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 24, relative\_alt);}
+\DoxyCodeLine{99     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 44, image\_index);}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 48, camera\_id);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 49, capture\_result);}
+\DoxyCodeLine{102     \_mav\_put\_float\_array(buf, 28, q, 4);}
+\DoxyCodeLine{103     \_mav\_put\_char\_array(buf, 50, file\_url, 205);}
+\DoxyCodeLine{104         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}});}
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{106     mavlink\_camera\_image\_captured\_t packet;}
+\DoxyCodeLine{107     packet.time\_utc = time\_utc;}
+\DoxyCodeLine{108     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{109     packet.lat = lat;}
+\DoxyCodeLine{110     packet.lon = lon;}
+\DoxyCodeLine{111     packet.alt = alt;}
+\DoxyCodeLine{112     packet.relative\_alt = relative\_alt;}
+\DoxyCodeLine{113     packet.image\_index = image\_index;}
+\DoxyCodeLine{114     packet.camera\_id = camera\_id;}
+\DoxyCodeLine{115     packet.capture\_result = capture\_result;}
+\DoxyCodeLine{116     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{117     mav\_array\_memcpy(packet.file\_url, file\_url, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*205);}
+\DoxyCodeLine{118         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}});}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}};}
+\DoxyCodeLine{122     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{123 \}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{144 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_camera\_image\_captured\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{145                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{146                                    uint32\_t time\_boot\_ms,uint64\_t time\_utc,uint8\_t camera\_id,int32\_t lat,int32\_t lon,int32\_t alt,int32\_t relative\_alt,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *q,int32\_t image\_index,int8\_t capture\_result,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *file\_url)}
+\DoxyCodeLine{147 \{}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{149     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}];}
+\DoxyCodeLine{150     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_utc);}
+\DoxyCodeLine{151     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_boot\_ms);}
+\DoxyCodeLine{152     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{153     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{154     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, alt);}
+\DoxyCodeLine{155     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 24, relative\_alt);}
+\DoxyCodeLine{156     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 44, image\_index);}
+\DoxyCodeLine{157     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 48, camera\_id);}
+\DoxyCodeLine{158     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 49, capture\_result);}
+\DoxyCodeLine{159     \_mav\_put\_float\_array(buf, 28, q, 4);}
+\DoxyCodeLine{160     \_mav\_put\_char\_array(buf, 50, file\_url, 205);}
+\DoxyCodeLine{161         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}});}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{163     mavlink\_camera\_image\_captured\_t packet;}
+\DoxyCodeLine{164     packet.time\_utc = time\_utc;}
+\DoxyCodeLine{165     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{166     packet.lat = lat;}
+\DoxyCodeLine{167     packet.lon = lon;}
+\DoxyCodeLine{168     packet.alt = alt;}
+\DoxyCodeLine{169     packet.relative\_alt = relative\_alt;}
+\DoxyCodeLine{170     packet.image\_index = image\_index;}
+\DoxyCodeLine{171     packet.camera\_id = camera\_id;}
+\DoxyCodeLine{172     packet.capture\_result = capture\_result;}
+\DoxyCodeLine{173     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{174     mav\_array\_memcpy(packet.file\_url, file\_url, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*205);}
+\DoxyCodeLine{175         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}});}
+\DoxyCodeLine{176 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}};}
+\DoxyCodeLine{179     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{180 \}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{190 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_camera\_image\_captured\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_camera\_image\_captured\_t* camera\_image\_captured)}
+\DoxyCodeLine{191 \{}
+\DoxyCodeLine{192     \textcolor{keywordflow}{return} mavlink\_msg\_camera\_image\_captured\_pack(system\_id, component\_id, msg, camera\_image\_captured-\/>time\_boot\_ms, camera\_image\_captured-\/>time\_utc, camera\_image\_captured-\/>camera\_id, camera\_image\_captured-\/>lat, camera\_image\_captured-\/>lon, camera\_image\_captured-\/>alt, camera\_image\_captured-\/>relative\_alt, camera\_image\_captured-\/>q, camera\_image\_captured-\/>image\_index, camera\_image\_captured-\/>capture\_result, camera\_image\_captured-\/>file\_url);}
+\DoxyCodeLine{193 \}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{204 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_camera\_image\_captured\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_camera\_image\_captured\_t* camera\_image\_captured)}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206     \textcolor{keywordflow}{return} mavlink\_msg\_camera\_image\_captured\_pack\_chan(system\_id, component\_id, chan, msg, camera\_image\_captured-\/>time\_boot\_ms, camera\_image\_captured-\/>time\_utc, camera\_image\_captured-\/>camera\_id, camera\_image\_captured-\/>lat, camera\_image\_captured-\/>lon, camera\_image\_captured-\/>alt, camera\_image\_captured-\/>relative\_alt, camera\_image\_captured-\/>q, camera\_image\_captured-\/>image\_index, camera\_image\_captured-\/>capture\_result, camera\_image\_captured-\/>file\_url);}
+\DoxyCodeLine{207 \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{225 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_camera\_image\_captured\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, uint64\_t time\_utc, uint8\_t camera\_id, int32\_t lat, int32\_t lon, int32\_t alt, int32\_t relative\_alt, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, int32\_t image\_index, int8\_t capture\_result, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *file\_url)}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{230     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}];}
+\DoxyCodeLine{231     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_utc);}
+\DoxyCodeLine{232     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_boot\_ms);}
+\DoxyCodeLine{233     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{234     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{235     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, alt);}
+\DoxyCodeLine{236     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 24, relative\_alt);}
+\DoxyCodeLine{237     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 44, image\_index);}
+\DoxyCodeLine{238     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 48, camera\_id);}
+\DoxyCodeLine{239     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 49, capture\_result);}
+\DoxyCodeLine{240     \_mav\_put\_float\_array(buf, 28, q, 4);}
+\DoxyCodeLine{241     \_mav\_put\_char\_array(buf, 50, file\_url, 205);}
+\DoxyCodeLine{242     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}, buf, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{244     mavlink\_camera\_image\_captured\_t packet;}
+\DoxyCodeLine{245     packet.time\_utc = time\_utc;}
+\DoxyCodeLine{246     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{247     packet.lat = lat;}
+\DoxyCodeLine{248     packet.lon = lon;}
+\DoxyCodeLine{249     packet.alt = alt;}
+\DoxyCodeLine{250     packet.relative\_alt = relative\_alt;}
+\DoxyCodeLine{251     packet.image\_index = image\_index;}
+\DoxyCodeLine{252     packet.camera\_id = camera\_id;}
+\DoxyCodeLine{253     packet.capture\_result = capture\_result;}
+\DoxyCodeLine{254     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{255     mav\_array\_memcpy(packet.file\_url, file\_url, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*205);}
+\DoxyCodeLine{256     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{257 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{258 \}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{265 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_camera\_image\_captured\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_camera\_image\_captured\_t* camera\_image\_captured)}
+\DoxyCodeLine{266 \{}
+\DoxyCodeLine{267 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{268     mavlink\_msg\_camera\_image\_captured\_send(chan, camera\_image\_captured-\/>time\_boot\_ms, camera\_image\_captured-\/>time\_utc, camera\_image\_captured-\/>camera\_id, camera\_image\_captured-\/>lat, camera\_image\_captured-\/>lon, camera\_image\_captured-\/>alt, camera\_image\_captured-\/>relative\_alt, camera\_image\_captured-\/>q, camera\_image\_captured-\/>image\_index, camera\_image\_captured-\/>capture\_result, camera\_image\_captured-\/>file\_url);}
+\DoxyCodeLine{269 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{270     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)camera\_image\_captured, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{272 \}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{275 \textcolor{comment}{/*}}
+\DoxyCodeLine{276 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{277 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{278 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{279 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{280 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{281 \textcolor{comment}{ */}}
+\DoxyCodeLine{282 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_camera\_image\_captured\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, uint64\_t time\_utc, uint8\_t camera\_id, int32\_t lat, int32\_t lon, int32\_t alt, int32\_t relative\_alt, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, int32\_t image\_index, int8\_t capture\_result, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *file\_url)}
+\DoxyCodeLine{283 \{}
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{285     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{286     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_utc);}
+\DoxyCodeLine{287     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, time\_boot\_ms);}
+\DoxyCodeLine{288     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lat);}
+\DoxyCodeLine{289     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, lon);}
+\DoxyCodeLine{290     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, alt);}
+\DoxyCodeLine{291     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 24, relative\_alt);}
+\DoxyCodeLine{292     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 44, image\_index);}
+\DoxyCodeLine{293     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 48, camera\_id);}
+\DoxyCodeLine{294     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 49, capture\_result);}
+\DoxyCodeLine{295     \_mav\_put\_float\_array(buf, 28, q, 4);}
+\DoxyCodeLine{296     \_mav\_put\_char\_array(buf, 50, file\_url, 205);}
+\DoxyCodeLine{297     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}, buf, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{299     mavlink\_camera\_image\_captured\_t *packet = (mavlink\_camera\_image\_captured\_t *)msgbuf;}
+\DoxyCodeLine{300     packet-\/>time\_utc = time\_utc;}
+\DoxyCodeLine{301     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{302     packet-\/>lat = lat;}
+\DoxyCodeLine{303     packet-\/>lon = lon;}
+\DoxyCodeLine{304     packet-\/>alt = alt;}
+\DoxyCodeLine{305     packet-\/>relative\_alt = relative\_alt;}
+\DoxyCodeLine{306     packet-\/>image\_index = image\_index;}
+\DoxyCodeLine{307     packet-\/>camera\_id = camera\_id;}
+\DoxyCodeLine{308     packet-\/>capture\_result = capture\_result;}
+\DoxyCodeLine{309     mav\_array\_memcpy(packet-\/>q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{310     mav\_array\_memcpy(packet-\/>file\_url, file\_url, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*205);}
+\DoxyCodeLine{311     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}});}
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{313 \}}
+\DoxyCodeLine{314 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{318 \textcolor{comment}{// MESSAGE CAMERA\_IMAGE\_CAPTURED UNPACKING}}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320 }
+\DoxyCodeLine{326 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_camera\_image\_captured\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{327 \{}
+\DoxyCodeLine{328     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  8);}
+\DoxyCodeLine{329 \}}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{336 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_camera\_image\_captured\_get\_time\_utc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{337 \{}
+\DoxyCodeLine{338     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{339 \}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{346 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_camera\_image\_captured\_get\_camera\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{347 \{}
+\DoxyCodeLine{348     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  48);}
+\DoxyCodeLine{349 \}}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{356 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_camera\_image\_captured\_get\_lat(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{357 \{}
+\DoxyCodeLine{358     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  12);}
+\DoxyCodeLine{359 \}}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{366 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_camera\_image\_captured\_get\_lon(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{367 \{}
+\DoxyCodeLine{368     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  16);}
+\DoxyCodeLine{369 \}}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{376 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_camera\_image\_captured\_get\_alt(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{377 \{}
+\DoxyCodeLine{378     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  20);}
+\DoxyCodeLine{379 \}}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{386 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_camera\_image\_captured\_get\_relative\_alt(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{387 \{}
+\DoxyCodeLine{388     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  24);}
+\DoxyCodeLine{389 \}}
+\DoxyCodeLine{390 }
+\DoxyCodeLine{396 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_camera\_image\_captured\_get\_q(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *q)}
+\DoxyCodeLine{397 \{}
+\DoxyCodeLine{398     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, q, 4,  28);}
+\DoxyCodeLine{399 \}}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{406 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_camera\_image\_captured\_get\_image\_index(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{407 \{}
+\DoxyCodeLine{408     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  44);}
+\DoxyCodeLine{409 \}}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{416 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_camera\_image\_captured\_get\_capture\_result(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{417 \{}
+\DoxyCodeLine{418     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  49);}
+\DoxyCodeLine{419 \}}
+\DoxyCodeLine{420 }
+\DoxyCodeLine{426 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_camera\_image\_captured\_get\_file\_url(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *file\_url)}
+\DoxyCodeLine{427 \{}
+\DoxyCodeLine{428     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, file\_url, 205,  50);}
+\DoxyCodeLine{429 \}}
+\DoxyCodeLine{430 }
+\DoxyCodeLine{437 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_camera\_image\_captured\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_camera\_image\_captured\_t* camera\_image\_captured)}
+\DoxyCodeLine{438 \{}
+\DoxyCodeLine{439 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{440     camera\_image\_captured-\/>time\_utc = mavlink\_msg\_camera\_image\_captured\_get\_time\_utc(msg);}
+\DoxyCodeLine{441     camera\_image\_captured-\/>time\_boot\_ms = mavlink\_msg\_camera\_image\_captured\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{442     camera\_image\_captured-\/>lat = mavlink\_msg\_camera\_image\_captured\_get\_lat(msg);}
+\DoxyCodeLine{443     camera\_image\_captured-\/>lon = mavlink\_msg\_camera\_image\_captured\_get\_lon(msg);}
+\DoxyCodeLine{444     camera\_image\_captured-\/>alt = mavlink\_msg\_camera\_image\_captured\_get\_alt(msg);}
+\DoxyCodeLine{445     camera\_image\_captured-\/>relative\_alt = mavlink\_msg\_camera\_image\_captured\_get\_relative\_alt(msg);}
+\DoxyCodeLine{446     mavlink\_msg\_camera\_image\_captured\_get\_q(msg, camera\_image\_captured-\/>q);}
+\DoxyCodeLine{447     camera\_image\_captured-\/>image\_index = mavlink\_msg\_camera\_image\_captured\_get\_image\_index(msg);}
+\DoxyCodeLine{448     camera\_image\_captured-\/>camera\_id = mavlink\_msg\_camera\_image\_captured\_get\_camera\_id(msg);}
+\DoxyCodeLine{449     camera\_image\_captured-\/>capture\_result = mavlink\_msg\_camera\_image\_captured\_get\_capture\_result(msg);}
+\DoxyCodeLine{450     mavlink\_msg\_camera\_image\_captured\_get\_file\_url(msg, camera\_image\_captured-\/>file\_url);}
+\DoxyCodeLine{451 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{452         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}};}
+\DoxyCodeLine{453         memset(camera\_image\_captured, 0, \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}});}
+\DoxyCodeLine{454     memcpy(camera\_image\_captured, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{455 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{456 \}}
+
+\end{DoxyCode}

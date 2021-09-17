@@ -1,0 +1,111 @@
+\hypertarget{mavlink__msg__global__vision__position__estimate_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+global\+\_\+vision\+\_\+position\+\_\+estimate.h File Reference}
+\label{mavlink__msg__global__vision__position__estimate_8h}\index{lib/common/mavlink\_msg\_global\_vision\_position\_estimate.h@{lib/common/mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_a32eb786a73cbdc701ade12c06f17824b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE}}~101
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_ae73d55de5ca6161e00dff5e92602c12e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+LEN}}~116
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_a3db9f7bc475407af43629e5fb9ee1244}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+MIN\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_aaf8f11063fae355d4e10217f33b41418}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+101\+\_\+\+LEN}}~116
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_aa1fdba8cb34b0c6d5c553605ec81fb8a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+101\+\_\+\+MIN\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_add842f95b536b6614e4b2fe9f67f43e8}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+CRC}}~102
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_a178d7f3f76db2b0f83c58f65e83a4a96}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+101\+\_\+\+CRC}}~102
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_a03810989fe43aeec707440d6f7fdba99}{MAVLINK\+\_\+\+MSG\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+FIELD\+\_\+\+COVARIANCE\+\_\+\+LEN}}~21
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_a413577304fc33a3bcda4af58b97508cc}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__global__vision__position__estimate_8h_a089b7b8ca2d58d0f5d841dca844e8689}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+global\+\_\+vision\+\_\+position\+\_\+estimate\+\_\+t \{ uint64\+\_\+t usec;float x;float y;float z;float roll;float pitch;float yaw;float covariance\mbox{[}21\mbox{]};\}) mavlink\+\_\+global\+\_\+vision\+\_\+position\+\_\+estimate\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_a413577304fc33a3bcda4af58b97508cc}\label{mavlink__msg__global__vision__position__estimate_8h_a413577304fc33a3bcda4af58b97508cc}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MESSAGE\_INFO\_GLOBAL\_VISION\_POSITION\_ESTIMATE@{MAVLINK\_MESSAGE\_INFO\_GLOBAL\_VISION\_POSITION\_ESTIMATE}}
+\index{MAVLINK\_MESSAGE\_INFO\_GLOBAL\_VISION\_POSITION\_ESTIMATE@{MAVLINK\_MESSAGE\_INFO\_GLOBAL\_VISION\_POSITION\_ESTIMATE}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_GLOBAL\_VISION\_POSITION\_ESTIMATE}{MAVLINK\_MESSAGE\_INFO\_GLOBAL\_VISION\_POSITION\_ESTIMATE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}GLOBAL\_VISION\_POSITION\_ESTIMATE"{}}, \(\backslash\)}
+\DoxyCodeLine{    8, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_global\_vision\_position\_estimate\_t, usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}x"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_global\_vision\_position\_estimate\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}y"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_global\_vision\_position\_estimate\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}z"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_global\_vision\_position\_estimate\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}roll"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 20, offsetof(mavlink\_global\_vision\_position\_estimate\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 24, offsetof(mavlink\_global\_vision\_position\_estimate\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yaw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 28, offsetof(mavlink\_global\_vision\_position\_estimate\_t, yaw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}covariance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 21, 32, offsetof(mavlink\_global\_vision\_position\_estimate\_t, covariance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_a03810989fe43aeec707440d6f7fdba99}\label{mavlink__msg__global__vision__position__estimate_8h_a03810989fe43aeec707440d6f7fdba99}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_FIELD\_COVARIANCE\_LEN@{MAVLINK\_MSG\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}}
+\index{MAVLINK\_MSG\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_FIELD\_COVARIANCE\_LEN@{MAVLINK\_MSG\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}{MAVLINK\_MSG\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+FIELD\+\_\+\+COVARIANCE\+\_\+\+LEN~21}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_a178d7f3f76db2b0f83c58f65e83a4a96}\label{mavlink__msg__global__vision__position__estimate_8h_a178d7f3f76db2b0f83c58f65e83a4a96}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_101\_CRC@{MAVLINK\_MSG\_ID\_101\_CRC}}
+\index{MAVLINK\_MSG\_ID\_101\_CRC@{MAVLINK\_MSG\_ID\_101\_CRC}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_101\_CRC}{MAVLINK\_MSG\_ID\_101\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+101\+\_\+\+CRC~102}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_aaf8f11063fae355d4e10217f33b41418}\label{mavlink__msg__global__vision__position__estimate_8h_aaf8f11063fae355d4e10217f33b41418}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_101\_LEN@{MAVLINK\_MSG\_ID\_101\_LEN}}
+\index{MAVLINK\_MSG\_ID\_101\_LEN@{MAVLINK\_MSG\_ID\_101\_LEN}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_101\_LEN}{MAVLINK\_MSG\_ID\_101\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+101\+\_\+\+LEN~116}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_aa1fdba8cb34b0c6d5c553605ec81fb8a}\label{mavlink__msg__global__vision__position__estimate_8h_aa1fdba8cb34b0c6d5c553605ec81fb8a}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_101\_MIN\_LEN@{MAVLINK\_MSG\_ID\_101\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_101\_MIN\_LEN@{MAVLINK\_MSG\_ID\_101\_MIN\_LEN}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_101\_MIN\_LEN}{MAVLINK\_MSG\_ID\_101\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+101\+\_\+\+MIN\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_a32eb786a73cbdc701ade12c06f17824b}\label{mavlink__msg__global__vision__position__estimate_8h_a32eb786a73cbdc701ade12c06f17824b}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE}}
+\index{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE}{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE~101}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_add842f95b536b6614e4b2fe9f67f43e8}\label{mavlink__msg__global__vision__position__estimate_8h_add842f95b536b6614e4b2fe9f67f43e8}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_CRC@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_CRC@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_CRC}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_CRC}{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+CRC~102}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_ae73d55de5ca6161e00dff5e92602c12e}\label{mavlink__msg__global__vision__position__estimate_8h_ae73d55de5ca6161e00dff5e92602c12e}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_LEN@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_LEN@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_LEN}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_LEN}{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+LEN~116}
+
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_a3db9f7bc475407af43629e5fb9ee1244}\label{mavlink__msg__global__vision__position__estimate_8h_a3db9f7bc475407af43629e5fb9ee1244}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_MIN\_LEN}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_GLOBAL\_VISION\_POSITION\_ESTIMATE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+GLOBAL\+\_\+\+VISION\+\_\+\+POSITION\+\_\+\+ESTIMATE\+\_\+\+MIN\+\_\+\+LEN~32}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__global__vision__position__estimate_8h_a089b7b8ca2d58d0f5d841dca844e8689}\label{mavlink__msg__global__vision__position__estimate_8h_a089b7b8ca2d58d0f5d841dca844e8689}} 
+\index{mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_global\_vision\_position\_estimate.h@{mavlink\_msg\_global\_vision\_position\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+global\+\_\+vision\+\_\+position\+\_\+estimate\+\_\+t \{ uint64\+\_\+t usec;float x;float y;float z;float roll;float pitch;float yaw;float covariance\mbox{[}21\mbox{]};\}}]{ }\end{DoxyParamCaption})}
+

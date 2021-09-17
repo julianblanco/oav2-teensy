@@ -1,0 +1,25 @@
+\hypertarget{task_8h_source}{}\doxysection{task.\+h}
+\label{task_8h_source}\index{include/task.h@{include/task.h}}
+\mbox{\hyperlink{task_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_task\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_task\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <FreeRTOS\_TEENSY4.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}read\_write\_lock.hpp"{}}}
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7 \textcolor{keyword}{public}:}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{setup}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, UBaseType\_t priority);}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{start}}() = 0; \textcolor{comment}{//method}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a2a04109c666505a56a94a091e6860d03}{\_real\_entry}}(\textcolor{keywordtype}{void} *param);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     TaskHandle\_t m\_handle;}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

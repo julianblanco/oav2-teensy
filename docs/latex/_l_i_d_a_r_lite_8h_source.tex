@@ -1,0 +1,52 @@
+\hypertarget{_l_i_d_a_r_lite_8h_source}{}\doxysection{LIDARLite.\+h}
+\label{_l_i_d_a_r_lite_8h_source}\index{lib/LIDAR-\/Lite/src/LIDARLite.h@{lib/LIDAR-\/Lite/src/LIDARLite.h}}
+\mbox{\hyperlink{_l_i_d_a_r_lite_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{}}
+\DoxyCodeLine{3 \textcolor{comment}{  LIDARLite Arduino Library}}
+\DoxyCodeLine{4 \textcolor{comment}{  LIDARLite.h}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{  This library provides quick access to all the basic functions of LIDAR-\/Lite}}
+\DoxyCodeLine{7 \textcolor{comment}{  via the Arduino interface. Additionally, it can provide a user of any}}
+\DoxyCodeLine{8 \textcolor{comment}{  platform with a template for their own application code.}}
+\DoxyCodeLine{9 \textcolor{comment}{}}
+\DoxyCodeLine{10 \textcolor{comment}{  Copyright (c) 2016 Garmin Ltd. or its subsidiaries.}}
+\DoxyCodeLine{11 \textcolor{comment}{}}
+\DoxyCodeLine{12 \textcolor{comment}{  Licensed under the Apache License, Version 2.0 (the "{}License"{});}}
+\DoxyCodeLine{13 \textcolor{comment}{  you may not use this file except in compliance with the License.}}
+\DoxyCodeLine{14 \textcolor{comment}{  You may obtain a copy of the License at}}
+\DoxyCodeLine{15 \textcolor{comment}{}}
+\DoxyCodeLine{16 \textcolor{comment}{  http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{  Unless required by applicable law or agreed to in writing, software}}
+\DoxyCodeLine{19 \textcolor{comment}{  distributed under the License is distributed on an "{}AS IS"{} BASIS,}}
+\DoxyCodeLine{20 \textcolor{comment}{  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}}
+\DoxyCodeLine{21 \textcolor{comment}{  See the License for the specific language governing permissions and}}
+\DoxyCodeLine{22 \textcolor{comment}{  limitations under the License.}}
+\DoxyCodeLine{23 \textcolor{comment}{}}
+\DoxyCodeLine{24 \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#ifndef LIDARLite\_h}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define LIDARLite\_h}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define LIDARLITE\_ADDR\_DEFAULT 0x62}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{keyword}{class }\mbox{\hyperlink{class_l_i_d_a_r_lite}{LIDARLite}}}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34   \textcolor{keyword}{public}:}
+\DoxyCodeLine{35       \mbox{\hyperlink{class_l_i_d_a_r_lite_a160a9704c65c980691c388982ab887c0}{LIDARLite}}();}
+\DoxyCodeLine{36       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_afcaa12b2ea8ea674aaf97cd552fa573d}{begin}}(\textcolor{keywordtype}{int} = 0, \textcolor{keywordtype}{bool} = \textcolor{keyword}{false}, \textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{37       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a528543696ed39934f440be167dad3326}{configure}}(\textcolor{keywordtype}{int} = 0, \textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{38       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a2eeabb7f2223d6813ff77c5b02ae8bf3}{setI2Caddr}}(\textcolor{keywordtype}{char}, \textcolor{keywordtype}{char}, \textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{39       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_ad6e5e19fbc0e9307148d7b161cf168e2}{reset}}(\textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{40       \textcolor{keywordtype}{int} \mbox{\hyperlink{class_l_i_d_a_r_lite_a4a8e57f982b83a08e84dbe8d734d25e8}{distance}}(\textcolor{keywordtype}{bool} = \textcolor{keyword}{true}, \textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{41       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_adb5b8711ff4a53eb623775012c3f8ff5}{write}}(\textcolor{keywordtype}{char}, \textcolor{keywordtype}{char}, \textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{42       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a2260d699ed61978ab4db10958d6b4a10}{read}}(\textcolor{keywordtype}{char}, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{byte}*, \textcolor{keywordtype}{bool}, \textcolor{keywordtype}{char});}
+\DoxyCodeLine{43       \textcolor{keywordtype}{void} \mbox{\hyperlink{class_l_i_d_a_r_lite_a4835a40a1f92f20c42babe6073071fc6}{correlationRecordToSerial}}(\textcolor{keywordtype}{char} = \textcolor{charliteral}{'\(\backslash\)n'}, \textcolor{keywordtype}{int} = 256, \textcolor{keywordtype}{char} = \mbox{\hyperlink{_l_i_d_a_r_lite_8h_af9f28fbebf4d92edb85af54a6535f789}{LIDARLITE\_ADDR\_DEFAULT}});}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

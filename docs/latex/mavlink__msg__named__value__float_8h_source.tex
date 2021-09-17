@@ -1,0 +1,188 @@
+\hypertarget{mavlink__msg__named__value__float_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+named\+\_\+value\+\_\+float.\+h}
+\label{mavlink__msg__named__value__float_8h_source}\index{lib/common/mavlink\_msg\_named\_value\_float.h@{lib/common/mavlink\_msg\_named\_value\_float.h}}
+\mbox{\hyperlink{mavlink__msg__named__value__float_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE NAMED\_VALUE\_FLOAT PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT 251}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__named__value__float_8h_adbaa06a5ea97fc1c9b831d49ed40fe68}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_named\_value\_float\_t \{}
+\DoxyCodeLine{8  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} value; \textcolor{comment}{/*<  Floating point value*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{char} name[10]; \textcolor{comment}{/*<  Name of the debug variable*/}}
+\DoxyCodeLine{11 \}) mavlink\_named\_value\_float\_t;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN 18}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN 18}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_251\_LEN 18}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_251\_MIN\_LEN 18}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC 170}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_251\_CRC 170}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_NAMED\_VALUE\_FLOAT\_FIELD\_NAME\_LEN 10}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_NAMED\_VALUE\_FLOAT \{ \(\backslash\)}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{    251, \(\backslash\)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{    "{}NAMED\_VALUE\_FLOAT"{}}, \(\backslash\)}
+\DoxyCodeLine{27     3, \(\backslash\)}
+\DoxyCodeLine{28     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_named\_value\_float\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{29          \{ "{}name"{}, NULL, MAVLINK\_TYPE\_CHAR, 10, 8, offsetof(mavlink\_named\_value\_float\_t, name) \}, \(\backslash\)}
+\DoxyCodeLine{30          \{ "{}value"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 4, offsetof(mavlink\_named\_value\_float\_t, value) \}, \(\backslash\)}
+\DoxyCodeLine{31          \} \(\backslash\)}
+\DoxyCodeLine{32 \}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_NAMED\_VALUE\_FLOAT \{ \(\backslash\)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{    "{}NAMED\_VALUE\_FLOAT"{}}, \(\backslash\)}
+\DoxyCodeLine{36     3, \(\backslash\)}
+\DoxyCodeLine{37     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_named\_value\_float\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}name"{}, NULL, MAVLINK\_TYPE\_CHAR, 10, 8, offsetof(mavlink\_named\_value\_float\_t, name) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}value"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 4, offsetof(mavlink\_named\_value\_float\_t, value) \}, \(\backslash\)}
+\DoxyCodeLine{40          \} \(\backslash\)}
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{55 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_named\_value\_float\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{56                                uint32\_t time\_boot\_ms, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keywordtype}{float} value)}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}];}
+\DoxyCodeLine{60     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{61     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, value);}
+\DoxyCodeLine{62     \_mav\_put\_char\_array(buf, 8, name, 10);}
+\DoxyCodeLine{63         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}});}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{65     mavlink\_named\_value\_float\_t packet;}
+\DoxyCodeLine{66     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{67     packet.value = value;}
+\DoxyCodeLine{68     mav\_array\_memcpy(packet.name, name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*10);}
+\DoxyCodeLine{69         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}});}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}};}
+\DoxyCodeLine{73     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{74 \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{87 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_named\_value\_float\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{88                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{89                                    uint32\_t time\_boot\_ms,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name,\textcolor{keywordtype}{float} value)}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{92     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}];}
+\DoxyCodeLine{93     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{94     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, value);}
+\DoxyCodeLine{95     \_mav\_put\_char\_array(buf, 8, name, 10);}
+\DoxyCodeLine{96         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}});}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{98     mavlink\_named\_value\_float\_t packet;}
+\DoxyCodeLine{99     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{100     packet.value = value;}
+\DoxyCodeLine{101     mav\_array\_memcpy(packet.name, name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*10);}
+\DoxyCodeLine{102         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}});}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}};}
+\DoxyCodeLine{106     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{107 \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{117 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_named\_value\_float\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_named\_value\_float\_t* named\_value\_float)}
+\DoxyCodeLine{118 \{}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} mavlink\_msg\_named\_value\_float\_pack(system\_id, component\_id, msg, named\_value\_float-\/>time\_boot\_ms, named\_value\_float-\/>name, named\_value\_float-\/>value);}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{131 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_named\_value\_float\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_named\_value\_float\_t* named\_value\_float)}
+\DoxyCodeLine{132 \{}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} mavlink\_msg\_named\_value\_float\_pack\_chan(system\_id, component\_id, chan, msg, named\_value\_float-\/>time\_boot\_ms, named\_value\_float-\/>name, named\_value\_float-\/>value);}
+\DoxyCodeLine{134 \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_named\_value\_float\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keywordtype}{float} value)}
+\DoxyCodeLine{147 \{}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{149     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}];}
+\DoxyCodeLine{150     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{151     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, value);}
+\DoxyCodeLine{152     \_mav\_put\_char\_array(buf, 8, name, 10);}
+\DoxyCodeLine{153     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}}, buf, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{155     mavlink\_named\_value\_float\_t packet;}
+\DoxyCodeLine{156     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{157     packet.value = value;}
+\DoxyCodeLine{158     mav\_array\_memcpy(packet.name, name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*10);}
+\DoxyCodeLine{159     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{161 \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{168 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_named\_value\_float\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_named\_value\_float\_t* named\_value\_float)}
+\DoxyCodeLine{169 \{}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{171     mavlink\_msg\_named\_value\_float\_send(chan, named\_value\_float-\/>time\_boot\_ms, named\_value\_float-\/>name, named\_value\_float-\/>value);}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{173     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)named\_value\_float, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{174 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{175 \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{178 \textcolor{comment}{/*}}
+\DoxyCodeLine{179 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{180 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{181 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{182 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{183 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{184 \textcolor{comment}{ */}}
+\DoxyCodeLine{185 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_named\_value\_float\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keywordtype}{float} value)}
+\DoxyCodeLine{186 \{}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{188     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{189     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{190     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 4, value);}
+\DoxyCodeLine{191     \_mav\_put\_char\_array(buf, 8, name, 10);}
+\DoxyCodeLine{192     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}}, buf, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{194     mavlink\_named\_value\_float\_t *packet = (mavlink\_named\_value\_float\_t *)msgbuf;}
+\DoxyCodeLine{195     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{196     packet-\/>value = value;}
+\DoxyCodeLine{197     mav\_array\_memcpy(packet-\/>name, name, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*10);}
+\DoxyCodeLine{198     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a05b6dcc7e2231b78bee3b4d10cef1dd8}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ab4270765ec547aea7335f38e08a004f7}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_a482606bd5a3cdf0aef96968de1fff10a}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_CRC}});}
+\DoxyCodeLine{199 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{200 \}}
+\DoxyCodeLine{201 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 \textcolor{comment}{// MESSAGE NAMED\_VALUE\_FLOAT UNPACKING}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 }
+\DoxyCodeLine{213 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_named\_value\_float\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{214 \{}
+\DoxyCodeLine{215     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{216 \}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{223 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_named\_value\_float\_get\_name(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *name)}
+\DoxyCodeLine{224 \{}
+\DoxyCodeLine{225     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, name, 10,  8);}
+\DoxyCodeLine{226 \}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{233 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_named\_value\_float\_get\_value(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{234 \{}
+\DoxyCodeLine{235     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  4);}
+\DoxyCodeLine{236 \}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{244 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_named\_value\_float\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_named\_value\_float\_t* named\_value\_float)}
+\DoxyCodeLine{245 \{}
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{247     named\_value\_float-\/>time\_boot\_ms = mavlink\_msg\_named\_value\_float\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{248     named\_value\_float-\/>value = mavlink\_msg\_named\_value\_float\_get\_value(msg);}
+\DoxyCodeLine{249     mavlink\_msg\_named\_value\_float\_get\_name(msg, named\_value\_float-\/>name);}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{251         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}};}
+\DoxyCodeLine{252         memset(named\_value\_float, 0, \mbox{\hyperlink{mavlink__msg__named__value__float_8h_ad413965885cf6597dea2fdfdd9521f10}{MAVLINK\_MSG\_ID\_NAMED\_VALUE\_FLOAT\_LEN}});}
+\DoxyCodeLine{253     memcpy(named\_value\_float, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{255 \}}
+
+\end{DoxyCode}

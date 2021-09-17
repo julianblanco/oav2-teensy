@@ -1,0 +1,455 @@
+\hypertarget{_n_m_e_a__data_8cpp_source}{}\doxysection{NMEA\+\_\+data.\+cpp}
+\label{_n_m_e_a__data_8cpp_source}\index{lib/Adafruit\_GPS\_Library/src/NMEA\_data.cpp@{lib/Adafruit\_GPS\_Library/src/NMEA\_data.cpp}}
+\mbox{\hyperlink{_n_m_e_a__data_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00001}00001 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00036}00036 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00038}00038 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_adafruit___g_p_s_8h}{Adafruit\_GPS.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00040}00040 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00049}00049 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00050}\mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{00050}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{Adafruit\_GPS::newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} v) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00051}00051 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00052}00052   \textcolor{comment}{//  Serial.println();Serial.print(idx);Serial.print("{}, "{}); Serial.println(v);}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00053}00053   \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}} = v; \textcolor{comment}{// update the value}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00055}00055   \textcolor{comment}{// update the smoothed verion}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00056}00056   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}{isCompoundAngle}}(idx)) \{ \textcolor{comment}{// angle with sin/cos component recording}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00057}00057     \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}((\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}})(idx + 1), sin(v / (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})RAD\_TO\_DEG));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00058}00058     \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}((\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}})(idx + 2), cos(v / (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})RAD\_TO\_DEG));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00059}00059   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00060}00060   \textcolor{comment}{// weighting factor for smoothing depends on delta t / tau}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00061}00061   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} w =}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00062}00062       min((\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})1.0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00063}00063           (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})(millis() -\/ \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].lastUpdate) / \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].response);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00064}00064   \textcolor{comment}{// default smoothing}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00065}00065   \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} = (1.0f -\/ w) * \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].smoothed + w * v;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00066}00066   \textcolor{comment}{// special smoothing for some angle types}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00067}00067   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type == \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\_COMPASS\_ANGLE\_SIN}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00068}00068     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} =}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00069}00069         \mbox{\hyperlink{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}{compassAngle}}(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx + 1].smoothed, \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx + 2].smoothed);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00070}00070   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type == \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}{NMEA\_BOAT\_ANGLE\_SIN}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00071}00071     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} = \mbox{\hyperlink{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}{boatAngle}}(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx + 1].smoothed, \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx + 2].smoothed);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00072}00072   \textcolor{comment}{// some types just don't make sense to smooth -\/-\/ use latest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00073}00073   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type == \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00074}00074     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00075}00075   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type == \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a7bc54aef98d4ed5daa02cb521e386a6f}{NMEA\_COMPASS\_ANGLE}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00076}00076     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00077}00077   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type == \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a34ae709a17b026e87e3ff3c15be18b2a}{NMEA\_DDMM}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00078}00078     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00079}00079   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type == \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a4284cc96e4113988a1e57f1de8c9b3bf}{NMEA\_HHMMSS}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00080}00080     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00082}00082   \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_ad19f5539f1b0524e3e8b2df9e3a07ae8}{lastUpdate}} = millis(); \textcolor{comment}{// take a time stamp}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00083}00083   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist) \{            \textcolor{comment}{// there's a history struct for this tag}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00084}00084     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} = (millis() -\/ \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a44a9259e5426c52c809e44ae22d67fa6}{lastHistory}}) / 1000;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00085}00085     \textcolor{comment}{// do an update if the time has come, or if this is the first time through}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00086}00086     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} >= \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>historyInterval ||}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00087}00087         \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a44a9259e5426c52c809e44ae22d67fa6}{lastHistory}} == 0) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00089}00089       \textcolor{comment}{// move the old history back in time by one step}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00090}00090       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}{n}} -\/ 1); i++)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00091}00091         \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>data[i] = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a59f3003809801affc387b54971f5d32b}{data}}[i + 1];}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00093}00093       \textcolor{comment}{// Create the new entry, scaling and offsetting the value to fit into an}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00094}00094       \textcolor{comment}{// integer, and based on the smoothed value.}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00095}00095       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a59f3003809801affc387b54971f5d32b}{data}}[\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}{n}} -\/ 1] =}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00096}00096           \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a4c98f18694ee688d7c4ff2d4d6941739}{scale}} * (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}} -\/ \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a54afeb9a77cf9595d8516aded551bf44}{offset}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00097}00097       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a44a9259e5426c52c809e44ae22d67fa6}{lastHistory}} = millis();}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00098}00098     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00099}00099   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00100}00100 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00101}00101 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00103}00103 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00112}00112 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00113}00113 \textcolor{keywordtype}{void} Adafruit\_GPS::data\_init() \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00114}00114 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00115}00115   \textcolor{comment}{// fill all the data values with nothing}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00116}00116   \textcolor{keyword}{static} \textcolor{keywordtype}{char} c[] = \textcolor{stringliteral}{"{}NUL"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00117}00117   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < (int)\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00118}00118     \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}((\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}})i, c, NULL, NULL, 0, (\mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\_value\_type\_t}})0);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00119}00119   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00121}00121   \textcolor{comment}{// fill selected data values with the relevant information and pointers}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00122}00122   \textcolor{keyword}{static} \textcolor{keywordtype}{char} BoatSpeedfmt[] = \textcolor{stringliteral}{"{}\%6.2f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00123}00123   \textcolor{keyword}{static} \textcolor{keywordtype}{char} WindSpeedfmt[] = \textcolor{stringliteral}{"{}\%6.1f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00124}00124   \textcolor{keyword}{static} \textcolor{keywordtype}{char} Speedunit[] = \textcolor{stringliteral}{"{}knots"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00125}00125   \textcolor{keyword}{static} \textcolor{keywordtype}{char} Anglefmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00126}00126   \textcolor{keyword}{static} \textcolor{keywordtype}{char} BoatAngleunit[] = \textcolor{stringliteral}{"{}Degrees"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00127}00127   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TrueAngleunit[] = \textcolor{stringliteral}{"{}Deg True"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00128}00128   \textcolor{keyword}{static} \textcolor{keywordtype}{char} MagAngleunit[] = \textcolor{stringliteral}{"{}Deg Mag"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00130}00130   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HDOPlabel[] = \textcolor{stringliteral}{"{}HDOP"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00131}00131   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\_HDOP}}, HDOPlabel);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00133}00133   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LATlabel[] = \textcolor{stringliteral}{"{}Lat"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00134}00134   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LATfmt[] = \textcolor{stringliteral}{"{}\%9.4f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00135}00135   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LATunit[] = \textcolor{stringliteral}{"{}DDD.dddd"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00136}00136   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00137}00137       \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\_LAT}}, LATlabel, LATfmt, LATunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00138}00138       \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}}); \textcolor{comment}{// angle from -\/180 to 180, or actually -\/90 to 90 for lat}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00140}00140   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LONlabel[] = \textcolor{stringliteral}{"{}Lon"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00141}00141   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\_LON}}, LONlabel, LATfmt, LATunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00142}00142                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}}); \textcolor{comment}{// angle from -\/180 to 180}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00144}00144   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LATWPlabel[] = \textcolor{stringliteral}{"{}WP Lat"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00145}00145   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a192af66d3d405dcd64314dd2052aa066}{NMEA\_LATWP}}, LATWPlabel, LATfmt, LATunit, 0, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00147}00147   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LONWPlabel[] = \textcolor{stringliteral}{"{}WP Lon"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00148}00148   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7c7af90260edd7f77f2c5d5f3996da8c}{NMEA\_LONWP}}, LONWPlabel, LATfmt, LATunit, 0, \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00150}00150   \textcolor{keyword}{static} \textcolor{keywordtype}{char} SOGlabel[] = \textcolor{stringliteral}{"{}SOG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00151}00151   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ac0740cafb89c58378223849d33770d5f}{NMEA\_SOG}}, SOGlabel, BoatSpeedfmt, Speedunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00153}00153   \textcolor{keyword}{static} \textcolor{keywordtype}{char} COGlabel[] = \textcolor{stringliteral}{"{}COG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00154}00154   \textcolor{comment}{// types with sin/cos need two extra spots in the values matrix!}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00155}00155   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0dc2497e13496f5f3b4f23cd4626664d}{NMEA\_COG}}, COGlabel, Anglefmt, TrueAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00156}00156                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\_COMPASS\_ANGLE\_SIN}}); \textcolor{comment}{// type: 0-\/360 angle with sin/cos 11}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00158}00158   \textcolor{keyword}{static} \textcolor{keywordtype}{char} COGWPlabel[] = \textcolor{stringliteral}{"{}WP COG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00159}00159   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abca6e3662f289de96485a385ff658b00}{NMEA\_COGWP}}, COGWPlabel, Anglefmt, TrueAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00160}00160                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a7bc54aef98d4ed5daa02cb521e386a6f}{NMEA\_COMPASS\_ANGLE}}); \textcolor{comment}{// type: angle 0-\/360 1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00162}00162   \textcolor{keyword}{static} \textcolor{keywordtype}{char} XTElabel[] = \textcolor{stringliteral}{"{}XTE"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00163}00163   \textcolor{keyword}{static} \textcolor{keywordtype}{char} XTEfmt[] = \textcolor{stringliteral}{"{}\%6.2f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00164}00164   \textcolor{keyword}{static} \textcolor{keywordtype}{char} XTEunit[] = \textcolor{stringliteral}{"{}NM"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00165}00165   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}{NMEA\_XTE}}, XTElabel, XTEfmt, XTEunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00167}00167   \textcolor{keyword}{static} \textcolor{keywordtype}{char} DISTWPlabel[] = \textcolor{stringliteral}{"{}WP Dist"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00168}00168   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1ef9e86aba876eedca5c4f2f38b72991}{NMEA\_DISTWP}}, DISTWPlabel, XTEfmt, XTEunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00170}00170   \textcolor{keyword}{static} \textcolor{keywordtype}{char} AWAlabel[] = \textcolor{stringliteral}{"{}AWA"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00171}00171   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}{NMEA\_AWA}}, AWAlabel, Anglefmt, BoatAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00172}00172                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}{NMEA\_BOAT\_ANGLE\_SIN}}); \textcolor{comment}{// type: +-\/180 angle with sin/cos 12}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00174}00174   \textcolor{keyword}{static} \textcolor{keywordtype}{char} AWSlabel[] = \textcolor{stringliteral}{"{}AWS"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00175}00175   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}{NMEA\_AWS}}, AWSlabel, WindSpeedfmt, Speedunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00176}00176 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00177}00177   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TWAlabel[] = \textcolor{stringliteral}{"{}TWA"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00178}00178   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}{NMEA\_TWA}}, TWAlabel, Anglefmt, BoatAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00179}00179                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a47d8534d4e565ff506f26553081989b2}{NMEA\_BOAT\_ANGLE\_SIN}}); \textcolor{comment}{// type: +-\/180 angle with sin/cos 12}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00181}00181   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TWDlabel[] = \textcolor{stringliteral}{"{}TWD"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00182}00182   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a621aa4c4d29b1a6c0a6348cf6bc0fe77}{NMEA\_TWD}}, TWDlabel, Anglefmt, TrueAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00183}00183                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\_COMPASS\_ANGLE\_SIN}}); \textcolor{comment}{// type: 0-\/360 angle with sin/cos 11}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00185}00185   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TWSlabel[] = \textcolor{stringliteral}{"{}TWS"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00186}00186   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}{NMEA\_TWS}}, TWSlabel, WindSpeedfmt, Speedunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00188}00188   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VMGlabel[] = \textcolor{stringliteral}{"{}VMG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00189}00189   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}{NMEA\_VMG}}, VMGlabel, BoatSpeedfmt, Speedunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00191}00191   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VMGWPlabel[] = \textcolor{stringliteral}{"{}WP VMG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00192}00192   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}{NMEA\_VMGWP}}, VMGWPlabel, BoatSpeedfmt, Speedunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00194}00194   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HEELlabel[] = \textcolor{stringliteral}{"{}Heel"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00195}00195   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HEELunit[] = \textcolor{stringliteral}{"{}Deg Stbd"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00196}00196   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a91e791eb52bd523a25057c2e56adb862}{NMEA\_HEEL}}, HEELlabel, Anglefmt, HEELunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00197}00197                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}}); \textcolor{comment}{// type: angle +/-\/180 2}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00199}00199   \textcolor{keyword}{static} \textcolor{keywordtype}{char} PITCHlabel[] = \textcolor{stringliteral}{"{}Pitch"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00200}00200   \textcolor{keyword}{static} \textcolor{keywordtype}{char} PITCHunit[] = \textcolor{stringliteral}{"{}Deg Bow Up"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00201}00201   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9f3c01dbb1008cd0269e606cc5c2acea}{NMEA\_PITCH}}, PITCHlabel, Anglefmt, PITCHunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00202}00202                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab819712b49bbf80969f1dead983b1031}{NMEA\_BOAT\_ANGLE}}); \textcolor{comment}{// type: angle +/-\/180 2}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00203}00203   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HDGlabel[] = \textcolor{stringliteral}{"{}HDG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00204}00204   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\_HDG}}, HDGlabel, Anglefmt, MagAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00205}00205                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\_COMPASS\_ANGLE\_SIN}}); \textcolor{comment}{// type: 0-\/360 angle with sin/cos 11}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00207}00207   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HDTlabel[] = \textcolor{stringliteral}{"{}HDG"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00208}00208   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\_HDT}}, HDTlabel, Anglefmt, TrueAngleunit, 0,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00209}00209                 \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3ab709e1533b1826cd2251ca4784fa0d6a}{NMEA\_COMPASS\_ANGLE\_SIN}}); \textcolor{comment}{// type: 0-\/360 angle with sin/cos 11}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00211}00211   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VTWlabel[] = \textcolor{stringliteral}{"{}VTW"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00212}00212   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}{NMEA\_VTW}}, VTWlabel, BoatSpeedfmt, Speedunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00214}00214   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LOGlabel[] = \textcolor{stringliteral}{"{}Log"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00215}00215   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LOGfmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00216}00216   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LOGunit[] = \textcolor{stringliteral}{"{}NM"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00217}00217   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}{NMEA\_LOG}}, LOGlabel, LOGfmt, LOGunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00219}00219   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LOGRlabel[] = \textcolor{stringliteral}{"{}Trip"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00220}00220   \textcolor{keyword}{static} \textcolor{keywordtype}{char} LOGRfmt[] = \textcolor{stringliteral}{"{}\%6.2f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00221}00221   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}{NMEA\_LOG}}, LOGRlabel, LOGRfmt, LOGunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00222}00222 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00223}00223   \textcolor{keyword}{static} \textcolor{keywordtype}{char} DEPTHlabel[] = \textcolor{stringliteral}{"{}Depth"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00224}00224   \textcolor{keyword}{static} \textcolor{keywordtype}{char} DEPTHfmt[] = \textcolor{stringliteral}{"{}\%6.1f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00225}00225   \textcolor{keyword}{static} \textcolor{keywordtype}{char} DEPTHunit[] = \textcolor{stringliteral}{"{}m"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00226}00226   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\_DEPTH}}, DEPTHlabel, DEPTHfmt, DEPTHunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00228}00228   \textcolor{keyword}{static} \textcolor{keywordtype}{char} RPM\_M1label[] = \textcolor{stringliteral}{"{}Motor 1"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00229}00229   \textcolor{keyword}{static} \textcolor{keywordtype}{char} RPM\_M1fmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00230}00230   \textcolor{keyword}{static} \textcolor{keywordtype}{char} RPM\_M1unit[] = \textcolor{stringliteral}{"{}RPM"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00231}00231   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae9935f17810b837223b8ce117b8fc19d}{NMEA\_RPM\_M1}}, RPM\_M1label, RPM\_M1fmt, RPM\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00232}00232 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00233}00233   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_M1label[] = \textcolor{stringliteral}{"{}Temp 1"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00234}00234   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_M1fmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00235}00235   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_M1unit[] = \textcolor{stringliteral}{"{}Deg C"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00236}00236   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7accd128fe8ad3caadc6cddb855f9bec1a}{NMEA\_TEMPERATURE\_M1}}, TEMPERATURE\_M1label, TEMPERATURE\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00237}00237                 TEMPERATURE\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00238}00238 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00239}00239   \textcolor{keyword}{static} \textcolor{keywordtype}{char} PRESSURE\_M1label[] = \textcolor{stringliteral}{"{}Oil 1"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00240}00240   \textcolor{keyword}{static} \textcolor{keywordtype}{char} PRESSURE\_M1fmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00241}00241   \textcolor{keyword}{static} \textcolor{keywordtype}{char} PRESSURE\_M1unit[] = \textcolor{stringliteral}{"{}kPa"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00242}00242   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a622d07457540a62d101c3dba77b8fb3e}{NMEA\_PRESSURE\_M1}}, PRESSURE\_M1label, PRESSURE\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00243}00243                 PRESSURE\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00244}00244 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00245}00245   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VOLTAGE\_M1label[] = \textcolor{stringliteral}{"{}Motor 1"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00246}00246   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VOLTAGE\_M1fmt[] = \textcolor{stringliteral}{"{}\%6.2f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00247}00247   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VOLTAGE\_M1unit[] = \textcolor{stringliteral}{"{}Volts"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00248}00248   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9e736a5305edf879cfc648eef4728db7}{NMEA\_VOLTAGE\_M1}}, VOLTAGE\_M1label, VOLTAGE\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00249}00249                 VOLTAGE\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00250}00250 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00251}00251   \textcolor{keyword}{static} \textcolor{keywordtype}{char} CURRENT\_M1label[] = \textcolor{stringliteral}{"{}Motor 1"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00252}00252   \textcolor{keyword}{static} \textcolor{keywordtype}{char} CURRENT\_M1fmt[] = \textcolor{stringliteral}{"{}\%6.1f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00253}00253   \textcolor{keyword}{static} \textcolor{keywordtype}{char} CURRENT\_M1unit[] = \textcolor{stringliteral}{"{}Amps"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00254}00254   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae491a271e5bda7132ca831ec5e83d84b}{NMEA\_CURRENT\_M1}}, CURRENT\_M1label, CURRENT\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00255}00255                 CURRENT\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00256}00256 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00257}00257   \textcolor{keyword}{static} \textcolor{keywordtype}{char} RPM\_M2label[] = \textcolor{stringliteral}{"{}Motor 2"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00258}00258   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a5ec5d1c335aa2285e2afaf79f88b155f}{NMEA\_RPM\_M2}}, RPM\_M2label, RPM\_M1fmt, RPM\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00260}00260   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_M2label[] = \textcolor{stringliteral}{"{}Temp 2"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00261}00261   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4dce2ddf1a5aa38cc150fbee4fdecda9}{NMEA\_TEMPERATURE\_M2}}, TEMPERATURE\_M2label, TEMPERATURE\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00262}00262                 TEMPERATURE\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00264}00264   \textcolor{keyword}{static} \textcolor{keywordtype}{char} PRESSURE\_M2label[] = \textcolor{stringliteral}{"{}Oil 2"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00265}00265   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a14f464441fc70d4106487a8ef816cf07}{NMEA\_PRESSURE\_M2}}, PRESSURE\_M2label, PRESSURE\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00266}00266                 PRESSURE\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00268}00268   \textcolor{keyword}{static} \textcolor{keywordtype}{char} VOLTAGE\_M2label[] = \textcolor{stringliteral}{"{}Motor 2"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00269}00269   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abd0a65c66607397fe2dddc00713e6bd6}{NMEA\_VOLTAGE\_M2}}, VOLTAGE\_M2label, VOLTAGE\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00270}00270                 VOLTAGE\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00272}00272   \textcolor{keyword}{static} \textcolor{keywordtype}{char} CURRENT\_M2label[] = \textcolor{stringliteral}{"{}Motor 2"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00273}00273   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a889981e7ff93913b8cedda0bbeaa8a3a}{NMEA\_CURRENT\_M2}}, CURRENT\_M2label, CURRENT\_M1fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00274}00274                 CURRENT\_M1unit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00276}00276   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_AIRlabel[] = \textcolor{stringliteral}{"{}Air"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00277}00277   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_AIRfmt[] = \textcolor{stringliteral}{"{}\%6.1f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00278}00278   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_AIRunit[] = \textcolor{stringliteral}{"{}Deg C"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00279}00279   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a083ed5d1df1aefd81fcc3d67d8c3587d}{NMEA\_TEMPERATURE\_AIR}}, TEMPERATURE\_AIRlabel, TEMPERATURE\_AIRfmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00280}00280                 TEMPERATURE\_AIRunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00282}00282   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_WATERlabel[] = \textcolor{stringliteral}{"{}Water"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00283}00283   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_WATERfmt[] = \textcolor{stringliteral}{"{}\%6.1f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00284}00284   \textcolor{keyword}{static} \textcolor{keywordtype}{char} TEMPERATURE\_WATERunit[] = \textcolor{stringliteral}{"{}Deg C"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00285}00285   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}{NMEA\_TEMPERATURE\_WATER}}, TEMPERATURE\_WATERlabel,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00286}00286                 TEMPERATURE\_WATERfmt, TEMPERATURE\_WATERunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00287}00287 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00288}00288   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HUMIDITYlabel[] = \textcolor{stringliteral}{"{}Humidity"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00289}00289   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HUMIDITYfmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00290}00290   \textcolor{keyword}{static} \textcolor{keywordtype}{char} HUMIDITYunit[] = \textcolor{stringliteral}{"{}\% RH"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00291}00291   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a88de695da7b711f27ad0b07b71c4c56d}{NMEA\_HUMIDITY}}, HUMIDITYlabel, HUMIDITYfmt, HUMIDITYunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00292}00292 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00293}00293   \textcolor{keyword}{static} \textcolor{keywordtype}{char} BAROMETERlabel[] = \textcolor{stringliteral}{"{}Barometer"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00294}00294   \textcolor{keyword}{static} \textcolor{keywordtype}{char} BAROMETERfmt[] = \textcolor{stringliteral}{"{}\%6.0f"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00295}00295   \textcolor{keyword}{static} \textcolor{keywordtype}{char} BAROMETERunit[] = \textcolor{stringliteral}{"{}Pa"{}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00296}00296   \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}{NMEA\_BAROMETER}}, BAROMETERlabel, BAROMETERfmt, BAROMETERunit);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00297}00297 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00298}00298 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00299}00299 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00300}00300 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00301}00301 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00309}00309 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00310}\mbox{\hyperlink{class_adafruit___g_p_s_a5195ba0c15098e7ebdeed7b58163fa39}{00310}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a5195ba0c15098e7ebdeed7b58163fa39}{Adafruit\_GPS::get}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00311}00311   \textcolor{keywordflow}{if} (idx >= \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}} || idx < \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\_HDOP}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00312}00312     \textcolor{keywordflow}{return} 0.0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00313}00313   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00314}00314 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00316}00316 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00322}00322 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00323}\mbox{\hyperlink{class_adafruit___g_p_s_a272df8380267fd53ff611f552409e86d}{00323}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a272df8380267fd53ff611f552409e86d}{Adafruit\_GPS::getSmoothed}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00324}00324   \textcolor{keywordflow}{if} (idx >= \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}} || idx < \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\_HDOP}})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00325}00325     \textcolor{keywordflow}{return} 0.0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00326}00326   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00327}00327 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00328}00328 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00329}00329 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00343}00343 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00344}\mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{00344}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{Adafruit\_GPS::initDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \textcolor{keywordtype}{char} *label, \textcolor{keywordtype}{char} *fmt,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00345}00345                                  \textcolor{keywordtype}{char} *unit, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} response,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00346}00346                                  \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\_value\_type\_t}} type) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00347}00347   \textcolor{keywordflow}{if} (idx < \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00348}00348     \textcolor{keywordflow}{if} (label)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00349}00349       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_ad69698d60e94d53ad38c9b2b6f74547f}{label}} = label;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00350}00350     \textcolor{keywordflow}{if} (fmt)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00351}00351       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a144e0518233b217c001da1df4d69c243}{fmt}} = fmt;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00352}00352     \textcolor{keywordflow}{if} (unit)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00353}00353       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a904af9df777122471b3358c1af5e5aac}{unit}} = unit;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00354}00354     \textcolor{keywordflow}{if} (response)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00355}00355       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a0fc893fd25c28ff4ee9f5142f4c309c0}{response}} = response;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00356}00356     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a519cb117696d382f6366260f683008fd}{type}} = type;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00357}00357     \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{int})(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type / 10) ==}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00358}00358         1) \{ \textcolor{comment}{// angle with sin/cos component recording}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00359}00359       \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}((\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}})(}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00360}00360           idx + 1)); \textcolor{comment}{// initialize the next two data values as well}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00361}00361       \mbox{\hyperlink{class_adafruit___g_p_s_a160e187e03ea22b22379dfd25b86bd2d}{initDataValue}}((\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}})(idx + 2));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00362}00362     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00363}00363   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00364}00364 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00365}00365 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00366}00366 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00382}00382 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00383}\mbox{\hyperlink{class_adafruit___g_p_s_a39a2aecda4b5dcf8cab72ef93bdcc103}{00383}} \mbox{\hyperlink{structnmea__history__t}{nmea\_history\_t}} *\mbox{\hyperlink{class_adafruit___g_p_s_a39a2aecda4b5dcf8cab72ef93bdcc103}{Adafruit\_GPS::initHistory}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} scale,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00384}00384                                           \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} offset,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00385}00385                                           \textcolor{keywordtype}{unsigned} historyInterval,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00386}00386                                           \textcolor{keywordtype}{unsigned} historyN) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00387}00387   historyN = max((\textcolor{keywordtype}{unsigned})10, historyN);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00388}00388   \textcolor{keywordflow}{if} (idx < \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00389}00389     \textcolor{comment}{// remove any existing history}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00390}00390     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist != NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00391}00391       \mbox{\hyperlink{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}{removeHistory}}(idx);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00392}00392     \textcolor{comment}{// space for the struct}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00393}00393     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}} = (\mbox{\hyperlink{structnmea__history__t}{nmea\_history\_t}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structnmea__history__t}{nmea\_history\_t}}));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00394}00394     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00395}00395       \textcolor{comment}{// space for the data array of the appropriate size}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00396}00396       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a59f3003809801affc387b54971f5d32b}{data}} = (int16\_t *)malloc(\textcolor{keyword}{sizeof}(int16\_t) * historyN);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00397}00397       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>data != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00398}00398         \textcolor{comment}{// initialize the data array}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00399}00399         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = 0; i < historyN; i++)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00400}00400           \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>data[i] = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00401}00401       \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00402}00402         free(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00403}00403     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00404}00404     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00405}00405       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}{n}} = historyN;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00406}00406       \textcolor{keywordflow}{if} (scale > 0.0f)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00407}00407         \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a4c98f18694ee688d7c4ff2d4d6941739}{scale}} = scale;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00408}00408       \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a54afeb9a77cf9595d8516aded551bf44}{offset}} = offset;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00409}00409       \textcolor{keywordflow}{if} (historyInterval > 0)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00410}00410         \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a2c672bfbc9e54c4f202a75fed5f3fd11}{historyInterval}} = historyInterval;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00411}00411     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00412}00412     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00413}00413   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00414}00414   \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00415}00415 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00416}00416 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00417}00417 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00423}00423 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00424}\mbox{\hyperlink{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}{00424}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_aea92bf75e742154517db75d1d30087d9}{Adafruit\_GPS::removeHistory}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00425}00425   \textcolor{keywordflow}{if} (idx < \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a597040f91ee94c0789cfd8caa8339d60}{NMEA\_MAX\_INDEX}}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00426}00426     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist == NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00427}00427       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00428}00428     free(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>data);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00429}00429     free(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00430}00430     \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}} = NULL;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00431}00431   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00432}00432 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00433}00433 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00434}00434 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00442}00442 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00443}\mbox{\hyperlink{class_adafruit___g_p_s_accf44cdc598df5c687e2f5fb32e9e752}{00443}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_p_s_accf44cdc598df5c687e2f5fb32e9e752}{Adafruit\_GPS::showDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx, \textcolor{keywordtype}{int} n) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00444}00444   Serial.print(\textcolor{stringliteral}{"{}idx: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00445}00445   \textcolor{keywordflow}{if} (idx < 10)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00446}00446     Serial.print(\textcolor{stringliteral}{"{} "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00447}00447   Serial.print(idx);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00448}00448   Serial.print(\textcolor{stringliteral}{"{}, "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00449}00449   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].label);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00450}00450   Serial.print(\textcolor{stringliteral}{"{}, "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00451}00451   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].latest, 4);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00452}00452   Serial.print(\textcolor{stringliteral}{"{}, "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00453}00453   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].smoothed, 4);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00454}00454   Serial.print(\textcolor{stringliteral}{"{}, at "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00455}00455   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].lastUpdate);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00456}00456   Serial.print(\textcolor{stringliteral}{"{} ms, tau = "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00457}00457   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].response);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00458}00458   Serial.print(\textcolor{stringliteral}{"{} ms, type:"{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00459}00459   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00460}00460   Serial.print(\textcolor{stringliteral}{"{},  ockam:"{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00461}00461   Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].ockam);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00462}00462   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00463}00463     Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)n     History at "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00464}00464     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>historyInterval);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00465}00465     Serial.print(\textcolor{stringliteral}{"{} second intervals:  "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00466}00466     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>data[\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].\mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}}-\/>\mbox{\hyperlink{structnmea__history__t_a8bf34a6e794f01eec90c4a919f9b244d}{n}} -\/ 1]);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00467}00467     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} i = \mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>n -\/ 2;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00468}00468          i >= max(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>n -\/ n, (\textcolor{keywordtype}{unsigned})0);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00469}00469          i-\/-\/) \{ \textcolor{comment}{// most recent first}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00470}00470       Serial.print(\textcolor{stringliteral}{"{}, "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00471}00471       Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].hist-\/>data[i]);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00472}00472     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00473}00473   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00474}00474   Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00475}00475   \textcolor{keywordflow}{if} (idx == \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\_LAT}}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00476}00476     Serial.print(\textcolor{stringliteral}{"{}     latitude (DDMM.mmmm): "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00477}00477     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, 4);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00478}00478     Serial.print(\textcolor{stringliteral}{"{}, lat: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00479}00479     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00480}00480     Serial.print(\textcolor{stringliteral}{"{}, latitudeDegrees: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00481}00481     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, 8);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00482}00482     Serial.print(\textcolor{stringliteral}{"{}, latitude\_fixed: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00483}00483     Serial.println(\mbox{\hyperlink{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}{latitude\_fixed}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00484}00484   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00485}00485   \textcolor{keywordflow}{if} (idx == \mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\_LON}}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00486}00486     Serial.print(\textcolor{stringliteral}{"{}     longitude (DDMM.mmmm): "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00487}00487     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, 4);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00488}00488     Serial.print(\textcolor{stringliteral}{"{}, lon: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00489}00489     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00490}00490     Serial.print(\textcolor{stringliteral}{"{}, longitudeDegrees: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00491}00491     Serial.print(\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, 8);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00492}00492     Serial.print(\textcolor{stringliteral}{"{}, longitude\_fixed: "{}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00493}00493     Serial.println(\mbox{\hyperlink{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}{longitude\_fixed}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00494}00494   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00495}00495 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00496}00496 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00497}00497 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00503}00503 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00504}\mbox{\hyperlink{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}{00504}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a6d13e7c81f124ca8809c02fe048b1218}{Adafruit\_GPS::isCompoundAngle}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7}{nmea\_index\_t}} idx) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00505}00505   \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{int})(\mbox{\hyperlink{class_adafruit___g_p_s_a6ce54126c2fa2d6b59fd012b4173840f}{val}}[idx].type / 10) == 1) \textcolor{comment}{// angle with sin/cos component recording}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00506}00506     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00507}00507   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00508}00508 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00509}00509 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00510}00510 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00518}00518 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00519}\mbox{\hyperlink{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}{00519}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}{Adafruit\_GPS::boatAngle}}(\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} s, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} c) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00520}00520   \textcolor{comment}{// put the sin angle in -\/90 to 90 range}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00521}00521   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} sAng = asin(s) * (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})RAD\_TO\_DEG;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00522}00522   \textcolor{keywordflow}{while} (sAng < -\/90)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00523}00523     sAng += 180.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00524}00524   \textcolor{keywordflow}{while} (sAng > 90)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00525}00525     sAng -\/= 180.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00526}00526   \textcolor{comment}{// put the cos angle in 0 to 180 range}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00527}00527   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} cAng = acos(c) * (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})RAD\_TO\_DEG;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00528}00528   \textcolor{keywordflow}{while} (cAng < 0)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00529}00529     cAng += 180.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00530}00530   \textcolor{keywordflow}{while} (cAng > 180)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00531}00531     cAng -\/= 180.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00532}00532   \textcolor{comment}{// Pick the most accurate representation and translate}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00533}00533   \textcolor{keywordflow}{if} (cAng < 45)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00534}00534     \textcolor{keywordflow}{return} sAng; \textcolor{comment}{//            Close hauled}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00535}00535   \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00536}00536     \textcolor{keywordflow}{if} (cAng > 135) \{ \textcolor{comment}{//       Running}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00537}00537       \textcolor{keywordflow}{if} (sAng > 0)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00538}00538         \textcolor{keywordflow}{return} 180 -\/ sAng; \textcolor{comment}{//     on starboard tack}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00539}00539       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00540}00540         \textcolor{keywordflow}{return} -\/180 -\/ sAng; \textcolor{comment}{//    on port tack}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00541}00541     \} \textcolor{keywordflow}{else} \{                \textcolor{comment}{// Reaching}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00542}00542       \textcolor{keywordflow}{if} (sAng < 0)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00543}00543         \textcolor{keywordflow}{return} -\/cAng; \textcolor{comment}{//          on port tack}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00544}00544       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00545}00545         \textcolor{keywordflow}{return} cAng; \textcolor{comment}{//           on starboard tack}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00546}00546     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00547}00547   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00548}00548   \textcolor{keywordflow}{return} 9999; \textcolor{comment}{// you can't get here, but there must be an explicit return}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00549}00549 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00551}00551 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00559}00559 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00560}\mbox{\hyperlink{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}{00560}} \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} \mbox{\hyperlink{class_adafruit___g_p_s_a06b7e12e38f1b00df058a253364215db}{Adafruit\_GPS::compassAngle}}(\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} s, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} c) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00561}00561   \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} ang = \mbox{\hyperlink{class_adafruit___g_p_s_a911b6b32cac6cf3b24f865c820b5072e}{boatAngle}}(s, c);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00562}00562   \textcolor{keywordflow}{if} (ang < 5000) \{ \textcolor{comment}{// if reasonable range}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00563}00563     \textcolor{keywordflow}{while} (ang < 0)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00564}00564       ang += 360.0f; \textcolor{comment}{// round up}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00565}00565     \textcolor{keywordflow}{while} (ang > 360)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00566}00566       ang -\/= 360.0f; \textcolor{comment}{// round down}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00567}00567   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00568}00568   \textcolor{keywordflow}{return} ang;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00569}00569 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__data_8cpp_source_l00570}00570 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// NMEA\_EXTENSIONS}}
+
+\end{DoxyCode}

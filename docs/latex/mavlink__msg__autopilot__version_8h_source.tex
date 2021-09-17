@@ -1,0 +1,344 @@
+\hypertarget{mavlink__msg__autopilot__version_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+autopilot\+\_\+version.\+h}
+\label{mavlink__msg__autopilot__version_8h_source}\index{lib/common/mavlink\_msg\_autopilot\_version.h@{lib/common/mavlink\_msg\_autopilot\_version.h}}
+\mbox{\hyperlink{mavlink__msg__autopilot__version_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE AUTOPILOT\_VERSION PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION 148}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_aca314904529d0987cc68cb3aca4a16fa}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_autopilot\_version\_t \{}
+\DoxyCodeLine{8  uint64\_t capabilities; \textcolor{comment}{/*<  Bitmap of capabilities*/}}
+\DoxyCodeLine{9  uint64\_t uid; \textcolor{comment}{/*<  UID if provided by hardware (see uid2)*/}}
+\DoxyCodeLine{10  uint32\_t flight\_sw\_version; \textcolor{comment}{/*<  Firmware version number*/}}
+\DoxyCodeLine{11  uint32\_t middleware\_sw\_version; \textcolor{comment}{/*<  Middleware version number*/}}
+\DoxyCodeLine{12  uint32\_t os\_sw\_version; \textcolor{comment}{/*<  Operating system version number*/}}
+\DoxyCodeLine{13  uint32\_t board\_version; \textcolor{comment}{/*<  HW / board version (last 8 bytes should be silicon ID, if any)*/}}
+\DoxyCodeLine{14  uint16\_t vendor\_id; \textcolor{comment}{/*<  ID of the board vendor*/}}
+\DoxyCodeLine{15  uint16\_t product\_id; \textcolor{comment}{/*<  ID of the product*/}}
+\DoxyCodeLine{16  uint8\_t flight\_custom\_version[8]; \textcolor{comment}{/*<  Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.*/}}
+\DoxyCodeLine{17  uint8\_t middleware\_custom\_version[8]; \textcolor{comment}{/*<  Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.*/}}
+\DoxyCodeLine{18  uint8\_t os\_custom\_version[8]; \textcolor{comment}{/*<  Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.*/}}
+\DoxyCodeLine{19  uint8\_t uid2[18]; \textcolor{comment}{/*<  UID if provided by hardware (supersedes the uid field. If this is non-\/zero, use this field, otherwise use uid)*/}}
+\DoxyCodeLine{20 \}) mavlink\_autopilot\_version\_t;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN 78}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN 60}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_148\_LEN 78}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_148\_MIN\_LEN 60}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC 178}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_148\_CRC 178}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_AUTOPILOT\_VERSION\_FIELD\_FLIGHT\_CUSTOM\_VERSION\_LEN 8}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_AUTOPILOT\_VERSION\_FIELD\_MIDDLEWARE\_CUSTOM\_VERSION\_LEN 8}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_AUTOPILOT\_VERSION\_FIELD\_OS\_CUSTOM\_VERSION\_LEN 8}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_AUTOPILOT\_VERSION\_FIELD\_UID2\_LEN 18}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_AUTOPILOT\_VERSION \{ \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    148, \(\backslash\)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{    "{}AUTOPILOT\_VERSION"{}}, \(\backslash\)}
+\DoxyCodeLine{39     12, \(\backslash\)}
+\DoxyCodeLine{40     \{  \{ "{}capabilities"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_autopilot\_version\_t, capabilities) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}flight\_sw\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 16, offsetof(mavlink\_autopilot\_version\_t, flight\_sw\_version) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}middleware\_sw\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 20, offsetof(mavlink\_autopilot\_version\_t, middleware\_sw\_version) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}os\_sw\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 24, offsetof(mavlink\_autopilot\_version\_t, os\_sw\_version) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}board\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 28, offsetof(mavlink\_autopilot\_version\_t, board\_version) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}flight\_custom\_version"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 8, 36, offsetof(mavlink\_autopilot\_version\_t, flight\_custom\_version) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}middleware\_custom\_version"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 8, 44, offsetof(mavlink\_autopilot\_version\_t, middleware\_custom\_version) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}os\_custom\_version"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 8, 52, offsetof(mavlink\_autopilot\_version\_t, os\_custom\_version) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}vendor\_id"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 32, offsetof(mavlink\_autopilot\_version\_t, vendor\_id) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}product\_id"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 34, offsetof(mavlink\_autopilot\_version\_t, product\_id) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}uid"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 8, offsetof(mavlink\_autopilot\_version\_t, uid) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}uid2"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 18, 60, offsetof(mavlink\_autopilot\_version\_t, uid2) \}, \(\backslash\)}
+\DoxyCodeLine{52          \} \(\backslash\)}
+\DoxyCodeLine{53 \}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_AUTOPILOT\_VERSION \{ \(\backslash\)}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{    "{}AUTOPILOT\_VERSION"{}}, \(\backslash\)}
+\DoxyCodeLine{57     12, \(\backslash\)}
+\DoxyCodeLine{58     \{  \{ "{}capabilities"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_autopilot\_version\_t, capabilities) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}flight\_sw\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 16, offsetof(mavlink\_autopilot\_version\_t, flight\_sw\_version) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}middleware\_sw\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 20, offsetof(mavlink\_autopilot\_version\_t, middleware\_sw\_version) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}os\_sw\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 24, offsetof(mavlink\_autopilot\_version\_t, os\_sw\_version) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}board\_version"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 28, offsetof(mavlink\_autopilot\_version\_t, board\_version) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}flight\_custom\_version"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 8, 36, offsetof(mavlink\_autopilot\_version\_t, flight\_custom\_version) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}middleware\_custom\_version"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 8, 44, offsetof(mavlink\_autopilot\_version\_t, middleware\_custom\_version) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}os\_custom\_version"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 8, 52, offsetof(mavlink\_autopilot\_version\_t, os\_custom\_version) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}vendor\_id"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 32, offsetof(mavlink\_autopilot\_version\_t, vendor\_id) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}product\_id"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 34, offsetof(mavlink\_autopilot\_version\_t, product\_id) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}uid"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 8, offsetof(mavlink\_autopilot\_version\_t, uid) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}uid2"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 18, 60, offsetof(mavlink\_autopilot\_version\_t, uid2) \}, \(\backslash\)}
+\DoxyCodeLine{70          \} \(\backslash\)}
+\DoxyCodeLine{71 \}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{94 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{95                                uint64\_t capabilities, uint32\_t flight\_sw\_version, uint32\_t middleware\_sw\_version, uint32\_t os\_sw\_version, uint32\_t board\_version, \textcolor{keyword}{const} uint8\_t *flight\_custom\_version, \textcolor{keyword}{const} uint8\_t *middleware\_custom\_version, \textcolor{keyword}{const} uint8\_t *os\_custom\_version, uint16\_t vendor\_id, uint16\_t product\_id, uint64\_t uid, \textcolor{keyword}{const} uint8\_t *uid2)}
+\DoxyCodeLine{96 \{}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}];}
+\DoxyCodeLine{99     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, capabilities);}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, uid);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 16, flight\_sw\_version);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 20, middleware\_sw\_version);}
+\DoxyCodeLine{103     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, os\_sw\_version);}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 28, board\_version);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 32, vendor\_id);}
+\DoxyCodeLine{106     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 34, product\_id);}
+\DoxyCodeLine{107     \_mav\_put\_uint8\_t\_array(buf, 36, flight\_custom\_version, 8);}
+\DoxyCodeLine{108     \_mav\_put\_uint8\_t\_array(buf, 44, middleware\_custom\_version, 8);}
+\DoxyCodeLine{109     \_mav\_put\_uint8\_t\_array(buf, 52, os\_custom\_version, 8);}
+\DoxyCodeLine{110     \_mav\_put\_uint8\_t\_array(buf, 60, uid2, 18);}
+\DoxyCodeLine{111         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}});}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{113     mavlink\_autopilot\_version\_t packet;}
+\DoxyCodeLine{114     packet.capabilities = capabilities;}
+\DoxyCodeLine{115     packet.uid = uid;}
+\DoxyCodeLine{116     packet.flight\_sw\_version = flight\_sw\_version;}
+\DoxyCodeLine{117     packet.middleware\_sw\_version = middleware\_sw\_version;}
+\DoxyCodeLine{118     packet.os\_sw\_version = os\_sw\_version;}
+\DoxyCodeLine{119     packet.board\_version = board\_version;}
+\DoxyCodeLine{120     packet.vendor\_id = vendor\_id;}
+\DoxyCodeLine{121     packet.product\_id = product\_id;}
+\DoxyCodeLine{122     mav\_array\_memcpy(packet.flight\_custom\_version, flight\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{123     mav\_array\_memcpy(packet.middleware\_custom\_version, middleware\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{124     mav\_array\_memcpy(packet.os\_custom\_version, os\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{125     mav\_array\_memcpy(packet.uid2, uid2, \textcolor{keyword}{sizeof}(uint8\_t)*18);}
+\DoxyCodeLine{126         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}});}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}};}
+\DoxyCodeLine{130     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{131 \}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{153 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{154                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{155                                    uint64\_t capabilities,uint32\_t flight\_sw\_version,uint32\_t middleware\_sw\_version,uint32\_t os\_sw\_version,uint32\_t board\_version,\textcolor{keyword}{const} uint8\_t *flight\_custom\_version,\textcolor{keyword}{const} uint8\_t *middleware\_custom\_version,\textcolor{keyword}{const} uint8\_t *os\_custom\_version,uint16\_t vendor\_id,uint16\_t product\_id,uint64\_t uid,\textcolor{keyword}{const} uint8\_t *uid2)}
+\DoxyCodeLine{156 \{}
+\DoxyCodeLine{157 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{158     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}];}
+\DoxyCodeLine{159     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, capabilities);}
+\DoxyCodeLine{160     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, uid);}
+\DoxyCodeLine{161     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 16, flight\_sw\_version);}
+\DoxyCodeLine{162     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 20, middleware\_sw\_version);}
+\DoxyCodeLine{163     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, os\_sw\_version);}
+\DoxyCodeLine{164     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 28, board\_version);}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 32, vendor\_id);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 34, product\_id);}
+\DoxyCodeLine{167     \_mav\_put\_uint8\_t\_array(buf, 36, flight\_custom\_version, 8);}
+\DoxyCodeLine{168     \_mav\_put\_uint8\_t\_array(buf, 44, middleware\_custom\_version, 8);}
+\DoxyCodeLine{169     \_mav\_put\_uint8\_t\_array(buf, 52, os\_custom\_version, 8);}
+\DoxyCodeLine{170     \_mav\_put\_uint8\_t\_array(buf, 60, uid2, 18);}
+\DoxyCodeLine{171         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}});}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{173     mavlink\_autopilot\_version\_t packet;}
+\DoxyCodeLine{174     packet.capabilities = capabilities;}
+\DoxyCodeLine{175     packet.uid = uid;}
+\DoxyCodeLine{176     packet.flight\_sw\_version = flight\_sw\_version;}
+\DoxyCodeLine{177     packet.middleware\_sw\_version = middleware\_sw\_version;}
+\DoxyCodeLine{178     packet.os\_sw\_version = os\_sw\_version;}
+\DoxyCodeLine{179     packet.board\_version = board\_version;}
+\DoxyCodeLine{180     packet.vendor\_id = vendor\_id;}
+\DoxyCodeLine{181     packet.product\_id = product\_id;}
+\DoxyCodeLine{182     mav\_array\_memcpy(packet.flight\_custom\_version, flight\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{183     mav\_array\_memcpy(packet.middleware\_custom\_version, middleware\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{184     mav\_array\_memcpy(packet.os\_custom\_version, os\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{185     mav\_array\_memcpy(packet.uid2, uid2, \textcolor{keyword}{sizeof}(uint8\_t)*18);}
+\DoxyCodeLine{186         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}});}
+\DoxyCodeLine{187 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}};}
+\DoxyCodeLine{190     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{191 \}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{201 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_autopilot\_version\_t* autopilot\_version)}
+\DoxyCodeLine{202 \{}
+\DoxyCodeLine{203     \textcolor{keywordflow}{return} mavlink\_msg\_autopilot\_version\_pack(system\_id, component\_id, msg, autopilot\_version-\/>capabilities, autopilot\_version-\/>flight\_sw\_version, autopilot\_version-\/>middleware\_sw\_version, autopilot\_version-\/>os\_sw\_version, autopilot\_version-\/>board\_version, autopilot\_version-\/>flight\_custom\_version, autopilot\_version-\/>middleware\_custom\_version, autopilot\_version-\/>os\_custom\_version, autopilot\_version-\/>vendor\_id, autopilot\_version-\/>product\_id, autopilot\_version-\/>uid, autopilot\_version-\/>uid2);}
+\DoxyCodeLine{204 \}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{215 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_autopilot\_version\_t* autopilot\_version)}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217     \textcolor{keywordflow}{return} mavlink\_msg\_autopilot\_version\_pack\_chan(system\_id, component\_id, chan, msg, autopilot\_version-\/>capabilities, autopilot\_version-\/>flight\_sw\_version, autopilot\_version-\/>middleware\_sw\_version, autopilot\_version-\/>os\_sw\_version, autopilot\_version-\/>board\_version, autopilot\_version-\/>flight\_custom\_version, autopilot\_version-\/>middleware\_custom\_version, autopilot\_version-\/>os\_custom\_version, autopilot\_version-\/>vendor\_id, autopilot\_version-\/>product\_id, autopilot\_version-\/>uid, autopilot\_version-\/>uid2);}
+\DoxyCodeLine{218 \}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_autopilot\_version\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t capabilities, uint32\_t flight\_sw\_version, uint32\_t middleware\_sw\_version, uint32\_t os\_sw\_version, uint32\_t board\_version, \textcolor{keyword}{const} uint8\_t *flight\_custom\_version, \textcolor{keyword}{const} uint8\_t *middleware\_custom\_version, \textcolor{keyword}{const} uint8\_t *os\_custom\_version, uint16\_t vendor\_id, uint16\_t product\_id, uint64\_t uid, \textcolor{keyword}{const} uint8\_t *uid2)}
+\DoxyCodeLine{240 \{}
+\DoxyCodeLine{241 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{242     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}];}
+\DoxyCodeLine{243     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, capabilities);}
+\DoxyCodeLine{244     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, uid);}
+\DoxyCodeLine{245     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 16, flight\_sw\_version);}
+\DoxyCodeLine{246     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 20, middleware\_sw\_version);}
+\DoxyCodeLine{247     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, os\_sw\_version);}
+\DoxyCodeLine{248     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 28, board\_version);}
+\DoxyCodeLine{249     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 32, vendor\_id);}
+\DoxyCodeLine{250     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 34, product\_id);}
+\DoxyCodeLine{251     \_mav\_put\_uint8\_t\_array(buf, 36, flight\_custom\_version, 8);}
+\DoxyCodeLine{252     \_mav\_put\_uint8\_t\_array(buf, 44, middleware\_custom\_version, 8);}
+\DoxyCodeLine{253     \_mav\_put\_uint8\_t\_array(buf, 52, os\_custom\_version, 8);}
+\DoxyCodeLine{254     \_mav\_put\_uint8\_t\_array(buf, 60, uid2, 18);}
+\DoxyCodeLine{255     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}}, buf, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{257     mavlink\_autopilot\_version\_t packet;}
+\DoxyCodeLine{258     packet.capabilities = capabilities;}
+\DoxyCodeLine{259     packet.uid = uid;}
+\DoxyCodeLine{260     packet.flight\_sw\_version = flight\_sw\_version;}
+\DoxyCodeLine{261     packet.middleware\_sw\_version = middleware\_sw\_version;}
+\DoxyCodeLine{262     packet.os\_sw\_version = os\_sw\_version;}
+\DoxyCodeLine{263     packet.board\_version = board\_version;}
+\DoxyCodeLine{264     packet.vendor\_id = vendor\_id;}
+\DoxyCodeLine{265     packet.product\_id = product\_id;}
+\DoxyCodeLine{266     mav\_array\_memcpy(packet.flight\_custom\_version, flight\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{267     mav\_array\_memcpy(packet.middleware\_custom\_version, middleware\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{268     mav\_array\_memcpy(packet.os\_custom\_version, os\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{269     mav\_array\_memcpy(packet.uid2, uid2, \textcolor{keyword}{sizeof}(uint8\_t)*18);}
+\DoxyCodeLine{270     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{272 \}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{279 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_autopilot\_version\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_autopilot\_version\_t* autopilot\_version)}
+\DoxyCodeLine{280 \{}
+\DoxyCodeLine{281 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{282     mavlink\_msg\_autopilot\_version\_send(chan, autopilot\_version-\/>capabilities, autopilot\_version-\/>flight\_sw\_version, autopilot\_version-\/>middleware\_sw\_version, autopilot\_version-\/>os\_sw\_version, autopilot\_version-\/>board\_version, autopilot\_version-\/>flight\_custom\_version, autopilot\_version-\/>middleware\_custom\_version, autopilot\_version-\/>os\_custom\_version, autopilot\_version-\/>vendor\_id, autopilot\_version-\/>product\_id, autopilot\_version-\/>uid, autopilot\_version-\/>uid2);}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{284     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)autopilot\_version, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{285 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{289 \textcolor{comment}{/*}}
+\DoxyCodeLine{290 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{291 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{292 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{293 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{294 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{295 \textcolor{comment}{ */}}
+\DoxyCodeLine{296 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_autopilot\_version\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t capabilities, uint32\_t flight\_sw\_version, uint32\_t middleware\_sw\_version, uint32\_t os\_sw\_version, uint32\_t board\_version, \textcolor{keyword}{const} uint8\_t *flight\_custom\_version, \textcolor{keyword}{const} uint8\_t *middleware\_custom\_version, \textcolor{keyword}{const} uint8\_t *os\_custom\_version, uint16\_t vendor\_id, uint16\_t product\_id, uint64\_t uid, \textcolor{keyword}{const} uint8\_t *uid2)}
+\DoxyCodeLine{297 \{}
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{299     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{300     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, capabilities);}
+\DoxyCodeLine{301     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, uid);}
+\DoxyCodeLine{302     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 16, flight\_sw\_version);}
+\DoxyCodeLine{303     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 20, middleware\_sw\_version);}
+\DoxyCodeLine{304     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, os\_sw\_version);}
+\DoxyCodeLine{305     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 28, board\_version);}
+\DoxyCodeLine{306     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 32, vendor\_id);}
+\DoxyCodeLine{307     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 34, product\_id);}
+\DoxyCodeLine{308     \_mav\_put\_uint8\_t\_array(buf, 36, flight\_custom\_version, 8);}
+\DoxyCodeLine{309     \_mav\_put\_uint8\_t\_array(buf, 44, middleware\_custom\_version, 8);}
+\DoxyCodeLine{310     \_mav\_put\_uint8\_t\_array(buf, 52, os\_custom\_version, 8);}
+\DoxyCodeLine{311     \_mav\_put\_uint8\_t\_array(buf, 60, uid2, 18);}
+\DoxyCodeLine{312     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}}, buf, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{313 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{314     mavlink\_autopilot\_version\_t *packet = (mavlink\_autopilot\_version\_t *)msgbuf;}
+\DoxyCodeLine{315     packet-\/>capabilities = capabilities;}
+\DoxyCodeLine{316     packet-\/>uid = uid;}
+\DoxyCodeLine{317     packet-\/>flight\_sw\_version = flight\_sw\_version;}
+\DoxyCodeLine{318     packet-\/>middleware\_sw\_version = middleware\_sw\_version;}
+\DoxyCodeLine{319     packet-\/>os\_sw\_version = os\_sw\_version;}
+\DoxyCodeLine{320     packet-\/>board\_version = board\_version;}
+\DoxyCodeLine{321     packet-\/>vendor\_id = vendor\_id;}
+\DoxyCodeLine{322     packet-\/>product\_id = product\_id;}
+\DoxyCodeLine{323     mav\_array\_memcpy(packet-\/>flight\_custom\_version, flight\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{324     mav\_array\_memcpy(packet-\/>middleware\_custom\_version, middleware\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{325     mav\_array\_memcpy(packet-\/>os\_custom\_version, os\_custom\_version, \textcolor{keyword}{sizeof}(uint8\_t)*8);}
+\DoxyCodeLine{326     mav\_array\_memcpy(packet-\/>uid2, uid2, \textcolor{keyword}{sizeof}(uint8\_t)*18);}
+\DoxyCodeLine{327     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_ab585eedae69444a59ed190c96aa21c0c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_adddee10c78bf3896bd1493236e9ff594}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a7496eb93e4850f7297fdeea81780571c}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_CRC}});}
+\DoxyCodeLine{328 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{329 \}}
+\DoxyCodeLine{330 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{334 \textcolor{comment}{// MESSAGE AUTOPILOT\_VERSION UNPACKING}}
+\DoxyCodeLine{335 }
+\DoxyCodeLine{336 }
+\DoxyCodeLine{342 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_autopilot\_version\_get\_capabilities(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{343 \{}
+\DoxyCodeLine{344     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{345 \}}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{352 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_autopilot\_version\_get\_flight\_sw\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{353 \{}
+\DoxyCodeLine{354     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  16);}
+\DoxyCodeLine{355 \}}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{362 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_autopilot\_version\_get\_middleware\_sw\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{363 \{}
+\DoxyCodeLine{364     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  20);}
+\DoxyCodeLine{365 \}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{372 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_autopilot\_version\_get\_os\_sw\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{373 \{}
+\DoxyCodeLine{374     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  24);}
+\DoxyCodeLine{375 \}}
+\DoxyCodeLine{376 }
+\DoxyCodeLine{382 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_autopilot\_version\_get\_board\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{383 \{}
+\DoxyCodeLine{384     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  28);}
+\DoxyCodeLine{385 \}}
+\DoxyCodeLine{386 }
+\DoxyCodeLine{392 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_get\_flight\_custom\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *flight\_custom\_version)}
+\DoxyCodeLine{393 \{}
+\DoxyCodeLine{394     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, flight\_custom\_version, 8,  36);}
+\DoxyCodeLine{395 \}}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{402 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_get\_middleware\_custom\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *middleware\_custom\_version)}
+\DoxyCodeLine{403 \{}
+\DoxyCodeLine{404     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, middleware\_custom\_version, 8,  44);}
+\DoxyCodeLine{405 \}}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{412 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_get\_os\_custom\_version(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *os\_custom\_version)}
+\DoxyCodeLine{413 \{}
+\DoxyCodeLine{414     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, os\_custom\_version, 8,  52);}
+\DoxyCodeLine{415 \}}
+\DoxyCodeLine{416 }
+\DoxyCodeLine{422 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_get\_vendor\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{423 \{}
+\DoxyCodeLine{424     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  32);}
+\DoxyCodeLine{425 \}}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{432 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_get\_product\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{433 \{}
+\DoxyCodeLine{434     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  34);}
+\DoxyCodeLine{435 \}}
+\DoxyCodeLine{436 }
+\DoxyCodeLine{442 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_autopilot\_version\_get\_uid(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{443 \{}
+\DoxyCodeLine{444     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  8);}
+\DoxyCodeLine{445 \}}
+\DoxyCodeLine{446 }
+\DoxyCodeLine{452 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_autopilot\_version\_get\_uid2(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *uid2)}
+\DoxyCodeLine{453 \{}
+\DoxyCodeLine{454     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, uid2, 18,  60);}
+\DoxyCodeLine{455 \}}
+\DoxyCodeLine{456 }
+\DoxyCodeLine{463 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_autopilot\_version\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_autopilot\_version\_t* autopilot\_version)}
+\DoxyCodeLine{464 \{}
+\DoxyCodeLine{465 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{466     autopilot\_version-\/>capabilities = mavlink\_msg\_autopilot\_version\_get\_capabilities(msg);}
+\DoxyCodeLine{467     autopilot\_version-\/>uid = mavlink\_msg\_autopilot\_version\_get\_uid(msg);}
+\DoxyCodeLine{468     autopilot\_version-\/>flight\_sw\_version = mavlink\_msg\_autopilot\_version\_get\_flight\_sw\_version(msg);}
+\DoxyCodeLine{469     autopilot\_version-\/>middleware\_sw\_version = mavlink\_msg\_autopilot\_version\_get\_middleware\_sw\_version(msg);}
+\DoxyCodeLine{470     autopilot\_version-\/>os\_sw\_version = mavlink\_msg\_autopilot\_version\_get\_os\_sw\_version(msg);}
+\DoxyCodeLine{471     autopilot\_version-\/>board\_version = mavlink\_msg\_autopilot\_version\_get\_board\_version(msg);}
+\DoxyCodeLine{472     autopilot\_version-\/>vendor\_id = mavlink\_msg\_autopilot\_version\_get\_vendor\_id(msg);}
+\DoxyCodeLine{473     autopilot\_version-\/>product\_id = mavlink\_msg\_autopilot\_version\_get\_product\_id(msg);}
+\DoxyCodeLine{474     mavlink\_msg\_autopilot\_version\_get\_flight\_custom\_version(msg, autopilot\_version-\/>flight\_custom\_version);}
+\DoxyCodeLine{475     mavlink\_msg\_autopilot\_version\_get\_middleware\_custom\_version(msg, autopilot\_version-\/>middleware\_custom\_version);}
+\DoxyCodeLine{476     mavlink\_msg\_autopilot\_version\_get\_os\_custom\_version(msg, autopilot\_version-\/>os\_custom\_version);}
+\DoxyCodeLine{477     mavlink\_msg\_autopilot\_version\_get\_uid2(msg, autopilot\_version-\/>uid2);}
+\DoxyCodeLine{478 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{479         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}};}
+\DoxyCodeLine{480         memset(autopilot\_version, 0, \mbox{\hyperlink{mavlink__msg__autopilot__version_8h_a42fcd50680739955dd8ed32221e2d887}{MAVLINK\_MSG\_ID\_AUTOPILOT\_VERSION\_LEN}});}
+\DoxyCodeLine{481     memcpy(autopilot\_version, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{482 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{483 \}}
+
+\end{DoxyCode}

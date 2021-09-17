@@ -1,0 +1,88 @@
+\hypertarget{_adafruit___p_m_t_k_8h_source}{}\doxysection{Adafruit\+\_\+\+PMTK.\+h}
+\label{_adafruit___p_m_t_k_8h_source}\index{lib/Adafruit\_GPS\_Library/src/Adafruit\_PMTK.h@{lib/Adafruit\_GPS\_Library/src/Adafruit\_PMTK.h}}
+\mbox{\hyperlink{_adafruit___p_m_t_k_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{22 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#ifndef \_ADAFRUIT\_PMTK\_H}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define \_ADAFRUIT\_PMTK\_H}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ                                    \(\backslash\)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{  "{}\$PMTK220,10000*2F"{}} }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ                                    \(\backslash\)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{  "{}\$PMTK220,5000*1B"{}} }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_UPDATE\_1HZ "{}\$PMTK220,1000*1F"{}} }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_UPDATE\_2HZ "{}\$PMTK220,500*2B"{}}  }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_UPDATE\_5HZ "{}\$PMTK220,200*2C"{}}  }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_UPDATE\_10HZ "{}\$PMTK220,100*2F"{}} }
+\DoxyCodeLine{41 \textcolor{comment}{// Position fix update rate commands.}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ                                    \(\backslash\)}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{  "{}\$PMTK300,10000,0,0,0,0*2C"{}} }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ                                    \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{  "{}\$PMTK300,5000,0,0,0,0*18"{}} }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define PMTK\_API\_SET\_FIX\_CTL\_1HZ "{}\$PMTK300,1000,0,0,0,0*1C"{}} }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define PMTK\_API\_SET\_FIX\_CTL\_5HZ "{}\$PMTK300,200,0,0,0,0*2F"{}}  }
+\DoxyCodeLine{48 \textcolor{comment}{// Can't fix position faster than 5 times a second!}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define PMTK\_SET\_BAUD\_115200 "{}\$PMTK251,115200*1F"{}} }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define PMTK\_SET\_BAUD\_57600 "{}\$PMTK251,57600*2C"{}}   }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define PMTK\_SET\_BAUD\_9600 "{}\$PMTK251,9600*17"{}}     }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY                                           \(\backslash\)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{  "{}\$PMTK314,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY                                           \(\backslash\)}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{  "{}\$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY                                           \(\backslash\)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{  "{}\$PMTK314,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY                                           \(\backslash\)}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{  "{}\$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY                                           \(\backslash\)}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{  "{}\$PMTK314,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY                                           \(\backslash\)}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{  "{}\$PMTK314,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA                                            \(\backslash\)}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{  "{}\$PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*28"{}} }
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA                                         \(\backslash\)}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{  "{}\$PMTK314,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29"{}} }
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA                                           \(\backslash\)}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{  "{}\$PMTK314,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0*28"{}} }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define PMTK\_SET\_NMEA\_OUTPUT\_OFF                                               \(\backslash\)}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{  "{}\$PMTK314,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*28"{}} }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{comment}{// to generate your own sentences, check out the MTK command datasheet and use a}}
+\DoxyCodeLine{84 \textcolor{comment}{// checksum calculator such as the awesome}}
+\DoxyCodeLine{85 \textcolor{comment}{// http://www.hhhh.org/wiml/proj/nmeaxor.html}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define PMTK\_LOCUS\_STARTLOG "{}\$PMTK185,0*22"{}} }
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#define PMTK\_LOCUS\_STOPLOG "{}\$PMTK185,1*23"{}}  }
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define PMTK\_LOCUS\_STARTSTOPACK                                                \(\backslash\)}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{  "{}\$PMTK001,185,3*3C"{}} }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define PMTK\_LOCUS\_QUERY\_STATUS "{}\$PMTK183*38"{}}  }
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define PMTK\_LOCUS\_ERASE\_FLASH "{}\$PMTK184,1*22"{}} }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define LOCUS\_OVERLAP                                                          \(\backslash\)}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{  0 }}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define LOCUS\_FULLSTOP 1 }}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define PMTK\_ENABLE\_SBAS                                                       \(\backslash\)}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{  "{}\$PMTK313,1*2E"{}} }
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define PMTK\_ENABLE\_WAAS "{}\$PMTK301,2*2E"{}} }
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define PMTK\_STANDBY                                                           \(\backslash\)}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{  "{}\$PMTK161,0*28"{}} }
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define PMTK\_STANDBY\_SUCCESS "{}\$PMTK001,161,3*36"{}} }
+\DoxyCodeLine{105 \textcolor{preprocessor}{\#define PMTK\_AWAKE "{}\$PMTK010,002*2D"{}}             }
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define PMTK\_Q\_RELEASE "{}\$PMTK605*31"{}} }
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define PGCMD\_ANTENNA                                                          \(\backslash\)}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{  "{}\$PGCMD,33,1*6C"{}} }
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define PGCMD\_NOANTENNA "{}\$PGCMD,33,0*6D"{}} }
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#define MAXWAITSENTENCE                                                        \(\backslash\)}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{  10 }}
+\DoxyCodeLine{115 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

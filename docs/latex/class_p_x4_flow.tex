@@ -1,0 +1,278 @@
+\hypertarget{class_p_x4_flow}{}\doxysection{PX4\+Flow Class Reference}
+\label{class_p_x4_flow}\index{PX4Flow@{PX4Flow}}
+
+
+{\ttfamily \#include $<$PX4\+Flow.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_p_x4_flow_aa35e52215365a3f41854452ab092c8d1}{PX4\+Flow}} ()
+\item 
+bool \mbox{\hyperlink{class_p_x4_flow_a2c0adf557766358a7cd802266243723e}{update}} ()
+\item 
+bool \mbox{\hyperlink{class_p_x4_flow_aaa6434c8ad31b43c55b675ea4c35b0ab}{update\+\_\+integral}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a7f1fc4179321591f3ad4b62f3d9031b4}{frame\+\_\+count}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a87d8716941667a2671c00eb97e95bd0b}{pixel\+\_\+flow\+\_\+x\+\_\+sum}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_aa6d3b2dba3e93cad264508c9a21c4678}{pixel\+\_\+flow\+\_\+y\+\_\+sum}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_aac9b668bbda3b1a035188b24807470db}{flow\+\_\+comp\+\_\+m\+\_\+x}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_abfcf331d3126b7014c7f6ed1964ba984}{flow\+\_\+comp\+\_\+m\+\_\+y}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_ae81b8426c1eaff1ab089b1087a64d6f6}{gyro\+\_\+x\+\_\+rate}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_aa82145e1e428d839db4580e86c095085}{gyro\+\_\+y\+\_\+rate}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a602fb57cd8da6459f8c859841f6e1cc2}{gyro\+\_\+z\+\_\+rate}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a3bcdd02fca5b839e7d2233f2d2b30d07}{qual}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a35e91c0670521531b4987d8a00739d2e}{sonar\+\_\+timestamp}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_abbcdaa3b278838dd2c23c37431485af9}{ground\+\_\+distance}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a19f762cb4e0247a679a665f43dafcdc7}{frame\+\_\+count\+\_\+since\+\_\+last\+\_\+readout}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_aecb28018aae76bb121b0860c6e3df3f6}{pixel\+\_\+flow\+\_\+x\+\_\+integral}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_abb201dcc71390d8e5d52318f654b2af6}{pixel\+\_\+flow\+\_\+y\+\_\+integral}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a96cc4bdccf24051a323216d2bc3dd7c0}{gyro\+\_\+x\+\_\+rate\+\_\+integral}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a7172d88f4fb01e63eebbe5e122c1a0ef}{gyro\+\_\+y\+\_\+rate\+\_\+integral}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a7d5e75d77ba35087e1d0094bcfce2b1d}{gyro\+\_\+z\+\_\+rate\+\_\+integral}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a8adbeefb2b5f17eb46fc662709c8f4c9}{integration\+\_\+timespan}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a187af5158b636c2269e082693c3196b7}{sonar\+\_\+timestamp\+\_\+integral}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a919aadc85d8f9f892038a31ab46a1991}{ground\+\_\+distance\+\_\+integral}} ()
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_ae2258bed9b9fdb043269d0df93700283}{gyro\+\_\+temperature}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a7132084bb82eaf15f8f96758dca18be3}{quality\+\_\+integral}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}{read32}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{read8}} ()
+\item 
+bool \mbox{\hyperlink{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}{wait}} (int count)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structi2c__frame}{i2c\+\_\+frame}} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}
+\item 
+struct \mbox{\hyperlink{structi2c__integral__frame}{i2c\+\_\+integral\+\_\+frame}} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_p_x4_flow_aa35e52215365a3f41854452ab092c8d1}\label{class_p_x4_flow_aa35e52215365a3f41854452ab092c8d1}} 
+\index{PX4Flow@{PX4Flow}!PX4Flow@{PX4Flow}}
+\index{PX4Flow@{PX4Flow}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{PX4Flow()}{PX4Flow()}}
+{\footnotesize\ttfamily PX4\+Flow\+::\+PX4\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_p_x4_flow_aac9b668bbda3b1a035188b24807470db}\label{class_p_x4_flow_aac9b668bbda3b1a035188b24807470db}} 
+\index{PX4Flow@{PX4Flow}!flow\_comp\_m\_x@{flow\_comp\_m\_x}}
+\index{flow\_comp\_m\_x@{flow\_comp\_m\_x}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{flow\_comp\_m\_x()}{flow\_comp\_m\_x()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::flow\+\_\+comp\+\_\+m\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_abfcf331d3126b7014c7f6ed1964ba984}\label{class_p_x4_flow_abfcf331d3126b7014c7f6ed1964ba984}} 
+\index{PX4Flow@{PX4Flow}!flow\_comp\_m\_y@{flow\_comp\_m\_y}}
+\index{flow\_comp\_m\_y@{flow\_comp\_m\_y}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{flow\_comp\_m\_y()}{flow\_comp\_m\_y()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::flow\+\_\+comp\+\_\+m\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a7f1fc4179321591f3ad4b62f3d9031b4}\label{class_p_x4_flow_a7f1fc4179321591f3ad4b62f3d9031b4}} 
+\index{PX4Flow@{PX4Flow}!frame\_count@{frame\_count}}
+\index{frame\_count@{frame\_count}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{frame\_count()}{frame\_count()}}
+{\footnotesize\ttfamily uint16\+\_\+t PX4\+Flow\+::frame\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a19f762cb4e0247a679a665f43dafcdc7}\label{class_p_x4_flow_a19f762cb4e0247a679a665f43dafcdc7}} 
+\index{PX4Flow@{PX4Flow}!frame\_count\_since\_last\_readout@{frame\_count\_since\_last\_readout}}
+\index{frame\_count\_since\_last\_readout@{frame\_count\_since\_last\_readout}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{frame\_count\_since\_last\_readout()}{frame\_count\_since\_last\_readout()}}
+{\footnotesize\ttfamily uint16\+\_\+t PX4\+Flow\+::frame\+\_\+count\+\_\+since\+\_\+last\+\_\+readout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_abbcdaa3b278838dd2c23c37431485af9}\label{class_p_x4_flow_abbcdaa3b278838dd2c23c37431485af9}} 
+\index{PX4Flow@{PX4Flow}!ground\_distance@{ground\_distance}}
+\index{ground\_distance@{ground\_distance}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{ground\_distance()}{ground\_distance()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::ground\+\_\+distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a919aadc85d8f9f892038a31ab46a1991}\label{class_p_x4_flow_a919aadc85d8f9f892038a31ab46a1991}} 
+\index{PX4Flow@{PX4Flow}!ground\_distance\_integral@{ground\_distance\_integral}}
+\index{ground\_distance\_integral@{ground\_distance\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{ground\_distance\_integral()}{ground\_distance\_integral()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::ground\+\_\+distance\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_ae2258bed9b9fdb043269d0df93700283}\label{class_p_x4_flow_ae2258bed9b9fdb043269d0df93700283}} 
+\index{PX4Flow@{PX4Flow}!gyro\_temperature@{gyro\_temperature}}
+\index{gyro\_temperature@{gyro\_temperature}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_temperature()}{gyro\_temperature()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+temperature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_ae81b8426c1eaff1ab089b1087a64d6f6}\label{class_p_x4_flow_ae81b8426c1eaff1ab089b1087a64d6f6}} 
+\index{PX4Flow@{PX4Flow}!gyro\_x\_rate@{gyro\_x\_rate}}
+\index{gyro\_x\_rate@{gyro\_x\_rate}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_x\_rate()}{gyro\_x\_rate()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+x\+\_\+rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a96cc4bdccf24051a323216d2bc3dd7c0}\label{class_p_x4_flow_a96cc4bdccf24051a323216d2bc3dd7c0}} 
+\index{PX4Flow@{PX4Flow}!gyro\_x\_rate\_integral@{gyro\_x\_rate\_integral}}
+\index{gyro\_x\_rate\_integral@{gyro\_x\_rate\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_x\_rate\_integral()}{gyro\_x\_rate\_integral()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+x\+\_\+rate\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_aa82145e1e428d839db4580e86c095085}\label{class_p_x4_flow_aa82145e1e428d839db4580e86c095085}} 
+\index{PX4Flow@{PX4Flow}!gyro\_y\_rate@{gyro\_y\_rate}}
+\index{gyro\_y\_rate@{gyro\_y\_rate}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_y\_rate()}{gyro\_y\_rate()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+y\+\_\+rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a7172d88f4fb01e63eebbe5e122c1a0ef}\label{class_p_x4_flow_a7172d88f4fb01e63eebbe5e122c1a0ef}} 
+\index{PX4Flow@{PX4Flow}!gyro\_y\_rate\_integral@{gyro\_y\_rate\_integral}}
+\index{gyro\_y\_rate\_integral@{gyro\_y\_rate\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_y\_rate\_integral()}{gyro\_y\_rate\_integral()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+y\+\_\+rate\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a602fb57cd8da6459f8c859841f6e1cc2}\label{class_p_x4_flow_a602fb57cd8da6459f8c859841f6e1cc2}} 
+\index{PX4Flow@{PX4Flow}!gyro\_z\_rate@{gyro\_z\_rate}}
+\index{gyro\_z\_rate@{gyro\_z\_rate}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_z\_rate()}{gyro\_z\_rate()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+z\+\_\+rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a7d5e75d77ba35087e1d0094bcfce2b1d}\label{class_p_x4_flow_a7d5e75d77ba35087e1d0094bcfce2b1d}} 
+\index{PX4Flow@{PX4Flow}!gyro\_z\_rate\_integral@{gyro\_z\_rate\_integral}}
+\index{gyro\_z\_rate\_integral@{gyro\_z\_rate\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{gyro\_z\_rate\_integral()}{gyro\_z\_rate\_integral()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::gyro\+\_\+z\+\_\+rate\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a8adbeefb2b5f17eb46fc662709c8f4c9}\label{class_p_x4_flow_a8adbeefb2b5f17eb46fc662709c8f4c9}} 
+\index{PX4Flow@{PX4Flow}!integration\_timespan@{integration\_timespan}}
+\index{integration\_timespan@{integration\_timespan}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{integration\_timespan()}{integration\_timespan()}}
+{\footnotesize\ttfamily uint32\+\_\+t PX4\+Flow\+::integration\+\_\+timespan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_aecb28018aae76bb121b0860c6e3df3f6}\label{class_p_x4_flow_aecb28018aae76bb121b0860c6e3df3f6}} 
+\index{PX4Flow@{PX4Flow}!pixel\_flow\_x\_integral@{pixel\_flow\_x\_integral}}
+\index{pixel\_flow\_x\_integral@{pixel\_flow\_x\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{pixel\_flow\_x\_integral()}{pixel\_flow\_x\_integral()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::pixel\+\_\+flow\+\_\+x\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a87d8716941667a2671c00eb97e95bd0b}\label{class_p_x4_flow_a87d8716941667a2671c00eb97e95bd0b}} 
+\index{PX4Flow@{PX4Flow}!pixel\_flow\_x\_sum@{pixel\_flow\_x\_sum}}
+\index{pixel\_flow\_x\_sum@{pixel\_flow\_x\_sum}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{pixel\_flow\_x\_sum()}{pixel\_flow\_x\_sum()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::pixel\+\_\+flow\+\_\+x\+\_\+sum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_abb201dcc71390d8e5d52318f654b2af6}\label{class_p_x4_flow_abb201dcc71390d8e5d52318f654b2af6}} 
+\index{PX4Flow@{PX4Flow}!pixel\_flow\_y\_integral@{pixel\_flow\_y\_integral}}
+\index{pixel\_flow\_y\_integral@{pixel\_flow\_y\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{pixel\_flow\_y\_integral()}{pixel\_flow\_y\_integral()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::pixel\+\_\+flow\+\_\+y\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_aa6d3b2dba3e93cad264508c9a21c4678}\label{class_p_x4_flow_aa6d3b2dba3e93cad264508c9a21c4678}} 
+\index{PX4Flow@{PX4Flow}!pixel\_flow\_y\_sum@{pixel\_flow\_y\_sum}}
+\index{pixel\_flow\_y\_sum@{pixel\_flow\_y\_sum}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{pixel\_flow\_y\_sum()}{pixel\_flow\_y\_sum()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::pixel\+\_\+flow\+\_\+y\+\_\+sum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a3bcdd02fca5b839e7d2233f2d2b30d07}\label{class_p_x4_flow_a3bcdd02fca5b839e7d2233f2d2b30d07}} 
+\index{PX4Flow@{PX4Flow}!qual@{qual}}
+\index{qual@{qual}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{qual()}{qual()}}
+{\footnotesize\ttfamily int16\+\_\+t PX4\+Flow\+::qual (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a7132084bb82eaf15f8f96758dca18be3}\label{class_p_x4_flow_a7132084bb82eaf15f8f96758dca18be3}} 
+\index{PX4Flow@{PX4Flow}!quality\_integral@{quality\_integral}}
+\index{quality\_integral@{quality\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{quality\_integral()}{quality\_integral()}}
+{\footnotesize\ttfamily uint8\+\_\+t PX4\+Flow\+::quality\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}\label{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}} 
+\index{PX4Flow@{PX4Flow}!read16@{read16}}
+\index{read16@{read16}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{read16()}{read16()}}
+{\footnotesize\ttfamily uint16\+\_\+t PX4\+Flow\+::read16 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}\label{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}} 
+\index{PX4Flow@{PX4Flow}!read32@{read32}}
+\index{read32@{read32}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{read32()}{read32()}}
+{\footnotesize\ttfamily uint32\+\_\+t PX4\+Flow\+::read32 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}\label{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}} 
+\index{PX4Flow@{PX4Flow}!read8@{read8}}
+\index{read8@{read8}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{read8()}{read8()}}
+{\footnotesize\ttfamily uint8\+\_\+t PX4\+Flow\+::read8 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_p_x4_flow_a35e91c0670521531b4987d8a00739d2e}\label{class_p_x4_flow_a35e91c0670521531b4987d8a00739d2e}} 
+\index{PX4Flow@{PX4Flow}!sonar\_timestamp@{sonar\_timestamp}}
+\index{sonar\_timestamp@{sonar\_timestamp}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{sonar\_timestamp()}{sonar\_timestamp()}}
+{\footnotesize\ttfamily uint8\+\_\+t PX4\+Flow\+::sonar\+\_\+timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a187af5158b636c2269e082693c3196b7}\label{class_p_x4_flow_a187af5158b636c2269e082693c3196b7}} 
+\index{PX4Flow@{PX4Flow}!sonar\_timestamp\_integral@{sonar\_timestamp\_integral}}
+\index{sonar\_timestamp\_integral@{sonar\_timestamp\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{sonar\_timestamp\_integral()}{sonar\_timestamp\_integral()}}
+{\footnotesize\ttfamily uint32\+\_\+t PX4\+Flow\+::sonar\+\_\+timestamp\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a2c0adf557766358a7cd802266243723e}\label{class_p_x4_flow_a2c0adf557766358a7cd802266243723e}} 
+\index{PX4Flow@{PX4Flow}!update@{update}}
+\index{update@{update}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily bool PX4\+Flow\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_aaa6434c8ad31b43c55b675ea4c35b0ab}\label{class_p_x4_flow_aaa6434c8ad31b43c55b675ea4c35b0ab}} 
+\index{PX4Flow@{PX4Flow}!update\_integral@{update\_integral}}
+\index{update\_integral@{update\_integral}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{update\_integral()}{update\_integral()}}
+{\footnotesize\ttfamily bool PX4\+Flow\+::update\+\_\+integral (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}\label{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}} 
+\index{PX4Flow@{PX4Flow}!wait@{wait}}
+\index{wait@{wait}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{wait()}{wait()}}
+{\footnotesize\ttfamily bool PX4\+Flow\+::wait (\begin{DoxyParamCaption}\item[{int}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}\label{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}} 
+\index{PX4Flow@{PX4Flow}!frame@{frame}}
+\index{frame@{frame}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{frame}{frame}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structi2c__frame}{i2c\+\_\+frame}} PX4\+Flow\+::frame\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}\label{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}} 
+\index{PX4Flow@{PX4Flow}!iframe@{iframe}}
+\index{iframe@{iframe}!PX4Flow@{PX4Flow}}
+\doxysubsubsection{\texorpdfstring{iframe}{iframe}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structi2c__integral__frame}{i2c\+\_\+integral\+\_\+frame}} PX4\+Flow\+::iframe\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+PX4\+Flow/\mbox{\hyperlink{_p_x4_flow_8h}{PX4\+Flow.\+h}}\item 
+lib/\+PX4\+Flow/\mbox{\hyperlink{_p_x4_flow_8cpp}{PX4\+Flow.\+cpp}}\end{DoxyCompactItemize}

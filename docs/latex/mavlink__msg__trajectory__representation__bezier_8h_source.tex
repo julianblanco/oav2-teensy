@@ -1,0 +1,260 @@
+\hypertarget{mavlink__msg__trajectory__representation__bezier_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+trajectory\+\_\+representation\+\_\+bezier.\+h}
+\label{mavlink__msg__trajectory__representation__bezier_8h_source}\index{lib/common/mavlink\_msg\_trajectory\_representation\_bezier.h@{lib/common/mavlink\_msg\_trajectory\_representation\_bezier.h}}
+\mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE TRAJECTORY\_REPRESENTATION\_BEZIER PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER 333}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_aebfb073194f8b3453bf742bdd306faee}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_trajectory\_representation\_bezier\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} pos\_x[5]; \textcolor{comment}{/*< [m] X-\/coordinate of starting bezier point, set to NaN if not being used*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} pos\_y[5]; \textcolor{comment}{/*< [m] Y-\/coordinate of starting bezier point, set to NaN if not being used*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} pos\_z[5]; \textcolor{comment}{/*< [m] Z-\/coordinate of starting bezier point, set to NaN if not being used*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} delta[5]; \textcolor{comment}{/*< [s] Bezier time horizon, set to NaN if velocity/acceleration should not be incorporated*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} pos\_yaw[5]; \textcolor{comment}{/*< [rad] Yaw, set to NaN for unchanged*/}}
+\DoxyCodeLine{14  uint8\_t valid\_points; \textcolor{comment}{/*<  Number of valid points (up-\/to 5 waypoints are possible)*/}}
+\DoxyCodeLine{15 \}) mavlink\_trajectory\_representation\_bezier\_t;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN 109}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN 109}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_333\_LEN 109}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_333\_MIN\_LEN 109}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC 231}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_333\_CRC 231}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_BEZIER\_FIELD\_POS\_X\_LEN 5}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_BEZIER\_FIELD\_POS\_Y\_LEN 5}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_BEZIER\_FIELD\_POS\_Z\_LEN 5}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_BEZIER\_FIELD\_DELTA\_LEN 5}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_TRAJECTORY\_REPRESENTATION\_BEZIER\_FIELD\_POS\_YAW\_LEN 5}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TRAJECTORY\_REPRESENTATION\_BEZIER \{ \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    333, \(\backslash\)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    "{}TRAJECTORY\_REPRESENTATION\_BEZIER"{}}, \(\backslash\)}
+\DoxyCodeLine{35     7, \(\backslash\)}
+\DoxyCodeLine{36     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_trajectory\_representation\_bezier\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}valid\_points"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 108, offsetof(mavlink\_trajectory\_representation\_bezier\_t, valid\_points) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}pos\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 8, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_x) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}pos\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 28, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_y) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}pos\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 48, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_z) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}delta"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 68, offsetof(mavlink\_trajectory\_representation\_bezier\_t, delta) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}pos\_yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 88, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_yaw) \}, \(\backslash\)}
+\DoxyCodeLine{43          \} \(\backslash\)}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_TRAJECTORY\_REPRESENTATION\_BEZIER \{ \(\backslash\)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{    "{}TRAJECTORY\_REPRESENTATION\_BEZIER"{}}, \(\backslash\)}
+\DoxyCodeLine{48     7, \(\backslash\)}
+\DoxyCodeLine{49     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_trajectory\_representation\_bezier\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}valid\_points"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 108, offsetof(mavlink\_trajectory\_representation\_bezier\_t, valid\_points) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}pos\_x"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 8, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_x) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}pos\_y"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 28, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_y) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}pos\_z"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 48, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_z) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}delta"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 68, offsetof(mavlink\_trajectory\_representation\_bezier\_t, delta) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}pos\_yaw"{}, NULL, MAVLINK\_TYPE\_FLOAT, 5, 88, offsetof(mavlink\_trajectory\_representation\_bezier\_t, pos\_yaw) \}, \(\backslash\)}
+\DoxyCodeLine{56          \} \(\backslash\)}
+\DoxyCodeLine{57 \}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{75 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{76                                uint64\_t time\_usec, uint8\_t valid\_points, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *delta, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw)}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{79     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}];}
+\DoxyCodeLine{80     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{81     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 108, valid\_points);}
+\DoxyCodeLine{82     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{83     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{84     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{85     \_mav\_put\_float\_array(buf, 68, delta, 5);}
+\DoxyCodeLine{86     \_mav\_put\_float\_array(buf, 88, pos\_yaw, 5);}
+\DoxyCodeLine{87         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}});}
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{89     mavlink\_trajectory\_representation\_bezier\_t packet;}
+\DoxyCodeLine{90     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{91     packet.valid\_points = valid\_points;}
+\DoxyCodeLine{92     mav\_array\_memcpy(packet.pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{93     mav\_array\_memcpy(packet.pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{94     mav\_array\_memcpy(packet.pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{95     mav\_array\_memcpy(packet.delta, delta, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{96     mav\_array\_memcpy(packet.pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{97         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}});}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}};}
+\DoxyCodeLine{101     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{102 \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{119 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{120                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{121                                    uint64\_t time\_usec,uint8\_t valid\_points,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *delta,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw)}
+\DoxyCodeLine{122 \{}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{124     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}];}
+\DoxyCodeLine{125     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{126     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 108, valid\_points);}
+\DoxyCodeLine{127     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{128     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{129     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{130     \_mav\_put\_float\_array(buf, 68, delta, 5);}
+\DoxyCodeLine{131     \_mav\_put\_float\_array(buf, 88, pos\_yaw, 5);}
+\DoxyCodeLine{132         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}});}
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{134     mavlink\_trajectory\_representation\_bezier\_t packet;}
+\DoxyCodeLine{135     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{136     packet.valid\_points = valid\_points;}
+\DoxyCodeLine{137     mav\_array\_memcpy(packet.pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{138     mav\_array\_memcpy(packet.pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{139     mav\_array\_memcpy(packet.pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{140     mav\_array\_memcpy(packet.delta, delta, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{141     mav\_array\_memcpy(packet.pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{142         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}});}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}};}
+\DoxyCodeLine{146     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{157 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_trajectory\_representation\_bezier\_t* trajectory\_representation\_bezier)}
+\DoxyCodeLine{158 \{}
+\DoxyCodeLine{159     \textcolor{keywordflow}{return} mavlink\_msg\_trajectory\_representation\_bezier\_pack(system\_id, component\_id, msg, trajectory\_representation\_bezier-\/>time\_usec, trajectory\_representation\_bezier-\/>valid\_points, trajectory\_representation\_bezier-\/>pos\_x, trajectory\_representation\_bezier-\/>pos\_y, trajectory\_representation\_bezier-\/>pos\_z, trajectory\_representation\_bezier-\/>delta, trajectory\_representation\_bezier-\/>pos\_yaw);}
+\DoxyCodeLine{160 \}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{171 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_trajectory\_representation\_bezier\_t* trajectory\_representation\_bezier)}
+\DoxyCodeLine{172 \{}
+\DoxyCodeLine{173     \textcolor{keywordflow}{return} mavlink\_msg\_trajectory\_representation\_bezier\_pack\_chan(system\_id, component\_id, chan, msg, trajectory\_representation\_bezier-\/>time\_usec, trajectory\_representation\_bezier-\/>valid\_points, trajectory\_representation\_bezier-\/>pos\_x, trajectory\_representation\_bezier-\/>pos\_y, trajectory\_representation\_bezier-\/>pos\_z, trajectory\_representation\_bezier-\/>delta, trajectory\_representation\_bezier-\/>pos\_yaw);}
+\DoxyCodeLine{174 \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_bezier\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t valid\_points, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *delta, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw)}
+\DoxyCodeLine{191 \{}
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{193     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}];}
+\DoxyCodeLine{194     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{195     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 108, valid\_points);}
+\DoxyCodeLine{196     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{197     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{198     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{199     \_mav\_put\_float\_array(buf, 68, delta, 5);}
+\DoxyCodeLine{200     \_mav\_put\_float\_array(buf, 88, pos\_yaw, 5);}
+\DoxyCodeLine{201     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}}, buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{203     mavlink\_trajectory\_representation\_bezier\_t packet;}
+\DoxyCodeLine{204     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{205     packet.valid\_points = valid\_points;}
+\DoxyCodeLine{206     mav\_array\_memcpy(packet.pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{207     mav\_array\_memcpy(packet.pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{208     mav\_array\_memcpy(packet.pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{209     mav\_array\_memcpy(packet.delta, delta, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{210     mav\_array\_memcpy(packet.pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{211     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{213 \}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{220 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_bezier\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_trajectory\_representation\_bezier\_t* trajectory\_representation\_bezier)}
+\DoxyCodeLine{221 \{}
+\DoxyCodeLine{222 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{223     mavlink\_msg\_trajectory\_representation\_bezier\_send(chan, trajectory\_representation\_bezier-\/>time\_usec, trajectory\_representation\_bezier-\/>valid\_points, trajectory\_representation\_bezier-\/>pos\_x, trajectory\_representation\_bezier-\/>pos\_y, trajectory\_representation\_bezier-\/>pos\_z, trajectory\_representation\_bezier-\/>delta, trajectory\_representation\_bezier-\/>pos\_yaw);}
+\DoxyCodeLine{224 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{225     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)trajectory\_representation\_bezier, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{227 \}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{230 \textcolor{comment}{/*}}
+\DoxyCodeLine{231 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{232 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{233 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{234 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{235 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{236 \textcolor{comment}{ */}}
+\DoxyCodeLine{237 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_bezier\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t valid\_points, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_x, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_y, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_z, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *delta, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *pos\_yaw)}
+\DoxyCodeLine{238 \{}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{240     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{241     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{242     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 108, valid\_points);}
+\DoxyCodeLine{243     \_mav\_put\_float\_array(buf, 8, pos\_x, 5);}
+\DoxyCodeLine{244     \_mav\_put\_float\_array(buf, 28, pos\_y, 5);}
+\DoxyCodeLine{245     \_mav\_put\_float\_array(buf, 48, pos\_z, 5);}
+\DoxyCodeLine{246     \_mav\_put\_float\_array(buf, 68, delta, 5);}
+\DoxyCodeLine{247     \_mav\_put\_float\_array(buf, 88, pos\_yaw, 5);}
+\DoxyCodeLine{248     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}}, buf, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{250     mavlink\_trajectory\_representation\_bezier\_t *packet = (mavlink\_trajectory\_representation\_bezier\_t *)msgbuf;}
+\DoxyCodeLine{251     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{252     packet-\/>valid\_points = valid\_points;}
+\DoxyCodeLine{253     mav\_array\_memcpy(packet-\/>pos\_x, pos\_x, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{254     mav\_array\_memcpy(packet-\/>pos\_y, pos\_y, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{255     mav\_array\_memcpy(packet-\/>pos\_z, pos\_z, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{256     mav\_array\_memcpy(packet-\/>delta, delta, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{257     mav\_array\_memcpy(packet-\/>pos\_yaw, pos\_yaw, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*5);}
+\DoxyCodeLine{258     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a4cf712765c0646acde32b6f24cf3a010}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_af342c93b30a40aab7ec084908e6666e7}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a76129bd5bd6079ecfa94fe4ed5c59974}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_CRC}});}
+\DoxyCodeLine{259 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{260 \}}
+\DoxyCodeLine{261 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265 \textcolor{comment}{// MESSAGE TRAJECTORY\_REPRESENTATION\_BEZIER UNPACKING}}
+\DoxyCodeLine{266 }
+\DoxyCodeLine{267 }
+\DoxyCodeLine{273 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{274 \{}
+\DoxyCodeLine{275     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{276 \}}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{283 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_valid\_points(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{284 \{}
+\DoxyCodeLine{285     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  108);}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{293 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_x)}
+\DoxyCodeLine{294 \{}
+\DoxyCodeLine{295     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_x, 5,  8);}
+\DoxyCodeLine{296 \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{303 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_y)}
+\DoxyCodeLine{304 \{}
+\DoxyCodeLine{305     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_y, 5,  28);}
+\DoxyCodeLine{306 \}}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{313 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_z(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_z)}
+\DoxyCodeLine{314 \{}
+\DoxyCodeLine{315     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_z, 5,  48);}
+\DoxyCodeLine{316 \}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{323 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_delta(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *delta)}
+\DoxyCodeLine{324 \{}
+\DoxyCodeLine{325     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, delta, 5,  68);}
+\DoxyCodeLine{326 \}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{333 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_yaw(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *pos\_yaw)}
+\DoxyCodeLine{334 \{}
+\DoxyCodeLine{335     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, pos\_yaw, 5,  88);}
+\DoxyCodeLine{336 \}}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{344 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_trajectory\_representation\_bezier\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_trajectory\_representation\_bezier\_t* trajectory\_representation\_bezier)}
+\DoxyCodeLine{345 \{}
+\DoxyCodeLine{346 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{347     trajectory\_representation\_bezier-\/>time\_usec = mavlink\_msg\_trajectory\_representation\_bezier\_get\_time\_usec(msg);}
+\DoxyCodeLine{348     mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_x(msg, trajectory\_representation\_bezier-\/>pos\_x);}
+\DoxyCodeLine{349     mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_y(msg, trajectory\_representation\_bezier-\/>pos\_y);}
+\DoxyCodeLine{350     mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_z(msg, trajectory\_representation\_bezier-\/>pos\_z);}
+\DoxyCodeLine{351     mavlink\_msg\_trajectory\_representation\_bezier\_get\_delta(msg, trajectory\_representation\_bezier-\/>delta);}
+\DoxyCodeLine{352     mavlink\_msg\_trajectory\_representation\_bezier\_get\_pos\_yaw(msg, trajectory\_representation\_bezier-\/>pos\_yaw);}
+\DoxyCodeLine{353     trajectory\_representation\_bezier-\/>valid\_points = mavlink\_msg\_trajectory\_representation\_bezier\_get\_valid\_points(msg);}
+\DoxyCodeLine{354 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{355         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}};}
+\DoxyCodeLine{356         memset(trajectory\_representation\_bezier, 0, \mbox{\hyperlink{mavlink__msg__trajectory__representation__bezier_8h_a804251bf2710da41fc32783a91e80082}{MAVLINK\_MSG\_ID\_TRAJECTORY\_REPRESENTATION\_BEZIER\_LEN}});}
+\DoxyCodeLine{357     memcpy(trajectory\_representation\_bezier, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{358 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{359 \}}
+
+\end{DoxyCode}

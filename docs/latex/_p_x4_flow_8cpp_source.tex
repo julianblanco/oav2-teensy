@@ -1,0 +1,246 @@
+\hypertarget{_p_x4_flow_8cpp_source}{}\doxysection{PX4\+Flow.\+cpp}
+\label{_p_x4_flow_8cpp_source}\index{lib/PX4Flow/PX4Flow.cpp@{lib/PX4Flow/PX4Flow.cpp}}
+\mbox{\hyperlink{_p_x4_flow_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00001}\mbox{\hyperlink{_p_x4_flow_8cpp_ab6f3c269fc46c9c1c0f81b3431240138}{00001}} \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00002}00002 \textcolor{comment}{ * Copyright (c) 2014 by Laurent Eschenauer <laurent@eschenauer.be>}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00003}00003 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00004}00004 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00005}00005 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00006}00006 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00007}00007 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00008}00008 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00009}00009 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00010}00010 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00011}00011 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00012}00012 \textcolor{comment}{ * all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00013}00013 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00014}00014 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00015}00015 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00016}00016 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00017}00017 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00018}00018 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00019}00019 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00020}00020 \textcolor{comment}{ * THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00021}00021 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00022}00022 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00024}00024 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00025}00025 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_p_x4_flow_8h}{PX4Flow.h}}"{}}:}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00028}00028 \mbox{\hyperlink{class_p_x4_flow_aa35e52215365a3f41854452ab092c8d1}{PX4Flow::PX4Flow}}()}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00032}00032 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_p_x4_flow_a2c0adf557766358a7cd802266243723e}{PX4Flow::update}}()}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00034}00034   \textcolor{comment}{//send 0x0 to PX4FLOW module and receive back 22 Bytes data }}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00035}00035   Wire.beginTransmission(\mbox{\hyperlink{_p_x4_flow_8h_a12cac4bf7620f006f031c723d072c73b}{PX4FLOW\_ADDRESS}});}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00036}\mbox{\hyperlink{_p_x4_flow_8cpp_aa397a63c56f62c056e43beb8d0e5e642}{00036}}   Wire.write(0x0);  }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00037}\mbox{\hyperlink{_p_x4_flow_8cpp_af6edc53528242ecdee60b093a0b5db17}{00037}}   Wire.endTransmission();  }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00038}00038   }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00039}00039   \textcolor{comment}{// request 22 bytes from the module}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00040}\mbox{\hyperlink{_p_x4_flow_8cpp_a34c1b7f096ddd686922cb0fbfa648082}{00040}}   Wire.requestFrom(\mbox{\hyperlink{_p_x4_flow_8h_a12cac4bf7620f006f031c723d072c73b}{PX4FLOW\_ADDRESS}}, 22);    }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00042}00042   \textcolor{comment}{// wait for all data to be available}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00043}\mbox{\hyperlink{_p_x4_flow_8cpp_aa97707a0fb5c428dc2c90519b2a43486}{00043}}   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}{wait}}(22)) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00044}00044       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00045}00045   \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00047}00047   \textcolor{comment}{// read the data}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00048}\mbox{\hyperlink{_p_x4_flow_8cpp_aceaf8ffaf61f831163a65492ab9a4d81}{00048}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a800b8d79b90e2f933413405aa9801567}{frame\_count}}       = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00049}\mbox{\hyperlink{_p_x4_flow_8cpp_a687da877c9b53ea129bdb1f1ec1632de}{00049}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_ae5eb3e395522b73895ff3b10707c443b}{pixel\_flow\_x\_sum}}  = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00050}\mbox{\hyperlink{_p_x4_flow_8cpp_ac402edc849149cec1bc053b81a35d8db}{00050}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_af857f0205dd89b20b9277f8acffff497}{pixel\_flow\_y\_sum}}  = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00051}\mbox{\hyperlink{_p_x4_flow_8cpp_a49848836f35b9621bd49c10a0bbf6037}{00051}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a31327d48bac319121f4cecc86632e888}{flow\_comp\_m\_x}}     = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00052}\mbox{\hyperlink{_p_x4_flow_8cpp_a16a44d14930d293e02e30fb6acb869ea}{00052}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_ac25e5b08842cb092595ee5a0ada0552c}{flow\_comp\_m\_y}}     = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00053}\mbox{\hyperlink{_p_x4_flow_8cpp_aee31512d74b9f8997b983f61bf4e518a}{00053}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a4d7b86bb1c9a6ebdc636d1de8cb9ad20}{qual}}              = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00054}\mbox{\hyperlink{_p_x4_flow_8cpp_a3cbb9aa1f625183bbab894b2bacde13f}{00054}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a5cfec11bb84c7727172bfe0c8198712a}{gyro\_x\_rate}}       = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00055}\mbox{\hyperlink{_p_x4_flow_8cpp_aeebf17614cb86a3379128392e90c896f}{00055}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a5406e19c99735763144c56b119b8d272}{gyro\_y\_rate}}       = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00056}\mbox{\hyperlink{_p_x4_flow_8cpp_a2989b98304c12234738639b9ec02326a}{00056}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a4c38d5babae000cf785f1bb433dbc5f8}{gyro\_z\_rate}}       = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00057}\mbox{\hyperlink{_p_x4_flow_8cpp_a726ca0c059402a5bd44c6e4d2a551c97}{00057}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_af3d0b774da2f3f891033341307dffc4a}{gyro\_range}}        = \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{read8}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00058}\mbox{\hyperlink{_p_x4_flow_8cpp_aaf5d875b5c895c6cb0a698d95a4f98ec}{00058}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_ac2bfec055404c723ed33ef6d36e7bcc5}{sonar\_timestamp}}   = \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{read8}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00059}\mbox{\hyperlink{_p_x4_flow_8cpp_a3a7b2e751933c1099dc11e329b700f3e}{00059}}   \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_af041e84e5c04f19a38ea28512abb0450}{ground\_distance}}   = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00060}00060   }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00061}00061   \textcolor{comment}{// if too many bytes are available, we drain in order to be synched}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00062}00062   \textcolor{comment}{// on next read}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00063}\mbox{\hyperlink{_p_x4_flow_8cpp_a6b33024267810dc5299e21fd22a8bb09}{00063}}   \textcolor{keywordflow}{if}(Wire.available()) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00064}00064 \textcolor{preprocessor}{    \#if PX4FLOW\_DEBUG == true}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00066}00066       Serial.println(\textcolor{stringliteral}{"{}ERROR [PX4Flow] : Too many bytes available."{}});}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00068}00068 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00069}00069     \textcolor{keywordflow}{while}(Wire.available()) \{Wire.read();\}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00070}00070   \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00072}\mbox{\hyperlink{_p_x4_flow_8cpp_a930920b2bc42824a5c03be681830f4b2}{00072}}   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00073}00073 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00075}\mbox{\hyperlink{class_p_x4_flow_aaa6434c8ad31b43c55b675ea4c35b0ab}{00075}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_p_x4_flow_aaa6434c8ad31b43c55b675ea4c35b0ab}{PX4Flow::update\_integral}}()}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00077}00077   \textcolor{comment}{//send 0x16 to PX4FLOW module and receive back 25 Bytes data }}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00078}00078   Wire.beginTransmission(\mbox{\hyperlink{_p_x4_flow_8h_a12cac4bf7620f006f031c723d072c73b}{PX4FLOW\_ADDRESS}});}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00079}00079   Wire.write(0x16);  }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00080}00080   Wire.endTransmission();  }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00081}00081   }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00082}00082   \textcolor{comment}{// request 25 bytes from the module}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00083}00083   Wire.requestFrom(\mbox{\hyperlink{_p_x4_flow_8h_a12cac4bf7620f006f031c723d072c73b}{PX4FLOW\_ADDRESS}}, 26);    }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00085}00085   \textcolor{comment}{// wait for all data to be available}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00086}00086   \textcolor{comment}{// TODO we could manage a timeout in order not to block}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00087}00087   \textcolor{comment}{// the loop when no component is connected}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00088}00088   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}{wait}}(26)) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00089}00089       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00090}00090   \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00091}00091   }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00092}00092   \textcolor{comment}{// read the data}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00093}00093   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a4c12e8324a8e3e51d7c5d4bbcd614988}{frame\_count\_since\_last\_readout}} = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00094}00094   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a141d573a83ebfb30153ee122ceda5e03}{pixel\_flow\_x\_integral}}  = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00095}00095   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a6b0bf70f18f79182296415b9885c5722}{pixel\_flow\_y\_integral}}  = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00096}00096   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_aa2fee338c2780d1a050a880aac277808}{gyro\_x\_rate\_integral}}   = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00097}00097   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_ac91297d9dd3d939490634572ca0d95b0}{gyro\_y\_rate\_integral}}   = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00098}00098   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a93671b6c6361f310801e59beaa405eaf}{gyro\_z\_rate\_integral}}   = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00099}00099   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_aeb9c4cf54f2d39e1c37ae597e5c626c6}{integration\_timespan}}   = \mbox{\hyperlink{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}{read32}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00100}00100   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a34494f9db0c7e3b202819512960675c7}{sonar\_timestamp}}        = \mbox{\hyperlink{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}{read32}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00101}00101   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a9c5eec67228d140d67bed6021cd151fc}{ground\_distance}}        = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00102}00102   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_adfae35b96e7c3211bb7a6a301e161fad}{gyro\_temperature}}       = \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00103}00103   \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a8ab556ab920ea871a4a512a9f28a61a4}{quality}}                = \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{read8}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00105}00105   \textcolor{comment}{// This is due to the lack of structure packing}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00106}00106   \textcolor{comment}{// in the PX4Flow code.}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00107}00107   \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{read8}}();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00108}00108   }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00109}00109   \textcolor{comment}{// if too many bytes are available, we drain in order to be synched}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00110}00110   \textcolor{comment}{// on next read}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00111}00111   \textcolor{keywordflow}{if}(Wire.available()) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00112}00112 \textcolor{preprocessor}{    \#if PX4FLOW\_DEBUG == true}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00113}00113     \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00114}00114       Serial.println(\textcolor{stringliteral}{"{}ERROR [PX4Flow] : Too many bytes available."{}});}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00115}00115     \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00116}00116 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00117}00117     \textcolor{keywordflow}{while}(Wire.available()) \{Wire.read();\}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00118}00118   \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00120}00120   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00121}00121 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00123}00123 \textcolor{comment}{// Simple frame}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00124}\mbox{\hyperlink{class_p_x4_flow_a7f1fc4179321591f3ad4b62f3d9031b4}{00124}} uint16\_t \mbox{\hyperlink{class_p_x4_flow_a7f1fc4179321591f3ad4b62f3d9031b4}{PX4Flow::frame\_count}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00125}00125   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a800b8d79b90e2f933413405aa9801567}{frame\_count}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00126}00126 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00128}\mbox{\hyperlink{class_p_x4_flow_a87d8716941667a2671c00eb97e95bd0b}{00128}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a87d8716941667a2671c00eb97e95bd0b}{PX4Flow::pixel\_flow\_x\_sum}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00129}00129   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_ae5eb3e395522b73895ff3b10707c443b}{pixel\_flow\_x\_sum}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00130}00130 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00132}\mbox{\hyperlink{class_p_x4_flow_aa6d3b2dba3e93cad264508c9a21c4678}{00132}} int16\_t \mbox{\hyperlink{class_p_x4_flow_aa6d3b2dba3e93cad264508c9a21c4678}{PX4Flow::pixel\_flow\_y\_sum}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00133}00133   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_af857f0205dd89b20b9277f8acffff497}{pixel\_flow\_y\_sum}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00134}00134 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00136}\mbox{\hyperlink{class_p_x4_flow_aac9b668bbda3b1a035188b24807470db}{00136}} int16\_t \mbox{\hyperlink{class_p_x4_flow_aac9b668bbda3b1a035188b24807470db}{PX4Flow::flow\_comp\_m\_x}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00137}00137   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a31327d48bac319121f4cecc86632e888}{flow\_comp\_m\_x}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00138}00138 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00140}\mbox{\hyperlink{class_p_x4_flow_abfcf331d3126b7014c7f6ed1964ba984}{00140}} int16\_t \mbox{\hyperlink{class_p_x4_flow_abfcf331d3126b7014c7f6ed1964ba984}{PX4Flow::flow\_comp\_m\_y}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00141}00141   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_ac25e5b08842cb092595ee5a0ada0552c}{flow\_comp\_m\_y}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00142}00142 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00144}\mbox{\hyperlink{class_p_x4_flow_ae81b8426c1eaff1ab089b1087a64d6f6}{00144}} int16\_t \mbox{\hyperlink{class_p_x4_flow_ae81b8426c1eaff1ab089b1087a64d6f6}{PX4Flow::gyro\_x\_rate}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00145}00145   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a5cfec11bb84c7727172bfe0c8198712a}{gyro\_x\_rate}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00146}00146 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00148}\mbox{\hyperlink{class_p_x4_flow_aa82145e1e428d839db4580e86c095085}{00148}} int16\_t \mbox{\hyperlink{class_p_x4_flow_aa82145e1e428d839db4580e86c095085}{PX4Flow::gyro\_y\_rate}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00149}00149   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a5406e19c99735763144c56b119b8d272}{gyro\_y\_rate}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00150}00150 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00152}\mbox{\hyperlink{class_p_x4_flow_a602fb57cd8da6459f8c859841f6e1cc2}{00152}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a602fb57cd8da6459f8c859841f6e1cc2}{PX4Flow::gyro\_z\_rate}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00153}00153   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a4c38d5babae000cf785f1bb433dbc5f8}{gyro\_z\_rate}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00154}00154 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00156}\mbox{\hyperlink{class_p_x4_flow_a3bcdd02fca5b839e7d2233f2d2b30d07}{00156}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a3bcdd02fca5b839e7d2233f2d2b30d07}{PX4Flow::qual}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00157}00157   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_a4d7b86bb1c9a6ebdc636d1de8cb9ad20}{qual}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00158}00158 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00160}\mbox{\hyperlink{class_p_x4_flow_a35e91c0670521531b4987d8a00739d2e}{00160}} uint8\_t \mbox{\hyperlink{class_p_x4_flow_a35e91c0670521531b4987d8a00739d2e}{PX4Flow::sonar\_timestamp}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00161}00161   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_ac2bfec055404c723ed33ef6d36e7bcc5}{sonar\_timestamp}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00162}00162 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00164}\mbox{\hyperlink{class_p_x4_flow_abbcdaa3b278838dd2c23c37431485af9}{00164}} int16\_t \mbox{\hyperlink{class_p_x4_flow_abbcdaa3b278838dd2c23c37431485af9}{PX4Flow::ground\_distance}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00165}00165   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}}.\mbox{\hyperlink{structi2c__frame_af041e84e5c04f19a38ea28512abb0450}{ground\_distance}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00166}00166 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00168}00168 \textcolor{comment}{// Integral frame}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00169}\mbox{\hyperlink{class_p_x4_flow_a19f762cb4e0247a679a665f43dafcdc7}{00169}} uint16\_t \mbox{\hyperlink{class_p_x4_flow_a19f762cb4e0247a679a665f43dafcdc7}{PX4Flow::frame\_count\_since\_last\_readout}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00170}00170   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a4c12e8324a8e3e51d7c5d4bbcd614988}{frame\_count\_since\_last\_readout}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00171}00171 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00173}\mbox{\hyperlink{class_p_x4_flow_aecb28018aae76bb121b0860c6e3df3f6}{00173}} int16\_t \mbox{\hyperlink{class_p_x4_flow_aecb28018aae76bb121b0860c6e3df3f6}{PX4Flow::pixel\_flow\_x\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00174}00174   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a141d573a83ebfb30153ee122ceda5e03}{pixel\_flow\_x\_integral}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00175}00175 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00176}00176 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00177}\mbox{\hyperlink{class_p_x4_flow_abb201dcc71390d8e5d52318f654b2af6}{00177}} int16\_t \mbox{\hyperlink{class_p_x4_flow_abb201dcc71390d8e5d52318f654b2af6}{PX4Flow::pixel\_flow\_y\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00178}00178   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a6b0bf70f18f79182296415b9885c5722}{pixel\_flow\_y\_integral}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00179}00179 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00181}\mbox{\hyperlink{class_p_x4_flow_a96cc4bdccf24051a323216d2bc3dd7c0}{00181}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a96cc4bdccf24051a323216d2bc3dd7c0}{PX4Flow::gyro\_x\_rate\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00182}00182   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_aa2fee338c2780d1a050a880aac277808}{gyro\_x\_rate\_integral}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00183}00183 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00185}\mbox{\hyperlink{class_p_x4_flow_a7172d88f4fb01e63eebbe5e122c1a0ef}{00185}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a7172d88f4fb01e63eebbe5e122c1a0ef}{PX4Flow::gyro\_y\_rate\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00186}00186   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_ac91297d9dd3d939490634572ca0d95b0}{gyro\_y\_rate\_integral}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00187}00187 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00189}\mbox{\hyperlink{class_p_x4_flow_a7d5e75d77ba35087e1d0094bcfce2b1d}{00189}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a7d5e75d77ba35087e1d0094bcfce2b1d}{PX4Flow::gyro\_z\_rate\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00190}00190   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a93671b6c6361f310801e59beaa405eaf}{gyro\_z\_rate\_integral}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00191}00191 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00193}\mbox{\hyperlink{class_p_x4_flow_a8adbeefb2b5f17eb46fc662709c8f4c9}{00193}} uint32\_t \mbox{\hyperlink{class_p_x4_flow_a8adbeefb2b5f17eb46fc662709c8f4c9}{PX4Flow::integration\_timespan}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00194}00194   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_aeb9c4cf54f2d39e1c37ae597e5c626c6}{integration\_timespan}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00195}00195 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00197}\mbox{\hyperlink{class_p_x4_flow_a187af5158b636c2269e082693c3196b7}{00197}} uint32\_t \mbox{\hyperlink{class_p_x4_flow_a187af5158b636c2269e082693c3196b7}{PX4Flow::sonar\_timestamp\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00198}00198   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a34494f9db0c7e3b202819512960675c7}{sonar\_timestamp}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00199}00199 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00200}00200       }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00201}\mbox{\hyperlink{class_p_x4_flow_a919aadc85d8f9f892038a31ab46a1991}{00201}} int16\_t \mbox{\hyperlink{class_p_x4_flow_a919aadc85d8f9f892038a31ab46a1991}{PX4Flow::ground\_distance\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00202}00202   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a9c5eec67228d140d67bed6021cd151fc}{ground\_distance}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00203}00203 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00205}\mbox{\hyperlink{class_p_x4_flow_ae2258bed9b9fdb043269d0df93700283}{00205}} int16\_t \mbox{\hyperlink{class_p_x4_flow_ae2258bed9b9fdb043269d0df93700283}{PX4Flow::gyro\_temperature}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00206}00206   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_adfae35b96e7c3211bb7a6a301e161fad}{gyro\_temperature}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00207}00207 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00209}\mbox{\hyperlink{class_p_x4_flow_a7132084bb82eaf15f8f96758dca18be3}{00209}} uint8\_t \mbox{\hyperlink{class_p_x4_flow_a7132084bb82eaf15f8f96758dca18be3}{PX4Flow::quality\_integral}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00210}00210   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}}.\mbox{\hyperlink{structi2c__integral__frame_a8ab556ab920ea871a4a512a9f28a61a4}{quality}};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00211}00211 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00213}00213 \textcolor{comment}{// Protected}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00214}\mbox{\hyperlink{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}{00214}} uint32\_t \mbox{\hyperlink{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}{PX4Flow::read32}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00215}00215   \textcolor{keywordflow}{return} (uint32\_t) \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}() + (uint32\_t) (\mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}() << 16);}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00216}00216 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00218}\mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{00218}} uint16\_t \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{PX4Flow::read16}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00219}00219   \textcolor{keywordflow}{return} Wire.read() + (uint16\_t) (Wire.read() << 8);}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00220}00220 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00222}\mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{00222}} uint8\_t \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{PX4Flow::read8}}() \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00223}00223   \textcolor{keywordflow}{return} Wire.read();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00224}00224 \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00225}00225 }
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00226}\mbox{\hyperlink{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}{00226}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}{PX4Flow::wait}}(\textcolor{keywordtype}{int} count) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00227}00227   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} now = millis();}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00228}00228   \textcolor{keywordflow}{while}(Wire.available() < count) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00229}00229     \textcolor{keywordflow}{if} ((millis() -\/ now) > \mbox{\hyperlink{_p_x4_flow_8h_a7a44ad0c4e8ffee5993f24eb77c3d5f4}{PX4FLOW\_TIMEOUT}}) \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00230}00230 \textcolor{preprocessor}{      \#if PX4FLOW\_DEBUG == true}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00231}00231         \{}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00232}00232           Serial.println(\textcolor{stringliteral}{"{}ERROR [PX4Flow] : Timeout reading PX4\_Flow."{}});}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00233}00233         \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00234}00234 \textcolor{preprocessor}{      \#endif}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00235}00235       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00236}00236     \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00237}00237     delay(1);}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00238}00238   \}}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00239}00239   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_p_x4_flow_8cpp_source_l00240}00240 \}}
+
+\end{DoxyCode}

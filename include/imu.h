@@ -20,15 +20,15 @@ class IMU : public Task
 {
   // Public interface methods
 public:
-  IMU();
-  ~IMU();
-  float yaw;
-  float roll;
-  float pitch;
-  Adafruit_BNO055 bno055imu;
-  BNO080 bno080imu;
-  imu::Vector<3> euler;
-  cpp_freertos::ReadWriteLockPreferWriter lock;
+  IMU(); // contstuctor
+  ~IMU(); // decontstuctor
+  float yaw; //yaw for the craft, in degrees
+  float roll; //roll for the craft, in degrees
+  float pitch; //pitch for the craft, in degrees
+  Adafruit_BNO055 bno055imu; //class object for the bno055, see adafruits documentation 
+  BNO080 bno080imu; //class object for the bno055, see sparkfuns documentation 
+  imu::Vector<3> euler; //vector to temporarily hold data coming from the bno055
+  cpp_freertos::ReadWriteLockPreferWriter lock; //lock to prevent rw issues
 
   
 float headingOffset;
@@ -44,18 +44,32 @@ float headingOffset;
    * - 
    */
   int setup();
+    /**
+   * Start the IMU loop. This runs after the setup function and will lock the IMU Lock, call \n getIMUdata, then lock the IMU lock
+   *
+   * - 
+   */
   int start();
 
   /**
-   * Execute the main loop for the imu.
-   *
-   * This will begin sampling and uploading results as needed/available.
+  * This will begin sampling the IMUs based on what IMU (or IMUs) are declared
   */
  void getIMUdata();
-  static void imuLoop(void *arg);
+  /**
+  * This will get data from the mpu6050 at the standard address and then call madgwick. roll, pitch and yaw come from the output of the madgwick filter. It is called  by getIMUdata in the imu sampling loop. \n\n This function updates the roll, pitch, yaw variables in the class object
+  */
   void getmpu6050data();
+  /**
+  * This will get roll,pitch, and yaw data from the bno080. It is called  by getIMUdata in the imu sampling loop. \n\n This function updates the roll, pitch, yaw variables in the class object
+  */
   void getbno080data();
+  /**
+  * This will get roll, pitch, and yaw data from the bno055. It is called  by getIMUdata in the imu sampling loop. \n\n This function updates the roll, pitch, yaw variables in the class object
+  */
   void getbno055data();
+
+
+
 
   // Private internal methods
 private:

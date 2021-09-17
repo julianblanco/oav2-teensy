@@ -1,0 +1,44 @@
+\hypertarget{config_8h_source}{}\doxysection{config.\+h}
+\label{config_8h_source}\index{include/config.h@{include/config.h}}
+\mbox{\hyperlink{config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef \_config\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define \_config\_H\_}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{telemetry_8h}{telemetry.h}}"{}}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{imu_8h}{imu.h}}"{}}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{navigation_8h}{navigation.h}}"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{actuators_8h}{actuators.h}}"{}}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{attitude_8h}{attitude.h}}"{}}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{sensors_8h}{sensors.h}}"{}}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{  \#define LOOPFREQ(frequency) vTaskDelay((configTICK\_RATE\_HZ) / (frequency));}}
+\DoxyCodeLine{51 \textcolor{keyword}{extern} \textcolor{keywordtype}{bool} \mbox{\hyperlink{config_8h_af54be6b6893ec95b6e22fb3841ff01c6}{vechicle\_type}}; \textcolor{comment}{//0quadcopter,1plane,2car}}
+\DoxyCodeLine{52 \textcolor{comment}{// \#define HITL}}
+\DoxyCodeLine{53 \textcolor{comment}{// \#define gps\_enable}}
+\DoxyCodeLine{54 \textcolor{comment}{// \#define lidar\_enable}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{// \#define mpu6050}}
+\DoxyCodeLine{57 \textcolor{comment}{// \#define bno055}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define BNO080}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{// \#define SDLogging}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define mavlinkserial Serial2}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define sbsuserial Serial1}}
+\DoxyCodeLine{63 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_a6b8ea81e63be1d2ca4064295b74cd3d5}{lowPWMmotor}};}
+\DoxyCodeLine{64 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_a93fc6d29671974eecc37efe724bb1596}{highPWMmotor}};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_aefec37c5e938e2536e7f0a016cf855aa}{g\_current\_mode}};}
+\DoxyCodeLine{67 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_ace661a16158ce369f36f263359d1baca}{g\_armed}};}
+\DoxyCodeLine{68 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_a59a9eab06aebc898c20b1e1f678d227c}{throttleIdle}};}
+\DoxyCodeLine{69 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{config_8h_ac02b4874909f3ffceafbc4fd1c1be316}{g\_vehicle\_type}};}
+\DoxyCodeLine{70 \textcolor{keyword}{extern} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} \mbox{\hyperlink{config_8h_a6f2452f706068c239589d713af9bb760}{g\_telemetry}};}
+\DoxyCodeLine{71 \textcolor{keyword}{extern} \mbox{\hyperlink{class_a_t_t_i_t_u_d_e}{ATTITUDE}} \mbox{\hyperlink{config_8h_affbe32f3d7302137c38bf9a99a0746aa}{g\_attitude}};}
+\DoxyCodeLine{72 \textcolor{keyword}{extern} \mbox{\hyperlink{class_a_c_t_u_a_t_o_r_s}{ACTUATORS}} \mbox{\hyperlink{config_8h_a61ae9c488a5b998500849309eccc4ab9}{g\_actuators}};}
+\DoxyCodeLine{73 \textcolor{keyword}{extern} \mbox{\hyperlink{class_i_m_u}{IMU}} \mbox{\hyperlink{config_8h_ab2e2ba186f9665ae5a3018f157925910}{g\_imu}};}
+\DoxyCodeLine{74 \textcolor{keyword}{extern} \mbox{\hyperlink{class_n_a_v_i_g_a_t_i_o_n}{NAVIGATION}} \mbox{\hyperlink{config_8h_a79498913145b8bd48d078e46ae5243ef}{g\_navigation}};}
+\DoxyCodeLine{75 \textcolor{keyword}{extern} \mbox{\hyperlink{class_s_e_n_s_o_r_s}{SENSORS}} \mbox{\hyperlink{config_8h_a4210ff4d5c72ca381fc0275fe90464bd}{g\_sensors}};}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

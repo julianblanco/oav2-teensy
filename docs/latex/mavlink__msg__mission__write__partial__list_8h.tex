@@ -1,0 +1,100 @@
+\hypertarget{mavlink__msg__mission__write__partial__list_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+mission\+\_\+write\+\_\+partial\+\_\+list.h File Reference}
+\label{mavlink__msg__mission__write__partial__list_8h}\index{lib/common/mavlink\_msg\_mission\_write\_partial\_list.h@{lib/common/mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_a134382576d0d040b085fd8ef92d912b3}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST}}~38
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_a14e3fcd589487c0804df27e3181f0e67}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST\+\_\+\+LEN}}~7
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_afc142d23bc484dd94dd7636bcce37044}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST\+\_\+\+MIN\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_ad32862a32b14b11d1a7b23fb442ac589}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+38\+\_\+\+LEN}}~7
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_a89102957239f5063d97a099f2d5acc65}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+38\+\_\+\+MIN\+\_\+\+LEN}}~6
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_a5adbaf0841013686a7c91fc56d65cbdf}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST\+\_\+\+CRC}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_a0834870446132ad1419e3cc2ff983278}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+38\+\_\+\+CRC}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_a17f0011bcc6f308c1bf2e5da4f51fab7}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__mission__write__partial__list_8h_acc0b6847f9f688b3ff1cba7eed1deb50}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+mission\+\_\+write\+\_\+partial\+\_\+list\+\_\+t \{ int16\+\_\+t start\+\_\+index;int16\+\_\+t end\+\_\+index;uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;uint8\+\_\+t mission\+\_\+type;\}) mavlink\+\_\+mission\+\_\+write\+\_\+partial\+\_\+list\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_a17f0011bcc6f308c1bf2e5da4f51fab7}\label{mavlink__msg__mission__write__partial__list_8h_a17f0011bcc6f308c1bf2e5da4f51fab7}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MESSAGE\_INFO\_MISSION\_WRITE\_PARTIAL\_LIST@{MAVLINK\_MESSAGE\_INFO\_MISSION\_WRITE\_PARTIAL\_LIST}}
+\index{MAVLINK\_MESSAGE\_INFO\_MISSION\_WRITE\_PARTIAL\_LIST@{MAVLINK\_MESSAGE\_INFO\_MISSION\_WRITE\_PARTIAL\_LIST}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_MISSION\_WRITE\_PARTIAL\_LIST}{MAVLINK\_MESSAGE\_INFO\_MISSION\_WRITE\_PARTIAL\_LIST}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}MISSION\_WRITE\_PARTIAL\_LIST"{}}, \(\backslash\)}
+\DoxyCodeLine{    5, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}target\_system"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 4, offsetof(mavlink\_mission\_write\_partial\_list\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}target\_component"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 5, offsetof(mavlink\_mission\_write\_partial\_list\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}start\_index"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 0, offsetof(mavlink\_mission\_write\_partial\_list\_t, start\_index) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}end\_index"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 2, offsetof(mavlink\_mission\_write\_partial\_list\_t, end\_index) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}mission\_type"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 6, offsetof(mavlink\_mission\_write\_partial\_list\_t, mission\_type) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_a0834870446132ad1419e3cc2ff983278}\label{mavlink__msg__mission__write__partial__list_8h_a0834870446132ad1419e3cc2ff983278}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_38\_CRC@{MAVLINK\_MSG\_ID\_38\_CRC}}
+\index{MAVLINK\_MSG\_ID\_38\_CRC@{MAVLINK\_MSG\_ID\_38\_CRC}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_38\_CRC}{MAVLINK\_MSG\_ID\_38\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+38\+\_\+\+CRC~9}
+
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_ad32862a32b14b11d1a7b23fb442ac589}\label{mavlink__msg__mission__write__partial__list_8h_ad32862a32b14b11d1a7b23fb442ac589}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_38\_LEN@{MAVLINK\_MSG\_ID\_38\_LEN}}
+\index{MAVLINK\_MSG\_ID\_38\_LEN@{MAVLINK\_MSG\_ID\_38\_LEN}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_38\_LEN}{MAVLINK\_MSG\_ID\_38\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+38\+\_\+\+LEN~7}
+
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_a89102957239f5063d97a099f2d5acc65}\label{mavlink__msg__mission__write__partial__list_8h_a89102957239f5063d97a099f2d5acc65}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_38\_MIN\_LEN@{MAVLINK\_MSG\_ID\_38\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_38\_MIN\_LEN@{MAVLINK\_MSG\_ID\_38\_MIN\_LEN}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_38\_MIN\_LEN}{MAVLINK\_MSG\_ID\_38\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+38\+\_\+\+MIN\+\_\+\+LEN~6}
+
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_a134382576d0d040b085fd8ef92d912b3}\label{mavlink__msg__mission__write__partial__list_8h_a134382576d0d040b085fd8ef92d912b3}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST}}
+\index{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST}{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST~38}
+
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_a5adbaf0841013686a7c91fc56d65cbdf}\label{mavlink__msg__mission__write__partial__list_8h_a5adbaf0841013686a7c91fc56d65cbdf}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_CRC@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_CRC}}
+\index{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_CRC@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_CRC}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_CRC}{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST\+\_\+\+CRC~9}
+
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_a14e3fcd589487c0804df27e3181f0e67}\label{mavlink__msg__mission__write__partial__list_8h_a14e3fcd589487c0804df27e3181f0e67}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_LEN@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_LEN}}
+\index{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_LEN@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_LEN}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_LEN}{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST\+\_\+\+LEN~7}
+
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_afc142d23bc484dd94dd7636bcce37044}\label{mavlink__msg__mission__write__partial__list_8h_afc142d23bc484dd94dd7636bcce37044}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_MIN\_LEN@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_MIN\_LEN@{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_MIN\_LEN}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_MIN\_LEN}{MAVLINK\_MSG\_ID\_MISSION\_WRITE\_PARTIAL\_LIST\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MISSION\+\_\+\+WRITE\+\_\+\+PARTIAL\+\_\+\+LIST\+\_\+\+MIN\+\_\+\+LEN~6}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__mission__write__partial__list_8h_acc0b6847f9f688b3ff1cba7eed1deb50}\label{mavlink__msg__mission__write__partial__list_8h_acc0b6847f9f688b3ff1cba7eed1deb50}} 
+\index{mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_mission\_write\_partial\_list.h@{mavlink\_msg\_mission\_write\_partial\_list.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+mission\+\_\+write\+\_\+partial\+\_\+list\+\_\+t \{ int16\+\_\+t start\+\_\+index;int16\+\_\+t end\+\_\+index;uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;uint8\+\_\+t mission\+\_\+type;\}}]{ }\end{DoxyParamCaption})}
+

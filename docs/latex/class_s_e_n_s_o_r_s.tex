@@ -1,0 +1,117 @@
+\hypertarget{class_s_e_n_s_o_r_s}{}\doxysection{SENSORS Class Reference}
+\label{class_s_e_n_s_o_r_s}\index{SENSORS@{SENSORS}}
+
+
+{\ttfamily \#include $<$sensors.\+h$>$}
+
+Inheritance diagram for SENSORS\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_s_e_n_s_o_r_s}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_s_e_n_s_o_r_s_a000a291c237eef0e76b1d9513d6ec136}{SENSORS}} ()
+\item 
+\mbox{\hyperlink{class_s_e_n_s_o_r_s_aa19bebc6388bb3b90778fb575f0da209}{$\sim$\+SENSORS}} ()
+\item 
+int \mbox{\hyperlink{class_s_e_n_s_o_r_s_a97e61939549aa5a02b7bfa45ab769a76}{setup}} ()
+\item 
+int \mbox{\hyperlink{class_s_e_n_s_o_r_s_af577e7512ee82b97108a5b54ee6a0c04}{start}} ()
+\item 
+void \mbox{\hyperlink{class_s_e_n_s_o_r_s_a3d16ec5f493a116c1e2dcf75087d7e2c}{gps\+Sample}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_s_e_n_s_o_r_s_ae25ea45950ed8a500142a8103a9dd94c}{GPS\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{class_s_e_n_s_o_r_s_a3811507674c4d45bb880ceac17acbc52}{new\+\_\+\+GPS\+\_\+data}}
+\item 
+Adafruit\+\_\+\+GPS \mbox{\hyperlink{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}{gps}}
+\item 
+float \mbox{\hyperlink{class_s_e_n_s_o_r_s_a96c162d3a931a3ab9378c47ff6e9dbaa}{current\+Range\+Sensor\+Height}}
+\item 
+float \mbox{\hyperlink{class_s_e_n_s_o_r_s_a3a5f259ad1f04a25202b3d562948d968}{height\+Offset}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_a000a291c237eef0e76b1d9513d6ec136}\label{class_s_e_n_s_o_r_s_a000a291c237eef0e76b1d9513d6ec136}} 
+\index{SENSORS@{SENSORS}!SENSORS@{SENSORS}}
+\index{SENSORS@{SENSORS}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{SENSORS()}{SENSORS()}}
+{\footnotesize\ttfamily SENSORS\+::\+SENSORS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_aa19bebc6388bb3b90778fb575f0da209}\label{class_s_e_n_s_o_r_s_aa19bebc6388bb3b90778fb575f0da209}} 
+\index{SENSORS@{SENSORS}!````~SENSORS@{$\sim$SENSORS}}
+\index{````~SENSORS@{$\sim$SENSORS}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{$\sim$SENSORS()}{~SENSORS()}}
+{\footnotesize\ttfamily SENSORS\+::$\sim$\+SENSORS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_a3d16ec5f493a116c1e2dcf75087d7e2c}\label{class_s_e_n_s_o_r_s_a3d16ec5f493a116c1e2dcf75087d7e2c}} 
+\index{SENSORS@{SENSORS}!gpsSample@{gpsSample}}
+\index{gpsSample@{gpsSample}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{gpsSample()}{gpsSample()}}
+{\footnotesize\ttfamily void SENSORS\+::gps\+Sample (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_a97e61939549aa5a02b7bfa45ab769a76}\label{class_s_e_n_s_o_r_s_a97e61939549aa5a02b7bfa45ab769a76}} 
+\index{SENSORS@{SENSORS}!setup@{setup}}
+\index{setup@{setup}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int SENSORS\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_af577e7512ee82b97108a5b54ee6a0c04}\label{class_s_e_n_s_o_r_s_af577e7512ee82b97108a5b54ee6a0c04}} 
+\index{SENSORS@{SENSORS}!start@{start}}
+\index{start@{start}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int SENSORS\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{Task}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_a96c162d3a931a3ab9378c47ff6e9dbaa}\label{class_s_e_n_s_o_r_s_a96c162d3a931a3ab9378c47ff6e9dbaa}} 
+\index{SENSORS@{SENSORS}!currentRangeSensorHeight@{currentRangeSensorHeight}}
+\index{currentRangeSensorHeight@{currentRangeSensorHeight}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{currentRangeSensorHeight}{currentRangeSensorHeight}}
+{\footnotesize\ttfamily float SENSORS\+::current\+Range\+Sensor\+Height}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}\label{class_s_e_n_s_o_r_s_ac2439e16afe5b8fc3e6184aba6f125e1}} 
+\index{SENSORS@{SENSORS}!gps@{gps}}
+\index{gps@{gps}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{gps}{gps}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+GPS SENSORS\+::gps}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_ae25ea45950ed8a500142a8103a9dd94c}\label{class_s_e_n_s_o_r_s_ae25ea45950ed8a500142a8103a9dd94c}} 
+\index{SENSORS@{SENSORS}!GPS\_fix@{GPS\_fix}}
+\index{GPS\_fix@{GPS\_fix}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{GPS\_fix}{GPS\_fix}}
+{\footnotesize\ttfamily int SENSORS\+::\+GPS\+\_\+fix}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_a3a5f259ad1f04a25202b3d562948d968}\label{class_s_e_n_s_o_r_s_a3a5f259ad1f04a25202b3d562948d968}} 
+\index{SENSORS@{SENSORS}!heightOffset@{heightOffset}}
+\index{heightOffset@{heightOffset}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{heightOffset}{heightOffset}}
+{\footnotesize\ttfamily float SENSORS\+::height\+Offset}
+
+\mbox{\Hypertarget{class_s_e_n_s_o_r_s_a3811507674c4d45bb880ceac17acbc52}\label{class_s_e_n_s_o_r_s_a3811507674c4d45bb880ceac17acbc52}} 
+\index{SENSORS@{SENSORS}!new\_GPS\_data@{new\_GPS\_data}}
+\index{new\_GPS\_data@{new\_GPS\_data}!SENSORS@{SENSORS}}
+\doxysubsubsection{\texorpdfstring{new\_GPS\_data}{new\_GPS\_data}}
+{\footnotesize\ttfamily bool SENSORS\+::new\+\_\+\+GPS\+\_\+data}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{sensors_8h}{sensors.\+h}}\end{DoxyCompactItemize}

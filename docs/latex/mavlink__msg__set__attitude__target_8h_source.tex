@@ -1,0 +1,290 @@
+\hypertarget{mavlink__msg__set__attitude__target_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+set\+\_\+attitude\+\_\+target.\+h}
+\label{mavlink__msg__set__attitude__target_8h_source}\index{lib/common/mavlink\_msg\_set\_attitude\_target.h@{lib/common/mavlink\_msg\_set\_attitude\_target.h}}
+\mbox{\hyperlink{mavlink__msg__set__attitude__target_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE SET\_ATTITUDE\_TARGET PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET 82}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ad01c01390ec26fbee64155181efcd56a}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_set\_attitude\_target\_t \{}
+\DoxyCodeLine{8  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} q[4]; \textcolor{comment}{/*<  Attitude quaternion (w, x, y, z order, zero-\/rotation is 1, 0, 0, 0)*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} body\_roll\_rate; \textcolor{comment}{/*< [rad/s] Body roll rate*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} body\_pitch\_rate; \textcolor{comment}{/*< [rad/s] Body pitch rate*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} body\_yaw\_rate; \textcolor{comment}{/*< [rad/s] Body yaw rate*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} thrust; \textcolor{comment}{/*<  Collective thrust, normalized to 0 .. 1 (-\/1 .. 1 for vehicles capable of reverse trust)*/}}
+\DoxyCodeLine{14  uint8\_t target\_system; \textcolor{comment}{/*<  System ID*/}}
+\DoxyCodeLine{15  uint8\_t target\_component; \textcolor{comment}{/*<  Component ID*/}}
+\DoxyCodeLine{16  uint8\_t type\_mask; \textcolor{comment}{/*<  Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-\/bit 6: reserved, bit 7: throttle, bit 8: attitude*/}}
+\DoxyCodeLine{17 \}) mavlink\_set\_attitude\_target\_t;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN 39}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN 39}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_82\_LEN 39}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_82\_MIN\_LEN 39}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC 49}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_82\_CRC 49}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_SET\_ATTITUDE\_TARGET\_FIELD\_Q\_LEN 4}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SET\_ATTITUDE\_TARGET \{ \(\backslash\)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{    82, \(\backslash\)}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{    "{}SET\_ATTITUDE\_TARGET"{}}, \(\backslash\)}
+\DoxyCodeLine{33     9, \(\backslash\)}
+\DoxyCodeLine{34     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_set\_attitude\_target\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 36, offsetof(mavlink\_set\_attitude\_target\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 37, offsetof(mavlink\_set\_attitude\_target\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}type\_mask"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 38, offsetof(mavlink\_set\_attitude\_target\_t, type\_mask) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}q"{}, NULL, MAVLINK\_TYPE\_FLOAT, 4, 4, offsetof(mavlink\_set\_attitude\_target\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}body\_roll\_rate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_set\_attitude\_target\_t, body\_roll\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}body\_pitch\_rate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_set\_attitude\_target\_t, body\_pitch\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}body\_yaw\_rate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_set\_attitude\_target\_t, body\_yaw\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}thrust"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_set\_attitude\_target\_t, thrust) \}, \(\backslash\)}
+\DoxyCodeLine{43          \} \(\backslash\)}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SET\_ATTITUDE\_TARGET \{ \(\backslash\)}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{    "{}SET\_ATTITUDE\_TARGET"{}}, \(\backslash\)}
+\DoxyCodeLine{48     9, \(\backslash\)}
+\DoxyCodeLine{49     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_set\_attitude\_target\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}target\_system"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 36, offsetof(mavlink\_set\_attitude\_target\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}target\_component"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 37, offsetof(mavlink\_set\_attitude\_target\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}type\_mask"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 38, offsetof(mavlink\_set\_attitude\_target\_t, type\_mask) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}q"{}, NULL, MAVLINK\_TYPE\_FLOAT, 4, 4, offsetof(mavlink\_set\_attitude\_target\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}body\_roll\_rate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_set\_attitude\_target\_t, body\_roll\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}body\_pitch\_rate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_set\_attitude\_target\_t, body\_pitch\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}body\_yaw\_rate"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_set\_attitude\_target\_t, body\_yaw\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}thrust"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_set\_attitude\_target\_t, thrust) \}, \(\backslash\)}
+\DoxyCodeLine{58          \} \(\backslash\)}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{79 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_set\_attitude\_target\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{80                                uint32\_t time\_boot\_ms, uint8\_t target\_system, uint8\_t target\_component, uint8\_t type\_mask, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, \textcolor{keywordtype}{float} body\_roll\_rate, \textcolor{keywordtype}{float} body\_pitch\_rate, \textcolor{keywordtype}{float} body\_yaw\_rate, \textcolor{keywordtype}{float} thrust)}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{83     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}];}
+\DoxyCodeLine{84     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{85     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, body\_roll\_rate);}
+\DoxyCodeLine{86     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, body\_pitch\_rate);}
+\DoxyCodeLine{87     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, body\_yaw\_rate);}
+\DoxyCodeLine{88     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, thrust);}
+\DoxyCodeLine{89     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, target\_system);}
+\DoxyCodeLine{90     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, target\_component);}
+\DoxyCodeLine{91     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 38, type\_mask);}
+\DoxyCodeLine{92     \_mav\_put\_float\_array(buf, 4, q, 4);}
+\DoxyCodeLine{93         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}});}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{95     mavlink\_set\_attitude\_target\_t packet;}
+\DoxyCodeLine{96     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{97     packet.body\_roll\_rate = body\_roll\_rate;}
+\DoxyCodeLine{98     packet.body\_pitch\_rate = body\_pitch\_rate;}
+\DoxyCodeLine{99     packet.body\_yaw\_rate = body\_yaw\_rate;}
+\DoxyCodeLine{100     packet.thrust = thrust;}
+\DoxyCodeLine{101     packet.target\_system = target\_system;}
+\DoxyCodeLine{102     packet.target\_component = target\_component;}
+\DoxyCodeLine{103     packet.type\_mask = type\_mask;}
+\DoxyCodeLine{104     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{105         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}});}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}};}
+\DoxyCodeLine{109     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{110 \}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{129 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_set\_attitude\_target\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{130                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{131                                    uint32\_t time\_boot\_ms,uint8\_t target\_system,uint8\_t target\_component,uint8\_t type\_mask,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *q,\textcolor{keywordtype}{float} body\_roll\_rate,\textcolor{keywordtype}{float} body\_pitch\_rate,\textcolor{keywordtype}{float} body\_yaw\_rate,\textcolor{keywordtype}{float} thrust)}
+\DoxyCodeLine{132 \{}
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{134     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}];}
+\DoxyCodeLine{135     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{136     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, body\_roll\_rate);}
+\DoxyCodeLine{137     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, body\_pitch\_rate);}
+\DoxyCodeLine{138     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, body\_yaw\_rate);}
+\DoxyCodeLine{139     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, thrust);}
+\DoxyCodeLine{140     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, target\_system);}
+\DoxyCodeLine{141     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, target\_component);}
+\DoxyCodeLine{142     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 38, type\_mask);}
+\DoxyCodeLine{143     \_mav\_put\_float\_array(buf, 4, q, 4);}
+\DoxyCodeLine{144         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}});}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{146     mavlink\_set\_attitude\_target\_t packet;}
+\DoxyCodeLine{147     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{148     packet.body\_roll\_rate = body\_roll\_rate;}
+\DoxyCodeLine{149     packet.body\_pitch\_rate = body\_pitch\_rate;}
+\DoxyCodeLine{150     packet.body\_yaw\_rate = body\_yaw\_rate;}
+\DoxyCodeLine{151     packet.thrust = thrust;}
+\DoxyCodeLine{152     packet.target\_system = target\_system;}
+\DoxyCodeLine{153     packet.target\_component = target\_component;}
+\DoxyCodeLine{154     packet.type\_mask = type\_mask;}
+\DoxyCodeLine{155     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{156         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}});}
+\DoxyCodeLine{157 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}};}
+\DoxyCodeLine{160     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{161 \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{171 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_set\_attitude\_target\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_set\_attitude\_target\_t* set\_attitude\_target)}
+\DoxyCodeLine{172 \{}
+\DoxyCodeLine{173     \textcolor{keywordflow}{return} mavlink\_msg\_set\_attitude\_target\_pack(system\_id, component\_id, msg, set\_attitude\_target-\/>time\_boot\_ms, set\_attitude\_target-\/>target\_system, set\_attitude\_target-\/>target\_component, set\_attitude\_target-\/>type\_mask, set\_attitude\_target-\/>q, set\_attitude\_target-\/>body\_roll\_rate, set\_attitude\_target-\/>body\_pitch\_rate, set\_attitude\_target-\/>body\_yaw\_rate, set\_attitude\_target-\/>thrust);}
+\DoxyCodeLine{174 \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{185 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_set\_attitude\_target\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_set\_attitude\_target\_t* set\_attitude\_target)}
+\DoxyCodeLine{186 \{}
+\DoxyCodeLine{187     \textcolor{keywordflow}{return} mavlink\_msg\_set\_attitude\_target\_pack\_chan(system\_id, component\_id, chan, msg, set\_attitude\_target-\/>time\_boot\_ms, set\_attitude\_target-\/>target\_system, set\_attitude\_target-\/>target\_component, set\_attitude\_target-\/>type\_mask, set\_attitude\_target-\/>q, set\_attitude\_target-\/>body\_roll\_rate, set\_attitude\_target-\/>body\_pitch\_rate, set\_attitude\_target-\/>body\_yaw\_rate, set\_attitude\_target-\/>thrust);}
+\DoxyCodeLine{188 \}}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{204 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_set\_attitude\_target\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, uint8\_t target\_system, uint8\_t target\_component, uint8\_t type\_mask, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, \textcolor{keywordtype}{float} body\_roll\_rate, \textcolor{keywordtype}{float} body\_pitch\_rate, \textcolor{keywordtype}{float} body\_yaw\_rate, \textcolor{keywordtype}{float} thrust)}
+\DoxyCodeLine{207 \{}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{209     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}];}
+\DoxyCodeLine{210     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{211     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, body\_roll\_rate);}
+\DoxyCodeLine{212     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, body\_pitch\_rate);}
+\DoxyCodeLine{213     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, body\_yaw\_rate);}
+\DoxyCodeLine{214     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, thrust);}
+\DoxyCodeLine{215     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, target\_system);}
+\DoxyCodeLine{216     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, target\_component);}
+\DoxyCodeLine{217     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 38, type\_mask);}
+\DoxyCodeLine{218     \_mav\_put\_float\_array(buf, 4, q, 4);}
+\DoxyCodeLine{219     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}}, buf, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{220 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{221     mavlink\_set\_attitude\_target\_t packet;}
+\DoxyCodeLine{222     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{223     packet.body\_roll\_rate = body\_roll\_rate;}
+\DoxyCodeLine{224     packet.body\_pitch\_rate = body\_pitch\_rate;}
+\DoxyCodeLine{225     packet.body\_yaw\_rate = body\_yaw\_rate;}
+\DoxyCodeLine{226     packet.thrust = thrust;}
+\DoxyCodeLine{227     packet.target\_system = target\_system;}
+\DoxyCodeLine{228     packet.target\_component = target\_component;}
+\DoxyCodeLine{229     packet.type\_mask = type\_mask;}
+\DoxyCodeLine{230     mav\_array\_memcpy(packet.q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{231     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{232 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{233 \}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{240 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_set\_attitude\_target\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_set\_attitude\_target\_t* set\_attitude\_target)}
+\DoxyCodeLine{241 \{}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{243     mavlink\_msg\_set\_attitude\_target\_send(chan, set\_attitude\_target-\/>time\_boot\_ms, set\_attitude\_target-\/>target\_system, set\_attitude\_target-\/>target\_component, set\_attitude\_target-\/>type\_mask, set\_attitude\_target-\/>q, set\_attitude\_target-\/>body\_roll\_rate, set\_attitude\_target-\/>body\_pitch\_rate, set\_attitude\_target-\/>body\_yaw\_rate, set\_attitude\_target-\/>thrust);}
+\DoxyCodeLine{244 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{245     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)set\_attitude\_target, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{247 \}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{250 \textcolor{comment}{/*}}
+\DoxyCodeLine{251 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{252 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{253 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{254 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{255 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{256 \textcolor{comment}{ */}}
+\DoxyCodeLine{257 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_set\_attitude\_target\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, uint8\_t target\_system, uint8\_t target\_component, uint8\_t type\_mask, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *q, \textcolor{keywordtype}{float} body\_roll\_rate, \textcolor{keywordtype}{float} body\_pitch\_rate, \textcolor{keywordtype}{float} body\_yaw\_rate, \textcolor{keywordtype}{float} thrust)}
+\DoxyCodeLine{258 \{}
+\DoxyCodeLine{259 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{260     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{261     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{262     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, body\_roll\_rate);}
+\DoxyCodeLine{263     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, body\_pitch\_rate);}
+\DoxyCodeLine{264     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, body\_yaw\_rate);}
+\DoxyCodeLine{265     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, thrust);}
+\DoxyCodeLine{266     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, target\_system);}
+\DoxyCodeLine{267     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, target\_component);}
+\DoxyCodeLine{268     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 38, type\_mask);}
+\DoxyCodeLine{269     \_mav\_put\_float\_array(buf, 4, q, 4);}
+\DoxyCodeLine{270     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}}, buf, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{272     mavlink\_set\_attitude\_target\_t *packet = (mavlink\_set\_attitude\_target\_t *)msgbuf;}
+\DoxyCodeLine{273     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{274     packet-\/>body\_roll\_rate = body\_roll\_rate;}
+\DoxyCodeLine{275     packet-\/>body\_pitch\_rate = body\_pitch\_rate;}
+\DoxyCodeLine{276     packet-\/>body\_yaw\_rate = body\_yaw\_rate;}
+\DoxyCodeLine{277     packet-\/>thrust = thrust;}
+\DoxyCodeLine{278     packet-\/>target\_system = target\_system;}
+\DoxyCodeLine{279     packet-\/>target\_component = target\_component;}
+\DoxyCodeLine{280     packet-\/>type\_mask = type\_mask;}
+\DoxyCodeLine{281     mav\_array\_memcpy(packet-\/>q, q, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4);}
+\DoxyCodeLine{282     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a6465882c40d0a9b45204e8af4a7815d7}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_ada831b77e2c7d5c67fb8a2d0dbbfdf4c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_a7e252e2e7a37de68b584c7ae7fd42a0c}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_CRC}});}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{284 \}}
+\DoxyCodeLine{285 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{287 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{289 \textcolor{comment}{// MESSAGE SET\_ATTITUDE\_TARGET UNPACKING}}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291 }
+\DoxyCodeLine{297 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_set\_attitude\_target\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{298 \{}
+\DoxyCodeLine{299     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{300 \}}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{307 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_set\_attitude\_target\_get\_target\_system(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{308 \{}
+\DoxyCodeLine{309     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  36);}
+\DoxyCodeLine{310 \}}
+\DoxyCodeLine{311 }
+\DoxyCodeLine{317 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_set\_attitude\_target\_get\_target\_component(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{318 \{}
+\DoxyCodeLine{319     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  37);}
+\DoxyCodeLine{320 \}}
+\DoxyCodeLine{321 }
+\DoxyCodeLine{327 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_set\_attitude\_target\_get\_type\_mask(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{328 \{}
+\DoxyCodeLine{329     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  38);}
+\DoxyCodeLine{330 \}}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{337 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_set\_attitude\_target\_get\_q(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *q)}
+\DoxyCodeLine{338 \{}
+\DoxyCodeLine{339     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, q, 4,  4);}
+\DoxyCodeLine{340 \}}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{347 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_set\_attitude\_target\_get\_body\_roll\_rate(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{348 \{}
+\DoxyCodeLine{349     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  20);}
+\DoxyCodeLine{350 \}}
+\DoxyCodeLine{351 }
+\DoxyCodeLine{357 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_set\_attitude\_target\_get\_body\_pitch\_rate(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{358 \{}
+\DoxyCodeLine{359     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  24);}
+\DoxyCodeLine{360 \}}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{367 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_set\_attitude\_target\_get\_body\_yaw\_rate(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{368 \{}
+\DoxyCodeLine{369     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  28);}
+\DoxyCodeLine{370 \}}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{377 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_set\_attitude\_target\_get\_thrust(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{378 \{}
+\DoxyCodeLine{379     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  32);}
+\DoxyCodeLine{380 \}}
+\DoxyCodeLine{381 }
+\DoxyCodeLine{388 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_set\_attitude\_target\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_set\_attitude\_target\_t* set\_attitude\_target)}
+\DoxyCodeLine{389 \{}
+\DoxyCodeLine{390 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{391     set\_attitude\_target-\/>time\_boot\_ms = mavlink\_msg\_set\_attitude\_target\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{392     mavlink\_msg\_set\_attitude\_target\_get\_q(msg, set\_attitude\_target-\/>q);}
+\DoxyCodeLine{393     set\_attitude\_target-\/>body\_roll\_rate = mavlink\_msg\_set\_attitude\_target\_get\_body\_roll\_rate(msg);}
+\DoxyCodeLine{394     set\_attitude\_target-\/>body\_pitch\_rate = mavlink\_msg\_set\_attitude\_target\_get\_body\_pitch\_rate(msg);}
+\DoxyCodeLine{395     set\_attitude\_target-\/>body\_yaw\_rate = mavlink\_msg\_set\_attitude\_target\_get\_body\_yaw\_rate(msg);}
+\DoxyCodeLine{396     set\_attitude\_target-\/>thrust = mavlink\_msg\_set\_attitude\_target\_get\_thrust(msg);}
+\DoxyCodeLine{397     set\_attitude\_target-\/>target\_system = mavlink\_msg\_set\_attitude\_target\_get\_target\_system(msg);}
+\DoxyCodeLine{398     set\_attitude\_target-\/>target\_component = mavlink\_msg\_set\_attitude\_target\_get\_target\_component(msg);}
+\DoxyCodeLine{399     set\_attitude\_target-\/>type\_mask = mavlink\_msg\_set\_attitude\_target\_get\_type\_mask(msg);}
+\DoxyCodeLine{400 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{401         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}};}
+\DoxyCodeLine{402         memset(set\_attitude\_target, 0, \mbox{\hyperlink{mavlink__msg__set__attitude__target_8h_aa5f8bbdbdf27497beda772676f79bd7d}{MAVLINK\_MSG\_ID\_SET\_ATTITUDE\_TARGET\_LEN}});}
+\DoxyCodeLine{403     memcpy(set\_attitude\_target, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{404 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{405 \}}
+
+\end{DoxyCode}

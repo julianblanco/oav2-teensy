@@ -1,0 +1,230 @@
+\hypertarget{mavlink__msg__raw__pressure_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+raw\+\_\+pressure.\+h}
+\label{mavlink__msg__raw__pressure_8h_source}\index{lib/common/mavlink\_msg\_raw\_pressure.h@{lib/common/mavlink\_msg\_raw\_pressure.h}}
+\mbox{\hyperlink{mavlink__msg__raw__pressure_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE RAW\_PRESSURE PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_RAW\_PRESSURE 28}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a8e531b54c04d22c9b3037b3fc14c95ec}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_raw\_pressure\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  int16\_t press\_abs; \textcolor{comment}{/*<  Absolute pressure (raw)*/}}
+\DoxyCodeLine{10  int16\_t press\_diff1; \textcolor{comment}{/*<  Differential pressure 1 (raw, 0 if nonexistent)*/}}
+\DoxyCodeLine{11  int16\_t press\_diff2; \textcolor{comment}{/*<  Differential pressure 2 (raw, 0 if nonexistent)*/}}
+\DoxyCodeLine{12  int16\_t temperature; \textcolor{comment}{/*<  Raw Temperature measurement (raw)*/}}
+\DoxyCodeLine{13 \}) mavlink\_raw\_pressure\_t;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN 16}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN 16}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_28\_LEN 16}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_28\_MIN\_LEN 16}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC 67}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_28\_CRC 67}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_RAW\_PRESSURE \{ \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    28, \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    "{}RAW\_PRESSURE"{}}, \(\backslash\)}
+\DoxyCodeLine{29     5, \(\backslash\)}
+\DoxyCodeLine{30     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_raw\_pressure\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}press\_abs"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 8, offsetof(mavlink\_raw\_pressure\_t, press\_abs) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}press\_diff1"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 10, offsetof(mavlink\_raw\_pressure\_t, press\_diff1) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}press\_diff2"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 12, offsetof(mavlink\_raw\_pressure\_t, press\_diff2) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 14, offsetof(mavlink\_raw\_pressure\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{35          \} \(\backslash\)}
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_RAW\_PRESSURE \{ \(\backslash\)}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{    "{}RAW\_PRESSURE"{}}, \(\backslash\)}
+\DoxyCodeLine{40     5, \(\backslash\)}
+\DoxyCodeLine{41     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_raw\_pressure\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}press\_abs"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 8, offsetof(mavlink\_raw\_pressure\_t, press\_abs) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}press\_diff1"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 10, offsetof(mavlink\_raw\_pressure\_t, press\_diff1) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}press\_diff2"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 12, offsetof(mavlink\_raw\_pressure\_t, press\_diff2) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 14, offsetof(mavlink\_raw\_pressure\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{46          \} \(\backslash\)}
+\DoxyCodeLine{47 \}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{63 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_raw\_pressure\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{64                                uint64\_t time\_usec, int16\_t press\_abs, int16\_t press\_diff1, int16\_t press\_diff2, int16\_t temperature)}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{67     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}];}
+\DoxyCodeLine{68     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{69     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, press\_abs);}
+\DoxyCodeLine{70     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, press\_diff1);}
+\DoxyCodeLine{71     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, press\_diff2);}
+\DoxyCodeLine{72     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, temperature);}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}});}
+\DoxyCodeLine{75 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{76     mavlink\_raw\_pressure\_t packet;}
+\DoxyCodeLine{77     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{78     packet.press\_abs = press\_abs;}
+\DoxyCodeLine{79     packet.press\_diff1 = press\_diff1;}
+\DoxyCodeLine{80     packet.press\_diff2 = press\_diff2;}
+\DoxyCodeLine{81     packet.temperature = temperature;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}});}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}};}
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{88 \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{103 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_raw\_pressure\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{104                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{105                                    uint64\_t time\_usec,int16\_t press\_abs,int16\_t press\_diff1,int16\_t press\_diff2,int16\_t temperature)}
+\DoxyCodeLine{106 \{}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{108     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}];}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, press\_abs);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, press\_diff1);}
+\DoxyCodeLine{112     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, press\_diff2);}
+\DoxyCodeLine{113     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, temperature);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}});}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{117     mavlink\_raw\_pressure\_t packet;}
+\DoxyCodeLine{118     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{119     packet.press\_abs = press\_abs;}
+\DoxyCodeLine{120     packet.press\_diff1 = press\_diff1;}
+\DoxyCodeLine{121     packet.press\_diff2 = press\_diff2;}
+\DoxyCodeLine{122     packet.temperature = temperature;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}});}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}};}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{129 \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{139 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_raw\_pressure\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_raw\_pressure\_t* raw\_pressure)}
+\DoxyCodeLine{140 \{}
+\DoxyCodeLine{141     \textcolor{keywordflow}{return} mavlink\_msg\_raw\_pressure\_pack(system\_id, component\_id, msg, raw\_pressure-\/>time\_usec, raw\_pressure-\/>press\_abs, raw\_pressure-\/>press\_diff1, raw\_pressure-\/>press\_diff2, raw\_pressure-\/>temperature);}
+\DoxyCodeLine{142 \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{153 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_raw\_pressure\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_raw\_pressure\_t* raw\_pressure)}
+\DoxyCodeLine{154 \{}
+\DoxyCodeLine{155     \textcolor{keywordflow}{return} mavlink\_msg\_raw\_pressure\_pack\_chan(system\_id, component\_id, chan, msg, raw\_pressure-\/>time\_usec, raw\_pressure-\/>press\_abs, raw\_pressure-\/>press\_diff1, raw\_pressure-\/>press\_diff2, raw\_pressure-\/>temperature);}
+\DoxyCodeLine{156 \}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{168 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_raw\_pressure\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, int16\_t press\_abs, int16\_t press\_diff1, int16\_t press\_diff2, int16\_t temperature)}
+\DoxyCodeLine{171 \{}
+\DoxyCodeLine{172 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{173     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}];}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{175     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, press\_abs);}
+\DoxyCodeLine{176     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, press\_diff1);}
+\DoxyCodeLine{177     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, press\_diff2);}
+\DoxyCodeLine{178     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, temperature);}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}}, buf, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{181 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{182     mavlink\_raw\_pressure\_t packet;}
+\DoxyCodeLine{183     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{184     packet.press\_abs = press\_abs;}
+\DoxyCodeLine{185     packet.press\_diff1 = press\_diff1;}
+\DoxyCodeLine{186     packet.press\_diff2 = press\_diff2;}
+\DoxyCodeLine{187     packet.temperature = temperature;}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{191 \}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{198 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_raw\_pressure\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_raw\_pressure\_t* raw\_pressure)}
+\DoxyCodeLine{199 \{}
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{201     mavlink\_msg\_raw\_pressure\_send(chan, raw\_pressure-\/>time\_usec, raw\_pressure-\/>press\_abs, raw\_pressure-\/>press\_diff1, raw\_pressure-\/>press\_diff2, raw\_pressure-\/>temperature);}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{203     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)raw\_pressure, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{204 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{205 \}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{208 \textcolor{comment}{/*}}
+\DoxyCodeLine{209 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{210 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{211 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{212 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{213 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{214 \textcolor{comment}{ */}}
+\DoxyCodeLine{215 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_raw\_pressure\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, int16\_t press\_abs, int16\_t press\_diff1, int16\_t press\_diff2, int16\_t temperature)}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{218     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{219     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{220     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, press\_abs);}
+\DoxyCodeLine{221     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, press\_diff1);}
+\DoxyCodeLine{222     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, press\_diff2);}
+\DoxyCodeLine{223     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, temperature);}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}}, buf, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{226 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{227     mavlink\_raw\_pressure\_t *packet = (mavlink\_raw\_pressure\_t *)msgbuf;}
+\DoxyCodeLine{228     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{229     packet-\/>press\_abs = press\_abs;}
+\DoxyCodeLine{230     packet-\/>press\_diff1 = press\_diff1;}
+\DoxyCodeLine{231     packet-\/>press\_diff2 = press\_diff2;}
+\DoxyCodeLine{232     packet-\/>temperature = temperature;}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a537b1cff22415b43ee4b51aaee328f42}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a3da1f3cc6136aaa44ef755ec5ea0ab3b}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_a681716ea1b20c7f12a234e67bc623858}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_CRC}});}
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{236 \}}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241 \textcolor{comment}{// MESSAGE RAW\_PRESSURE UNPACKING}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 }
+\DoxyCodeLine{249 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_raw\_pressure\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{250 \{}
+\DoxyCodeLine{251     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{252 \}}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{259 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_raw\_pressure\_get\_press\_abs(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{260 \{}
+\DoxyCodeLine{261     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  8);}
+\DoxyCodeLine{262 \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{269 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_raw\_pressure\_get\_press\_diff1(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  10);}
+\DoxyCodeLine{272 \}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{279 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_raw\_pressure\_get\_press\_diff2(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{280 \{}
+\DoxyCodeLine{281     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  12);}
+\DoxyCodeLine{282 \}}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{289 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_raw\_pressure\_get\_temperature(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{290 \{}
+\DoxyCodeLine{291     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  14);}
+\DoxyCodeLine{292 \}}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{300 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_raw\_pressure\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_raw\_pressure\_t* raw\_pressure)}
+\DoxyCodeLine{301 \{}
+\DoxyCodeLine{302 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{303     raw\_pressure-\/>time\_usec = mavlink\_msg\_raw\_pressure\_get\_time\_usec(msg);}
+\DoxyCodeLine{304     raw\_pressure-\/>press\_abs = mavlink\_msg\_raw\_pressure\_get\_press\_abs(msg);}
+\DoxyCodeLine{305     raw\_pressure-\/>press\_diff1 = mavlink\_msg\_raw\_pressure\_get\_press\_diff1(msg);}
+\DoxyCodeLine{306     raw\_pressure-\/>press\_diff2 = mavlink\_msg\_raw\_pressure\_get\_press\_diff2(msg);}
+\DoxyCodeLine{307     raw\_pressure-\/>temperature = mavlink\_msg\_raw\_pressure\_get\_temperature(msg);}
+\DoxyCodeLine{308 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{309         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}};}
+\DoxyCodeLine{310         memset(raw\_pressure, 0, \mbox{\hyperlink{mavlink__msg__raw__pressure_8h_aae8bf362f13bd3afe18669a32d86036a}{MAVLINK\_MSG\_ID\_RAW\_PRESSURE\_LEN}});}
+\DoxyCodeLine{311     memcpy(raw\_pressure, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{312 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{313 \}}
+
+\end{DoxyCode}

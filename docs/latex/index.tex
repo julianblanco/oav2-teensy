@@ -1,0 +1,28 @@
+\hypertarget{index_intro_sec}{}\doxysection{Introduction}\label{index_intro_sec}
+This code is designed as a lightweight flightcontroller to fly small UAS.
+
+Designed specifically to run the free\+RTOS real time operating system on a teensy 4~\newline
+It supports multiple flight modes and craft types.~\newline
+~\newline
+ For control of the aircraft, hover envelope and geometric controller are options.\hypertarget{index_intro_sec}{}\doxysection{Introduction}\label{index_intro_sec}
+By default the code intializes by spawning six threads\+: ~\newline
+
+\begin{DoxyItemize}
+\item actuators
+\item attitude
+\item imu
+\item slow sensors
+\item navigation
+\item telemetry
+\end{DoxyItemize}
+
+Each thread is responsible for a diffrent high level tasks. Each high level task, has it own class that stores data related to said task.~\newline
+ An object of that class is instatiated as a global variable in main to allow for data to accessed easily while maitaining code readability.~\newline
+ RWLocks are used to prevent misreads/miswrites of data. ~\newline
+~\newline
+ configuration vaules are declared in \mbox{\hyperlink{config_8h}{config.\+h}} and set in main ~\newline
+~\newline
+ More information is availble in the documentation for each class.\hypertarget{index_author}{}\doxysection{Authors}\label{index_author}
+Patrick Ledzian~\newline
+Julian Blanco\hypertarget{index_license}{}\doxysection{License}\label{index_license}
+MIT license, all text above must be included in any redistribution 

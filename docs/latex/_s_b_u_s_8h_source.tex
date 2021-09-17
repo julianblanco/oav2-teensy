@@ -1,0 +1,116 @@
+\hypertarget{_s_b_u_s_8h_source}{}\doxysection{SBUS.\+h}
+\label{_s_b_u_s_8h_source}\index{src/SBUS.h@{src/SBUS.h}}
+\mbox{\hyperlink{_s_b_u_s_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00002}00002 \textcolor{comment}{* Brian R Taylor}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00003}00003 \textcolor{comment}{* brian.taylor@bolderflight.com}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00004}00004 \textcolor{comment}{* }}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00005}00005 \textcolor{comment}{* Copyright (c) 2021 Bolder Flight Systems Inc}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00006}00006 \textcolor{comment}{*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00007}00007 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00008}00008 \textcolor{comment}{* of this software and associated documentation files (the “Software”), to}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00009}00009 \textcolor{comment}{* deal in the Software without restriction, including without limitation the}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00010}00010 \textcolor{comment}{* rights to use, copy, modify, merge, publish, distribute, sublicense, and/or}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00011}00011 \textcolor{comment}{* sell copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00012}00012 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00013}00013 \textcolor{comment}{*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00014}00014 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00015}00015 \textcolor{comment}{* all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00016}00016 \textcolor{comment}{*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00017}00017 \textcolor{comment}{* THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00018}00018 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00019}00019 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00020}00020 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00021}00021 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00022}00022 \textcolor{comment}{* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00023}00023 \textcolor{comment}{* IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00024}00024 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00026}00026 \textcolor{preprocessor}{\#ifndef INCLUDE\_SBUS\_SBUS\_H\_}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00027}00027 \textcolor{preprocessor}{\#define INCLUDE\_SBUS\_SBUS\_H\_}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00030}00030 \textcolor{preprocessor}{\#if defined(\_\_AVR\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00031}00031 \textcolor{preprocessor}{\#define ETL\_NO\_STL}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00032}00032 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00033}00033 \textcolor{preprocessor}{\#include <Embedded\_Template\_Library.h>}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00034}00034 \textcolor{preprocessor}{\#include <etl/array.h>}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00035}00035 \textcolor{keyword}{namespace }sbus = etl;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00036}00036 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00037}00037 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00038}00038 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00039}00039 \textcolor{keyword}{namespace }sbus = std;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00040}00040 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00043}\mbox{\hyperlink{class_sbus_rx}{00043}} \textcolor{keyword}{class }\mbox{\hyperlink{class_sbus_rx}{SbusRx}} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00044}00044  \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00045}00045   \textcolor{keyword}{explicit} \mbox{\hyperlink{class_sbus_rx_aa7260e7602811e0adf75ae33119e98f8}{SbusRx}}(HardwareSerial *bus);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00046}00046   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_rx_af47c4b075c10603e9d16e77b2ff7ee71}{Begin}}();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00047}00047   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_rx_a8492ed6a4b9e6ac63120e74a27e3aa39}{Read}}();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00048}00048   sbus::array<uint16\_t, 16> \mbox{\hyperlink{class_sbus_rx_a56fb0eeb5478dbad644d94fd5ada7e0c}{rx\_channels}}();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00049}\mbox{\hyperlink{class_sbus_rx_ab3c4cda575b0b8d5a5778d87190cebbe}{00049}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_rx_ab3c4cda575b0b8d5a5778d87190cebbe}{failsafe}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} failsafe\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00050}\mbox{\hyperlink{class_sbus_rx_afc7a000ed5951dc0bdb52e4f073bebf4}{00050}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_rx_afc7a000ed5951dc0bdb52e4f073bebf4}{lost\_frame}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} lost\_frame\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00051}\mbox{\hyperlink{class_sbus_rx_a0b7941d765efa5847d25d9cfbb0495b3}{00051}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_rx_a0b7941d765efa5847d25d9cfbb0495b3}{ch17}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} ch17\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00052}\mbox{\hyperlink{class_sbus_rx_aa0790d24afe8c683972bba1c0e1bd306}{00052}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_rx_aa0790d24afe8c683972bba1c0e1bd306}{ch18}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} ch18\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00054}00054  \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00055}00055   \textcolor{comment}{/* Communication */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00056}00056   HardwareSerial *bus\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00057}00057   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint32\_t BAUD\_ = 100000;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00058}00058   \textcolor{comment}{/* Parsing */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00059}00059   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_HEADER\_ = 0x0F;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00060}00060   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_FOOTER\_ = 0x00;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00061}00061   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS2\_FOOTER\_ = 0x04;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00062}00062   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_LENGTH\_ = 25;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00063}00063   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_CH17\_ = 0x01;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00064}00064   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_CH18\_ = 0x02;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00065}00065   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_LOST\_FRAME\_ = 0x04;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00066}00066   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_FAILSAFE\_ = 0x08;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00067}00067   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} parser\_state\_ = 0;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00068}00068   uint8\_t previous\_byte\_ = SBUS\_FOOTER\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00069}00069   uint8\_t rx\_buffer\_[SBUS\_LENGTH\_];}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00070}00070   \textcolor{comment}{/* Data */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00071}00071   sbus::array<uint16\_t, 16> rx\_channels\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00072}00072   \textcolor{keywordtype}{bool} failsafe\_ = \textcolor{keyword}{false}, lost\_frame\_ = \textcolor{keyword}{false}, ch17\_ = \textcolor{keyword}{false}, ch18\_ = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00073}00073   \textcolor{keywordtype}{bool} Parse();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00074}00074 \};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00076}\mbox{\hyperlink{class_sbus_tx}{00076}} \textcolor{keyword}{class }\mbox{\hyperlink{class_sbus_tx}{SbusTx}} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00077}00077  \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00078}00078   \textcolor{keyword}{explicit} \mbox{\hyperlink{class_sbus_tx_a2a73046a205c57d6011b463624c01feb}{SbusTx}}(HardwareSerial *bus);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00079}00079   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_afb9048fe612c62889c3dac23950a4d0a}{Begin}}();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00080}00080   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_a6cf1d3d4a45dc91ececb0f022b902113}{Write}}();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00081}\mbox{\hyperlink{class_sbus_tx_a172152e66fb605e47af6b08a9bf8a6af}{00081}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_a172152e66fb605e47af6b08a9bf8a6af}{failsafe}}(\textcolor{keywordtype}{bool} val) \{failsafe\_ = val;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00082}\mbox{\hyperlink{class_sbus_tx_a6c48e8118b249b48901c779722aea933}{00082}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_a6c48e8118b249b48901c779722aea933}{lost\_frame}}(\textcolor{keywordtype}{bool} val) \{lost\_frame\_ = val;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00083}\mbox{\hyperlink{class_sbus_tx_adbe26a8aa50d8946086fc651c26b5971}{00083}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_adbe26a8aa50d8946086fc651c26b5971}{ch17}}(\textcolor{keywordtype}{bool} val) \{ch17\_ = val;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00084}\mbox{\hyperlink{class_sbus_tx_aabeddb6f44efd0f1fec6f675c17d3a02}{00084}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_aabeddb6f44efd0f1fec6f675c17d3a02}{ch18}}(\textcolor{keywordtype}{bool} val) \{ch18\_ = val;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00085}00085   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_ab0a12ec5fa102521898a9dea0731b11d}{tx\_channels}}(\textcolor{keyword}{const} sbus::array<uint16\_t, 16> \&val);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00086}\mbox{\hyperlink{class_sbus_tx_abd607a7dbe745a3d555cb56e38dec0b6}{00086}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_tx_abd607a7dbe745a3d555cb56e38dec0b6}{failsafe}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} failsafe\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00087}\mbox{\hyperlink{class_sbus_tx_a5cf439114564a53b3edb381cd6d00cc4}{00087}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_tx_a5cf439114564a53b3edb381cd6d00cc4}{lost\_frame}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} lost\_frame\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00088}\mbox{\hyperlink{class_sbus_tx_af3f9cdce7a60af59565a1b2f89311c5e}{00088}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_tx_af3f9cdce7a60af59565a1b2f89311c5e}{ch17}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} ch17\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00089}\mbox{\hyperlink{class_sbus_tx_a4739c2e2b6aabe517cea36464277da25}{00089}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_tx_a4739c2e2b6aabe517cea36464277da25}{ch18}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} ch18\_;\}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00090}00090   sbus::array<uint16\_t, 16> \mbox{\hyperlink{class_sbus_tx_ab0a12ec5fa102521898a9dea0731b11d}{tx\_channels}}();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00092}00092  \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00093}00093   \textcolor{comment}{/* Communication */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00094}00094   HardwareSerial *bus\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00095}00095   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint32\_t BAUD\_ = 100000;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00096}00096   \textcolor{comment}{/* Parsing */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00097}00097   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_HEADER\_ = 0x0F;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00098}00098   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_FOOTER\_ = 0x00;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00099}00099   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_LENGTH\_ = 25;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00100}00100   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_CH17\_ = 0x01;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00101}00101   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_CH18\_ = 0x02;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00102}00102   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_LOST\_FRAME\_ = 0x04;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00103}00103   \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint8\_t SBUS\_FAILSAFE\_ = 0x08;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00104}00104   uint8\_t tx\_buffer\_[SBUS\_LENGTH\_];}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00105}00105   \textcolor{comment}{/* Data */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00106}00106   sbus::array<uint16\_t, 16> tx\_channels\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00107}00107   \textcolor{keywordtype}{bool} failsafe\_ = \textcolor{keyword}{false}, lost\_frame\_ = \textcolor{keyword}{false}, ch17\_ = \textcolor{keyword}{false}, ch18\_ = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00108}00108 \};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8h_source_l00110}00110 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// INCLUDE\_SBUS\_SBUS\_H\_}}
+
+\end{DoxyCode}

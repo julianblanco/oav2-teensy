@@ -1,0 +1,604 @@
+\hypertarget{mavlink__msg__high__latency2_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+high\+\_\+latency2.\+h}
+\label{mavlink__msg__high__latency2_8h_source}\index{lib/common/mavlink\_msg\_high\_latency2.h@{lib/common/mavlink\_msg\_high\_latency2.h}}
+\mbox{\hyperlink{mavlink__msg__high__latency2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE HIGH\_LATENCY2 PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGH\_LATENCY2 235}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__high__latency2_8h_abcf27cba5371acc0b361189424c083c9}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_high\_latency2\_t \{}
+\DoxyCodeLine{8  uint32\_t timestamp; \textcolor{comment}{/*< [ms] Timestamp (milliseconds since boot or Unix epoch)*/}}
+\DoxyCodeLine{9  int32\_t latitude; \textcolor{comment}{/*< [degE7] Latitude*/}}
+\DoxyCodeLine{10  int32\_t longitude; \textcolor{comment}{/*< [degE7] Longitude*/}}
+\DoxyCodeLine{11  uint16\_t custom\_mode; \textcolor{comment}{/*<  A bitfield for use for autopilot-\/specific flags (2 byte version).*/}}
+\DoxyCodeLine{12  int16\_t altitude; \textcolor{comment}{/*< [m] Altitude above mean sea level*/}}
+\DoxyCodeLine{13  int16\_t target\_altitude; \textcolor{comment}{/*< [m] Altitude setpoint*/}}
+\DoxyCodeLine{14  uint16\_t target\_distance; \textcolor{comment}{/*< [dam] Distance to target waypoint or position*/}}
+\DoxyCodeLine{15  uint16\_t wp\_num; \textcolor{comment}{/*<  Current waypoint number*/}}
+\DoxyCodeLine{16  uint16\_t failure\_flags; \textcolor{comment}{/*<  Bitmap of failure flags.*/}}
+\DoxyCodeLine{17  uint8\_t type; \textcolor{comment}{/*<  Type of the MAV (quadrotor, helicopter, etc.)*/}}
+\DoxyCodeLine{18  uint8\_t autopilot; \textcolor{comment}{/*<  Autopilot type / class.*/}}
+\DoxyCodeLine{19  uint8\_t heading; \textcolor{comment}{/*< [deg/2] Heading*/}}
+\DoxyCodeLine{20  uint8\_t target\_heading; \textcolor{comment}{/*< [deg/2] Heading setpoint*/}}
+\DoxyCodeLine{21  uint8\_t throttle; \textcolor{comment}{/*< [\%] Throttle*/}}
+\DoxyCodeLine{22  uint8\_t airspeed; \textcolor{comment}{/*< [m/s*5] Airspeed*/}}
+\DoxyCodeLine{23  uint8\_t airspeed\_sp; \textcolor{comment}{/*< [m/s*5] Airspeed setpoint*/}}
+\DoxyCodeLine{24  uint8\_t groundspeed; \textcolor{comment}{/*< [m/s*5] Groundspeed*/}}
+\DoxyCodeLine{25  uint8\_t windspeed; \textcolor{comment}{/*< [m/s*5] Windspeed*/}}
+\DoxyCodeLine{26  uint8\_t wind\_heading; \textcolor{comment}{/*< [deg/2] Wind heading*/}}
+\DoxyCodeLine{27  uint8\_t eph; \textcolor{comment}{/*< [dm] Maximum error horizontal position since last message*/}}
+\DoxyCodeLine{28  uint8\_t epv; \textcolor{comment}{/*< [dm] Maximum error vertical position since last message*/}}
+\DoxyCodeLine{29  int8\_t temperature\_air; \textcolor{comment}{/*< [degC] Air temperature from airspeed sensor*/}}
+\DoxyCodeLine{30  int8\_t climb\_rate; \textcolor{comment}{/*< [dm/s] Maximum climb rate magnitude since last message*/}}
+\DoxyCodeLine{31  int8\_t battery; \textcolor{comment}{/*< [\%] Battery (percentage, -\/1 for DNU)*/}}
+\DoxyCodeLine{32  int8\_t custom0; \textcolor{comment}{/*<  Field for custom payload.*/}}
+\DoxyCodeLine{33  int8\_t custom1; \textcolor{comment}{/*<  Field for custom payload.*/}}
+\DoxyCodeLine{34  int8\_t custom2; \textcolor{comment}{/*<  Field for custom payload.*/}}
+\DoxyCodeLine{35 \}) mavlink\_high\_latency2\_t;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN 42}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN 42}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_235\_LEN 42}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_235\_MIN\_LEN 42}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC 179}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_235\_CRC 179}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY2 \{ \(\backslash\)}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{    235, \(\backslash\)}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{    "{}HIGH\_LATENCY2"{}}, \(\backslash\)}
+\DoxyCodeLine{51     27, \(\backslash\)}
+\DoxyCodeLine{52     \{  \{ "{}timestamp"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_high\_latency2\_t, timestamp) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 24, offsetof(mavlink\_high\_latency2\_t, type) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}autopilot"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 25, offsetof(mavlink\_high\_latency2\_t, autopilot) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}custom\_mode"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_high\_latency2\_t, custom\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}latitude"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_high\_latency2\_t, latitude) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}longitude"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 8, offsetof(mavlink\_high\_latency2\_t, longitude) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}altitude"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 14, offsetof(mavlink\_high\_latency2\_t, altitude) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}target\_altitude"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 16, offsetof(mavlink\_high\_latency2\_t, target\_altitude) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}heading"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 26, offsetof(mavlink\_high\_latency2\_t, heading) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}target\_heading"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 27, offsetof(mavlink\_high\_latency2\_t, target\_heading) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}target\_distance"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_high\_latency2\_t, target\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}throttle"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 28, offsetof(mavlink\_high\_latency2\_t, throttle) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}airspeed"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 29, offsetof(mavlink\_high\_latency2\_t, airspeed) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}airspeed\_sp"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 30, offsetof(mavlink\_high\_latency2\_t, airspeed\_sp) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}groundspeed"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 31, offsetof(mavlink\_high\_latency2\_t, groundspeed) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}windspeed"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 32, offsetof(mavlink\_high\_latency2\_t, windspeed) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}wind\_heading"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 33, offsetof(mavlink\_high\_latency2\_t, wind\_heading) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}eph"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 34, offsetof(mavlink\_high\_latency2\_t, eph) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}epv"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 35, offsetof(mavlink\_high\_latency2\_t, epv) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}temperature\_air"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 36, offsetof(mavlink\_high\_latency2\_t, temperature\_air) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}climb\_rate"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 37, offsetof(mavlink\_high\_latency2\_t, climb\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{73          \{ "{}battery"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 38, offsetof(mavlink\_high\_latency2\_t, battery) \}, \(\backslash\)}
+\DoxyCodeLine{74          \{ "{}wp\_num"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 20, offsetof(mavlink\_high\_latency2\_t, wp\_num) \}, \(\backslash\)}
+\DoxyCodeLine{75          \{ "{}failure\_flags"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_high\_latency2\_t, failure\_flags) \}, \(\backslash\)}
+\DoxyCodeLine{76          \{ "{}custom0"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 39, offsetof(mavlink\_high\_latency2\_t, custom0) \}, \(\backslash\)}
+\DoxyCodeLine{77          \{ "{}custom1"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 40, offsetof(mavlink\_high\_latency2\_t, custom1) \}, \(\backslash\)}
+\DoxyCodeLine{78          \{ "{}custom2"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 41, offsetof(mavlink\_high\_latency2\_t, custom2) \}, \(\backslash\)}
+\DoxyCodeLine{79          \} \(\backslash\)}
+\DoxyCodeLine{80 \}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_HIGH\_LATENCY2 \{ \(\backslash\)}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{    "{}HIGH\_LATENCY2"{}}, \(\backslash\)}
+\DoxyCodeLine{84     27, \(\backslash\)}
+\DoxyCodeLine{85     \{  \{ "{}timestamp"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_high\_latency2\_t, timestamp) \}, \(\backslash\)}
+\DoxyCodeLine{86          \{ "{}type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 24, offsetof(mavlink\_high\_latency2\_t, type) \}, \(\backslash\)}
+\DoxyCodeLine{87          \{ "{}autopilot"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 25, offsetof(mavlink\_high\_latency2\_t, autopilot) \}, \(\backslash\)}
+\DoxyCodeLine{88          \{ "{}custom\_mode"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_high\_latency2\_t, custom\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{89          \{ "{}latitude"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_high\_latency2\_t, latitude) \}, \(\backslash\)}
+\DoxyCodeLine{90          \{ "{}longitude"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 8, offsetof(mavlink\_high\_latency2\_t, longitude) \}, \(\backslash\)}
+\DoxyCodeLine{91          \{ "{}altitude"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 14, offsetof(mavlink\_high\_latency2\_t, altitude) \}, \(\backslash\)}
+\DoxyCodeLine{92          \{ "{}target\_altitude"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 16, offsetof(mavlink\_high\_latency2\_t, target\_altitude) \}, \(\backslash\)}
+\DoxyCodeLine{93          \{ "{}heading"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 26, offsetof(mavlink\_high\_latency2\_t, heading) \}, \(\backslash\)}
+\DoxyCodeLine{94          \{ "{}target\_heading"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 27, offsetof(mavlink\_high\_latency2\_t, target\_heading) \}, \(\backslash\)}
+\DoxyCodeLine{95          \{ "{}target\_distance"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_high\_latency2\_t, target\_distance) \}, \(\backslash\)}
+\DoxyCodeLine{96          \{ "{}throttle"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 28, offsetof(mavlink\_high\_latency2\_t, throttle) \}, \(\backslash\)}
+\DoxyCodeLine{97          \{ "{}airspeed"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 29, offsetof(mavlink\_high\_latency2\_t, airspeed) \}, \(\backslash\)}
+\DoxyCodeLine{98          \{ "{}airspeed\_sp"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 30, offsetof(mavlink\_high\_latency2\_t, airspeed\_sp) \}, \(\backslash\)}
+\DoxyCodeLine{99          \{ "{}groundspeed"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 31, offsetof(mavlink\_high\_latency2\_t, groundspeed) \}, \(\backslash\)}
+\DoxyCodeLine{100          \{ "{}windspeed"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 32, offsetof(mavlink\_high\_latency2\_t, windspeed) \}, \(\backslash\)}
+\DoxyCodeLine{101          \{ "{}wind\_heading"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 33, offsetof(mavlink\_high\_latency2\_t, wind\_heading) \}, \(\backslash\)}
+\DoxyCodeLine{102          \{ "{}eph"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 34, offsetof(mavlink\_high\_latency2\_t, eph) \}, \(\backslash\)}
+\DoxyCodeLine{103          \{ "{}epv"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 35, offsetof(mavlink\_high\_latency2\_t, epv) \}, \(\backslash\)}
+\DoxyCodeLine{104          \{ "{}temperature\_air"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 36, offsetof(mavlink\_high\_latency2\_t, temperature\_air) \}, \(\backslash\)}
+\DoxyCodeLine{105          \{ "{}climb\_rate"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 37, offsetof(mavlink\_high\_latency2\_t, climb\_rate) \}, \(\backslash\)}
+\DoxyCodeLine{106          \{ "{}battery"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 38, offsetof(mavlink\_high\_latency2\_t, battery) \}, \(\backslash\)}
+\DoxyCodeLine{107          \{ "{}wp\_num"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 20, offsetof(mavlink\_high\_latency2\_t, wp\_num) \}, \(\backslash\)}
+\DoxyCodeLine{108          \{ "{}failure\_flags"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_high\_latency2\_t, failure\_flags) \}, \(\backslash\)}
+\DoxyCodeLine{109          \{ "{}custom0"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 39, offsetof(mavlink\_high\_latency2\_t, custom0) \}, \(\backslash\)}
+\DoxyCodeLine{110          \{ "{}custom1"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 40, offsetof(mavlink\_high\_latency2\_t, custom1) \}, \(\backslash\)}
+\DoxyCodeLine{111          \{ "{}custom2"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 41, offsetof(mavlink\_high\_latency2\_t, custom2) \}, \(\backslash\)}
+\DoxyCodeLine{112          \} \(\backslash\)}
+\DoxyCodeLine{113 \}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{151 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{152                                uint32\_t timestamp, uint8\_t type, uint8\_t autopilot, uint16\_t custom\_mode, int32\_t latitude, int32\_t longitude, int16\_t altitude, int16\_t target\_altitude, uint8\_t heading, uint8\_t target\_heading, uint16\_t target\_distance, uint8\_t throttle, uint8\_t airspeed, uint8\_t airspeed\_sp, uint8\_t groundspeed, uint8\_t windspeed, uint8\_t wind\_heading, uint8\_t eph, uint8\_t epv, int8\_t temperature\_air, int8\_t climb\_rate, int8\_t battery, uint16\_t wp\_num, uint16\_t failure\_flags, int8\_t custom0, int8\_t custom1, int8\_t custom2)}
+\DoxyCodeLine{153 \{}
+\DoxyCodeLine{154 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{155     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}];}
+\DoxyCodeLine{156     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, timestamp);}
+\DoxyCodeLine{157     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, latitude);}
+\DoxyCodeLine{158     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, longitude);}
+\DoxyCodeLine{159     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, custom\_mode);}
+\DoxyCodeLine{160     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, altitude);}
+\DoxyCodeLine{161     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, target\_altitude);}
+\DoxyCodeLine{162     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, target\_distance);}
+\DoxyCodeLine{163     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, wp\_num);}
+\DoxyCodeLine{164     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, failure\_flags);}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 24, type);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 25, autopilot);}
+\DoxyCodeLine{167     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, heading);}
+\DoxyCodeLine{168     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 27, target\_heading);}
+\DoxyCodeLine{169     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 28, throttle);}
+\DoxyCodeLine{170     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 29, airspeed);}
+\DoxyCodeLine{171     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 30, airspeed\_sp);}
+\DoxyCodeLine{172     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 31, groundspeed);}
+\DoxyCodeLine{173     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, windspeed);}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, wind\_heading);}
+\DoxyCodeLine{175     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, eph);}
+\DoxyCodeLine{176     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 35, epv);}
+\DoxyCodeLine{177     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 36, temperature\_air);}
+\DoxyCodeLine{178     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 37, climb\_rate);}
+\DoxyCodeLine{179     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 38, battery);}
+\DoxyCodeLine{180     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 39, custom0);}
+\DoxyCodeLine{181     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 40, custom1);}
+\DoxyCodeLine{182     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 41, custom2);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}});}
+\DoxyCodeLine{185 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{186     mavlink\_high\_latency2\_t packet;}
+\DoxyCodeLine{187     packet.timestamp = timestamp;}
+\DoxyCodeLine{188     packet.latitude = latitude;}
+\DoxyCodeLine{189     packet.longitude = longitude;}
+\DoxyCodeLine{190     packet.custom\_mode = custom\_mode;}
+\DoxyCodeLine{191     packet.altitude = altitude;}
+\DoxyCodeLine{192     packet.target\_altitude = target\_altitude;}
+\DoxyCodeLine{193     packet.target\_distance = target\_distance;}
+\DoxyCodeLine{194     packet.wp\_num = wp\_num;}
+\DoxyCodeLine{195     packet.failure\_flags = failure\_flags;}
+\DoxyCodeLine{196     packet.type = type;}
+\DoxyCodeLine{197     packet.autopilot = autopilot;}
+\DoxyCodeLine{198     packet.heading = heading;}
+\DoxyCodeLine{199     packet.target\_heading = target\_heading;}
+\DoxyCodeLine{200     packet.throttle = throttle;}
+\DoxyCodeLine{201     packet.airspeed = airspeed;}
+\DoxyCodeLine{202     packet.airspeed\_sp = airspeed\_sp;}
+\DoxyCodeLine{203     packet.groundspeed = groundspeed;}
+\DoxyCodeLine{204     packet.windspeed = windspeed;}
+\DoxyCodeLine{205     packet.wind\_heading = wind\_heading;}
+\DoxyCodeLine{206     packet.eph = eph;}
+\DoxyCodeLine{207     packet.epv = epv;}
+\DoxyCodeLine{208     packet.temperature\_air = temperature\_air;}
+\DoxyCodeLine{209     packet.climb\_rate = climb\_rate;}
+\DoxyCodeLine{210     packet.battery = battery;}
+\DoxyCodeLine{211     packet.custom0 = custom0;}
+\DoxyCodeLine{212     packet.custom1 = custom1;}
+\DoxyCodeLine{213     packet.custom2 = custom2;}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}});}
+\DoxyCodeLine{216 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}};}
+\DoxyCodeLine{219     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{220 \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{257 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{258                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{259                                    uint32\_t timestamp,uint8\_t type,uint8\_t autopilot,uint16\_t custom\_mode,int32\_t latitude,int32\_t longitude,int16\_t altitude,int16\_t target\_altitude,uint8\_t heading,uint8\_t target\_heading,uint16\_t target\_distance,uint8\_t throttle,uint8\_t airspeed,uint8\_t airspeed\_sp,uint8\_t groundspeed,uint8\_t windspeed,uint8\_t wind\_heading,uint8\_t eph,uint8\_t epv,int8\_t temperature\_air,int8\_t climb\_rate,int8\_t battery,uint16\_t wp\_num,uint16\_t failure\_flags,int8\_t custom0,int8\_t custom1,int8\_t custom2)}
+\DoxyCodeLine{260 \{}
+\DoxyCodeLine{261 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{262     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}];}
+\DoxyCodeLine{263     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, timestamp);}
+\DoxyCodeLine{264     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, latitude);}
+\DoxyCodeLine{265     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, longitude);}
+\DoxyCodeLine{266     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, custom\_mode);}
+\DoxyCodeLine{267     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, altitude);}
+\DoxyCodeLine{268     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, target\_altitude);}
+\DoxyCodeLine{269     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, target\_distance);}
+\DoxyCodeLine{270     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, wp\_num);}
+\DoxyCodeLine{271     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, failure\_flags);}
+\DoxyCodeLine{272     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 24, type);}
+\DoxyCodeLine{273     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 25, autopilot);}
+\DoxyCodeLine{274     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, heading);}
+\DoxyCodeLine{275     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 27, target\_heading);}
+\DoxyCodeLine{276     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 28, throttle);}
+\DoxyCodeLine{277     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 29, airspeed);}
+\DoxyCodeLine{278     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 30, airspeed\_sp);}
+\DoxyCodeLine{279     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 31, groundspeed);}
+\DoxyCodeLine{280     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, windspeed);}
+\DoxyCodeLine{281     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, wind\_heading);}
+\DoxyCodeLine{282     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, eph);}
+\DoxyCodeLine{283     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 35, epv);}
+\DoxyCodeLine{284     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 36, temperature\_air);}
+\DoxyCodeLine{285     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 37, climb\_rate);}
+\DoxyCodeLine{286     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 38, battery);}
+\DoxyCodeLine{287     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 39, custom0);}
+\DoxyCodeLine{288     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 40, custom1);}
+\DoxyCodeLine{289     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 41, custom2);}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{291         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}});}
+\DoxyCodeLine{292 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{293     mavlink\_high\_latency2\_t packet;}
+\DoxyCodeLine{294     packet.timestamp = timestamp;}
+\DoxyCodeLine{295     packet.latitude = latitude;}
+\DoxyCodeLine{296     packet.longitude = longitude;}
+\DoxyCodeLine{297     packet.custom\_mode = custom\_mode;}
+\DoxyCodeLine{298     packet.altitude = altitude;}
+\DoxyCodeLine{299     packet.target\_altitude = target\_altitude;}
+\DoxyCodeLine{300     packet.target\_distance = target\_distance;}
+\DoxyCodeLine{301     packet.wp\_num = wp\_num;}
+\DoxyCodeLine{302     packet.failure\_flags = failure\_flags;}
+\DoxyCodeLine{303     packet.type = type;}
+\DoxyCodeLine{304     packet.autopilot = autopilot;}
+\DoxyCodeLine{305     packet.heading = heading;}
+\DoxyCodeLine{306     packet.target\_heading = target\_heading;}
+\DoxyCodeLine{307     packet.throttle = throttle;}
+\DoxyCodeLine{308     packet.airspeed = airspeed;}
+\DoxyCodeLine{309     packet.airspeed\_sp = airspeed\_sp;}
+\DoxyCodeLine{310     packet.groundspeed = groundspeed;}
+\DoxyCodeLine{311     packet.windspeed = windspeed;}
+\DoxyCodeLine{312     packet.wind\_heading = wind\_heading;}
+\DoxyCodeLine{313     packet.eph = eph;}
+\DoxyCodeLine{314     packet.epv = epv;}
+\DoxyCodeLine{315     packet.temperature\_air = temperature\_air;}
+\DoxyCodeLine{316     packet.climb\_rate = climb\_rate;}
+\DoxyCodeLine{317     packet.battery = battery;}
+\DoxyCodeLine{318     packet.custom0 = custom0;}
+\DoxyCodeLine{319     packet.custom1 = custom1;}
+\DoxyCodeLine{320     packet.custom2 = custom2;}
+\DoxyCodeLine{321 }
+\DoxyCodeLine{322         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}});}
+\DoxyCodeLine{323 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}};}
+\DoxyCodeLine{326     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{327 \}}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{337 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_high\_latency2\_t* high\_latency2)}
+\DoxyCodeLine{338 \{}
+\DoxyCodeLine{339     \textcolor{keywordflow}{return} mavlink\_msg\_high\_latency2\_pack(system\_id, component\_id, msg, high\_latency2-\/>timestamp, high\_latency2-\/>type, high\_latency2-\/>autopilot, high\_latency2-\/>custom\_mode, high\_latency2-\/>latitude, high\_latency2-\/>longitude, high\_latency2-\/>altitude, high\_latency2-\/>target\_altitude, high\_latency2-\/>heading, high\_latency2-\/>target\_heading, high\_latency2-\/>target\_distance, high\_latency2-\/>throttle, high\_latency2-\/>airspeed, high\_latency2-\/>airspeed\_sp, high\_latency2-\/>groundspeed, high\_latency2-\/>windspeed, high\_latency2-\/>wind\_heading, high\_latency2-\/>eph, high\_latency2-\/>epv, high\_latency2-\/>temperature\_air, high\_latency2-\/>climb\_rate, high\_latency2-\/>battery, high\_latency2-\/>wp\_num, high\_latency2-\/>failure\_flags, high\_latency2-\/>custom0, high\_latency2-\/>custom1, high\_latency2-\/>custom2);}
+\DoxyCodeLine{340 \}}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{351 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_high\_latency2\_t* high\_latency2)}
+\DoxyCodeLine{352 \{}
+\DoxyCodeLine{353     \textcolor{keywordflow}{return} mavlink\_msg\_high\_latency2\_pack\_chan(system\_id, component\_id, chan, msg, high\_latency2-\/>timestamp, high\_latency2-\/>type, high\_latency2-\/>autopilot, high\_latency2-\/>custom\_mode, high\_latency2-\/>latitude, high\_latency2-\/>longitude, high\_latency2-\/>altitude, high\_latency2-\/>target\_altitude, high\_latency2-\/>heading, high\_latency2-\/>target\_heading, high\_latency2-\/>target\_distance, high\_latency2-\/>throttle, high\_latency2-\/>airspeed, high\_latency2-\/>airspeed\_sp, high\_latency2-\/>groundspeed, high\_latency2-\/>windspeed, high\_latency2-\/>wind\_heading, high\_latency2-\/>eph, high\_latency2-\/>epv, high\_latency2-\/>temperature\_air, high\_latency2-\/>climb\_rate, high\_latency2-\/>battery, high\_latency2-\/>wp\_num, high\_latency2-\/>failure\_flags, high\_latency2-\/>custom0, high\_latency2-\/>custom1, high\_latency2-\/>custom2);}
+\DoxyCodeLine{354 \}}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{388 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{390 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_high\_latency2\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t timestamp, uint8\_t type, uint8\_t autopilot, uint16\_t custom\_mode, int32\_t latitude, int32\_t longitude, int16\_t altitude, int16\_t target\_altitude, uint8\_t heading, uint8\_t target\_heading, uint16\_t target\_distance, uint8\_t throttle, uint8\_t airspeed, uint8\_t airspeed\_sp, uint8\_t groundspeed, uint8\_t windspeed, uint8\_t wind\_heading, uint8\_t eph, uint8\_t epv, int8\_t temperature\_air, int8\_t climb\_rate, int8\_t battery, uint16\_t wp\_num, uint16\_t failure\_flags, int8\_t custom0, int8\_t custom1, int8\_t custom2)}
+\DoxyCodeLine{391 \{}
+\DoxyCodeLine{392 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{393     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}];}
+\DoxyCodeLine{394     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, timestamp);}
+\DoxyCodeLine{395     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, latitude);}
+\DoxyCodeLine{396     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, longitude);}
+\DoxyCodeLine{397     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, custom\_mode);}
+\DoxyCodeLine{398     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, altitude);}
+\DoxyCodeLine{399     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, target\_altitude);}
+\DoxyCodeLine{400     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, target\_distance);}
+\DoxyCodeLine{401     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, wp\_num);}
+\DoxyCodeLine{402     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, failure\_flags);}
+\DoxyCodeLine{403     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 24, type);}
+\DoxyCodeLine{404     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 25, autopilot);}
+\DoxyCodeLine{405     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, heading);}
+\DoxyCodeLine{406     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 27, target\_heading);}
+\DoxyCodeLine{407     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 28, throttle);}
+\DoxyCodeLine{408     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 29, airspeed);}
+\DoxyCodeLine{409     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 30, airspeed\_sp);}
+\DoxyCodeLine{410     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 31, groundspeed);}
+\DoxyCodeLine{411     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, windspeed);}
+\DoxyCodeLine{412     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, wind\_heading);}
+\DoxyCodeLine{413     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, eph);}
+\DoxyCodeLine{414     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 35, epv);}
+\DoxyCodeLine{415     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 36, temperature\_air);}
+\DoxyCodeLine{416     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 37, climb\_rate);}
+\DoxyCodeLine{417     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 38, battery);}
+\DoxyCodeLine{418     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 39, custom0);}
+\DoxyCodeLine{419     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 40, custom1);}
+\DoxyCodeLine{420     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 41, custom2);}
+\DoxyCodeLine{421 }
+\DoxyCodeLine{422     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}}, buf, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{423 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{424     mavlink\_high\_latency2\_t packet;}
+\DoxyCodeLine{425     packet.timestamp = timestamp;}
+\DoxyCodeLine{426     packet.latitude = latitude;}
+\DoxyCodeLine{427     packet.longitude = longitude;}
+\DoxyCodeLine{428     packet.custom\_mode = custom\_mode;}
+\DoxyCodeLine{429     packet.altitude = altitude;}
+\DoxyCodeLine{430     packet.target\_altitude = target\_altitude;}
+\DoxyCodeLine{431     packet.target\_distance = target\_distance;}
+\DoxyCodeLine{432     packet.wp\_num = wp\_num;}
+\DoxyCodeLine{433     packet.failure\_flags = failure\_flags;}
+\DoxyCodeLine{434     packet.type = type;}
+\DoxyCodeLine{435     packet.autopilot = autopilot;}
+\DoxyCodeLine{436     packet.heading = heading;}
+\DoxyCodeLine{437     packet.target\_heading = target\_heading;}
+\DoxyCodeLine{438     packet.throttle = throttle;}
+\DoxyCodeLine{439     packet.airspeed = airspeed;}
+\DoxyCodeLine{440     packet.airspeed\_sp = airspeed\_sp;}
+\DoxyCodeLine{441     packet.groundspeed = groundspeed;}
+\DoxyCodeLine{442     packet.windspeed = windspeed;}
+\DoxyCodeLine{443     packet.wind\_heading = wind\_heading;}
+\DoxyCodeLine{444     packet.eph = eph;}
+\DoxyCodeLine{445     packet.epv = epv;}
+\DoxyCodeLine{446     packet.temperature\_air = temperature\_air;}
+\DoxyCodeLine{447     packet.climb\_rate = climb\_rate;}
+\DoxyCodeLine{448     packet.battery = battery;}
+\DoxyCodeLine{449     packet.custom0 = custom0;}
+\DoxyCodeLine{450     packet.custom1 = custom1;}
+\DoxyCodeLine{451     packet.custom2 = custom2;}
+\DoxyCodeLine{452 }
+\DoxyCodeLine{453     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{454 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{455 \}}
+\DoxyCodeLine{456 }
+\DoxyCodeLine{462 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_high\_latency2\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_high\_latency2\_t* high\_latency2)}
+\DoxyCodeLine{463 \{}
+\DoxyCodeLine{464 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{465     mavlink\_msg\_high\_latency2\_send(chan, high\_latency2-\/>timestamp, high\_latency2-\/>type, high\_latency2-\/>autopilot, high\_latency2-\/>custom\_mode, high\_latency2-\/>latitude, high\_latency2-\/>longitude, high\_latency2-\/>altitude, high\_latency2-\/>target\_altitude, high\_latency2-\/>heading, high\_latency2-\/>target\_heading, high\_latency2-\/>target\_distance, high\_latency2-\/>throttle, high\_latency2-\/>airspeed, high\_latency2-\/>airspeed\_sp, high\_latency2-\/>groundspeed, high\_latency2-\/>windspeed, high\_latency2-\/>wind\_heading, high\_latency2-\/>eph, high\_latency2-\/>epv, high\_latency2-\/>temperature\_air, high\_latency2-\/>climb\_rate, high\_latency2-\/>battery, high\_latency2-\/>wp\_num, high\_latency2-\/>failure\_flags, high\_latency2-\/>custom0, high\_latency2-\/>custom1, high\_latency2-\/>custom2);}
+\DoxyCodeLine{466 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{467     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)high\_latency2, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{468 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{469 \}}
+\DoxyCodeLine{470 }
+\DoxyCodeLine{471 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{472 \textcolor{comment}{/*}}
+\DoxyCodeLine{473 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{474 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{475 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{476 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{477 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{478 \textcolor{comment}{ */}}
+\DoxyCodeLine{479 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_high\_latency2\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t timestamp, uint8\_t type, uint8\_t autopilot, uint16\_t custom\_mode, int32\_t latitude, int32\_t longitude, int16\_t altitude, int16\_t target\_altitude, uint8\_t heading, uint8\_t target\_heading, uint16\_t target\_distance, uint8\_t throttle, uint8\_t airspeed, uint8\_t airspeed\_sp, uint8\_t groundspeed, uint8\_t windspeed, uint8\_t wind\_heading, uint8\_t eph, uint8\_t epv, int8\_t temperature\_air, int8\_t climb\_rate, int8\_t battery, uint16\_t wp\_num, uint16\_t failure\_flags, int8\_t custom0, int8\_t custom1, int8\_t custom2)}
+\DoxyCodeLine{480 \{}
+\DoxyCodeLine{481 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{482     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{483     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, timestamp);}
+\DoxyCodeLine{484     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, latitude);}
+\DoxyCodeLine{485     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, longitude);}
+\DoxyCodeLine{486     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, custom\_mode);}
+\DoxyCodeLine{487     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, altitude);}
+\DoxyCodeLine{488     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, target\_altitude);}
+\DoxyCodeLine{489     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, target\_distance);}
+\DoxyCodeLine{490     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, wp\_num);}
+\DoxyCodeLine{491     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, failure\_flags);}
+\DoxyCodeLine{492     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 24, type);}
+\DoxyCodeLine{493     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 25, autopilot);}
+\DoxyCodeLine{494     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, heading);}
+\DoxyCodeLine{495     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 27, target\_heading);}
+\DoxyCodeLine{496     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 28, throttle);}
+\DoxyCodeLine{497     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 29, airspeed);}
+\DoxyCodeLine{498     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 30, airspeed\_sp);}
+\DoxyCodeLine{499     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 31, groundspeed);}
+\DoxyCodeLine{500     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, windspeed);}
+\DoxyCodeLine{501     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, wind\_heading);}
+\DoxyCodeLine{502     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, eph);}
+\DoxyCodeLine{503     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 35, epv);}
+\DoxyCodeLine{504     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 36, temperature\_air);}
+\DoxyCodeLine{505     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 37, climb\_rate);}
+\DoxyCodeLine{506     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 38, battery);}
+\DoxyCodeLine{507     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 39, custom0);}
+\DoxyCodeLine{508     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 40, custom1);}
+\DoxyCodeLine{509     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 41, custom2);}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}}, buf, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{512 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{513     mavlink\_high\_latency2\_t *packet = (mavlink\_high\_latency2\_t *)msgbuf;}
+\DoxyCodeLine{514     packet-\/>timestamp = timestamp;}
+\DoxyCodeLine{515     packet-\/>latitude = latitude;}
+\DoxyCodeLine{516     packet-\/>longitude = longitude;}
+\DoxyCodeLine{517     packet-\/>custom\_mode = custom\_mode;}
+\DoxyCodeLine{518     packet-\/>altitude = altitude;}
+\DoxyCodeLine{519     packet-\/>target\_altitude = target\_altitude;}
+\DoxyCodeLine{520     packet-\/>target\_distance = target\_distance;}
+\DoxyCodeLine{521     packet-\/>wp\_num = wp\_num;}
+\DoxyCodeLine{522     packet-\/>failure\_flags = failure\_flags;}
+\DoxyCodeLine{523     packet-\/>type = type;}
+\DoxyCodeLine{524     packet-\/>autopilot = autopilot;}
+\DoxyCodeLine{525     packet-\/>heading = heading;}
+\DoxyCodeLine{526     packet-\/>target\_heading = target\_heading;}
+\DoxyCodeLine{527     packet-\/>throttle = throttle;}
+\DoxyCodeLine{528     packet-\/>airspeed = airspeed;}
+\DoxyCodeLine{529     packet-\/>airspeed\_sp = airspeed\_sp;}
+\DoxyCodeLine{530     packet-\/>groundspeed = groundspeed;}
+\DoxyCodeLine{531     packet-\/>windspeed = windspeed;}
+\DoxyCodeLine{532     packet-\/>wind\_heading = wind\_heading;}
+\DoxyCodeLine{533     packet-\/>eph = eph;}
+\DoxyCodeLine{534     packet-\/>epv = epv;}
+\DoxyCodeLine{535     packet-\/>temperature\_air = temperature\_air;}
+\DoxyCodeLine{536     packet-\/>climb\_rate = climb\_rate;}
+\DoxyCodeLine{537     packet-\/>battery = battery;}
+\DoxyCodeLine{538     packet-\/>custom0 = custom0;}
+\DoxyCodeLine{539     packet-\/>custom1 = custom1;}
+\DoxyCodeLine{540     packet-\/>custom2 = custom2;}
+\DoxyCodeLine{541 }
+\DoxyCodeLine{542     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a406a01b4eb1c953d06340ff2593698a6}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a11dd6668dd1aa5d0a051eaf8a1da7c40}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a356dfadb40d71e525b035b03cfe68574}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_CRC}});}
+\DoxyCodeLine{543 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{544 \}}
+\DoxyCodeLine{545 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{546 }
+\DoxyCodeLine{547 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{548 }
+\DoxyCodeLine{549 \textcolor{comment}{// MESSAGE HIGH\_LATENCY2 UNPACKING}}
+\DoxyCodeLine{550 }
+\DoxyCodeLine{551 }
+\DoxyCodeLine{557 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_high\_latency2\_get\_timestamp(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{558 \{}
+\DoxyCodeLine{559     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{560 \}}
+\DoxyCodeLine{561 }
+\DoxyCodeLine{567 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{568 \{}
+\DoxyCodeLine{569     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  24);}
+\DoxyCodeLine{570 \}}
+\DoxyCodeLine{571 }
+\DoxyCodeLine{577 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_autopilot(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{578 \{}
+\DoxyCodeLine{579     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  25);}
+\DoxyCodeLine{580 \}}
+\DoxyCodeLine{581 }
+\DoxyCodeLine{587 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_get\_custom\_mode(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{588 \{}
+\DoxyCodeLine{589     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  12);}
+\DoxyCodeLine{590 \}}
+\DoxyCodeLine{591 }
+\DoxyCodeLine{597 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_high\_latency2\_get\_latitude(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{598 \{}
+\DoxyCodeLine{599     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  4);}
+\DoxyCodeLine{600 \}}
+\DoxyCodeLine{601 }
+\DoxyCodeLine{607 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_high\_latency2\_get\_longitude(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{608 \{}
+\DoxyCodeLine{609     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  8);}
+\DoxyCodeLine{610 \}}
+\DoxyCodeLine{611 }
+\DoxyCodeLine{617 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_high\_latency2\_get\_altitude(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{618 \{}
+\DoxyCodeLine{619     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  14);}
+\DoxyCodeLine{620 \}}
+\DoxyCodeLine{621 }
+\DoxyCodeLine{627 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_high\_latency2\_get\_target\_altitude(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{628 \{}
+\DoxyCodeLine{629     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  16);}
+\DoxyCodeLine{630 \}}
+\DoxyCodeLine{631 }
+\DoxyCodeLine{637 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_heading(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{638 \{}
+\DoxyCodeLine{639     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  26);}
+\DoxyCodeLine{640 \}}
+\DoxyCodeLine{641 }
+\DoxyCodeLine{647 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_target\_heading(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{648 \{}
+\DoxyCodeLine{649     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  27);}
+\DoxyCodeLine{650 \}}
+\DoxyCodeLine{651 }
+\DoxyCodeLine{657 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_get\_target\_distance(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{658 \{}
+\DoxyCodeLine{659     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  18);}
+\DoxyCodeLine{660 \}}
+\DoxyCodeLine{661 }
+\DoxyCodeLine{667 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_throttle(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{668 \{}
+\DoxyCodeLine{669     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  28);}
+\DoxyCodeLine{670 \}}
+\DoxyCodeLine{671 }
+\DoxyCodeLine{677 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_airspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{678 \{}
+\DoxyCodeLine{679     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  29);}
+\DoxyCodeLine{680 \}}
+\DoxyCodeLine{681 }
+\DoxyCodeLine{687 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_airspeed\_sp(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{688 \{}
+\DoxyCodeLine{689     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  30);}
+\DoxyCodeLine{690 \}}
+\DoxyCodeLine{691 }
+\DoxyCodeLine{697 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_groundspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{698 \{}
+\DoxyCodeLine{699     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  31);}
+\DoxyCodeLine{700 \}}
+\DoxyCodeLine{701 }
+\DoxyCodeLine{707 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_windspeed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{708 \{}
+\DoxyCodeLine{709     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  32);}
+\DoxyCodeLine{710 \}}
+\DoxyCodeLine{711 }
+\DoxyCodeLine{717 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_wind\_heading(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{718 \{}
+\DoxyCodeLine{719     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  33);}
+\DoxyCodeLine{720 \}}
+\DoxyCodeLine{721 }
+\DoxyCodeLine{727 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_eph(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{728 \{}
+\DoxyCodeLine{729     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  34);}
+\DoxyCodeLine{730 \}}
+\DoxyCodeLine{731 }
+\DoxyCodeLine{737 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_high\_latency2\_get\_epv(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{738 \{}
+\DoxyCodeLine{739     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  35);}
+\DoxyCodeLine{740 \}}
+\DoxyCodeLine{741 }
+\DoxyCodeLine{747 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_high\_latency2\_get\_temperature\_air(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{748 \{}
+\DoxyCodeLine{749     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  36);}
+\DoxyCodeLine{750 \}}
+\DoxyCodeLine{751 }
+\DoxyCodeLine{757 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_high\_latency2\_get\_climb\_rate(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{758 \{}
+\DoxyCodeLine{759     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  37);}
+\DoxyCodeLine{760 \}}
+\DoxyCodeLine{761 }
+\DoxyCodeLine{767 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_high\_latency2\_get\_battery(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{768 \{}
+\DoxyCodeLine{769     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  38);}
+\DoxyCodeLine{770 \}}
+\DoxyCodeLine{771 }
+\DoxyCodeLine{777 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_get\_wp\_num(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{778 \{}
+\DoxyCodeLine{779     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  20);}
+\DoxyCodeLine{780 \}}
+\DoxyCodeLine{781 }
+\DoxyCodeLine{787 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_high\_latency2\_get\_failure\_flags(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{788 \{}
+\DoxyCodeLine{789     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  22);}
+\DoxyCodeLine{790 \}}
+\DoxyCodeLine{791 }
+\DoxyCodeLine{797 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_high\_latency2\_get\_custom0(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{798 \{}
+\DoxyCodeLine{799     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  39);}
+\DoxyCodeLine{800 \}}
+\DoxyCodeLine{801 }
+\DoxyCodeLine{807 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_high\_latency2\_get\_custom1(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{808 \{}
+\DoxyCodeLine{809     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  40);}
+\DoxyCodeLine{810 \}}
+\DoxyCodeLine{811 }
+\DoxyCodeLine{817 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_high\_latency2\_get\_custom2(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{818 \{}
+\DoxyCodeLine{819     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  41);}
+\DoxyCodeLine{820 \}}
+\DoxyCodeLine{821 }
+\DoxyCodeLine{828 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_high\_latency2\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_high\_latency2\_t* high\_latency2)}
+\DoxyCodeLine{829 \{}
+\DoxyCodeLine{830 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{831     high\_latency2-\/>timestamp = mavlink\_msg\_high\_latency2\_get\_timestamp(msg);}
+\DoxyCodeLine{832     high\_latency2-\/>latitude = mavlink\_msg\_high\_latency2\_get\_latitude(msg);}
+\DoxyCodeLine{833     high\_latency2-\/>longitude = mavlink\_msg\_high\_latency2\_get\_longitude(msg);}
+\DoxyCodeLine{834     high\_latency2-\/>custom\_mode = mavlink\_msg\_high\_latency2\_get\_custom\_mode(msg);}
+\DoxyCodeLine{835     high\_latency2-\/>altitude = mavlink\_msg\_high\_latency2\_get\_altitude(msg);}
+\DoxyCodeLine{836     high\_latency2-\/>target\_altitude = mavlink\_msg\_high\_latency2\_get\_target\_altitude(msg);}
+\DoxyCodeLine{837     high\_latency2-\/>target\_distance = mavlink\_msg\_high\_latency2\_get\_target\_distance(msg);}
+\DoxyCodeLine{838     high\_latency2-\/>wp\_num = mavlink\_msg\_high\_latency2\_get\_wp\_num(msg);}
+\DoxyCodeLine{839     high\_latency2-\/>failure\_flags = mavlink\_msg\_high\_latency2\_get\_failure\_flags(msg);}
+\DoxyCodeLine{840     high\_latency2-\/>type = mavlink\_msg\_high\_latency2\_get\_type(msg);}
+\DoxyCodeLine{841     high\_latency2-\/>autopilot = mavlink\_msg\_high\_latency2\_get\_autopilot(msg);}
+\DoxyCodeLine{842     high\_latency2-\/>heading = mavlink\_msg\_high\_latency2\_get\_heading(msg);}
+\DoxyCodeLine{843     high\_latency2-\/>target\_heading = mavlink\_msg\_high\_latency2\_get\_target\_heading(msg);}
+\DoxyCodeLine{844     high\_latency2-\/>throttle = mavlink\_msg\_high\_latency2\_get\_throttle(msg);}
+\DoxyCodeLine{845     high\_latency2-\/>airspeed = mavlink\_msg\_high\_latency2\_get\_airspeed(msg);}
+\DoxyCodeLine{846     high\_latency2-\/>airspeed\_sp = mavlink\_msg\_high\_latency2\_get\_airspeed\_sp(msg);}
+\DoxyCodeLine{847     high\_latency2-\/>groundspeed = mavlink\_msg\_high\_latency2\_get\_groundspeed(msg);}
+\DoxyCodeLine{848     high\_latency2-\/>windspeed = mavlink\_msg\_high\_latency2\_get\_windspeed(msg);}
+\DoxyCodeLine{849     high\_latency2-\/>wind\_heading = mavlink\_msg\_high\_latency2\_get\_wind\_heading(msg);}
+\DoxyCodeLine{850     high\_latency2-\/>eph = mavlink\_msg\_high\_latency2\_get\_eph(msg);}
+\DoxyCodeLine{851     high\_latency2-\/>epv = mavlink\_msg\_high\_latency2\_get\_epv(msg);}
+\DoxyCodeLine{852     high\_latency2-\/>temperature\_air = mavlink\_msg\_high\_latency2\_get\_temperature\_air(msg);}
+\DoxyCodeLine{853     high\_latency2-\/>climb\_rate = mavlink\_msg\_high\_latency2\_get\_climb\_rate(msg);}
+\DoxyCodeLine{854     high\_latency2-\/>battery = mavlink\_msg\_high\_latency2\_get\_battery(msg);}
+\DoxyCodeLine{855     high\_latency2-\/>custom0 = mavlink\_msg\_high\_latency2\_get\_custom0(msg);}
+\DoxyCodeLine{856     high\_latency2-\/>custom1 = mavlink\_msg\_high\_latency2\_get\_custom1(msg);}
+\DoxyCodeLine{857     high\_latency2-\/>custom2 = mavlink\_msg\_high\_latency2\_get\_custom2(msg);}
+\DoxyCodeLine{858 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{859         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}};}
+\DoxyCodeLine{860         memset(high\_latency2, 0, \mbox{\hyperlink{mavlink__msg__high__latency2_8h_a50edc4cd3c1f6c2f4d498b67c80a92ab}{MAVLINK\_MSG\_ID\_HIGH\_LATENCY2\_LEN}});}
+\DoxyCodeLine{861     memcpy(high\_latency2, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{862 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{863 \}}
+
+\end{DoxyCode}

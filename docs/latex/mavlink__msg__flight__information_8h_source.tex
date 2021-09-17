@@ -1,0 +1,213 @@
+\hypertarget{mavlink__msg__flight__information_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+flight\+\_\+information.\+h}
+\label{mavlink__msg__flight__information_8h_source}\index{lib/common/mavlink\_msg\_flight\_information.h@{lib/common/mavlink\_msg\_flight\_information.h}}
+\mbox{\hyperlink{mavlink__msg__flight__information_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE FLIGHT\_INFORMATION PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION 264}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__flight__information_8h_ab84e896b48a63836d2c3f4d052ef46d2}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_flight\_information\_t \{}
+\DoxyCodeLine{8  uint64\_t arming\_time\_utc; \textcolor{comment}{/*< [us] Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown*/}}
+\DoxyCodeLine{9  uint64\_t takeoff\_time\_utc; \textcolor{comment}{/*< [us] Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown*/}}
+\DoxyCodeLine{10  uint64\_t flight\_uuid; \textcolor{comment}{/*<  Universally unique identifier (UUID) of flight, should correspond to name of log files*/}}
+\DoxyCodeLine{11  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{12 \}) mavlink\_flight\_information\_t;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN 28}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN 28}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_264\_LEN 28}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_264\_MIN\_LEN 28}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC 49}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_264\_CRC 49}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_FLIGHT\_INFORMATION \{ \(\backslash\)}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{    264, \(\backslash\)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{    "{}FLIGHT\_INFORMATION"{}}, \(\backslash\)}
+\DoxyCodeLine{28     4, \(\backslash\)}
+\DoxyCodeLine{29     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 24, offsetof(mavlink\_flight\_information\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{30          \{ "{}arming\_time\_utc"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_flight\_information\_t, arming\_time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{31          \{ "{}takeoff\_time\_utc"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 8, offsetof(mavlink\_flight\_information\_t, takeoff\_time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}flight\_uuid"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 16, offsetof(mavlink\_flight\_information\_t, flight\_uuid) \}, \(\backslash\)}
+\DoxyCodeLine{33          \} \(\backslash\)}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_FLIGHT\_INFORMATION \{ \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    "{}FLIGHT\_INFORMATION"{}}, \(\backslash\)}
+\DoxyCodeLine{38     4, \(\backslash\)}
+\DoxyCodeLine{39     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 24, offsetof(mavlink\_flight\_information\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}arming\_time\_utc"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_flight\_information\_t, arming\_time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}takeoff\_time\_utc"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 8, offsetof(mavlink\_flight\_information\_t, takeoff\_time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}flight\_uuid"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 16, offsetof(mavlink\_flight\_information\_t, flight\_uuid) \}, \(\backslash\)}
+\DoxyCodeLine{43          \} \(\backslash\)}
+\DoxyCodeLine{44 \}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{59 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_flight\_information\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{60                                uint32\_t time\_boot\_ms, uint64\_t arming\_time\_utc, uint64\_t takeoff\_time\_utc, uint64\_t flight\_uuid)}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}];}
+\DoxyCodeLine{64     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, arming\_time\_utc);}
+\DoxyCodeLine{65     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, takeoff\_time\_utc);}
+\DoxyCodeLine{66     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 16, flight\_uuid);}
+\DoxyCodeLine{67     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, time\_boot\_ms);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}});}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{71     mavlink\_flight\_information\_t packet;}
+\DoxyCodeLine{72     packet.arming\_time\_utc = arming\_time\_utc;}
+\DoxyCodeLine{73     packet.takeoff\_time\_utc = takeoff\_time\_utc;}
+\DoxyCodeLine{74     packet.flight\_uuid = flight\_uuid;}
+\DoxyCodeLine{75     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}});}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}};}
+\DoxyCodeLine{81     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{82 \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{96 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_flight\_information\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{97                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{98                                    uint32\_t time\_boot\_ms,uint64\_t arming\_time\_utc,uint64\_t takeoff\_time\_utc,uint64\_t flight\_uuid)}
+\DoxyCodeLine{99 \{}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{101     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}];}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, arming\_time\_utc);}
+\DoxyCodeLine{103     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, takeoff\_time\_utc);}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 16, flight\_uuid);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, time\_boot\_ms);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}});}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{109     mavlink\_flight\_information\_t packet;}
+\DoxyCodeLine{110     packet.arming\_time\_utc = arming\_time\_utc;}
+\DoxyCodeLine{111     packet.takeoff\_time\_utc = takeoff\_time\_utc;}
+\DoxyCodeLine{112     packet.flight\_uuid = flight\_uuid;}
+\DoxyCodeLine{113     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}});}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}};}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{130 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_flight\_information\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_flight\_information\_t* flight\_information)}
+\DoxyCodeLine{131 \{}
+\DoxyCodeLine{132     \textcolor{keywordflow}{return} mavlink\_msg\_flight\_information\_pack(system\_id, component\_id, msg, flight\_information-\/>time\_boot\_ms, flight\_information-\/>arming\_time\_utc, flight\_information-\/>takeoff\_time\_utc, flight\_information-\/>flight\_uuid);}
+\DoxyCodeLine{133 \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{144 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_flight\_information\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_flight\_information\_t* flight\_information)}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146     \textcolor{keywordflow}{return} mavlink\_msg\_flight\_information\_pack\_chan(system\_id, component\_id, chan, msg, flight\_information-\/>time\_boot\_ms, flight\_information-\/>arming\_time\_utc, flight\_information-\/>takeoff\_time\_utc, flight\_information-\/>flight\_uuid);}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{158 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_flight\_information\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, uint64\_t arming\_time\_utc, uint64\_t takeoff\_time\_utc, uint64\_t flight\_uuid)}
+\DoxyCodeLine{161 \{}
+\DoxyCodeLine{162 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{163     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}];}
+\DoxyCodeLine{164     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, arming\_time\_utc);}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, takeoff\_time\_utc);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 16, flight\_uuid);}
+\DoxyCodeLine{167     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, time\_boot\_ms);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}}, buf, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{171     mavlink\_flight\_information\_t packet;}
+\DoxyCodeLine{172     packet.arming\_time\_utc = arming\_time\_utc;}
+\DoxyCodeLine{173     packet.takeoff\_time\_utc = takeoff\_time\_utc;}
+\DoxyCodeLine{174     packet.flight\_uuid = flight\_uuid;}
+\DoxyCodeLine{175     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{179 \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{186 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_flight\_information\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_flight\_information\_t* flight\_information)}
+\DoxyCodeLine{187 \{}
+\DoxyCodeLine{188 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{189     mavlink\_msg\_flight\_information\_send(chan, flight\_information-\/>time\_boot\_ms, flight\_information-\/>arming\_time\_utc, flight\_information-\/>takeoff\_time\_utc, flight\_information-\/>flight\_uuid);}
+\DoxyCodeLine{190 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{191     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)flight\_information, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{193 \}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{196 \textcolor{comment}{/*}}
+\DoxyCodeLine{197 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{198 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{199 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{200 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{201 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{202 \textcolor{comment}{ */}}
+\DoxyCodeLine{203 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_flight\_information\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, uint64\_t arming\_time\_utc, uint64\_t takeoff\_time\_utc, uint64\_t flight\_uuid)}
+\DoxyCodeLine{204 \{}
+\DoxyCodeLine{205 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{206     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{207     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, arming\_time\_utc);}
+\DoxyCodeLine{208     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 8, takeoff\_time\_utc);}
+\DoxyCodeLine{209     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 16, flight\_uuid);}
+\DoxyCodeLine{210     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 24, time\_boot\_ms);}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}}, buf, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{214     mavlink\_flight\_information\_t *packet = (mavlink\_flight\_information\_t *)msgbuf;}
+\DoxyCodeLine{215     packet-\/>arming\_time\_utc = arming\_time\_utc;}
+\DoxyCodeLine{216     packet-\/>takeoff\_time\_utc = takeoff\_time\_utc;}
+\DoxyCodeLine{217     packet-\/>flight\_uuid = flight\_uuid;}
+\DoxyCodeLine{218     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a8a033c790eb3fb31b58c7c39cbc2fa5a}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__flight__information_8h_aac4b2bf7df872713d073ebae381ea502}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a00e180a602b1a3bc1cb1db61892cbdd9}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_CRC}});}
+\DoxyCodeLine{221 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{222 \}}
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227 \textcolor{comment}{// MESSAGE FLIGHT\_INFORMATION UNPACKING}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229 }
+\DoxyCodeLine{235 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_flight\_information\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{236 \{}
+\DoxyCodeLine{237     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  24);}
+\DoxyCodeLine{238 \}}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{245 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_flight\_information\_get\_arming\_time\_utc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{246 \{}
+\DoxyCodeLine{247     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{248 \}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{255 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_flight\_information\_get\_takeoff\_time\_utc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{256 \{}
+\DoxyCodeLine{257     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  8);}
+\DoxyCodeLine{258 \}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{265 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_flight\_information\_get\_flight\_uuid(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{266 \{}
+\DoxyCodeLine{267     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  16);}
+\DoxyCodeLine{268 \}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{276 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_flight\_information\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_flight\_information\_t* flight\_information)}
+\DoxyCodeLine{277 \{}
+\DoxyCodeLine{278 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{279     flight\_information-\/>arming\_time\_utc = mavlink\_msg\_flight\_information\_get\_arming\_time\_utc(msg);}
+\DoxyCodeLine{280     flight\_information-\/>takeoff\_time\_utc = mavlink\_msg\_flight\_information\_get\_takeoff\_time\_utc(msg);}
+\DoxyCodeLine{281     flight\_information-\/>flight\_uuid = mavlink\_msg\_flight\_information\_get\_flight\_uuid(msg);}
+\DoxyCodeLine{282     flight\_information-\/>time\_boot\_ms = mavlink\_msg\_flight\_information\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{284         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}};}
+\DoxyCodeLine{285         memset(flight\_information, 0, \mbox{\hyperlink{mavlink__msg__flight__information_8h_a73326cf3ebbc4cd713b776db87ab4735}{MAVLINK\_MSG\_ID\_FLIGHT\_INFORMATION\_LEN}});}
+\DoxyCodeLine{286     memcpy(flight\_information, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{287 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{288 \}}
+
+\end{DoxyCode}

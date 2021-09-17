@@ -1,0 +1,42 @@
+\hypertarget{task_8cpp_source}{}\doxysection{task.\+cpp}
+\label{task_8cpp_source}\index{src/task.cpp@{src/task.cpp}}
+\mbox{\hyperlink{task_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}task.h"{}}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00003}\mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{00003}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_task_a054e92ebacc3825b1cc38241cf81a5d7}{Task::setup}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \mbox{\hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{UBaseType\_t}} priority)}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00005}00005   \mbox{\hyperlink{portmacro_8h_a646f89d4298e4f5afd522202b11cb2e6}{UBaseType\_t}} result = xTaskCreate(}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00006}00006       \mbox{\hyperlink{class_task_a842db3baafd610003b61eab9aca81a2d}{Task::\_real\_entry}},}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00007}00007       name,}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00008}00008       \mbox{\hyperlink{_free_r_t_o_s_config__default_8h_a6c534a6cf8a00528fe0be42083484f9a}{configMINIMAL\_STACK\_SIZE}},}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00009}00009       (\textcolor{keywordtype}{void} *)\textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00010}00010       priority,}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00011}00011       \&m\_handle);}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00013}00013   \textcolor{keywordflow}{if} (result != \mbox{\hyperlink{projdefs_8h_a07848d3078849bd32353c69d30a479b3}{pdPASS}})}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00014}00014   \{}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00015}00015     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00016}00016   \}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00017}00017   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00019}\mbox{\hyperlink{class_task_a842db3baafd610003b61eab9aca81a2d}{00019}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_task_a842db3baafd610003b61eab9aca81a2d}{Task::\_real\_entry}}(\textcolor{keywordtype}{void} *param)}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00022}00022   \textcolor{comment}{// Cast argument to class}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00023}00023   \mbox{\hyperlink{class_task}{Task}} *\textcolor{keyword}{self} = (\mbox{\hyperlink{class_task}{Task}} *)param;}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00025}00025   \textcolor{comment}{// Run the main entrypoint}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00026}00026   \textcolor{keywordtype}{int} result = \textcolor{keyword}{self}-\/>\mbox{\hyperlink{class_task_a5bde6b46d4210ead2253fc646faa006c}{start}}();}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00028}00028   \textcolor{comment}{// Check for errors and handle them relatively gracefully}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00029}00029   \textcolor{keywordflow}{if} (result != 0)}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00030}00030   \{}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00031}00031     \textcolor{comment}{//something to trigger all task to stop and crash code}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00032}00032   \}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00034}00034   \textcolor{comment}{// Delete the task (this function can't return)}}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00035}00035   \mbox{\hyperlink{lib_2src_2task_8h_a27ff4ebce26565bef136bda84201ff80}{vTaskDelete}}(self-\/>m\_handle);}
+\DoxyCodeLine{\Hypertarget{task_8cpp_source_l00036}00036 \}}
+
+\end{DoxyCode}

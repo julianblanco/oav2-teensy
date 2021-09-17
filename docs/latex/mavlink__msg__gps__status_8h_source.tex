@@ -1,0 +1,243 @@
+\hypertarget{mavlink__msg__gps__status_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+gps\+\_\+status.\+h}
+\label{mavlink__msg__gps__status_8h_source}\index{lib/common/mavlink\_msg\_gps\_status.h@{lib/common/mavlink\_msg\_gps\_status.h}}
+\mbox{\hyperlink{mavlink__msg__gps__status_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE GPS\_STATUS PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_STATUS 25}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__gps__status_8h_ae535d0ffb1ce7d9d2d203b4f6b97c51c}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_gps\_status\_t \{}
+\DoxyCodeLine{8  uint8\_t satellites\_visible; \textcolor{comment}{/*<  Number of satellites visible*/}}
+\DoxyCodeLine{9  uint8\_t satellite\_prn[20]; \textcolor{comment}{/*<  Global satellite ID*/}}
+\DoxyCodeLine{10  uint8\_t satellite\_used[20]; \textcolor{comment}{/*<  0: Satellite not used, 1: used for localization*/}}
+\DoxyCodeLine{11  uint8\_t satellite\_elevation[20]; \textcolor{comment}{/*< [deg] Elevation (0: right on top of receiver, 90: on the horizon) of satellite*/}}
+\DoxyCodeLine{12  uint8\_t satellite\_azimuth[20]; \textcolor{comment}{/*< [deg] Direction of satellite, 0: 0 deg, 255: 360 deg.*/}}
+\DoxyCodeLine{13  uint8\_t satellite\_snr[20]; \textcolor{comment}{/*< [dB] Signal to noise ratio of satellite*/}}
+\DoxyCodeLine{14 \}) mavlink\_gps\_status\_t;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN 101}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN 101}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_25\_LEN 101}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_25\_MIN\_LEN 101}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC 23}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_25\_CRC 23}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_STATUS\_FIELD\_SATELLITE\_PRN\_LEN 20}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_STATUS\_FIELD\_SATELLITE\_USED\_LEN 20}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_STATUS\_FIELD\_SATELLITE\_ELEVATION\_LEN 20}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_STATUS\_FIELD\_SATELLITE\_AZIMUTH\_LEN 20}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GPS\_STATUS\_FIELD\_SATELLITE\_SNR\_LEN 20}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{    25, \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    "{}GPS\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{34     6, \(\backslash\)}
+\DoxyCodeLine{35     \{  \{ "{}satellites\_visible"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 0, offsetof(mavlink\_gps\_status\_t, satellites\_visible) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}satellite\_prn"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 1, offsetof(mavlink\_gps\_status\_t, satellite\_prn) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}satellite\_used"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 21, offsetof(mavlink\_gps\_status\_t, satellite\_used) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}satellite\_elevation"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 41, offsetof(mavlink\_gps\_status\_t, satellite\_elevation) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}satellite\_azimuth"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 61, offsetof(mavlink\_gps\_status\_t, satellite\_azimuth) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}satellite\_snr"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 81, offsetof(mavlink\_gps\_status\_t, satellite\_snr) \}, \(\backslash\)}
+\DoxyCodeLine{41          \} \(\backslash\)}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GPS\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{    "{}GPS\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{46     6, \(\backslash\)}
+\DoxyCodeLine{47     \{  \{ "{}satellites\_visible"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 0, offsetof(mavlink\_gps\_status\_t, satellites\_visible) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}satellite\_prn"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 1, offsetof(mavlink\_gps\_status\_t, satellite\_prn) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}satellite\_used"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 21, offsetof(mavlink\_gps\_status\_t, satellite\_used) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}satellite\_elevation"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 41, offsetof(mavlink\_gps\_status\_t, satellite\_elevation) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}satellite\_azimuth"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 61, offsetof(mavlink\_gps\_status\_t, satellite\_azimuth) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}satellite\_snr"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 20, 81, offsetof(mavlink\_gps\_status\_t, satellite\_snr) \}, \(\backslash\)}
+\DoxyCodeLine{53          \} \(\backslash\)}
+\DoxyCodeLine{54 \}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{71 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{72                                uint8\_t satellites\_visible, \textcolor{keyword}{const} uint8\_t *satellite\_prn, \textcolor{keyword}{const} uint8\_t *satellite\_used, \textcolor{keyword}{const} uint8\_t *satellite\_elevation, \textcolor{keyword}{const} uint8\_t *satellite\_azimuth, \textcolor{keyword}{const} uint8\_t *satellite\_snr)}
+\DoxyCodeLine{73 \{}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{75     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}];}
+\DoxyCodeLine{76     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, satellites\_visible);}
+\DoxyCodeLine{77     \_mav\_put\_uint8\_t\_array(buf, 1, satellite\_prn, 20);}
+\DoxyCodeLine{78     \_mav\_put\_uint8\_t\_array(buf, 21, satellite\_used, 20);}
+\DoxyCodeLine{79     \_mav\_put\_uint8\_t\_array(buf, 41, satellite\_elevation, 20);}
+\DoxyCodeLine{80     \_mav\_put\_uint8\_t\_array(buf, 61, satellite\_azimuth, 20);}
+\DoxyCodeLine{81     \_mav\_put\_uint8\_t\_array(buf, 81, satellite\_snr, 20);}
+\DoxyCodeLine{82         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}});}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{84     mavlink\_gps\_status\_t packet;}
+\DoxyCodeLine{85     packet.satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{86     mav\_array\_memcpy(packet.satellite\_prn, satellite\_prn, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{87     mav\_array\_memcpy(packet.satellite\_used, satellite\_used, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{88     mav\_array\_memcpy(packet.satellite\_elevation, satellite\_elevation, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{89     mav\_array\_memcpy(packet.satellite\_azimuth, satellite\_azimuth, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{90     mav\_array\_memcpy(packet.satellite\_snr, satellite\_snr, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{91         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}});}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}};}
+\DoxyCodeLine{95     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{96 \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{112 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{113                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{114                                    uint8\_t satellites\_visible,\textcolor{keyword}{const} uint8\_t *satellite\_prn,\textcolor{keyword}{const} uint8\_t *satellite\_used,\textcolor{keyword}{const} uint8\_t *satellite\_elevation,\textcolor{keyword}{const} uint8\_t *satellite\_azimuth,\textcolor{keyword}{const} uint8\_t *satellite\_snr)}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{117     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}];}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, satellites\_visible);}
+\DoxyCodeLine{119     \_mav\_put\_uint8\_t\_array(buf, 1, satellite\_prn, 20);}
+\DoxyCodeLine{120     \_mav\_put\_uint8\_t\_array(buf, 21, satellite\_used, 20);}
+\DoxyCodeLine{121     \_mav\_put\_uint8\_t\_array(buf, 41, satellite\_elevation, 20);}
+\DoxyCodeLine{122     \_mav\_put\_uint8\_t\_array(buf, 61, satellite\_azimuth, 20);}
+\DoxyCodeLine{123     \_mav\_put\_uint8\_t\_array(buf, 81, satellite\_snr, 20);}
+\DoxyCodeLine{124         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}});}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{126     mavlink\_gps\_status\_t packet;}
+\DoxyCodeLine{127     packet.satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{128     mav\_array\_memcpy(packet.satellite\_prn, satellite\_prn, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{129     mav\_array\_memcpy(packet.satellite\_used, satellite\_used, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{130     mav\_array\_memcpy(packet.satellite\_elevation, satellite\_elevation, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{131     mav\_array\_memcpy(packet.satellite\_azimuth, satellite\_azimuth, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{132     mav\_array\_memcpy(packet.satellite\_snr, satellite\_snr, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{133         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}});}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}};}
+\DoxyCodeLine{137     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{138 \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{148 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_status\_t* gps\_status)}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_status\_pack(system\_id, component\_id, msg, gps\_status-\/>satellites\_visible, gps\_status-\/>satellite\_prn, gps\_status-\/>satellite\_used, gps\_status-\/>satellite\_elevation, gps\_status-\/>satellite\_azimuth, gps\_status-\/>satellite\_snr);}
+\DoxyCodeLine{151 \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{162 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_gps\_status\_t* gps\_status)}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164     \textcolor{keywordflow}{return} mavlink\_msg\_gps\_status\_pack\_chan(system\_id, component\_id, chan, msg, gps\_status-\/>satellites\_visible, gps\_status-\/>satellite\_prn, gps\_status-\/>satellite\_used, gps\_status-\/>satellite\_elevation, gps\_status-\/>satellite\_azimuth, gps\_status-\/>satellite\_snr);}
+\DoxyCodeLine{165 \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_status\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t satellites\_visible, \textcolor{keyword}{const} uint8\_t *satellite\_prn, \textcolor{keyword}{const} uint8\_t *satellite\_used, \textcolor{keyword}{const} uint8\_t *satellite\_elevation, \textcolor{keyword}{const} uint8\_t *satellite\_azimuth, \textcolor{keyword}{const} uint8\_t *satellite\_snr)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{183     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}];}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, satellites\_visible);}
+\DoxyCodeLine{185     \_mav\_put\_uint8\_t\_array(buf, 1, satellite\_prn, 20);}
+\DoxyCodeLine{186     \_mav\_put\_uint8\_t\_array(buf, 21, satellite\_used, 20);}
+\DoxyCodeLine{187     \_mav\_put\_uint8\_t\_array(buf, 41, satellite\_elevation, 20);}
+\DoxyCodeLine{188     \_mav\_put\_uint8\_t\_array(buf, 61, satellite\_azimuth, 20);}
+\DoxyCodeLine{189     \_mav\_put\_uint8\_t\_array(buf, 81, satellite\_snr, 20);}
+\DoxyCodeLine{190     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{191 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{192     mavlink\_gps\_status\_t packet;}
+\DoxyCodeLine{193     packet.satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{194     mav\_array\_memcpy(packet.satellite\_prn, satellite\_prn, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{195     mav\_array\_memcpy(packet.satellite\_used, satellite\_used, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{196     mav\_array\_memcpy(packet.satellite\_elevation, satellite\_elevation, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{197     mav\_array\_memcpy(packet.satellite\_azimuth, satellite\_azimuth, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{198     mav\_array\_memcpy(packet.satellite\_snr, satellite\_snr, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{199     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{200 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{201 \}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{208 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_status\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_gps\_status\_t* gps\_status)}
+\DoxyCodeLine{209 \{}
+\DoxyCodeLine{210 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{211     mavlink\_msg\_gps\_status\_send(chan, gps\_status-\/>satellites\_visible, gps\_status-\/>satellite\_prn, gps\_status-\/>satellite\_used, gps\_status-\/>satellite\_elevation, gps\_status-\/>satellite\_azimuth, gps\_status-\/>satellite\_snr);}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{213     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)gps\_status, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{215 \}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{218 \textcolor{comment}{/*}}
+\DoxyCodeLine{219 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{220 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{221 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{222 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{223 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{224 \textcolor{comment}{ */}}
+\DoxyCodeLine{225 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_status\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t satellites\_visible, \textcolor{keyword}{const} uint8\_t *satellite\_prn, \textcolor{keyword}{const} uint8\_t *satellite\_used, \textcolor{keyword}{const} uint8\_t *satellite\_elevation, \textcolor{keyword}{const} uint8\_t *satellite\_azimuth, \textcolor{keyword}{const} uint8\_t *satellite\_snr)}
+\DoxyCodeLine{226 \{}
+\DoxyCodeLine{227 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{228     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{229     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 0, satellites\_visible);}
+\DoxyCodeLine{230     \_mav\_put\_uint8\_t\_array(buf, 1, satellite\_prn, 20);}
+\DoxyCodeLine{231     \_mav\_put\_uint8\_t\_array(buf, 21, satellite\_used, 20);}
+\DoxyCodeLine{232     \_mav\_put\_uint8\_t\_array(buf, 41, satellite\_elevation, 20);}
+\DoxyCodeLine{233     \_mav\_put\_uint8\_t\_array(buf, 61, satellite\_azimuth, 20);}
+\DoxyCodeLine{234     \_mav\_put\_uint8\_t\_array(buf, 81, satellite\_snr, 20);}
+\DoxyCodeLine{235     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{237     mavlink\_gps\_status\_t *packet = (mavlink\_gps\_status\_t *)msgbuf;}
+\DoxyCodeLine{238     packet-\/>satellites\_visible = satellites\_visible;}
+\DoxyCodeLine{239     mav\_array\_memcpy(packet-\/>satellite\_prn, satellite\_prn, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{240     mav\_array\_memcpy(packet-\/>satellite\_used, satellite\_used, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{241     mav\_array\_memcpy(packet-\/>satellite\_elevation, satellite\_elevation, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{242     mav\_array\_memcpy(packet-\/>satellite\_azimuth, satellite\_azimuth, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{243     mav\_array\_memcpy(packet-\/>satellite\_snr, satellite\_snr, \textcolor{keyword}{sizeof}(uint8\_t)*20);}
+\DoxyCodeLine{244     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a9a24aa7d12bcb4b007a9a3502472a06e}{MAVLINK\_MSG\_ID\_GPS\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a08f7104f4f047573aca4592618534afa}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__gps__status_8h_a59579f059138bad6ccb31d4ace9cd82a}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_CRC}});}
+\DoxyCodeLine{245 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{246 \}}
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251 \textcolor{comment}{// MESSAGE GPS\_STATUS UNPACKING}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 }
+\DoxyCodeLine{259 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_gps\_status\_get\_satellites\_visible(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{260 \{}
+\DoxyCodeLine{261     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  0);}
+\DoxyCodeLine{262 \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{269 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_get\_satellite\_prn(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *satellite\_prn)}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, satellite\_prn, 20,  1);}
+\DoxyCodeLine{272 \}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{279 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_get\_satellite\_used(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *satellite\_used)}
+\DoxyCodeLine{280 \{}
+\DoxyCodeLine{281     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, satellite\_used, 20,  21);}
+\DoxyCodeLine{282 \}}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{289 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_get\_satellite\_elevation(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *satellite\_elevation)}
+\DoxyCodeLine{290 \{}
+\DoxyCodeLine{291     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, satellite\_elevation, 20,  41);}
+\DoxyCodeLine{292 \}}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{299 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_get\_satellite\_azimuth(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *satellite\_azimuth)}
+\DoxyCodeLine{300 \{}
+\DoxyCodeLine{301     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, satellite\_azimuth, 20,  61);}
+\DoxyCodeLine{302 \}}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{309 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_gps\_status\_get\_satellite\_snr(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint8\_t *satellite\_snr)}
+\DoxyCodeLine{310 \{}
+\DoxyCodeLine{311     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint8\_t\_array(msg, satellite\_snr, 20,  81);}
+\DoxyCodeLine{312 \}}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{320 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_gps\_status\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_gps\_status\_t* gps\_status)}
+\DoxyCodeLine{321 \{}
+\DoxyCodeLine{322 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{323     gps\_status-\/>satellites\_visible = mavlink\_msg\_gps\_status\_get\_satellites\_visible(msg);}
+\DoxyCodeLine{324     mavlink\_msg\_gps\_status\_get\_satellite\_prn(msg, gps\_status-\/>satellite\_prn);}
+\DoxyCodeLine{325     mavlink\_msg\_gps\_status\_get\_satellite\_used(msg, gps\_status-\/>satellite\_used);}
+\DoxyCodeLine{326     mavlink\_msg\_gps\_status\_get\_satellite\_elevation(msg, gps\_status-\/>satellite\_elevation);}
+\DoxyCodeLine{327     mavlink\_msg\_gps\_status\_get\_satellite\_azimuth(msg, gps\_status-\/>satellite\_azimuth);}
+\DoxyCodeLine{328     mavlink\_msg\_gps\_status\_get\_satellite\_snr(msg, gps\_status-\/>satellite\_snr);}
+\DoxyCodeLine{329 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{330         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}};}
+\DoxyCodeLine{331         memset(gps\_status, 0, \mbox{\hyperlink{mavlink__msg__gps__status_8h_ac2b03a0be4bc368dd17d7f737bb0fe07}{MAVLINK\_MSG\_ID\_GPS\_STATUS\_LEN}});}
+\DoxyCodeLine{332     memcpy(gps\_status, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{334 \}}
+
+\end{DoxyCode}

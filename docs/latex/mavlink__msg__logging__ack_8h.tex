@@ -1,0 +1,98 @@
+\hypertarget{mavlink__msg__logging__ack_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+logging\+\_\+ack.h File Reference}
+\label{mavlink__msg__logging__ack_8h}\index{lib/common/mavlink\_msg\_logging\_ack.h@{lib/common/mavlink\_msg\_logging\_ack.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_a87652bc9a7da7f80fd42f5e5fcab359d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK}}~268
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_a4dcb91cd5eac1fcc3313b07da8a81b04}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK\+\_\+\+LEN}}~4
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_aea153e0e889f5f39b22054789150897b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK\+\_\+\+MIN\+\_\+\+LEN}}~4
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_a454d5d5237f28944ffaf29f557c3d66b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+268\+\_\+\+LEN}}~4
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_ac59ff8c67bde52541ac6a9b0b8f7b594}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+268\+\_\+\+MIN\+\_\+\+LEN}}~4
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_a8770d056dd5a507130bac23602516e12}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK\+\_\+\+CRC}}~14
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_a097bc467268c573ac69045c896677ab0}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+268\+\_\+\+CRC}}~14
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__logging__ack_8h_ab1093c4ef4bdc5ee2a75651187b1a5d5}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+LOGGING\+\_\+\+ACK}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__logging__ack_8h_afd666107b16836b2f68dbd0624005b15}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+logging\+\_\+ack\+\_\+t \{ uint16\+\_\+t sequence;uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;\}) mavlink\+\_\+logging\+\_\+ack\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_ab1093c4ef4bdc5ee2a75651187b1a5d5}\label{mavlink__msg__logging__ack_8h_ab1093c4ef4bdc5ee2a75651187b1a5d5}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MESSAGE\_INFO\_LOGGING\_ACK@{MAVLINK\_MESSAGE\_INFO\_LOGGING\_ACK}}
+\index{MAVLINK\_MESSAGE\_INFO\_LOGGING\_ACK@{MAVLINK\_MESSAGE\_INFO\_LOGGING\_ACK}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_LOGGING\_ACK}{MAVLINK\_MESSAGE\_INFO\_LOGGING\_ACK}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+LOGGING\+\_\+\+ACK}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}LOGGING\_ACK"{}}, \(\backslash\)}
+\DoxyCodeLine{    3, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}target\_system"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 2, offsetof(mavlink\_logging\_ack\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}target\_component"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 3, offsetof(mavlink\_logging\_ack\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}sequence"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 0, offsetof(mavlink\_logging\_ack\_t, sequence) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_a097bc467268c573ac69045c896677ab0}\label{mavlink__msg__logging__ack_8h_a097bc467268c573ac69045c896677ab0}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_268\_CRC@{MAVLINK\_MSG\_ID\_268\_CRC}}
+\index{MAVLINK\_MSG\_ID\_268\_CRC@{MAVLINK\_MSG\_ID\_268\_CRC}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_268\_CRC}{MAVLINK\_MSG\_ID\_268\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+268\+\_\+\+CRC~14}
+
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_a454d5d5237f28944ffaf29f557c3d66b}\label{mavlink__msg__logging__ack_8h_a454d5d5237f28944ffaf29f557c3d66b}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_268\_LEN@{MAVLINK\_MSG\_ID\_268\_LEN}}
+\index{MAVLINK\_MSG\_ID\_268\_LEN@{MAVLINK\_MSG\_ID\_268\_LEN}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_268\_LEN}{MAVLINK\_MSG\_ID\_268\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+268\+\_\+\+LEN~4}
+
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_ac59ff8c67bde52541ac6a9b0b8f7b594}\label{mavlink__msg__logging__ack_8h_ac59ff8c67bde52541ac6a9b0b8f7b594}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_268\_MIN\_LEN@{MAVLINK\_MSG\_ID\_268\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_268\_MIN\_LEN@{MAVLINK\_MSG\_ID\_268\_MIN\_LEN}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_268\_MIN\_LEN}{MAVLINK\_MSG\_ID\_268\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+268\+\_\+\+MIN\+\_\+\+LEN~4}
+
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_a87652bc9a7da7f80fd42f5e5fcab359d}\label{mavlink__msg__logging__ack_8h_a87652bc9a7da7f80fd42f5e5fcab359d}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_LOGGING\_ACK@{MAVLINK\_MSG\_ID\_LOGGING\_ACK}}
+\index{MAVLINK\_MSG\_ID\_LOGGING\_ACK@{MAVLINK\_MSG\_ID\_LOGGING\_ACK}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_LOGGING\_ACK}{MAVLINK\_MSG\_ID\_LOGGING\_ACK}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK~268}
+
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_a8770d056dd5a507130bac23602516e12}\label{mavlink__msg__logging__ack_8h_a8770d056dd5a507130bac23602516e12}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_LOGGING\_ACK\_CRC@{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_CRC}}
+\index{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_CRC@{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_CRC}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_CRC}{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK\+\_\+\+CRC~14}
+
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_a4dcb91cd5eac1fcc3313b07da8a81b04}\label{mavlink__msg__logging__ack_8h_a4dcb91cd5eac1fcc3313b07da8a81b04}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_LOGGING\_ACK\_LEN@{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_LEN}}
+\index{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_LEN@{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_LEN}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_LEN}{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK\+\_\+\+LEN~4}
+
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_aea153e0e889f5f39b22054789150897b}\label{mavlink__msg__logging__ack_8h_aea153e0e889f5f39b22054789150897b}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVLINK\_MSG\_ID\_LOGGING\_ACK\_MIN\_LEN@{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_MIN\_LEN@{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_MIN\_LEN}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_MIN\_LEN}{MAVLINK\_MSG\_ID\_LOGGING\_ACK\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+LOGGING\+\_\+\+ACK\+\_\+\+MIN\+\_\+\+LEN~4}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__logging__ack_8h_afd666107b16836b2f68dbd0624005b15}\label{mavlink__msg__logging__ack_8h_afd666107b16836b2f68dbd0624005b15}} 
+\index{mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_logging\_ack.h@{mavlink\_msg\_logging\_ack.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+logging\+\_\+ack\+\_\+t \{ uint16\+\_\+t sequence;uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;\}}]{ }\end{DoxyParamCaption})}
+

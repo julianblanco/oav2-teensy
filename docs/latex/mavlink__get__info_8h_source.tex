@@ -1,0 +1,77 @@
+\hypertarget{mavlink__get__info_8h_source}{}\doxysection{mavlink\+\_\+get\+\_\+info.\+h}
+\label{mavlink__get__info_8h_source}\index{lib/mavlink\_get\_info.h@{lib/mavlink\_get\_info.h}}
+\mbox{\hyperlink{mavlink__get__info_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_MESSAGE\_INFO}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_HAVE\_GET\_MESSAGE\_INFO}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{/*}}
+\DoxyCodeLine{7 \textcolor{comment}{  return the message\_info struct for a message}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__message__info}{mavlink\_message\_info\_t}} *mavlink\_get\_message\_info\_by\_id(uint32\_t msgid)}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keyword}{static} \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__message__info}{mavlink\_message\_info\_t}} mavlink\_message\_info[] = MAVLINK\_MESSAGE\_INFO;}
+\DoxyCodeLine{12         \textcolor{comment}{/*}}
+\DoxyCodeLine{13 \textcolor{comment}{      use a bisection search to find the right entry. A perfect hash may be better}}
+\DoxyCodeLine{14 \textcolor{comment}{      Note that this assumes the table is sorted with primary key msgid}}
+\DoxyCodeLine{15 \textcolor{comment}{    */}}
+\DoxyCodeLine{16         uint32\_t low=0, high=\textcolor{keyword}{sizeof}(mavlink\_message\_info)/\textcolor{keyword}{sizeof}(mavlink\_message\_info[0]);}
+\DoxyCodeLine{17         \textcolor{keywordflow}{while} (low < high) \{}
+\DoxyCodeLine{18             uint32\_t mid = (low+1+high)/2;}
+\DoxyCodeLine{19             \textcolor{keywordflow}{if} (msgid < mavlink\_message\_info[mid].msgid) \{}
+\DoxyCodeLine{20                 high = mid-\/1;}
+\DoxyCodeLine{21                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{22             \}}
+\DoxyCodeLine{23             \textcolor{keywordflow}{if} (msgid > mavlink\_message\_info[mid].msgid) \{}
+\DoxyCodeLine{24                 low = mid;}
+\DoxyCodeLine{25                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{26             \}}
+\DoxyCodeLine{27             low = mid;}
+\DoxyCodeLine{28             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{29         \}}
+\DoxyCodeLine{30         \textcolor{keywordflow}{if} (mavlink\_message\_info[low].msgid == msgid) \{}
+\DoxyCodeLine{31             \textcolor{keywordflow}{return} \&mavlink\_message\_info[low];}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{34 \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{/*}}
+\DoxyCodeLine{37 \textcolor{comment}{  return the message\_info struct for a message}}
+\DoxyCodeLine{38 \textcolor{comment}{*/}}
+\DoxyCodeLine{39 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__message__info}{mavlink\_message\_info\_t}} *mavlink\_get\_message\_info(\textcolor{keyword}{const} mavlink\_message\_t *msg)}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} mavlink\_get\_message\_info\_by\_id(msg-\/>msgid);}
+\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{/*}}
+\DoxyCodeLine{45 \textcolor{comment}{  return the message\_info struct for a message}}
+\DoxyCodeLine{46 \textcolor{comment}{*/}}
+\DoxyCodeLine{47 \mbox{\hyperlink{mavlink__sha256_8h_a8201ad9cec6e1480d1f018161aaa5c6f}{MAVLINK\_HELPER}} \textcolor{keyword}{const} \mbox{\hyperlink{struct____mavlink__message__info}{mavlink\_message\_info\_t}} *mavlink\_get\_message\_info\_by\_name(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name)}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keyword}{struct }\{ \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name; uint32\_t msgid; \} mavlink\_message\_names[] = MAVLINK\_MESSAGE\_NAMES;}
+\DoxyCodeLine{50         \textcolor{comment}{/*}}
+\DoxyCodeLine{51 \textcolor{comment}{      use a bisection search to find the right entry. A perfect hash may be better}}
+\DoxyCodeLine{52 \textcolor{comment}{      Note that this assumes the table is sorted with primary key name}}
+\DoxyCodeLine{53 \textcolor{comment}{    */}}
+\DoxyCodeLine{54         uint32\_t low=0, high=\textcolor{keyword}{sizeof}(mavlink\_message\_names)/\textcolor{keyword}{sizeof}(mavlink\_message\_names[0]);}
+\DoxyCodeLine{55         \textcolor{keywordflow}{while} (low < high) \{}
+\DoxyCodeLine{56             uint32\_t mid = (low+1+high)/2;}
+\DoxyCodeLine{57         \textcolor{keywordtype}{int} cmp = strcmp(mavlink\_message\_names[mid].name, name);}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if} (cmp == 0) \{}
+\DoxyCodeLine{59             \textcolor{keywordflow}{return} mavlink\_get\_message\_info\_by\_id(mavlink\_message\_names[mid].msgid);}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61             \textcolor{keywordflow}{if} (cmp > 0) \{}
+\DoxyCodeLine{62                 high = mid-\/1;}
+\DoxyCodeLine{63             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{64                 low = mid;}
+\DoxyCodeLine{65             \}}
+\DoxyCodeLine{66         \}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{68 \}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAVLINK\_USE\_MESSAGE\_INFO}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+
+\end{DoxyCode}

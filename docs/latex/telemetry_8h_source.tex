@@ -1,0 +1,172 @@
+\hypertarget{telemetry_8h_source}{}\doxysection{telemetry.\+h}
+\label{telemetry_8h_source}\index{include/telemetry.h@{include/telemetry.h}}
+\mbox{\hyperlink{telemetry_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Record and Push imu for Laphable}}
+\DoxyCodeLine{3 \textcolor{comment}{*/}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#ifndef \_telemetry\_H\_}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define \_telemetry\_H\_}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}mavlink.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}SBUS.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{task_8h}{task.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}SdFat.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{11 \textcolor{comment}{// \#include "{}config.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y}{TELEMETRY}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_task}{Task}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15   \textcolor{comment}{// Public interface methods}}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8d71bbae0ded31d5ae14f327af2937d0}{TELEMETRY}}();}
+\DoxyCodeLine{18   \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3d94218bce8b18485ade636164c7cf0a}{\string~TELEMETRY}}();}
+\DoxyCodeLine{19   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7188055bd9eb0db0dbd5927e5501e68}{start}}();}
+\DoxyCodeLine{20   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a56cc2ae7af9ce13943ffaca54b820605}{setup}}();}
+\DoxyCodeLine{21   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_af73f5dea2c9451095247b22947e2cdab}{mavlink\_send\_and\_parse}}();}
+\DoxyCodeLine{22   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa8371b348411982254eb75f2aa5cf2a6}{sbusParse}}();}
+\DoxyCodeLine{23   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aae69e62ec0b163c45a626255c2e74d7a}{init\_sdcard}}();}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad74ee3f0f7cd5d7f880a084d70a12a32}{quickdebug}}();}
+\DoxyCodeLine{26 SbusRx \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a694e4a57b6f861e8b6f6087418b855f0}{x8r}};}
+\DoxyCodeLine{27 uint8\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_afcb40f6b7414625b8155d6467d6a8683}{buf}}[MAVLINK\_MAX\_PACKET\_LEN];}
+\DoxyCodeLine{28 uint8\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a9723daa944e31cecffa9124c0c3e660e}{buf0}}[MAVLINK\_MAX\_PACKET\_LEN];}
+\DoxyCodeLine{29 \textcolor{comment}{// uint16\_t channels[16];}}
+\DoxyCodeLine{30 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a6861e9f3c0409e5f237cab5c11c3aa7f}{RCThrottle}};}
+\DoxyCodeLine{31 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7c52c629d378c97fef54df04ae23591f}{RCYaw}};}
+\DoxyCodeLine{32 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae318aeb6180a1af78163c3bea0b9b0a9}{RCRoll}};}
+\DoxyCodeLine{33 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a71ee60d145c7ca14dbefb5113a20cf6f}{RCPitch}};}
+\DoxyCodeLine{34 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a07ecc00c8eb6acdf05c215c5ec013e3a}{RCArm}};}
+\DoxyCodeLine{35 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad26a0cf9223b54c59f4d68c81293685a}{RCMode}};}
+\DoxyCodeLine{36 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1a5d4dc668d7866414919c6365cfba9e}{failSafe}};}
+\DoxyCodeLine{37 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a69fefd9568f821320eea668e5ab010e3}{lostFrame}};}
+\DoxyCodeLine{38 \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3ca42a3faf4a5353fddd21dbb7586983}{timeelapsed}};}
+\DoxyCodeLine{39 \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8877ccf0f4de1b0bdc8a252d39218471}{lastread}};}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define CONFIG\_RECORDING\_DIRECTORY         "{}/rec\%d"{}}}
+\DoxyCodeLine{41   uint8\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_af7f6f50c13e3ceaf8a724f3002678df9}{system\_type}} = MAV\_TYPE\_GROUND\_ROVER;    \textcolor{comment}{//MAV\_TYPE\_HELICOPTER;//MAV\_TYPE\_FIXED\_WING;}}
+\DoxyCodeLine{42   uint8\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aca1ff0c3720df69e4c31606e23b27649}{autopilot\_type}} = MAV\_AUTOPILOT\_GENERIC; \textcolor{comment}{//MAV\_AUTOPILOT\_ARDUPILOTMEGA}}
+\DoxyCodeLine{43   uint8\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a47af55c2e4933452a4a05f120c70f6d0}{system\_mode}} = MAV\_MODE\_MANUAL\_DISARMED; \textcolor{comment}{//MAV\_MODE\_MANUAL\_ARMED; //MAV\_MODE\_GUIDED\_ARMED //MAV\_MODE\_GUIDED\_DISARMED}}
+\DoxyCodeLine{44   uint8\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac61d17d488ead97c1ccd48ec5e087794}{system\_state}} = MAV\_STATE\_ACTIVE;}
+\DoxyCodeLine{45   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7995e97cf097e885c016007ede878955}{heartbeatMsg}};}
+\DoxyCodeLine{46   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae63ef78fcc0924602ff76ef471a12fd0}{battery\_statusMsg}};}
+\DoxyCodeLine{47   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a852802978a4890bc86cefb9582951191}{radio\_statusMsg}};}
+\DoxyCodeLine{48   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a7f7b9c3ac10a901afdfc3f629dacfa4c}{local\_position\_nedMsg}};}
+\DoxyCodeLine{49   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a9de1541a8269db9dbd308bbf6f8fb7b5}{global\_position\_intMsg}};}
+\DoxyCodeLine{50   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a64c52eb6edd899925afe4bf2ae214a99}{position\_target\_local\_nedMsg}};}
+\DoxyCodeLine{51   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a88e8597e7a41525c140ecfd4dc79ac59}{position\_target\_global\_intMsg}};}
+\DoxyCodeLine{52   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aa138137f1948230b249ae03b303c6a2c}{highres\_imuMsg}};}
+\DoxyCodeLine{53   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a29fc3d86e007826e5df79527bdb8a612}{attitudeMsg}};}
+\DoxyCodeLine{54   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ad7ab5d93dacf4eddc245c6446b66f612}{sys\_statusMsg}};}
+\DoxyCodeLine{55   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a91648e5e8f5313b2bea6ddc77523cc7d}{altMsg}};}
+\DoxyCodeLine{56   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a43dcf373e15c9a254d4c1e3170d32179}{pingMsg}};}
+\DoxyCodeLine{57   mavlink\_manual\_control\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac433d2bef462db5ca348836f1168b366}{manual\_control}};}
+\DoxyCodeLine{58   mavlink\_set\_mode\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a8e4a2185537c8c8f553e256cf5bf44dc}{mode}};}
+\DoxyCodeLine{59   mavlink\_heartbeat\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a09f90c932cb34e16927fba18559c2e62}{heartbeat}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61   mavlink\_system\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aec7a97b42a40df4794348632f3b65625}{mavlink\_system}};}
+\DoxyCodeLine{62   \textcolor{keywordtype}{float} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3df116ff3a6068b9f64d9453b1432c66}{position}}[6];}
+\DoxyCodeLine{63   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a0880eebf17fb2026753b51348386120b}{ManualMode}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{64   int32\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a0b9b84b6bcee02af881dbc25510f9f8a}{Latitude}};}
+\DoxyCodeLine{65   int32\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a34dea735d535506ad3991c13b812ce75}{Longitude}};}
+\DoxyCodeLine{66   int32\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a53294915b1e0878f9e69e6b28f98d19c}{Altitude}};}
+\DoxyCodeLine{67   int16\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3794da7165e4a35b2635a24cc9ca3a77}{Velocity}};}
+\DoxyCodeLine{68   int64\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ab5653201549153c0d66bc79451f42553}{Microseconds}};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a1f7c57a2a3dd9aaec6f3fa4deffe282b}{parsed}};}
+\DoxyCodeLine{71   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a678aa4cce25112ee6d9518dd9a6fbc22}{lastparsed}};}
+\DoxyCodeLine{72   \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a5d32246cea8fb8c5d172bc7d9f093d19}{timebetweenparsed}};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74   \textcolor{comment}{//Initialize Timers}}
+\DoxyCodeLine{75   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ab8ad44e27b2ac9c10ca5fee13290102a}{heartbeatTimer\_TX}} = millis();}
+\DoxyCodeLine{76   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ae5b88a27d2d16ff4b0446260fc27074e}{heartbeatTimer\_RX}} = millis();}
+\DoxyCodeLine{77   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a49d3c67f39994c77d297e02487fbaf10}{heartbeatInterval\_TX}} = 0.5L * 1000L;}
+\DoxyCodeLine{78   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_aeda2b81f61edc15bc9321a86cc197fc4}{heartbeatInterval\_RX}} = 2L * 1000L;}
+\DoxyCodeLine{79   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}} = \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac1e31a6f8a0bef7ea37c24836eded0b1}{currentTime}};}
+\DoxyCodeLine{80   \textcolor{keywordtype}{int} \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_ac7a8a0a92c81b1c560808dba45dc5681}{data}} = 0;}
+\DoxyCodeLine{81   mavlink\_message\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a3c102e2873e53db973597371d741125e}{receivedMsg}};}
+\DoxyCodeLine{82   mavlink\_status\_t \mbox{\hyperlink{class_t_e_l_e_m_e_t_r_y_a964c1dd8e89a82eb17a3b4624ff132cd}{mav\_status}};}
+\DoxyCodeLine{83   \textcolor{keyword}{private}:}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85   }
+\DoxyCodeLine{86 \textcolor{comment}{// Use SDIO for SD transfer}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define CONFIG\_SD\_USE\_SDIO                 1}}
+\DoxyCodeLine{88 \textcolor{comment}{// SD Card FAT File System Type}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define CONFIG\_SD\_FAT\_TYPE                 3}}
+\DoxyCodeLine{90 \textcolor{comment}{// Network Heap Size}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define CONFIG\_NETWORK\_HEAP\_SIZE           (1024*120)}}
+\DoxyCodeLine{92 \textcolor{comment}{// Watchdog warning timeout (seconds, 1-\/>128)}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define CONFIG\_WATCHDOG\_WARNING\_TIMEOUT    30}}
+\DoxyCodeLine{94 \textcolor{comment}{// Watchdog reset timeout (seconds, 1-\/>128, greater than warning)}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define CONFIG\_WATCHDOG\_RESET\_TIMEOUT      60}}
+\DoxyCodeLine{96 \textcolor{comment}{// Serial baud rate}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define CONFIG\_SERIAL\_BAUD                 9600}}
+\DoxyCodeLine{98 \textcolor{comment}{// LED used to indicate sampling}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define CONFIG\_LED                         LED\_BUILTIN}}
+\DoxyCodeLine{100 \textcolor{comment}{// Length of time to sample (milliseconds)}}
+\DoxyCodeLine{101 \textcolor{preprocessor}{\#define CONFIG\_RECORDING\_LENGTH               5000}}
+\DoxyCodeLine{102 \textcolor{comment}{// Length of time to sleep between sampling (milliseconds)}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#define CONFIG\_HOLD\_LENGTH                 25000}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \textcolor{comment}{// Size of the audio queue buffer}}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define CONFIG\_AUDIO\_BUFFER\_SIZE           256}}
+\DoxyCodeLine{107 \textcolor{comment}{// Roll off old recordings when SD card is full}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define CONFIG\_SD\_CARD\_ROLLOFF             0}}
+\DoxyCodeLine{109 \textcolor{comment}{// Whether to use Ethernet/FTP}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define CONFIG\_DISABLE\_NETWORK             1}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#if CONFIG\_SD\_USE\_SDIO}}
+\DoxyCodeLine{113 \textcolor{comment}{// FIFO is faster than DMA according to documentation}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#  define CONFIG\_SD                        SdioConfig(FIFO\_SDIO)}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{116 \textcolor{comment}{// SD Card SS Pin is defined by the board in some cases}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#  ifndef SDCARD\_SS\_PIN}}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#    define CONFIG\_SD\_CS\_PIN               SS}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#  else}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#    define CONFIG\_SD\_CS\_PIN               SDCARD\_SS\_PIN}}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#  endif}}
+\DoxyCodeLine{122 \textcolor{comment}{// SPI Clock Frequency}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#  define CONFIG\_SPI\_CLOCK                 SD\_SCK\_MHZ(50)}}
+\DoxyCodeLine{124 \textcolor{comment}{// Arguments to begin()}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#  define CONFIG\_SD                        SdSpiConfig(CONFIG\_SD\_CS\_PIN, DEDICATED\_SPI, CONFIG\_SPI\_CLOCK)}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{comment}{/*********************************************************}}
+\DoxyCodeLine{129 \textcolor{comment}{ The following blocks utilize the above configuration to}}
+\DoxyCodeLine{130 \textcolor{comment}{ verify some basic format or value constraints and build}}
+\DoxyCodeLine{131 \textcolor{comment}{ more complex configurations from the above basic configs.}}
+\DoxyCodeLine{132 \textcolor{comment}{*********************************************************/}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#if CONFIG\_SD\_FAT\_TYPE == 0}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#define CONFIG\_SD\_CONTROLLER                      SdFat}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#define CONFIG\_SD\_FILE                            FsFile}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#elif CONFIG\_SD\_FAT\_TYPE == 1}}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#define CONFIG\_SD\_CONTROLLER                      SdFat32}}
+\DoxyCodeLine{139 \textcolor{preprocessor}{\#define CONFIG\_SD\_FILE                            FsFile32}}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#elif CONFIG\_SD\_FAT\_TYPE == 2}}
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#define CONFIG\_SD\_CONTROLLER                      SdExFat}}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#define CONFIG\_SD\_FILE                            ExFile}}
+\DoxyCodeLine{143 \textcolor{preprocessor}{\#elif CONFIG\_SD\_FAT\_TYPE == 3}}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#define CONFIG\_SD\_CONTROLLER                      SdFs}}
+\DoxyCodeLine{145 \textcolor{preprocessor}{\#define CONFIG\_SD\_FILE                            FsFile}}
+\DoxyCodeLine{146 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#error invalid sd fat type}}
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150 \mbox{\hyperlink{telemetry_8h_a3b411d76b2279b3c4aa2b78fae22557d}{CONFIG\_SD\_CONTROLLER}} m\_sd;}
+\DoxyCodeLine{151 \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} file;}
+\DoxyCodeLine{152 \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}} datafile;}
+\DoxyCodeLine{153   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} m\_next\_recording;}
+\DoxyCodeLine{154   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} m\_first\_recording;}
+\DoxyCodeLine{182   \textcolor{keywordtype}{int} generate\_new\_dir(\textcolor{keywordtype}{char}* path, \textcolor{keywordtype}{size\_t} len);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{195   \textcolor{keywordtype}{void} start\_logging(\textcolor{keywordtype}{char}* recording\_dir, \textcolor{keywordtype}{size\_t} length, \mbox{\hyperlink{telemetry_8h_a469fab98b06cd84e41e6d76fed7acdd7}{CONFIG\_SD\_FILE}}* data\_file);}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{203   \textcolor{keywordtype}{void} stop\_logging(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* recording\_dir);}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{222   [[noreturn]] \textcolor{keywordtype}{void} panic(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message, \textcolor{keywordtype}{int} code) \textcolor{keyword}{const};}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{234   \textcolor{keywordtype}{void} log(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* fmt, ...) \textcolor{keyword}{const};}
+\DoxyCodeLine{235 \};}
+\DoxyCodeLine{236 \textcolor{comment}{// extern TELEMETRY g\_telemetry;}}
+\DoxyCodeLine{237 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

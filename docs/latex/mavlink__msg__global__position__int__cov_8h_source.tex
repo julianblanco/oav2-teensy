@@ -1,0 +1,307 @@
+\hypertarget{mavlink__msg__global__position__int__cov_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+global\+\_\+position\+\_\+int\+\_\+cov.\+h}
+\label{mavlink__msg__global__position__int__cov_8h_source}\index{lib/common/mavlink\_msg\_global\_position\_int\_cov.h@{lib/common/mavlink\_msg\_global\_position\_int\_cov.h}}
+\mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE GLOBAL\_POSITION\_INT\_COV PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV 63}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ae0b75d1eeed869bead53268b315e2b82}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_global\_position\_int\_cov\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  int32\_t lat; \textcolor{comment}{/*< [degE7] Latitude*/}}
+\DoxyCodeLine{10  int32\_t lon; \textcolor{comment}{/*< [degE7] Longitude*/}}
+\DoxyCodeLine{11  int32\_t alt; \textcolor{comment}{/*< [mm] Altitude in meters above MSL*/}}
+\DoxyCodeLine{12  int32\_t relative\_alt; \textcolor{comment}{/*< [mm] Altitude above ground*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} vx; \textcolor{comment}{/*< [m/s] Ground X Speed (Latitude)*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} vy; \textcolor{comment}{/*< [m/s] Ground Y Speed (Longitude)*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{float} vz; \textcolor{comment}{/*< [m/s] Ground Z Speed (Altitude)*/}}
+\DoxyCodeLine{16  \textcolor{keywordtype}{float} covariance[36]; \textcolor{comment}{/*<  Covariance matrix (first six entries are the first ROW, next six entries are the second row, etc.)*/}}
+\DoxyCodeLine{17  uint8\_t estimator\_type; \textcolor{comment}{/*<  Class id of the estimator this estimate originated from.*/}}
+\DoxyCodeLine{18 \}) mavlink\_global\_position\_int\_cov\_t;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN 181}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN 181}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_63\_LEN 181}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_63\_MIN\_LEN 181}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC 119}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_63\_CRC 119}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_GLOBAL\_POSITION\_INT\_COV\_FIELD\_COVARIANCE\_LEN 36}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GLOBAL\_POSITION\_INT\_COV \{ \(\backslash\)}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{    63, \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    "{}GLOBAL\_POSITION\_INT\_COV"{}}, \(\backslash\)}
+\DoxyCodeLine{34     10, \(\backslash\)}
+\DoxyCodeLine{35     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_global\_position\_int\_cov\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}estimator\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 180, offsetof(mavlink\_global\_position\_int\_cov\_t, estimator\_type) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 8, offsetof(mavlink\_global\_position\_int\_cov\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_global\_position\_int\_cov\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 16, offsetof(mavlink\_global\_position\_int\_cov\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}relative\_alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 20, offsetof(mavlink\_global\_position\_int\_cov\_t, relative\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}vx"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_global\_position\_int\_cov\_t, vx) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}vy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_global\_position\_int\_cov\_t, vy) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}vz"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_global\_position\_int\_cov\_t, vz) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}covariance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 36, 36, offsetof(mavlink\_global\_position\_int\_cov\_t, covariance) \}, \(\backslash\)}
+\DoxyCodeLine{45          \} \(\backslash\)}
+\DoxyCodeLine{46 \}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_GLOBAL\_POSITION\_INT\_COV \{ \(\backslash\)}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{    "{}GLOBAL\_POSITION\_INT\_COV"{}}, \(\backslash\)}
+\DoxyCodeLine{50     10, \(\backslash\)}
+\DoxyCodeLine{51     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_global\_position\_int\_cov\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}estimator\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 180, offsetof(mavlink\_global\_position\_int\_cov\_t, estimator\_type) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 8, offsetof(mavlink\_global\_position\_int\_cov\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_global\_position\_int\_cov\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 16, offsetof(mavlink\_global\_position\_int\_cov\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}relative\_alt"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 20, offsetof(mavlink\_global\_position\_int\_cov\_t, relative\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}vx"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_global\_position\_int\_cov\_t, vx) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}vy"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_global\_position\_int\_cov\_t, vy) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}vz"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_global\_position\_int\_cov\_t, vz) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}covariance"{}, NULL, MAVLINK\_TYPE\_FLOAT, 36, 36, offsetof(mavlink\_global\_position\_int\_cov\_t, covariance) \}, \(\backslash\)}
+\DoxyCodeLine{61          \} \(\backslash\)}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{83 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_global\_position\_int\_cov\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{84                                uint64\_t time\_usec, uint8\_t estimator\_type, int32\_t lat, int32\_t lon, int32\_t alt, int32\_t relative\_alt, \textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy, \textcolor{keywordtype}{float} vz, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *covariance)}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{87     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}];}
+\DoxyCodeLine{88     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{89     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lat);}
+\DoxyCodeLine{90     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lon);}
+\DoxyCodeLine{91     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, alt);}
+\DoxyCodeLine{92     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, relative\_alt);}
+\DoxyCodeLine{93     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, vx);}
+\DoxyCodeLine{94     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vy);}
+\DoxyCodeLine{95     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vz);}
+\DoxyCodeLine{96     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 180, estimator\_type);}
+\DoxyCodeLine{97     \_mav\_put\_float\_array(buf, 36, covariance, 36);}
+\DoxyCodeLine{98         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}});}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{100     mavlink\_global\_position\_int\_cov\_t packet;}
+\DoxyCodeLine{101     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{102     packet.lat = lat;}
+\DoxyCodeLine{103     packet.lon = lon;}
+\DoxyCodeLine{104     packet.alt = alt;}
+\DoxyCodeLine{105     packet.relative\_alt = relative\_alt;}
+\DoxyCodeLine{106     packet.vx = vx;}
+\DoxyCodeLine{107     packet.vy = vy;}
+\DoxyCodeLine{108     packet.vz = vz;}
+\DoxyCodeLine{109     packet.estimator\_type = estimator\_type;}
+\DoxyCodeLine{110     mav\_array\_memcpy(packet.covariance, covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*36);}
+\DoxyCodeLine{111         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}});}
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}};}
+\DoxyCodeLine{115     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{116 \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{136 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_global\_position\_int\_cov\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{137                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{138                                    uint64\_t time\_usec,uint8\_t estimator\_type,int32\_t lat,int32\_t lon,int32\_t alt,int32\_t relative\_alt,\textcolor{keywordtype}{float} vx,\textcolor{keywordtype}{float} vy,\textcolor{keywordtype}{float} vz,\textcolor{keyword}{const} \textcolor{keywordtype}{float} *covariance)}
+\DoxyCodeLine{139 \{}
+\DoxyCodeLine{140 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{141     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}];}
+\DoxyCodeLine{142     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{143     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lat);}
+\DoxyCodeLine{144     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lon);}
+\DoxyCodeLine{145     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, alt);}
+\DoxyCodeLine{146     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, relative\_alt);}
+\DoxyCodeLine{147     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, vx);}
+\DoxyCodeLine{148     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vy);}
+\DoxyCodeLine{149     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vz);}
+\DoxyCodeLine{150     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 180, estimator\_type);}
+\DoxyCodeLine{151     \_mav\_put\_float\_array(buf, 36, covariance, 36);}
+\DoxyCodeLine{152         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}});}
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{154     mavlink\_global\_position\_int\_cov\_t packet;}
+\DoxyCodeLine{155     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{156     packet.lat = lat;}
+\DoxyCodeLine{157     packet.lon = lon;}
+\DoxyCodeLine{158     packet.alt = alt;}
+\DoxyCodeLine{159     packet.relative\_alt = relative\_alt;}
+\DoxyCodeLine{160     packet.vx = vx;}
+\DoxyCodeLine{161     packet.vy = vy;}
+\DoxyCodeLine{162     packet.vz = vz;}
+\DoxyCodeLine{163     packet.estimator\_type = estimator\_type;}
+\DoxyCodeLine{164     mav\_array\_memcpy(packet.covariance, covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*36);}
+\DoxyCodeLine{165         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}});}
+\DoxyCodeLine{166 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}};}
+\DoxyCodeLine{169     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{170 \}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_global\_position\_int\_cov\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_global\_position\_int\_cov\_t* global\_position\_int\_cov)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182     \textcolor{keywordflow}{return} mavlink\_msg\_global\_position\_int\_cov\_pack(system\_id, component\_id, msg, global\_position\_int\_cov-\/>time\_usec, global\_position\_int\_cov-\/>estimator\_type, global\_position\_int\_cov-\/>lat, global\_position\_int\_cov-\/>lon, global\_position\_int\_cov-\/>alt, global\_position\_int\_cov-\/>relative\_alt, global\_position\_int\_cov-\/>vx, global\_position\_int\_cov-\/>vy, global\_position\_int\_cov-\/>vz, global\_position\_int\_cov-\/>covariance);}
+\DoxyCodeLine{183 \}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{194 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_global\_position\_int\_cov\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_global\_position\_int\_cov\_t* global\_position\_int\_cov)}
+\DoxyCodeLine{195 \{}
+\DoxyCodeLine{196     \textcolor{keywordflow}{return} mavlink\_msg\_global\_position\_int\_cov\_pack\_chan(system\_id, component\_id, chan, msg, global\_position\_int\_cov-\/>time\_usec, global\_position\_int\_cov-\/>estimator\_type, global\_position\_int\_cov-\/>lat, global\_position\_int\_cov-\/>lon, global\_position\_int\_cov-\/>alt, global\_position\_int\_cov-\/>relative\_alt, global\_position\_int\_cov-\/>vx, global\_position\_int\_cov-\/>vy, global\_position\_int\_cov-\/>vz, global\_position\_int\_cov-\/>covariance);}
+\DoxyCodeLine{197 \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_global\_position\_int\_cov\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, uint8\_t estimator\_type, int32\_t lat, int32\_t lon, int32\_t alt, int32\_t relative\_alt, \textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy, \textcolor{keywordtype}{float} vz, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *covariance)}
+\DoxyCodeLine{217 \{}
+\DoxyCodeLine{218 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{219     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}];}
+\DoxyCodeLine{220     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{221     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lat);}
+\DoxyCodeLine{222     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lon);}
+\DoxyCodeLine{223     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, alt);}
+\DoxyCodeLine{224     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, relative\_alt);}
+\DoxyCodeLine{225     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, vx);}
+\DoxyCodeLine{226     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vy);}
+\DoxyCodeLine{227     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vz);}
+\DoxyCodeLine{228     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 180, estimator\_type);}
+\DoxyCodeLine{229     \_mav\_put\_float\_array(buf, 36, covariance, 36);}
+\DoxyCodeLine{230     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}}, buf, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{231 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{232     mavlink\_global\_position\_int\_cov\_t packet;}
+\DoxyCodeLine{233     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{234     packet.lat = lat;}
+\DoxyCodeLine{235     packet.lon = lon;}
+\DoxyCodeLine{236     packet.alt = alt;}
+\DoxyCodeLine{237     packet.relative\_alt = relative\_alt;}
+\DoxyCodeLine{238     packet.vx = vx;}
+\DoxyCodeLine{239     packet.vy = vy;}
+\DoxyCodeLine{240     packet.vz = vz;}
+\DoxyCodeLine{241     packet.estimator\_type = estimator\_type;}
+\DoxyCodeLine{242     mav\_array\_memcpy(packet.covariance, covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*36);}
+\DoxyCodeLine{243     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{244 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{245 \}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{252 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_global\_position\_int\_cov\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_global\_position\_int\_cov\_t* global\_position\_int\_cov)}
+\DoxyCodeLine{253 \{}
+\DoxyCodeLine{254 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{255     mavlink\_msg\_global\_position\_int\_cov\_send(chan, global\_position\_int\_cov-\/>time\_usec, global\_position\_int\_cov-\/>estimator\_type, global\_position\_int\_cov-\/>lat, global\_position\_int\_cov-\/>lon, global\_position\_int\_cov-\/>alt, global\_position\_int\_cov-\/>relative\_alt, global\_position\_int\_cov-\/>vx, global\_position\_int\_cov-\/>vy, global\_position\_int\_cov-\/>vz, global\_position\_int\_cov-\/>covariance);}
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{257     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)global\_position\_int\_cov, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{259 \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{262 \textcolor{comment}{/*}}
+\DoxyCodeLine{263 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{264 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{265 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{266 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{267 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{268 \textcolor{comment}{ */}}
+\DoxyCodeLine{269 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_global\_position\_int\_cov\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, uint8\_t estimator\_type, int32\_t lat, int32\_t lon, int32\_t alt, int32\_t relative\_alt, \textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy, \textcolor{keywordtype}{float} vz, \textcolor{keyword}{const} \textcolor{keywordtype}{float} *covariance)}
+\DoxyCodeLine{270 \{}
+\DoxyCodeLine{271 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{272     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{273     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{274     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lat);}
+\DoxyCodeLine{275     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, lon);}
+\DoxyCodeLine{276     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 16, alt);}
+\DoxyCodeLine{277     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 20, relative\_alt);}
+\DoxyCodeLine{278     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, vx);}
+\DoxyCodeLine{279     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, vy);}
+\DoxyCodeLine{280     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, vz);}
+\DoxyCodeLine{281     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 180, estimator\_type);}
+\DoxyCodeLine{282     \_mav\_put\_float\_array(buf, 36, covariance, 36);}
+\DoxyCodeLine{283     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}}, buf, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{284 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{285     mavlink\_global\_position\_int\_cov\_t *packet = (mavlink\_global\_position\_int\_cov\_t *)msgbuf;}
+\DoxyCodeLine{286     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{287     packet-\/>lat = lat;}
+\DoxyCodeLine{288     packet-\/>lon = lon;}
+\DoxyCodeLine{289     packet-\/>alt = alt;}
+\DoxyCodeLine{290     packet-\/>relative\_alt = relative\_alt;}
+\DoxyCodeLine{291     packet-\/>vx = vx;}
+\DoxyCodeLine{292     packet-\/>vy = vy;}
+\DoxyCodeLine{293     packet-\/>vz = vz;}
+\DoxyCodeLine{294     packet-\/>estimator\_type = estimator\_type;}
+\DoxyCodeLine{295     mav\_array\_memcpy(packet-\/>covariance, covariance, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*36);}
+\DoxyCodeLine{296     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a7d70b0cc2b2c72d771b3b277348b009b}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_a18d3d32e0033f65316decb75412cc2c4}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_ab48dcfb386516ab169556afc2e3b9c30}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_CRC}});}
+\DoxyCodeLine{297 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{298 \}}
+\DoxyCodeLine{299 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{300 }
+\DoxyCodeLine{301 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{303 \textcolor{comment}{// MESSAGE GLOBAL\_POSITION\_INT\_COV UNPACKING}}
+\DoxyCodeLine{304 }
+\DoxyCodeLine{305 }
+\DoxyCodeLine{311 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_global\_position\_int\_cov\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{312 \{}
+\DoxyCodeLine{313     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{314 \}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{321 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_global\_position\_int\_cov\_get\_estimator\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{322 \{}
+\DoxyCodeLine{323     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  180);}
+\DoxyCodeLine{324 \}}
+\DoxyCodeLine{325 }
+\DoxyCodeLine{331 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_global\_position\_int\_cov\_get\_lat(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{332 \{}
+\DoxyCodeLine{333     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  8);}
+\DoxyCodeLine{334 \}}
+\DoxyCodeLine{335 }
+\DoxyCodeLine{341 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_global\_position\_int\_cov\_get\_lon(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{342 \{}
+\DoxyCodeLine{343     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  12);}
+\DoxyCodeLine{344 \}}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{351 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_global\_position\_int\_cov\_get\_alt(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{352 \{}
+\DoxyCodeLine{353     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  16);}
+\DoxyCodeLine{354 \}}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{361 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_global\_position\_int\_cov\_get\_relative\_alt(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{362 \{}
+\DoxyCodeLine{363     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  20);}
+\DoxyCodeLine{364 \}}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{371 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_global\_position\_int\_cov\_get\_vx(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{372 \{}
+\DoxyCodeLine{373     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  24);}
+\DoxyCodeLine{374 \}}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{381 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_global\_position\_int\_cov\_get\_vy(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{382 \{}
+\DoxyCodeLine{383     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  28);}
+\DoxyCodeLine{384 \}}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{391 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_global\_position\_int\_cov\_get\_vz(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{392 \{}
+\DoxyCodeLine{393     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  32);}
+\DoxyCodeLine{394 \}}
+\DoxyCodeLine{395 }
+\DoxyCodeLine{401 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_global\_position\_int\_cov\_get\_covariance(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{float} *covariance)}
+\DoxyCodeLine{402 \{}
+\DoxyCodeLine{403     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float\_array(msg, covariance, 36,  36);}
+\DoxyCodeLine{404 \}}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{412 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_global\_position\_int\_cov\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_global\_position\_int\_cov\_t* global\_position\_int\_cov)}
+\DoxyCodeLine{413 \{}
+\DoxyCodeLine{414 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{415     global\_position\_int\_cov-\/>time\_usec = mavlink\_msg\_global\_position\_int\_cov\_get\_time\_usec(msg);}
+\DoxyCodeLine{416     global\_position\_int\_cov-\/>lat = mavlink\_msg\_global\_position\_int\_cov\_get\_lat(msg);}
+\DoxyCodeLine{417     global\_position\_int\_cov-\/>lon = mavlink\_msg\_global\_position\_int\_cov\_get\_lon(msg);}
+\DoxyCodeLine{418     global\_position\_int\_cov-\/>alt = mavlink\_msg\_global\_position\_int\_cov\_get\_alt(msg);}
+\DoxyCodeLine{419     global\_position\_int\_cov-\/>relative\_alt = mavlink\_msg\_global\_position\_int\_cov\_get\_relative\_alt(msg);}
+\DoxyCodeLine{420     global\_position\_int\_cov-\/>vx = mavlink\_msg\_global\_position\_int\_cov\_get\_vx(msg);}
+\DoxyCodeLine{421     global\_position\_int\_cov-\/>vy = mavlink\_msg\_global\_position\_int\_cov\_get\_vy(msg);}
+\DoxyCodeLine{422     global\_position\_int\_cov-\/>vz = mavlink\_msg\_global\_position\_int\_cov\_get\_vz(msg);}
+\DoxyCodeLine{423     mavlink\_msg\_global\_position\_int\_cov\_get\_covariance(msg, global\_position\_int\_cov-\/>covariance);}
+\DoxyCodeLine{424     global\_position\_int\_cov-\/>estimator\_type = mavlink\_msg\_global\_position\_int\_cov\_get\_estimator\_type(msg);}
+\DoxyCodeLine{425 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{426         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}};}
+\DoxyCodeLine{427         memset(global\_position\_int\_cov, 0, \mbox{\hyperlink{mavlink__msg__global__position__int__cov_8h_af2eb71ef1c88092e35561cba8a16283a}{MAVLINK\_MSG\_ID\_GLOBAL\_POSITION\_INT\_COV\_LEN}});}
+\DoxyCodeLine{428     memcpy(global\_position\_int\_cov, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{429 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{430 \}}
+
+\end{DoxyCode}

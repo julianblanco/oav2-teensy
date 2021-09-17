@@ -1,0 +1,675 @@
+\hypertarget{class_adafruit___neo_pixel}{}\doxysection{Adafruit\+\_\+\+Neo\+Pixel Class Reference}
+\label{class_adafruit___neo_pixel}\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+
+
+Class that stores state and functions for interacting with Adafruit Neo\+Pixels and compatible devices.  
+
+
+
+
+{\ttfamily \#include $<$Adafruit\+\_\+\+Neo\+Pixel.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_adafruit___neo_pixel_a163433471a799ba29f941032601b4a9d}{Adafruit\+\_\+\+Neo\+Pixel}} (uint16\+\_\+t n, uint16\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_aaa3ce258bc1ded4228bff0277101cdb5}{pin}}=6, \mbox{\hyperlink{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}{neo\+Pixel\+Type}} type=\mbox{\hyperlink{_adafruit___neo_pixel_8h_a95d0d6b0a1f52bc72d9dcea2b3a48e3f}{NEO\+\_\+\+GRB}}+\mbox{\hyperlink{_adafruit___neo_pixel_8h_a475fef7028a743310aa4311a97899d5d}{NEO\+\_\+\+KHZ800}})
+\begin{DoxyCompactList}\small\item\em Neo\+Pixel constructor when length, pin and pixel type are known at compile-\/time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_adafruit___neo_pixel_a2a7ab8a0cedee029cd5330b638146ccc}{Adafruit\+\_\+\+Neo\+Pixel}} (void)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Empty\char`\"{} Neo\+Pixel constructor when length, pin and/or pixel type are not known at compile-\/time, and must be initialized later with \mbox{\hyperlink{class_adafruit___neo_pixel_a07b6949674125159484e9e02ef025f7d}{update\+Type()}}, \mbox{\hyperlink{class_adafruit___neo_pixel_a74e917093c2eb16848c4a09427680f79}{update\+Length()}} and \mbox{\hyperlink{class_adafruit___neo_pixel_acaf844b8acd7246b13a71e1185675386}{set\+Pin()}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_adafruit___neo_pixel_a61b1bd003a291520a367ab1712d6265c}{$\sim$\+Adafruit\+\_\+\+Neo\+Pixel}} ()
+\begin{DoxyCompactList}\small\item\em Deallocate \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} object, set data pin back to INPUT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}{begin}} (void)
+\begin{DoxyCompactList}\small\item\em Configure Neo\+Pixel pin for output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show}} (void)
+\begin{DoxyCompactList}\small\item\em Transmit pixel data in RAM to Neo\+Pixels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_acaf844b8acd7246b13a71e1185675386}{set\+Pin}} (uint16\+\_\+t p)
+\begin{DoxyCompactList}\small\item\em Set/change the Neo\+Pixel output pin number. Previous pin, if any, is set to INPUT and the new pin is set to OUTPUT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color}} (uint16\+\_\+t n, uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Set a pixel\textquotesingle{}s color using separate red, green and blue components. If using RGBW pixels, white will be set to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_ac7b3529b3d190f3af5d8e5b9ead27688}{set\+Pixel\+Color}} (uint16\+\_\+t n, uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b, uint8\+\_\+t w)
+\begin{DoxyCompactList}\small\item\em Set a pixel\textquotesingle{}s color using separate red, green, blue and white components (for RGBW Neo\+Pixels only). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_a19fc274330c0e65907929ee03b93b1c3}{set\+Pixel\+Color}} (uint16\+\_\+t n, uint32\+\_\+t c)
+\begin{DoxyCompactList}\small\item\em Set a pixel\textquotesingle{}s color using a 32-\/bit \textquotesingle{}packed\textquotesingle{} RGB or RGBW value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_a310844b3e5580056edf52ce3268d8084}{fill}} (uint32\+\_\+t c=0, uint16\+\_\+t first=0, uint16\+\_\+t count=0)
+\begin{DoxyCompactList}\small\item\em Fill all or part of the Neo\+Pixel strip with a color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_aa05f7d37828c43fef00e6242dcf75959}{set\+Brightness}} (uint8\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Adjust output brightness. Does not immediately affect what\textquotesingle{}s currently displayed on the LEDs. The next call to \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show()}} will refresh the LEDs at this level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_ae259682b202be0acd258d6879f4c7121}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Fill the whole Neo\+Pixel strip with 0 / black / off. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_a74e917093c2eb16848c4a09427680f79}{update\+Length}} (uint16\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Change the length of a previously-\/declared \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} strip object. Old data is deallocated and new data is cleared. Pin number and pixel format are unchanged. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_adafruit___neo_pixel_a07b6949674125159484e9e02ef025f7d}{update\+Type}} (\mbox{\hyperlink{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}{neo\+Pixel\+Type}} t)
+\begin{DoxyCompactList}\small\item\em Change the pixel format of a previously-\/declared \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} strip object. If format changes from one of the RGB variants to an RGBW variant (or RGBW to RGB), the old data will be deallocated and new data is cleared. Otherwise, the old data will remain in RAM and is not reordered to the new format, so it\textquotesingle{}s advisable to follow up with \mbox{\hyperlink{class_adafruit___neo_pixel_ae259682b202be0acd258d6879f4c7121}{clear()}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___neo_pixel_a9e900a60b0ac2b43b99309bb118b929e}{can\+Show}} (void)
+\begin{DoxyCompactList}\small\item\em Check whether a call to \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show()}} will start sending data immediately or will \textquotesingle{}block\textquotesingle{} for a required interval. Neo\+Pixels require a short quiet time (about 300 microseconds) after the last bit is received before the data \textquotesingle{}latches\textquotesingle{} and new data can start being received. Usually one\textquotesingle{}s sketch is implicitly using this time to generate a new frame of animation...but if it finishes very quickly, this function could be used to see if there\textquotesingle{}s some idle time available for some low-\/priority concurrent task. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_adafruit___neo_pixel_ab484e9a9da6f1089091c2cda1a0841a7}{get\+Pixels}} (void) const
+\begin{DoxyCompactList}\small\item\em Get a pointer directly to the Neo\+Pixel data buffer in RAM. Pixel data is stored in a device-\/native format (a la the NEO\+\_\+$\ast$ constants) and is not translated here. Applications that access this buffer will need to be aware of the specific data format and handle colors appropriately. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_ab1b7af02712d6a1e228783a89ec12832}{get\+Brightness}} (void) const
+\begin{DoxyCompactList}\small\item\em Retrieve the last-\/set brightness value for the strip. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_ac2d69741bcce8ad0b61c66757952db8e}{get\+Pin}} (void) const
+\begin{DoxyCompactList}\small\item\em Retrieve the pin number used for Neo\+Pixel data output. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a515921e2c768750698f199c27613a143}{num\+Pixels}} (void) const
+\begin{DoxyCompactList}\small\item\em Return the number of pixels in an \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} strip object. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_abccaba27e35bfae27c856e76b46c7924}{get\+Pixel\+Color}} (uint16\+\_\+t n) const
+\begin{DoxyCompactList}\small\item\em Query the color of a previously-\/set pixel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_afb00024000da81bcb6378c7052f77be3}{sine8}} (uint8\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em An 8-\/bit integer sine wave function, not directly compatible with standard trigonometric units like radians or degrees. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_ab932cb619cd3420f9e3f269b7401710e}{gamma8}} (uint8\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em An 8-\/bit gamma-\/correction function for basic pixel brightness adjustment. Makes color transitions appear more perceptially correct. \end{DoxyCompactList}\item 
+static uint32\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_ae7c444138dd0e6ac1008621d0a67048b}{Color}} (uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Convert separate red, green and blue values into a single \char`\"{}packed\char`\"{} 32-\/bit RGB color. \end{DoxyCompactList}\item 
+static uint32\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_af0c47eb0d6d9f28a4f85b8039f78060c}{Color}} (uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b, uint8\+\_\+t w)
+\begin{DoxyCompactList}\small\item\em Convert separate red, green, blue and white values into a single \char`\"{}packed\char`\"{} 32-\/bit WRGB color. \end{DoxyCompactList}\item 
+static uint32\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a1f16aee5b96e16e62598f826e292b23b}{Color\+HSV}} (uint16\+\_\+t hue, uint8\+\_\+t sat=255, uint8\+\_\+t val=255)
+\begin{DoxyCompactList}\small\item\em Convert hue, saturation and value into a packed 32-\/bit RGB color that can be passed to \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} or other RGB-\/compatible functions. \end{DoxyCompactList}\item 
+static uint32\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a0151163f5aeaa42676bc31a978d6d666}{gamma32}} (uint32\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em A gamma-\/correction function for 32-\/bit packed RGB or WRGB colors. Makes color transitions appear more perceptially correct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_adafruit___neo_pixel_a56919a5e954b1a87ef965c75c6cc68a1}{is800\+KHz}}
+\begin{DoxyCompactList}\small\item\em true if 800 KHz pixels \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_adafruit___neo_pixel_a2215c42c8ed043dc43d28592c2c1d750}{begun}}
+\begin{DoxyCompactList}\small\item\em true if \mbox{\hyperlink{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}{begin()}} previously called \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_ad8218520ee2ad574f805985ea2c2b0b6}{num\+LEDs}}
+\begin{DoxyCompactList}\small\item\em Number of RGB LEDs in strip. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a89a4a144941744dc01c6e0072ad0f05d}{num\+Bytes}}
+\begin{DoxyCompactList}\small\item\em Size of \textquotesingle{}pixels\textquotesingle{} buffer below. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_aaa3ce258bc1ded4228bff0277101cdb5}{pin}}
+\begin{DoxyCompactList}\small\item\em Output pin number (-\/1 if not yet set) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a983265c34a4008d2c7a9eeb12eebea84}{brightness}}
+\begin{DoxyCompactList}\small\item\em Strip brightness 0-\/255 (stored as +1) \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_adafruit___neo_pixel_a0667c23748aa7b3dc04e7c59916308cd}{pixels}}
+\begin{DoxyCompactList}\small\item\em Holds LED color values (3 or 4 bytes each) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a8275f74399aea225b25aed014d740c99}{r\+Offset}}
+\begin{DoxyCompactList}\small\item\em Red index within each 3-\/ or 4-\/byte pixel. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a3db2bc3b72073fd9a86438128186fc98}{g\+Offset}}
+\begin{DoxyCompactList}\small\item\em Index of green byte. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_aeb2fc94bc0568778b3a643977a8b6a95}{b\+Offset}}
+\begin{DoxyCompactList}\small\item\em Index of blue byte. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_abb82afb6bb4c4e365561f18c6ff6b6a8}{w\+Offset}}
+\begin{DoxyCompactList}\small\item\em Index of white (==r\+Offset if no white) \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_adafruit___neo_pixel_a1774fd792c71e961624594e0c29e4541}{end\+Time}}
+\begin{DoxyCompactList}\small\item\em Latch timing reference. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that stores state and functions for interacting with Adafruit Neo\+Pixels and compatible devices. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a163433471a799ba29f941032601b4a9d}\label{class_adafruit___neo_pixel_a163433471a799ba29f941032601b4a9d}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{Adafruit\_NeoPixel()}{Adafruit\_NeoPixel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+Neo\+Pixel\+::\+Adafruit\+\_\+\+Neo\+Pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n,  }\item[{uint16\+\_\+t}]{p = {\ttfamily 6},  }\item[{\mbox{\hyperlink{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}{neo\+Pixel\+Type}}}]{t = {\ttfamily \mbox{\hyperlink{_adafruit___neo_pixel_8h_a95d0d6b0a1f52bc72d9dcea2b3a48e3f}{NEO\+\_\+\+GRB}}~+~\mbox{\hyperlink{_adafruit___neo_pixel_8h_a475fef7028a743310aa4311a97899d5d}{NEO\+\_\+\+KHZ800}}} }\end{DoxyParamCaption})}
+
+
+
+Neo\+Pixel constructor when length, pin and pixel type are known at compile-\/time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Number of Neo\+Pixels in strand. \\
+\hline
+{\em p} & Arduino pin number which will drive the Neo\+Pixel data in. \\
+\hline
+{\em t} & Pixel type -- add together NEO\+\_\+$\ast$ constants defined in \mbox{\hyperlink{_adafruit___neo_pixel_8h}{Adafruit\+\_\+\+Neo\+Pixel.\+h}}, for example NEO\+\_\+\+GRB+\+NEO\+\_\+\+KHZ800 for Neo\+Pixels expecting an 800 KHz (vs 400 KHz) data stream with color bytes expressed in green, red, blue order per pixel. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} object. Call the \mbox{\hyperlink{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}{begin()}} function before use. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a2a7ab8a0cedee029cd5330b638146ccc}\label{class_adafruit___neo_pixel_a2a7ab8a0cedee029cd5330b638146ccc}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{Adafruit\_NeoPixel()}{Adafruit\_NeoPixel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+Neo\+Pixel\+::\+Adafruit\+\_\+\+Neo\+Pixel (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Empty\char`\"{} Neo\+Pixel constructor when length, pin and/or pixel type are not known at compile-\/time, and must be initialized later with \mbox{\hyperlink{class_adafruit___neo_pixel_a07b6949674125159484e9e02ef025f7d}{update\+Type()}}, \mbox{\hyperlink{class_adafruit___neo_pixel_a74e917093c2eb16848c4a09427680f79}{update\+Length()}} and \mbox{\hyperlink{class_adafruit___neo_pixel_acaf844b8acd7246b13a71e1185675386}{set\+Pin()}}. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} object. Call the \mbox{\hyperlink{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}{begin()}} function before use. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is deprecated, here only for old projects that may still be calling it. New projects should instead use the \textquotesingle{}new\textquotesingle{} keyword with the first constructor syntax (length, pin, type). 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a61b1bd003a291520a367ab1712d6265c}\label{class_adafruit___neo_pixel_a61b1bd003a291520a367ab1712d6265c}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!````~Adafruit\_NeoPixel@{$\sim$Adafruit\_NeoPixel}}
+\index{````~Adafruit\_NeoPixel@{$\sim$Adafruit\_NeoPixel}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{$\sim$Adafruit\_NeoPixel()}{~Adafruit\_NeoPixel()}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+Neo\+Pixel\+::$\sim$\+Adafruit\+\_\+\+Neo\+Pixel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deallocate \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} object, set data pin back to INPUT. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}\label{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!begin@{begin}}
+\index{begin@{begin}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::begin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Configure Neo\+Pixel pin for output. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a9e900a60b0ac2b43b99309bb118b929e}\label{class_adafruit___neo_pixel_a9e900a60b0ac2b43b99309bb118b929e}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!canShow@{canShow}}
+\index{canShow@{canShow}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{canShow()}{canShow()}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+Neo\+Pixel\+::can\+Show (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check whether a call to \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show()}} will start sending data immediately or will \textquotesingle{}block\textquotesingle{} for a required interval. Neo\+Pixels require a short quiet time (about 300 microseconds) after the last bit is received before the data \textquotesingle{}latches\textquotesingle{} and new data can start being received. Usually one\textquotesingle{}s sketch is implicitly using this time to generate a new frame of animation...but if it finishes very quickly, this function could be used to see if there\textquotesingle{}s some idle time available for some low-\/priority concurrent task. 
+
+\begin{DoxyReturn}{Returns}
+1 or true if \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show()}} will start sending immediately, 0 or false if \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show()}} would block (meaning some idle time is available). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ae259682b202be0acd258d6879f4c7121}\label{class_adafruit___neo_pixel_ae259682b202be0acd258d6879f4c7121}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!clear@{clear}}
+\index{clear@{clear}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Fill the whole Neo\+Pixel strip with 0 / black / off. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ae7c444138dd0e6ac1008621d0a67048b}\label{class_adafruit___neo_pixel_ae7c444138dd0e6ac1008621d0a67048b}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!Color@{Color}}
+\index{Color@{Color}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static uint32\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::\+Color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r,  }\item[{uint8\+\_\+t}]{g,  }\item[{uint8\+\_\+t}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Convert separate red, green and blue values into a single \char`\"{}packed\char`\"{} 32-\/bit RGB color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Red brightness, 0 to 255. \\
+\hline
+{\em g} & Green brightness, 0 to 255. \\
+\hline
+{\em b} & Blue brightness, 0 to 255. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit packed RGB value, which can then be assigned to a variable for later use or passed to the \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} function. Packed RGB format is predictable, regardless of LED strand color order. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_af0c47eb0d6d9f28a4f85b8039f78060c}\label{class_adafruit___neo_pixel_af0c47eb0d6d9f28a4f85b8039f78060c}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!Color@{Color}}
+\index{Color@{Color}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static uint32\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::\+Color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r,  }\item[{uint8\+\_\+t}]{g,  }\item[{uint8\+\_\+t}]{b,  }\item[{uint8\+\_\+t}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Convert separate red, green, blue and white values into a single \char`\"{}packed\char`\"{} 32-\/bit WRGB color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Red brightness, 0 to 255. \\
+\hline
+{\em g} & Green brightness, 0 to 255. \\
+\hline
+{\em b} & Blue brightness, 0 to 255. \\
+\hline
+{\em w} & White brightness, 0 to 255. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+32-\/bit packed WRGB value, which can then be assigned to a variable for later use or passed to the \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} function. Packed WRGB format is predictable, regardless of LED strand color order. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a1f16aee5b96e16e62598f826e292b23b}\label{class_adafruit___neo_pixel_a1f16aee5b96e16e62598f826e292b23b}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!ColorHSV@{ColorHSV}}
+\index{ColorHSV@{ColorHSV}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{ColorHSV()}{ColorHSV()}}
+{\footnotesize\ttfamily uint32\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::\+Color\+HSV (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{hue,  }\item[{uint8\+\_\+t}]{sat = {\ttfamily 255},  }\item[{uint8\+\_\+t}]{val = {\ttfamily 255} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert hue, saturation and value into a packed 32-\/bit RGB color that can be passed to \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} or other RGB-\/compatible functions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hue} & An unsigned 16-\/bit value, 0 to 65535, representing one full loop of the color wheel, which allows 16-\/bit hues to \char`\"{}roll               over\char`\"{} while still doing the expected thing (and allowing more precision than the wheel() function that was common to prior Neo\+Pixel examples). \\
+\hline
+{\em sat} & Saturation, 8-\/bit value, 0 (min or pure grayscale) to 255 (max or pure hue). Default of 255 if unspecified. \\
+\hline
+{\em val} & Value (brightness), 8-\/bit value, 0 (min / black / off) to 255 (max or full brightness). Default of 255 if unspecified. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Packed 32-\/bit RGB with the most significant byte set to 0 -- the white element of WRGB pixels is NOT utilized. Result is linearly but not perceptually correct, so you may want to pass the result through the \mbox{\hyperlink{class_adafruit___neo_pixel_a0151163f5aeaa42676bc31a978d6d666}{gamma32()}} function (or your own gamma-\/correction operation) else colors may appear washed out. This is not done automatically by this function because coders may desire a more refined gamma-\/correction function than the simplified one-\/size-\/fits-\/all operation of \mbox{\hyperlink{class_adafruit___neo_pixel_a0151163f5aeaa42676bc31a978d6d666}{gamma32()}}. Diffusing the LEDs also really seems to help when using low-\/saturation colors. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a310844b3e5580056edf52ce3268d8084}\label{class_adafruit___neo_pixel_a310844b3e5580056edf52ce3268d8084}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!fill@{fill}}
+\index{fill@{fill}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::fill (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{c = {\ttfamily 0},  }\item[{uint16\+\_\+t}]{first = {\ttfamily 0},  }\item[{uint16\+\_\+t}]{count = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Fill all or part of the Neo\+Pixel strip with a color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & 32-\/bit color value. Most significant byte is white (for RGBW pixels) or ignored (for RGB pixels), next is red, then green, and least significant byte is blue. If all arguments are unspecified, this will be 0 (off). \\
+\hline
+{\em first} & Index of first pixel to fill, starting from 0. Must be in-\/bounds, no clipping is performed. 0 if unspecified. \\
+\hline
+{\em count} & Number of pixels to fill, as a positive value. Passing 0 or leaving unspecified will fill to end of strip. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a0151163f5aeaa42676bc31a978d6d666}\label{class_adafruit___neo_pixel_a0151163f5aeaa42676bc31a978d6d666}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!gamma32@{gamma32}}
+\index{gamma32@{gamma32}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{gamma32()}{gamma32()}}
+{\footnotesize\ttfamily uint32\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::gamma32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A gamma-\/correction function for 32-\/bit packed RGB or WRGB colors. Makes color transitions appear more perceptially correct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & 32-\/bit packed RGB or WRGB color. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gamma-\/adjusted packed color, can then be passed in one of the \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} functions. Like \mbox{\hyperlink{class_adafruit___neo_pixel_ab932cb619cd3420f9e3f269b7401710e}{gamma8()}}, this uses a fixed gamma correction exponent of 2.\+6, which seems reasonably okay for average Neo\+Pixels in average tasks. If you need finer control you\textquotesingle{}ll need to provide your own gamma-\/correction function instead. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ab932cb619cd3420f9e3f269b7401710e}\label{class_adafruit___neo_pixel_ab932cb619cd3420f9e3f269b7401710e}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!gamma8@{gamma8}}
+\index{gamma8@{gamma8}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{gamma8()}{gamma8()}}
+{\footnotesize\ttfamily static uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::gamma8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+An 8-\/bit gamma-\/correction function for basic pixel brightness adjustment. Makes color transitions appear more perceptially correct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input brightness, 0 (minimum or off/black) to 255 (maximum). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gamma-\/adjusted brightness, can then be passed to one of the \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} functions. This uses a fixed gamma correction exponent of 2.\+6, which seems reasonably okay for average Neo\+Pixels in average tasks. If you need finer control you\textquotesingle{}ll need to provide your own gamma-\/correction function instead. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ab1b7af02712d6a1e228783a89ec12832}\label{class_adafruit___neo_pixel_ab1b7af02712d6a1e228783a89ec12832}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!getBrightness@{getBrightness}}
+\index{getBrightness@{getBrightness}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{getBrightness()}{getBrightness()}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::get\+Brightness (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieve the last-\/set brightness value for the strip. 
+
+\begin{DoxyReturn}{Returns}
+Brightness value\+: 0 = minimum (off), 255 = maximum. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ac2d69741bcce8ad0b61c66757952db8e}\label{class_adafruit___neo_pixel_ac2d69741bcce8ad0b61c66757952db8e}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!getPin@{getPin}}
+\index{getPin@{getPin}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{getPin()}{getPin()}}
+{\footnotesize\ttfamily int16\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::get\+Pin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieve the pin number used for Neo\+Pixel data output. 
+
+\begin{DoxyReturn}{Returns}
+Arduino pin number (-\/1 if not set). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_abccaba27e35bfae27c856e76b46c7924}\label{class_adafruit___neo_pixel_abccaba27e35bfae27c856e76b46c7924}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!getPixelColor@{getPixelColor}}
+\index{getPixelColor@{getPixelColor}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{getPixelColor()}{getPixelColor()}}
+{\footnotesize\ttfamily uint32\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::get\+Pixel\+Color (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n }\end{DoxyParamCaption}) const}
+
+
+
+Query the color of a previously-\/set pixel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Index of pixel to read (0 = first). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}Packed\textquotesingle{} 32-\/bit RGB or WRGB value. Most significant byte is white (for RGBW pixels) or 0 (for RGB pixels), next is red, then green, and least significant byte is blue. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the strip brightness has been changed from the default value of 255, the color read from a pixel may not exactly match what was previously written with one of the \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} functions. This gets more pronounced at lower brightness levels. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ab484e9a9da6f1089091c2cda1a0841a7}\label{class_adafruit___neo_pixel_ab484e9a9da6f1089091c2cda1a0841a7}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!getPixels@{getPixels}}
+\index{getPixels@{getPixels}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{getPixels()}{getPixels()}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ Adafruit\+\_\+\+Neo\+Pixel\+::get\+Pixels (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a pointer directly to the Neo\+Pixel data buffer in RAM. Pixel data is stored in a device-\/native format (a la the NEO\+\_\+$\ast$ constants) and is not translated here. Applications that access this buffer will need to be aware of the specific data format and handle colors appropriately. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to Neo\+Pixel buffer (uint8\+\_\+t$\ast$ array). 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is for high-\/performance applications where calling \mbox{\hyperlink{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}{set\+Pixel\+Color()}} on every single pixel would be too slow (e.\+g. POV or light-\/painting projects). There is no bounds checking on the array, creating tremendous potential for mayhem if one writes past the ends of the buffer. Great power, great responsibility and all that. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a515921e2c768750698f199c27613a143}\label{class_adafruit___neo_pixel_a515921e2c768750698f199c27613a143}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!numPixels@{numPixels}}
+\index{numPixels@{numPixels}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{numPixels()}{numPixels()}}
+{\footnotesize\ttfamily uint16\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::num\+Pixels (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the number of pixels in an \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} strip object. 
+
+\begin{DoxyReturn}{Returns}
+Pixel count (0 if not set). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_aa05f7d37828c43fef00e6242dcf75959}\label{class_adafruit___neo_pixel_aa05f7d37828c43fef00e6242dcf75959}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!setBrightness@{setBrightness}}
+\index{setBrightness@{setBrightness}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{setBrightness()}{setBrightness()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::set\+Brightness (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Adjust output brightness. Does not immediately affect what\textquotesingle{}s currently displayed on the LEDs. The next call to \mbox{\hyperlink{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}{show()}} will refresh the LEDs at this level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Brightness setting, 0=minimum (off), 255=brightest. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This was intended for one-\/time use in one\textquotesingle{}s setup() function, not as an animation effect in itself. Because of the way this library \char`\"{}pre-\/multiplies\char`\"{} LED colors in RAM, changing the brightness is often a \char`\"{}lossy\char`\"{} operation -- what you write to pixels isn\textquotesingle{}t necessary the same as what you\textquotesingle{}ll read back. Repeated brightness changes using this function exacerbate the problem. Smart programs therefore treat the strip as a write-\/only resource, maintaining their own state to render each frame of an animation, not relying on read-\/modify-\/write. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_acaf844b8acd7246b13a71e1185675386}\label{class_adafruit___neo_pixel_acaf844b8acd7246b13a71e1185675386}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!setPin@{setPin}}
+\index{setPin@{setPin}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{setPin()}{setPin()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::set\+Pin (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{p }\end{DoxyParamCaption})}
+
+
+
+Set/change the Neo\+Pixel output pin number. Previous pin, if any, is set to INPUT and the new pin is set to OUTPUT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Arduino pin number (-\/1 = no pin). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a19fc274330c0e65907929ee03b93b1c3}\label{class_adafruit___neo_pixel_a19fc274330c0e65907929ee03b93b1c3}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!setPixelColor@{setPixelColor}}
+\index{setPixelColor@{setPixelColor}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{setPixelColor()}{setPixelColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::set\+Pixel\+Color (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n,  }\item[{uint32\+\_\+t}]{c }\end{DoxyParamCaption})}
+
+
+
+Set a pixel\textquotesingle{}s color using a 32-\/bit \textquotesingle{}packed\textquotesingle{} RGB or RGBW value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Pixel index, starting from 0. \\
+\hline
+{\em c} & 32-\/bit color value. Most significant byte is white (for RGBW pixels) or ignored (for RGB pixels), next is red, then green, and least significant byte is blue. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}\label{class_adafruit___neo_pixel_ab8763ccc6f9a090df1f753905fd5561e}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!setPixelColor@{setPixelColor}}
+\index{setPixelColor@{setPixelColor}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{setPixelColor()}{setPixelColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::set\+Pixel\+Color (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n,  }\item[{uint8\+\_\+t}]{r,  }\item[{uint8\+\_\+t}]{g,  }\item[{uint8\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Set a pixel\textquotesingle{}s color using separate red, green and blue components. If using RGBW pixels, white will be set to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Pixel index, starting from 0. \\
+\hline
+{\em r} & Red brightness, 0 = minimum (off), 255 = maximum. \\
+\hline
+{\em g} & Green brightness, 0 = minimum (off), 255 = maximum. \\
+\hline
+{\em b} & Blue brightness, 0 = minimum (off), 255 = maximum. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ac7b3529b3d190f3af5d8e5b9ead27688}\label{class_adafruit___neo_pixel_ac7b3529b3d190f3af5d8e5b9ead27688}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!setPixelColor@{setPixelColor}}
+\index{setPixelColor@{setPixelColor}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{setPixelColor()}{setPixelColor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::set\+Pixel\+Color (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n,  }\item[{uint8\+\_\+t}]{r,  }\item[{uint8\+\_\+t}]{g,  }\item[{uint8\+\_\+t}]{b,  }\item[{uint8\+\_\+t}]{w }\end{DoxyParamCaption})}
+
+
+
+Set a pixel\textquotesingle{}s color using separate red, green, blue and white components (for RGBW Neo\+Pixels only). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Pixel index, starting from 0. \\
+\hline
+{\em r} & Red brightness, 0 = minimum (off), 255 = maximum. \\
+\hline
+{\em g} & Green brightness, 0 = minimum (off), 255 = maximum. \\
+\hline
+{\em b} & Blue brightness, 0 = minimum (off), 255 = maximum. \\
+\hline
+{\em w} & White brightness, 0 = minimum (off), 255 = maximum, ignored if using RGB pixels. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}\label{class_adafruit___neo_pixel_a4bcda7a15591065570d3598cbf970be7}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!show@{show}}
+\index{show@{show}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::show (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Transmit pixel data in RAM to Neo\+Pixels. 
+
+\begin{DoxyNote}{Note}
+On most architectures, interrupts are temporarily disabled in order to achieve the correct Neo\+Pixel signal timing. This means that the Arduino millis() and micros() functions, which require interrupts, will lose small intervals of time whenever this function is called (about 30 microseconds per RGB pixel, 40 for RGBW pixels). There\textquotesingle{}s no easy fix for this, but a few specialized alternative or companion libraries exist that use very device-\/specific peripherals to work around it. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_afb00024000da81bcb6378c7052f77be3}\label{class_adafruit___neo_pixel_afb00024000da81bcb6378c7052f77be3}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!sine8@{sine8}}
+\index{sine8@{sine8}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{sine8()}{sine8()}}
+{\footnotesize\ttfamily static uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::sine8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+An 8-\/bit integer sine wave function, not directly compatible with standard trigonometric units like radians or degrees. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input angle, 0-\/255; 256 would loop back to zero, completing the circle (equivalent to 360 degrees or 2 pi radians). One can therefore use an unsigned 8-\/bit variable and simply add or subtract, allowing it to overflow/underflow and it still does the expected contiguous thing. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sine result, 0 to 255, or -\/128 to +127 if type-\/converted to a signed int8\+\_\+t, but you\textquotesingle{}ll most likely want unsigned as this output is often used for pixel brightness in animation effects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a74e917093c2eb16848c4a09427680f79}\label{class_adafruit___neo_pixel_a74e917093c2eb16848c4a09427680f79}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!updateLength@{updateLength}}
+\index{updateLength@{updateLength}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{updateLength()}{updateLength()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::update\+Length (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+
+
+Change the length of a previously-\/declared \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} strip object. Old data is deallocated and new data is cleared. Pin number and pixel format are unchanged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & New length of strip, in pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is deprecated, here only for old projects that may still be calling it. New projects should instead use the \textquotesingle{}new\textquotesingle{} keyword with the first constructor syntax (length, pin, type). 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a07b6949674125159484e9e02ef025f7d}\label{class_adafruit___neo_pixel_a07b6949674125159484e9e02ef025f7d}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!updateType@{updateType}}
+\index{updateType@{updateType}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{updateType()}{updateType()}}
+{\footnotesize\ttfamily void Adafruit\+\_\+\+Neo\+Pixel\+::update\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}{neo\+Pixel\+Type}}}]{t }\end{DoxyParamCaption})}
+
+
+
+Change the pixel format of a previously-\/declared \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} strip object. If format changes from one of the RGB variants to an RGBW variant (or RGBW to RGB), the old data will be deallocated and new data is cleared. Otherwise, the old data will remain in RAM and is not reordered to the new format, so it\textquotesingle{}s advisable to follow up with \mbox{\hyperlink{class_adafruit___neo_pixel_ae259682b202be0acd258d6879f4c7121}{clear()}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Pixel type -- add together NEO\+\_\+$\ast$ constants defined in \mbox{\hyperlink{_adafruit___neo_pixel_8h}{Adafruit\+\_\+\+Neo\+Pixel.\+h}}, for example NEO\+\_\+\+GRB+\+NEO\+\_\+\+KHZ800 for Neo\+Pixels expecting an 800 KHz (vs 400 KHz) data stream with color bytes expressed in green, red, blue order per pixel. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is deprecated, here only for old projects that may still be calling it. New projects should instead use the \textquotesingle{}new\textquotesingle{} keyword with the first constructor syntax (length, pin, type). 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a2215c42c8ed043dc43d28592c2c1d750}\label{class_adafruit___neo_pixel_a2215c42c8ed043dc43d28592c2c1d750}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!begun@{begun}}
+\index{begun@{begun}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{begun}{begun}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+Neo\+Pixel\+::begun\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+true if \mbox{\hyperlink{class_adafruit___neo_pixel_ac1cb16509be644232ce0e28d250083da}{begin()}} previously called 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_aeb2fc94bc0568778b3a643977a8b6a95}\label{class_adafruit___neo_pixel_aeb2fc94bc0568778b3a643977a8b6a95}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!bOffset@{bOffset}}
+\index{bOffset@{bOffset}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{bOffset}{bOffset}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::b\+Offset\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index of blue byte. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a983265c34a4008d2c7a9eeb12eebea84}\label{class_adafruit___neo_pixel_a983265c34a4008d2c7a9eeb12eebea84}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!brightness@{brightness}}
+\index{brightness@{brightness}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{brightness}{brightness}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::brightness\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Strip brightness 0-\/255 (stored as +1) 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a1774fd792c71e961624594e0c29e4541}\label{class_adafruit___neo_pixel_a1774fd792c71e961624594e0c29e4541}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!endTime@{endTime}}
+\index{endTime@{endTime}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{endTime}{endTime}}
+{\footnotesize\ttfamily uint32\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::end\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Latch timing reference. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a3db2bc3b72073fd9a86438128186fc98}\label{class_adafruit___neo_pixel_a3db2bc3b72073fd9a86438128186fc98}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!gOffset@{gOffset}}
+\index{gOffset@{gOffset}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{gOffset}{gOffset}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::g\+Offset\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index of green byte. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a56919a5e954b1a87ef965c75c6cc68a1}\label{class_adafruit___neo_pixel_a56919a5e954b1a87ef965c75c6cc68a1}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!is800KHz@{is800KHz}}
+\index{is800KHz@{is800KHz}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{is800KHz}{is800KHz}}
+{\footnotesize\ttfamily bool Adafruit\+\_\+\+Neo\+Pixel\+::is800\+KHz\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+true if 800 KHz pixels 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a89a4a144941744dc01c6e0072ad0f05d}\label{class_adafruit___neo_pixel_a89a4a144941744dc01c6e0072ad0f05d}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!numBytes@{numBytes}}
+\index{numBytes@{numBytes}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{numBytes}{numBytes}}
+{\footnotesize\ttfamily uint16\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::num\+Bytes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Size of \textquotesingle{}pixels\textquotesingle{} buffer below. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_ad8218520ee2ad574f805985ea2c2b0b6}\label{class_adafruit___neo_pixel_ad8218520ee2ad574f805985ea2c2b0b6}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!numLEDs@{numLEDs}}
+\index{numLEDs@{numLEDs}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{numLEDs}{numLEDs}}
+{\footnotesize\ttfamily uint16\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::num\+LEDs\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Number of RGB LEDs in strip. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_aaa3ce258bc1ded4228bff0277101cdb5}\label{class_adafruit___neo_pixel_aaa3ce258bc1ded4228bff0277101cdb5}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!pin@{pin}}
+\index{pin@{pin}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily int16\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::pin\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Output pin number (-\/1 if not yet set) 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a0667c23748aa7b3dc04e7c59916308cd}\label{class_adafruit___neo_pixel_a0667c23748aa7b3dc04e7c59916308cd}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!pixels@{pixels}}
+\index{pixels@{pixels}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{pixels}{pixels}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ Adafruit\+\_\+\+Neo\+Pixel\+::pixels\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Holds LED color values (3 or 4 bytes each) 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_a8275f74399aea225b25aed014d740c99}\label{class_adafruit___neo_pixel_a8275f74399aea225b25aed014d740c99}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!rOffset@{rOffset}}
+\index{rOffset@{rOffset}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{rOffset}{rOffset}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::r\+Offset\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Red index within each 3-\/ or 4-\/byte pixel. 
+
+\mbox{\Hypertarget{class_adafruit___neo_pixel_abb82afb6bb4c4e365561f18c6ff6b6a8}\label{class_adafruit___neo_pixel_abb82afb6bb4c4e365561f18c6ff6b6a8}} 
+\index{Adafruit\_NeoPixel@{Adafruit\_NeoPixel}!wOffset@{wOffset}}
+\index{wOffset@{wOffset}!Adafruit\_NeoPixel@{Adafruit\_NeoPixel}}
+\doxysubsubsection{\texorpdfstring{wOffset}{wOffset}}
+{\footnotesize\ttfamily uint8\+\_\+t Adafruit\+\_\+\+Neo\+Pixel\+::w\+Offset\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Index of white (==r\+Offset if no white) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Adafruit\+\_\+\+Neo\+Pixel/\mbox{\hyperlink{_adafruit___neo_pixel_8h}{Adafruit\+\_\+\+Neo\+Pixel.\+h}}\item 
+lib/\+Adafruit\+\_\+\+Neo\+Pixel/\mbox{\hyperlink{_adafruit___neo_pixel_8cpp}{Adafruit\+\_\+\+Neo\+Pixel.\+cpp}}\end{DoxyCompactItemize}

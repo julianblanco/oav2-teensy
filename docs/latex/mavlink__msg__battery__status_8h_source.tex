@@ -1,0 +1,324 @@
+\hypertarget{mavlink__msg__battery__status_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+battery\+\_\+status.\+h}
+\label{mavlink__msg__battery__status_8h_source}\index{lib/common/mavlink\_msg\_battery\_status.h@{lib/common/mavlink\_msg\_battery\_status.h}}
+\mbox{\hyperlink{mavlink__msg__battery__status_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE BATTERY\_STATUS PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_BATTERY\_STATUS 147}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__battery__status_8h_ae64db26145666e570bfa7a6c7b6932d6}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_battery\_status\_t \{}
+\DoxyCodeLine{8  int32\_t current\_consumed; \textcolor{comment}{/*< [mAh] Consumed charge, -\/1: autopilot does not provide consumption estimate*/}}
+\DoxyCodeLine{9  int32\_t energy\_consumed; \textcolor{comment}{/*< [hJ] Consumed energy, -\/1: autopilot does not provide energy consumption estimate*/}}
+\DoxyCodeLine{10  int16\_t temperature; \textcolor{comment}{/*< [cdegC] Temperature of the battery. INT16\_MAX for unknown temperature.*/}}
+\DoxyCodeLine{11  uint16\_t voltages[10]; \textcolor{comment}{/*< [mV] Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16\_MAX value.*/}}
+\DoxyCodeLine{12  int16\_t current\_battery; \textcolor{comment}{/*< [cA] Battery current, -\/1: autopilot does not measure the current*/}}
+\DoxyCodeLine{13  uint8\_t id; \textcolor{comment}{/*<  Battery ID*/}}
+\DoxyCodeLine{14  uint8\_t battery\_function; \textcolor{comment}{/*<  Function of the battery*/}}
+\DoxyCodeLine{15  uint8\_t type; \textcolor{comment}{/*<  Type (chemistry) of the battery*/}}
+\DoxyCodeLine{16  int8\_t battery\_remaining; \textcolor{comment}{/*< [\%] Remaining battery energy. Values: [0-\/100], -\/1: autopilot does not estimate the remaining battery.*/}}
+\DoxyCodeLine{17  int32\_t time\_remaining; \textcolor{comment}{/*< [s] Remaining battery time, 0: autopilot does not provide remaining battery time estimate*/}}
+\DoxyCodeLine{18  uint8\_t charge\_state; \textcolor{comment}{/*<  State for extent of discharge, provided by autopilot for warning or external reactions*/}}
+\DoxyCodeLine{19 \}) mavlink\_battery\_status\_t;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN 41}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN 36}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_147\_LEN 41}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_147\_MIN\_LEN 36}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC 154}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_147\_CRC 154}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_BATTERY\_STATUS\_FIELD\_VOLTAGES\_LEN 10}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_BATTERY\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    147, \(\backslash\)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{    "{}BATTERY\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{35     11, \(\backslash\)}
+\DoxyCodeLine{36     \{  \{ "{}id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 32, offsetof(mavlink\_battery\_status\_t, id) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}battery\_function"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 33, offsetof(mavlink\_battery\_status\_t, battery\_function) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 34, offsetof(mavlink\_battery\_status\_t, type) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 8, offsetof(mavlink\_battery\_status\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}voltages"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 10, 10, offsetof(mavlink\_battery\_status\_t, voltages) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}current\_battery"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 30, offsetof(mavlink\_battery\_status\_t, current\_battery) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}current\_consumed"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 0, offsetof(mavlink\_battery\_status\_t, current\_consumed) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}energy\_consumed"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_battery\_status\_t, energy\_consumed) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}battery\_remaining"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 35, offsetof(mavlink\_battery\_status\_t, battery\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}time\_remaining"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 36, offsetof(mavlink\_battery\_status\_t, time\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}charge\_state"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 40, offsetof(mavlink\_battery\_status\_t, charge\_state) \}, \(\backslash\)}
+\DoxyCodeLine{47          \} \(\backslash\)}
+\DoxyCodeLine{48 \}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_BATTERY\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{    "{}BATTERY\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{52     11, \(\backslash\)}
+\DoxyCodeLine{53     \{  \{ "{}id"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 32, offsetof(mavlink\_battery\_status\_t, id) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}battery\_function"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 33, offsetof(mavlink\_battery\_status\_t, battery\_function) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 34, offsetof(mavlink\_battery\_status\_t, type) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 8, offsetof(mavlink\_battery\_status\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}voltages"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 10, 10, offsetof(mavlink\_battery\_status\_t, voltages) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}current\_battery"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 30, offsetof(mavlink\_battery\_status\_t, current\_battery) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}current\_consumed"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 0, offsetof(mavlink\_battery\_status\_t, current\_consumed) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}energy\_consumed"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_battery\_status\_t, energy\_consumed) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}battery\_remaining"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 35, offsetof(mavlink\_battery\_status\_t, battery\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}time\_remaining"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 36, offsetof(mavlink\_battery\_status\_t, time\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}charge\_state"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 40, offsetof(mavlink\_battery\_status\_t, charge\_state) \}, \(\backslash\)}
+\DoxyCodeLine{64          \} \(\backslash\)}
+\DoxyCodeLine{65 \}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{87 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_battery\_status\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{88                                uint8\_t \textcolor{keywordtype}{id}, uint8\_t battery\_function, uint8\_t type, int16\_t temperature, \textcolor{keyword}{const} uint16\_t *voltages, int16\_t current\_battery, int32\_t current\_consumed, int32\_t energy\_consumed, int8\_t battery\_remaining, int32\_t time\_remaining, uint8\_t charge\_state)}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{91     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}];}
+\DoxyCodeLine{92     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, current\_consumed);}
+\DoxyCodeLine{93     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, energy\_consumed);}
+\DoxyCodeLine{94     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, temperature);}
+\DoxyCodeLine{95     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 30, current\_battery);}
+\DoxyCodeLine{96     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{97     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, battery\_function);}
+\DoxyCodeLine{98     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, type);}
+\DoxyCodeLine{99     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 35, battery\_remaining);}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 36, time\_remaining);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 40, charge\_state);}
+\DoxyCodeLine{102     \_mav\_put\_uint16\_t\_array(buf, 10, voltages, 10);}
+\DoxyCodeLine{103         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}});}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{105     mavlink\_battery\_status\_t packet;}
+\DoxyCodeLine{106     packet.current\_consumed = current\_consumed;}
+\DoxyCodeLine{107     packet.energy\_consumed = energy\_consumed;}
+\DoxyCodeLine{108     packet.temperature = temperature;}
+\DoxyCodeLine{109     packet.current\_battery = current\_battery;}
+\DoxyCodeLine{110     packet.id = id;}
+\DoxyCodeLine{111     packet.battery\_function = battery\_function;}
+\DoxyCodeLine{112     packet.type = type;}
+\DoxyCodeLine{113     packet.battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{114     packet.time\_remaining = time\_remaining;}
+\DoxyCodeLine{115     packet.charge\_state = charge\_state;}
+\DoxyCodeLine{116     mav\_array\_memcpy(packet.voltages, voltages, \textcolor{keyword}{sizeof}(uint16\_t)*10);}
+\DoxyCodeLine{117         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}});}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}};}
+\DoxyCodeLine{121     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{122 \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{143 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_battery\_status\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{144                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{145                                    uint8\_t \textcolor{keywordtype}{id},uint8\_t battery\_function,uint8\_t type,int16\_t temperature,\textcolor{keyword}{const} uint16\_t *voltages,int16\_t current\_battery,int32\_t current\_consumed,int32\_t energy\_consumed,int8\_t battery\_remaining,int32\_t time\_remaining,uint8\_t charge\_state)}
+\DoxyCodeLine{146 \{}
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{148     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}];}
+\DoxyCodeLine{149     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, current\_consumed);}
+\DoxyCodeLine{150     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, energy\_consumed);}
+\DoxyCodeLine{151     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, temperature);}
+\DoxyCodeLine{152     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 30, current\_battery);}
+\DoxyCodeLine{153     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{154     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, battery\_function);}
+\DoxyCodeLine{155     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, type);}
+\DoxyCodeLine{156     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 35, battery\_remaining);}
+\DoxyCodeLine{157     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 36, time\_remaining);}
+\DoxyCodeLine{158     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 40, charge\_state);}
+\DoxyCodeLine{159     \_mav\_put\_uint16\_t\_array(buf, 10, voltages, 10);}
+\DoxyCodeLine{160         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}});}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{162     mavlink\_battery\_status\_t packet;}
+\DoxyCodeLine{163     packet.current\_consumed = current\_consumed;}
+\DoxyCodeLine{164     packet.energy\_consumed = energy\_consumed;}
+\DoxyCodeLine{165     packet.temperature = temperature;}
+\DoxyCodeLine{166     packet.current\_battery = current\_battery;}
+\DoxyCodeLine{167     packet.id = id;}
+\DoxyCodeLine{168     packet.battery\_function = battery\_function;}
+\DoxyCodeLine{169     packet.type = type;}
+\DoxyCodeLine{170     packet.battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{171     packet.time\_remaining = time\_remaining;}
+\DoxyCodeLine{172     packet.charge\_state = charge\_state;}
+\DoxyCodeLine{173     mav\_array\_memcpy(packet.voltages, voltages, \textcolor{keyword}{sizeof}(uint16\_t)*10);}
+\DoxyCodeLine{174         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}});}
+\DoxyCodeLine{175 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}};}
+\DoxyCodeLine{178     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{179 \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{189 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_battery\_status\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_battery\_status\_t* battery\_status)}
+\DoxyCodeLine{190 \{}
+\DoxyCodeLine{191     \textcolor{keywordflow}{return} mavlink\_msg\_battery\_status\_pack(system\_id, component\_id, msg, battery\_status-\/>id, battery\_status-\/>battery\_function, battery\_status-\/>type, battery\_status-\/>temperature, battery\_status-\/>voltages, battery\_status-\/>current\_battery, battery\_status-\/>current\_consumed, battery\_status-\/>energy\_consumed, battery\_status-\/>battery\_remaining, battery\_status-\/>time\_remaining, battery\_status-\/>charge\_state);}
+\DoxyCodeLine{192 \}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{203 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_battery\_status\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_battery\_status\_t* battery\_status)}
+\DoxyCodeLine{204 \{}
+\DoxyCodeLine{205     \textcolor{keywordflow}{return} mavlink\_msg\_battery\_status\_pack\_chan(system\_id, component\_id, chan, msg, battery\_status-\/>id, battery\_status-\/>battery\_function, battery\_status-\/>type, battery\_status-\/>temperature, battery\_status-\/>voltages, battery\_status-\/>current\_battery, battery\_status-\/>current\_consumed, battery\_status-\/>energy\_consumed, battery\_status-\/>battery\_remaining, battery\_status-\/>time\_remaining, battery\_status-\/>charge\_state);}
+\DoxyCodeLine{206 \}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{224 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_battery\_status\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t \textcolor{keywordtype}{id}, uint8\_t battery\_function, uint8\_t type, int16\_t temperature, \textcolor{keyword}{const} uint16\_t *voltages, int16\_t current\_battery, int32\_t current\_consumed, int32\_t energy\_consumed, int8\_t battery\_remaining, int32\_t time\_remaining, uint8\_t charge\_state)}
+\DoxyCodeLine{227 \{}
+\DoxyCodeLine{228 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{229     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}];}
+\DoxyCodeLine{230     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, current\_consumed);}
+\DoxyCodeLine{231     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, energy\_consumed);}
+\DoxyCodeLine{232     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, temperature);}
+\DoxyCodeLine{233     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 30, current\_battery);}
+\DoxyCodeLine{234     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{235     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, battery\_function);}
+\DoxyCodeLine{236     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, type);}
+\DoxyCodeLine{237     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 35, battery\_remaining);}
+\DoxyCodeLine{238     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 36, time\_remaining);}
+\DoxyCodeLine{239     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 40, charge\_state);}
+\DoxyCodeLine{240     \_mav\_put\_uint16\_t\_array(buf, 10, voltages, 10);}
+\DoxyCodeLine{241     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{242 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{243     mavlink\_battery\_status\_t packet;}
+\DoxyCodeLine{244     packet.current\_consumed = current\_consumed;}
+\DoxyCodeLine{245     packet.energy\_consumed = energy\_consumed;}
+\DoxyCodeLine{246     packet.temperature = temperature;}
+\DoxyCodeLine{247     packet.current\_battery = current\_battery;}
+\DoxyCodeLine{248     packet.id = id;}
+\DoxyCodeLine{249     packet.battery\_function = battery\_function;}
+\DoxyCodeLine{250     packet.type = type;}
+\DoxyCodeLine{251     packet.battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{252     packet.time\_remaining = time\_remaining;}
+\DoxyCodeLine{253     packet.charge\_state = charge\_state;}
+\DoxyCodeLine{254     mav\_array\_memcpy(packet.voltages, voltages, \textcolor{keyword}{sizeof}(uint16\_t)*10);}
+\DoxyCodeLine{255     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{257 \}}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{264 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_battery\_status\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_battery\_status\_t* battery\_status)}
+\DoxyCodeLine{265 \{}
+\DoxyCodeLine{266 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{267     mavlink\_msg\_battery\_status\_send(chan, battery\_status-\/>id, battery\_status-\/>battery\_function, battery\_status-\/>type, battery\_status-\/>temperature, battery\_status-\/>voltages, battery\_status-\/>current\_battery, battery\_status-\/>current\_consumed, battery\_status-\/>energy\_consumed, battery\_status-\/>battery\_remaining, battery\_status-\/>time\_remaining, battery\_status-\/>charge\_state);}
+\DoxyCodeLine{268 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{269     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)battery\_status, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{270 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{271 \}}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{274 \textcolor{comment}{/*}}
+\DoxyCodeLine{275 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{276 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{277 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{278 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{279 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{280 \textcolor{comment}{ */}}
+\DoxyCodeLine{281 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_battery\_status\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t \textcolor{keywordtype}{id}, uint8\_t battery\_function, uint8\_t type, int16\_t temperature, \textcolor{keyword}{const} uint16\_t *voltages, int16\_t current\_battery, int32\_t current\_consumed, int32\_t energy\_consumed, int8\_t battery\_remaining, int32\_t time\_remaining, uint8\_t charge\_state)}
+\DoxyCodeLine{282 \{}
+\DoxyCodeLine{283 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{284     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{285     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 0, current\_consumed);}
+\DoxyCodeLine{286     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, energy\_consumed);}
+\DoxyCodeLine{287     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, temperature);}
+\DoxyCodeLine{288     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 30, current\_battery);}
+\DoxyCodeLine{289     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 32, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{290     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 33, battery\_function);}
+\DoxyCodeLine{291     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 34, type);}
+\DoxyCodeLine{292     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 35, battery\_remaining);}
+\DoxyCodeLine{293     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 36, time\_remaining);}
+\DoxyCodeLine{294     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 40, charge\_state);}
+\DoxyCodeLine{295     \_mav\_put\_uint16\_t\_array(buf, 10, voltages, 10);}
+\DoxyCodeLine{296     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{297 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{298     mavlink\_battery\_status\_t *packet = (mavlink\_battery\_status\_t *)msgbuf;}
+\DoxyCodeLine{299     packet-\/>current\_consumed = current\_consumed;}
+\DoxyCodeLine{300     packet-\/>energy\_consumed = energy\_consumed;}
+\DoxyCodeLine{301     packet-\/>temperature = temperature;}
+\DoxyCodeLine{302     packet-\/>current\_battery = current\_battery;}
+\DoxyCodeLine{303     packet-\/>id = id;}
+\DoxyCodeLine{304     packet-\/>battery\_function = battery\_function;}
+\DoxyCodeLine{305     packet-\/>type = type;}
+\DoxyCodeLine{306     packet-\/>battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{307     packet-\/>time\_remaining = time\_remaining;}
+\DoxyCodeLine{308     packet-\/>charge\_state = charge\_state;}
+\DoxyCodeLine{309     mav\_array\_memcpy(packet-\/>voltages, voltages, \textcolor{keyword}{sizeof}(uint16\_t)*10);}
+\DoxyCodeLine{310     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a208ed94222946e73a8e70c87b66e677d}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a62e543fffca6dedd5290330516d4c60a}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a89af37a67af8dcdaa331fcb7a363b2b0}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_CRC}});}
+\DoxyCodeLine{311 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{312 \}}
+\DoxyCodeLine{313 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{317 \textcolor{comment}{// MESSAGE BATTERY\_STATUS UNPACKING}}
+\DoxyCodeLine{318 }
+\DoxyCodeLine{319 }
+\DoxyCodeLine{325 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_battery\_status\_get\_id(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{326 \{}
+\DoxyCodeLine{327     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  32);}
+\DoxyCodeLine{328 \}}
+\DoxyCodeLine{329 }
+\DoxyCodeLine{335 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_battery\_status\_get\_battery\_function(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{336 \{}
+\DoxyCodeLine{337     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  33);}
+\DoxyCodeLine{338 \}}
+\DoxyCodeLine{339 }
+\DoxyCodeLine{345 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_battery\_status\_get\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{346 \{}
+\DoxyCodeLine{347     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  34);}
+\DoxyCodeLine{348 \}}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{355 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_battery\_status\_get\_temperature(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{356 \{}
+\DoxyCodeLine{357     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  8);}
+\DoxyCodeLine{358 \}}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{365 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_battery\_status\_get\_voltages(\textcolor{keyword}{const} mavlink\_message\_t* msg, uint16\_t *voltages)}
+\DoxyCodeLine{366 \{}
+\DoxyCodeLine{367     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t\_array(msg, voltages, 10,  10);}
+\DoxyCodeLine{368 \}}
+\DoxyCodeLine{369 }
+\DoxyCodeLine{375 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_battery\_status\_get\_current\_battery(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{376 \{}
+\DoxyCodeLine{377     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  30);}
+\DoxyCodeLine{378 \}}
+\DoxyCodeLine{379 }
+\DoxyCodeLine{385 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_battery\_status\_get\_current\_consumed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{386 \{}
+\DoxyCodeLine{387     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  0);}
+\DoxyCodeLine{388 \}}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{395 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_battery\_status\_get\_energy\_consumed(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{396 \{}
+\DoxyCodeLine{397     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  4);}
+\DoxyCodeLine{398 \}}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{405 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_battery\_status\_get\_battery\_remaining(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{406 \{}
+\DoxyCodeLine{407     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  35);}
+\DoxyCodeLine{408 \}}
+\DoxyCodeLine{409 }
+\DoxyCodeLine{415 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_battery\_status\_get\_time\_remaining(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{416 \{}
+\DoxyCodeLine{417     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  36);}
+\DoxyCodeLine{418 \}}
+\DoxyCodeLine{419 }
+\DoxyCodeLine{425 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_battery\_status\_get\_charge\_state(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{426 \{}
+\DoxyCodeLine{427     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  40);}
+\DoxyCodeLine{428 \}}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{436 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_battery\_status\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_battery\_status\_t* battery\_status)}
+\DoxyCodeLine{437 \{}
+\DoxyCodeLine{438 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{439     battery\_status-\/>current\_consumed = mavlink\_msg\_battery\_status\_get\_current\_consumed(msg);}
+\DoxyCodeLine{440     battery\_status-\/>energy\_consumed = mavlink\_msg\_battery\_status\_get\_energy\_consumed(msg);}
+\DoxyCodeLine{441     battery\_status-\/>temperature = mavlink\_msg\_battery\_status\_get\_temperature(msg);}
+\DoxyCodeLine{442     mavlink\_msg\_battery\_status\_get\_voltages(msg, battery\_status-\/>voltages);}
+\DoxyCodeLine{443     battery\_status-\/>current\_battery = mavlink\_msg\_battery\_status\_get\_current\_battery(msg);}
+\DoxyCodeLine{444     battery\_status-\/>id = mavlink\_msg\_battery\_status\_get\_id(msg);}
+\DoxyCodeLine{445     battery\_status-\/>battery\_function = mavlink\_msg\_battery\_status\_get\_battery\_function(msg);}
+\DoxyCodeLine{446     battery\_status-\/>type = mavlink\_msg\_battery\_status\_get\_type(msg);}
+\DoxyCodeLine{447     battery\_status-\/>battery\_remaining = mavlink\_msg\_battery\_status\_get\_battery\_remaining(msg);}
+\DoxyCodeLine{448     battery\_status-\/>time\_remaining = mavlink\_msg\_battery\_status\_get\_time\_remaining(msg);}
+\DoxyCodeLine{449     battery\_status-\/>charge\_state = mavlink\_msg\_battery\_status\_get\_charge\_state(msg);}
+\DoxyCodeLine{450 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{451         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}};}
+\DoxyCodeLine{452         memset(battery\_status, 0, \mbox{\hyperlink{mavlink__msg__battery__status_8h_a428df2a2947d4001b24d43a4aa4e5c9e}{MAVLINK\_MSG\_ID\_BATTERY\_STATUS\_LEN}});}
+\DoxyCodeLine{453     memcpy(battery\_status, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{454 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{455 \}}
+
+\end{DoxyCode}

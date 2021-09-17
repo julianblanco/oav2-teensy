@@ -1,0 +1,102 @@
+\hypertarget{mavlink__msg__vibration_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+vibration.h File Reference}
+\label{mavlink__msg__vibration_8h}\index{lib/common/mavlink\_msg\_vibration.h@{lib/common/mavlink\_msg\_vibration.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_aeddee57b962f5a5d42f132d663acd2a9}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION}}~241
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_a177e3ed5cafebda162c11cd19447fd8b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_a8410190eb7ccb67f1f6cac17ca922657}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION\+\_\+\+MIN\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_ac6540de5fb3cec03b868651a9c81c341}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+241\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_ac3082de49a76659e2cad532079ac548a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+241\+\_\+\+MIN\+\_\+\+LEN}}~32
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_a3324407432d87b375720d6de14929155}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION\+\_\+\+CRC}}~90
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_af3b77bdf610eddc3e76b817a1339f781}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+241\+\_\+\+CRC}}~90
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vibration_8h_a8b4bf270e75bb6d220e34586f9dda8b3}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+VIBRATION}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__vibration_8h_abf14e07855d922ee22cdd7461dad7c1b}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+vibration\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float vibration\+\_\+x;float vibration\+\_\+y;float vibration\+\_\+z;uint32\+\_\+t clipping\+\_\+0;uint32\+\_\+t clipping\+\_\+1;uint32\+\_\+t clipping\+\_\+2;\}) mavlink\+\_\+vibration\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_a8b4bf270e75bb6d220e34586f9dda8b3}\label{mavlink__msg__vibration_8h_a8b4bf270e75bb6d220e34586f9dda8b3}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MESSAGE\_INFO\_VIBRATION@{MAVLINK\_MESSAGE\_INFO\_VIBRATION}}
+\index{MAVLINK\_MESSAGE\_INFO\_VIBRATION@{MAVLINK\_MESSAGE\_INFO\_VIBRATION}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_VIBRATION}{MAVLINK\_MESSAGE\_INFO\_VIBRATION}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+VIBRATION}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}VIBRATION"{}}, \(\backslash\)}
+\DoxyCodeLine{    7, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_vibration\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vibration\_x"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_vibration\_t, vibration\_x) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vibration\_y"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_vibration\_t, vibration\_y) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vibration\_z"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_vibration\_t, vibration\_z) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}clipping\_0"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 20, offsetof(mavlink\_vibration\_t, clipping\_0) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}clipping\_1"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 24, offsetof(mavlink\_vibration\_t, clipping\_1) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}clipping\_2"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 28, offsetof(mavlink\_vibration\_t, clipping\_2) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_af3b77bdf610eddc3e76b817a1339f781}\label{mavlink__msg__vibration_8h_af3b77bdf610eddc3e76b817a1339f781}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_241\_CRC@{MAVLINK\_MSG\_ID\_241\_CRC}}
+\index{MAVLINK\_MSG\_ID\_241\_CRC@{MAVLINK\_MSG\_ID\_241\_CRC}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_241\_CRC}{MAVLINK\_MSG\_ID\_241\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+241\+\_\+\+CRC~90}
+
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_ac6540de5fb3cec03b868651a9c81c341}\label{mavlink__msg__vibration_8h_ac6540de5fb3cec03b868651a9c81c341}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_241\_LEN@{MAVLINK\_MSG\_ID\_241\_LEN}}
+\index{MAVLINK\_MSG\_ID\_241\_LEN@{MAVLINK\_MSG\_ID\_241\_LEN}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_241\_LEN}{MAVLINK\_MSG\_ID\_241\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+241\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_ac3082de49a76659e2cad532079ac548a}\label{mavlink__msg__vibration_8h_ac3082de49a76659e2cad532079ac548a}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_241\_MIN\_LEN@{MAVLINK\_MSG\_ID\_241\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_241\_MIN\_LEN@{MAVLINK\_MSG\_ID\_241\_MIN\_LEN}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_241\_MIN\_LEN}{MAVLINK\_MSG\_ID\_241\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+241\+\_\+\+MIN\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_aeddee57b962f5a5d42f132d663acd2a9}\label{mavlink__msg__vibration_8h_aeddee57b962f5a5d42f132d663acd2a9}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_VIBRATION@{MAVLINK\_MSG\_ID\_VIBRATION}}
+\index{MAVLINK\_MSG\_ID\_VIBRATION@{MAVLINK\_MSG\_ID\_VIBRATION}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VIBRATION}{MAVLINK\_MSG\_ID\_VIBRATION}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION~241}
+
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_a3324407432d87b375720d6de14929155}\label{mavlink__msg__vibration_8h_a3324407432d87b375720d6de14929155}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_VIBRATION\_CRC@{MAVLINK\_MSG\_ID\_VIBRATION\_CRC}}
+\index{MAVLINK\_MSG\_ID\_VIBRATION\_CRC@{MAVLINK\_MSG\_ID\_VIBRATION\_CRC}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VIBRATION\_CRC}{MAVLINK\_MSG\_ID\_VIBRATION\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION\+\_\+\+CRC~90}
+
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_a177e3ed5cafebda162c11cd19447fd8b}\label{mavlink__msg__vibration_8h_a177e3ed5cafebda162c11cd19447fd8b}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_VIBRATION\_LEN@{MAVLINK\_MSG\_ID\_VIBRATION\_LEN}}
+\index{MAVLINK\_MSG\_ID\_VIBRATION\_LEN@{MAVLINK\_MSG\_ID\_VIBRATION\_LEN}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VIBRATION\_LEN}{MAVLINK\_MSG\_ID\_VIBRATION\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION\+\_\+\+LEN~32}
+
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_a8410190eb7ccb67f1f6cac17ca922657}\label{mavlink__msg__vibration_8h_a8410190eb7ccb67f1f6cac17ca922657}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVLINK\_MSG\_ID\_VIBRATION\_MIN\_LEN@{MAVLINK\_MSG\_ID\_VIBRATION\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_VIBRATION\_MIN\_LEN@{MAVLINK\_MSG\_ID\_VIBRATION\_MIN\_LEN}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VIBRATION\_MIN\_LEN}{MAVLINK\_MSG\_ID\_VIBRATION\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VIBRATION\+\_\+\+MIN\+\_\+\+LEN~32}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__vibration_8h_abf14e07855d922ee22cdd7461dad7c1b}\label{mavlink__msg__vibration_8h_abf14e07855d922ee22cdd7461dad7c1b}} 
+\index{mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_vibration.h@{mavlink\_msg\_vibration.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+vibration\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;float vibration\+\_\+x;float vibration\+\_\+y;float vibration\+\_\+z;uint32\+\_\+t clipping\+\_\+0;uint32\+\_\+t clipping\+\_\+1;uint32\+\_\+t clipping\+\_\+2;\}}]{ }\end{DoxyParamCaption})}
+

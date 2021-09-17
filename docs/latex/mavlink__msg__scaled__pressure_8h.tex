@@ -1,0 +1,99 @@
+\hypertarget{mavlink__msg__scaled__pressure_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+scaled\+\_\+pressure.h File Reference}
+\label{mavlink__msg__scaled__pressure_8h}\index{lib/common/mavlink\_msg\_scaled\_pressure.h@{lib/common/mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_ad038d086d29447577ca6e82d03e2dfe7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE}}~29
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_af2f68c2933b09ab1187f92f45239116a}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE\+\_\+\+LEN}}~14
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_afc9f0121a9b7d951172714296d71756d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE\+\_\+\+MIN\+\_\+\+LEN}}~14
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_aa2237a24a815ffabb81ba16413b9ded4}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+29\+\_\+\+LEN}}~14
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_a60218595e8306e7a7660b09ba97459ec}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+29\+\_\+\+MIN\+\_\+\+LEN}}~14
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_a220c5652ad955448692b8d5a23b58e66}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE\+\_\+\+CRC}}~115
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_a1fedf127a2d9f2d9e65e864229bf62b8}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+29\+\_\+\+CRC}}~115
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_a5ea0947f16895e444430ac8b8c90f850}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+SCALED\+\_\+\+PRESSURE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__scaled__pressure_8h_a92ea294912b3d29cd6297723743e2200}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+scaled\+\_\+pressure\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float press\+\_\+abs;float press\+\_\+diff;int16\+\_\+t temperature;\}) mavlink\+\_\+scaled\+\_\+pressure\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_a5ea0947f16895e444430ac8b8c90f850}\label{mavlink__msg__scaled__pressure_8h_a5ea0947f16895e444430ac8b8c90f850}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MESSAGE\_INFO\_SCALED\_PRESSURE@{MAVLINK\_MESSAGE\_INFO\_SCALED\_PRESSURE}}
+\index{MAVLINK\_MESSAGE\_INFO\_SCALED\_PRESSURE@{MAVLINK\_MESSAGE\_INFO\_SCALED\_PRESSURE}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_SCALED\_PRESSURE}{MAVLINK\_MESSAGE\_INFO\_SCALED\_PRESSURE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+SCALED\+\_\+\+PRESSURE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}SCALED\_PRESSURE"{}}, \(\backslash\)}
+\DoxyCodeLine{    4, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_scaled\_pressure\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}press\_abs"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 4, offsetof(mavlink\_scaled\_pressure\_t, press\_abs) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}press\_diff"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_scaled\_pressure\_t, press\_diff) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}temperature"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aa77d38eacfce4c9d610a531423957a96}{MAVLINK\_TYPE\_INT16\_T}}, 0, 12, offsetof(mavlink\_scaled\_pressure\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_a1fedf127a2d9f2d9e65e864229bf62b8}\label{mavlink__msg__scaled__pressure_8h_a1fedf127a2d9f2d9e65e864229bf62b8}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_29\_CRC@{MAVLINK\_MSG\_ID\_29\_CRC}}
+\index{MAVLINK\_MSG\_ID\_29\_CRC@{MAVLINK\_MSG\_ID\_29\_CRC}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_29\_CRC}{MAVLINK\_MSG\_ID\_29\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+29\+\_\+\+CRC~115}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_aa2237a24a815ffabb81ba16413b9ded4}\label{mavlink__msg__scaled__pressure_8h_aa2237a24a815ffabb81ba16413b9ded4}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_29\_LEN@{MAVLINK\_MSG\_ID\_29\_LEN}}
+\index{MAVLINK\_MSG\_ID\_29\_LEN@{MAVLINK\_MSG\_ID\_29\_LEN}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_29\_LEN}{MAVLINK\_MSG\_ID\_29\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+29\+\_\+\+LEN~14}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_a60218595e8306e7a7660b09ba97459ec}\label{mavlink__msg__scaled__pressure_8h_a60218595e8306e7a7660b09ba97459ec}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_29\_MIN\_LEN@{MAVLINK\_MSG\_ID\_29\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_29\_MIN\_LEN@{MAVLINK\_MSG\_ID\_29\_MIN\_LEN}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_29\_MIN\_LEN}{MAVLINK\_MSG\_ID\_29\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+29\+\_\+\+MIN\+\_\+\+LEN~14}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_ad038d086d29447577ca6e82d03e2dfe7}\label{mavlink__msg__scaled__pressure_8h_ad038d086d29447577ca6e82d03e2dfe7}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_SCALED\_PRESSURE@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE}{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE~29}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_a220c5652ad955448692b8d5a23b58e66}\label{mavlink__msg__scaled__pressure_8h_a220c5652ad955448692b8d5a23b58e66}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_CRC@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_CRC@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_CRC}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_CRC}{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE\+\_\+\+CRC~115}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_af2f68c2933b09ab1187f92f45239116a}\label{mavlink__msg__scaled__pressure_8h_af2f68c2933b09ab1187f92f45239116a}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_LEN}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_LEN}{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE\+\_\+\+LEN~14}
+
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_afc9f0121a9b7d951172714296d71756d}\label{mavlink__msg__scaled__pressure_8h_afc9f0121a9b7d951172714296d71756d}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_MIN\_LEN}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_SCALED\_PRESSURE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SCALED\+\_\+\+PRESSURE\+\_\+\+MIN\+\_\+\+LEN~14}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__scaled__pressure_8h_a92ea294912b3d29cd6297723743e2200}\label{mavlink__msg__scaled__pressure_8h_a92ea294912b3d29cd6297723743e2200}} 
+\index{mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_scaled\_pressure.h@{mavlink\_msg\_scaled\_pressure.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+scaled\+\_\+pressure\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float press\+\_\+abs;float press\+\_\+diff;int16\+\_\+t temperature;\}}]{ }\end{DoxyParamCaption})}
+

@@ -1,0 +1,118 @@
+\hypertarget{_p_x4_flow_8h_source}{}\doxysection{PX4\+Flow.\+h}
+\label{_p_x4_flow_8h_source}\index{lib/PX4Flow/PX4Flow.h@{lib/PX4Flow/PX4Flow.h}}
+\mbox{\hyperlink{_p_x4_flow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Copyright (c) 2014 by Laurent Eschenauer <laurent@eschenauer.be>}}
+\DoxyCodeLine{3 \textcolor{comment}{ * }}
+\DoxyCodeLine{4 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{5 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{6 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{7 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{8 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{9 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{10 \textcolor{comment}{ * }}
+\DoxyCodeLine{11 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{12 \textcolor{comment}{ * all copies or substantial portions of the Software.}}
+\DoxyCodeLine{13 \textcolor{comment}{ * }}
+\DoxyCodeLine{14 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{15 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{16 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{17 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{18 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{19 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN}}
+\DoxyCodeLine{20 \textcolor{comment}{ * THE SOFTWARE.}}
+\DoxyCodeLine{21 \textcolor{comment}{ * }}
+\DoxyCodeLine{22 \textcolor{comment}{ */}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#ifndef \_PX4FLOW\_H}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define \_PX4FLOW\_H}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// 7 Bit I2C Address of the Flow Module: Default 0x42 (user selectable bits 0,1,2) }}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define PX4FLOW\_ADDRESS 0x42}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// timeout in milliseconds for PX4Flow read}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define PX4FLOW\_TIMEOUT 10}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// If set to true, will print error messages on Serial}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define PX4FLOW\_DEBUG true}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{// As described in the documentation}}
+\DoxyCodeLine{37 \textcolor{comment}{// http://pixhawk.org/modules/px4flow}}
+\DoxyCodeLine{38 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structi2c__frame}{i2c\_frame}}}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40     uint16\_t \mbox{\hyperlink{structi2c__frame_a800b8d79b90e2f933413405aa9801567}{frame\_count}};\textcolor{comment}{// counts created I2C frames}}
+\DoxyCodeLine{41     int16\_t \mbox{\hyperlink{structi2c__frame_ae5eb3e395522b73895ff3b10707c443b}{pixel\_flow\_x\_sum}};\textcolor{comment}{// accumulated x flow in pixels*10 since last I2C frame}}
+\DoxyCodeLine{42     int16\_t \mbox{\hyperlink{structi2c__frame_af857f0205dd89b20b9277f8acffff497}{pixel\_flow\_y\_sum}};\textcolor{comment}{// accumulated y flow in pixels*10 since last I2C frame}}
+\DoxyCodeLine{43     int16\_t \mbox{\hyperlink{structi2c__frame_a31327d48bac319121f4cecc86632e888}{flow\_comp\_m\_x}};\textcolor{comment}{// x velocity*1000 in meters / timestep}}
+\DoxyCodeLine{44     int16\_t \mbox{\hyperlink{structi2c__frame_ac25e5b08842cb092595ee5a0ada0552c}{flow\_comp\_m\_y}};\textcolor{comment}{// y velocity*1000 in meters / timestep}}
+\DoxyCodeLine{45     int16\_t \mbox{\hyperlink{structi2c__frame_a4d7b86bb1c9a6ebdc636d1de8cb9ad20}{qual}};\textcolor{comment}{// Optical flow quality / confidence 0: bad, 255: maximum quality}}
+\DoxyCodeLine{46     int16\_t \mbox{\hyperlink{structi2c__frame_a5cfec11bb84c7727172bfe0c8198712a}{gyro\_x\_rate}}; \textcolor{comment}{//gyro x rate}}
+\DoxyCodeLine{47     int16\_t \mbox{\hyperlink{structi2c__frame_a5406e19c99735763144c56b119b8d272}{gyro\_y\_rate}}; \textcolor{comment}{//gyro y rate}}
+\DoxyCodeLine{48     int16\_t \mbox{\hyperlink{structi2c__frame_a4c38d5babae000cf785f1bb433dbc5f8}{gyro\_z\_rate}}; \textcolor{comment}{//gyro z rate}}
+\DoxyCodeLine{49     uint8\_t \mbox{\hyperlink{structi2c__frame_af3d0b774da2f3f891033341307dffc4a}{gyro\_range}}; \textcolor{comment}{// gyro range}}
+\DoxyCodeLine{50     uint8\_t \mbox{\hyperlink{structi2c__frame_ac2bfec055404c723ed33ef6d36e7bcc5}{sonar\_timestamp}};\textcolor{comment}{// timestep in milliseconds between I2C frames}}
+\DoxyCodeLine{51     int16\_t \mbox{\hyperlink{structi2c__frame_af041e84e5c04f19a38ea28512abb0450}{ground\_distance}};\textcolor{comment}{// Ground distance in meters*1000. Positive value: distance known. Negative value: Unknown distance}}
+\DoxyCodeLine{52 \} \mbox{\hyperlink{_p_x4_flow_8h_a03ded115f14d63bfd8f7ea827de495e2}{i2c\_frame}};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structi2c__integral__frame}{i2c\_integral\_frame}}}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56     uint16\_t \mbox{\hyperlink{structi2c__integral__frame_a4c12e8324a8e3e51d7c5d4bbcd614988}{frame\_count\_since\_last\_readout}};\textcolor{comment}{//number of flow measurements since last I2C readout [\#frames]}}
+\DoxyCodeLine{57     int16\_t \mbox{\hyperlink{structi2c__integral__frame_a141d573a83ebfb30153ee122ceda5e03}{pixel\_flow\_x\_integral}};\textcolor{comment}{//accumulated flow in radians*10000 around x axis since last I2C readout [rad*10000]}}
+\DoxyCodeLine{58     int16\_t \mbox{\hyperlink{structi2c__integral__frame_a6b0bf70f18f79182296415b9885c5722}{pixel\_flow\_y\_integral}};\textcolor{comment}{//accumulated flow in radians*10000 around y axis since last I2C readout [rad*10000]}}
+\DoxyCodeLine{59     int16\_t \mbox{\hyperlink{structi2c__integral__frame_aa2fee338c2780d1a050a880aac277808}{gyro\_x\_rate\_integral}};\textcolor{comment}{//accumulated gyro x rates in radians*10000 since last I2C readout [rad*10000] }}
+\DoxyCodeLine{60     int16\_t \mbox{\hyperlink{structi2c__integral__frame_ac91297d9dd3d939490634572ca0d95b0}{gyro\_y\_rate\_integral}};\textcolor{comment}{//accumulated gyro y rates in radians*10000 since last I2C readout [rad*10000] }}
+\DoxyCodeLine{61     int16\_t \mbox{\hyperlink{structi2c__integral__frame_a93671b6c6361f310801e59beaa405eaf}{gyro\_z\_rate\_integral}};\textcolor{comment}{//accumulated gyro z rates in radians*10000 since last I2C readout [rad*10000] }}
+\DoxyCodeLine{62     uint32\_t \mbox{\hyperlink{structi2c__integral__frame_aeb9c4cf54f2d39e1c37ae597e5c626c6}{integration\_timespan}};\textcolor{comment}{//accumulation timespan in microseconds since last I2C readout [microseconds]}}
+\DoxyCodeLine{63     uint32\_t \mbox{\hyperlink{structi2c__integral__frame_a34494f9db0c7e3b202819512960675c7}{sonar\_timestamp}};\textcolor{comment}{// time since last sonar update [microseconds]}}
+\DoxyCodeLine{64     int16\_t \mbox{\hyperlink{structi2c__integral__frame_a9c5eec67228d140d67bed6021cd151fc}{ground\_distance}};\textcolor{comment}{// Ground distance in meters*1000 [meters*1000]}}
+\DoxyCodeLine{65     int16\_t \mbox{\hyperlink{structi2c__integral__frame_adfae35b96e7c3211bb7a6a301e161fad}{gyro\_temperature}};\textcolor{comment}{// Temperature * 100 in centi-\/degrees Celsius [degcelsius*100]}}
+\DoxyCodeLine{66     uint8\_t \mbox{\hyperlink{structi2c__integral__frame_a8ab556ab920ea871a4a512a9f28a61a4}{quality}};\textcolor{comment}{// averaged quality of accumulated flow values [0:bad quality;255: max quality]}}
+\DoxyCodeLine{67 \} \mbox{\hyperlink{_p_x4_flow_8h_a3ae0b73c4c7e588300f40bf7a10f2d81}{i2c\_integral\_frame}};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keyword}{class }\mbox{\hyperlink{class_p_x4_flow}{PX4Flow}}}
+\DoxyCodeLine{70 \{}
+\DoxyCodeLine{71   \textcolor{keyword}{public}:}
+\DoxyCodeLine{72     \mbox{\hyperlink{class_p_x4_flow_aa35e52215365a3f41854452ab092c8d1}{PX4Flow}}();}
+\DoxyCodeLine{73     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_p_x4_flow_a2c0adf557766358a7cd802266243723e}{update}}();}
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_p_x4_flow_aaa6434c8ad31b43c55b675ea4c35b0ab}{update\_integral}}();}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{comment}{// Simple frame}}
+\DoxyCodeLine{77     uint16\_t \mbox{\hyperlink{class_p_x4_flow_a7f1fc4179321591f3ad4b62f3d9031b4}{frame\_count}}();}
+\DoxyCodeLine{78     int16\_t \mbox{\hyperlink{class_p_x4_flow_a87d8716941667a2671c00eb97e95bd0b}{pixel\_flow\_x\_sum}}();}
+\DoxyCodeLine{79     int16\_t \mbox{\hyperlink{class_p_x4_flow_aa6d3b2dba3e93cad264508c9a21c4678}{pixel\_flow\_y\_sum}}();}
+\DoxyCodeLine{80     int16\_t \mbox{\hyperlink{class_p_x4_flow_aac9b668bbda3b1a035188b24807470db}{flow\_comp\_m\_x}}();}
+\DoxyCodeLine{81     int16\_t \mbox{\hyperlink{class_p_x4_flow_abfcf331d3126b7014c7f6ed1964ba984}{flow\_comp\_m\_y}}();}
+\DoxyCodeLine{82     int16\_t \mbox{\hyperlink{class_p_x4_flow_ae81b8426c1eaff1ab089b1087a64d6f6}{gyro\_x\_rate}}();}
+\DoxyCodeLine{83     int16\_t \mbox{\hyperlink{class_p_x4_flow_aa82145e1e428d839db4580e86c095085}{gyro\_y\_rate}}();}
+\DoxyCodeLine{84     int16\_t \mbox{\hyperlink{class_p_x4_flow_a602fb57cd8da6459f8c859841f6e1cc2}{gyro\_z\_rate}}();}
+\DoxyCodeLine{85     int16\_t \mbox{\hyperlink{class_p_x4_flow_a3bcdd02fca5b839e7d2233f2d2b30d07}{qual}}();}
+\DoxyCodeLine{86     uint8\_t \mbox{\hyperlink{class_p_x4_flow_a35e91c0670521531b4987d8a00739d2e}{sonar\_timestamp}}();}
+\DoxyCodeLine{87     int16\_t \mbox{\hyperlink{class_p_x4_flow_abbcdaa3b278838dd2c23c37431485af9}{ground\_distance}}();}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{comment}{// Integral frame}}
+\DoxyCodeLine{90     uint16\_t \mbox{\hyperlink{class_p_x4_flow_a19f762cb4e0247a679a665f43dafcdc7}{frame\_count\_since\_last\_readout}}();}
+\DoxyCodeLine{91     int16\_t \mbox{\hyperlink{class_p_x4_flow_aecb28018aae76bb121b0860c6e3df3f6}{pixel\_flow\_x\_integral}}();}
+\DoxyCodeLine{92     int16\_t \mbox{\hyperlink{class_p_x4_flow_abb201dcc71390d8e5d52318f654b2af6}{pixel\_flow\_y\_integral}}();}
+\DoxyCodeLine{93     int16\_t \mbox{\hyperlink{class_p_x4_flow_a96cc4bdccf24051a323216d2bc3dd7c0}{gyro\_x\_rate\_integral}}();}
+\DoxyCodeLine{94     int16\_t \mbox{\hyperlink{class_p_x4_flow_a7172d88f4fb01e63eebbe5e122c1a0ef}{gyro\_y\_rate\_integral}}();}
+\DoxyCodeLine{95     int16\_t \mbox{\hyperlink{class_p_x4_flow_a7d5e75d77ba35087e1d0094bcfce2b1d}{gyro\_z\_rate\_integral}}();}
+\DoxyCodeLine{96     uint32\_t \mbox{\hyperlink{class_p_x4_flow_a8adbeefb2b5f17eb46fc662709c8f4c9}{integration\_timespan}}();}
+\DoxyCodeLine{97     uint32\_t \mbox{\hyperlink{class_p_x4_flow_a187af5158b636c2269e082693c3196b7}{sonar\_timestamp\_integral}}();}
+\DoxyCodeLine{98     int16\_t \mbox{\hyperlink{class_p_x4_flow_a919aadc85d8f9f892038a31ab46a1991}{ground\_distance\_integral}}();}
+\DoxyCodeLine{99     int16\_t \mbox{\hyperlink{class_p_x4_flow_ae2258bed9b9fdb043269d0df93700283}{gyro\_temperature}}();}
+\DoxyCodeLine{100     uint8\_t \mbox{\hyperlink{class_p_x4_flow_a7132084bb82eaf15f8f96758dca18be3}{quality\_integral}}();}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103   \textcolor{keyword}{protected}:}
+\DoxyCodeLine{104     \textcolor{keyword}{struct }\mbox{\hyperlink{structi2c__frame}{i2c\_frame}} \mbox{\hyperlink{class_p_x4_flow_a59ce6b4997f47854ff9cd54d52016c0c}{frame}};}
+\DoxyCodeLine{105     \textcolor{keyword}{struct }\mbox{\hyperlink{structi2c__integral__frame}{i2c\_integral\_frame}} \mbox{\hyperlink{class_p_x4_flow_a7947051dfd2306da9251fae234c4986c}{iframe}};}
+\DoxyCodeLine{106     uint32\_t \mbox{\hyperlink{class_p_x4_flow_a53e895e9245d38c0672b8796b00cff77}{read32}}();}
+\DoxyCodeLine{107     uint16\_t \mbox{\hyperlink{class_p_x4_flow_a5078e270b09e1e1cea2e90ac46978d1e}{read16}}();}
+\DoxyCodeLine{108     uint8\_t \mbox{\hyperlink{class_p_x4_flow_aac0d0d446704e2799692ffd2011057cf}{read8}}();}
+\DoxyCodeLine{109     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_p_x4_flow_a3735ef1ab87eadc15a5a746fb0f8d4ab}{wait}}(\textcolor{keywordtype}{int} count);}
+\DoxyCodeLine{110 \};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

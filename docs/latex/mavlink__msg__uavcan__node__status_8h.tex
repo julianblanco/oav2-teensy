@@ -1,0 +1,101 @@
+\hypertarget{mavlink__msg__uavcan__node__status_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+uavcan\+\_\+node\+\_\+status.h File Reference}
+\label{mavlink__msg__uavcan__node__status_8h}\index{lib/common/mavlink\_msg\_uavcan\_node\_status.h@{lib/common/mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS}}~310
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS\+\_\+\+LEN}}~17
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS\+\_\+\+MIN\+\_\+\+LEN}}~17
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a654c5b782655c348a0dff1837f75be3d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+310\+\_\+\+LEN}}~17
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a3be56479265e8cd22ac81144c7978dcc}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+310\+\_\+\+MIN\+\_\+\+LEN}}~17
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS\+\_\+\+CRC}}~28
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_ae35aa542b2d837928ec56ecd9d06a144}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+310\+\_\+\+CRC}}~28
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a6459e9e7b9ac242b3013076177eeb2b6}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__uavcan__node__status_8h_a3f22b2136d61688ee46440d367ba8481}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+uavcan\+\_\+node\+\_\+status\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint32\+\_\+t uptime\+\_\+sec;uint16\+\_\+t vendor\+\_\+specific\+\_\+status\+\_\+code;uint8\+\_\+t health;uint8\+\_\+t mode;uint8\+\_\+t sub\+\_\+mode;\}) mavlink\+\_\+uavcan\+\_\+node\+\_\+status\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a6459e9e7b9ac242b3013076177eeb2b6}\label{mavlink__msg__uavcan__node__status_8h_a6459e9e7b9ac242b3013076177eeb2b6}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS@{MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS}}
+\index{MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS@{MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS}{MAVLINK\_MESSAGE\_INFO\_UAVCAN\_NODE\_STATUS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}UAVCAN\_NODE\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{    6, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_uavcan\_node\_status\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}uptime\_sec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 8, offsetof(mavlink\_uavcan\_node\_status\_t, uptime\_sec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}health"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 14, offsetof(mavlink\_uavcan\_node\_status\_t, health) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 15, offsetof(mavlink\_uavcan\_node\_status\_t, mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}sub\_mode"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 16, offsetof(mavlink\_uavcan\_node\_status\_t, sub\_mode) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}vendor\_specific\_status\_code"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 12, offsetof(mavlink\_uavcan\_node\_status\_t, vendor\_specific\_status\_code) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_ae35aa542b2d837928ec56ecd9d06a144}\label{mavlink__msg__uavcan__node__status_8h_ae35aa542b2d837928ec56ecd9d06a144}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_310\_CRC@{MAVLINK\_MSG\_ID\_310\_CRC}}
+\index{MAVLINK\_MSG\_ID\_310\_CRC@{MAVLINK\_MSG\_ID\_310\_CRC}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_310\_CRC}{MAVLINK\_MSG\_ID\_310\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+310\+\_\+\+CRC~28}
+
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a654c5b782655c348a0dff1837f75be3d}\label{mavlink__msg__uavcan__node__status_8h_a654c5b782655c348a0dff1837f75be3d}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_310\_LEN@{MAVLINK\_MSG\_ID\_310\_LEN}}
+\index{MAVLINK\_MSG\_ID\_310\_LEN@{MAVLINK\_MSG\_ID\_310\_LEN}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_310\_LEN}{MAVLINK\_MSG\_ID\_310\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+310\+\_\+\+LEN~17}
+
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a3be56479265e8cd22ac81144c7978dcc}\label{mavlink__msg__uavcan__node__status_8h_a3be56479265e8cd22ac81144c7978dcc}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_310\_MIN\_LEN@{MAVLINK\_MSG\_ID\_310\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_310\_MIN\_LEN@{MAVLINK\_MSG\_ID\_310\_MIN\_LEN}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_310\_MIN\_LEN}{MAVLINK\_MSG\_ID\_310\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+310\+\_\+\+MIN\+\_\+\+LEN~17}
+
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}\label{mavlink__msg__uavcan__node__status_8h_ab5e156656de45d3dac384929bceabd33}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}
+\index{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS~310}
+
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}\label{mavlink__msg__uavcan__node__status_8h_a57e85a84f94a7b077dc74f42d479d7d2}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}}
+\index{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS\+\_\+\+CRC~28}
+
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}\label{mavlink__msg__uavcan__node__status_8h_a14b0145b6672897bd8f01b7812809a39}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}
+\index{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS\+\_\+\+LEN~17}
+
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}\label{mavlink__msg__uavcan__node__status_8h_a112fd93b4b28b29df295ef3f7bb241a8}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}{MAVLINK\_MSG\_ID\_UAVCAN\_NODE\_STATUS\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+UAVCAN\+\_\+\+NODE\+\_\+\+STATUS\+\_\+\+MIN\+\_\+\+LEN~17}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__uavcan__node__status_8h_a3f22b2136d61688ee46440d367ba8481}\label{mavlink__msg__uavcan__node__status_8h_a3f22b2136d61688ee46440d367ba8481}} 
+\index{mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_uavcan\_node\_status.h@{mavlink\_msg\_uavcan\_node\_status.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+uavcan\+\_\+node\+\_\+status\+\_\+t \{ uint64\+\_\+t time\+\_\+usec;uint32\+\_\+t uptime\+\_\+sec;uint16\+\_\+t vendor\+\_\+specific\+\_\+status\+\_\+code;uint8\+\_\+t health;uint8\+\_\+t mode;uint8\+\_\+t sub\+\_\+mode;\}}]{ }\end{DoxyParamCaption})}
+

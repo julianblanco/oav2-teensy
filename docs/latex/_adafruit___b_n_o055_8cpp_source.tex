@@ -1,0 +1,660 @@
+\hypertarget{_adafruit___b_n_o055_8cpp_source}{}\doxysection{Adafruit\+\_\+\+BNO055.\+cpp}
+\label{_adafruit___b_n_o055_8cpp_source}\index{lib/Adafruit\_BNO055/Adafruit\_BNO055.cpp@{lib/Adafruit\_BNO055/Adafruit\_BNO055.cpp}}
+\mbox{\hyperlink{_adafruit___b_n_o055_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00030}00030 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00032}00032 \textcolor{preprocessor}{\#include <limits.h>}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00033}00033 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00035}00035 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_adafruit___b_n_o055_8h}{Adafruit\_BNO055.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00046}\mbox{\hyperlink{class_adafruit___b_n_o055_a29e00d7b95b8f7b4029b95f057ac003a}{00046}} \mbox{\hyperlink{class_adafruit___b_n_o055_a29e00d7b95b8f7b4029b95f057ac003a}{Adafruit\_BNO055::Adafruit\_BNO055}}(int32\_t sensorID, uint8\_t address,}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00047}00047                                  TwoWire *theWire) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00048}00048   \_sensorID = sensorID;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00049}00049   \_address = address;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00050}00050   \_wire = theWire;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00072}\mbox{\hyperlink{class_adafruit___b_n_o055_aeea25ebb2984c57ffd1292e87ba336cb}{00072}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___b_n_o055_aeea25ebb2984c57ffd1292e87ba336cb}{Adafruit\_BNO055::begin}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} mode) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00073}00073 \textcolor{preprocessor}{\#if defined(ARDUINO\_SAMD\_ZERO) \&\& (\_address == BNO055\_ADDRESS\_A)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00074}00074 \textcolor{preprocessor}{\#error                                                                         \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00075}00075 \textcolor{preprocessor}{    "{}On an arduino Zero, BNO055's ADR pin must be high. Fix that, then delete this line."{}}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00076}00076   \_address = \mbox{\hyperlink{_adafruit___b_n_o055_8h_aa141fc6fa09b855e6bda7e792bf54e21}{BNO055\_ADDRESS\_B}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00077}00077 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00079}00079   \textcolor{comment}{/* Enable I2C */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00080}00080   \_wire-\/>begin();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00082}00082   \textcolor{comment}{// BNO055 clock stretches for 500us or more!}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00083}00083 \textcolor{preprocessor}{\#ifdef ESP8266}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00084}00084   \_wire-\/>setClockStretchLimit(1000); \textcolor{comment}{// Allow for 1000us of clock stretching}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00085}00085 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00087}00087   \textcolor{comment}{/* Make sure we have the right device */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00088}00088   uint8\_t \textcolor{keywordtype}{id} = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aa275fa7224eeaf5dee18716a4131e851}{BNO055\_CHIP\_ID\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00089}00089   \textcolor{keywordflow}{if} (\textcolor{keywordtype}{id} != \mbox{\hyperlink{_adafruit___b_n_o055_8h_a5d61e3776e3b3017ed5e2d84ed9ec578}{BNO055\_ID}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00090}00090     delay(1000); \textcolor{comment}{// hold on for boot}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00091}00091     \textcolor{keywordtype}{id} = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aa275fa7224eeaf5dee18716a4131e851}{BNO055\_CHIP\_ID\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00092}00092     \textcolor{keywordflow}{if} (\textcolor{keywordtype}{id} != \mbox{\hyperlink{_adafruit___b_n_o055_8h_a5d61e3776e3b3017ed5e2d84ed9ec578}{BNO055\_ID}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00093}00093       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// still not? ok bail}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00094}00094     \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00095}00095   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00097}00097   \textcolor{comment}{/* Switch to config mode (just in case since this is the default) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00098}00098   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00100}00100   \textcolor{comment}{/* Reset */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00101}00101   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acce68cf3512455d31a574820832f7d21}{BNO055\_SYS\_TRIGGER\_ADDR}}, 0x20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00102}00102   \textcolor{comment}{/* Delay incrased to 30ms due to power issues https://tinyurl.com/y375z699 */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00103}00103   delay(30);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00104}00104   \textcolor{keywordflow}{while} (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aa275fa7224eeaf5dee18716a4131e851}{BNO055\_CHIP\_ID\_ADDR}}) != \mbox{\hyperlink{_adafruit___b_n_o055_8h_a5d61e3776e3b3017ed5e2d84ed9ec578}{BNO055\_ID}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00105}00105     delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00106}00106   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00107}00107   delay(50);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00109}00109   \textcolor{comment}{/* Set to normal power mode */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00110}00110   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8796ceaf4ce33b9bd553c0bd77ec6cfa}{BNO055\_PWR\_MODE\_ADDR}}, \mbox{\hyperlink{class_adafruit___b_n_o055_ae61dcad8ce3c5e6ffd701011cf75ca4aa460773e8dd4c41a8328260ebdd0911d6}{POWER\_MODE\_NORMAL}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00111}00111   delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00113}00113   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4335c5a431c79bdbaa90285529c55ad9}{BNO055\_PAGE\_ID\_ADDR}}, 0);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00115}00115   \textcolor{comment}{/* Set the output units */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00116}00116   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00117}00117 \textcolor{comment}{  uint8\_t unitsel = (0 << 7) | // Orientation = Android}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00118}00118 \textcolor{comment}{                    (0 << 4) | // Temperature = Celsius}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00119}00119 \textcolor{comment}{                    (0 << 2) | // Euler = Degrees}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00120}00120 \textcolor{comment}{                    (1 << 1) | // Gyro = Rads}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00121}00121 \textcolor{comment}{                    (0 << 0);  // Accelerometer = m/s\string^2}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00122}00122 \textcolor{comment}{  write8(BNO055\_UNIT\_SEL\_ADDR, unitsel);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00123}00123 \textcolor{comment}{  */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00125}00125   \textcolor{comment}{/* Configure axis mapping (see section 3.4) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00126}00126   \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00127}00127 \textcolor{comment}{  write8(BNO055\_AXIS\_MAP\_CONFIG\_ADDR, REMAP\_CONFIG\_P2); // P0-\/P7, Default is P1}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00128}00128 \textcolor{comment}{  delay(10);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00129}00129 \textcolor{comment}{  write8(BNO055\_AXIS\_MAP\_SIGN\_ADDR, REMAP\_SIGN\_P2); // P0-\/P7, Default is P1}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00130}00130 \textcolor{comment}{  delay(10);}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00131}00131 \textcolor{comment}{  */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00133}00133   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acce68cf3512455d31a574820832f7d21}{BNO055\_SYS\_TRIGGER\_ADDR}}, 0x0);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00134}00134   delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00135}00135   \textcolor{comment}{/* Set the requested operating mode (see section 3.3) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00136}00136   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(mode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00137}00137   delay(20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00139}00139   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00140}00140 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00160}\mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{00160}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{Adafruit\_BNO055::setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} mode) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00161}00161   \_mode = mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00162}00162   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ac04456f6b816356de9c9ffc7d0f328b1}{BNO055\_OPR\_MODE\_ADDR}}, \_mode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00163}00163   delay(30);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00164}00164 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00179}\mbox{\hyperlink{class_adafruit___b_n_o055_ae0bdc276735792dd219c6dfe041d9d91}{00179}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_ae0bdc276735792dd219c6dfe041d9d91}{Adafruit\_BNO055::setAxisRemap}}(}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00180}00180     \mbox{\hyperlink{class_adafruit___b_n_o055_a14148c0000d1f13e4438c6dca1e386f2}{adafruit\_bno055\_axis\_remap\_config\_t}} remapcode) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00181}00181   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} modeback = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00183}00183   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00184}00184   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00185}00185   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3049c470d3a481198488cf2f663a6074}{BNO055\_AXIS\_MAP\_CONFIG\_ADDR}}, remapcode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00186}00186   delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00187}00187   \textcolor{comment}{/* Set the requested operating mode (see section 3.3) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00188}00188   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(modeback);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00189}00189   delay(20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00190}00190 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00205}\mbox{\hyperlink{class_adafruit___b_n_o055_ad154221f5c790321a978c74d6af92e2d}{00205}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_ad154221f5c790321a978c74d6af92e2d}{Adafruit\_BNO055::setAxisSign}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a2456a57a97fb940f07b08319580b2e2f}{adafruit\_bno055\_axis\_remap\_sign\_t}} remapsign) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00206}00206   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} modeback = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00207}00207 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00208}00208   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00209}00209   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00210}00210   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a13c8e7798197d4a92ee1fe5c54c5f62e}{BNO055\_AXIS\_MAP\_SIGN\_ADDR}}, remapsign);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00211}00211   delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00212}00212   \textcolor{comment}{/* Set the requested operating mode (see section 3.3) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00213}00213   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(modeback);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00214}00214   delay(20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00215}00215 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00216}00216 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00222}\mbox{\hyperlink{class_adafruit___b_n_o055_a88343dd2f31190dfbb8dcea569e5ed97}{00222}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a88343dd2f31190dfbb8dcea569e5ed97}{Adafruit\_BNO055::setExtCrystalUse}}(\textcolor{keywordtype}{boolean} usextal) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00223}00223   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} modeback = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00224}00224 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00225}00225   \textcolor{comment}{/* Switch to config mode (just in case since this is the default) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00226}00226   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00227}00227   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00228}00228   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4335c5a431c79bdbaa90285529c55ad9}{BNO055\_PAGE\_ID\_ADDR}}, 0);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00229}00229   \textcolor{keywordflow}{if} (usextal) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00230}00230     write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acce68cf3512455d31a574820832f7d21}{BNO055\_SYS\_TRIGGER\_ADDR}}, 0x80);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00231}00231   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00232}00232     write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acce68cf3512455d31a574820832f7d21}{BNO055\_SYS\_TRIGGER\_ADDR}}, 0x00);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00233}00233   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00234}00234   delay(10);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00235}00235   \textcolor{comment}{/* Set the requested operating mode (see section 3.3) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00236}00236   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(modeback);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00237}00237   delay(20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00238}00238 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00239}00239 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00249}\mbox{\hyperlink{class_adafruit___b_n_o055_aa8b5c135d6b1e654066c24062ddf79b0}{00249}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_aa8b5c135d6b1e654066c24062ddf79b0}{Adafruit\_BNO055::getSystemStatus}}(uint8\_t *system\_status,}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00250}00250                                       uint8\_t *self\_test\_result,}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00251}00251                                       uint8\_t *system\_error) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00252}00252   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4335c5a431c79bdbaa90285529c55ad9}{BNO055\_PAGE\_ID\_ADDR}}, 0);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00253}00253 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00254}00254   \textcolor{comment}{/* System Status (see section 4.3.58)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00255}00255 \textcolor{comment}{     0 = Idle}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00256}00256 \textcolor{comment}{     1 = System Error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00257}00257 \textcolor{comment}{     2 = Initializing Peripherals}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00258}00258 \textcolor{comment}{     3 = System Iniitalization}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00259}00259 \textcolor{comment}{     4 = Executing Self-\/Test}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00260}00260 \textcolor{comment}{     5 = Sensor fusio algorithm running}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00261}00261 \textcolor{comment}{     6 = System running without fusion algorithms}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00262}00262 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00264}00264   \textcolor{keywordflow}{if} (system\_status != 0)}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00265}00265     *system\_status = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ad48a64ee8f956b33f1b75b9dbb6a8512}{BNO055\_SYS\_STAT\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00267}00267   \textcolor{comment}{/* Self Test Results}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00268}00268 \textcolor{comment}{     1 = test passed, 0 = test failed}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00269}00269 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00270}00270 \textcolor{comment}{     Bit 0 = Accelerometer self test}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00271}00271 \textcolor{comment}{     Bit 1 = Magnetometer self test}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00272}00272 \textcolor{comment}{     Bit 2 = Gyroscope self test}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00273}00273 \textcolor{comment}{     Bit 3 = MCU self test}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00274}00274 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00275}00275 \textcolor{comment}{     0x0F = all good!}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00276}00276 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00277}00277 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00278}00278   \textcolor{keywordflow}{if} (self\_test\_result != 0)}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00279}00279     *self\_test\_result = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ab136291bff48f7d6ac0b594da19ca66b}{BNO055\_SELFTEST\_RESULT\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00280}00280 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00281}00281   \textcolor{comment}{/* System Error (see section 4.3.59)}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00282}00282 \textcolor{comment}{     0 = No error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00283}00283 \textcolor{comment}{     1 = Peripheral initialization error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00284}00284 \textcolor{comment}{     2 = System initialization error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00285}00285 \textcolor{comment}{     3 = Self test result failed}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00286}00286 \textcolor{comment}{     4 = Register map value out of range}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00287}00287 \textcolor{comment}{     5 = Register map address out of range}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00288}00288 \textcolor{comment}{     6 = Register map write error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00289}00289 \textcolor{comment}{     7 = BNO low power mode not available for selected operat ion mode}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00290}00290 \textcolor{comment}{     8 = Accelerometer power mode not available}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00291}00291 \textcolor{comment}{     9 = Fusion algorithm configuration error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00292}00292 \textcolor{comment}{     A = Sensor configuration error}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00293}00293 \textcolor{comment}{   */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00295}00295   \textcolor{keywordflow}{if} (system\_error != 0)}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00296}00296     *system\_error = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a97b93ee49ef0ea754c1e0a92ee5cf9ab}{BNO055\_SYS\_ERR\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00298}00298   delay(200);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00299}00299 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00306}\mbox{\hyperlink{class_adafruit___b_n_o055_ab0754eee135fdd3f952d9d2df3dfbf7a}{00306}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_ab0754eee135fdd3f952d9d2df3dfbf7a}{Adafruit\_BNO055::getRevInfo}}(\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t}{adafruit\_bno055\_rev\_info\_t}} *info) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00307}00307   uint8\_t a, b;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00308}00308 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00309}00309   memset(info, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t}{adafruit\_bno055\_rev\_info\_t}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00310}00310 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00311}00311   \textcolor{comment}{/* Check the accelerometer revision */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00312}00312   info-\/>\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t_ad16ef1827302a09c31bcb264ff4579e7}{accel\_rev}} = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a149f2f8fc3fce4cfb0aefb815ef00a48}{BNO055\_ACCEL\_REV\_ID\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00313}00313 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00314}00314   \textcolor{comment}{/* Check the magnetometer revision */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00315}00315   info-\/>\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t_ae6ce4bc850654ade8d9978a1354e0532}{mag\_rev}} = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a746e1fc48d00c95444cc6842871e1799}{BNO055\_MAG\_REV\_ID\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00316}00316 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00317}00317   \textcolor{comment}{/* Check the gyroscope revision */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00318}00318   info-\/>\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t_aa93ab742ae73adbec81c47195da38c8c}{gyro\_rev}} = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ac3e24f4d9b0856d5adf453d48d212229}{BNO055\_GYRO\_REV\_ID\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00320}00320   \textcolor{comment}{/* Check the SW revision */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00321}00321   info-\/>\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t_a17b2372a03dfcb8eaf9a8fab9d511e48}{bl\_rev}} = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a099f530e4e69326e7c56b9516bc58ab8}{BNO055\_BL\_REV\_ID\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00322}00322 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00323}00323   a = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a6daa86f588765df194d98edcc3507442}{BNO055\_SW\_REV\_ID\_LSB\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00324}00324   b = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acdf7f4b1082a3fcbc8d56f59e58ca4cc}{BNO055\_SW\_REV\_ID\_MSB\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00325}00325   info-\/>\mbox{\hyperlink{struct_adafruit___b_n_o055_1_1adafruit__bno055__rev__info__t_a2699cc1023a026c17db56f6e2fe289ac}{sw\_rev}} = (((uint16\_t)b) << 8) | ((uint16\_t)a);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00326}00326 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00327}00327 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00343}\mbox{\hyperlink{class_adafruit___b_n_o055_a34cb7b7421d4d9597ccfc31470c2c3f7}{00343}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a34cb7b7421d4d9597ccfc31470c2c3f7}{Adafruit\_BNO055::getCalibration}}(uint8\_t *sys, uint8\_t *gyro,}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00344}00344                                      uint8\_t *accel, uint8\_t *mag) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00345}00345   uint8\_t calData = read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a48c8b7d04d47aedf7dbcb0bc34d1adea}{BNO055\_CALIB\_STAT\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00346}00346   \textcolor{keywordflow}{if} (sys != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00347}00347     *sys = (calData >> 6) \& 0x03;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00348}00348   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00349}00349   \textcolor{keywordflow}{if} (gyro != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00350}00350     *gyro = (calData >> 4) \& 0x03;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00351}00351   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00352}00352   \textcolor{keywordflow}{if} (accel != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00353}00353     *accel = (calData >> 2) \& 0x03;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00354}00354   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00355}00355   \textcolor{keywordflow}{if} (mag != NULL) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00356}00356     *mag = calData \& 0x03;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00357}00357   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00358}00358 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00359}00359 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00364}\mbox{\hyperlink{class_adafruit___b_n_o055_a098073aa38eccfbb4235219e7f4fd403}{00364}} int8\_t \mbox{\hyperlink{class_adafruit___b_n_o055_a098073aa38eccfbb4235219e7f4fd403}{Adafruit\_BNO055::getTemp}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00365}00365   int8\_t temp = (int8\_t)(read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4a72b5554806edfc051b59a387d3bd57}{BNO055\_TEMP\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00366}00366   \textcolor{keywordflow}{return} temp;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00367}00367 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00368}00368 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00381}\mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{00381}} \mbox{\hyperlink{classimu_1_1_vector}{imu::Vector<3>}} \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{Adafruit\_BNO055::getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25}{adafruit\_vector\_type\_t}} vector\_type) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00382}00382   \mbox{\hyperlink{classimu_1_1_vector}{imu::Vector<3>}} xyz;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00383}00383   uint8\_t buffer[6];}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00384}00384   memset(buffer, 0, 6);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00385}00385 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00386}00386   int16\_t x, y, z;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00387}00387   x = y = z = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00388}00388 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00389}00389   \textcolor{comment}{/* Read vector data (6 bytes) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00390}00390   readLen((\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485}{adafruit\_bno055\_reg\_t}})vector\_type, buffer, 6);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00391}00391 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00392}00392   x = ((int16\_t)buffer[0]) | (((int16\_t)buffer[1]) << 8);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00393}00393   y = ((int16\_t)buffer[2]) | (((int16\_t)buffer[3]) << 8);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00394}00394   z = ((int16\_t)buffer[4]) | (((int16\_t)buffer[5]) << 8);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00395}00395 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00400}00400   \textcolor{keywordflow}{switch} (vector\_type) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00401}00401   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a1c60f2563c7ef6aae996bebed41081bd}{VECTOR\_MAGNETOMETER}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00402}00402     \textcolor{comment}{/* 1uT = 16 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00403}00403     xyz[0] = ((double)x) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00404}00404     xyz[1] = ((double)y) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00405}00405     xyz[2] = ((double)z) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00406}00406     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00407}00407   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a02367b4ed33bd911181d1fb0c1ceb1f0}{VECTOR\_GYROSCOPE}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00408}00408     \textcolor{comment}{/* 1dps = 16 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00409}00409     xyz[0] = ((double)x) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00410}00410     xyz[1] = ((double)y) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00411}00411     xyz[2] = ((double)z) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00412}00412     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00413}00413   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25af512e6567f6decb1c18af65b5cb1d539}{VECTOR\_EULER}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00414}00414     \textcolor{comment}{/* 1 degree = 16 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00415}00415     xyz[0] = ((double)x) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00416}00416     xyz[1] = ((double)y) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00417}00417     xyz[2] = ((double)z) / 16.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00418}00418     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00419}00419   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a7683862660e6744c7b986635b8a1c275}{VECTOR\_ACCELEROMETER}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00420}00420     \textcolor{comment}{/* 1m/s\string^2 = 100 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00421}00421     xyz[0] = ((double)x) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00422}00422     xyz[1] = ((double)y) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00423}00423     xyz[2] = ((double)z) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00424}00424     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00425}00425   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a8bef16d23fcf2d87d568273a1c1d022d}{VECTOR\_LINEARACCEL}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00426}00426     \textcolor{comment}{/* 1m/s\string^2 = 100 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00427}00427     xyz[0] = ((double)x) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00428}00428     xyz[1] = ((double)y) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00429}00429     xyz[2] = ((double)z) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00430}00430     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00431}00431   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a0bcfa0920b42abb820f6a4563cb4ef08}{VECTOR\_GRAVITY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00432}00432     \textcolor{comment}{/* 1m/s\string^2 = 100 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00433}00433     xyz[0] = ((double)x) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00434}00434     xyz[1] = ((double)y) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00435}00435     xyz[2] = ((double)z) / 100.0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00436}00436     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00437}00437   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00438}00438 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00439}00439   \textcolor{keywordflow}{return} xyz;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00440}00440 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00441}00441 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00446}\mbox{\hyperlink{class_adafruit___b_n_o055_afe84dad4e5dfb61d6c2a5fa5daa97147}{00446}} \mbox{\hyperlink{classimu_1_1_quaternion}{imu::Quaternion}} \mbox{\hyperlink{class_adafruit___b_n_o055_afe84dad4e5dfb61d6c2a5fa5daa97147}{Adafruit\_BNO055::getQuat}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00447}00447   uint8\_t buffer[8];}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00448}00448   memset(buffer, 0, 8);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00449}00449 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00450}00450   int16\_t x, y, z, w;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00451}00451   x = y = z = w = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00452}00452 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00453}00453   \textcolor{comment}{/* Read quat data (8 bytes) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00454}00454   readLen(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aaa7d9546054fa74cc8d84028da2de91e}{BNO055\_QUATERNION\_DATA\_W\_LSB\_ADDR}}, buffer, 8);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00455}00455   w = (((uint16\_t)buffer[1]) << 8) | ((uint16\_t)buffer[0]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00456}00456   x = (((uint16\_t)buffer[3]) << 8) | ((uint16\_t)buffer[2]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00457}00457   y = (((uint16\_t)buffer[5]) << 8) | ((uint16\_t)buffer[4]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00458}00458   z = (((uint16\_t)buffer[7]) << 8) | ((uint16\_t)buffer[6]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00459}00459 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00466}00466   \textcolor{keyword}{const} \textcolor{keywordtype}{double} scale = (1.0 / (1 << 14));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00467}00467   \mbox{\hyperlink{classimu_1_1_quaternion}{imu::Quaternion}} quat(scale * w, scale * x, scale * y, scale * z);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00468}00468   \textcolor{keywordflow}{return} quat;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00469}00469 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00470}00470 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00476}\mbox{\hyperlink{class_adafruit___b_n_o055_a1a0849285f6cebde09b4812d9683010c}{00476}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a1a0849285f6cebde09b4812d9683010c}{Adafruit\_BNO055::getSensor}}(\mbox{\hyperlink{structsensor__t}{sensor\_t}} *sensor) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00477}00477   \textcolor{comment}{/* Clear the sensor\_t object */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00478}00478   memset(sensor, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsensor__t}{sensor\_t}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00479}00479 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00480}00480   \textcolor{comment}{/* Insert the sensor name in the fixed length char array */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00481}00481   strncpy(sensor-\/>\mbox{\hyperlink{structsensor__t_a4383b68d36f9dc4096d83583c3b009bf}{name}}, \textcolor{stringliteral}{"{}BNO055"{}}, \textcolor{keyword}{sizeof}(sensor-\/>\mbox{\hyperlink{structsensor__t_a4383b68d36f9dc4096d83583c3b009bf}{name}}) -\/ 1);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00482}00482   sensor-\/>\mbox{\hyperlink{structsensor__t_a4383b68d36f9dc4096d83583c3b009bf}{name}}[\textcolor{keyword}{sizeof}(sensor-\/>\mbox{\hyperlink{structsensor__t_a4383b68d36f9dc4096d83583c3b009bf}{name}}) -\/ 1] = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00483}00483   sensor-\/>\mbox{\hyperlink{structsensor__t_a274f12a47669fbd2b61935706339e1c2}{version}} = 1;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00484}00484   sensor-\/>\mbox{\hyperlink{structsensor__t_a224f6201d59873cc1b6e9dd8a1894736}{sensor\_id}} = \_sensorID;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00485}00485   sensor-\/>\mbox{\hyperlink{structsensor__t_ae1d59df64438923d3bd95f2416c32203}{type}} = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}{SENSOR\_TYPE\_ORIENTATION}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00486}00486   sensor-\/>\mbox{\hyperlink{structsensor__t_a1cd271377ff25ec9ca54886f876c87ec}{min\_delay}} = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00487}00487   sensor-\/>\mbox{\hyperlink{structsensor__t_a1a17359f1080eb169a452656f7dec1ee}{max\_value}} = 0.0F;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00488}00488   sensor-\/>\mbox{\hyperlink{structsensor__t_a4556ed82a0389a7f6af25a6fd0ee1431}{min\_value}} = 0.0F;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00489}00489   sensor-\/>\mbox{\hyperlink{structsensor__t_a926aba3216afd50e62c0a6cdbcc7433a}{resolution}} = 0.01F;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00490}00490 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00491}00491 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00498}\mbox{\hyperlink{class_adafruit___b_n_o055_a8c91811617bd61d7c130ae8b79dd58ee}{00498}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___b_n_o055_a8c91811617bd61d7c130ae8b79dd58ee}{Adafruit\_BNO055::getEvent}}(\mbox{\hyperlink{structsensors__event__t}{sensors\_event\_t}} *event) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00499}00499   \textcolor{comment}{/* Clear the event */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00500}00500   memset(event, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsensors__event__t}{sensors\_event\_t}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00501}00501 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00502}00502   \textcolor{keyword}{event}-\/>version = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsensors__event__t}{sensors\_event\_t}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00503}00503   \textcolor{keyword}{event}-\/>sensor\_id = \_sensorID;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00504}00504   \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}{SENSOR\_TYPE\_ORIENTATION}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00505}00505   \textcolor{keyword}{event}-\/>timestamp = millis();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00506}00506 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00507}00507   \textcolor{comment}{/* Get a Euler angle sample for orientation */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00508}00508   \mbox{\hyperlink{classimu_1_1_vector}{imu::Vector<3>}} euler = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25af512e6567f6decb1c18af65b5cb1d539}{Adafruit\_BNO055::VECTOR\_EULER}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00509}00509   \textcolor{keyword}{event}-\/>orientation.x = euler.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00510}00510   \textcolor{keyword}{event}-\/>orientation.y = euler.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00511}00511   \textcolor{keyword}{event}-\/>orientation.z = euler.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00512}00512 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00513}00513   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00514}00514 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00515}00515 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00524}\mbox{\hyperlink{class_adafruit___b_n_o055_a33f7a219f8f5ed55e286d93821854d21}{00524}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___b_n_o055_a8c91811617bd61d7c130ae8b79dd58ee}{Adafruit\_BNO055::getEvent}}(\mbox{\hyperlink{structsensors__event__t}{sensors\_event\_t}} *event,}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00525}00525                                \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25}{adafruit\_vector\_type\_t}} vec\_type) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00526}00526   \textcolor{comment}{/* Clear the event */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00527}00527   memset(event, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsensors__event__t}{sensors\_event\_t}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00528}00528 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00529}00529   \textcolor{keyword}{event}-\/>version = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structsensors__event__t}{sensors\_event\_t}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00530}00530   \textcolor{keyword}{event}-\/>sensor\_id = \_sensorID;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00531}00531   \textcolor{keyword}{event}-\/>timestamp = millis();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00532}00532 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00533}00533   \textcolor{comment}{// read the data according to vec\_type}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00534}00534   \mbox{\hyperlink{classimu_1_1_vector}{imu::Vector<3>}} vec;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00535}00535   \textcolor{keywordflow}{if} (vec\_type == \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a8bef16d23fcf2d87d568273a1c1d022d}{Adafruit\_BNO055::VECTOR\_LINEARACCEL}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00536}00536     \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a914a1f090dcc61586318fd4eb4cb1384}{SENSOR\_TYPE\_LINEAR\_ACCELERATION}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00537}00537     vec = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a8bef16d23fcf2d87d568273a1c1d022d}{Adafruit\_BNO055::VECTOR\_LINEARACCEL}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00538}00538 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00539}00539     \textcolor{keyword}{event}-\/>acceleration.x = vec.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00540}00540     \textcolor{keyword}{event}-\/>acceleration.y = vec.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00541}00541     \textcolor{keyword}{event}-\/>acceleration.z = vec.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00542}00542   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (vec\_type == \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a7683862660e6744c7b986635b8a1c275}{Adafruit\_BNO055::VECTOR\_ACCELEROMETER}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00543}00543     \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643abd9779b04292b5e8054485b10fccb99c}{SENSOR\_TYPE\_ACCELEROMETER}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00544}00544     vec = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a7683862660e6744c7b986635b8a1c275}{Adafruit\_BNO055::VECTOR\_ACCELEROMETER}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00545}00545 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00546}00546     \textcolor{keyword}{event}-\/>acceleration.x = vec.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00547}00547     \textcolor{keyword}{event}-\/>acceleration.y = vec.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00548}00548     \textcolor{keyword}{event}-\/>acceleration.z = vec.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00549}00549   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (vec\_type == \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a0bcfa0920b42abb820f6a4563cb4ef08}{Adafruit\_BNO055::VECTOR\_GRAVITY}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00550}00550     \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643abd9779b04292b5e8054485b10fccb99c}{SENSOR\_TYPE\_ACCELEROMETER}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00551}00551     vec = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a0bcfa0920b42abb820f6a4563cb4ef08}{Adafruit\_BNO055::VECTOR\_GRAVITY}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00552}00552 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00553}00553     \textcolor{keyword}{event}-\/>acceleration.x = vec.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00554}00554     \textcolor{keyword}{event}-\/>acceleration.y = vec.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00555}00555     \textcolor{keyword}{event}-\/>acceleration.z = vec.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00556}00556   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (vec\_type == \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25af512e6567f6decb1c18af65b5cb1d539}{Adafruit\_BNO055::VECTOR\_EULER}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00557}00557     \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643af2ccaca19bdabe513c45c058003ed596}{SENSOR\_TYPE\_ORIENTATION}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00558}00558     vec = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25af512e6567f6decb1c18af65b5cb1d539}{Adafruit\_BNO055::VECTOR\_EULER}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00559}00559 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00560}00560     \textcolor{keyword}{event}-\/>orientation.x = vec.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00561}00561     \textcolor{keyword}{event}-\/>orientation.y = vec.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00562}00562     \textcolor{keyword}{event}-\/>orientation.z = vec.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00563}00563   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (vec\_type == \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a02367b4ed33bd911181d1fb0c1ceb1f0}{Adafruit\_BNO055::VECTOR\_GYROSCOPE}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00564}00564     \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643ac407aca03c7ce72ea55e52f40477561b}{SENSOR\_TYPE\_ROTATION\_VECTOR}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00565}00565     vec = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a02367b4ed33bd911181d1fb0c1ceb1f0}{Adafruit\_BNO055::VECTOR\_GYROSCOPE}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00566}00566 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00567}00567     \textcolor{keyword}{event}-\/>gyro.x = vec.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00568}00568     \textcolor{keyword}{event}-\/>gyro.y = vec.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00569}00569     \textcolor{keyword}{event}-\/>gyro.z = vec.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00570}00570   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (vec\_type == \mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a1c60f2563c7ef6aae996bebed41081bd}{Adafruit\_BNO055::VECTOR\_MAGNETOMETER}}) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00571}00571     \textcolor{keyword}{event}-\/>type = \mbox{\hyperlink{_adafruit___sensor_8h_af0bc43b5dae696582a77176e6e4ff643a74438e3f4f1f8cb1e97ccebbd1096fe8}{SENSOR\_TYPE\_MAGNETIC\_FIELD}};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00572}00572     vec = \mbox{\hyperlink{class_adafruit___b_n_o055_aa352ee195ee844ba5c1ba61b010e4517}{getVector}}(\mbox{\hyperlink{class_adafruit___b_n_o055_aca6c5acffc9a752e5309ff2bb21f3e25a1c60f2563c7ef6aae996bebed41081bd}{Adafruit\_BNO055::VECTOR\_MAGNETOMETER}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00573}00573 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00574}00574     \textcolor{keyword}{event}-\/>magnetic.x = vec.\mbox{\hyperlink{classimu_1_1_vector_a2271b52e69e1c4671130a76b2e05a110}{x}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00575}00575     \textcolor{keyword}{event}-\/>magnetic.y = vec.\mbox{\hyperlink{classimu_1_1_vector_a51260956d9a2e4cabd51db087f4dc0d0}{y}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00576}00576     \textcolor{keyword}{event}-\/>magnetic.z = vec.\mbox{\hyperlink{classimu_1_1_vector_a8e225c836500eb44de0530f3bba3e99a}{z}}();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00577}00577   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00578}00578 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00579}00579   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00580}00580 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00581}00581 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00588}\mbox{\hyperlink{class_adafruit___b_n_o055_a9ef7b25de21d0a0c3a561bc74d8eb59a}{00588}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___b_n_o055_a9ef7b25de21d0a0c3a561bc74d8eb59a}{Adafruit\_BNO055::getSensorOffsets}}(uint8\_t *calibData) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00589}00589   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___b_n_o055_aa28b877a895ee462626f08924e508d25}{isFullyCalibrated}}()) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00590}00590     \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} lastMode = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00591}00591     \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00592}00592 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00593}00593     readLen(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a355e8ebc21269e6622a39796d60dbad5}{ACCEL\_OFFSET\_X\_LSB\_ADDR}}, calibData, \mbox{\hyperlink{_adafruit___b_n_o055_8h_a419d749dedf96924ff95aad0c457eb0e}{NUM\_BNO055\_OFFSET\_REGISTERS}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00594}00594 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00595}00595     \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(lastMode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00596}00596     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00597}00597   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00598}00598   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00599}00599 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00600}00600 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00607}\mbox{\hyperlink{class_adafruit___b_n_o055_ab5325dfe2c54d13f103b9fec89188107}{00607}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___b_n_o055_a9ef7b25de21d0a0c3a561bc74d8eb59a}{Adafruit\_BNO055::getSensorOffsets}}(}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00608}00608     \mbox{\hyperlink{structadafruit__bno055__offsets__t}{adafruit\_bno055\_offsets\_t}} \&offsets\_type) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00609}00609   \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___b_n_o055_aa28b877a895ee462626f08924e508d25}{isFullyCalibrated}}()) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00610}00610     \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} lastMode = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00611}00611     \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00612}00612     delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00613}00613 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00614}00614     \textcolor{comment}{/* Accel offset range depends on the G-\/range:}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00615}00615 \textcolor{comment}{       +/-\/2g  = +/-\/ 2000 mg}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00616}00616 \textcolor{comment}{       +/-\/4g  = +/-\/ 4000 mg}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00617}00617 \textcolor{comment}{       +/-\/8g  = +/-\/ 8000 mg}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00618}00618 \textcolor{comment}{       +/-\/1§g = +/-\/ 16000 mg */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00619}00619     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a780dba7b02a272e404f7b106447917c1}{accel\_offset\_x}} = (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ab879121437e4fa4ddc2860cdd7bf3adf}{ACCEL\_OFFSET\_X\_MSB\_ADDR}}) << 8) |}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00620}00620                                   (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a355e8ebc21269e6622a39796d60dbad5}{ACCEL\_OFFSET\_X\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00621}00621     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_aece1106c578d9d3b12c11817d301414f}{accel\_offset\_y}} = (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485af68acdeca7fdd2f62b82d269f7337975}{ACCEL\_OFFSET\_Y\_MSB\_ADDR}}) << 8) |}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00622}00622                                   (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a06f50b821ad2520459e8092054a8b73a}{ACCEL\_OFFSET\_Y\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00623}00623     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a1896c9286039905a69dc86bfca3940bc}{accel\_offset\_z}} = (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3e83f024a1cd15203011c9fb6ff82c20}{ACCEL\_OFFSET\_Z\_MSB\_ADDR}}) << 8) |}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00624}00624                                   (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485afe669b51b1a24ec855cade38dd90c14f}{ACCEL\_OFFSET\_Z\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00625}00625 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00626}00626     \textcolor{comment}{/* Magnetometer offset range = +/-\/ 6400 LSB where 1uT = 16 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00627}00627     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a0f424e0edf4c5dbfd876a936d5707548}{mag\_offset\_x}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00628}00628         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a821605b292b685e8a1adaa8c47e51f82}{MAG\_OFFSET\_X\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a5f08403caae91da3c1400663d0a699d9}{MAG\_OFFSET\_X\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00629}00629     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ad5fb6f2cb2b5fc0f213a451f45c08786}{mag\_offset\_y}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00630}00630         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4d1a875e3f6d2cf79bb54d5ac0ac2f33}{MAG\_OFFSET\_Y\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a70945d5d295324d9d51e72de2a53627b}{MAG\_OFFSET\_Y\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00631}00631     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ae459af922307a2d61c7775f50f2c9dcc}{mag\_offset\_z}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00632}00632         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a7d306e69d9028202556b60ec7aac5495}{MAG\_OFFSET\_Z\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acbd993f302ad780c35962b82627f4354}{MAG\_OFFSET\_Z\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00633}00633 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00634}00634     \textcolor{comment}{/* Gyro offset range depends on the DPS range:}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00635}00635 \textcolor{comment}{      2000 dps = +/-\/ 32000 LSB}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00636}00636 \textcolor{comment}{      1000 dps = +/-\/ 16000 LSB}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00637}00637 \textcolor{comment}{       500 dps = +/-\/ 8000 LSB}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00638}00638 \textcolor{comment}{       250 dps = +/-\/ 4000 LSB}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00639}00639 \textcolor{comment}{       125 dps = +/-\/ 2000 LSB}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00640}00640 \textcolor{comment}{       ... where 1 DPS = 16 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00641}00641     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ac2fdd217eb5429fa19419b5fe07c315c}{gyro\_offset\_x}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00642}00642         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4c76d89b177bd0f11545e11236c8639b}{GYRO\_OFFSET\_X\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a27cee1097050facde2ff2a8cbfa97208}{GYRO\_OFFSET\_X\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00643}00643     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_aa7c8de9501cb39de5252d54cc4a6fa28}{gyro\_offset\_y}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00644}00644         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a7fd08ded7a83052ab3c4a52ca9bcfa35}{GYRO\_OFFSET\_Y\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3df1fb42f0a6124038a9363d730c05d8}{GYRO\_OFFSET\_Y\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00645}00645     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ae5c2c41cd0ec245931e563cd0986e3c1}{gyro\_offset\_z}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00646}00646         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8927bab6ef05496739e3f54e866df55b}{GYRO\_OFFSET\_Z\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a81c2b9e5ecc14b329c0a21d6e363c8c7}{GYRO\_OFFSET\_Z\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00647}00647 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00648}00648     \textcolor{comment}{/* Accelerometer radius = +/-\/ 1000 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00649}00649     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a5b7cb188b0937e4218caddc3fd5b43cd}{accel\_radius}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00650}00650         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4bce0759850a331000a48cdd0490403f}{ACCEL\_RADIUS\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a367bdee20e01c777c2e6c760523b800e}{ACCEL\_RADIUS\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00651}00651 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00652}00652     \textcolor{comment}{/* Magnetometer radius = +/-\/ 960 LSB */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00653}00653     offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ad0a4020e407ba70f2802f04c5fd840b6}{mag\_radius}} =}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00654}00654         (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8b021b2977145e0c7fd1c006983380d3}{MAG\_RADIUS\_MSB\_ADDR}}) << 8) | (read8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aadc1cd6166e834e0e58c496b21260e56}{MAG\_RADIUS\_LSB\_ADDR}}));}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00655}00655 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00656}00656     \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(lastMode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00657}00657     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00658}00658   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00659}00659   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00660}00660 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00661}00661 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00667}\mbox{\hyperlink{class_adafruit___b_n_o055_a0061212193d496480ea03f2bf65c146b}{00667}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a0061212193d496480ea03f2bf65c146b}{Adafruit\_BNO055::setSensorOffsets}}(\textcolor{keyword}{const} uint8\_t *calibData) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00668}00668   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} lastMode = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00669}00669   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00670}00670   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00671}00671 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00672}00672   \textcolor{comment}{/* Note: Configuration will take place only when user writes to the last}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00673}00673 \textcolor{comment}{     byte of each config data pair (ex. ACCEL\_OFFSET\_Z\_MSB\_ADDR, etc.).}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00674}00674 \textcolor{comment}{     Therefore the last byte must be written whenever the user wants to}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00675}00675 \textcolor{comment}{     changes the configuration. */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00676}00676 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00677}00677   \textcolor{comment}{/* A writeLen() would make this much cleaner */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00678}00678   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a355e8ebc21269e6622a39796d60dbad5}{ACCEL\_OFFSET\_X\_LSB\_ADDR}}, calibData[0]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00679}00679   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ab879121437e4fa4ddc2860cdd7bf3adf}{ACCEL\_OFFSET\_X\_MSB\_ADDR}}, calibData[1]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00680}00680   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a06f50b821ad2520459e8092054a8b73a}{ACCEL\_OFFSET\_Y\_LSB\_ADDR}}, calibData[2]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00681}00681   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485af68acdeca7fdd2f62b82d269f7337975}{ACCEL\_OFFSET\_Y\_MSB\_ADDR}}, calibData[3]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00682}00682   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485afe669b51b1a24ec855cade38dd90c14f}{ACCEL\_OFFSET\_Z\_LSB\_ADDR}}, calibData[4]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00683}00683   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3e83f024a1cd15203011c9fb6ff82c20}{ACCEL\_OFFSET\_Z\_MSB\_ADDR}}, calibData[5]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00684}00684 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00685}00685   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a5f08403caae91da3c1400663d0a699d9}{MAG\_OFFSET\_X\_LSB\_ADDR}}, calibData[6]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00686}00686   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a821605b292b685e8a1adaa8c47e51f82}{MAG\_OFFSET\_X\_MSB\_ADDR}}, calibData[7]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00687}00687   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a70945d5d295324d9d51e72de2a53627b}{MAG\_OFFSET\_Y\_LSB\_ADDR}}, calibData[8]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00688}00688   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4d1a875e3f6d2cf79bb54d5ac0ac2f33}{MAG\_OFFSET\_Y\_MSB\_ADDR}}, calibData[9]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00689}00689   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acbd993f302ad780c35962b82627f4354}{MAG\_OFFSET\_Z\_LSB\_ADDR}}, calibData[10]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00690}00690   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a7d306e69d9028202556b60ec7aac5495}{MAG\_OFFSET\_Z\_MSB\_ADDR}}, calibData[11]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00691}00691 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00692}00692   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a27cee1097050facde2ff2a8cbfa97208}{GYRO\_OFFSET\_X\_LSB\_ADDR}}, calibData[12]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00693}00693   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4c76d89b177bd0f11545e11236c8639b}{GYRO\_OFFSET\_X\_MSB\_ADDR}}, calibData[13]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00694}00694   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3df1fb42f0a6124038a9363d730c05d8}{GYRO\_OFFSET\_Y\_LSB\_ADDR}}, calibData[14]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00695}00695   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a7fd08ded7a83052ab3c4a52ca9bcfa35}{GYRO\_OFFSET\_Y\_MSB\_ADDR}}, calibData[15]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00696}00696   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a81c2b9e5ecc14b329c0a21d6e363c8c7}{GYRO\_OFFSET\_Z\_LSB\_ADDR}}, calibData[16]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00697}00697   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8927bab6ef05496739e3f54e866df55b}{GYRO\_OFFSET\_Z\_MSB\_ADDR}}, calibData[17]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00698}00698 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00699}00699   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a367bdee20e01c777c2e6c760523b800e}{ACCEL\_RADIUS\_LSB\_ADDR}}, calibData[18]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00700}00700   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4bce0759850a331000a48cdd0490403f}{ACCEL\_RADIUS\_MSB\_ADDR}}, calibData[19]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00701}00701 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00702}00702   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aadc1cd6166e834e0e58c496b21260e56}{MAG\_RADIUS\_LSB\_ADDR}}, calibData[20]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00703}00703   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8b021b2977145e0c7fd1c006983380d3}{MAG\_RADIUS\_MSB\_ADDR}}, calibData[21]);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00704}00704 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00705}00705   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(lastMode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00706}00706 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00707}00707 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00723}\mbox{\hyperlink{class_adafruit___b_n_o055_a5bf6f9bf48b4dc750e0d33a7d71127c6}{00723}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a0061212193d496480ea03f2bf65c146b}{Adafruit\_BNO055::setSensorOffsets}}(}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00724}00724     \textcolor{keyword}{const} \mbox{\hyperlink{structadafruit__bno055__offsets__t}{adafruit\_bno055\_offsets\_t}} \&offsets\_type) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00725}00725   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} lastMode = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00726}00726   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00727}00727   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00728}00728 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00729}00729   \textcolor{comment}{/* Note: Configuration will take place only when user writes to the last}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00730}00730 \textcolor{comment}{     byte of each config data pair (ex. ACCEL\_OFFSET\_Z\_MSB\_ADDR, etc.).}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00731}00731 \textcolor{comment}{     Therefore the last byte must be written whenever the user wants to}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00732}00732 \textcolor{comment}{     changes the configuration. */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00733}00733 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00734}00734   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a355e8ebc21269e6622a39796d60dbad5}{ACCEL\_OFFSET\_X\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a780dba7b02a272e404f7b106447917c1}{accel\_offset\_x}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00735}00735   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485ab879121437e4fa4ddc2860cdd7bf3adf}{ACCEL\_OFFSET\_X\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a780dba7b02a272e404f7b106447917c1}{accel\_offset\_x}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00736}00736   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a06f50b821ad2520459e8092054a8b73a}{ACCEL\_OFFSET\_Y\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_aece1106c578d9d3b12c11817d301414f}{accel\_offset\_y}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00737}00737   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485af68acdeca7fdd2f62b82d269f7337975}{ACCEL\_OFFSET\_Y\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_aece1106c578d9d3b12c11817d301414f}{accel\_offset\_y}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00738}00738   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485afe669b51b1a24ec855cade38dd90c14f}{ACCEL\_OFFSET\_Z\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a1896c9286039905a69dc86bfca3940bc}{accel\_offset\_z}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00739}00739   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3e83f024a1cd15203011c9fb6ff82c20}{ACCEL\_OFFSET\_Z\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a1896c9286039905a69dc86bfca3940bc}{accel\_offset\_z}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00740}00740 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00741}00741   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a5f08403caae91da3c1400663d0a699d9}{MAG\_OFFSET\_X\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a0f424e0edf4c5dbfd876a936d5707548}{mag\_offset\_x}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00742}00742   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a821605b292b685e8a1adaa8c47e51f82}{MAG\_OFFSET\_X\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a0f424e0edf4c5dbfd876a936d5707548}{mag\_offset\_x}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00743}00743   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a70945d5d295324d9d51e72de2a53627b}{MAG\_OFFSET\_Y\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ad5fb6f2cb2b5fc0f213a451f45c08786}{mag\_offset\_y}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00744}00744   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4d1a875e3f6d2cf79bb54d5ac0ac2f33}{MAG\_OFFSET\_Y\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ad5fb6f2cb2b5fc0f213a451f45c08786}{mag\_offset\_y}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00745}00745   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485acbd993f302ad780c35962b82627f4354}{MAG\_OFFSET\_Z\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ae459af922307a2d61c7775f50f2c9dcc}{mag\_offset\_z}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00746}00746   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a7d306e69d9028202556b60ec7aac5495}{MAG\_OFFSET\_Z\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ae459af922307a2d61c7775f50f2c9dcc}{mag\_offset\_z}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00747}00747 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00748}00748   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a27cee1097050facde2ff2a8cbfa97208}{GYRO\_OFFSET\_X\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ac2fdd217eb5429fa19419b5fe07c315c}{gyro\_offset\_x}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00749}00749   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4c76d89b177bd0f11545e11236c8639b}{GYRO\_OFFSET\_X\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ac2fdd217eb5429fa19419b5fe07c315c}{gyro\_offset\_x}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00750}00750   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a3df1fb42f0a6124038a9363d730c05d8}{GYRO\_OFFSET\_Y\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_aa7c8de9501cb39de5252d54cc4a6fa28}{gyro\_offset\_y}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00751}00751   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a7fd08ded7a83052ab3c4a52ca9bcfa35}{GYRO\_OFFSET\_Y\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_aa7c8de9501cb39de5252d54cc4a6fa28}{gyro\_offset\_y}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00752}00752   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a81c2b9e5ecc14b329c0a21d6e363c8c7}{GYRO\_OFFSET\_Z\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ae5c2c41cd0ec245931e563cd0986e3c1}{gyro\_offset\_z}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00753}00753   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8927bab6ef05496739e3f54e866df55b}{GYRO\_OFFSET\_Z\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ae5c2c41cd0ec245931e563cd0986e3c1}{gyro\_offset\_z}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00754}00754 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00755}00755   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a367bdee20e01c777c2e6c760523b800e}{ACCEL\_RADIUS\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a5b7cb188b0937e4218caddc3fd5b43cd}{accel\_radius}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00756}00756   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a4bce0759850a331000a48cdd0490403f}{ACCEL\_RADIUS\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_a5b7cb188b0937e4218caddc3fd5b43cd}{accel\_radius}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00757}00757 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00758}00758   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485aadc1cd6166e834e0e58c496b21260e56}{MAG\_RADIUS\_LSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ad0a4020e407ba70f2802f04c5fd840b6}{mag\_radius}}) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00759}00759   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8b021b2977145e0c7fd1c006983380d3}{MAG\_RADIUS\_MSB\_ADDR}}, (offsets\_type.\mbox{\hyperlink{structadafruit__bno055__offsets__t_ad0a4020e407ba70f2802f04c5fd840b6}{mag\_radius}} >> 8) \& 0x0FF);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00760}00760 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00761}00761   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(lastMode);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00762}00762 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00763}00763 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00768}\mbox{\hyperlink{class_adafruit___b_n_o055_aa28b877a895ee462626f08924e508d25}{00768}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___b_n_o055_aa28b877a895ee462626f08924e508d25}{Adafruit\_BNO055::isFullyCalibrated}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00769}00769   uint8\_t system, gyro, accel, mag;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00770}00770   \mbox{\hyperlink{class_adafruit___b_n_o055_a34cb7b7421d4d9597ccfc31470c2c3f7}{getCalibration}}(\&system, \&gyro, \&accel, \&mag);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00771}00771 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00772}00772   \textcolor{keywordflow}{switch} (\_mode) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00773}00773   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa8f203109f6e08ea5bcb41ab54dd78cd4}{OPERATION\_MODE\_ACCONLY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00774}00774     \textcolor{keywordflow}{return} (accel == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00775}00775   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fad952ddf383c28de87203eaaad6b3e3e3}{OPERATION\_MODE\_MAGONLY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00776}00776     \textcolor{keywordflow}{return} (mag == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00777}00777   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fad0188a6d093269ea90aaaffa22e6ca6c}{OPERATION\_MODE\_GYRONLY}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00778}00778   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456faab8557f93c86cdbf42b2ddf974914f9e}{OPERATION\_MODE\_M4G}}: \textcolor{comment}{/* No magnetometer calibration required. */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00779}00779     \textcolor{keywordflow}{return} (gyro == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00780}00780   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fae7b4432a87b21598f23c741c2d505ea4}{OPERATION\_MODE\_ACCMAG}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00781}00781   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fab11e169be1995261b4327cf5f14edb43}{OPERATION\_MODE\_COMPASS}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00782}00782     \textcolor{keywordflow}{return} (accel == 3 \&\& mag == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00783}00783   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456faafbedaef065fd0f91f50f361b6390492}{OPERATION\_MODE\_ACCGYRO}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00784}00784   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa3bbe664efb9d7f9d80d20fc86b33f07f}{OPERATION\_MODE\_IMUPLUS}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00785}00785     \textcolor{keywordflow}{return} (accel == 3 \&\& gyro == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00786}00786   \textcolor{keywordflow}{case} \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fad72d05ef92677db29066f5378756889b}{OPERATION\_MODE\_MAGGYRO}}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00787}00787     \textcolor{keywordflow}{return} (mag == 3 \&\& gyro == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00788}00788   \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00789}00789     \textcolor{keywordflow}{return} (system == 3 \&\& gyro == 3 \&\& accel == 3 \&\& mag == 3);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00790}00790   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00791}00791 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00792}00792 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00796}\mbox{\hyperlink{class_adafruit___b_n_o055_a0a9c704d35681ed420065432e3eb7a99}{00796}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a0a9c704d35681ed420065432e3eb7a99}{Adafruit\_BNO055::enterSuspendMode}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00797}00797   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} modeback = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00798}00798 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00799}00799   \textcolor{comment}{/* Switch to config mode (just in case since this is the default) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00800}00800   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00801}00801   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00802}00802   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8796ceaf4ce33b9bd553c0bd77ec6cfa}{BNO055\_PWR\_MODE\_ADDR}}, 0x02);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00803}00803   \textcolor{comment}{/* Set the requested operating mode (see section 3.3) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00804}00804   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(modeback);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00805}00805   delay(20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00806}00806 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00807}00807 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00811}\mbox{\hyperlink{class_adafruit___b_n_o055_a4b0c7258735569a31af5bf31936264fa}{00811}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___b_n_o055_a4b0c7258735569a31af5bf31936264fa}{Adafruit\_BNO055::enterNormalMode}}() \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00812}00812   \mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456f}{adafruit\_bno055\_opmode\_t}} modeback = \_mode;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00813}00813 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00814}00814   \textcolor{comment}{/* Switch to config mode (just in case since this is the default) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00815}00815   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(\mbox{\hyperlink{class_adafruit___b_n_o055_a1288643630f474aba977e4b1aa34456fa155bb4a42e3b4e5afcccc2c03826b96d}{OPERATION\_MODE\_CONFIG}});}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00816}00816   delay(25);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00817}00817   write8(\mbox{\hyperlink{class_adafruit___b_n_o055_a37bdd791ec4916fb29933a5b78be0485a8796ceaf4ce33b9bd553c0bd77ec6cfa}{BNO055\_PWR\_MODE\_ADDR}}, 0x00);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00818}00818   \textcolor{comment}{/* Set the requested operating mode (see section 3.3) */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00819}00819   \mbox{\hyperlink{class_adafruit___b_n_o055_a899d247370c86febc01ca431eabac3f4}{setMode}}(modeback);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00820}00820   delay(20);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00821}00821 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00822}00822 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00826}00826 \textcolor{keywordtype}{bool} Adafruit\_BNO055::write8(adafruit\_bno055\_reg\_t reg, \textcolor{keywordtype}{byte} value) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00827}00827   \_wire-\/>beginTransmission(\_address);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00828}00828 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00829}00829   \_wire-\/>write((uint8\_t)reg);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00830}00830   \_wire-\/>write((uint8\_t)value);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00831}00831 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00832}00832   \_wire-\/>send(reg);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00833}00833   \_wire-\/>send(value);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00834}00834 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00835}00835   \_wire-\/>endTransmission();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00836}00836 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00837}00837   \textcolor{comment}{/* ToDo: Check for error! */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00838}00838   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00839}00839 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00840}00840 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00844}00844 \textcolor{keywordtype}{byte} Adafruit\_BNO055::read8(adafruit\_bno055\_reg\_t reg) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00845}00845   \textcolor{keywordtype}{byte} value = 0;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00846}00846 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00847}00847   \_wire-\/>beginTransmission(\_address);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00848}00848 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00849}00849   \_wire-\/>write((uint8\_t)reg);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00850}00850 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00851}00851   \_wire-\/>send(reg);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00852}00852 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00853}00853   \_wire-\/>endTransmission();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00854}00854   \_wire-\/>requestFrom(\_address, (\textcolor{keywordtype}{byte})1);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00855}00855 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00856}00856   value = \_wire-\/>read();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00857}00857 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00858}00858   value = \_wire-\/>receive();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00859}00859 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00860}00860 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00861}00861   \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00862}00862 \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00863}00863 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00867}00867 \textcolor{keywordtype}{bool} Adafruit\_BNO055::readLen(adafruit\_bno055\_reg\_t reg, \textcolor{keywordtype}{byte} *buffer,}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00868}00868                               uint8\_t len) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00869}00869   \_wire-\/>beginTransmission(\_address);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00870}00870 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00871}00871   \_wire-\/>write((uint8\_t)reg);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00872}00872 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00873}00873   \_wire-\/>send(reg);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00874}00874 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00875}00875   \_wire-\/>endTransmission();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00876}00876   \_wire-\/>requestFrom(\_address, (\textcolor{keywordtype}{byte})len);}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00877}00877 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00878}00878   \textcolor{keywordflow}{for} (uint8\_t i = 0; i < len; i++) \{}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00879}00879 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00880}00880     buffer[i] = \_wire-\/>read();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00881}00881 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00882}00882     buffer[i] = \_wire-\/>receive();}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00883}00883 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00884}00884   \}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00885}00885 }
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00886}00886   \textcolor{comment}{/* ToDo: Check for errors! */}}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00887}00887   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_adafruit___b_n_o055_8cpp_source_l00888}00888 \}}
+
+\end{DoxyCode}

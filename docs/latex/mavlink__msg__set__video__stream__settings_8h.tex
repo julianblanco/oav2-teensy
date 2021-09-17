@@ -1,0 +1,112 @@
+\hypertarget{mavlink__msg__set__video__stream__settings_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+set\+\_\+video\+\_\+stream\+\_\+settings.h File Reference}
+\label{mavlink__msg__set__video__stream__settings_8h}\index{lib/common/mavlink\_msg\_set\_video\_stream\_settings.h@{lib/common/mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a7c44ab4f16c929b84a6703f4ef825320}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS}}~270
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a504871a35f5c86859690a92e8f6e9945}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+LEN}}~247
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a548e50e6481674c5e79afb122b55a3dc}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+MIN\+\_\+\+LEN}}~247
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a8f8e6126ce0aa1d8c5e1baf58531f9fb}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+270\+\_\+\+LEN}}~247
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_af4b38988001b9c1df2a8157b02646c38}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+270\+\_\+\+MIN\+\_\+\+LEN}}~247
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a3e9f6f05c9987d1ca54de8027700d030}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+CRC}}~232
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a6423cd1612f483a555b344253faf34a6}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+270\+\_\+\+CRC}}~232
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a0e68aaa7b23158be2fd61270dec3a34b}{MAVLINK\+\_\+\+MSG\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+FIELD\+\_\+\+URI\+\_\+\+LEN}}~230
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_ac2be1c8ab2378de205d54a490c227005}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__set__video__stream__settings_8h_a60c6e4f450965767438a2a9e4a89109a}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+set\+\_\+video\+\_\+stream\+\_\+settings\+\_\+t \{ float framerate;uint32\+\_\+t bitrate;uint16\+\_\+t resolution\+\_\+h;uint16\+\_\+t resolution\+\_\+v;uint16\+\_\+t rotation;uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;uint8\+\_\+t camera\+\_\+id;char uri\mbox{[}230\mbox{]};\}) mavlink\+\_\+set\+\_\+video\+\_\+stream\+\_\+settings\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_ac2be1c8ab2378de205d54a490c227005}\label{mavlink__msg__set__video__stream__settings_8h_ac2be1c8ab2378de205d54a490c227005}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MESSAGE\_INFO\_SET\_VIDEO\_STREAM\_SETTINGS@{MAVLINK\_MESSAGE\_INFO\_SET\_VIDEO\_STREAM\_SETTINGS}}
+\index{MAVLINK\_MESSAGE\_INFO\_SET\_VIDEO\_STREAM\_SETTINGS@{MAVLINK\_MESSAGE\_INFO\_SET\_VIDEO\_STREAM\_SETTINGS}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_SET\_VIDEO\_STREAM\_SETTINGS}{MAVLINK\_MESSAGE\_INFO\_SET\_VIDEO\_STREAM\_SETTINGS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}SET\_VIDEO\_STREAM\_SETTINGS"{}}, \(\backslash\)}
+\DoxyCodeLine{    9, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}target\_system"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 14, offsetof(mavlink\_set\_video\_stream\_settings\_t, target\_system) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}target\_component"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 15, offsetof(mavlink\_set\_video\_stream\_settings\_t, target\_component) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}camera\_id"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 16, offsetof(mavlink\_set\_video\_stream\_settings\_t, camera\_id) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}framerate"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 0, offsetof(mavlink\_set\_video\_stream\_settings\_t, framerate) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}resolution\_h"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 8, offsetof(mavlink\_set\_video\_stream\_settings\_t, resolution\_h) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}resolution\_v"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 10, offsetof(mavlink\_set\_video\_stream\_settings\_t, resolution\_v) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}bitrate"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 4, offsetof(mavlink\_set\_video\_stream\_settings\_t, bitrate) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}rotation"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 12, offsetof(mavlink\_set\_video\_stream\_settings\_t, rotation) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}uri"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a205452ad3d1ab60bf6df4487957eca90}{MAVLINK\_TYPE\_CHAR}}, 230, 17, offsetof(mavlink\_set\_video\_stream\_settings\_t, uri) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a6423cd1612f483a555b344253faf34a6}\label{mavlink__msg__set__video__stream__settings_8h_a6423cd1612f483a555b344253faf34a6}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_270\_CRC@{MAVLINK\_MSG\_ID\_270\_CRC}}
+\index{MAVLINK\_MSG\_ID\_270\_CRC@{MAVLINK\_MSG\_ID\_270\_CRC}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_270\_CRC}{MAVLINK\_MSG\_ID\_270\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+270\+\_\+\+CRC~232}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a8f8e6126ce0aa1d8c5e1baf58531f9fb}\label{mavlink__msg__set__video__stream__settings_8h_a8f8e6126ce0aa1d8c5e1baf58531f9fb}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_270\_LEN@{MAVLINK\_MSG\_ID\_270\_LEN}}
+\index{MAVLINK\_MSG\_ID\_270\_LEN@{MAVLINK\_MSG\_ID\_270\_LEN}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_270\_LEN}{MAVLINK\_MSG\_ID\_270\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+270\+\_\+\+LEN~247}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_af4b38988001b9c1df2a8157b02646c38}\label{mavlink__msg__set__video__stream__settings_8h_af4b38988001b9c1df2a8157b02646c38}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_270\_MIN\_LEN@{MAVLINK\_MSG\_ID\_270\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_270\_MIN\_LEN@{MAVLINK\_MSG\_ID\_270\_MIN\_LEN}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_270\_MIN\_LEN}{MAVLINK\_MSG\_ID\_270\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+270\+\_\+\+MIN\+\_\+\+LEN~247}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a7c44ab4f16c929b84a6703f4ef825320}\label{mavlink__msg__set__video__stream__settings_8h_a7c44ab4f16c929b84a6703f4ef825320}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS}}
+\index{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS}{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS~270}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a3e9f6f05c9987d1ca54de8027700d030}\label{mavlink__msg__set__video__stream__settings_8h_a3e9f6f05c9987d1ca54de8027700d030}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_CRC@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_CRC}}
+\index{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_CRC@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_CRC}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_CRC}{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+CRC~232}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a504871a35f5c86859690a92e8f6e9945}\label{mavlink__msg__set__video__stream__settings_8h_a504871a35f5c86859690a92e8f6e9945}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_LEN@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_LEN}}
+\index{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_LEN@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_LEN}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_LEN}{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+LEN~247}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a548e50e6481674c5e79afb122b55a3dc}\label{mavlink__msg__set__video__stream__settings_8h_a548e50e6481674c5e79afb122b55a3dc}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_MIN\_LEN@{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_MIN\_LEN}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_MIN\_LEN}{MAVLINK\_MSG\_ID\_SET\_VIDEO\_STREAM\_SETTINGS\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+MIN\+\_\+\+LEN~247}
+
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a0e68aaa7b23158be2fd61270dec3a34b}\label{mavlink__msg__set__video__stream__settings_8h_a0e68aaa7b23158be2fd61270dec3a34b}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVLINK\_MSG\_SET\_VIDEO\_STREAM\_SETTINGS\_FIELD\_URI\_LEN@{MAVLINK\_MSG\_SET\_VIDEO\_STREAM\_SETTINGS\_FIELD\_URI\_LEN}}
+\index{MAVLINK\_MSG\_SET\_VIDEO\_STREAM\_SETTINGS\_FIELD\_URI\_LEN@{MAVLINK\_MSG\_SET\_VIDEO\_STREAM\_SETTINGS\_FIELD\_URI\_LEN}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_SET\_VIDEO\_STREAM\_SETTINGS\_FIELD\_URI\_LEN}{MAVLINK\_MSG\_SET\_VIDEO\_STREAM\_SETTINGS\_FIELD\_URI\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+SET\+\_\+\+VIDEO\+\_\+\+STREAM\+\_\+\+SETTINGS\+\_\+\+FIELD\+\_\+\+URI\+\_\+\+LEN~230}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__set__video__stream__settings_8h_a60c6e4f450965767438a2a9e4a89109a}\label{mavlink__msg__set__video__stream__settings_8h_a60c6e4f450965767438a2a9e4a89109a}} 
+\index{mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_set\_video\_stream\_settings.h@{mavlink\_msg\_set\_video\_stream\_settings.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+set\+\_\+video\+\_\+stream\+\_\+settings\+\_\+t \{ float framerate;uint32\+\_\+t bitrate;uint16\+\_\+t resolution\+\_\+h;uint16\+\_\+t resolution\+\_\+v;uint16\+\_\+t rotation;uint8\+\_\+t target\+\_\+system;uint8\+\_\+t target\+\_\+component;uint8\+\_\+t camera\+\_\+id;char uri\mbox{[}230\mbox{]};\}}]{ }\end{DoxyParamCaption})}
+

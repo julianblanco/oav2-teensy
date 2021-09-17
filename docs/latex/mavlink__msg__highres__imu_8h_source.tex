@@ -1,0 +1,400 @@
+\hypertarget{mavlink__msg__highres__imu_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+highres\+\_\+imu.\+h}
+\label{mavlink__msg__highres__imu_8h_source}\index{lib/common/mavlink\_msg\_highres\_imu.h@{lib/common/mavlink\_msg\_highres\_imu.h}}
+\mbox{\hyperlink{mavlink__msg__highres__imu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE HIGHRES\_IMU PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGHRES\_IMU 105}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a59c823363f01d0d6567e209a2133d77c}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_highres\_imu\_t \{}
+\DoxyCodeLine{8  uint64\_t time\_usec; \textcolor{comment}{/*< [us] Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.*/}}
+\DoxyCodeLine{9  \textcolor{keywordtype}{float} xacc; \textcolor{comment}{/*< [m/s/s] X acceleration*/}}
+\DoxyCodeLine{10  \textcolor{keywordtype}{float} yacc; \textcolor{comment}{/*< [m/s/s] Y acceleration*/}}
+\DoxyCodeLine{11  \textcolor{keywordtype}{float} zacc; \textcolor{comment}{/*< [m/s/s] Z acceleration*/}}
+\DoxyCodeLine{12  \textcolor{keywordtype}{float} xgyro; \textcolor{comment}{/*< [rad/s] Angular speed around X axis*/}}
+\DoxyCodeLine{13  \textcolor{keywordtype}{float} ygyro; \textcolor{comment}{/*< [rad/s] Angular speed around Y axis*/}}
+\DoxyCodeLine{14  \textcolor{keywordtype}{float} zgyro; \textcolor{comment}{/*< [rad/s] Angular speed around Z axis*/}}
+\DoxyCodeLine{15  \textcolor{keywordtype}{float} xmag; \textcolor{comment}{/*< [gauss] X Magnetic field*/}}
+\DoxyCodeLine{16  \textcolor{keywordtype}{float} ymag; \textcolor{comment}{/*< [gauss] Y Magnetic field*/}}
+\DoxyCodeLine{17  \textcolor{keywordtype}{float} zmag; \textcolor{comment}{/*< [gauss] Z Magnetic field*/}}
+\DoxyCodeLine{18  \textcolor{keywordtype}{float} abs\_pressure; \textcolor{comment}{/*< [mbar] Absolute pressure*/}}
+\DoxyCodeLine{19  \textcolor{keywordtype}{float} diff\_pressure; \textcolor{comment}{/*< [mbar] Differential pressure*/}}
+\DoxyCodeLine{20  \textcolor{keywordtype}{float} pressure\_alt; \textcolor{comment}{/*<  Altitude calculated from pressure*/}}
+\DoxyCodeLine{21  \textcolor{keywordtype}{float} temperature; \textcolor{comment}{/*< [degC] Temperature*/}}
+\DoxyCodeLine{22  uint16\_t fields\_updated; \textcolor{comment}{/*<  Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature*/}}
+\DoxyCodeLine{23 \}) mavlink\_highres\_imu\_t;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN 62}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN 62}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_105\_LEN 62}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_105\_MIN\_LEN 62}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC 93}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_105\_CRC 93}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_HIGHRES\_IMU \{ \(\backslash\)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{    105, \(\backslash\)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{    "{}HIGHRES\_IMU"{}}, \(\backslash\)}
+\DoxyCodeLine{39     15, \(\backslash\)}
+\DoxyCodeLine{40     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_highres\_imu\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}xacc"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_highres\_imu\_t, xacc) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}yacc"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_highres\_imu\_t, yacc) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}zacc"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_highres\_imu\_t, zacc) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}xgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_highres\_imu\_t, xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}ygyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_highres\_imu\_t, ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}zgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_highres\_imu\_t, zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}xmag"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_highres\_imu\_t, xmag) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}ymag"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_highres\_imu\_t, ymag) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}zmag"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 40, offsetof(mavlink\_highres\_imu\_t, zmag) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}abs\_pressure"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 44, offsetof(mavlink\_highres\_imu\_t, abs\_pressure) \}, \(\backslash\)}
+\DoxyCodeLine{51          \{ "{}diff\_pressure"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 48, offsetof(mavlink\_highres\_imu\_t, diff\_pressure) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}pressure\_alt"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 52, offsetof(mavlink\_highres\_imu\_t, pressure\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 56, offsetof(mavlink\_highres\_imu\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}fields\_updated"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 60, offsetof(mavlink\_highres\_imu\_t, fields\_updated) \}, \(\backslash\)}
+\DoxyCodeLine{55          \} \(\backslash\)}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_HIGHRES\_IMU \{ \(\backslash\)}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{    "{}HIGHRES\_IMU"{}}, \(\backslash\)}
+\DoxyCodeLine{60     15, \(\backslash\)}
+\DoxyCodeLine{61     \{  \{ "{}time\_usec"{}, NULL, MAVLINK\_TYPE\_UINT64\_T, 0, 0, offsetof(mavlink\_highres\_imu\_t, time\_usec) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}xacc"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 8, offsetof(mavlink\_highres\_imu\_t, xacc) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}yacc"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 12, offsetof(mavlink\_highres\_imu\_t, yacc) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}zacc"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 16, offsetof(mavlink\_highres\_imu\_t, zacc) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}xgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 20, offsetof(mavlink\_highres\_imu\_t, xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}ygyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 24, offsetof(mavlink\_highres\_imu\_t, ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}zgyro"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 28, offsetof(mavlink\_highres\_imu\_t, zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}xmag"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 32, offsetof(mavlink\_highres\_imu\_t, xmag) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}ymag"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 36, offsetof(mavlink\_highres\_imu\_t, ymag) \}, \(\backslash\)}
+\DoxyCodeLine{70          \{ "{}zmag"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 40, offsetof(mavlink\_highres\_imu\_t, zmag) \}, \(\backslash\)}
+\DoxyCodeLine{71          \{ "{}abs\_pressure"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 44, offsetof(mavlink\_highres\_imu\_t, abs\_pressure) \}, \(\backslash\)}
+\DoxyCodeLine{72          \{ "{}diff\_pressure"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 48, offsetof(mavlink\_highres\_imu\_t, diff\_pressure) \}, \(\backslash\)}
+\DoxyCodeLine{73          \{ "{}pressure\_alt"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 52, offsetof(mavlink\_highres\_imu\_t, pressure\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{74          \{ "{}temperature"{}, NULL, MAVLINK\_TYPE\_FLOAT, 0, 56, offsetof(mavlink\_highres\_imu\_t, temperature) \}, \(\backslash\)}
+\DoxyCodeLine{75          \{ "{}fields\_updated"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 60, offsetof(mavlink\_highres\_imu\_t, fields\_updated) \}, \(\backslash\)}
+\DoxyCodeLine{76          \} \(\backslash\)}
+\DoxyCodeLine{77 \}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{103 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_highres\_imu\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{104                                uint64\_t time\_usec, \textcolor{keywordtype}{float} xacc, \textcolor{keywordtype}{float} yacc, \textcolor{keywordtype}{float} zacc, \textcolor{keywordtype}{float} xgyro, \textcolor{keywordtype}{float} ygyro, \textcolor{keywordtype}{float} zgyro, \textcolor{keywordtype}{float} xmag, \textcolor{keywordtype}{float} ymag, \textcolor{keywordtype}{float} zmag, \textcolor{keywordtype}{float} abs\_pressure, \textcolor{keywordtype}{float} diff\_pressure, \textcolor{keywordtype}{float} pressure\_alt, \textcolor{keywordtype}{float} temperature, uint16\_t fields\_updated)}
+\DoxyCodeLine{105 \{}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{107     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}];}
+\DoxyCodeLine{108     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, xacc);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yacc);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, zacc);}
+\DoxyCodeLine{112     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, xgyro);}
+\DoxyCodeLine{113     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, ygyro);}
+\DoxyCodeLine{114     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, zgyro);}
+\DoxyCodeLine{115     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, xmag);}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ymag);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, zmag);}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, abs\_pressure);}
+\DoxyCodeLine{119     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, diff\_pressure);}
+\DoxyCodeLine{120     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pressure\_alt);}
+\DoxyCodeLine{121     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, temperature);}
+\DoxyCodeLine{122     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 60, fields\_updated);}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}});}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{126     mavlink\_highres\_imu\_t packet;}
+\DoxyCodeLine{127     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{128     packet.xacc = xacc;}
+\DoxyCodeLine{129     packet.yacc = yacc;}
+\DoxyCodeLine{130     packet.zacc = zacc;}
+\DoxyCodeLine{131     packet.xgyro = xgyro;}
+\DoxyCodeLine{132     packet.ygyro = ygyro;}
+\DoxyCodeLine{133     packet.zgyro = zgyro;}
+\DoxyCodeLine{134     packet.xmag = xmag;}
+\DoxyCodeLine{135     packet.ymag = ymag;}
+\DoxyCodeLine{136     packet.zmag = zmag;}
+\DoxyCodeLine{137     packet.abs\_pressure = abs\_pressure;}
+\DoxyCodeLine{138     packet.diff\_pressure = diff\_pressure;}
+\DoxyCodeLine{139     packet.pressure\_alt = pressure\_alt;}
+\DoxyCodeLine{140     packet.temperature = temperature;}
+\DoxyCodeLine{141     packet.fields\_updated = fields\_updated;}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}});}
+\DoxyCodeLine{144 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}};}
+\DoxyCodeLine{147     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{148 \}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{173 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_highres\_imu\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{174                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{175                                    uint64\_t time\_usec,\textcolor{keywordtype}{float} xacc,\textcolor{keywordtype}{float} yacc,\textcolor{keywordtype}{float} zacc,\textcolor{keywordtype}{float} xgyro,\textcolor{keywordtype}{float} ygyro,\textcolor{keywordtype}{float} zgyro,\textcolor{keywordtype}{float} xmag,\textcolor{keywordtype}{float} ymag,\textcolor{keywordtype}{float} zmag,\textcolor{keywordtype}{float} abs\_pressure,\textcolor{keywordtype}{float} diff\_pressure,\textcolor{keywordtype}{float} pressure\_alt,\textcolor{keywordtype}{float} temperature,uint16\_t fields\_updated)}
+\DoxyCodeLine{176 \{}
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{178     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}];}
+\DoxyCodeLine{179     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{180     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, xacc);}
+\DoxyCodeLine{181     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yacc);}
+\DoxyCodeLine{182     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, zacc);}
+\DoxyCodeLine{183     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, xgyro);}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, ygyro);}
+\DoxyCodeLine{185     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, zgyro);}
+\DoxyCodeLine{186     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, xmag);}
+\DoxyCodeLine{187     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ymag);}
+\DoxyCodeLine{188     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, zmag);}
+\DoxyCodeLine{189     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, abs\_pressure);}
+\DoxyCodeLine{190     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, diff\_pressure);}
+\DoxyCodeLine{191     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pressure\_alt);}
+\DoxyCodeLine{192     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, temperature);}
+\DoxyCodeLine{193     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 60, fields\_updated);}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}});}
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{197     mavlink\_highres\_imu\_t packet;}
+\DoxyCodeLine{198     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{199     packet.xacc = xacc;}
+\DoxyCodeLine{200     packet.yacc = yacc;}
+\DoxyCodeLine{201     packet.zacc = zacc;}
+\DoxyCodeLine{202     packet.xgyro = xgyro;}
+\DoxyCodeLine{203     packet.ygyro = ygyro;}
+\DoxyCodeLine{204     packet.zgyro = zgyro;}
+\DoxyCodeLine{205     packet.xmag = xmag;}
+\DoxyCodeLine{206     packet.ymag = ymag;}
+\DoxyCodeLine{207     packet.zmag = zmag;}
+\DoxyCodeLine{208     packet.abs\_pressure = abs\_pressure;}
+\DoxyCodeLine{209     packet.diff\_pressure = diff\_pressure;}
+\DoxyCodeLine{210     packet.pressure\_alt = pressure\_alt;}
+\DoxyCodeLine{211     packet.temperature = temperature;}
+\DoxyCodeLine{212     packet.fields\_updated = fields\_updated;}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}});}
+\DoxyCodeLine{215 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}};}
+\DoxyCodeLine{218     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{219 \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{229 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_highres\_imu\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_highres\_imu\_t* highres\_imu)}
+\DoxyCodeLine{230 \{}
+\DoxyCodeLine{231     \textcolor{keywordflow}{return} mavlink\_msg\_highres\_imu\_pack(system\_id, component\_id, msg, highres\_imu-\/>time\_usec, highres\_imu-\/>xacc, highres\_imu-\/>yacc, highres\_imu-\/>zacc, highres\_imu-\/>xgyro, highres\_imu-\/>ygyro, highres\_imu-\/>zgyro, highres\_imu-\/>xmag, highres\_imu-\/>ymag, highres\_imu-\/>zmag, highres\_imu-\/>abs\_pressure, highres\_imu-\/>diff\_pressure, highres\_imu-\/>pressure\_alt, highres\_imu-\/>temperature, highres\_imu-\/>fields\_updated);}
+\DoxyCodeLine{232 \}}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{243 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_highres\_imu\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_highres\_imu\_t* highres\_imu)}
+\DoxyCodeLine{244 \{}
+\DoxyCodeLine{245     \textcolor{keywordflow}{return} mavlink\_msg\_highres\_imu\_pack\_chan(system\_id, component\_id, chan, msg, highres\_imu-\/>time\_usec, highres\_imu-\/>xacc, highres\_imu-\/>yacc, highres\_imu-\/>zacc, highres\_imu-\/>xgyro, highres\_imu-\/>ygyro, highres\_imu-\/>zgyro, highres\_imu-\/>xmag, highres\_imu-\/>ymag, highres\_imu-\/>zmag, highres\_imu-\/>abs\_pressure, highres\_imu-\/>diff\_pressure, highres\_imu-\/>pressure\_alt, highres\_imu-\/>temperature, highres\_imu-\/>fields\_updated);}
+\DoxyCodeLine{246 \}}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{268 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{270 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_highres\_imu\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint64\_t time\_usec, \textcolor{keywordtype}{float} xacc, \textcolor{keywordtype}{float} yacc, \textcolor{keywordtype}{float} zacc, \textcolor{keywordtype}{float} xgyro, \textcolor{keywordtype}{float} ygyro, \textcolor{keywordtype}{float} zgyro, \textcolor{keywordtype}{float} xmag, \textcolor{keywordtype}{float} ymag, \textcolor{keywordtype}{float} zmag, \textcolor{keywordtype}{float} abs\_pressure, \textcolor{keywordtype}{float} diff\_pressure, \textcolor{keywordtype}{float} pressure\_alt, \textcolor{keywordtype}{float} temperature, uint16\_t fields\_updated)}
+\DoxyCodeLine{271 \{}
+\DoxyCodeLine{272 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{273     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}];}
+\DoxyCodeLine{274     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{275     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, xacc);}
+\DoxyCodeLine{276     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yacc);}
+\DoxyCodeLine{277     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, zacc);}
+\DoxyCodeLine{278     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, xgyro);}
+\DoxyCodeLine{279     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, ygyro);}
+\DoxyCodeLine{280     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, zgyro);}
+\DoxyCodeLine{281     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, xmag);}
+\DoxyCodeLine{282     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ymag);}
+\DoxyCodeLine{283     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, zmag);}
+\DoxyCodeLine{284     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, abs\_pressure);}
+\DoxyCodeLine{285     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, diff\_pressure);}
+\DoxyCodeLine{286     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pressure\_alt);}
+\DoxyCodeLine{287     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, temperature);}
+\DoxyCodeLine{288     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 60, fields\_updated);}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}}, buf, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{291 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{292     mavlink\_highres\_imu\_t packet;}
+\DoxyCodeLine{293     packet.time\_usec = time\_usec;}
+\DoxyCodeLine{294     packet.xacc = xacc;}
+\DoxyCodeLine{295     packet.yacc = yacc;}
+\DoxyCodeLine{296     packet.zacc = zacc;}
+\DoxyCodeLine{297     packet.xgyro = xgyro;}
+\DoxyCodeLine{298     packet.ygyro = ygyro;}
+\DoxyCodeLine{299     packet.zgyro = zgyro;}
+\DoxyCodeLine{300     packet.xmag = xmag;}
+\DoxyCodeLine{301     packet.ymag = ymag;}
+\DoxyCodeLine{302     packet.zmag = zmag;}
+\DoxyCodeLine{303     packet.abs\_pressure = abs\_pressure;}
+\DoxyCodeLine{304     packet.diff\_pressure = diff\_pressure;}
+\DoxyCodeLine{305     packet.pressure\_alt = pressure\_alt;}
+\DoxyCodeLine{306     packet.temperature = temperature;}
+\DoxyCodeLine{307     packet.fields\_updated = fields\_updated;}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{310 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{311 \}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{318 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_highres\_imu\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_highres\_imu\_t* highres\_imu)}
+\DoxyCodeLine{319 \{}
+\DoxyCodeLine{320 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{321     mavlink\_msg\_highres\_imu\_send(chan, highres\_imu-\/>time\_usec, highres\_imu-\/>xacc, highres\_imu-\/>yacc, highres\_imu-\/>zacc, highres\_imu-\/>xgyro, highres\_imu-\/>ygyro, highres\_imu-\/>zgyro, highres\_imu-\/>xmag, highres\_imu-\/>ymag, highres\_imu-\/>zmag, highres\_imu-\/>abs\_pressure, highres\_imu-\/>diff\_pressure, highres\_imu-\/>pressure\_alt, highres\_imu-\/>temperature, highres\_imu-\/>fields\_updated);}
+\DoxyCodeLine{322 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{323     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)highres\_imu, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{324 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{325 \}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{328 \textcolor{comment}{/*}}
+\DoxyCodeLine{329 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{330 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{331 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{332 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{333 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{334 \textcolor{comment}{ */}}
+\DoxyCodeLine{335 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_highres\_imu\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint64\_t time\_usec, \textcolor{keywordtype}{float} xacc, \textcolor{keywordtype}{float} yacc, \textcolor{keywordtype}{float} zacc, \textcolor{keywordtype}{float} xgyro, \textcolor{keywordtype}{float} ygyro, \textcolor{keywordtype}{float} zgyro, \textcolor{keywordtype}{float} xmag, \textcolor{keywordtype}{float} ymag, \textcolor{keywordtype}{float} zmag, \textcolor{keywordtype}{float} abs\_pressure, \textcolor{keywordtype}{float} diff\_pressure, \textcolor{keywordtype}{float} pressure\_alt, \textcolor{keywordtype}{float} temperature, uint16\_t fields\_updated)}
+\DoxyCodeLine{336 \{}
+\DoxyCodeLine{337 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{338     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{339     \mbox{\hyperlink{protocol_8h_a9efbc3b5ebcb74878f26fbef0939b013}{\_mav\_put\_uint64\_t}}(buf, 0, time\_usec);}
+\DoxyCodeLine{340     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 8, xacc);}
+\DoxyCodeLine{341     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 12, yacc);}
+\DoxyCodeLine{342     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 16, zacc);}
+\DoxyCodeLine{343     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 20, xgyro);}
+\DoxyCodeLine{344     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 24, ygyro);}
+\DoxyCodeLine{345     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 28, zgyro);}
+\DoxyCodeLine{346     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 32, xmag);}
+\DoxyCodeLine{347     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 36, ymag);}
+\DoxyCodeLine{348     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 40, zmag);}
+\DoxyCodeLine{349     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 44, abs\_pressure);}
+\DoxyCodeLine{350     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 48, diff\_pressure);}
+\DoxyCodeLine{351     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 52, pressure\_alt);}
+\DoxyCodeLine{352     \mbox{\hyperlink{protocol_8h_a7dc7a1d53caa88eafeb412ae3dfe7e48}{\_mav\_put\_float}}(buf, 56, temperature);}
+\DoxyCodeLine{353     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 60, fields\_updated);}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}}, buf, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{356 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{357     mavlink\_highres\_imu\_t *packet = (mavlink\_highres\_imu\_t *)msgbuf;}
+\DoxyCodeLine{358     packet-\/>time\_usec = time\_usec;}
+\DoxyCodeLine{359     packet-\/>xacc = xacc;}
+\DoxyCodeLine{360     packet-\/>yacc = yacc;}
+\DoxyCodeLine{361     packet-\/>zacc = zacc;}
+\DoxyCodeLine{362     packet-\/>xgyro = xgyro;}
+\DoxyCodeLine{363     packet-\/>ygyro = ygyro;}
+\DoxyCodeLine{364     packet-\/>zgyro = zgyro;}
+\DoxyCodeLine{365     packet-\/>xmag = xmag;}
+\DoxyCodeLine{366     packet-\/>ymag = ymag;}
+\DoxyCodeLine{367     packet-\/>zmag = zmag;}
+\DoxyCodeLine{368     packet-\/>abs\_pressure = abs\_pressure;}
+\DoxyCodeLine{369     packet-\/>diff\_pressure = diff\_pressure;}
+\DoxyCodeLine{370     packet-\/>pressure\_alt = pressure\_alt;}
+\DoxyCodeLine{371     packet-\/>temperature = temperature;}
+\DoxyCodeLine{372     packet-\/>fields\_updated = fields\_updated;}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{374     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a3dafa422bf7bc5777e0428833a2e5e4f}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a0884464e17e3d2f69569dae80f70bebe}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_ad1a3aab4a693c0a65758e5d9698e3065}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_CRC}});}
+\DoxyCodeLine{375 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{376 \}}
+\DoxyCodeLine{377 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{379 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381 \textcolor{comment}{// MESSAGE HIGHRES\_IMU UNPACKING}}
+\DoxyCodeLine{382 }
+\DoxyCodeLine{383 }
+\DoxyCodeLine{389 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint64\_t mavlink\_msg\_highres\_imu\_get\_time\_usec(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{390 \{}
+\DoxyCodeLine{391     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint64\_t(msg,  0);}
+\DoxyCodeLine{392 \}}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{399 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_xacc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{400 \{}
+\DoxyCodeLine{401     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  8);}
+\DoxyCodeLine{402 \}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{409 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_yacc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{410 \{}
+\DoxyCodeLine{411     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  12);}
+\DoxyCodeLine{412 \}}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{419 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_zacc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{420 \{}
+\DoxyCodeLine{421     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  16);}
+\DoxyCodeLine{422 \}}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{429 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_xgyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{430 \{}
+\DoxyCodeLine{431     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  20);}
+\DoxyCodeLine{432 \}}
+\DoxyCodeLine{433 }
+\DoxyCodeLine{439 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_ygyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{440 \{}
+\DoxyCodeLine{441     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  24);}
+\DoxyCodeLine{442 \}}
+\DoxyCodeLine{443 }
+\DoxyCodeLine{449 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_zgyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{450 \{}
+\DoxyCodeLine{451     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  28);}
+\DoxyCodeLine{452 \}}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{459 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_xmag(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{460 \{}
+\DoxyCodeLine{461     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  32);}
+\DoxyCodeLine{462 \}}
+\DoxyCodeLine{463 }
+\DoxyCodeLine{469 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_ymag(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{470 \{}
+\DoxyCodeLine{471     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  36);}
+\DoxyCodeLine{472 \}}
+\DoxyCodeLine{473 }
+\DoxyCodeLine{479 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_zmag(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{480 \{}
+\DoxyCodeLine{481     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  40);}
+\DoxyCodeLine{482 \}}
+\DoxyCodeLine{483 }
+\DoxyCodeLine{489 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_abs\_pressure(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{490 \{}
+\DoxyCodeLine{491     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  44);}
+\DoxyCodeLine{492 \}}
+\DoxyCodeLine{493 }
+\DoxyCodeLine{499 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_diff\_pressure(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{500 \{}
+\DoxyCodeLine{501     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  48);}
+\DoxyCodeLine{502 \}}
+\DoxyCodeLine{503 }
+\DoxyCodeLine{509 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_pressure\_alt(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{510 \{}
+\DoxyCodeLine{511     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  52);}
+\DoxyCodeLine{512 \}}
+\DoxyCodeLine{513 }
+\DoxyCodeLine{519 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} mavlink\_msg\_highres\_imu\_get\_temperature(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{520 \{}
+\DoxyCodeLine{521     \textcolor{keywordflow}{return} \_MAV\_RETURN\_float(msg,  56);}
+\DoxyCodeLine{522 \}}
+\DoxyCodeLine{523 }
+\DoxyCodeLine{529 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_highres\_imu\_get\_fields\_updated(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{530 \{}
+\DoxyCodeLine{531     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  60);}
+\DoxyCodeLine{532 \}}
+\DoxyCodeLine{533 }
+\DoxyCodeLine{540 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_highres\_imu\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_highres\_imu\_t* highres\_imu)}
+\DoxyCodeLine{541 \{}
+\DoxyCodeLine{542 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{543     highres\_imu-\/>time\_usec = mavlink\_msg\_highres\_imu\_get\_time\_usec(msg);}
+\DoxyCodeLine{544     highres\_imu-\/>xacc = mavlink\_msg\_highres\_imu\_get\_xacc(msg);}
+\DoxyCodeLine{545     highres\_imu-\/>yacc = mavlink\_msg\_highres\_imu\_get\_yacc(msg);}
+\DoxyCodeLine{546     highres\_imu-\/>zacc = mavlink\_msg\_highres\_imu\_get\_zacc(msg);}
+\DoxyCodeLine{547     highres\_imu-\/>xgyro = mavlink\_msg\_highres\_imu\_get\_xgyro(msg);}
+\DoxyCodeLine{548     highres\_imu-\/>ygyro = mavlink\_msg\_highres\_imu\_get\_ygyro(msg);}
+\DoxyCodeLine{549     highres\_imu-\/>zgyro = mavlink\_msg\_highres\_imu\_get\_zgyro(msg);}
+\DoxyCodeLine{550     highres\_imu-\/>xmag = mavlink\_msg\_highres\_imu\_get\_xmag(msg);}
+\DoxyCodeLine{551     highres\_imu-\/>ymag = mavlink\_msg\_highres\_imu\_get\_ymag(msg);}
+\DoxyCodeLine{552     highres\_imu-\/>zmag = mavlink\_msg\_highres\_imu\_get\_zmag(msg);}
+\DoxyCodeLine{553     highres\_imu-\/>abs\_pressure = mavlink\_msg\_highres\_imu\_get\_abs\_pressure(msg);}
+\DoxyCodeLine{554     highres\_imu-\/>diff\_pressure = mavlink\_msg\_highres\_imu\_get\_diff\_pressure(msg);}
+\DoxyCodeLine{555     highres\_imu-\/>pressure\_alt = mavlink\_msg\_highres\_imu\_get\_pressure\_alt(msg);}
+\DoxyCodeLine{556     highres\_imu-\/>temperature = mavlink\_msg\_highres\_imu\_get\_temperature(msg);}
+\DoxyCodeLine{557     highres\_imu-\/>fields\_updated = mavlink\_msg\_highres\_imu\_get\_fields\_updated(msg);}
+\DoxyCodeLine{558 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{559         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}};}
+\DoxyCodeLine{560         memset(highres\_imu, 0, \mbox{\hyperlink{mavlink__msg__highres__imu_8h_a8fe6f45c646642bc3fd264453a3870b3}{MAVLINK\_MSG\_ID\_HIGHRES\_IMU\_LEN}});}
+\DoxyCodeLine{561     memcpy(highres\_imu, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{562 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{563 \}}
+
+\end{DoxyCode}

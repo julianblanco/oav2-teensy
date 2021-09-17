@@ -1,0 +1,164 @@
+\hypertarget{read__write__lock_8hpp_source}{}\doxysection{read\+\_\+write\+\_\+lock.\+hpp}
+\label{read__write__lock_8hpp_source}\index{src/read\_write\_lock.hpp@{src/read\_write\_lock.hpp}}
+\mbox{\hyperlink{read__write__lock_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00001}00001 \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00002}00002 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00003}00003 \textcolor{comment}{ *  Copyright (c) 2017, Michael Becker (michael.f.becker@gmail.com)}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00005}00005 \textcolor{comment}{ *  This file is part of the FreeRTOS Add-\/ons project.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00006}00006 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00007}00007 \textcolor{comment}{ *  Source Code:}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00008}00008 \textcolor{comment}{ *  https://github.com/michaelbecker/freertos-\/addons}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00009}00009 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00010}00010 \textcolor{comment}{ *  Project Page:}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00011}00011 \textcolor{comment}{ *  http://michaelbecker.github.io/freertos-\/addons/}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00012}00012 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00013}00013 \textcolor{comment}{ *  On-\/line Documentation:}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00014}00014 \textcolor{comment}{ *  http://michaelbecker.github.io/freertos-\/addons/docs/html/index.html}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00015}00015 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00016}00016 \textcolor{comment}{ *  Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00017}00017 \textcolor{comment}{ *  copy of this software and associated documentation files}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00018}00018 \textcolor{comment}{ *  (the "{}Software"{}), to deal in the Software without restriction, including}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00019}00019 \textcolor{comment}{ *  without limitation the rights to use, copy, modify, merge, publish,}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00020}00020 \textcolor{comment}{ *  distribute, sublicense, and/or sell copies of the Software, and to}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00021}00021 \textcolor{comment}{ *  permit persons to whom the Software is furnished to do so,subject to the}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00022}00022 \textcolor{comment}{ *  following conditions:}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00023}00023 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00024}00024 \textcolor{comment}{ *  + The above copyright notice and this permission notice shall be included}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00025}00025 \textcolor{comment}{ *    in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00026}00026 \textcolor{comment}{ *  + Credit is appreciated, but not required, if you find this project}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00027}00027 \textcolor{comment}{ *    useful enough to include in your application, product, device, etc.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00028}00028 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00029}00029 \textcolor{comment}{ *  THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00030}00030 \textcolor{comment}{ *  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00031}00031 \textcolor{comment}{ *  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00032}00032 \textcolor{comment}{ *  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00033}00033 \textcolor{comment}{ *  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00034}00034 \textcolor{comment}{ *  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00035}00035 \textcolor{comment}{ *  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00036}00036 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00037}00037 \textcolor{comment}{ ***************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00040}00040 \textcolor{preprocessor}{\#ifndef READ\_WRITE\_LOCK\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00041}00041 \textcolor{preprocessor}{\#define READ\_WRITE\_LOCK\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00051}00051 \textcolor{preprocessor}{\#ifndef CPP\_FREERTOS\_NO\_EXCEPTIONS}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00052}00052 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00053}00053 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00054}00054 \textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00055}00055 \textcolor{preprocessor}{\#ifdef CPP\_FREERTOS\_NO\_CPP\_STRINGS}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00056}00056 \textcolor{preprocessor}{\#error "{}FreeRTOS-\/Addons require C++ Strings if you are using exceptions"{}}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00057}00057 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00058}00058 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00059}00059 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_free_r_t_o_s___t_e_e_n_s_y4_8h}{FreeRTOS\_TEENSY4.h}}>}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00060}00060 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{semphr_8h}{semphr.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00063}\mbox{\hyperlink{namespacecpp__freertos}{00063}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecpp__freertos}{cpp\_freertos}} \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00066}00066 \textcolor{preprocessor}{\#ifndef CPP\_FREERTOS\_NO\_EXCEPTIONS}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00070}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_create_exception}{00070}} \textcolor{keyword}{class }\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_create_exception}{ReadWriteLockCreateException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00072}00072     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00076}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_create_exception_aa031f57a0d9ec4303c77b164e483478e}{00076}}         \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_create_exception_aa031f57a0d9ec4303c77b164e483478e}{ReadWriteLockCreateException}}()}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00077}00077         \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00078}00078             sprintf(errorString, \textcolor{stringliteral}{"{}ReadWriteLock Constructor Failed"{}});}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00079}00079         \}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00085}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_create_exception_a78fc09fd6b25e906dc2d8a52eae532ca}{00085}}         \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_create_exception_a78fc09fd6b25e906dc2d8a52eae532ca}{what}}() \textcolor{keyword}{const} throw()}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00086}00086         \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00087}00087             \textcolor{keywordflow}{return} errorString;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00088}00088         \}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00090}00090     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00094}00094         \textcolor{keywordtype}{char} errorString[80];}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00095}00095 \};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00096}00096 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00110}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock}{00110}} \textcolor{keyword}{class }\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock}{ReadWriteLock}} \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00113}00113     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00114}00114     \textcolor{comment}{//  Public API}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00115}00115     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00117}00117 \textcolor{comment}{}    \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00123}00123         \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a6717282a541aca49a6c1df7968fef3de}{ReadWriteLock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00128}00128         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a09a4e382675ac3d576a5f93393a7a6b0}{\string~ReadWriteLock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00134}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_ab824802f557190853843ef28d4d40af3}{00134}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_ab824802f557190853843ef28d4d40af3}{ReaderLock}}() = 0;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00139}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a3f1763bbcdb0caecd49efbb11b646203}{00139}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a3f1763bbcdb0caecd49efbb11b646203}{ReaderUnlock}}() = 0;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00145}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a399370c41c10fb27caceb93ecaea62b5}{00145}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a399370c41c10fb27caceb93ecaea62b5}{WriterLock}}() = 0;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00150}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a6b31619582053cff11b070a8d9c7e004}{00150}}         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a6b31619582053cff11b070a8d9c7e004}{WriterUnlock}}() = 0;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00153}00153     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00154}00154     \textcolor{comment}{//  Protected API}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00155}00155     \textcolor{comment}{//  Not intended for use by application code.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00156}00156     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00158}00158 \textcolor{comment}{}    \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00162}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a2da066fa1e83baa1c912fc67c48ea48b}{00162}}         \textcolor{keywordtype}{int} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a2da066fa1e83baa1c912fc67c48ea48b}{ReadCount}};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00167}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a7046a504a0a711b560b2b29d77200f90}{00167}}         \mbox{\hyperlink{struct_queue_definition}{SemaphoreHandle\_t}} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a7046a504a0a711b560b2b29d77200f90}{ReadLock}};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00173}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a04655444d9f959cce015ef5e6e98658f}{00173}}         \mbox{\hyperlink{struct_queue_definition}{SemaphoreHandle\_t}} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_a04655444d9f959cce015ef5e6e98658f}{ResourceLock}};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00174}00174 \};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00176}00176 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00182}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_reader}{00182}} \textcolor{keyword}{class }\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_reader}{ReadWriteLockPreferReader}} : \textcolor{keyword}{public} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock}{ReadWriteLock}} \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00185}00185     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00186}00186     \textcolor{comment}{//  Public API}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00187}00187     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00189}00189 \textcolor{comment}{}    \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00194}00194         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_reader_a6eb22bff8d46df415b06d54cb184bab4}{ReaderLock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00199}00199         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_reader_abc44f201f624d20840c9b983f8496d36}{ReaderUnlock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00205}00205         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_reader_a120177712ba0377cabbe79768106b8af}{WriterLock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00210}00210         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_reader_abe36acbc0b404d268cba7b205c1773be}{WriterUnlock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00211}00211 \};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00219}\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer}{00219}} \textcolor{keyword}{class }\mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer}{ReadWriteLockPreferWriter}} : \textcolor{keyword}{public} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock}{ReadWriteLock}} \{}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00222}00222     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00223}00223     \textcolor{comment}{//  Public API}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00224}00224     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00226}00226 \textcolor{comment}{}    \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00230}00230         \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a12576f50c5859afe331e6b9115092693}{ReadWriteLockPreferWriter}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00235}00235         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a97d394b7ca4ac41c18146b99b7937f01}{\string~ReadWriteLockPreferWriter}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00241}00241         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a31e8525d2b0ef7c293e30e61dfe942ac}{ReaderLock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00246}00246         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_a2e3b7527e0db1bce0ceb2f6a7de54d63}{ReaderUnlock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00252}00252         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_afb3ac19f3df1fccf51e76c37b0f3f767}{WriterLock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00253}00253 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00257}00257         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcpp__freertos_1_1_read_write_lock_prefer_writer_aa6627a4dd7920c93c2470cbfaafb5088}{WriterUnlock}}();}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00260}00260     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00261}00261     \textcolor{comment}{//  Private API}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00262}00262     \textcolor{comment}{//  The internals of this wrapper class.}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00263}00263     \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00265}00265 \textcolor{comment}{}    \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00270}00270         \textcolor{keywordtype}{int} WriteCount;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00275}00275         \mbox{\hyperlink{struct_queue_definition}{SemaphoreHandle\_t}} WriteLock;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00276}00276 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00280}00280         \mbox{\hyperlink{struct_queue_definition}{SemaphoreHandle\_t}} BlockReadersLock;}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00281}00281 \};}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00283}00283 }
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00284}00284 \}}
+\DoxyCodeLine{\Hypertarget{read__write__lock_8hpp_source_l00285}00285 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,102 @@
+\hypertarget{mavlink__msg__manual__setpoint_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+manual\+\_\+setpoint.h File Reference}
+\label{mavlink__msg__manual__setpoint_8h}\index{lib/common/mavlink\_msg\_manual\_setpoint.h@{lib/common/mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_a61232d59cf28c156889baed1d6c5a368}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT}}~81
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_ab5027959d34b1474b4d8c4c6ed494143}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_afa8922adbb045e30252db006ca48519b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT\+\_\+\+MIN\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_a6373b19048048c228a25d9ae4289046b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+81\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_ab60d7771996e269365e7adcf41520be6}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+81\+\_\+\+MIN\+\_\+\+LEN}}~22
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_acb479ad9d773e704ef515db6548dcbae}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT\+\_\+\+CRC}}~106
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_aecae4564b60065228d0ca743af500a81}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+81\+\_\+\+CRC}}~106
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_ac1ff906ad4d0220e4edf15c18c58ee0d}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+MANUAL\+\_\+\+SETPOINT}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__manual__setpoint_8h_ab1b611293ed73e03b6818baad95a0c42}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+manual\+\_\+setpoint\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float roll;float pitch;float yaw;float thrust;uint8\+\_\+t mode\+\_\+switch;uint8\+\_\+t manual\+\_\+override\+\_\+switch;\}) mavlink\+\_\+manual\+\_\+setpoint\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_ac1ff906ad4d0220e4edf15c18c58ee0d}\label{mavlink__msg__manual__setpoint_8h_ac1ff906ad4d0220e4edf15c18c58ee0d}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MESSAGE\_INFO\_MANUAL\_SETPOINT@{MAVLINK\_MESSAGE\_INFO\_MANUAL\_SETPOINT}}
+\index{MAVLINK\_MESSAGE\_INFO\_MANUAL\_SETPOINT@{MAVLINK\_MESSAGE\_INFO\_MANUAL\_SETPOINT}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_MANUAL\_SETPOINT}{MAVLINK\_MESSAGE\_INFO\_MANUAL\_SETPOINT}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+MANUAL\+\_\+\+SETPOINT}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}MANUAL\_SETPOINT"{}}, \(\backslash\)}
+\DoxyCodeLine{    7, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_manual\_setpoint\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}roll"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 4, offsetof(mavlink\_manual\_setpoint\_t, roll) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}pitch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_manual\_setpoint\_t, pitch) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}yaw"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_manual\_setpoint\_t, yaw) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}thrust"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_manual\_setpoint\_t, thrust) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}mode\_switch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 20, offsetof(mavlink\_manual\_setpoint\_t, mode\_switch) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}manual\_override\_switch"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 21, offsetof(mavlink\_manual\_setpoint\_t, manual\_override\_switch) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_aecae4564b60065228d0ca743af500a81}\label{mavlink__msg__manual__setpoint_8h_aecae4564b60065228d0ca743af500a81}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_81\_CRC@{MAVLINK\_MSG\_ID\_81\_CRC}}
+\index{MAVLINK\_MSG\_ID\_81\_CRC@{MAVLINK\_MSG\_ID\_81\_CRC}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_81\_CRC}{MAVLINK\_MSG\_ID\_81\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+81\+\_\+\+CRC~106}
+
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_a6373b19048048c228a25d9ae4289046b}\label{mavlink__msg__manual__setpoint_8h_a6373b19048048c228a25d9ae4289046b}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_81\_LEN@{MAVLINK\_MSG\_ID\_81\_LEN}}
+\index{MAVLINK\_MSG\_ID\_81\_LEN@{MAVLINK\_MSG\_ID\_81\_LEN}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_81\_LEN}{MAVLINK\_MSG\_ID\_81\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+81\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_ab60d7771996e269365e7adcf41520be6}\label{mavlink__msg__manual__setpoint_8h_ab60d7771996e269365e7adcf41520be6}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_81\_MIN\_LEN@{MAVLINK\_MSG\_ID\_81\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_81\_MIN\_LEN@{MAVLINK\_MSG\_ID\_81\_MIN\_LEN}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_81\_MIN\_LEN}{MAVLINK\_MSG\_ID\_81\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+81\+\_\+\+MIN\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_a61232d59cf28c156889baed1d6c5a368}\label{mavlink__msg__manual__setpoint_8h_a61232d59cf28c156889baed1d6c5a368}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT}}
+\index{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT}{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT~81}
+
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_acb479ad9d773e704ef515db6548dcbae}\label{mavlink__msg__manual__setpoint_8h_acb479ad9d773e704ef515db6548dcbae}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_CRC@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_CRC}}
+\index{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_CRC@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_CRC}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_CRC}{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT\+\_\+\+CRC~106}
+
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_ab5027959d34b1474b4d8c4c6ed494143}\label{mavlink__msg__manual__setpoint_8h_ab5027959d34b1474b4d8c4c6ed494143}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_LEN@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_LEN}}
+\index{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_LEN@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_LEN}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_LEN}{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT\+\_\+\+LEN~22}
+
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_afa8922adbb045e30252db006ca48519b}\label{mavlink__msg__manual__setpoint_8h_afa8922adbb045e30252db006ca48519b}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_MIN\_LEN@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_MIN\_LEN@{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_MIN\_LEN}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_MIN\_LEN}{MAVLINK\_MSG\_ID\_MANUAL\_SETPOINT\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+MANUAL\+\_\+\+SETPOINT\+\_\+\+MIN\+\_\+\+LEN~22}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__manual__setpoint_8h_ab1b611293ed73e03b6818baad95a0c42}\label{mavlink__msg__manual__setpoint_8h_ab1b611293ed73e03b6818baad95a0c42}} 
+\index{mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_manual\_setpoint.h@{mavlink\_msg\_manual\_setpoint.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+manual\+\_\+setpoint\+\_\+t \{ uint32\+\_\+t time\+\_\+boot\+\_\+ms;float roll;float pitch;float yaw;float thrust;uint8\+\_\+t mode\+\_\+switch;uint8\+\_\+t manual\+\_\+override\+\_\+switch;\}}]{ }\end{DoxyParamCaption})}
+

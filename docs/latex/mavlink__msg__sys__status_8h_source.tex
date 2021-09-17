@@ -1,0 +1,366 @@
+\hypertarget{mavlink__msg__sys__status_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+sys\+\_\+status.\+h}
+\label{mavlink__msg__sys__status_8h_source}\index{lib/common/mavlink\_msg\_sys\_status.h@{lib/common/mavlink\_msg\_sys\_status.h}}
+\mbox{\hyperlink{mavlink__msg__sys__status_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE SYS\_STATUS PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SYS\_STATUS 1}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__sys__status_8h_a0b452cd7bb3ca0cc184e3c6e83d00229}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_sys\_status\_t \{}
+\DoxyCodeLine{8  uint32\_t onboard\_control\_sensors\_present; \textcolor{comment}{/*<  Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.*/}}
+\DoxyCodeLine{9  uint32\_t onboard\_control\_sensors\_enabled; \textcolor{comment}{/*<  Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.*/}}
+\DoxyCodeLine{10  uint32\_t onboard\_control\_sensors\_health; \textcolor{comment}{/*<  Bitmap showing which onboard controllers and sensors are operational or have an error:  Value of 0: not enabled. Value of 1: enabled.*/}}
+\DoxyCodeLine{11  uint16\_t load; \textcolor{comment}{/*< [d\%] Maximum usage in percent of the mainloop time. Values: [0-\/1000] -\/ should always be below 1000*/}}
+\DoxyCodeLine{12  uint16\_t voltage\_battery; \textcolor{comment}{/*< [mV] Battery voltage*/}}
+\DoxyCodeLine{13  int16\_t current\_battery; \textcolor{comment}{/*< [cA] Battery current, -\/1: autopilot does not measure the current*/}}
+\DoxyCodeLine{14  uint16\_t drop\_rate\_comm; \textcolor{comment}{/*< [c\%] Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)*/}}
+\DoxyCodeLine{15  uint16\_t errors\_comm; \textcolor{comment}{/*<  Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)*/}}
+\DoxyCodeLine{16  uint16\_t errors\_count1; \textcolor{comment}{/*<  Autopilot-\/specific errors*/}}
+\DoxyCodeLine{17  uint16\_t errors\_count2; \textcolor{comment}{/*<  Autopilot-\/specific errors*/}}
+\DoxyCodeLine{18  uint16\_t errors\_count3; \textcolor{comment}{/*<  Autopilot-\/specific errors*/}}
+\DoxyCodeLine{19  uint16\_t errors\_count4; \textcolor{comment}{/*<  Autopilot-\/specific errors*/}}
+\DoxyCodeLine{20  int8\_t battery\_remaining; \textcolor{comment}{/*< [\%] Remaining battery energy, -\/1: autopilot estimate the remaining battery*/}}
+\DoxyCodeLine{21 \}) mavlink\_sys\_status\_t;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN 31}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN 31}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_1\_LEN 31}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_1\_MIN\_LEN 31}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC 124}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_1\_CRC 124}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SYS\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{    1, \(\backslash\)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{    "{}SYS\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{37     13, \(\backslash\)}
+\DoxyCodeLine{38     \{  \{ "{}onboard\_control\_sensors\_present"{}, "{}0x\%04x"{}, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_sys\_status\_t, onboard\_control\_sensors\_present) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}onboard\_control\_sensors\_enabled"{}, "{}0x\%04x"{}, MAVLINK\_TYPE\_UINT32\_T, 0, 4, offsetof(mavlink\_sys\_status\_t, onboard\_control\_sensors\_enabled) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}onboard\_control\_sensors\_health"{}, "{}0x\%04x"{}, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_sys\_status\_t, onboard\_control\_sensors\_health) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}load"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_sys\_status\_t, load) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}voltage\_battery"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 14, offsetof(mavlink\_sys\_status\_t, voltage\_battery) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}current\_battery"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 16, offsetof(mavlink\_sys\_status\_t, current\_battery) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}battery\_remaining"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 30, offsetof(mavlink\_sys\_status\_t, battery\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}drop\_rate\_comm"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_sys\_status\_t, drop\_rate\_comm) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}errors\_comm"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 20, offsetof(mavlink\_sys\_status\_t, errors\_comm) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}errors\_count1"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_sys\_status\_t, errors\_count1) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}errors\_count2"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 24, offsetof(mavlink\_sys\_status\_t, errors\_count2) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}errors\_count3"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 26, offsetof(mavlink\_sys\_status\_t, errors\_count3) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}errors\_count4"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 28, offsetof(mavlink\_sys\_status\_t, errors\_count4) \}, \(\backslash\)}
+\DoxyCodeLine{51          \} \(\backslash\)}
+\DoxyCodeLine{52 \}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SYS\_STATUS \{ \(\backslash\)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{    "{}SYS\_STATUS"{}}, \(\backslash\)}
+\DoxyCodeLine{56     13, \(\backslash\)}
+\DoxyCodeLine{57     \{  \{ "{}onboard\_control\_sensors\_present"{}, "{}0x\%04x"{}, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_sys\_status\_t, onboard\_control\_sensors\_present) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}onboard\_control\_sensors\_enabled"{}, "{}0x\%04x"{}, MAVLINK\_TYPE\_UINT32\_T, 0, 4, offsetof(mavlink\_sys\_status\_t, onboard\_control\_sensors\_enabled) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}onboard\_control\_sensors\_health"{}, "{}0x\%04x"{}, MAVLINK\_TYPE\_UINT32\_T, 0, 8, offsetof(mavlink\_sys\_status\_t, onboard\_control\_sensors\_health) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}load"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 12, offsetof(mavlink\_sys\_status\_t, load) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}voltage\_battery"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 14, offsetof(mavlink\_sys\_status\_t, voltage\_battery) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}current\_battery"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 16, offsetof(mavlink\_sys\_status\_t, current\_battery) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}battery\_remaining"{}, NULL, MAVLINK\_TYPE\_INT8\_T, 0, 30, offsetof(mavlink\_sys\_status\_t, battery\_remaining) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}drop\_rate\_comm"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_sys\_status\_t, drop\_rate\_comm) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}errors\_comm"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 20, offsetof(mavlink\_sys\_status\_t, errors\_comm) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}errors\_count1"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_sys\_status\_t, errors\_count1) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}errors\_count2"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 24, offsetof(mavlink\_sys\_status\_t, errors\_count2) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}errors\_count3"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 26, offsetof(mavlink\_sys\_status\_t, errors\_count3) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}errors\_count4"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 28, offsetof(mavlink\_sys\_status\_t, errors\_count4) \}, \(\backslash\)}
+\DoxyCodeLine{70          \} \(\backslash\)}
+\DoxyCodeLine{71 \}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{95 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{96                                uint32\_t onboard\_control\_sensors\_present, uint32\_t onboard\_control\_sensors\_enabled, uint32\_t onboard\_control\_sensors\_health, uint16\_t load, uint16\_t voltage\_battery, int16\_t current\_battery, int8\_t battery\_remaining, uint16\_t drop\_rate\_comm, uint16\_t errors\_comm, uint16\_t errors\_count1, uint16\_t errors\_count2, uint16\_t errors\_count3, uint16\_t errors\_count4)}
+\DoxyCodeLine{97 \{}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{99     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}];}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, onboard\_control\_sensors\_present);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, onboard\_control\_sensors\_enabled);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, onboard\_control\_sensors\_health);}
+\DoxyCodeLine{103     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, load);}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, voltage\_battery);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, current\_battery);}
+\DoxyCodeLine{106     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, drop\_rate\_comm);}
+\DoxyCodeLine{107     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, errors\_comm);}
+\DoxyCodeLine{108     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, errors\_count1);}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, errors\_count2);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, errors\_count3);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, errors\_count4);}
+\DoxyCodeLine{112     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 30, battery\_remaining);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}});}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{116     mavlink\_sys\_status\_t packet;}
+\DoxyCodeLine{117     packet.onboard\_control\_sensors\_present = onboard\_control\_sensors\_present;}
+\DoxyCodeLine{118     packet.onboard\_control\_sensors\_enabled = onboard\_control\_sensors\_enabled;}
+\DoxyCodeLine{119     packet.onboard\_control\_sensors\_health = onboard\_control\_sensors\_health;}
+\DoxyCodeLine{120     packet.load = load;}
+\DoxyCodeLine{121     packet.voltage\_battery = voltage\_battery;}
+\DoxyCodeLine{122     packet.current\_battery = current\_battery;}
+\DoxyCodeLine{123     packet.drop\_rate\_comm = drop\_rate\_comm;}
+\DoxyCodeLine{124     packet.errors\_comm = errors\_comm;}
+\DoxyCodeLine{125     packet.errors\_count1 = errors\_count1;}
+\DoxyCodeLine{126     packet.errors\_count2 = errors\_count2;}
+\DoxyCodeLine{127     packet.errors\_count3 = errors\_count3;}
+\DoxyCodeLine{128     packet.errors\_count4 = errors\_count4;}
+\DoxyCodeLine{129     packet.battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}});}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}};}
+\DoxyCodeLine{135     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{136 \}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{159 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{160                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{161                                    uint32\_t onboard\_control\_sensors\_present,uint32\_t onboard\_control\_sensors\_enabled,uint32\_t onboard\_control\_sensors\_health,uint16\_t load,uint16\_t voltage\_battery,int16\_t current\_battery,int8\_t battery\_remaining,uint16\_t drop\_rate\_comm,uint16\_t errors\_comm,uint16\_t errors\_count1,uint16\_t errors\_count2,uint16\_t errors\_count3,uint16\_t errors\_count4)}
+\DoxyCodeLine{162 \{}
+\DoxyCodeLine{163 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{164     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}];}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, onboard\_control\_sensors\_present);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, onboard\_control\_sensors\_enabled);}
+\DoxyCodeLine{167     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, onboard\_control\_sensors\_health);}
+\DoxyCodeLine{168     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, load);}
+\DoxyCodeLine{169     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, voltage\_battery);}
+\DoxyCodeLine{170     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, current\_battery);}
+\DoxyCodeLine{171     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, drop\_rate\_comm);}
+\DoxyCodeLine{172     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, errors\_comm);}
+\DoxyCodeLine{173     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, errors\_count1);}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, errors\_count2);}
+\DoxyCodeLine{175     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, errors\_count3);}
+\DoxyCodeLine{176     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, errors\_count4);}
+\DoxyCodeLine{177     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 30, battery\_remaining);}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}});}
+\DoxyCodeLine{180 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{181     mavlink\_sys\_status\_t packet;}
+\DoxyCodeLine{182     packet.onboard\_control\_sensors\_present = onboard\_control\_sensors\_present;}
+\DoxyCodeLine{183     packet.onboard\_control\_sensors\_enabled = onboard\_control\_sensors\_enabled;}
+\DoxyCodeLine{184     packet.onboard\_control\_sensors\_health = onboard\_control\_sensors\_health;}
+\DoxyCodeLine{185     packet.load = load;}
+\DoxyCodeLine{186     packet.voltage\_battery = voltage\_battery;}
+\DoxyCodeLine{187     packet.current\_battery = current\_battery;}
+\DoxyCodeLine{188     packet.drop\_rate\_comm = drop\_rate\_comm;}
+\DoxyCodeLine{189     packet.errors\_comm = errors\_comm;}
+\DoxyCodeLine{190     packet.errors\_count1 = errors\_count1;}
+\DoxyCodeLine{191     packet.errors\_count2 = errors\_count2;}
+\DoxyCodeLine{192     packet.errors\_count3 = errors\_count3;}
+\DoxyCodeLine{193     packet.errors\_count4 = errors\_count4;}
+\DoxyCodeLine{194     packet.battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}});}
+\DoxyCodeLine{197 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}};}
+\DoxyCodeLine{200     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{201 \}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{211 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_sys\_status\_t* sys\_status)}
+\DoxyCodeLine{212 \{}
+\DoxyCodeLine{213     \textcolor{keywordflow}{return} mavlink\_msg\_sys\_status\_pack(system\_id, component\_id, msg, sys\_status-\/>onboard\_control\_sensors\_present, sys\_status-\/>onboard\_control\_sensors\_enabled, sys\_status-\/>onboard\_control\_sensors\_health, sys\_status-\/>load, sys\_status-\/>voltage\_battery, sys\_status-\/>current\_battery, sys\_status-\/>battery\_remaining, sys\_status-\/>drop\_rate\_comm, sys\_status-\/>errors\_comm, sys\_status-\/>errors\_count1, sys\_status-\/>errors\_count2, sys\_status-\/>errors\_count3, sys\_status-\/>errors\_count4);}
+\DoxyCodeLine{214 \}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{225 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_sys\_status\_t* sys\_status)}
+\DoxyCodeLine{226 \{}
+\DoxyCodeLine{227     \textcolor{keywordflow}{return} mavlink\_msg\_sys\_status\_pack\_chan(system\_id, component\_id, chan, msg, sys\_status-\/>onboard\_control\_sensors\_present, sys\_status-\/>onboard\_control\_sensors\_enabled, sys\_status-\/>onboard\_control\_sensors\_health, sys\_status-\/>load, sys\_status-\/>voltage\_battery, sys\_status-\/>current\_battery, sys\_status-\/>battery\_remaining, sys\_status-\/>drop\_rate\_comm, sys\_status-\/>errors\_comm, sys\_status-\/>errors\_count1, sys\_status-\/>errors\_count2, sys\_status-\/>errors\_count3, sys\_status-\/>errors\_count4);}
+\DoxyCodeLine{228 \}}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{248 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_sys\_status\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t onboard\_control\_sensors\_present, uint32\_t onboard\_control\_sensors\_enabled, uint32\_t onboard\_control\_sensors\_health, uint16\_t load, uint16\_t voltage\_battery, int16\_t current\_battery, int8\_t battery\_remaining, uint16\_t drop\_rate\_comm, uint16\_t errors\_comm, uint16\_t errors\_count1, uint16\_t errors\_count2, uint16\_t errors\_count3, uint16\_t errors\_count4)}
+\DoxyCodeLine{251 \{}
+\DoxyCodeLine{252 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{253     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}];}
+\DoxyCodeLine{254     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, onboard\_control\_sensors\_present);}
+\DoxyCodeLine{255     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, onboard\_control\_sensors\_enabled);}
+\DoxyCodeLine{256     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, onboard\_control\_sensors\_health);}
+\DoxyCodeLine{257     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, load);}
+\DoxyCodeLine{258     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, voltage\_battery);}
+\DoxyCodeLine{259     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, current\_battery);}
+\DoxyCodeLine{260     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, drop\_rate\_comm);}
+\DoxyCodeLine{261     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, errors\_comm);}
+\DoxyCodeLine{262     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, errors\_count1);}
+\DoxyCodeLine{263     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, errors\_count2);}
+\DoxyCodeLine{264     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, errors\_count3);}
+\DoxyCodeLine{265     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, errors\_count4);}
+\DoxyCodeLine{266     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 30, battery\_remaining);}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{268     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{269 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{270     mavlink\_sys\_status\_t packet;}
+\DoxyCodeLine{271     packet.onboard\_control\_sensors\_present = onboard\_control\_sensors\_present;}
+\DoxyCodeLine{272     packet.onboard\_control\_sensors\_enabled = onboard\_control\_sensors\_enabled;}
+\DoxyCodeLine{273     packet.onboard\_control\_sensors\_health = onboard\_control\_sensors\_health;}
+\DoxyCodeLine{274     packet.load = load;}
+\DoxyCodeLine{275     packet.voltage\_battery = voltage\_battery;}
+\DoxyCodeLine{276     packet.current\_battery = current\_battery;}
+\DoxyCodeLine{277     packet.drop\_rate\_comm = drop\_rate\_comm;}
+\DoxyCodeLine{278     packet.errors\_comm = errors\_comm;}
+\DoxyCodeLine{279     packet.errors\_count1 = errors\_count1;}
+\DoxyCodeLine{280     packet.errors\_count2 = errors\_count2;}
+\DoxyCodeLine{281     packet.errors\_count3 = errors\_count3;}
+\DoxyCodeLine{282     packet.errors\_count4 = errors\_count4;}
+\DoxyCodeLine{283     packet.battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{286 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{287 \}}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{294 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_sys\_status\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_sys\_status\_t* sys\_status)}
+\DoxyCodeLine{295 \{}
+\DoxyCodeLine{296 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{297     mavlink\_msg\_sys\_status\_send(chan, sys\_status-\/>onboard\_control\_sensors\_present, sys\_status-\/>onboard\_control\_sensors\_enabled, sys\_status-\/>onboard\_control\_sensors\_health, sys\_status-\/>load, sys\_status-\/>voltage\_battery, sys\_status-\/>current\_battery, sys\_status-\/>battery\_remaining, sys\_status-\/>drop\_rate\_comm, sys\_status-\/>errors\_comm, sys\_status-\/>errors\_count1, sys\_status-\/>errors\_count2, sys\_status-\/>errors\_count3, sys\_status-\/>errors\_count4);}
+\DoxyCodeLine{298 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{299     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)sys\_status, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{300 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{301 \}}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{303 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{304 \textcolor{comment}{/*}}
+\DoxyCodeLine{305 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{306 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{307 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{308 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{309 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{310 \textcolor{comment}{ */}}
+\DoxyCodeLine{311 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_sys\_status\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t onboard\_control\_sensors\_present, uint32\_t onboard\_control\_sensors\_enabled, uint32\_t onboard\_control\_sensors\_health, uint16\_t load, uint16\_t voltage\_battery, int16\_t current\_battery, int8\_t battery\_remaining, uint16\_t drop\_rate\_comm, uint16\_t errors\_comm, uint16\_t errors\_count1, uint16\_t errors\_count2, uint16\_t errors\_count3, uint16\_t errors\_count4)}
+\DoxyCodeLine{312 \{}
+\DoxyCodeLine{313 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{314     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{315     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, onboard\_control\_sensors\_present);}
+\DoxyCodeLine{316     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 4, onboard\_control\_sensors\_enabled);}
+\DoxyCodeLine{317     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 8, onboard\_control\_sensors\_health);}
+\DoxyCodeLine{318     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 12, load);}
+\DoxyCodeLine{319     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 14, voltage\_battery);}
+\DoxyCodeLine{320     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, current\_battery);}
+\DoxyCodeLine{321     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, drop\_rate\_comm);}
+\DoxyCodeLine{322     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 20, errors\_comm);}
+\DoxyCodeLine{323     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, errors\_count1);}
+\DoxyCodeLine{324     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, errors\_count2);}
+\DoxyCodeLine{325     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 26, errors\_count3);}
+\DoxyCodeLine{326     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 28, errors\_count4);}
+\DoxyCodeLine{327     \mbox{\hyperlink{protocol_8h_af10c521f49722953319172c5dd3d030e}{\_mav\_put\_int8\_t}}(buf, 30, battery\_remaining);}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}}, buf, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{330 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{331     mavlink\_sys\_status\_t *packet = (mavlink\_sys\_status\_t *)msgbuf;}
+\DoxyCodeLine{332     packet-\/>onboard\_control\_sensors\_present = onboard\_control\_sensors\_present;}
+\DoxyCodeLine{333     packet-\/>onboard\_control\_sensors\_enabled = onboard\_control\_sensors\_enabled;}
+\DoxyCodeLine{334     packet-\/>onboard\_control\_sensors\_health = onboard\_control\_sensors\_health;}
+\DoxyCodeLine{335     packet-\/>load = load;}
+\DoxyCodeLine{336     packet-\/>voltage\_battery = voltage\_battery;}
+\DoxyCodeLine{337     packet-\/>current\_battery = current\_battery;}
+\DoxyCodeLine{338     packet-\/>drop\_rate\_comm = drop\_rate\_comm;}
+\DoxyCodeLine{339     packet-\/>errors\_comm = errors\_comm;}
+\DoxyCodeLine{340     packet-\/>errors\_count1 = errors\_count1;}
+\DoxyCodeLine{341     packet-\/>errors\_count2 = errors\_count2;}
+\DoxyCodeLine{342     packet-\/>errors\_count3 = errors\_count3;}
+\DoxyCodeLine{343     packet-\/>errors\_count4 = errors\_count4;}
+\DoxyCodeLine{344     packet-\/>battery\_remaining = battery\_remaining;}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{346     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a25ee88fd9ab967b9a2b4cb73e3dc26ee}{MAVLINK\_MSG\_ID\_SYS\_STATUS}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a2fae905d55bacbdca96fa5161fb93ad2}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}, \mbox{\hyperlink{mavlink__msg__sys__status_8h_ae2ae9e52964dc68279c9c61cf66f0cfc}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_CRC}});}
+\DoxyCodeLine{347 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{348 \}}
+\DoxyCodeLine{349 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{351 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353 \textcolor{comment}{// MESSAGE SYS\_STATUS UNPACKING}}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355 }
+\DoxyCodeLine{361 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_sys\_status\_get\_onboard\_control\_sensors\_present(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{362 \{}
+\DoxyCodeLine{363     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{364 \}}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{371 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_sys\_status\_get\_onboard\_control\_sensors\_enabled(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{372 \{}
+\DoxyCodeLine{373     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  4);}
+\DoxyCodeLine{374 \}}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{381 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_sys\_status\_get\_onboard\_control\_sensors\_health(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{382 \{}
+\DoxyCodeLine{383     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  8);}
+\DoxyCodeLine{384 \}}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{391 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_load(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{392 \{}
+\DoxyCodeLine{393     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  12);}
+\DoxyCodeLine{394 \}}
+\DoxyCodeLine{395 }
+\DoxyCodeLine{401 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_voltage\_battery(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{402 \{}
+\DoxyCodeLine{403     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  14);}
+\DoxyCodeLine{404 \}}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{411 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_sys\_status\_get\_current\_battery(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{412 \{}
+\DoxyCodeLine{413     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  16);}
+\DoxyCodeLine{414 \}}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{421 \textcolor{keyword}{static} \textcolor{keyword}{inline} int8\_t mavlink\_msg\_sys\_status\_get\_battery\_remaining(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{422 \{}
+\DoxyCodeLine{423     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a37f0a7aa03bb6a9d30316517e76f0e25}{\_MAV\_RETURN\_int8\_t}}(msg,  30);}
+\DoxyCodeLine{424 \}}
+\DoxyCodeLine{425 }
+\DoxyCodeLine{431 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_drop\_rate\_comm(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{432 \{}
+\DoxyCodeLine{433     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  18);}
+\DoxyCodeLine{434 \}}
+\DoxyCodeLine{435 }
+\DoxyCodeLine{441 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_errors\_comm(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{442 \{}
+\DoxyCodeLine{443     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  20);}
+\DoxyCodeLine{444 \}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{451 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_errors\_count1(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{452 \{}
+\DoxyCodeLine{453     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  22);}
+\DoxyCodeLine{454 \}}
+\DoxyCodeLine{455 }
+\DoxyCodeLine{461 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_errors\_count2(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{462 \{}
+\DoxyCodeLine{463     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  24);}
+\DoxyCodeLine{464 \}}
+\DoxyCodeLine{465 }
+\DoxyCodeLine{471 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_errors\_count3(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{472 \{}
+\DoxyCodeLine{473     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  26);}
+\DoxyCodeLine{474 \}}
+\DoxyCodeLine{475 }
+\DoxyCodeLine{481 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_sys\_status\_get\_errors\_count4(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{482 \{}
+\DoxyCodeLine{483     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  28);}
+\DoxyCodeLine{484 \}}
+\DoxyCodeLine{485 }
+\DoxyCodeLine{492 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_sys\_status\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_sys\_status\_t* sys\_status)}
+\DoxyCodeLine{493 \{}
+\DoxyCodeLine{494 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{495     sys\_status-\/>onboard\_control\_sensors\_present = mavlink\_msg\_sys\_status\_get\_onboard\_control\_sensors\_present(msg);}
+\DoxyCodeLine{496     sys\_status-\/>onboard\_control\_sensors\_enabled = mavlink\_msg\_sys\_status\_get\_onboard\_control\_sensors\_enabled(msg);}
+\DoxyCodeLine{497     sys\_status-\/>onboard\_control\_sensors\_health = mavlink\_msg\_sys\_status\_get\_onboard\_control\_sensors\_health(msg);}
+\DoxyCodeLine{498     sys\_status-\/>load = mavlink\_msg\_sys\_status\_get\_load(msg);}
+\DoxyCodeLine{499     sys\_status-\/>voltage\_battery = mavlink\_msg\_sys\_status\_get\_voltage\_battery(msg);}
+\DoxyCodeLine{500     sys\_status-\/>current\_battery = mavlink\_msg\_sys\_status\_get\_current\_battery(msg);}
+\DoxyCodeLine{501     sys\_status-\/>drop\_rate\_comm = mavlink\_msg\_sys\_status\_get\_drop\_rate\_comm(msg);}
+\DoxyCodeLine{502     sys\_status-\/>errors\_comm = mavlink\_msg\_sys\_status\_get\_errors\_comm(msg);}
+\DoxyCodeLine{503     sys\_status-\/>errors\_count1 = mavlink\_msg\_sys\_status\_get\_errors\_count1(msg);}
+\DoxyCodeLine{504     sys\_status-\/>errors\_count2 = mavlink\_msg\_sys\_status\_get\_errors\_count2(msg);}
+\DoxyCodeLine{505     sys\_status-\/>errors\_count3 = mavlink\_msg\_sys\_status\_get\_errors\_count3(msg);}
+\DoxyCodeLine{506     sys\_status-\/>errors\_count4 = mavlink\_msg\_sys\_status\_get\_errors\_count4(msg);}
+\DoxyCodeLine{507     sys\_status-\/>battery\_remaining = mavlink\_msg\_sys\_status\_get\_battery\_remaining(msg);}
+\DoxyCodeLine{508 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{509         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}};}
+\DoxyCodeLine{510         memset(sys\_status, 0, \mbox{\hyperlink{mavlink__msg__sys__status_8h_a8731eeeca5f6db247b7539750f47afa1}{MAVLINK\_MSG\_ID\_SYS\_STATUS\_LEN}});}
+\DoxyCodeLine{511     memcpy(sys\_status, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{512 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{513 \}}
+
+\end{DoxyCode}

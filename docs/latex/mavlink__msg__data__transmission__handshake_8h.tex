@@ -1,0 +1,102 @@
+\hypertarget{mavlink__msg__data__transmission__handshake_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+data\+\_\+transmission\+\_\+handshake.h File Reference}
+\label{mavlink__msg__data__transmission__handshake_8h}\index{lib/common/mavlink\_msg\_data\_transmission\_handshake.h@{lib/common/mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_a8b60118546323302c3faa063792a9554}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE}}~130
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_a28f2aa6c2b97181a7aaaf4614136889c}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE\+\_\+\+LEN}}~13
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_adb73987cf2624c9573783c8cffb4488e}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE\+\_\+\+MIN\+\_\+\+LEN}}~13
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_a0be6ba130179e6605d3946925890f3ee}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+130\+\_\+\+LEN}}~13
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_acd6f05117584b4fbfa8b0940936d1ad7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+130\+\_\+\+MIN\+\_\+\+LEN}}~13
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_aa6fb1bd24bac631a9b28e0a3ca28d9bc}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE\+\_\+\+CRC}}~29
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_a1236ec21a40d72352326ecdd58674904}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+130\+\_\+\+CRC}}~29
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_ac20a45cfd8c584619e9004b6eb64df82}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__data__transmission__handshake_8h_a79913ddfcec5aceef8d8090dda0b7ff4}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+data\+\_\+transmission\+\_\+handshake\+\_\+t \{ uint32\+\_\+t size;uint16\+\_\+t width;uint16\+\_\+t height;uint16\+\_\+t packets;uint8\+\_\+t type;uint8\+\_\+t payload;uint8\+\_\+t jpg\+\_\+quality;\}) mavlink\+\_\+data\+\_\+transmission\+\_\+handshake\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_ac20a45cfd8c584619e9004b6eb64df82}\label{mavlink__msg__data__transmission__handshake_8h_ac20a45cfd8c584619e9004b6eb64df82}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MESSAGE\_INFO\_DATA\_TRANSMISSION\_HANDSHAKE@{MAVLINK\_MESSAGE\_INFO\_DATA\_TRANSMISSION\_HANDSHAKE}}
+\index{MAVLINK\_MESSAGE\_INFO\_DATA\_TRANSMISSION\_HANDSHAKE@{MAVLINK\_MESSAGE\_INFO\_DATA\_TRANSMISSION\_HANDSHAKE}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_DATA\_TRANSMISSION\_HANDSHAKE}{MAVLINK\_MESSAGE\_INFO\_DATA\_TRANSMISSION\_HANDSHAKE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}DATA\_TRANSMISSION\_HANDSHAKE"{}}, \(\backslash\)}
+\DoxyCodeLine{    7, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}type"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 10, offsetof(mavlink\_data\_transmission\_handshake\_t, type) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}size"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 0, offsetof(mavlink\_data\_transmission\_handshake\_t, size) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}width"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 4, offsetof(mavlink\_data\_transmission\_handshake\_t, width) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}height"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 6, offsetof(mavlink\_data\_transmission\_handshake\_t, height) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}packets"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ac4c6864786bfcce3a9bd2f40572c90a4}{MAVLINK\_TYPE\_UINT16\_T}}, 0, 8, offsetof(mavlink\_data\_transmission\_handshake\_t, packets) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}payload"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 11, offsetof(mavlink\_data\_transmission\_handshake\_t, payload) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}jpg\_quality"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 12, offsetof(mavlink\_data\_transmission\_handshake\_t, jpg\_quality) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_a1236ec21a40d72352326ecdd58674904}\label{mavlink__msg__data__transmission__handshake_8h_a1236ec21a40d72352326ecdd58674904}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_130\_CRC@{MAVLINK\_MSG\_ID\_130\_CRC}}
+\index{MAVLINK\_MSG\_ID\_130\_CRC@{MAVLINK\_MSG\_ID\_130\_CRC}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_130\_CRC}{MAVLINK\_MSG\_ID\_130\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+130\+\_\+\+CRC~29}
+
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_a0be6ba130179e6605d3946925890f3ee}\label{mavlink__msg__data__transmission__handshake_8h_a0be6ba130179e6605d3946925890f3ee}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_130\_LEN@{MAVLINK\_MSG\_ID\_130\_LEN}}
+\index{MAVLINK\_MSG\_ID\_130\_LEN@{MAVLINK\_MSG\_ID\_130\_LEN}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_130\_LEN}{MAVLINK\_MSG\_ID\_130\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+130\+\_\+\+LEN~13}
+
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_acd6f05117584b4fbfa8b0940936d1ad7}\label{mavlink__msg__data__transmission__handshake_8h_acd6f05117584b4fbfa8b0940936d1ad7}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_130\_MIN\_LEN@{MAVLINK\_MSG\_ID\_130\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_130\_MIN\_LEN@{MAVLINK\_MSG\_ID\_130\_MIN\_LEN}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_130\_MIN\_LEN}{MAVLINK\_MSG\_ID\_130\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+130\+\_\+\+MIN\+\_\+\+LEN~13}
+
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_a8b60118546323302c3faa063792a9554}\label{mavlink__msg__data__transmission__handshake_8h_a8b60118546323302c3faa063792a9554}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE}}
+\index{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE}{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE~130}
+
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_aa6fb1bd24bac631a9b28e0a3ca28d9bc}\label{mavlink__msg__data__transmission__handshake_8h_aa6fb1bd24bac631a9b28e0a3ca28d9bc}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_CRC@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_CRC@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_CRC}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_CRC}{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE\+\_\+\+CRC~29}
+
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_a28f2aa6c2b97181a7aaaf4614136889c}\label{mavlink__msg__data__transmission__handshake_8h_a28f2aa6c2b97181a7aaaf4614136889c}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_LEN@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_LEN@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_LEN}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_LEN}{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE\+\_\+\+LEN~13}
+
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_adb73987cf2624c9573783c8cffb4488e}\label{mavlink__msg__data__transmission__handshake_8h_adb73987cf2624c9573783c8cffb4488e}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_MIN\_LEN}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_DATA\_TRANSMISSION\_HANDSHAKE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+DATA\+\_\+\+TRANSMISSION\+\_\+\+HANDSHAKE\+\_\+\+MIN\+\_\+\+LEN~13}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__data__transmission__handshake_8h_a79913ddfcec5aceef8d8090dda0b7ff4}\label{mavlink__msg__data__transmission__handshake_8h_a79913ddfcec5aceef8d8090dda0b7ff4}} 
+\index{mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_data\_transmission\_handshake.h@{mavlink\_msg\_data\_transmission\_handshake.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+data\+\_\+transmission\+\_\+handshake\+\_\+t \{ uint32\+\_\+t size;uint16\+\_\+t width;uint16\+\_\+t height;uint16\+\_\+t packets;uint8\+\_\+t type;uint8\+\_\+t payload;uint8\+\_\+t jpg\+\_\+quality;\}}]{ }\end{DoxyParamCaption})}
+

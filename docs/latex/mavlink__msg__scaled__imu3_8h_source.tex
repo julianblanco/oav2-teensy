@@ -1,0 +1,315 @@
+\hypertarget{mavlink__msg__scaled__imu3_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+scaled\+\_\+imu3.\+h}
+\label{mavlink__msg__scaled__imu3_8h_source}\index{lib/common/mavlink\_msg\_scaled\_imu3.h@{lib/common/mavlink\_msg\_scaled\_imu3.h}}
+\mbox{\hyperlink{mavlink__msg__scaled__imu3_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE SCALED\_IMU3 PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SCALED\_IMU3 129}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_aa6ea7e40c668dc78aa850e96c69682ba}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_scaled\_imu3\_t \{}
+\DoxyCodeLine{8  uint32\_t time\_boot\_ms; \textcolor{comment}{/*< [ms] Timestamp (time since system boot).*/}}
+\DoxyCodeLine{9  int16\_t xacc; \textcolor{comment}{/*< [mG] X acceleration*/}}
+\DoxyCodeLine{10  int16\_t yacc; \textcolor{comment}{/*< [mG] Y acceleration*/}}
+\DoxyCodeLine{11  int16\_t zacc; \textcolor{comment}{/*< [mG] Z acceleration*/}}
+\DoxyCodeLine{12  int16\_t xgyro; \textcolor{comment}{/*< [mrad/s] Angular speed around X axis*/}}
+\DoxyCodeLine{13  int16\_t ygyro; \textcolor{comment}{/*< [mrad/s] Angular speed around Y axis*/}}
+\DoxyCodeLine{14  int16\_t zgyro; \textcolor{comment}{/*< [mrad/s] Angular speed around Z axis*/}}
+\DoxyCodeLine{15  int16\_t xmag; \textcolor{comment}{/*< [mT] X Magnetic field*/}}
+\DoxyCodeLine{16  int16\_t ymag; \textcolor{comment}{/*< [mT] Y Magnetic field*/}}
+\DoxyCodeLine{17  int16\_t zmag; \textcolor{comment}{/*< [mT] Z Magnetic field*/}}
+\DoxyCodeLine{18 \}) mavlink\_scaled\_imu3\_t;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN 22}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN 22}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_129\_LEN 22}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_129\_MIN\_LEN 22}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC 46}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_129\_CRC 46}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU3 \{ \(\backslash\)}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{    129, \(\backslash\)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{    "{}SCALED\_IMU3"{}}, \(\backslash\)}
+\DoxyCodeLine{34     10, \(\backslash\)}
+\DoxyCodeLine{35     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_scaled\_imu3\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}xacc"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 4, offsetof(mavlink\_scaled\_imu3\_t, xacc) \}, \(\backslash\)}
+\DoxyCodeLine{37          \{ "{}yacc"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 6, offsetof(mavlink\_scaled\_imu3\_t, yacc) \}, \(\backslash\)}
+\DoxyCodeLine{38          \{ "{}zacc"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 8, offsetof(mavlink\_scaled\_imu3\_t, zacc) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}xgyro"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 10, offsetof(mavlink\_scaled\_imu3\_t, xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}ygyro"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 12, offsetof(mavlink\_scaled\_imu3\_t, ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}zgyro"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 14, offsetof(mavlink\_scaled\_imu3\_t, zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}xmag"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 16, offsetof(mavlink\_scaled\_imu3\_t, xmag) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}ymag"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 18, offsetof(mavlink\_scaled\_imu3\_t, ymag) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}zmag"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 20, offsetof(mavlink\_scaled\_imu3\_t, zmag) \}, \(\backslash\)}
+\DoxyCodeLine{45          \} \(\backslash\)}
+\DoxyCodeLine{46 \}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_SCALED\_IMU3 \{ \(\backslash\)}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{    "{}SCALED\_IMU3"{}}, \(\backslash\)}
+\DoxyCodeLine{50     10, \(\backslash\)}
+\DoxyCodeLine{51     \{  \{ "{}time\_boot\_ms"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_scaled\_imu3\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{52          \{ "{}xacc"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 4, offsetof(mavlink\_scaled\_imu3\_t, xacc) \}, \(\backslash\)}
+\DoxyCodeLine{53          \{ "{}yacc"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 6, offsetof(mavlink\_scaled\_imu3\_t, yacc) \}, \(\backslash\)}
+\DoxyCodeLine{54          \{ "{}zacc"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 8, offsetof(mavlink\_scaled\_imu3\_t, zacc) \}, \(\backslash\)}
+\DoxyCodeLine{55          \{ "{}xgyro"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 10, offsetof(mavlink\_scaled\_imu3\_t, xgyro) \}, \(\backslash\)}
+\DoxyCodeLine{56          \{ "{}ygyro"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 12, offsetof(mavlink\_scaled\_imu3\_t, ygyro) \}, \(\backslash\)}
+\DoxyCodeLine{57          \{ "{}zgyro"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 14, offsetof(mavlink\_scaled\_imu3\_t, zgyro) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}xmag"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 16, offsetof(mavlink\_scaled\_imu3\_t, xmag) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}ymag"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 18, offsetof(mavlink\_scaled\_imu3\_t, ymag) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}zmag"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 20, offsetof(mavlink\_scaled\_imu3\_t, zmag) \}, \(\backslash\)}
+\DoxyCodeLine{61          \} \(\backslash\)}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{83 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_scaled\_imu3\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{84                                uint32\_t time\_boot\_ms, int16\_t xacc, int16\_t yacc, int16\_t zacc, int16\_t xgyro, int16\_t ygyro, int16\_t zgyro, int16\_t xmag, int16\_t ymag, int16\_t zmag)}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{87     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}];}
+\DoxyCodeLine{88     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{89     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, xacc);}
+\DoxyCodeLine{90     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, yacc);}
+\DoxyCodeLine{91     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, zacc);}
+\DoxyCodeLine{92     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, xgyro);}
+\DoxyCodeLine{93     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, ygyro);}
+\DoxyCodeLine{94     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, zgyro);}
+\DoxyCodeLine{95     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, xmag);}
+\DoxyCodeLine{96     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 18, ymag);}
+\DoxyCodeLine{97     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, zmag);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}});}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{101     mavlink\_scaled\_imu3\_t packet;}
+\DoxyCodeLine{102     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{103     packet.xacc = xacc;}
+\DoxyCodeLine{104     packet.yacc = yacc;}
+\DoxyCodeLine{105     packet.zacc = zacc;}
+\DoxyCodeLine{106     packet.xgyro = xgyro;}
+\DoxyCodeLine{107     packet.ygyro = ygyro;}
+\DoxyCodeLine{108     packet.zgyro = zgyro;}
+\DoxyCodeLine{109     packet.xmag = xmag;}
+\DoxyCodeLine{110     packet.ymag = ymag;}
+\DoxyCodeLine{111     packet.zmag = zmag;}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}});}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}};}
+\DoxyCodeLine{117     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{118 \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{138 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_scaled\_imu3\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{139                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{140                                    uint32\_t time\_boot\_ms,int16\_t xacc,int16\_t yacc,int16\_t zacc,int16\_t xgyro,int16\_t ygyro,int16\_t zgyro,int16\_t xmag,int16\_t ymag,int16\_t zmag)}
+\DoxyCodeLine{141 \{}
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{143     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}];}
+\DoxyCodeLine{144     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{145     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, xacc);}
+\DoxyCodeLine{146     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, yacc);}
+\DoxyCodeLine{147     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, zacc);}
+\DoxyCodeLine{148     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, xgyro);}
+\DoxyCodeLine{149     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, ygyro);}
+\DoxyCodeLine{150     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, zgyro);}
+\DoxyCodeLine{151     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, xmag);}
+\DoxyCodeLine{152     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 18, ymag);}
+\DoxyCodeLine{153     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, zmag);}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}});}
+\DoxyCodeLine{156 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{157     mavlink\_scaled\_imu3\_t packet;}
+\DoxyCodeLine{158     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{159     packet.xacc = xacc;}
+\DoxyCodeLine{160     packet.yacc = yacc;}
+\DoxyCodeLine{161     packet.zacc = zacc;}
+\DoxyCodeLine{162     packet.xgyro = xgyro;}
+\DoxyCodeLine{163     packet.ygyro = ygyro;}
+\DoxyCodeLine{164     packet.zgyro = zgyro;}
+\DoxyCodeLine{165     packet.xmag = xmag;}
+\DoxyCodeLine{166     packet.ymag = ymag;}
+\DoxyCodeLine{167     packet.zmag = zmag;}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}});}
+\DoxyCodeLine{170 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}};}
+\DoxyCodeLine{173     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{174 \}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{184 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_scaled\_imu3\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_scaled\_imu3\_t* scaled\_imu3)}
+\DoxyCodeLine{185 \{}
+\DoxyCodeLine{186     \textcolor{keywordflow}{return} mavlink\_msg\_scaled\_imu3\_pack(system\_id, component\_id, msg, scaled\_imu3-\/>time\_boot\_ms, scaled\_imu3-\/>xacc, scaled\_imu3-\/>yacc, scaled\_imu3-\/>zacc, scaled\_imu3-\/>xgyro, scaled\_imu3-\/>ygyro, scaled\_imu3-\/>zgyro, scaled\_imu3-\/>xmag, scaled\_imu3-\/>ymag, scaled\_imu3-\/>zmag);}
+\DoxyCodeLine{187 \}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{198 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_scaled\_imu3\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_scaled\_imu3\_t* scaled\_imu3)}
+\DoxyCodeLine{199 \{}
+\DoxyCodeLine{200     \textcolor{keywordflow}{return} mavlink\_msg\_scaled\_imu3\_pack\_chan(system\_id, component\_id, chan, msg, scaled\_imu3-\/>time\_boot\_ms, scaled\_imu3-\/>xacc, scaled\_imu3-\/>yacc, scaled\_imu3-\/>zacc, scaled\_imu3-\/>xgyro, scaled\_imu3-\/>ygyro, scaled\_imu3-\/>zgyro, scaled\_imu3-\/>xmag, scaled\_imu3-\/>ymag, scaled\_imu3-\/>zmag);}
+\DoxyCodeLine{201 \}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{218 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_scaled\_imu3\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t time\_boot\_ms, int16\_t xacc, int16\_t yacc, int16\_t zacc, int16\_t xgyro, int16\_t ygyro, int16\_t zgyro, int16\_t xmag, int16\_t ymag, int16\_t zmag)}
+\DoxyCodeLine{221 \{}
+\DoxyCodeLine{222 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{223     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}];}
+\DoxyCodeLine{224     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{225     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, xacc);}
+\DoxyCodeLine{226     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, yacc);}
+\DoxyCodeLine{227     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, zacc);}
+\DoxyCodeLine{228     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, xgyro);}
+\DoxyCodeLine{229     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, ygyro);}
+\DoxyCodeLine{230     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, zgyro);}
+\DoxyCodeLine{231     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, xmag);}
+\DoxyCodeLine{232     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 18, ymag);}
+\DoxyCodeLine{233     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, zmag);}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}}, buf, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{236 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{237     mavlink\_scaled\_imu3\_t packet;}
+\DoxyCodeLine{238     packet.time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{239     packet.xacc = xacc;}
+\DoxyCodeLine{240     packet.yacc = yacc;}
+\DoxyCodeLine{241     packet.zacc = zacc;}
+\DoxyCodeLine{242     packet.xgyro = xgyro;}
+\DoxyCodeLine{243     packet.ygyro = ygyro;}
+\DoxyCodeLine{244     packet.zgyro = zgyro;}
+\DoxyCodeLine{245     packet.xmag = xmag;}
+\DoxyCodeLine{246     packet.ymag = ymag;}
+\DoxyCodeLine{247     packet.zmag = zmag;}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{251 \}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{258 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_scaled\_imu3\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_scaled\_imu3\_t* scaled\_imu3)}
+\DoxyCodeLine{259 \{}
+\DoxyCodeLine{260 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{261     mavlink\_msg\_scaled\_imu3\_send(chan, scaled\_imu3-\/>time\_boot\_ms, scaled\_imu3-\/>xacc, scaled\_imu3-\/>yacc, scaled\_imu3-\/>zacc, scaled\_imu3-\/>xgyro, scaled\_imu3-\/>ygyro, scaled\_imu3-\/>zgyro, scaled\_imu3-\/>xmag, scaled\_imu3-\/>ymag, scaled\_imu3-\/>zmag);}
+\DoxyCodeLine{262 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{263     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)scaled\_imu3, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{264 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{265 \}}
+\DoxyCodeLine{266 }
+\DoxyCodeLine{267 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{268 \textcolor{comment}{/*}}
+\DoxyCodeLine{269 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{270 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{271 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{272 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{273 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{274 \textcolor{comment}{ */}}
+\DoxyCodeLine{275 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_scaled\_imu3\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t time\_boot\_ms, int16\_t xacc, int16\_t yacc, int16\_t zacc, int16\_t xgyro, int16\_t ygyro, int16\_t zgyro, int16\_t xmag, int16\_t ymag, int16\_t zmag)}
+\DoxyCodeLine{276 \{}
+\DoxyCodeLine{277 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{278     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{279     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, time\_boot\_ms);}
+\DoxyCodeLine{280     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, xacc);}
+\DoxyCodeLine{281     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, yacc);}
+\DoxyCodeLine{282     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 8, zacc);}
+\DoxyCodeLine{283     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 10, xgyro);}
+\DoxyCodeLine{284     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 12, ygyro);}
+\DoxyCodeLine{285     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 14, zgyro);}
+\DoxyCodeLine{286     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 16, xmag);}
+\DoxyCodeLine{287     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 18, ymag);}
+\DoxyCodeLine{288     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, zmag);}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}}, buf, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{291 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{292     mavlink\_scaled\_imu3\_t *packet = (mavlink\_scaled\_imu3\_t *)msgbuf;}
+\DoxyCodeLine{293     packet-\/>time\_boot\_ms = time\_boot\_ms;}
+\DoxyCodeLine{294     packet-\/>xacc = xacc;}
+\DoxyCodeLine{295     packet-\/>yacc = yacc;}
+\DoxyCodeLine{296     packet-\/>zacc = zacc;}
+\DoxyCodeLine{297     packet-\/>xgyro = xgyro;}
+\DoxyCodeLine{298     packet-\/>ygyro = ygyro;}
+\DoxyCodeLine{299     packet-\/>zgyro = zgyro;}
+\DoxyCodeLine{300     packet-\/>xmag = xmag;}
+\DoxyCodeLine{301     packet-\/>ymag = ymag;}
+\DoxyCodeLine{302     packet-\/>zmag = zmag;}
+\DoxyCodeLine{303 }
+\DoxyCodeLine{304     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_adfa1e05560b270382e2f89ee5d324259}{MAVLINK\_MSG\_ID\_SCALED\_IMU3}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a42d131ce5e1c2a4cd9da63798771bf35}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8dbfb824a4f3361957027ff539d1a3dd}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_CRC}});}
+\DoxyCodeLine{305 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{306 \}}
+\DoxyCodeLine{307 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311 \textcolor{comment}{// MESSAGE SCALED\_IMU3 UNPACKING}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313 }
+\DoxyCodeLine{319 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_scaled\_imu3\_get\_time\_boot\_ms(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{320 \{}
+\DoxyCodeLine{321     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{322 \}}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{329 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_xacc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{330 \{}
+\DoxyCodeLine{331     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  4);}
+\DoxyCodeLine{332 \}}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{339 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_yacc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{340 \{}
+\DoxyCodeLine{341     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  6);}
+\DoxyCodeLine{342 \}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{349 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_zacc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{350 \{}
+\DoxyCodeLine{351     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  8);}
+\DoxyCodeLine{352 \}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{359 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_xgyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{360 \{}
+\DoxyCodeLine{361     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  10);}
+\DoxyCodeLine{362 \}}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{369 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_ygyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{370 \{}
+\DoxyCodeLine{371     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  12);}
+\DoxyCodeLine{372 \}}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{379 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_zgyro(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{380 \{}
+\DoxyCodeLine{381     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  14);}
+\DoxyCodeLine{382 \}}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{389 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_xmag(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{390 \{}
+\DoxyCodeLine{391     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  16);}
+\DoxyCodeLine{392 \}}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{399 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_ymag(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{400 \{}
+\DoxyCodeLine{401     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  18);}
+\DoxyCodeLine{402 \}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{409 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_scaled\_imu3\_get\_zmag(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{410 \{}
+\DoxyCodeLine{411     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  20);}
+\DoxyCodeLine{412 \}}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{420 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_scaled\_imu3\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_scaled\_imu3\_t* scaled\_imu3)}
+\DoxyCodeLine{421 \{}
+\DoxyCodeLine{422 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{423     scaled\_imu3-\/>time\_boot\_ms = mavlink\_msg\_scaled\_imu3\_get\_time\_boot\_ms(msg);}
+\DoxyCodeLine{424     scaled\_imu3-\/>xacc = mavlink\_msg\_scaled\_imu3\_get\_xacc(msg);}
+\DoxyCodeLine{425     scaled\_imu3-\/>yacc = mavlink\_msg\_scaled\_imu3\_get\_yacc(msg);}
+\DoxyCodeLine{426     scaled\_imu3-\/>zacc = mavlink\_msg\_scaled\_imu3\_get\_zacc(msg);}
+\DoxyCodeLine{427     scaled\_imu3-\/>xgyro = mavlink\_msg\_scaled\_imu3\_get\_xgyro(msg);}
+\DoxyCodeLine{428     scaled\_imu3-\/>ygyro = mavlink\_msg\_scaled\_imu3\_get\_ygyro(msg);}
+\DoxyCodeLine{429     scaled\_imu3-\/>zgyro = mavlink\_msg\_scaled\_imu3\_get\_zgyro(msg);}
+\DoxyCodeLine{430     scaled\_imu3-\/>xmag = mavlink\_msg\_scaled\_imu3\_get\_xmag(msg);}
+\DoxyCodeLine{431     scaled\_imu3-\/>ymag = mavlink\_msg\_scaled\_imu3\_get\_ymag(msg);}
+\DoxyCodeLine{432     scaled\_imu3-\/>zmag = mavlink\_msg\_scaled\_imu3\_get\_zmag(msg);}
+\DoxyCodeLine{433 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{434         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}};}
+\DoxyCodeLine{435         memset(scaled\_imu3, 0, \mbox{\hyperlink{mavlink__msg__scaled__imu3_8h_a8028395814239b7207b94a31e693ff10}{MAVLINK\_MSG\_ID\_SCALED\_IMU3\_LEN}});}
+\DoxyCodeLine{436     memcpy(scaled\_imu3, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{437 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{438 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,122 @@
+\hypertarget{mavlink__msg__camera__image__captured_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+camera\+\_\+image\+\_\+captured.h File Reference}
+\label{mavlink__msg__camera__image__captured_8h}\index{lib/common/mavlink\_msg\_camera\_image\_captured.h@{lib/common/mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED}}~263
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+LEN}}~255
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+MIN\+\_\+\+LEN}}~255
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a392cced0be3f3c8a1c1012a6db5b47c7}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+263\+\_\+\+LEN}}~255
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a100f115c62b41a1dbe2feb60303be499}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+263\+\_\+\+MIN\+\_\+\+LEN}}~255
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+CRC}}~133
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a0102eb8632e88f6d2c653a395817384c}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+263\+\_\+\+CRC}}~133
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a9f5a02e72dac3f5585d27c1e45c02f58}{MAVLINK\+\_\+\+MSG\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+FIELD\+\_\+\+Q\+\_\+\+LEN}}~4
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_a5a72b280ec05038b09d2dc824311dcfd}{MAVLINK\+\_\+\+MSG\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+FIELD\+\_\+\+FILE\+\_\+\+URL\+\_\+\+LEN}}~205
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_ada44ec5495ff3007ee315a46f444d8e5}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__camera__image__captured_8h_ac84055ea6f6e2c4b672c053738c362f4}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+camera\+\_\+image\+\_\+captured\+\_\+t \{ uint64\+\_\+t time\+\_\+utc;uint32\+\_\+t time\+\_\+boot\+\_\+ms;int32\+\_\+t lat;int32\+\_\+t lon;int32\+\_\+t alt;int32\+\_\+t relative\+\_\+alt;float q\mbox{[}4\mbox{]};int32\+\_\+t image\+\_\+index;uint8\+\_\+t camera\+\_\+id;int8\+\_\+t capture\+\_\+result;char file\+\_\+url\mbox{[}205\mbox{]};\}) mavlink\+\_\+camera\+\_\+image\+\_\+captured\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_ada44ec5495ff3007ee315a46f444d8e5}\label{mavlink__msg__camera__image__captured_8h_ada44ec5495ff3007ee315a46f444d8e5}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED@{MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED}}
+\index{MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED@{MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED}{MAVLINK\_MESSAGE\_INFO\_CAMERA\_IMAGE\_CAPTURED}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}CAMERA\_IMAGE\_CAPTURED"{}}, \(\backslash\)}
+\DoxyCodeLine{    11, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}time\_boot\_ms"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ade8fcbd09eb9c44492650baf961e6d2b}{MAVLINK\_TYPE\_UINT32\_T}}, 0, 8, offsetof(mavlink\_camera\_image\_captured\_t, time\_boot\_ms) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}time\_utc"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_camera\_image\_captured\_t, time\_utc) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}camera\_id"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a73bf311e4bfddf3a00632bb7553eaa84}{MAVLINK\_TYPE\_UINT8\_T}}, 0, 48, offsetof(mavlink\_camera\_image\_captured\_t, camera\_id) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}lat"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 12, offsetof(mavlink\_camera\_image\_captured\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}lon"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 16, offsetof(mavlink\_camera\_image\_captured\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}alt"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 20, offsetof(mavlink\_camera\_image\_captured\_t, alt) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}relative\_alt"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 24, offsetof(mavlink\_camera\_image\_captured\_t, relative\_alt) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}q"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 4, 28, offsetof(mavlink\_camera\_image\_captured\_t, q) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}image\_index"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4af803883af3fbcaa9065749974a4d728a}{MAVLINK\_TYPE\_INT32\_T}}, 0, 44, offsetof(mavlink\_camera\_image\_captured\_t, image\_index) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}capture\_result"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4aadfce75c32e04fc5d552c06e222bc19a}{MAVLINK\_TYPE\_INT8\_T}}, 0, 49, offsetof(mavlink\_camera\_image\_captured\_t, capture\_result) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}file\_url"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a205452ad3d1ab60bf6df4487957eca90}{MAVLINK\_TYPE\_CHAR}}, 205, 50, offsetof(mavlink\_camera\_image\_captured\_t, file\_url) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a5a72b280ec05038b09d2dc824311dcfd}\label{mavlink__msg__camera__image__captured_8h_a5a72b280ec05038b09d2dc824311dcfd}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN@{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN}}
+\index{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN@{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN}{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_FILE\_URL\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+FIELD\+\_\+\+FILE\+\_\+\+URL\+\_\+\+LEN~205}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a9f5a02e72dac3f5585d27c1e45c02f58}\label{mavlink__msg__camera__image__captured_8h_a9f5a02e72dac3f5585d27c1e45c02f58}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN@{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN}}
+\index{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN@{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN}{MAVLINK\_MSG\_CAMERA\_IMAGE\_CAPTURED\_FIELD\_Q\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+FIELD\+\_\+\+Q\+\_\+\+LEN~4}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a0102eb8632e88f6d2c653a395817384c}\label{mavlink__msg__camera__image__captured_8h_a0102eb8632e88f6d2c653a395817384c}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_263\_CRC@{MAVLINK\_MSG\_ID\_263\_CRC}}
+\index{MAVLINK\_MSG\_ID\_263\_CRC@{MAVLINK\_MSG\_ID\_263\_CRC}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_263\_CRC}{MAVLINK\_MSG\_ID\_263\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+263\+\_\+\+CRC~133}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a392cced0be3f3c8a1c1012a6db5b47c7}\label{mavlink__msg__camera__image__captured_8h_a392cced0be3f3c8a1c1012a6db5b47c7}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_263\_LEN@{MAVLINK\_MSG\_ID\_263\_LEN}}
+\index{MAVLINK\_MSG\_ID\_263\_LEN@{MAVLINK\_MSG\_ID\_263\_LEN}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_263\_LEN}{MAVLINK\_MSG\_ID\_263\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+263\+\_\+\+LEN~255}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a100f115c62b41a1dbe2feb60303be499}\label{mavlink__msg__camera__image__captured_8h_a100f115c62b41a1dbe2feb60303be499}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_263\_MIN\_LEN@{MAVLINK\_MSG\_ID\_263\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_263\_MIN\_LEN@{MAVLINK\_MSG\_ID\_263\_MIN\_LEN}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_263\_MIN\_LEN}{MAVLINK\_MSG\_ID\_263\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+263\+\_\+\+MIN\+\_\+\+LEN~255}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}\label{mavlink__msg__camera__image__captured_8h_a970efb87c75b6ab406db8ebeb9c3957c}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}
+\index{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED~263}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}\label{mavlink__msg__camera__image__captured_8h_aa277ae0771491b6c1224b17ad19fa247}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}}
+\index{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+CRC~133}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}\label{mavlink__msg__camera__image__captured_8h_a6bb933e473e7ba2c10a5c8c8263d2956}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}
+\index{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+LEN~255}
+
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}\label{mavlink__msg__camera__image__captured_8h_a9b5f9ce1ed9f1e92c38181631ace580b}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN@{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}{MAVLINK\_MSG\_ID\_CAMERA\_IMAGE\_CAPTURED\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+CAMERA\+\_\+\+IMAGE\+\_\+\+CAPTURED\+\_\+\+MIN\+\_\+\+LEN~255}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__camera__image__captured_8h_ac84055ea6f6e2c4b672c053738c362f4}\label{mavlink__msg__camera__image__captured_8h_ac84055ea6f6e2c4b672c053738c362f4}} 
+\index{mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_camera\_image\_captured.h@{mavlink\_msg\_camera\_image\_captured.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+camera\+\_\+image\+\_\+captured\+\_\+t \{ uint64\+\_\+t time\+\_\+utc;uint32\+\_\+t time\+\_\+boot\+\_\+ms;int32\+\_\+t lat;int32\+\_\+t lon;int32\+\_\+t alt;int32\+\_\+t relative\+\_\+alt;float q\mbox{[}4\mbox{]};int32\+\_\+t image\+\_\+index;uint8\+\_\+t camera\+\_\+id;int8\+\_\+t capture\+\_\+result;char file\+\_\+url\mbox{[}205\mbox{]};\}}]{ }\end{DoxyParamCaption})}
+

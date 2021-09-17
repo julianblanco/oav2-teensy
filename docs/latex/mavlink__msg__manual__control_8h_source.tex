@@ -1,0 +1,247 @@
+\hypertarget{mavlink__msg__manual__control_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+manual\+\_\+control.\+h}
+\label{mavlink__msg__manual__control_8h_source}\index{lib/common/mavlink\_msg\_manual\_control.h@{lib/common/mavlink\_msg\_manual\_control.h}}
+\mbox{\hyperlink{mavlink__msg__manual__control_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE MANUAL\_CONTROL PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MANUAL\_CONTROL 69}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__manual__control_8h_aeac12f4eb1dcc2c49a30616fd3d589d1}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_manual\_control\_t \{}
+\DoxyCodeLine{8  int16\_t x; \textcolor{comment}{/*<  X-\/axis, normalized to the range [-\/1000,1000]. A value of INT16\_MAX indicates that this axis is invalid. Generally corresponds to forward(1000)-\/backward(-\/1000) movement on a joystick and the pitch of a vehicle.*/}}
+\DoxyCodeLine{9  int16\_t y; \textcolor{comment}{/*<  Y-\/axis, normalized to the range [-\/1000,1000]. A value of INT16\_MAX indicates that this axis is invalid. Generally corresponds to left(-\/1000)-\/right(1000) movement on a joystick and the roll of a vehicle.*/}}
+\DoxyCodeLine{10  int16\_t z; \textcolor{comment}{/*<  Z-\/axis, normalized to the range [-\/1000,1000]. A value of INT16\_MAX indicates that this axis is invalid. Generally corresponds to a separate slider movement with maximum being 1000 and minimum being -\/1000 on a joystick and the thrust of a vehicle. Positive values are positive thrust, negative values are negative thrust.*/}}
+\DoxyCodeLine{11  int16\_t r; \textcolor{comment}{/*<  R-\/axis, normalized to the range [-\/1000,1000]. A value of INT16\_MAX indicates that this axis is invalid. Generally corresponds to a twisting of the joystick, with counter-\/clockwise being 1000 and clockwise being -\/1000, and the yaw of a vehicle.*/}}
+\DoxyCodeLine{12  uint16\_t buttons; \textcolor{comment}{/*<  A bitfield corresponding to the joystick buttons' current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 1.*/}}
+\DoxyCodeLine{13  uint8\_t target; \textcolor{comment}{/*<  The system to be controlled.*/}}
+\DoxyCodeLine{14 \}) mavlink\_manual\_control\_t;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN 11}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN 11}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_69\_LEN 11}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_69\_MIN\_LEN 11}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC 243}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_69\_CRC 243}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_MANUAL\_CONTROL \{ \(\backslash\)}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{    69, \(\backslash\)}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{    "{}MANUAL\_CONTROL"{}}, \(\backslash\)}
+\DoxyCodeLine{30     6, \(\backslash\)}
+\DoxyCodeLine{31     \{  \{ "{}target"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 10, offsetof(mavlink\_manual\_control\_t, target) \}, \(\backslash\)}
+\DoxyCodeLine{32          \{ "{}x"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 0, offsetof(mavlink\_manual\_control\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{33          \{ "{}y"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 2, offsetof(mavlink\_manual\_control\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{34          \{ "{}z"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 4, offsetof(mavlink\_manual\_control\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{35          \{ "{}r"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 6, offsetof(mavlink\_manual\_control\_t, r) \}, \(\backslash\)}
+\DoxyCodeLine{36          \{ "{}buttons"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_manual\_control\_t, buttons) \}, \(\backslash\)}
+\DoxyCodeLine{37          \} \(\backslash\)}
+\DoxyCodeLine{38 \}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_MANUAL\_CONTROL \{ \(\backslash\)}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{    "{}MANUAL\_CONTROL"{}}, \(\backslash\)}
+\DoxyCodeLine{42     6, \(\backslash\)}
+\DoxyCodeLine{43     \{  \{ "{}target"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 10, offsetof(mavlink\_manual\_control\_t, target) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}x"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 0, offsetof(mavlink\_manual\_control\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}y"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 2, offsetof(mavlink\_manual\_control\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}z"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 4, offsetof(mavlink\_manual\_control\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}r"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 6, offsetof(mavlink\_manual\_control\_t, r) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}buttons"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 8, offsetof(mavlink\_manual\_control\_t, buttons) \}, \(\backslash\)}
+\DoxyCodeLine{49          \} \(\backslash\)}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{67 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_manual\_control\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{68                                uint8\_t target, int16\_t x, int16\_t y, int16\_t z, int16\_t r, uint16\_t buttons)}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{71     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}];}
+\DoxyCodeLine{72     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 0, x);}
+\DoxyCodeLine{73     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 2, y);}
+\DoxyCodeLine{74     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, z);}
+\DoxyCodeLine{75     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, r);}
+\DoxyCodeLine{76     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, buttons);}
+\DoxyCodeLine{77     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 10, target);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}});}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{81     mavlink\_manual\_control\_t packet;}
+\DoxyCodeLine{82     packet.x = x;}
+\DoxyCodeLine{83     packet.y = y;}
+\DoxyCodeLine{84     packet.z = z;}
+\DoxyCodeLine{85     packet.r = r;}
+\DoxyCodeLine{86     packet.buttons = buttons;}
+\DoxyCodeLine{87     packet.target = target;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}});}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}};}
+\DoxyCodeLine{93     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{94 \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{110 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_manual\_control\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{111                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{112                                    uint8\_t target,int16\_t x,int16\_t y,int16\_t z,int16\_t r,uint16\_t buttons)}
+\DoxyCodeLine{113 \{}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{115     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}];}
+\DoxyCodeLine{116     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 0, x);}
+\DoxyCodeLine{117     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 2, y);}
+\DoxyCodeLine{118     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, z);}
+\DoxyCodeLine{119     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, r);}
+\DoxyCodeLine{120     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, buttons);}
+\DoxyCodeLine{121     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 10, target);}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}});}
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{125     mavlink\_manual\_control\_t packet;}
+\DoxyCodeLine{126     packet.x = x;}
+\DoxyCodeLine{127     packet.y = y;}
+\DoxyCodeLine{128     packet.z = z;}
+\DoxyCodeLine{129     packet.r = r;}
+\DoxyCodeLine{130     packet.buttons = buttons;}
+\DoxyCodeLine{131     packet.target = target;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}});}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}};}
+\DoxyCodeLine{137     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{138 \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{148 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_manual\_control\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_manual\_control\_t* manual\_control)}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150     \textcolor{keywordflow}{return} mavlink\_msg\_manual\_control\_pack(system\_id, component\_id, msg, manual\_control-\/>target, manual\_control-\/>x, manual\_control-\/>y, manual\_control-\/>z, manual\_control-\/>r, manual\_control-\/>buttons);}
+\DoxyCodeLine{151 \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{162 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_manual\_control\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_manual\_control\_t* manual\_control)}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164     \textcolor{keywordflow}{return} mavlink\_msg\_manual\_control\_pack\_chan(system\_id, component\_id, chan, msg, manual\_control-\/>target, manual\_control-\/>x, manual\_control-\/>y, manual\_control-\/>z, manual\_control-\/>r, manual\_control-\/>buttons);}
+\DoxyCodeLine{165 \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{178 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_manual\_control\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint8\_t target, int16\_t x, int16\_t y, int16\_t z, int16\_t r, uint16\_t buttons)}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{183     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}];}
+\DoxyCodeLine{184     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 0, x);}
+\DoxyCodeLine{185     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 2, y);}
+\DoxyCodeLine{186     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, z);}
+\DoxyCodeLine{187     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, r);}
+\DoxyCodeLine{188     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, buttons);}
+\DoxyCodeLine{189     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 10, target);}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}}, buf, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{192 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{193     mavlink\_manual\_control\_t packet;}
+\DoxyCodeLine{194     packet.x = x;}
+\DoxyCodeLine{195     packet.y = y;}
+\DoxyCodeLine{196     packet.z = z;}
+\DoxyCodeLine{197     packet.r = r;}
+\DoxyCodeLine{198     packet.buttons = buttons;}
+\DoxyCodeLine{199     packet.target = target;}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{202 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{203 \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{210 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_manual\_control\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_manual\_control\_t* manual\_control)}
+\DoxyCodeLine{211 \{}
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{213     mavlink\_msg\_manual\_control\_send(chan, manual\_control-\/>target, manual\_control-\/>x, manual\_control-\/>y, manual\_control-\/>z, manual\_control-\/>r, manual\_control-\/>buttons);}
+\DoxyCodeLine{214 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{215     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)manual\_control, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{216 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{217 \}}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{220 \textcolor{comment}{/*}}
+\DoxyCodeLine{221 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{222 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{223 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{224 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{225 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{226 \textcolor{comment}{ */}}
+\DoxyCodeLine{227 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_manual\_control\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint8\_t target, int16\_t x, int16\_t y, int16\_t z, int16\_t r, uint16\_t buttons)}
+\DoxyCodeLine{228 \{}
+\DoxyCodeLine{229 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{230     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{231     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 0, x);}
+\DoxyCodeLine{232     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 2, y);}
+\DoxyCodeLine{233     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 4, z);}
+\DoxyCodeLine{234     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 6, r);}
+\DoxyCodeLine{235     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 8, buttons);}
+\DoxyCodeLine{236     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 10, target);}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}}, buf, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{239 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{240     mavlink\_manual\_control\_t *packet = (mavlink\_manual\_control\_t *)msgbuf;}
+\DoxyCodeLine{241     packet-\/>x = x;}
+\DoxyCodeLine{242     packet-\/>y = y;}
+\DoxyCodeLine{243     packet-\/>z = z;}
+\DoxyCodeLine{244     packet-\/>r = r;}
+\DoxyCodeLine{245     packet-\/>buttons = buttons;}
+\DoxyCodeLine{246     packet-\/>target = target;}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__manual__control_8h_aee02f2d9ac01feaaf0f90812461d5cea}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a5dc8f8a6a501857f39a17b53f47dacb7}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}, \mbox{\hyperlink{mavlink__msg__manual__control_8h_a903ff0b561b7388f6cdbf17e0be2a239}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_CRC}});}
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{250 \}}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \textcolor{comment}{// MESSAGE MANUAL\_CONTROL UNPACKING}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257 }
+\DoxyCodeLine{263 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_manual\_control\_get\_target(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{264 \{}
+\DoxyCodeLine{265     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  10);}
+\DoxyCodeLine{266 \}}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{273 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_manual\_control\_get\_x(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{274 \{}
+\DoxyCodeLine{275     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  0);}
+\DoxyCodeLine{276 \}}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{283 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_manual\_control\_get\_y(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{284 \{}
+\DoxyCodeLine{285     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  2);}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{293 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_manual\_control\_get\_z(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{294 \{}
+\DoxyCodeLine{295     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  4);}
+\DoxyCodeLine{296 \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{303 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_manual\_control\_get\_r(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{304 \{}
+\DoxyCodeLine{305     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  6);}
+\DoxyCodeLine{306 \}}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{313 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_manual\_control\_get\_buttons(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{314 \{}
+\DoxyCodeLine{315     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  8);}
+\DoxyCodeLine{316 \}}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{324 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_manual\_control\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_manual\_control\_t* manual\_control)}
+\DoxyCodeLine{325 \{}
+\DoxyCodeLine{326 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{327     manual\_control-\/>x = mavlink\_msg\_manual\_control\_get\_x(msg);}
+\DoxyCodeLine{328     manual\_control-\/>y = mavlink\_msg\_manual\_control\_get\_y(msg);}
+\DoxyCodeLine{329     manual\_control-\/>z = mavlink\_msg\_manual\_control\_get\_z(msg);}
+\DoxyCodeLine{330     manual\_control-\/>r = mavlink\_msg\_manual\_control\_get\_r(msg);}
+\DoxyCodeLine{331     manual\_control-\/>buttons = mavlink\_msg\_manual\_control\_get\_buttons(msg);}
+\DoxyCodeLine{332     manual\_control-\/>target = mavlink\_msg\_manual\_control\_get\_target(msg);}
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{334         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}};}
+\DoxyCodeLine{335         memset(manual\_control, 0, \mbox{\hyperlink{mavlink__msg__manual__control_8h_ab239fe649cef0b813915ba53e6ab686a}{MAVLINK\_MSG\_ID\_MANUAL\_CONTROL\_LEN}});}
+\DoxyCodeLine{336     memcpy(manual\_control, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{337 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{338 \}}
+
+\end{DoxyCode}

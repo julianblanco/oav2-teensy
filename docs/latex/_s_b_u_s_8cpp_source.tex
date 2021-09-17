@@ -1,0 +1,213 @@
+\hypertarget{_s_b_u_s_8cpp_source}{}\doxysection{SBUS.\+cpp}
+\label{_s_b_u_s_8cpp_source}\index{src/SBUS.cpp@{src/SBUS.cpp}}
+\mbox{\hyperlink{_s_b_u_s_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00002}00002 \textcolor{comment}{* Brian R Taylor}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00003}00003 \textcolor{comment}{* brian.taylor@bolderflight.com}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00004}00004 \textcolor{comment}{* }}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00005}00005 \textcolor{comment}{* Copyright (c) 2021 Bolder Flight Systems Inc}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00006}00006 \textcolor{comment}{*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00007}00007 \textcolor{comment}{* Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00008}00008 \textcolor{comment}{* of this software and associated documentation files (the “Software”), to}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00009}00009 \textcolor{comment}{* deal in the Software without restriction, including without limitation the}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00010}00010 \textcolor{comment}{* rights to use, copy, modify, merge, publish, distribute, sublicense, and/or}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00011}00011 \textcolor{comment}{* sell copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00012}00012 \textcolor{comment}{* furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00013}00013 \textcolor{comment}{*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00014}00014 \textcolor{comment}{* The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00015}00015 \textcolor{comment}{* all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00016}00016 \textcolor{comment}{*}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00017}00017 \textcolor{comment}{* THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00018}00018 \textcolor{comment}{* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00019}00019 \textcolor{comment}{* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00020}00020 \textcolor{comment}{* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00021}00021 \textcolor{comment}{* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00022}00022 \textcolor{comment}{* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00023}00023 \textcolor{comment}{* IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00024}00024 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_s_b_u_s_8h}{sbus.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00029}\mbox{\hyperlink{class_sbus_rx_aa7260e7602811e0adf75ae33119e98f8}{00029}} \mbox{\hyperlink{class_sbus_rx_aa7260e7602811e0adf75ae33119e98f8}{SbusRx::SbusRx}}(HardwareSerial *bus) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00030}00030   bus\_ = bus;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00031}00031 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00032}\mbox{\hyperlink{class_sbus_rx_af47c4b075c10603e9d16e77b2ff7ee71}{00032}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_rx_af47c4b075c10603e9d16e77b2ff7ee71}{SbusRx::Begin}}() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00033}00033   parser\_state\_ = 0;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00034}00034   previous\_byte\_ = SBUS\_FOOTER\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00035}00035   \textcolor{comment}{/* Teensy 3.0 || Teensy 3.1/3.2 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00036}00036 \textcolor{preprocessor}{  \#if defined(\_\_MK20DX128\_\_) || defined(\_\_MK20DX256\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00037}00037     bus\_-\/>begin(BAUD\_, SERIAL\_8E1\_RXINV\_TXINV);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00038}00038   \textcolor{comment}{/* Teensy 3.5 || Teensy 3.6 || Teensy 4.0/4.1 || Teensy 4.0 Beta */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00039}00039 \textcolor{preprocessor}{  \#elif defined(\_\_MK64FX512\_\_) || defined(\_\_MK66FX1M0\_\_) || \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00040}00040 \textcolor{preprocessor}{        defined(\_\_MKL26Z64\_\_)  || defined(\_\_IMXRT1062\_\_) || \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00041}00041 \textcolor{preprocessor}{        defined(\_\_IMXRT1052\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00042}00042     bus\_-\/>begin(BAUD\_, SERIAL\_8E2\_RXINV\_TXINV);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00043}00043   \textcolor{comment}{/* STM32L4 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00044}00044 \textcolor{preprocessor}{  \#elif defined(STM32L496xx) || defined(STM32L476xx) || \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00045}00045 \textcolor{preprocessor}{        defined(STM32L433xx) || defined(STM32L432xx)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00046}00046     bus\_-\/>begin(BAUD\_, SERIAL\_SBUS);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00047}00047   \textcolor{comment}{/* Everything else, with a hardware inverter */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00048}00048 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00049}00049     bus\_-\/>begin(BAUD\_, SERIAL\_8E2);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00050}00050 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00051}00051   \textcolor{comment}{/* flush the bus */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00052}00052   bus\_-\/>flush();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00053}00053 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00054}\mbox{\hyperlink{class_sbus_rx_a8492ed6a4b9e6ac63120e74a27e3aa39}{00054}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sbus_rx_a8492ed6a4b9e6ac63120e74a27e3aa39}{SbusRx::Read}}() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00055}00055   \textcolor{keywordtype}{bool} status = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00056}00056   \textcolor{comment}{/*  Parse through to the most recent packet if we've fallen behind */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00057}00057   \textcolor{keywordflow}{while} (bus\_-\/>available()) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00058}00058     \textcolor{keywordflow}{if} (Parse()) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00059}00059       \textcolor{comment}{/* Grab the channel data */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00060}00060       rx\_channels\_[0]  = (uint16\_t) ((rx\_buffer\_[1]        | rx\_buffer\_[2]  << 8)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00061}00061       rx\_channels\_[1]  = (uint16\_t) ((rx\_buffer\_[2]  >> 3  | rx\_buffer\_[3]  << 5)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00062}00062       rx\_channels\_[2]  = (uint16\_t) ((rx\_buffer\_[3]  >> 6  | rx\_buffer\_[4]  << 2  | rx\_buffer\_[5] << 10)  \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00063}00063       rx\_channels\_[3]  = (uint16\_t) ((rx\_buffer\_[5]  >> 1  | rx\_buffer\_[6]  << 7)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00064}00064       rx\_channels\_[4]  = (uint16\_t) ((rx\_buffer\_[6]  >> 4  | rx\_buffer\_[7]  << 4)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00065}00065       rx\_channels\_[5]  = (uint16\_t) ((rx\_buffer\_[7]  >> 7  | rx\_buffer\_[8]  << 1  | rx\_buffer\_[9] << 9)   \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00066}00066       rx\_channels\_[6]  = (uint16\_t) ((rx\_buffer\_[9]  >> 2  | rx\_buffer\_[10] << 6)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00067}00067       rx\_channels\_[7]  = (uint16\_t) ((rx\_buffer\_[10] >> 5  | rx\_buffer\_[11] << 3)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00068}00068       rx\_channels\_[8]  = (uint16\_t) ((rx\_buffer\_[12]       | rx\_buffer\_[13] << 8)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00069}00069       rx\_channels\_[9]  = (uint16\_t) ((rx\_buffer\_[13] >> 3  | rx\_buffer\_[14] << 5)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00070}00070       rx\_channels\_[10] = (uint16\_t) ((rx\_buffer\_[14] >> 6  | rx\_buffer\_[15] << 2  | rx\_buffer\_[16] << 10) \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00071}00071       rx\_channels\_[11] = (uint16\_t) ((rx\_buffer\_[16] >> 1  | rx\_buffer\_[17] << 7)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00072}00072       rx\_channels\_[12] = (uint16\_t) ((rx\_buffer\_[17] >> 4  | rx\_buffer\_[18] << 4)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00073}00073       rx\_channels\_[13] = (uint16\_t) ((rx\_buffer\_[18] >> 7  | rx\_buffer\_[19] << 1  | rx\_buffer\_[20] << 9)  \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00074}00074       rx\_channels\_[14] = (uint16\_t) ((rx\_buffer\_[20] >> 2  | rx\_buffer\_[21] << 6)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00075}00075       rx\_channels\_[15] = (uint16\_t) ((rx\_buffer\_[21] >> 5  | rx\_buffer\_[22] << 3)                         \& 0x07FF);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00076}00076       \textcolor{comment}{/* CH 17 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00077}00077       ch17\_ = rx\_buffer\_[23] \& SBUS\_CH17\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00078}00078       \textcolor{comment}{/* CH 18 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00079}00079       ch18\_ = rx\_buffer\_[23] \& SBUS\_CH18\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00080}00080       \textcolor{comment}{/* Grab the lost frame */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00081}00081       lost\_frame\_ = rx\_buffer\_[23] \& SBUS\_LOST\_FRAME\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00082}00082       \textcolor{comment}{/* Grab the failsafe */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00083}00083       failsafe\_ = rx\_buffer\_[23] \& SBUS\_FAILSAFE\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00084}00084       \textcolor{comment}{/* Set the status */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00085}00085       status = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00086}00086     \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00087}00087   \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00088}00088   \textcolor{keywordflow}{return} status;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00089}00089 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00090}\mbox{\hyperlink{class_sbus_rx_a56fb0eeb5478dbad644d94fd5ada7e0c}{00090}} sbus::array<uint16\_t, 16> \mbox{\hyperlink{class_sbus_rx_a56fb0eeb5478dbad644d94fd5ada7e0c}{SbusRx::rx\_channels}}() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00091}00091   \textcolor{keywordflow}{return} rx\_channels\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00092}00092 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00093}00093 \textcolor{keywordtype}{bool} SbusRx::Parse() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00094}00094   \textcolor{keywordflow}{while} (bus\_-\/>available()) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00095}00095     uint8\_t c = bus\_-\/>read();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00096}00096     \textcolor{keywordflow}{if} (parser\_state\_ == 0) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00097}00097       \textcolor{keywordflow}{if} ((c == SBUS\_HEADER\_) \&\& ((previous\_byte\_ == SBUS\_FOOTER\_) || ((previous\_byte\_ \& 0x0F) == SBUS2\_FOOTER\_))) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00098}00098         rx\_buffer\_[parser\_state\_] = c;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00099}00099         parser\_state\_++;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00100}00100       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00101}00101         parser\_state\_ = 0;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00102}00102       \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00103}00103     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00104}00104       \textcolor{keywordflow}{if} (parser\_state\_ < SBUS\_LENGTH\_) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00105}00105         rx\_buffer\_[parser\_state\_] = c;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00106}00106         parser\_state\_++;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00107}00107       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00108}00108         parser\_state\_ = 0;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00109}00109         \textcolor{keywordflow}{if} ((rx\_buffer\_[SBUS\_LENGTH\_ -\/ 1] == SBUS\_FOOTER\_) || ((rx\_buffer\_[SBUS\_LENGTH\_ -\/ 1] \& 0x0F) == SBUS2\_FOOTER\_)) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00110}00110           \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00111}00111         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00112}00112           \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00113}00113         \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00114}00114       \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00115}00115     \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00116}00116     previous\_byte\_ = c;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00117}00117   \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00118}00118   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00119}00119 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00121}00121 \textcolor{comment}{/* Needed for emulating two stop bytes on Teensy 3.0 and 3.1/3.2 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00122}00122 \textcolor{preprocessor}{\#if defined(\_\_MK20DX128\_\_) || defined(\_\_MK20DX256\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00123}00123 \textcolor{keyword}{namespace }\{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00124}00124   IntervalTimer serial\_timer;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00125}00125   HardwareSerial *sbus\_bus;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00126}00126   uint8\_t sbus\_packet[25];}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00127}00127   \textcolor{keyword}{volatile} \textcolor{keywordtype}{int} send\_index;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00128}00128   \textcolor{keywordtype}{void} SendByte() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00129}00129     \textcolor{keywordflow}{if} (send\_index < 25) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00130}00130       sbus\_bus-\/>write(sbus\_packet[send\_index]);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00131}00131       send\_index++;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00132}00132     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00133}00133       serial\_timer.end();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00134}00134       send\_index = 0;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00135}00135     \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00136}00136   \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00137}00137 \}  \textcolor{comment}{// namespace}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00138}00138 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00140}\mbox{\hyperlink{class_sbus_tx_a2a73046a205c57d6011b463624c01feb}{00140}} \mbox{\hyperlink{class_sbus_tx_a2a73046a205c57d6011b463624c01feb}{SbusTx::SbusTx}}(HardwareSerial *bus) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00141}00141   bus\_ = bus;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00142}00142 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00143}\mbox{\hyperlink{class_sbus_tx_afb9048fe612c62889c3dac23950a4d0a}{00143}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_afb9048fe612c62889c3dac23950a4d0a}{SbusTx::Begin}}() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00144}00144   \textcolor{comment}{/* Teensy 3.0 || Teensy 3.1/3.2 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00145}00145 \textcolor{preprocessor}{  \#if defined(\_\_MK20DX128\_\_) || defined(\_\_MK20DX256\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00146}00146     bus\_-\/>begin(BAUD\_, SERIAL\_8E1\_RXINV\_TXINV);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00147}00147   \textcolor{comment}{/* Teensy 3.5 || Teensy 3.6 || Teensy 4.0/4.1 || Teensy 4.0 Beta */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00148}00148 \textcolor{preprocessor}{  \#elif defined(\_\_MK64FX512\_\_) || defined(\_\_MK66FX1M0\_\_) || \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00149}00149 \textcolor{preprocessor}{        defined(\_\_MKL26Z64\_\_)  || defined(\_\_IMXRT1062\_\_) || \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00150}00150 \textcolor{preprocessor}{        defined(\_\_IMXRT1052\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00151}00151     bus\_-\/>begin(BAUD\_, SERIAL\_8E2\_RXINV\_TXINV);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00152}00152   \textcolor{comment}{/* STM32L4 */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00153}00153 \textcolor{preprocessor}{  \#elif defined(STM32L496xx) || defined(STM32L476xx) || \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00154}00154 \textcolor{preprocessor}{        defined(STM32L433xx) || defined(STM32L432xx)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00155}00155     bus\_-\/>begin(BAUD\_, SERIAL\_SBUS);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00156}00156   \textcolor{comment}{/* Everything else, with a hardware inverter */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00157}00157 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00158}00158     bus\_-\/>begin(BAUD\_, SERIAL\_8E2);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00159}00159 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00160}00160 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00161}\mbox{\hyperlink{class_sbus_tx_a6cf1d3d4a45dc91ececb0f022b902113}{00161}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_a6cf1d3d4a45dc91ececb0f022b902113}{SbusTx::Write}}() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00162}00162   tx\_buffer\_[0] = SBUS\_HEADER\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00163}00163   tx\_buffer\_[1] =   (uint8\_t) ((tx\_channels\_[0]   \& 0x07FF));}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00164}00164   tx\_buffer\_[2] =   (uint8\_t) ((tx\_channels\_[0]   \& 0x07FF) >> 8  | (tx\_channels\_[1]  \& 0x07FF) << 3);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00165}00165   tx\_buffer\_[3] =   (uint8\_t) ((tx\_channels\_[1]   \& 0x07FF) >> 5  | (tx\_channels\_[2]  \& 0x07FF) << 6);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00166}00166   tx\_buffer\_[4] =   (uint8\_t) ((tx\_channels\_[2]   \& 0x07FF) >> 2);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00167}00167   tx\_buffer\_[5] =   (uint8\_t) ((tx\_channels\_[2]   \& 0x07FF) >> 10 | (tx\_channels\_[3]  \& 0x07FF) << 1);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00168}00168   tx\_buffer\_[6] =   (uint8\_t) ((tx\_channels\_[3]   \& 0x07FF) >> 7  | (tx\_channels\_[4]  \& 0x07FF) << 4);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00169}00169   tx\_buffer\_[7] =   (uint8\_t) ((tx\_channels\_[4]   \& 0x07FF) >> 4  | (tx\_channels\_[5]  \& 0x07FF) << 7);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00170}00170   tx\_buffer\_[8] =   (uint8\_t) ((tx\_channels\_[5]   \& 0x07FF) >> 1);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00171}00171   tx\_buffer\_[9] =   (uint8\_t) ((tx\_channels\_[5]   \& 0x07FF) >> 9  | (tx\_channels\_[6]  \& 0x07FF) << 2);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00172}00172   tx\_buffer\_[10] =  (uint8\_t) ((tx\_channels\_[6]   \& 0x07FF) >> 6  | (tx\_channels\_[7]  \& 0x07FF) << 5);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00173}00173   tx\_buffer\_[11] =  (uint8\_t) ((tx\_channels\_[7]   \& 0x07FF) >> 3);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00174}00174   tx\_buffer\_[12] =  (uint8\_t) ((tx\_channels\_[8]   \& 0x07FF));}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00175}00175   tx\_buffer\_[13] =  (uint8\_t) ((tx\_channels\_[8]   \& 0x07FF) >> 8  | (tx\_channels\_[9]  \& 0x07FF) << 3);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00176}00176   tx\_buffer\_[14] =  (uint8\_t) ((tx\_channels\_[9]   \& 0x07FF) >> 5  | (tx\_channels\_[10] \& 0x07FF) << 6);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00177}00177   tx\_buffer\_[15] =  (uint8\_t) ((tx\_channels\_[10]  \& 0x07FF) >> 2);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00178}00178   tx\_buffer\_[16] =  (uint8\_t) ((tx\_channels\_[10]  \& 0x07FF) >> 10 | (tx\_channels\_[11] \& 0x07FF) << 1);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00179}00179   tx\_buffer\_[17] =  (uint8\_t) ((tx\_channels\_[11]  \& 0x07FF) >> 7  | (tx\_channels\_[12] \& 0x07FF) << 4);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00180}00180   tx\_buffer\_[18] =  (uint8\_t) ((tx\_channels\_[12]  \& 0x07FF) >> 4  | (tx\_channels\_[13] \& 0x07FF) << 7);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00181}00181   tx\_buffer\_[19] =  (uint8\_t) ((tx\_channels\_[13]  \& 0x07FF) >> 1);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00182}00182   tx\_buffer\_[20] =  (uint8\_t) ((tx\_channels\_[13]  \& 0x07FF) >> 9  | (tx\_channels\_[14] \& 0x07FF) << 2);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00183}00183   tx\_buffer\_[21] =  (uint8\_t) ((tx\_channels\_[14]  \& 0x07FF) >> 6  | (tx\_channels\_[15] \& 0x07FF) << 5);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00184}00184   tx\_buffer\_[22] =  (uint8\_t) ((tx\_channels\_[15]  \& 0x07FF) >> 3);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00185}00185   tx\_buffer\_[23] = 0x00 | (ch17\_ * SBUS\_CH17\_) | (ch18\_ * SBUS\_CH18\_) | (failsafe\_ * SBUS\_FAILSAFE\_) | (lost\_frame\_ * SBUS\_LOST\_FRAME\_);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00186}00186   tx\_buffer\_[24] = SBUS\_FOOTER\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00188}00188 \textcolor{preprocessor}{  \#if defined(\_\_MK20DX128\_\_) || defined(\_\_MK20DX256\_\_)}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00189}00189     \textcolor{comment}{/* }}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00190}00190 \textcolor{comment}{    * Use ISR to send byte at a time,}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00191}00191 \textcolor{comment}{    * 130 us between bytes to emulate 2 stop bits}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00192}00192 \textcolor{comment}{    */}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00193}00193     \_\_disable\_irq();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00194}00194     memcpy(sbus\_packet, tx\_buffer\_, \textcolor{keyword}{sizeof}(sbus\_packet));}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00195}00195     \_\_enable\_irq();}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00196}00196     serial\_timer.priority(255);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00197}00197     serial\_timer.begin(SendByte, 130);}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00198}00198 \textcolor{preprocessor}{  \#else}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00199}00199     bus\_-\/>write(tx\_buffer\_, \textcolor{keyword}{sizeof}(tx\_buffer\_));}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00200}00200 \textcolor{preprocessor}{  \#endif}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00201}00201 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00202}\mbox{\hyperlink{class_sbus_tx_ab0a12ec5fa102521898a9dea0731b11d}{00202}} sbus::array<uint16\_t, 16> \mbox{\hyperlink{class_sbus_tx_ab0a12ec5fa102521898a9dea0731b11d}{SbusTx::tx\_channels}}() \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00203}00203   \textcolor{keywordflow}{return} tx\_channels\_;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00204}00204 \}}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00205}\mbox{\hyperlink{class_sbus_tx_a31ac38474ff43d4b82c7e5f25644024e}{00205}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sbus_tx_ab0a12ec5fa102521898a9dea0731b11d}{SbusTx::tx\_channels}}(\textcolor{keyword}{const} sbus::array<uint16\_t, 16> \&val) \{}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00206}00206   tx\_channels\_ = val;}
+\DoxyCodeLine{\Hypertarget{_s_b_u_s_8cpp_source_l00207}00207 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['gps_5ffix_5ftype_5f2d_5ffix_0',['GPS_FIX_TYPE_2D_FIX',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a81fe7c15ed3ddaf69a635aab9708238e',1,'common.h']]],
+  ['gps_5ffix_5ftype_5f3d_5ffix_1',['GPS_FIX_TYPE_3D_FIX',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a16d57981dc803dcebad9472e25da1b95',1,'common.h']]],
+  ['gps_5ffix_5ftype_5fdgps_2',['GPS_FIX_TYPE_DGPS',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a1c938957599e3f9b1e1892411d475318',1,'common.h']]],
+  ['gps_5ffix_5ftype_5fenum_5fend_3',['GPS_FIX_TYPE_ENUM_END',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a2d78075aa7433e35f2b2c3cb47667b56',1,'common.h']]],
+  ['gps_5ffix_5ftype_5fno_5ffix_4',['GPS_FIX_TYPE_NO_FIX',['../common_8h.html#a4cef70a8548b30c4679ce56314654629aa66f21e8a984d38a4917de6ef1feb8bf',1,'common.h']]],
+  ['gps_5ffix_5ftype_5fno_5fgps_5',['GPS_FIX_TYPE_NO_GPS',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a9251dbf9ff3b1a5f8d36bd6bcd4213c4',1,'common.h']]],
+  ['gps_5ffix_5ftype_5fppp_6',['GPS_FIX_TYPE_PPP',['../common_8h.html#a4cef70a8548b30c4679ce56314654629adfc26a182466064e00bf6fcfa8f90f7c',1,'common.h']]],
+  ['gps_5ffix_5ftype_5frtk_5ffixed_7',['GPS_FIX_TYPE_RTK_FIXED',['../common_8h.html#a4cef70a8548b30c4679ce56314654629ac8fcff15e08c8683bab242eb27bea966',1,'common.h']]],
+  ['gps_5ffix_5ftype_5frtk_5ffloat_8',['GPS_FIX_TYPE_RTK_FLOAT',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a3eeebb046922c5dc281bced2f2d670d6',1,'common.h']]],
+  ['gps_5ffix_5ftype_5fstatic_9',['GPS_FIX_TYPE_STATIC',['../common_8h.html#a4cef70a8548b30c4679ce56314654629a1db545cfcf66cd8ae4115778a0cd3b37',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5falt_10',['GPS_INPUT_IGNORE_FLAG_ALT',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aa6857b9df2180734ba695369222da472f',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fhdop_11',['GPS_INPUT_IGNORE_FLAG_HDOP',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aa233e149dc7dc939d064217a42f23ebfd',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fhorizontal_5faccuracy_12',['GPS_INPUT_IGNORE_FLAG_HORIZONTAL_ACCURACY',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aa3c1643dc5b53c32bad6e27f31c2adf76',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fspeed_5faccuracy_13',['GPS_INPUT_IGNORE_FLAG_SPEED_ACCURACY',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aa2768009d7269095fea7cd72c1a46356c',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fvdop_14',['GPS_INPUT_IGNORE_FLAG_VDOP',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aaa95c0281fc9e41f313203de511724dab',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fvel_5fhoriz_15',['GPS_INPUT_IGNORE_FLAG_VEL_HORIZ',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aaaa09dd93c12621a10706cb9c468be07f',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fvel_5fvert_16',['GPS_INPUT_IGNORE_FLAG_VEL_VERT',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aaed82a819dd76ee6f2693353165ced2fc',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflag_5fvertical_5faccuracy_17',['GPS_INPUT_IGNORE_FLAG_VERTICAL_ACCURACY',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aae646dbc7414fca15d5e05ce24dc9c43a',1,'common.h']]],
+  ['gps_5finput_5fignore_5fflags_5fenum_5fend_18',['GPS_INPUT_IGNORE_FLAGS_ENUM_END',['../common_8h.html#ac24840ca0b52ae3926c86094b431084aa519d2bb33ef03a7984889e5206c15227',1,'common.h']]],
+  ['gyro_5foffset_5fx_5flsb_5faddr_19',['GYRO_OFFSET_X_LSB_ADDR',['../class_adafruit___b_n_o055.html#a37bdd791ec4916fb29933a5b78be0485a27cee1097050facde2ff2a8cbfa97208',1,'Adafruit_BNO055']]],
+  ['gyro_5foffset_5fx_5fmsb_5faddr_20',['GYRO_OFFSET_X_MSB_ADDR',['../class_adafruit___b_n_o055.html#a37bdd791ec4916fb29933a5b78be0485a4c76d89b177bd0f11545e11236c8639b',1,'Adafruit_BNO055']]],
+  ['gyro_5foffset_5fy_5flsb_5faddr_21',['GYRO_OFFSET_Y_LSB_ADDR',['../class_adafruit___b_n_o055.html#a37bdd791ec4916fb29933a5b78be0485a3df1fb42f0a6124038a9363d730c05d8',1,'Adafruit_BNO055']]],
+  ['gyro_5foffset_5fy_5fmsb_5faddr_22',['GYRO_OFFSET_Y_MSB_ADDR',['../class_adafruit___b_n_o055.html#a37bdd791ec4916fb29933a5b78be0485a7fd08ded7a83052ab3c4a52ca9bcfa35',1,'Adafruit_BNO055']]],
+  ['gyro_5foffset_5fz_5flsb_5faddr_23',['GYRO_OFFSET_Z_LSB_ADDR',['../class_adafruit___b_n_o055.html#a37bdd791ec4916fb29933a5b78be0485a81c2b9e5ecc14b329c0a21d6e363c8c7',1,'Adafruit_BNO055']]],
+  ['gyro_5foffset_5fz_5fmsb_5faddr_24',['GYRO_OFFSET_Z_MSB_ADDR',['../class_adafruit___b_n_o055.html#a37bdd791ec4916fb29933a5b78be0485a8927bab6ef05496739e3f54e866df55b',1,'Adafruit_BNO055']]]
+];

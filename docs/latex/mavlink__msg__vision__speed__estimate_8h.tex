@@ -1,0 +1,108 @@
+\hypertarget{mavlink__msg__vision__speed__estimate_8h}{}\doxysection{lib/common/mavlink\+\_\+msg\+\_\+vision\+\_\+speed\+\_\+estimate.h File Reference}
+\label{mavlink__msg__vision__speed__estimate_8h}\index{lib/common/mavlink\_msg\_vision\_speed\_estimate.h@{lib/common/mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a38594ba52eb8d40cae3ee9f6d4ad4f77}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE}}~103
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_aec3452865b024a377614873ca6c46684}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+LEN}}~56
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a4fc6a74bf8be55b509a44f781dd00110}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+MIN\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_aee3fcd9de075ef14249be9acbb5ae0b1}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+103\+\_\+\+LEN}}~56
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a7ec7610dd8d68e015af8dbfeaf204684}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+103\+\_\+\+MIN\+\_\+\+LEN}}~20
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a6c4deeb6011227b1c5ed5facb71be9fc}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+CRC}}~208
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a1863933d76d0267356e62eba5b1f6a5d}{MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+103\+\_\+\+CRC}}~208
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a03dfc9ecedb163b82de0eff7923863db}{MAVLINK\+\_\+\+MSG\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+FIELD\+\_\+\+COVARIANCE\+\_\+\+LEN}}~9
+\item 
+\#define \mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_abfcca443f320184fbf76e448df40e289}{MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mavlink__msg__vision__speed__estimate_8h_a6825a3d4de219f13bce93e09a27b0f8c}{MAVPACKED}} (typedef struct \+\_\+\+\_\+mavlink\+\_\+vision\+\_\+speed\+\_\+estimate\+\_\+t \{ uint64\+\_\+t usec;float x;float y;float z;float covariance\mbox{[}9\mbox{]};\}) mavlink\+\_\+vision\+\_\+speed\+\_\+estimate\+\_\+t
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_abfcca443f320184fbf76e448df40e289}\label{mavlink__msg__vision__speed__estimate_8h_abfcca443f320184fbf76e448df40e289}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MESSAGE\_INFO\_VISION\_SPEED\_ESTIMATE@{MAVLINK\_MESSAGE\_INFO\_VISION\_SPEED\_ESTIMATE}}
+\index{MAVLINK\_MESSAGE\_INFO\_VISION\_SPEED\_ESTIMATE@{MAVLINK\_MESSAGE\_INFO\_VISION\_SPEED\_ESTIMATE}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MESSAGE\_INFO\_VISION\_SPEED\_ESTIMATE}{MAVLINK\_MESSAGE\_INFO\_VISION\_SPEED\_ESTIMATE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MESSAGE\+\_\+\+INFO\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \{ \(\backslash\)}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}VISION\_SPEED\_ESTIMATE"{}}, \(\backslash\)}
+\DoxyCodeLine{    5, \(\backslash\)}
+\DoxyCodeLine{    \{  \{ \textcolor{stringliteral}{"{}usec"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4a12ee339a067a942cd309d69946fbd00b}{MAVLINK\_TYPE\_UINT64\_T}}, 0, 0, offsetof(mavlink\_vision\_speed\_estimate\_t, usec) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}x"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 8, offsetof(mavlink\_vision\_speed\_estimate\_t, x) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}y"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 12, offsetof(mavlink\_vision\_speed\_estimate\_t, y) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}z"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 0, 16, offsetof(mavlink\_vision\_speed\_estimate\_t, z) \}, \(\backslash\)}
+\DoxyCodeLine{         \{ \textcolor{stringliteral}{"{}covariance"{}}, NULL, \mbox{\hyperlink{mavlink__types_8h_ab6045b7adc25bdc05a5011a91dc645a4ae5f4d04c343191b5a24b28743a115385}{MAVLINK\_TYPE\_FLOAT}}, 9, 20, offsetof(mavlink\_vision\_speed\_estimate\_t, covariance) \}, \(\backslash\)}
+\DoxyCodeLine{         \} \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a1863933d76d0267356e62eba5b1f6a5d}\label{mavlink__msg__vision__speed__estimate_8h_a1863933d76d0267356e62eba5b1f6a5d}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_103\_CRC@{MAVLINK\_MSG\_ID\_103\_CRC}}
+\index{MAVLINK\_MSG\_ID\_103\_CRC@{MAVLINK\_MSG\_ID\_103\_CRC}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_103\_CRC}{MAVLINK\_MSG\_ID\_103\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+103\+\_\+\+CRC~208}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_aee3fcd9de075ef14249be9acbb5ae0b1}\label{mavlink__msg__vision__speed__estimate_8h_aee3fcd9de075ef14249be9acbb5ae0b1}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_103\_LEN@{MAVLINK\_MSG\_ID\_103\_LEN}}
+\index{MAVLINK\_MSG\_ID\_103\_LEN@{MAVLINK\_MSG\_ID\_103\_LEN}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_103\_LEN}{MAVLINK\_MSG\_ID\_103\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+103\+\_\+\+LEN~56}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a7ec7610dd8d68e015af8dbfeaf204684}\label{mavlink__msg__vision__speed__estimate_8h_a7ec7610dd8d68e015af8dbfeaf204684}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_103\_MIN\_LEN@{MAVLINK\_MSG\_ID\_103\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_103\_MIN\_LEN@{MAVLINK\_MSG\_ID\_103\_MIN\_LEN}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_103\_MIN\_LEN}{MAVLINK\_MSG\_ID\_103\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+103\+\_\+\+MIN\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a38594ba52eb8d40cae3ee9f6d4ad4f77}\label{mavlink__msg__vision__speed__estimate_8h_a38594ba52eb8d40cae3ee9f6d4ad4f77}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE}}
+\index{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE}{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE~103}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a6c4deeb6011227b1c5ed5facb71be9fc}\label{mavlink__msg__vision__speed__estimate_8h_a6c4deeb6011227b1c5ed5facb71be9fc}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_CRC@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_CRC}}
+\index{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_CRC@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_CRC}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_CRC}{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_CRC}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+CRC~208}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_aec3452865b024a377614873ca6c46684}\label{mavlink__msg__vision__speed__estimate_8h_aec3452865b024a377614873ca6c46684}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_LEN@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_LEN}}
+\index{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_LEN@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_LEN}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_LEN}{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+LEN~56}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a4fc6a74bf8be55b509a44f781dd00110}\label{mavlink__msg__vision__speed__estimate_8h_a4fc6a74bf8be55b509a44f781dd00110}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_MIN\_LEN}}
+\index{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_MIN\_LEN@{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_MIN\_LEN}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_MIN\_LEN}{MAVLINK\_MSG\_ID\_VISION\_SPEED\_ESTIMATE\_MIN\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+ID\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+MIN\+\_\+\+LEN~20}
+
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a03dfc9ecedb163b82de0eff7923863db}\label{mavlink__msg__vision__speed__estimate_8h_a03dfc9ecedb163b82de0eff7923863db}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVLINK\_MSG\_VISION\_SPEED\_ESTIMATE\_FIELD\_COVARIANCE\_LEN@{MAVLINK\_MSG\_VISION\_SPEED\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}}
+\index{MAVLINK\_MSG\_VISION\_SPEED\_ESTIMATE\_FIELD\_COVARIANCE\_LEN@{MAVLINK\_MSG\_VISION\_SPEED\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVLINK\_MSG\_VISION\_SPEED\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}{MAVLINK\_MSG\_VISION\_SPEED\_ESTIMATE\_FIELD\_COVARIANCE\_LEN}}
+{\footnotesize\ttfamily \#define MAVLINK\+\_\+\+MSG\+\_\+\+VISION\+\_\+\+SPEED\+\_\+\+ESTIMATE\+\_\+\+FIELD\+\_\+\+COVARIANCE\+\_\+\+LEN~9}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mavlink__msg__vision__speed__estimate_8h_a6825a3d4de219f13bce93e09a27b0f8c}\label{mavlink__msg__vision__speed__estimate_8h_a6825a3d4de219f13bce93e09a27b0f8c}} 
+\index{mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}!MAVPACKED@{MAVPACKED}}
+\index{MAVPACKED@{MAVPACKED}!mavlink\_msg\_vision\_speed\_estimate.h@{mavlink\_msg\_vision\_speed\_estimate.h}}
+\doxysubsubsection{\texorpdfstring{MAVPACKED()}{MAVPACKED()}}
+{\footnotesize\ttfamily MAVPACKED (\begin{DoxyParamCaption}\item[{typedef struct \+\_\+\+\_\+mavlink\+\_\+vision\+\_\+speed\+\_\+estimate\+\_\+t \{ uint64\+\_\+t usec;float x;float y;float z;float covariance\mbox{[}9\mbox{]};\}}]{ }\end{DoxyParamCaption})}
+

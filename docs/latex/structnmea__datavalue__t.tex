@@ -1,0 +1,152 @@
+\hypertarget{structnmea__datavalue__t}{}\doxysection{nmea\+\_\+datavalue\+\_\+t Struct Reference}
+\label{structnmea__datavalue__t}\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+
+
+{\ttfamily \#include $<$NMEA\+\_\+data.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}{latest}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em the most recently obtained value \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} \mbox{\hyperlink{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}{smoothed}}
+\begin{DoxyCompactList}\small\item\em smoothed value based on weight of dt/response \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structnmea__datavalue__t_ad19f5539f1b0524e3e8b2df9e3a07ae8}{last\+Update}} = 0
+\begin{DoxyCompactList}\small\item\em millis() when latest was last set \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structnmea__datavalue__t_a0fc893fd25c28ff4ee9f5142f4c309c0}{response}} = 1000
+\begin{DoxyCompactList}\small\item\em time constant in millis for smoothing \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\+\_\+value\+\_\+type\+\_\+t}} \mbox{\hyperlink{structnmea__datavalue__t_a519cb117696d382f6366260f683008fd}{type}}
+\begin{DoxyCompactList}\small\item\em type of float data value represented \end{DoxyCompactList}\item 
+byte \mbox{\hyperlink{structnmea__datavalue__t_a1a0e6f5a33df3b9cd0c4645b3f317c75}{ockam}} = 0
+\begin{DoxyCompactList}\small\item\em the corresponding Ockam Instruments tag number, 0-\/128 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnmea__history__t}{nmea\+\_\+history\+\_\+t}} $\ast$ \mbox{\hyperlink{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}{hist}} = NULL
+\begin{DoxyCompactList}\small\item\em pointer to history, if any \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{structnmea__datavalue__t_ad69698d60e94d53ad38c9b2b6f74547f}{label}} = NULL
+\begin{DoxyCompactList}\small\item\em pointer to quantity label, if any \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{structnmea__datavalue__t_a904af9df777122471b3358c1af5e5aac}{unit}} = NULL
+\begin{DoxyCompactList}\small\item\em pointer to units label, if any \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{structnmea__datavalue__t_a144e0518233b217c001da1df4d69c243}{fmt}} = NULL
+\begin{DoxyCompactList}\small\item\em pointer to format string, if any \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct to contain all the details associated with an NMEA data value that can be tracked through time to see how it changes, carries a label, units, and a format string to determine how it is displayed. Memory footprint of about 32 bytes per data value, so not tenable in small memory spaces. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structnmea__datavalue__t_a144e0518233b217c001da1df4d69c243}\label{structnmea__datavalue__t_a144e0518233b217c001da1df4d69c243}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!fmt@{fmt}}
+\index{fmt@{fmt}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{fmt}{fmt}}
+{\footnotesize\ttfamily char$\ast$ nmea\+\_\+datavalue\+\_\+t\+::fmt = NULL}
+
+
+
+pointer to format string, if any 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}\label{structnmea__datavalue__t_a845900aa5522369c1a0e5b71d8edc76a}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!hist@{hist}}
+\index{hist@{hist}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{hist}{hist}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnmea__history__t}{nmea\+\_\+history\+\_\+t}}$\ast$ nmea\+\_\+datavalue\+\_\+t\+::hist = NULL}
+
+
+
+pointer to history, if any 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_ad69698d60e94d53ad38c9b2b6f74547f}\label{structnmea__datavalue__t_ad69698d60e94d53ad38c9b2b6f74547f}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!label@{label}}
+\index{label@{label}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily char$\ast$ nmea\+\_\+datavalue\+\_\+t\+::label = NULL}
+
+
+
+pointer to quantity label, if any 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_ad19f5539f1b0524e3e8b2df9e3a07ae8}\label{structnmea__datavalue__t_ad19f5539f1b0524e3e8b2df9e3a07ae8}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!lastUpdate@{lastUpdate}}
+\index{lastUpdate@{lastUpdate}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{lastUpdate}{lastUpdate}}
+{\footnotesize\ttfamily uint32\+\_\+t nmea\+\_\+datavalue\+\_\+t\+::last\+Update = 0}
+
+
+
+millis() when latest was last set 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}\label{structnmea__datavalue__t_aa6e709073decb4b329756e910110e602}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!latest@{latest}}
+\index{latest@{latest}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{latest}{latest}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} nmea\+\_\+datavalue\+\_\+t\+::latest = 0.\+0}
+
+
+
+the most recently obtained value 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_a1a0e6f5a33df3b9cd0c4645b3f317c75}\label{structnmea__datavalue__t_a1a0e6f5a33df3b9cd0c4645b3f317c75}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!ockam@{ockam}}
+\index{ockam@{ockam}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{ockam}{ockam}}
+{\footnotesize\ttfamily byte nmea\+\_\+datavalue\+\_\+t\+::ockam = 0}
+
+
+
+the corresponding Ockam Instruments tag number, 0-\/128 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_a0fc893fd25c28ff4ee9f5142f4c309c0}\label{structnmea__datavalue__t_a0fc893fd25c28ff4ee9f5142f4c309c0}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!response@{response}}
+\index{response@{response}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{response}{response}}
+{\footnotesize\ttfamily uint16\+\_\+t nmea\+\_\+datavalue\+\_\+t\+::response = 1000}
+
+
+
+time constant in millis for smoothing 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}\label{structnmea__datavalue__t_a067a769e6b0ef402b3bf01b0c333e269}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!smoothed@{smoothed}}
+\index{smoothed@{smoothed}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{smoothed}{smoothed}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\+\_\+float\+\_\+t}} nmea\+\_\+datavalue\+\_\+t\+::smoothed}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      0.0}
+
+\end{DoxyCode}
+
+
+smoothed value based on weight of dt/response 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_a519cb117696d382f6366260f683008fd}\label{structnmea__datavalue__t_a519cb117696d382f6366260f683008fd}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!type@{type}}
+\index{type@{type}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3}{nmea\+\_\+value\+\_\+type\+\_\+t}} nmea\+\_\+datavalue\+\_\+t\+::type}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{      \mbox{\hyperlink{_n_m_e_a__data_8h_a0ba480b8f1408c3a2380f28ea9b00cf3a5edaebe037c7d93883eb9d748e2a1f85}{NMEA\_SIMPLE\_FLOAT}}}
+
+\end{DoxyCode}
+
+
+type of float data value represented 
+
+\mbox{\Hypertarget{structnmea__datavalue__t_a904af9df777122471b3358c1af5e5aac}\label{structnmea__datavalue__t_a904af9df777122471b3358c1af5e5aac}} 
+\index{nmea\_datavalue\_t@{nmea\_datavalue\_t}!unit@{unit}}
+\index{unit@{unit}!nmea\_datavalue\_t@{nmea\_datavalue\_t}}
+\doxysubsubsection{\texorpdfstring{unit}{unit}}
+{\footnotesize\ttfamily char$\ast$ nmea\+\_\+datavalue\+\_\+t\+::unit = NULL}
+
+
+
+pointer to units label, if any 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\mbox{\hyperlink{_n_m_e_a__data_8h}{NMEA\+\_\+data.\+h}}\end{DoxyCompactItemize}

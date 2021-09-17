@@ -1,0 +1,129 @@
+\hypertarget{structsensors__vec__t}{}\doxysection{sensors\+\_\+vec\+\_\+t Struct Reference}
+\label{structsensors__vec__t}\index{sensors\_vec\_t@{sensors\_vec\_t}}
+
+
+{\ttfamily \#include $<$Adafruit\+\_\+\+Sensor.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>float \mbox{\hyperlink{structsensors__vec__t_a5114a743de9aab053acce7722f394bc4}{v}} \mbox{[}3\mbox{]}\\
+\>\>{\em 3D vector elements }\\
+\>struct \{\\
+\>\>float \mbox{\hyperlink{structsensors__vec__t_a9fb71ba50079915da244b839969da7d9}{x}}\\
+\>\>\>{\em X component of vector. }\\
+\>\>float \mbox{\hyperlink{structsensors__vec__t_a08088cd422b668c75ca0db77d0227ef8}{y}}\\
+\>\>\>{\em Y component of vector. }\\
+\>\>float \mbox{\hyperlink{structsensors__vec__t_af955e602ed046ad810f972fbbc5e0936}{z}}\\
+\>\>\>{\em Z component of vector. }\\
+\>\} \\
+\>\>\>{\em Struct for holding XYZ component. }\\
+\>struct \{\\
+\>\>float \mbox{\hyperlink{structsensors__vec__t_a6d8c6e288de54942e1d2be4f42f96bb2}{roll}}\\
+\>\>float \mbox{\hyperlink{structsensors__vec__t_aa298c3cbbd0016698c64d9451fbf3aff}{pitch}}\\
+\>\>float \mbox{\hyperlink{structsensors__vec__t_a4fe8caabff59868ff44f1ed8334cbf47}{heading}}\\
+\>\} \\
+\>\>\>{\em Struct for holding roll/pitch/heading. }\\
+\}; \\
+
+\end{tabbing}\item 
+int8\+\_\+t \mbox{\hyperlink{structsensors__vec__t_af75d491f35f979932de5609d6ef6c363}{status}}
+\begin{DoxyCompactList}\small\item\em Status byte. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structsensors__vec__t_acb78c50bdd894d4dd4015f144c4a4488}{reserved}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Reserved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+struct sensors\+\_\+vec\+\_\+s is used to return a vector in a common format. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structsensors__vec__t_a7643befbf9d921d3c6eb53b6053b7562}\label{structsensors__vec__t_a7643befbf9d921d3c6eb53b6053b7562}} 
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union  \{ ... \}  sensors\+\_\+vec\+\_\+t\+::@1}
+
+Union that can hold 3D vector array, XYZ components or roll/pitch/heading \mbox{\Hypertarget{structsensors__vec__t_a4fe8caabff59868ff44f1ed8334cbf47}\label{structsensors__vec__t_a4fe8caabff59868ff44f1ed8334cbf47}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!heading@{heading}}
+\index{heading@{heading}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{heading}{heading}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::heading}
+
+Angle between the longitudinal axis (the plane body) and magnetic north, measured clockwise when viewing from the top of the device. 0-\/359 degrees \mbox{\Hypertarget{structsensors__vec__t_aa298c3cbbd0016698c64d9451fbf3aff}\label{structsensors__vec__t_aa298c3cbbd0016698c64d9451fbf3aff}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!pitch@{pitch}}
+\index{pitch@{pitch}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{pitch}{pitch}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::pitch}
+
+Rotation around the lateral axis (the wing span, \textquotesingle{}Y axis\textquotesingle{}). Pitch is positive and increasing when moving upwards. -\/180 degrees \texorpdfstring{$<$}{<}= pitch \texorpdfstring{$<$}{<}= 180 degrees) \mbox{\Hypertarget{structsensors__vec__t_acb78c50bdd894d4dd4015f144c4a4488}\label{structsensors__vec__t_acb78c50bdd894d4dd4015f144c4a4488}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!reserved@{reserved}}
+\index{reserved@{reserved}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily uint8\+\_\+t sensors\+\_\+vec\+\_\+t\+::reserved\mbox{[}3\mbox{]}}
+
+
+
+Reserved. 
+
+\mbox{\Hypertarget{structsensors__vec__t_a6d8c6e288de54942e1d2be4f42f96bb2}\label{structsensors__vec__t_a6d8c6e288de54942e1d2be4f42f96bb2}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!roll@{roll}}
+\index{roll@{roll}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{roll}{roll}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::roll}
+
+Rotation around the longitudinal axis (the plane body, \textquotesingle{}X axis\textquotesingle{}). Roll is positive and increasing when moving downward. -\/90 degrees \texorpdfstring{$<$}{<}= roll \texorpdfstring{$<$}{<}= 90 degrees \mbox{\Hypertarget{structsensors__vec__t_af75d491f35f979932de5609d6ef6c363}\label{structsensors__vec__t_af75d491f35f979932de5609d6ef6c363}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!status@{status}}
+\index{status@{status}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily int8\+\_\+t sensors\+\_\+vec\+\_\+t\+::status}
+
+
+
+Status byte. 
+
+\mbox{\Hypertarget{structsensors__vec__t_a5114a743de9aab053acce7722f394bc4}\label{structsensors__vec__t_a5114a743de9aab053acce7722f394bc4}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!v@{v}}
+\index{v@{v}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::v\mbox{[}3\mbox{]}}
+
+
+
+3D vector elements 
+
+\mbox{\Hypertarget{structsensors__vec__t_a9fb71ba50079915da244b839969da7d9}\label{structsensors__vec__t_a9fb71ba50079915da244b839969da7d9}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!x@{x}}
+\index{x@{x}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::x}
+
+
+
+X component of vector. 
+
+\mbox{\Hypertarget{structsensors__vec__t_a08088cd422b668c75ca0db77d0227ef8}\label{structsensors__vec__t_a08088cd422b668c75ca0db77d0227ef8}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!y@{y}}
+\index{y@{y}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::y}
+
+
+
+Y component of vector. 
+
+\mbox{\Hypertarget{structsensors__vec__t_af955e602ed046ad810f972fbbc5e0936}\label{structsensors__vec__t_af955e602ed046ad810f972fbbc5e0936}} 
+\index{sensors\_vec\_t@{sensors\_vec\_t}!z@{z}}
+\index{z@{z}!sensors\_vec\_t@{sensors\_vec\_t}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily float sensors\+\_\+vec\+\_\+t\+::z}
+
+
+
+Z component of vector. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Adafruit\+\_\+\+Unified\+\_\+\+Sensor/\mbox{\hyperlink{_adafruit___sensor_8h}{Adafruit\+\_\+\+Sensor.\+h}}\end{DoxyCompactItemize}

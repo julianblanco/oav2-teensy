@@ -1,0 +1,87 @@
+\hypertarget{elapsed_millis_8h_source}{}\doxysection{elapsed\+Millis.\+h}
+\label{elapsed_millis_8h_source}\index{src/elapsedMillis.h@{src/elapsedMillis.h}}
+\mbox{\hyperlink{elapsed_millis_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00001}00001 \textcolor{comment}{/* Elapsed time types -\/ for easy-\/to-\/use measurements of elapsed time}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00002}00002 \textcolor{comment}{ * http://www.pjrc.com/teensy/}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00003}00003 \textcolor{comment}{ * Copyright (c) 2017 PJRC.COM, LLC}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00004}00004 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00005}00005 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00006}00006 \textcolor{comment}{ * of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00007}00007 \textcolor{comment}{ * in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00008}00008 \textcolor{comment}{ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00009}00009 \textcolor{comment}{ * copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00010}00010 \textcolor{comment}{ * furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00011}00011 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00012}00012 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00013}00013 \textcolor{comment}{ * all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00014}00014 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00015}00015 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00016}00016 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00017}00017 \textcolor{comment}{ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00018}00018 \textcolor{comment}{ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00019}00019 \textcolor{comment}{ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00020}00020 \textcolor{comment}{ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00021}00021 \textcolor{comment}{ * THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00022}00022 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00024}00024 \textcolor{preprocessor}{\#ifndef elapsedMillis\_h}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00025}00025 \textcolor{preprocessor}{\#define elapsedMillis\_h}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00026}00026 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00028}00028 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00029}00029 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00030}00030 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00031}00031 \textcolor{preprocessor}{\#include "{}WProgram.h"{}}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00032}00032 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00034}00034 \textcolor{keyword}{class }elapsedMillis}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00036}00036 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00037}00037     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} ms;}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00038}00038 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00039}00039     elapsedMillis(\textcolor{keywordtype}{void}) \{ ms = millis(); \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00040}00040     elapsedMillis(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val) \{ ms = millis() -\/ val; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00041}00041     elapsedMillis(\textcolor{keyword}{const} elapsedMillis \&orig) \{ ms = orig.ms; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00042}00042     \textcolor{keyword}{operator} \textcolor{keywordtype}{unsigned} long ()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} millis() -\/ ms; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00043}00043     elapsedMillis \& operator = (\textcolor{keyword}{const} elapsedMillis \&rhs) \{ ms = rhs.ms; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00044}00044     elapsedMillis \& operator = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val) \{ ms = millis() -\/ val; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00045}00045     elapsedMillis \& operator -\/= (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)      \{ ms += val ; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00046}00046     elapsedMillis \& operator += (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)      \{ ms -\/= val ; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00047}00047     elapsedMillis operator -\/ (\textcolor{keywordtype}{int} val)\textcolor{keyword}{ const           }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00048}00048     elapsedMillis operator -\/ (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} val)\textcolor{keyword}{ const  }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00049}00049     elapsedMillis operator -\/ (\textcolor{keywordtype}{long} val)\textcolor{keyword}{ const          }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00050}00050     elapsedMillis operator -\/ (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)\textcolor{keyword}{ const }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00051}00051     elapsedMillis operator + (\textcolor{keywordtype}{int} val)\textcolor{keyword}{ const           }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00052}00052     elapsedMillis operator + (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} val)\textcolor{keyword}{ const  }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00053}00053     elapsedMillis operator + (\textcolor{keywordtype}{long} val)\textcolor{keyword}{ const          }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00054}00054     elapsedMillis operator + (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)\textcolor{keyword}{ const }\{ elapsedMillis r(*\textcolor{keyword}{this}); r.ms -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00055}00055 \};}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00057}00057 \textcolor{keyword}{class }elapsedMicros}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00058}00058 \{}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00059}00059 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00060}00060     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} us;}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00061}00061 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00062}00062     elapsedMicros(\textcolor{keywordtype}{void}) \{ us = micros(); \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00063}00063     elapsedMicros(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val) \{ us = micros() -\/ val; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00064}00064     elapsedMicros(\textcolor{keyword}{const} elapsedMicros \&orig) \{ us = orig.us; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00065}00065     \textcolor{keyword}{operator} \textcolor{keywordtype}{unsigned} long ()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} micros() -\/ us; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00066}00066     elapsedMicros \& operator = (\textcolor{keyword}{const} elapsedMicros \&rhs) \{ us = rhs.us; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00067}00067     elapsedMicros \& operator = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val) \{ us = micros() -\/ val; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00068}00068     elapsedMicros \& operator -\/= (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)      \{ us += val ; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00069}00069     elapsedMicros \& operator += (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)      \{ us -\/= val ; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00070}00070     elapsedMicros operator -\/ (\textcolor{keywordtype}{int} val)\textcolor{keyword}{ const           }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00071}00071     elapsedMicros operator -\/ (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} val)\textcolor{keyword}{ const  }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00072}00072     elapsedMicros operator -\/ (\textcolor{keywordtype}{long} val)\textcolor{keyword}{ const          }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00073}00073     elapsedMicros operator -\/ (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)\textcolor{keyword}{ const }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us += val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00074}00074     elapsedMicros operator + (\textcolor{keywordtype}{int} val)\textcolor{keyword}{ const           }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00075}00075     elapsedMicros operator + (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} val)\textcolor{keyword}{ const  }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00076}00076     elapsedMicros operator + (\textcolor{keywordtype}{long} val)\textcolor{keyword}{ const          }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00077}00077     elapsedMicros operator + (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} val)\textcolor{keyword}{ const }\{ elapsedMicros r(*\textcolor{keyword}{this}); r.us -\/= val; \textcolor{keywordflow}{return} r; \}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00078}00078 \};}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00080}00080 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{elapsed_millis_8h_source_l00081}00081 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// elapsedMillis\_h}}
+
+\end{DoxyCode}

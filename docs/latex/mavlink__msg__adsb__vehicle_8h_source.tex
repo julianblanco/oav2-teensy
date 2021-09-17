@@ -1,0 +1,358 @@
+\hypertarget{mavlink__msg__adsb__vehicle_8h_source}{}\doxysection{mavlink\+\_\+msg\+\_\+adsb\+\_\+vehicle.\+h}
+\label{mavlink__msg__adsb__vehicle_8h_source}\index{lib/common/mavlink\_msg\_adsb\_vehicle.h@{lib/common/mavlink\_msg\_adsb\_vehicle.h}}
+\mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// MESSAGE ADSB\_VEHICLE PACKING}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ADSB\_VEHICLE 246}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a974591a199925268eaa0e89105e5a423}{MAVPACKED}}(}
+\DoxyCodeLine{7 \textcolor{keyword}{typedef} \textcolor{keyword}{struct} \_\_mavlink\_adsb\_vehicle\_t \{}
+\DoxyCodeLine{8  uint32\_t ICAO\_address; \textcolor{comment}{/*<  ICAO address*/}}
+\DoxyCodeLine{9  int32\_t lat; \textcolor{comment}{/*< [degE7] Latitude*/}}
+\DoxyCodeLine{10  int32\_t lon; \textcolor{comment}{/*< [degE7] Longitude*/}}
+\DoxyCodeLine{11  int32\_t altitude; \textcolor{comment}{/*< [mm] Altitude(ASL)*/}}
+\DoxyCodeLine{12  uint16\_t heading; \textcolor{comment}{/*< [cdeg] Course over ground*/}}
+\DoxyCodeLine{13  uint16\_t hor\_velocity; \textcolor{comment}{/*< [cm/s] The horizontal velocity*/}}
+\DoxyCodeLine{14  int16\_t ver\_velocity; \textcolor{comment}{/*< [cm/s] The vertical velocity. Positive is up*/}}
+\DoxyCodeLine{15  uint16\_t flags; \textcolor{comment}{/*<  Bitmap to indicate various statuses including valid data fields*/}}
+\DoxyCodeLine{16  uint16\_t squawk; \textcolor{comment}{/*<  Squawk code*/}}
+\DoxyCodeLine{17  uint8\_t altitude\_type; \textcolor{comment}{/*<  ADSB altitude type.*/}}
+\DoxyCodeLine{18  \textcolor{keywordtype}{char} callsign[9]; \textcolor{comment}{/*<  The callsign, 8+null*/}}
+\DoxyCodeLine{19  uint8\_t emitter\_type; \textcolor{comment}{/*<  ADSB emitter type.*/}}
+\DoxyCodeLine{20  uint8\_t tslc; \textcolor{comment}{/*< [s] Time since last communication in seconds*/}}
+\DoxyCodeLine{21 \}) mavlink\_adsb\_vehicle\_t;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN 38}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN 38}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_246\_LEN 38}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_246\_MIN\_LEN 38}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC 184}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ID\_246\_CRC 184}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MAVLINK\_MSG\_ADSB\_VEHICLE\_FIELD\_CALLSIGN\_LEN 9}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#if MAVLINK\_COMMAND\_24BIT}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_ADSB\_VEHICLE \{ \(\backslash\)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{    246, \(\backslash\)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{    "{}ADSB\_VEHICLE"{}}, \(\backslash\)}
+\DoxyCodeLine{37     13, \(\backslash\)}
+\DoxyCodeLine{38     \{  \{ "{}ICAO\_address"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_adsb\_vehicle\_t, ICAO\_address) \}, \(\backslash\)}
+\DoxyCodeLine{39          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_adsb\_vehicle\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{40          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 8, offsetof(mavlink\_adsb\_vehicle\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{41          \{ "{}altitude\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 26, offsetof(mavlink\_adsb\_vehicle\_t, altitude\_type) \}, \(\backslash\)}
+\DoxyCodeLine{42          \{ "{}altitude"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_adsb\_vehicle\_t, altitude) \}, \(\backslash\)}
+\DoxyCodeLine{43          \{ "{}heading"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 16, offsetof(mavlink\_adsb\_vehicle\_t, heading) \}, \(\backslash\)}
+\DoxyCodeLine{44          \{ "{}hor\_velocity"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_adsb\_vehicle\_t, hor\_velocity) \}, \(\backslash\)}
+\DoxyCodeLine{45          \{ "{}ver\_velocity"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 20, offsetof(mavlink\_adsb\_vehicle\_t, ver\_velocity) \}, \(\backslash\)}
+\DoxyCodeLine{46          \{ "{}callsign"{}, NULL, MAVLINK\_TYPE\_CHAR, 9, 27, offsetof(mavlink\_adsb\_vehicle\_t, callsign) \}, \(\backslash\)}
+\DoxyCodeLine{47          \{ "{}emitter\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 36, offsetof(mavlink\_adsb\_vehicle\_t, emitter\_type) \}, \(\backslash\)}
+\DoxyCodeLine{48          \{ "{}tslc"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 37, offsetof(mavlink\_adsb\_vehicle\_t, tslc) \}, \(\backslash\)}
+\DoxyCodeLine{49          \{ "{}flags"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_adsb\_vehicle\_t, flags) \}, \(\backslash\)}
+\DoxyCodeLine{50          \{ "{}squawk"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 24, offsetof(mavlink\_adsb\_vehicle\_t, squawk) \}, \(\backslash\)}
+\DoxyCodeLine{51          \} \(\backslash\)}
+\DoxyCodeLine{52 \}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define MAVLINK\_MESSAGE\_INFO\_ADSB\_VEHICLE \{ \(\backslash\)}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{    "{}ADSB\_VEHICLE"{}}, \(\backslash\)}
+\DoxyCodeLine{56     13, \(\backslash\)}
+\DoxyCodeLine{57     \{  \{ "{}ICAO\_address"{}, NULL, MAVLINK\_TYPE\_UINT32\_T, 0, 0, offsetof(mavlink\_adsb\_vehicle\_t, ICAO\_address) \}, \(\backslash\)}
+\DoxyCodeLine{58          \{ "{}lat"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 4, offsetof(mavlink\_adsb\_vehicle\_t, lat) \}, \(\backslash\)}
+\DoxyCodeLine{59          \{ "{}lon"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 8, offsetof(mavlink\_adsb\_vehicle\_t, lon) \}, \(\backslash\)}
+\DoxyCodeLine{60          \{ "{}altitude\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 26, offsetof(mavlink\_adsb\_vehicle\_t, altitude\_type) \}, \(\backslash\)}
+\DoxyCodeLine{61          \{ "{}altitude"{}, NULL, MAVLINK\_TYPE\_INT32\_T, 0, 12, offsetof(mavlink\_adsb\_vehicle\_t, altitude) \}, \(\backslash\)}
+\DoxyCodeLine{62          \{ "{}heading"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 16, offsetof(mavlink\_adsb\_vehicle\_t, heading) \}, \(\backslash\)}
+\DoxyCodeLine{63          \{ "{}hor\_velocity"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 18, offsetof(mavlink\_adsb\_vehicle\_t, hor\_velocity) \}, \(\backslash\)}
+\DoxyCodeLine{64          \{ "{}ver\_velocity"{}, NULL, MAVLINK\_TYPE\_INT16\_T, 0, 20, offsetof(mavlink\_adsb\_vehicle\_t, ver\_velocity) \}, \(\backslash\)}
+\DoxyCodeLine{65          \{ "{}callsign"{}, NULL, MAVLINK\_TYPE\_CHAR, 9, 27, offsetof(mavlink\_adsb\_vehicle\_t, callsign) \}, \(\backslash\)}
+\DoxyCodeLine{66          \{ "{}emitter\_type"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 36, offsetof(mavlink\_adsb\_vehicle\_t, emitter\_type) \}, \(\backslash\)}
+\DoxyCodeLine{67          \{ "{}tslc"{}, NULL, MAVLINK\_TYPE\_UINT8\_T, 0, 37, offsetof(mavlink\_adsb\_vehicle\_t, tslc) \}, \(\backslash\)}
+\DoxyCodeLine{68          \{ "{}flags"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 22, offsetof(mavlink\_adsb\_vehicle\_t, flags) \}, \(\backslash\)}
+\DoxyCodeLine{69          \{ "{}squawk"{}, NULL, MAVLINK\_TYPE\_UINT16\_T, 0, 24, offsetof(mavlink\_adsb\_vehicle\_t, squawk) \}, \(\backslash\)}
+\DoxyCodeLine{70          \} \(\backslash\)}
+\DoxyCodeLine{71 \}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{95 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_pack(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg,}
+\DoxyCodeLine{96                                uint32\_t ICAO\_address, int32\_t lat, int32\_t lon, uint8\_t altitude\_type, int32\_t altitude, uint16\_t heading, uint16\_t hor\_velocity, int16\_t ver\_velocity, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *callsign, uint8\_t emitter\_type, uint8\_t tslc, uint16\_t flags, uint16\_t squawk)}
+\DoxyCodeLine{97 \{}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{99     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}];}
+\DoxyCodeLine{100     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, ICAO\_address);}
+\DoxyCodeLine{101     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lat);}
+\DoxyCodeLine{102     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lon);}
+\DoxyCodeLine{103     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, altitude);}
+\DoxyCodeLine{104     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, heading);}
+\DoxyCodeLine{105     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, hor\_velocity);}
+\DoxyCodeLine{106     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, ver\_velocity);}
+\DoxyCodeLine{107     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, flags);}
+\DoxyCodeLine{108     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, squawk);}
+\DoxyCodeLine{109     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, altitude\_type);}
+\DoxyCodeLine{110     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, emitter\_type);}
+\DoxyCodeLine{111     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, tslc);}
+\DoxyCodeLine{112     \_mav\_put\_char\_array(buf, 27, callsign, 9);}
+\DoxyCodeLine{113         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}});}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{115     mavlink\_adsb\_vehicle\_t packet;}
+\DoxyCodeLine{116     packet.ICAO\_address = ICAO\_address;}
+\DoxyCodeLine{117     packet.lat = lat;}
+\DoxyCodeLine{118     packet.lon = lon;}
+\DoxyCodeLine{119     packet.altitude = altitude;}
+\DoxyCodeLine{120     packet.heading = heading;}
+\DoxyCodeLine{121     packet.hor\_velocity = hor\_velocity;}
+\DoxyCodeLine{122     packet.ver\_velocity = ver\_velocity;}
+\DoxyCodeLine{123     packet.flags = flags;}
+\DoxyCodeLine{124     packet.squawk = squawk;}
+\DoxyCodeLine{125     packet.altitude\_type = altitude\_type;}
+\DoxyCodeLine{126     packet.emitter\_type = emitter\_type;}
+\DoxyCodeLine{127     packet.tslc = tslc;}
+\DoxyCodeLine{128     mav\_array\_memcpy(packet.callsign, callsign, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*9);}
+\DoxyCodeLine{129         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}});}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}};}
+\DoxyCodeLine{133     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a87829b98b28ea3601de59c8025bbb7ea}{mavlink\_finalize\_message}}(msg, system\_id, component\_id, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{134 \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{157 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_pack\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan,}
+\DoxyCodeLine{158                                mavlink\_message\_t* msg,}
+\DoxyCodeLine{159                                    uint32\_t ICAO\_address,int32\_t lat,int32\_t lon,uint8\_t altitude\_type,int32\_t altitude,uint16\_t heading,uint16\_t hor\_velocity,int16\_t ver\_velocity,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *callsign,uint8\_t emitter\_type,uint8\_t tslc,uint16\_t flags,uint16\_t squawk)}
+\DoxyCodeLine{160 \{}
+\DoxyCodeLine{161 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{162     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}];}
+\DoxyCodeLine{163     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, ICAO\_address);}
+\DoxyCodeLine{164     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lat);}
+\DoxyCodeLine{165     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lon);}
+\DoxyCodeLine{166     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, altitude);}
+\DoxyCodeLine{167     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, heading);}
+\DoxyCodeLine{168     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, hor\_velocity);}
+\DoxyCodeLine{169     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, ver\_velocity);}
+\DoxyCodeLine{170     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, flags);}
+\DoxyCodeLine{171     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, squawk);}
+\DoxyCodeLine{172     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, altitude\_type);}
+\DoxyCodeLine{173     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, emitter\_type);}
+\DoxyCodeLine{174     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, tslc);}
+\DoxyCodeLine{175     \_mav\_put\_char\_array(buf, 27, callsign, 9);}
+\DoxyCodeLine{176         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), buf, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}});}
+\DoxyCodeLine{177 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{178     mavlink\_adsb\_vehicle\_t packet;}
+\DoxyCodeLine{179     packet.ICAO\_address = ICAO\_address;}
+\DoxyCodeLine{180     packet.lat = lat;}
+\DoxyCodeLine{181     packet.lon = lon;}
+\DoxyCodeLine{182     packet.altitude = altitude;}
+\DoxyCodeLine{183     packet.heading = heading;}
+\DoxyCodeLine{184     packet.hor\_velocity = hor\_velocity;}
+\DoxyCodeLine{185     packet.ver\_velocity = ver\_velocity;}
+\DoxyCodeLine{186     packet.flags = flags;}
+\DoxyCodeLine{187     packet.squawk = squawk;}
+\DoxyCodeLine{188     packet.altitude\_type = altitude\_type;}
+\DoxyCodeLine{189     packet.emitter\_type = emitter\_type;}
+\DoxyCodeLine{190     packet.tslc = tslc;}
+\DoxyCodeLine{191     mav\_array\_memcpy(packet.callsign, callsign, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*9);}
+\DoxyCodeLine{192         memcpy(\mbox{\hyperlink{mavlink__types_8h_a7669822824250e6b1a46627f70c9e3ce}{\_MAV\_PAYLOAD\_NON\_CONST}}(msg), \&packet, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}});}
+\DoxyCodeLine{193 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     msg-\/>msgid = \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}};}
+\DoxyCodeLine{196     \textcolor{keywordflow}{return} \mbox{\hyperlink{mavlink__helpers_8h_a8c43ba68fd7dda5e4f31e4068076a124}{mavlink\_finalize\_message\_chan}}(msg, system\_id, component\_id, chan, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{197 \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{207 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_encode(uint8\_t system\_id, uint8\_t component\_id, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_adsb\_vehicle\_t* adsb\_vehicle)}
+\DoxyCodeLine{208 \{}
+\DoxyCodeLine{209     \textcolor{keywordflow}{return} mavlink\_msg\_adsb\_vehicle\_pack(system\_id, component\_id, msg, adsb\_vehicle-\/>ICAO\_address, adsb\_vehicle-\/>lat, adsb\_vehicle-\/>lon, adsb\_vehicle-\/>altitude\_type, adsb\_vehicle-\/>altitude, adsb\_vehicle-\/>heading, adsb\_vehicle-\/>hor\_velocity, adsb\_vehicle-\/>ver\_velocity, adsb\_vehicle-\/>callsign, adsb\_vehicle-\/>emitter\_type, adsb\_vehicle-\/>tslc, adsb\_vehicle-\/>flags, adsb\_vehicle-\/>squawk);}
+\DoxyCodeLine{210 \}}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{221 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_encode\_chan(uint8\_t system\_id, uint8\_t component\_id, uint8\_t chan, mavlink\_message\_t* msg, \textcolor{keyword}{const} mavlink\_adsb\_vehicle\_t* adsb\_vehicle)}
+\DoxyCodeLine{222 \{}
+\DoxyCodeLine{223     \textcolor{keywordflow}{return} mavlink\_msg\_adsb\_vehicle\_pack\_chan(system\_id, component\_id, chan, msg, adsb\_vehicle-\/>ICAO\_address, adsb\_vehicle-\/>lat, adsb\_vehicle-\/>lon, adsb\_vehicle-\/>altitude\_type, adsb\_vehicle-\/>altitude, adsb\_vehicle-\/>heading, adsb\_vehicle-\/>hor\_velocity, adsb\_vehicle-\/>ver\_velocity, adsb\_vehicle-\/>callsign, adsb\_vehicle-\/>emitter\_type, adsb\_vehicle-\/>tslc, adsb\_vehicle-\/>flags, adsb\_vehicle-\/>squawk);}
+\DoxyCodeLine{224 \}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{244 \textcolor{preprocessor}{\#ifdef MAVLINK\_USE\_CONVENIENCE\_FUNCTIONS}}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_adsb\_vehicle\_send(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, uint32\_t ICAO\_address, int32\_t lat, int32\_t lon, uint8\_t altitude\_type, int32\_t altitude, uint16\_t heading, uint16\_t hor\_velocity, int16\_t ver\_velocity, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *callsign, uint8\_t emitter\_type, uint8\_t tslc, uint16\_t flags, uint16\_t squawk)}
+\DoxyCodeLine{247 \{}
+\DoxyCodeLine{248 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{249     \textcolor{keywordtype}{char} buf[\mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}];}
+\DoxyCodeLine{250     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, ICAO\_address);}
+\DoxyCodeLine{251     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lat);}
+\DoxyCodeLine{252     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lon);}
+\DoxyCodeLine{253     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, altitude);}
+\DoxyCodeLine{254     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, heading);}
+\DoxyCodeLine{255     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, hor\_velocity);}
+\DoxyCodeLine{256     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, ver\_velocity);}
+\DoxyCodeLine{257     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, flags);}
+\DoxyCodeLine{258     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, squawk);}
+\DoxyCodeLine{259     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, altitude\_type);}
+\DoxyCodeLine{260     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, emitter\_type);}
+\DoxyCodeLine{261     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, tslc);}
+\DoxyCodeLine{262     \_mav\_put\_char\_array(buf, 27, callsign, 9);}
+\DoxyCodeLine{263     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}}, buf, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{264 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{265     mavlink\_adsb\_vehicle\_t packet;}
+\DoxyCodeLine{266     packet.ICAO\_address = ICAO\_address;}
+\DoxyCodeLine{267     packet.lat = lat;}
+\DoxyCodeLine{268     packet.lon = lon;}
+\DoxyCodeLine{269     packet.altitude = altitude;}
+\DoxyCodeLine{270     packet.heading = heading;}
+\DoxyCodeLine{271     packet.hor\_velocity = hor\_velocity;}
+\DoxyCodeLine{272     packet.ver\_velocity = ver\_velocity;}
+\DoxyCodeLine{273     packet.flags = flags;}
+\DoxyCodeLine{274     packet.squawk = squawk;}
+\DoxyCodeLine{275     packet.altitude\_type = altitude\_type;}
+\DoxyCodeLine{276     packet.emitter\_type = emitter\_type;}
+\DoxyCodeLine{277     packet.tslc = tslc;}
+\DoxyCodeLine{278     mav\_array\_memcpy(packet.callsign, callsign, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*9);}
+\DoxyCodeLine{279     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\&packet, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{280 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{281 \}}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{288 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_adsb\_vehicle\_send\_struct(\mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan, \textcolor{keyword}{const} mavlink\_adsb\_vehicle\_t* adsb\_vehicle)}
+\DoxyCodeLine{289 \{}
+\DoxyCodeLine{290 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{291     mavlink\_msg\_adsb\_vehicle\_send(chan, adsb\_vehicle-\/>ICAO\_address, adsb\_vehicle-\/>lat, adsb\_vehicle-\/>lon, adsb\_vehicle-\/>altitude\_type, adsb\_vehicle-\/>altitude, adsb\_vehicle-\/>heading, adsb\_vehicle-\/>hor\_velocity, adsb\_vehicle-\/>ver\_velocity, adsb\_vehicle-\/>callsign, adsb\_vehicle-\/>emitter\_type, adsb\_vehicle-\/>tslc, adsb\_vehicle-\/>flags, adsb\_vehicle-\/>squawk);}
+\DoxyCodeLine{292 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{293     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)adsb\_vehicle, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{294 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{295 \}}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{297 \textcolor{preprocessor}{\#if MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN <= MAVLINK\_MAX\_PAYLOAD\_LEN}}
+\DoxyCodeLine{298 \textcolor{comment}{/*}}
+\DoxyCodeLine{299 \textcolor{comment}{  This varient of \_send() can be used to save stack space by re-\/using}}
+\DoxyCodeLine{300 \textcolor{comment}{  memory from the receive buffer.  The caller provides a}}
+\DoxyCodeLine{301 \textcolor{comment}{  mavlink\_message\_t which is the size of a full mavlink message. This}}
+\DoxyCodeLine{302 \textcolor{comment}{  is usually the receive buffer for the channel, and allows a reply to an}}
+\DoxyCodeLine{303 \textcolor{comment}{  incoming message with minimum stack space usage.}}
+\DoxyCodeLine{304 \textcolor{comment}{ */}}
+\DoxyCodeLine{305 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_adsb\_vehicle\_send\_buf(mavlink\_message\_t *msgbuf, \mbox{\hyperlink{mavlink__types_8h_aa0f38d2f21462ce9ff37bfb2fb43709c}{mavlink\_channel\_t}} chan,  uint32\_t ICAO\_address, int32\_t lat, int32\_t lon, uint8\_t altitude\_type, int32\_t altitude, uint16\_t heading, uint16\_t hor\_velocity, int16\_t ver\_velocity, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *callsign, uint8\_t emitter\_type, uint8\_t tslc, uint16\_t flags, uint16\_t squawk)}
+\DoxyCodeLine{306 \{}
+\DoxyCodeLine{307 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{308     \textcolor{keywordtype}{char} *buf = (\textcolor{keywordtype}{char} *)msgbuf;}
+\DoxyCodeLine{309     \mbox{\hyperlink{protocol_8h_ad4eb6d38fefd862941176a9072c1c1c5}{\_mav\_put\_uint32\_t}}(buf, 0, ICAO\_address);}
+\DoxyCodeLine{310     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 4, lat);}
+\DoxyCodeLine{311     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 8, lon);}
+\DoxyCodeLine{312     \mbox{\hyperlink{protocol_8h_a87d4bee416a127b8bbca5e68abb8928f}{\_mav\_put\_int32\_t}}(buf, 12, altitude);}
+\DoxyCodeLine{313     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 16, heading);}
+\DoxyCodeLine{314     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 18, hor\_velocity);}
+\DoxyCodeLine{315     \mbox{\hyperlink{protocol_8h_ae1c41175f07ee225c3f535005a46bf9b}{\_mav\_put\_int16\_t}}(buf, 20, ver\_velocity);}
+\DoxyCodeLine{316     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 22, flags);}
+\DoxyCodeLine{317     \mbox{\hyperlink{protocol_8h_a42a5eee59a41e8a52051491d7cf65ca9}{\_mav\_put\_uint16\_t}}(buf, 24, squawk);}
+\DoxyCodeLine{318     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 26, altitude\_type);}
+\DoxyCodeLine{319     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 36, emitter\_type);}
+\DoxyCodeLine{320     \mbox{\hyperlink{protocol_8h_a25eacf3d37971b0b54c67e338d9f481a}{\_mav\_put\_uint8\_t}}(buf, 37, tslc);}
+\DoxyCodeLine{321     \_mav\_put\_char\_array(buf, 27, callsign, 9);}
+\DoxyCodeLine{322     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}}, buf, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{323 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{324     mavlink\_adsb\_vehicle\_t *packet = (mavlink\_adsb\_vehicle\_t *)msgbuf;}
+\DoxyCodeLine{325     packet-\/>ICAO\_address = ICAO\_address;}
+\DoxyCodeLine{326     packet-\/>lat = lat;}
+\DoxyCodeLine{327     packet-\/>lon = lon;}
+\DoxyCodeLine{328     packet-\/>altitude = altitude;}
+\DoxyCodeLine{329     packet-\/>heading = heading;}
+\DoxyCodeLine{330     packet-\/>hor\_velocity = hor\_velocity;}
+\DoxyCodeLine{331     packet-\/>ver\_velocity = ver\_velocity;}
+\DoxyCodeLine{332     packet-\/>flags = flags;}
+\DoxyCodeLine{333     packet-\/>squawk = squawk;}
+\DoxyCodeLine{334     packet-\/>altitude\_type = altitude\_type;}
+\DoxyCodeLine{335     packet-\/>emitter\_type = emitter\_type;}
+\DoxyCodeLine{336     packet-\/>tslc = tslc;}
+\DoxyCodeLine{337     mav\_array\_memcpy(packet-\/>callsign, callsign, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*9);}
+\DoxyCodeLine{338     \_mav\_finalize\_message\_chan\_send(chan, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a0e35c1b7a9890688a27c2d8e03f85dd7}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE}}, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)packet, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a2e6a61016f9e9d3b48921bc972eaf7bb}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_MIN\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_a882ecee467828563af5e147bef09262c}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_CRC}});}
+\DoxyCodeLine{339 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{340 \}}
+\DoxyCodeLine{341 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{342 }
+\DoxyCodeLine{343 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345 \textcolor{comment}{// MESSAGE ADSB\_VEHICLE UNPACKING}}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347 }
+\DoxyCodeLine{353 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint32\_t mavlink\_msg\_adsb\_vehicle\_get\_ICAO\_address(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{354 \{}
+\DoxyCodeLine{355     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint32\_t(msg,  0);}
+\DoxyCodeLine{356 \}}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{363 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_adsb\_vehicle\_get\_lat(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{364 \{}
+\DoxyCodeLine{365     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  4);}
+\DoxyCodeLine{366 \}}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{373 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_adsb\_vehicle\_get\_lon(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{374 \{}
+\DoxyCodeLine{375     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  8);}
+\DoxyCodeLine{376 \}}
+\DoxyCodeLine{377 }
+\DoxyCodeLine{383 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_adsb\_vehicle\_get\_altitude\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{384 \{}
+\DoxyCodeLine{385     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  26);}
+\DoxyCodeLine{386 \}}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{393 \textcolor{keyword}{static} \textcolor{keyword}{inline} int32\_t mavlink\_msg\_adsb\_vehicle\_get\_altitude(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{394 \{}
+\DoxyCodeLine{395     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int32\_t(msg,  12);}
+\DoxyCodeLine{396 \}}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{403 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_get\_heading(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{404 \{}
+\DoxyCodeLine{405     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  16);}
+\DoxyCodeLine{406 \}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{413 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_get\_hor\_velocity(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{414 \{}
+\DoxyCodeLine{415     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  18);}
+\DoxyCodeLine{416 \}}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{423 \textcolor{keyword}{static} \textcolor{keyword}{inline} int16\_t mavlink\_msg\_adsb\_vehicle\_get\_ver\_velocity(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{424 \{}
+\DoxyCodeLine{425     \textcolor{keywordflow}{return} \_MAV\_RETURN\_int16\_t(msg,  20);}
+\DoxyCodeLine{426 \}}
+\DoxyCodeLine{427 }
+\DoxyCodeLine{433 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_get\_callsign(\textcolor{keyword}{const} mavlink\_message\_t* msg, \textcolor{keywordtype}{char} *callsign)}
+\DoxyCodeLine{434 \{}
+\DoxyCodeLine{435     \textcolor{keywordflow}{return} \_MAV\_RETURN\_char\_array(msg, callsign, 9,  27);}
+\DoxyCodeLine{436 \}}
+\DoxyCodeLine{437 }
+\DoxyCodeLine{443 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_adsb\_vehicle\_get\_emitter\_type(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{444 \{}
+\DoxyCodeLine{445     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  36);}
+\DoxyCodeLine{446 \}}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{453 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t mavlink\_msg\_adsb\_vehicle\_get\_tslc(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{454 \{}
+\DoxyCodeLine{455     \textcolor{keywordflow}{return} \mbox{\hyperlink{protocol_8h_a125f5a7a107c19da567a08ebaaa08389}{\_MAV\_RETURN\_uint8\_t}}(msg,  37);}
+\DoxyCodeLine{456 \}}
+\DoxyCodeLine{457 }
+\DoxyCodeLine{463 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_get\_flags(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{464 \{}
+\DoxyCodeLine{465     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  22);}
+\DoxyCodeLine{466 \}}
+\DoxyCodeLine{467 }
+\DoxyCodeLine{473 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint16\_t mavlink\_msg\_adsb\_vehicle\_get\_squawk(\textcolor{keyword}{const} mavlink\_message\_t* msg)}
+\DoxyCodeLine{474 \{}
+\DoxyCodeLine{475     \textcolor{keywordflow}{return} \_MAV\_RETURN\_uint16\_t(msg,  24);}
+\DoxyCodeLine{476 \}}
+\DoxyCodeLine{477 }
+\DoxyCodeLine{484 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} mavlink\_msg\_adsb\_vehicle\_decode(\textcolor{keyword}{const} mavlink\_message\_t* msg, mavlink\_adsb\_vehicle\_t* adsb\_vehicle)}
+\DoxyCodeLine{485 \{}
+\DoxyCodeLine{486 \textcolor{preprocessor}{\#if MAVLINK\_NEED\_BYTE\_SWAP || !MAVLINK\_ALIGNED\_FIELDS}}
+\DoxyCodeLine{487     adsb\_vehicle-\/>ICAO\_address = mavlink\_msg\_adsb\_vehicle\_get\_ICAO\_address(msg);}
+\DoxyCodeLine{488     adsb\_vehicle-\/>lat = mavlink\_msg\_adsb\_vehicle\_get\_lat(msg);}
+\DoxyCodeLine{489     adsb\_vehicle-\/>lon = mavlink\_msg\_adsb\_vehicle\_get\_lon(msg);}
+\DoxyCodeLine{490     adsb\_vehicle-\/>altitude = mavlink\_msg\_adsb\_vehicle\_get\_altitude(msg);}
+\DoxyCodeLine{491     adsb\_vehicle-\/>heading = mavlink\_msg\_adsb\_vehicle\_get\_heading(msg);}
+\DoxyCodeLine{492     adsb\_vehicle-\/>hor\_velocity = mavlink\_msg\_adsb\_vehicle\_get\_hor\_velocity(msg);}
+\DoxyCodeLine{493     adsb\_vehicle-\/>ver\_velocity = mavlink\_msg\_adsb\_vehicle\_get\_ver\_velocity(msg);}
+\DoxyCodeLine{494     adsb\_vehicle-\/>flags = mavlink\_msg\_adsb\_vehicle\_get\_flags(msg);}
+\DoxyCodeLine{495     adsb\_vehicle-\/>squawk = mavlink\_msg\_adsb\_vehicle\_get\_squawk(msg);}
+\DoxyCodeLine{496     adsb\_vehicle-\/>altitude\_type = mavlink\_msg\_adsb\_vehicle\_get\_altitude\_type(msg);}
+\DoxyCodeLine{497     mavlink\_msg\_adsb\_vehicle\_get\_callsign(msg, adsb\_vehicle-\/>callsign);}
+\DoxyCodeLine{498     adsb\_vehicle-\/>emitter\_type = mavlink\_msg\_adsb\_vehicle\_get\_emitter\_type(msg);}
+\DoxyCodeLine{499     adsb\_vehicle-\/>tslc = mavlink\_msg\_adsb\_vehicle\_get\_tslc(msg);}
+\DoxyCodeLine{500 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{501         uint8\_t len = msg-\/>len < \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}}? msg-\/>len : \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}};}
+\DoxyCodeLine{502         memset(adsb\_vehicle, 0, \mbox{\hyperlink{mavlink__msg__adsb__vehicle_8h_ac8fa8b322411fdf1bb68b5fe77498d65}{MAVLINK\_MSG\_ID\_ADSB\_VEHICLE\_LEN}});}
+\DoxyCodeLine{503     memcpy(adsb\_vehicle, \mbox{\hyperlink{mavlink__types_8h_a619f28e6ade58d4cfce6668feeb85b36}{\_MAV\_PAYLOAD}}(msg), len);}
+\DoxyCodeLine{504 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{505 \}}
+
+\end{DoxyCode}

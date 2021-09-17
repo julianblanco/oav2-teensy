@@ -1,0 +1,430 @@
+\hypertarget{_adafruit___neo_pixel_8h}{}\doxysection{lib/\+Adafruit\+\_\+\+Neo\+Pixel/\+Adafruit\+\_\+\+Neo\+Pixel.h File Reference}
+\label{_adafruit___neo_pixel_8h}\index{lib/Adafruit\_NeoPixel/Adafruit\_NeoPixel.h@{lib/Adafruit\_NeoPixel/Adafruit\_NeoPixel.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}}
+\begin{DoxyCompactList}\small\item\em Class that stores state and functions for interacting with Adafruit Neo\+Pixels and compatible devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_aa4f80df5ab240d93359f40956462f758}{NEO\+\_\+\+RGB}}~((0$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as R,G,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a7d6aaa56c8e2603312cba8dbdf9c5661}{NEO\+\_\+\+RBG}}~((0$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as R,B,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a95d0d6b0a1f52bc72d9dcea2b3a48e3f}{NEO\+\_\+\+GRB}}~((1$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as G,R,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_abca04ce54125372080f2fbf2afdcf027}{NEO\+\_\+\+GBR}}~((2$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as G,B,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_afde6ec00a4ec8fad0267ae1a6689379e}{NEO\+\_\+\+BRG}}~((1$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,R,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a9129664a08911b56227dd641116f105f}{NEO\+\_\+\+BGR}}~((2$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,G,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a4ee056fd3d7b09538908b35643a2508a}{NEO\+\_\+\+WRGB}}~((0$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (3))
+\begin{DoxyCompactList}\small\item\em Transmit as W,R,G,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a266a08af576ed4331db48b16bf572d29}{NEO\+\_\+\+WRBG}}~((0$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as W,R,B,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a59561d96a0f8a526ee3448e7b104d8b3}{NEO\+\_\+\+WGRB}}~((0$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (3))
+\begin{DoxyCompactList}\small\item\em Transmit as W,G,R,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_af722c80d41894df25c363b9ebf371b4e}{NEO\+\_\+\+WGBR}}~((0$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as W,G,B,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a3eed3aeba511a2478a1ee8c17516732b}{NEO\+\_\+\+WBRG}}~((0$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as W,B,R,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a015eeccbf1bd19907c34d7b39b63bb84}{NEO\+\_\+\+WBGR}}~((0$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as W,B,G,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a122c6bb3e44525d2f975dcd89b094267}{NEO\+\_\+\+RWGB}}~((1$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (3))
+\begin{DoxyCompactList}\small\item\em Transmit as R,W,G,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a9254ebc9367c071457d0321f64c9d5fa}{NEO\+\_\+\+RWBG}}~((1$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as R,W,B,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_abcce73b2eafdf1bb331a8f02fba95d10}{NEO\+\_\+\+RGWB}}~((2$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (3))
+\begin{DoxyCompactList}\small\item\em Transmit as R,G,W,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a71f7c6e45f4c63fceca6b5b73c7a7c9d}{NEO\+\_\+\+RGBW}}~((3$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as R,G,B,W. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a7b6b551a990b498bed36aadba4a498d5}{NEO\+\_\+\+RBWG}}~((2$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as R,B,W,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a198dc192119c166c544efc3e89fdd1cd}{NEO\+\_\+\+RBGW}}~((3$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as R,B,G,W. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_aa29b3544b4257e851de2e214894d1236}{NEO\+\_\+\+GWRB}}~((1$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (3))
+\begin{DoxyCompactList}\small\item\em Transmit as G,W,R,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_aaaaa406f36f1c596526579944ca7043d}{NEO\+\_\+\+GWBR}}~((1$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as G,W,B,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a35a185ff488486a74745e9094892558c}{NEO\+\_\+\+GRWB}}~((2$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (3))
+\begin{DoxyCompactList}\small\item\em Transmit as G,R,W,B. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a722066abc60b560235b3b22082c2e68e}{NEO\+\_\+\+GRBW}}~((3$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (2))
+\begin{DoxyCompactList}\small\item\em Transmit as G,R,B,W. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a20be9abdf372b9c71d9fdacc3e6a9d1a}{NEO\+\_\+\+GBWR}}~((2$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as G,B,W,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_af60d024b8f8954960e59056c57520080}{NEO\+\_\+\+GBRW}}~((3$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (1))
+\begin{DoxyCompactList}\small\item\em Transmit as G,B,R,W. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_aaf438f131d0fa8a0be6791a553145860}{NEO\+\_\+\+BWRG}}~((1$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,W,R,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a2595b8689ce5bd39634d017620ae57b8}{NEO\+\_\+\+BWGR}}~((1$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,W,G,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a4b4571bfc0a3ebfb4720ce4e5fbe9acf}{NEO\+\_\+\+BRWG}}~((2$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,R,W,G. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_aad617c46d4a64cd4ec8d0ed1a0f30073}{NEO\+\_\+\+BRGW}}~((3$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,R,G,W. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a143de1c7084e1f833beecbdae00b321c}{NEO\+\_\+\+BGWR}}~((2$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,G,W,R. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a5b49f89982b6e60d20f7aaab79030d54}{NEO\+\_\+\+BGRW}}~((3$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (0))
+\begin{DoxyCompactList}\small\item\em Transmit as B,G,R,W. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a475fef7028a743310aa4311a97899d5d}{NEO\+\_\+\+KHZ800}}~0x0000
+\begin{DoxyCompactList}\small\item\em 800 KHz data transmission \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___neo_pixel_8h_a9c4067fd0cceb0432d1758fc07ede469}{NEO\+\_\+\+KHZ400}}~0x0100
+\begin{DoxyCompactList}\small\item\em 400 KHz data transmission \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\+\_\+t \mbox{\hyperlink{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}{neo\+Pixel\+Type}}
+\begin{DoxyCompactList}\small\item\em 3rd arg to \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is part of Adafruit\textquotesingle{}s Neo\+Pixel library for the Arduino platform, allowing a broad range of microcontroller boards (most AVR boards, many ARM devices, ESP8266 and ESP32, among others) to control Adafruit Neo\+Pixels, FLORA RGB Smart Pixels and compatible devices -- WS2811, WS2812, WS2812B, SK6812, etc.
+
+Adafruit invests time and resources providing this open source code, please support Adafruit and open-\/source hardware by purchasing products from Adafruit!
+
+Written by Phil \char`\"{}\+Paint Your Dragon\char`\"{} Burgess for Adafruit Industries, with contributions by PJRC, Michael Miller and other members of the open source community.
+
+This file is part of the \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} library.
+
+\mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} is free software\+: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+\mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with Neo\+Pixel. If not, see \href{http://www.gnu.org/licenses/}{\texttt{ http\+://www.\+gnu.\+org/licenses/}}. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a9129664a08911b56227dd641116f105f}\label{_adafruit___neo_pixel_8h_a9129664a08911b56227dd641116f105f}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BGR@{NEO\_BGR}}
+\index{NEO\_BGR@{NEO\_BGR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BGR}{NEO\_BGR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BGR~((2$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,G,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a5b49f89982b6e60d20f7aaab79030d54}\label{_adafruit___neo_pixel_8h_a5b49f89982b6e60d20f7aaab79030d54}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BGRW@{NEO\_BGRW}}
+\index{NEO\_BGRW@{NEO\_BGRW}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BGRW}{NEO\_BGRW}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BGRW~((3$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,G,R,W. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a143de1c7084e1f833beecbdae00b321c}\label{_adafruit___neo_pixel_8h_a143de1c7084e1f833beecbdae00b321c}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BGWR@{NEO\_BGWR}}
+\index{NEO\_BGWR@{NEO\_BGWR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BGWR}{NEO\_BGWR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BGWR~((2$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,G,W,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_afde6ec00a4ec8fad0267ae1a6689379e}\label{_adafruit___neo_pixel_8h_afde6ec00a4ec8fad0267ae1a6689379e}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BRG@{NEO\_BRG}}
+\index{NEO\_BRG@{NEO\_BRG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BRG}{NEO\_BRG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BRG~((1$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,R,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_aad617c46d4a64cd4ec8d0ed1a0f30073}\label{_adafruit___neo_pixel_8h_aad617c46d4a64cd4ec8d0ed1a0f30073}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BRGW@{NEO\_BRGW}}
+\index{NEO\_BRGW@{NEO\_BRGW}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BRGW}{NEO\_BRGW}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BRGW~((3$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,R,G,W. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a4b4571bfc0a3ebfb4720ce4e5fbe9acf}\label{_adafruit___neo_pixel_8h_a4b4571bfc0a3ebfb4720ce4e5fbe9acf}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BRWG@{NEO\_BRWG}}
+\index{NEO\_BRWG@{NEO\_BRWG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BRWG}{NEO\_BRWG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BRWG~((2$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,R,W,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a2595b8689ce5bd39634d017620ae57b8}\label{_adafruit___neo_pixel_8h_a2595b8689ce5bd39634d017620ae57b8}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BWGR@{NEO\_BWGR}}
+\index{NEO\_BWGR@{NEO\_BWGR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BWGR}{NEO\_BWGR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BWGR~((1$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,W,G,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_aaf438f131d0fa8a0be6791a553145860}\label{_adafruit___neo_pixel_8h_aaf438f131d0fa8a0be6791a553145860}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_BWRG@{NEO\_BWRG}}
+\index{NEO\_BWRG@{NEO\_BWRG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_BWRG}{NEO\_BWRG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+BWRG~((1$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (0))}
+
+
+
+Transmit as B,W,R,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_abca04ce54125372080f2fbf2afdcf027}\label{_adafruit___neo_pixel_8h_abca04ce54125372080f2fbf2afdcf027}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GBR@{NEO\_GBR}}
+\index{NEO\_GBR@{NEO\_GBR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GBR}{NEO\_GBR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GBR~((2$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as G,B,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_af60d024b8f8954960e59056c57520080}\label{_adafruit___neo_pixel_8h_af60d024b8f8954960e59056c57520080}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GBRW@{NEO\_GBRW}}
+\index{NEO\_GBRW@{NEO\_GBRW}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GBRW}{NEO\_GBRW}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GBRW~((3$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as G,B,R,W. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a20be9abdf372b9c71d9fdacc3e6a9d1a}\label{_adafruit___neo_pixel_8h_a20be9abdf372b9c71d9fdacc3e6a9d1a}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GBWR@{NEO\_GBWR}}
+\index{NEO\_GBWR@{NEO\_GBWR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GBWR}{NEO\_GBWR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GBWR~((2$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as G,B,W,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a95d0d6b0a1f52bc72d9dcea2b3a48e3f}\label{_adafruit___neo_pixel_8h_a95d0d6b0a1f52bc72d9dcea2b3a48e3f}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GRB@{NEO\_GRB}}
+\index{NEO\_GRB@{NEO\_GRB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GRB}{NEO\_GRB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GRB~((1$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as G,R,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a722066abc60b560235b3b22082c2e68e}\label{_adafruit___neo_pixel_8h_a722066abc60b560235b3b22082c2e68e}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GRBW@{NEO\_GRBW}}
+\index{NEO\_GRBW@{NEO\_GRBW}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GRBW}{NEO\_GRBW}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GRBW~((3$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as G,R,B,W. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a35a185ff488486a74745e9094892558c}\label{_adafruit___neo_pixel_8h_a35a185ff488486a74745e9094892558c}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GRWB@{NEO\_GRWB}}
+\index{NEO\_GRWB@{NEO\_GRWB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GRWB}{NEO\_GRWB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GRWB~((2$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (3))}
+
+
+
+Transmit as G,R,W,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_aaaaa406f36f1c596526579944ca7043d}\label{_adafruit___neo_pixel_8h_aaaaa406f36f1c596526579944ca7043d}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GWBR@{NEO\_GWBR}}
+\index{NEO\_GWBR@{NEO\_GWBR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GWBR}{NEO\_GWBR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GWBR~((1$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as G,W,B,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_aa29b3544b4257e851de2e214894d1236}\label{_adafruit___neo_pixel_8h_aa29b3544b4257e851de2e214894d1236}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_GWRB@{NEO\_GWRB}}
+\index{NEO\_GWRB@{NEO\_GWRB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_GWRB}{NEO\_GWRB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+GWRB~((1$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (0$<$$<$2) $\vert$ (3))}
+
+
+
+Transmit as G,W,R,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a9c4067fd0cceb0432d1758fc07ede469}\label{_adafruit___neo_pixel_8h_a9c4067fd0cceb0432d1758fc07ede469}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_KHZ400@{NEO\_KHZ400}}
+\index{NEO\_KHZ400@{NEO\_KHZ400}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_KHZ400}{NEO\_KHZ400}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+KHZ400~0x0100}
+
+
+
+400 KHz data transmission 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a475fef7028a743310aa4311a97899d5d}\label{_adafruit___neo_pixel_8h_a475fef7028a743310aa4311a97899d5d}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_KHZ800@{NEO\_KHZ800}}
+\index{NEO\_KHZ800@{NEO\_KHZ800}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_KHZ800}{NEO\_KHZ800}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+KHZ800~0x0000}
+
+
+
+800 KHz data transmission 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a7d6aaa56c8e2603312cba8dbdf9c5661}\label{_adafruit___neo_pixel_8h_a7d6aaa56c8e2603312cba8dbdf9c5661}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RBG@{NEO\_RBG}}
+\index{NEO\_RBG@{NEO\_RBG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RBG}{NEO\_RBG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RBG~((0$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as R,B,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a198dc192119c166c544efc3e89fdd1cd}\label{_adafruit___neo_pixel_8h_a198dc192119c166c544efc3e89fdd1cd}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RBGW@{NEO\_RBGW}}
+\index{NEO\_RBGW@{NEO\_RBGW}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RBGW}{NEO\_RBGW}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RBGW~((3$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as R,B,G,W. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a7b6b551a990b498bed36aadba4a498d5}\label{_adafruit___neo_pixel_8h_a7b6b551a990b498bed36aadba4a498d5}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RBWG@{NEO\_RBWG}}
+\index{NEO\_RBWG@{NEO\_RBWG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RBWG}{NEO\_RBWG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RBWG~((2$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as R,B,W,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_aa4f80df5ab240d93359f40956462f758}\label{_adafruit___neo_pixel_8h_aa4f80df5ab240d93359f40956462f758}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RGB@{NEO\_RGB}}
+\index{NEO\_RGB@{NEO\_RGB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RGB}{NEO\_RGB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RGB~((0$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as R,G,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a71f7c6e45f4c63fceca6b5b73c7a7c9d}\label{_adafruit___neo_pixel_8h_a71f7c6e45f4c63fceca6b5b73c7a7c9d}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RGBW@{NEO\_RGBW}}
+\index{NEO\_RGBW@{NEO\_RGBW}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RGBW}{NEO\_RGBW}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RGBW~((3$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as R,G,B,W. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_abcce73b2eafdf1bb331a8f02fba95d10}\label{_adafruit___neo_pixel_8h_abcce73b2eafdf1bb331a8f02fba95d10}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RGWB@{NEO\_RGWB}}
+\index{NEO\_RGWB@{NEO\_RGWB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RGWB}{NEO\_RGWB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RGWB~((2$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (3))}
+
+
+
+Transmit as R,G,W,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a9254ebc9367c071457d0321f64c9d5fa}\label{_adafruit___neo_pixel_8h_a9254ebc9367c071457d0321f64c9d5fa}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RWBG@{NEO\_RWBG}}
+\index{NEO\_RWBG@{NEO\_RWBG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RWBG}{NEO\_RWBG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RWBG~((1$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as R,W,B,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a122c6bb3e44525d2f975dcd89b094267}\label{_adafruit___neo_pixel_8h_a122c6bb3e44525d2f975dcd89b094267}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_RWGB@{NEO\_RWGB}}
+\index{NEO\_RWGB@{NEO\_RWGB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_RWGB}{NEO\_RWGB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+RWGB~((1$<$$<$6) $\vert$ (0$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (3))}
+
+
+
+Transmit as R,W,G,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a015eeccbf1bd19907c34d7b39b63bb84}\label{_adafruit___neo_pixel_8h_a015eeccbf1bd19907c34d7b39b63bb84}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_WBGR@{NEO\_WBGR}}
+\index{NEO\_WBGR@{NEO\_WBGR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_WBGR}{NEO\_WBGR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+WBGR~((0$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as W,B,G,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a3eed3aeba511a2478a1ee8c17516732b}\label{_adafruit___neo_pixel_8h_a3eed3aeba511a2478a1ee8c17516732b}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_WBRG@{NEO\_WBRG}}
+\index{NEO\_WBRG@{NEO\_WBRG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_WBRG}{NEO\_WBRG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+WBRG~((0$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (1))}
+
+
+
+Transmit as W,B,R,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_af722c80d41894df25c363b9ebf371b4e}\label{_adafruit___neo_pixel_8h_af722c80d41894df25c363b9ebf371b4e}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_WGBR@{NEO\_WGBR}}
+\index{NEO\_WGBR@{NEO\_WGBR}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_WGBR}{NEO\_WGBR}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+WGBR~((0$<$$<$6) $\vert$ (3$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as W,G,B,R. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a59561d96a0f8a526ee3448e7b104d8b3}\label{_adafruit___neo_pixel_8h_a59561d96a0f8a526ee3448e7b104d8b3}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_WGRB@{NEO\_WGRB}}
+\index{NEO\_WGRB@{NEO\_WGRB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_WGRB}{NEO\_WGRB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+WGRB~((0$<$$<$6) $\vert$ (2$<$$<$4) $\vert$ (1$<$$<$2) $\vert$ (3))}
+
+
+
+Transmit as W,G,R,B. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a266a08af576ed4331db48b16bf572d29}\label{_adafruit___neo_pixel_8h_a266a08af576ed4331db48b16bf572d29}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_WRBG@{NEO\_WRBG}}
+\index{NEO\_WRBG@{NEO\_WRBG}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_WRBG}{NEO\_WRBG}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+WRBG~((0$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (3$<$$<$2) $\vert$ (2))}
+
+
+
+Transmit as W,R,B,G. 
+
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_a4ee056fd3d7b09538908b35643a2508a}\label{_adafruit___neo_pixel_8h_a4ee056fd3d7b09538908b35643a2508a}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!NEO\_WRGB@{NEO\_WRGB}}
+\index{NEO\_WRGB@{NEO\_WRGB}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{NEO\_WRGB}{NEO\_WRGB}}
+{\footnotesize\ttfamily \#define NEO\+\_\+\+WRGB~((0$<$$<$6) $\vert$ (1$<$$<$4) $\vert$ (2$<$$<$2) $\vert$ (3))}
+
+
+
+Transmit as W,R,G,B. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}\label{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}} 
+\index{Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}!neoPixelType@{neoPixelType}}
+\index{neoPixelType@{neoPixelType}!Adafruit\_NeoPixel.h@{Adafruit\_NeoPixel.h}}
+\doxysubsubsection{\texorpdfstring{neoPixelType}{neoPixelType}}
+{\footnotesize\ttfamily typedef uint16\+\_\+t \mbox{\hyperlink{_adafruit___neo_pixel_8h_ab88a50d51bb5488df4379ff49c81fd72}{neo\+Pixel\+Type}}}
+
+
+
+3rd arg to \mbox{\hyperlink{class_adafruit___neo_pixel}{Adafruit\+\_\+\+Neo\+Pixel}} constructor 
+

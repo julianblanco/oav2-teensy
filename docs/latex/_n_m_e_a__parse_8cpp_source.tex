@@ -1,0 +1,736 @@
+\hypertarget{_n_m_e_a__parse_8cpp_source}{}\doxysection{NMEA\+\_\+parse.\+cpp}
+\label{_n_m_e_a__parse_8cpp_source}\index{lib/Adafruit\_GPS\_Library/src/NMEA\_parse.cpp@{lib/Adafruit\_GPS\_Library/src/NMEA\_parse.cpp}}
+\mbox{\hyperlink{_n_m_e_a__parse_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00001}00001 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00029}00029 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00031}00031 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_adafruit___g_p_s_8h}{Adafruit\_GPS.h}}>}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00033}00033 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00058}00058 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00059}\mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{00059}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_a0780becacadd5c8f1566eb598dac6f02}{Adafruit\_GPS::parse}}(\textcolor{keywordtype}{char} *nmea) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00060}00060   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}{check}}(nmea))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00061}00061     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00062}00062   \textcolor{comment}{// passed the check, so there's a valid source in thisSource and a valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00063}00063   \textcolor{comment}{// sentence in thisSentence}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00064}00064   \textcolor{keywordtype}{char} *p = nmea; \textcolor{comment}{// Pointer to move through the sentence -\/-\/ good parsers are}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00065}00065                   \textcolor{comment}{// non-\/destructive}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00066}00066   p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// Skip to char after the next comma, then check.}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00068}00068   \textcolor{comment}{// This may look inefficient, but an M0 will get down the list in about 1 us /}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00069}00069   \textcolor{comment}{// strcmp()! Put the GPS sentences from Adafruit\_GPS at the top to make}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00070}00070   \textcolor{comment}{// pruning excess code easier. Otherwise, keep them alphabetical for ease of}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00071}00071   \textcolor{comment}{// reading.}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00072}00072   \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GGA"{}})) \{ \textcolor{comment}{//************************************GGA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00073}00073     \textcolor{comment}{// Adafruit from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00074}00074     parseTime(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00075}00075     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// parse time with specialized function}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00076}00076     \textcolor{comment}{// parse out both latitude and direction, then go to next field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00077}00077     \textcolor{keywordflow}{if} (parseCoord(p, \&\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}{latitude\_fixed}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00078}00078       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\_LAT}}, \mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00079}00079     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00080}00080     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00081}00081     \textcolor{comment}{// parse out both longitude and direction, then go to next field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00082}00082     \textcolor{keywordflow}{if} (parseCoord(p, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}{longitude\_fixed}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00083}00083       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\_LON}}, \mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00084}00084     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00085}00085     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00086}00086     \textcolor{keywordflow}{if} (!isEmpty(p)) \{ \textcolor{comment}{// if it's a , (or a * at end of sentence) the value is}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00087}00087                        \textcolor{comment}{// not included}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00088}00088       \mbox{\hyperlink{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}{fixquality}} = atoi(p); \textcolor{comment}{// needs additional processing}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00089}00089       \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a4cd10f8d2f29c9c4f821cd6fbfb97fb7}{fixquality}} > 0) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00090}00090         \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00091}00091         lastFix = sentTime;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00092}00092       \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00093}00093         \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00094}00094     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00095}00095     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// then move on to the next}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00096}00096     \textcolor{comment}{// Most can just be parsed with atoi() or atof(), then move on to the next.}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00097}00097     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00098}00098       \mbox{\hyperlink{class_adafruit___g_p_s_a31e4d48939f3b9e5f62933afc117d04d}{satellites}} = atoi(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00099}00099     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00100}00100     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00101}00101       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\_HDOP}}, \mbox{\hyperlink{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}{HDOP}} = atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00102}00102     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00103}00103     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00104}00104       \mbox{\hyperlink{class_adafruit___g_p_s_af2f85392c61445b1f9c17ede5f83d6c4}{altitude}} = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00105}00105     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00106}00106     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// skip the units}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00107}00107     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00108}00108       \mbox{\hyperlink{class_adafruit___g_p_s_acf9a79ca72fbf550fda8c8424a4ce92c}{geoidheight}} = atof(p); \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00110}00110   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RMC"{}})) \{ \textcolor{comment}{//*****************************RMC}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00111}00111     \textcolor{comment}{// in Adafruit from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00112}00112     parseTime(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00113}00113     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00114}00114     parseFix(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00115}00115     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00116}00116     \textcolor{comment}{// parse out both latitude and direction, then go to next field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00117}00117     \textcolor{keywordflow}{if} (parseCoord(p, \&\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}{latitude\_fixed}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00118}00118       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\_LAT}}, \mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00119}00119     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00120}00120     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00121}00121     \textcolor{comment}{// parse out both longitude and direction, then go to next field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00122}00122     \textcolor{keywordflow}{if} (parseCoord(p, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}{longitude\_fixed}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00123}00123       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\_LON}}, \mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00124}00124     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00125}00125     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00126}00126     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00127}00127       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ac0740cafb89c58378223849d33770d5f}{NMEA\_SOG}}, \mbox{\hyperlink{class_adafruit___g_p_s_a449f4a33ecbe0fdf656f6663c74e6cce}{speed}} = atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00128}00128     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00129}00129     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00130}00130       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a0dc2497e13496f5f3b4f23cd4626664d}{NMEA\_COG}}, \mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}} = atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00131}00131     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00132}00132     \textcolor{keywordflow}{if} (!isEmpty(p)) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00133}00133       uint32\_t fulldate = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00134}00134       \mbox{\hyperlink{class_adafruit___g_p_s_ab572eee91c6ede2c20fbe29a61b81c1c}{day}} = fulldate / 10000;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00135}00135       \mbox{\hyperlink{class_adafruit___g_p_s_a613f1926fbff9829256d85f7aeec7e1f}{month}} = (fulldate \% 10000) / 100;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00136}00136       \mbox{\hyperlink{class_adafruit___g_p_s_ae208a26396beea5bedee9a8ea6a0a66b}{year}} = (fulldate \% 100);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00137}00137       lastDate = sentTime;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00138}00138     \} \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00140}00140   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GLL"{}})) \{ \textcolor{comment}{//*****************************GLL}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00141}00141     \textcolor{comment}{// in Adafruit from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00142}00142     \textcolor{comment}{// parse out both latitude and direction, then go to next field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00143}00143     \textcolor{keywordflow}{if} (parseCoord(p, \&\mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a9570c4fbe5145a50cfd2e8ae1759a510}{latitude}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2d3b65036628a65d1e119d3d9a69678c}{latitude\_fixed}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2b04c8136e976cd8cd87aaa3526753d6}{lat}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00144}00144       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a571cf9f96172a3f91122f42ccc790fe9}{NMEA\_LAT}}, \mbox{\hyperlink{class_adafruit___g_p_s_ae39fbc538a1ee3ba1c8108bf49065c3f}{latitudeDegrees}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00145}00145     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00146}00146     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00147}00147     \textcolor{comment}{// parse out both longitude and direction, then go to next field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00148}00148     \textcolor{keywordflow}{if} (parseCoord(p, \&\mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a0ed3549d1600cf3bbb7492d376e61ca8}{longitude}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a8010f253b2708e05547c452cb5368837}{longitude\_fixed}}, \&\mbox{\hyperlink{class_adafruit___g_p_s_a704ab5d76824ade6f954e11029c1c916}{lon}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00149}00149       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a53c512f4843b58aa8790694b6439960d}{NMEA\_LON}}, \mbox{\hyperlink{class_adafruit___g_p_s_a2a1d1e5e89b46270d8d3ff82bb68666a}{longitudeDegrees}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00150}00150     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00151}00151     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00152}00152     parseTime(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00153}00153     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00154}00154     parseFix(p); \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00156}00156   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GSA"{}})) \{ \textcolor{comment}{//*****************************GSA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00157}00157     \textcolor{comment}{// in Adafruit from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00158}00158     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// skip selection mode}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00159}00159     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00160}00160       \mbox{\hyperlink{class_adafruit___g_p_s_a95ed044ee9661cd7afd1b81595cb8dd0}{fixquality\_3d}} = atoi(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00161}00161     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00162}00162     \textcolor{comment}{// skip 12 Satellite PDNs without interpreting them}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00163}00163     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 12; i++)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00164}00164       p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00165}00165     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00166}00166       \mbox{\hyperlink{class_adafruit___g_p_s_a27b5195e96aaef00fb5751a34f3fb82b}{PDOP}} = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00167}00167     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00168}00168     \textcolor{comment}{// parse out HDOP, we also parse this from the GGA sentence. Chipset should}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00169}00169     \textcolor{comment}{// report the same for both}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00170}00170     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00171}00171       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a4553e8344aca44059d17d05573da0122}{NMEA\_HDOP}}, \mbox{\hyperlink{class_adafruit___g_p_s_a547a9c4cc50447f86fe5f9861c952563}{HDOP}} = atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00172}00172     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00173}00173     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00174}00174       \mbox{\hyperlink{class_adafruit___g_p_s_af13a4d008ab2f74ff30bfc098315edea}{VDOP}} = atof(p); \textcolor{comment}{// last before checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00176}00176   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00177}00177 \textcolor{preprocessor}{\#ifdef NMEA\_EXTENSIONS }\textcolor{comment}{// Sentences not required for basic GPS functionality}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00178}00178   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}APB"{}})) \{ \textcolor{comment}{//*******************************APB}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00179}00179     \textcolor{comment}{// from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00180}00180     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00182}00182   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}DBT"{}})) \{ \textcolor{comment}{//*****************************DBT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00183}00183     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00184}00184     \textcolor{comment}{// feet, metres, fathoms below transducer coerced to water depth from}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00185}00185     \textcolor{comment}{// surface in metres}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00186}00186     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00187}00187       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\_DEPTH}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00188}00188                    (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})atof(p) * 0.3048f + \mbox{\hyperlink{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}{depthToTransducer}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00189}00189     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00190}00190     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00191}00191     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00192}00192       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\_DEPTH}}, (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})atof(p) + \mbox{\hyperlink{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}{depthToTransducer}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00193}00193     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00194}00194     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00195}00195     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00196}00196       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1edf09b5b95475b7e8420c571cfa52fc}{NMEA\_DEPTH}},}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00197}00197                    (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})atof(p) * 6 * 0.3048f + \mbox{\hyperlink{class_adafruit___g_p_s_a8b27e72fb6a2a68fba38e8867ee965f9}{depthToTransducer}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00199}00199   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}DPT"{}})) \{ \textcolor{comment}{//*****************************DPT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00200}00200     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00201}00201     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00203}00203   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}GSV"{}})) \{ \textcolor{comment}{//*****************************GSV}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00204}00204     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00205}00205     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00207}00207   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}HDG"{}})) \{ \textcolor{comment}{//*****************************HDG}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00208}00208     \textcolor{comment}{// from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00209}00209     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00211}00211   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}HDM"{}})) \{ \textcolor{comment}{//*****************************HDM}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00212}00212     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00213}00213       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\_HDG}}, atof(p)); \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00215}00215   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}HDT"{}})) \{ \textcolor{comment}{//*****************************HDT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00216}00216     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00217}00217       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\_HDT}}, atof(p)); \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00219}00219   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MDA"{}})) \{ \textcolor{comment}{//*****************************MDA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00220}00220     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00221}00221     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00222}00222       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}{NMEA\_BAROMETER}}, atof(p) * 3386.39);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00223}00223     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00224}00224     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00225}00225     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00226}00226       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6af5e2ec579411d5dc969a8f8d3c8986}{NMEA\_BAROMETER}}, atof(p) * 100000);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00227}00227     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00228}00228     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00229}00229     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} T = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00230}00230     \textcolor{keywordtype}{char} u = \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00231}00231     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00232}00232       T = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00233}00233     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00234}00234     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00235}00235       u = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00236}00236     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00237}00237     \textcolor{keywordflow}{if} (u != \textcolor{charliteral}{'C'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00238}00238       T = (T -\/ 32) / 1.8f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00239}00239       u = \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00240}00240     \} \textcolor{comment}{// coerce to C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00241}00241     \textcolor{keywordflow}{if} (T < 1000)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00242}00242       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a083ed5d1df1aefd81fcc3d67d8c3587d}{NMEA\_TEMPERATURE\_AIR}}, T);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00243}00243     T = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00244}00244     u = \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00245}00245     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00246}00246       T = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00247}00247     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00248}00248     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00249}00249       u = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00250}00250     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00251}00251     \textcolor{keywordflow}{if} (u != \textcolor{charliteral}{'C'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00252}00252       T = (T -\/ 32) / 1.8f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00253}00253       u = \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00254}00254     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00255}00255     \textcolor{keywordflow}{if} (T < 1000)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00256}00256       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}{NMEA\_TEMPERATURE\_WATER}}, T);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00257}00257     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00258}00258       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a88de695da7b711f27ad0b07b71c4c56d}{NMEA\_HUMIDITY}}, atof(p)); \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00260}00260   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MTW"{}})) \{ \textcolor{comment}{//*****************************MTW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00261}00261     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} T = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00262}00262     \textcolor{keywordtype}{char} u = \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00263}00263     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00264}00264       T = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00265}00265     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00266}00266     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00267}00267       u = *p; \textcolor{comment}{// last before checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00268}00268     \textcolor{keywordflow}{if} (u != \textcolor{charliteral}{'C'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00269}00269       T = (T -\/ 32) / 1.8f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00270}00270       u = \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00271}00271     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00272}00272     \textcolor{keywordflow}{if} (T < 1000)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00273}00273       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab8b9538ed6fb6b087f7173d1da1fe62c}{NMEA\_TEMPERATURE\_WATER}}, T);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00275}00275   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MWD"{}})) \{ \textcolor{comment}{//*****************************MWD}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00276}00276     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00277}00277     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00278}00278 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00279}00279   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}MWV"{}})) \{ \textcolor{comment}{//*****************************MWV}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00280}00280     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00281}00281     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} ang = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00282}00282     \textcolor{keywordtype}{char} ref = \textcolor{charliteral}{'T'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00283}00283     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00284}00284       ang = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00285}00285     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00286}00286     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00287}00287       ref = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00288}00288     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00289}00289     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} spd = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00290}00290     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00291}00291       spd = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00292}00292     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00293}00293     \textcolor{keywordtype}{char} units = \textcolor{charliteral}{'N'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00294}00294     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00295}00295       units = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00296}00296     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00297}00297     \textcolor{keywordtype}{char} stat = \textcolor{charliteral}{'A'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00298}00298     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00299}00299       stat = *p; \textcolor{comment}{// last before checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00300}00300     \textcolor{keywordflow}{if} (units == \textcolor{charliteral}{'K'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00301}00301       spd /= 1.6f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00302}00302       units = \textcolor{charliteral}{'M'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00303}00303     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00304}00304     \textcolor{keywordflow}{if} (units == \textcolor{charliteral}{'M'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00305}00305       spd *= 5280.0f / 6000.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00306}00306       units = \textcolor{charliteral}{'N'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00307}00307     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00308}00308     \textcolor{keywordflow}{if} (ang > 180.0f)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00309}00309       ang -\/= 360.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00310}00310     \textcolor{keywordflow}{if} (ref == \textcolor{charliteral}{'R'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00311}00311       \textcolor{keywordflow}{if} (ang < 1000.0f \&\& stat == \textcolor{charliteral}{'A'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00312}00312         \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}{NMEA\_AWA}}, ang);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00313}00313       \textcolor{keywordflow}{if} (spd < 1000.0f \&\& stat == \textcolor{charliteral}{'A'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00314}00314         \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}{NMEA\_AWS}}, spd);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00315}00315     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00316}00316       \textcolor{keywordflow}{if} (ang < 1000.0f \&\& stat == \textcolor{charliteral}{'A'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00317}00317         \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8b343a97677cfc83fec6d0de2c65eca3}{NMEA\_TWA}}, ang);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00318}00318       \textcolor{keywordflow}{if} (spd < 1000.0f \&\& stat == \textcolor{charliteral}{'A'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00319}00319         \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ae8b85ccf941ddd3ed39799bf15a740e3}{NMEA\_TWS}}, spd);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00320}00320     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00321}00321 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00322}00322   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RMB"{}})) \{ \textcolor{comment}{//*****************************RMB}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00323}00323     \textcolor{comment}{// from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00324}00324     \textcolor{comment}{// RMB Recommended Minimum Navigation Information}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00325}00325     \textcolor{comment}{//       1 2   3 4    5    6       7 8        9 10  11 12  13 14}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00326}00326     \textcolor{comment}{//       | |   | |    |    |       | |        | |   |   |   | |}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00327}00327     \textcolor{comment}{//\$-\/-\/RMB,A,x.x,a,c-\/-\/c,c-\/-\/c,llll.ll,a,yyyyy.yy,a,x.x,x.x,x.x,A*hh}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00328}00328     \textcolor{comment}{// 1) Status, V = Navigation receiver warning}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00329}00329     \textcolor{comment}{// 2) Cross Track error -\/ nautical miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00330}00330     \textcolor{comment}{// 3) Direction to Steer, Left or Right}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00331}00331     \textcolor{comment}{// 4) TO Waypoint ID}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00332}00332     \textcolor{comment}{// 5) FROM Waypoint ID}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00333}00333     \textcolor{comment}{// 6) Destination Waypoint Latitude 7) N or S}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00334}00334     \textcolor{comment}{// 8) Destination Waypoint Longitude 9) E or W}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00335}00335     \textcolor{comment}{// 10) Range to destination in nautical miles}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00336}00336     \textcolor{comment}{// 11) Bearing to destination in degrees True}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00337}00337     \textcolor{comment}{// 12) Destination closing velocity in knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00338}00338     \textcolor{comment}{// 13) Arrival Status, A = Arrival Circle Entered 14) Checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00339}00339     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// skip status}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00340}00340     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} xte = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00341}00341     \textcolor{keywordtype}{char} xteDir = \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00342}00342     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00343}00343       xte = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00344}00344     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00345}00345     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00346}00346       xteDir = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00347}00347     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00348}00348     \textcolor{keywordflow}{if} (xte < 10000.0f \&\& xteDir != \textcolor{charliteral}{'X'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00349}00349       \textcolor{keywordflow}{if} (xteDir == \textcolor{charliteral}{'L'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00350}00350         xte *= -\/1.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00351}00351       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}{NMEA\_XTE}}, xte);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00352}00352     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00353}00353     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00354}00354       parseStr(\mbox{\hyperlink{class_adafruit___g_p_s_aef3bc1b4cfce3547b90042c6e7f472c9}{toID}}, p, \mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\_MAX\_WP\_ID}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00355}00355     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00356}00356     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00357}00357       parseStr(\mbox{\hyperlink{class_adafruit___g_p_s_aa261e33c920ac4279babc6aba0da931f}{fromID}}, p, \mbox{\hyperlink{_n_m_e_a__data_8h_ada855ff3bc138b7c9df22f6df4ec46a6}{NMEA\_MAX\_WP\_ID}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00358}00358     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00359}00359     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} latitudeWP = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00360}00360     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} longitudeWP = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00361}00361     int32\_t latitude\_fixedWP = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00362}00362     int32\_t longitude\_fixedWP = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00363}00363     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} latitudeDegreesWP = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00364}00364     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} longitudeDegreesWP = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00365}00365     \textcolor{keywordtype}{char} latWP = \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00366}00366     \textcolor{keywordtype}{char} lonWP = \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00367}00367 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00368}00368     \textcolor{comment}{// parse out both latitude and direction for WayPoint, then go to next}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00369}00369     \textcolor{comment}{// field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00370}00370     \textcolor{keywordflow}{if} (!isEmpty(p)) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00371}00371       \textcolor{keywordflow}{if} (!parseCoord(p, \&latitudeDegreesWP, \&latitudeWP, \&latitude\_fixedWP,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00372}00372                       \&latWP))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00373}00373         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00374}00374       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00375}00375         \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a192af66d3d405dcd64314dd2052aa066}{NMEA\_LATWP}}, latitudeDegreesWP);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00376}00376     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00377}00377     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00378}00378     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00379}00379     \textcolor{comment}{// parse out both longitude and direction for WayPoint, then go to next}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00380}00380     \textcolor{comment}{// field, or fail}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00381}00381     \textcolor{keywordflow}{if} (!isEmpty(p)) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00382}00382       \textcolor{keywordflow}{if} (!parseCoord(p, \&longitudeDegreesWP, \&longitudeWP, \&longitude\_fixedWP,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00383}00383                       \&lonWP))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00384}00384         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00385}00385       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00386}00386         \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a7c7af90260edd7f77f2c5d5f3996da8c}{NMEA\_LONWP}}, longitudeDegreesWP);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00387}00387     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00388}00388     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00389}00389     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00390}00390     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00391}00391       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1ef9e86aba876eedca5c4f2f38b72991}{NMEA\_DISTWP}}, atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00392}00392     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00393}00393     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00394}00394       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abca6e3662f289de96485a385ff658b00}{NMEA\_COGWP}}, atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00395}00395     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00396}00396     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00397}00397       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}{NMEA\_VMGWP}}, atof(p)); \textcolor{comment}{// skip arrival flag}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00399}00399   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}ROT"{}})) \{ \textcolor{comment}{//*****************************ROT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00400}00400     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00401}00401 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00402}00402   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RPM"{}})) \{ \textcolor{comment}{//*****************************RPM}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00403}00403     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00404}00404 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00405}00405   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}RSA"{}})) \{ \textcolor{comment}{//*****************************RSA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00406}00406     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00407}00407     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00408}00408 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00409}00409   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}TXT"{}})) \{ \textcolor{comment}{//*****************************TXT}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00410}00410     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00411}00411       \mbox{\hyperlink{class_adafruit___g_p_s_a6dc609e12336547d76ae984f0df4257b}{txtTot}} = atoi(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00412}00412     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00413}00413     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00414}00414       \mbox{\hyperlink{class_adafruit___g_p_s_aad5682d8705240af58b22ca430adc8ae}{txtN}} = atoi(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00415}00415     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00416}00416     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00417}00417       \mbox{\hyperlink{class_adafruit___g_p_s_ad32955a01923ef7bc47535f32657e66c}{txtID}} = atoi(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00418}00418     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00419}00419     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00420}00420       parseStr(\mbox{\hyperlink{class_adafruit___g_p_s_ad293e1b1f3d1c2c35f24d56f41983876}{txtTXT}}, p, 61); \textcolor{comment}{// copy the text to NMEA TXT max of 61 characters}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00421}00421 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00422}00422   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VDR"{}})) \{ \textcolor{comment}{//*****************************VDR}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00423}00423     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00424}00424     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00425}00425 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00426}00426   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VHW"{}})) \{ \textcolor{comment}{//*****************************VHW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00427}00427     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00428}00428     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00429}00429       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a70335bdc76b058be1ca247cc81173362}{NMEA\_HDT}}, atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00430}00430     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00431}00431     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00432}00432     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00433}00433       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a9ffe1d53c0684c3d5acaf763706fb0e7}{NMEA\_HDG}}, atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00434}00434     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00435}00435     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00436}00436     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00437}00437       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a6ff0de04c149a72122eae64296c3c97a}{NMEA\_VTW}}, atof(p)); \textcolor{comment}{// skip the other units}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00438}00438 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00439}00439   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VLW"{}})) \{ \textcolor{comment}{//*****************************VLW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00440}00440     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00441}00441     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00442}00442       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a18460bff3643667fdfae2e90367b41f8}{NMEA\_LOG}}, atof(p));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00443}00443     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00444}00444     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00445}00445     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00446}00446       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7ab9f8b31288a7280ea18544c44bf1f8c1}{NMEA\_LOGR}}, atof(p)); \textcolor{comment}{// skip the other units}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00447}00447 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00448}00448   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VPW"{}})) \{ \textcolor{comment}{//*****************************VPW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00449}00449     \textcolor{comment}{// knots, metres/s coerced to knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00450}00450     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} vmg = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00451}00451     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00452}00452       vmg = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00453}00453     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00454}00454     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00455}00455     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00456}00456       vmg = atof(p) * 0.3048 * 3600. / 6000.; \textcolor{comment}{// skip units}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00457}00457     \textcolor{keywordflow}{if} (vmg < 1000.0f)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00458}00458       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a591424103c814c68d8fc20a4236a97eb}{NMEA\_VMG}}, vmg);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00459}00459   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VTG"{}})) \{ \textcolor{comment}{//*****************************VTG}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00460}00460     \textcolor{comment}{// from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00461}00461     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00462}00462 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00463}00463   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}VWR"{}})) \{ \textcolor{comment}{//*****************************VWR}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00464}00464     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00465}00465     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} ang = 1000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00466}00466     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00467}00467       ang = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00468}00468     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00469}00469     \textcolor{keywordtype}{char} ref = \textcolor{charliteral}{' '};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00470}00470     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00471}00471       ref = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00472}00472     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00473}00473     \textcolor{keywordflow}{if} (ref == \textcolor{charliteral}{'L'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00474}00474       ang *= -\/1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00475}00475     \textcolor{keywordflow}{if} (ang < 1000.0f)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00476}00476       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a1363b51b93019f4cd2be31a3181f7a73}{NMEA\_AWA}}, ang);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00477}00477     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} ws = 0.0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00478}00478     \textcolor{keywordtype}{char} units = \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00479}00479     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00480}00480       ws = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00481}00481     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00482}00482     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00483}00483       units = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00484}00484     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00485}00485     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00486}00486       ws = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00487}00487     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// meters / second}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00488}00488     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00489}00489       units = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00490}00490     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// M}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00491}00491     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00492}00492       ws = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00493}00493     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// kilometers / hour can be converted back to knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00494}00494     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00495}00495       units = *p; \textcolor{comment}{// last before checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00496}00496     \textcolor{keywordflow}{if} (units == \textcolor{charliteral}{'M'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00497}00497       ws *= 3.6f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00498}00498       units = \textcolor{charliteral}{'K'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00499}00499     \} \textcolor{comment}{// convert m/s to km/h}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00500}00500     \textcolor{keywordflow}{if} (units == \textcolor{charliteral}{'K'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00501}00501       ws /= 1.6f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00502}00502       units = \textcolor{charliteral}{'M'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00503}00503     \} \textcolor{comment}{// convert km/h to miles / h}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00504}00504     \textcolor{keywordflow}{if} (units == \textcolor{charliteral}{'M'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00505}00505       ws *= 5280.0f / 6000.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00506}00506       units = \textcolor{charliteral}{'N'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00507}00507     \} \textcolor{comment}{// convert miles / hr to knots}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00508}00508     \textcolor{keywordflow}{if} (units == \textcolor{charliteral}{'N'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00509}00509       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7a8192af1eb771280c6fd22b8bb06b72c2}{NMEA\_AWS}}, ws); \textcolor{comment}{// store the final result}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00510}00510 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00511}00511   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}WCV"{}})) \{ \textcolor{comment}{//*****************************WCV}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00512}00512     \textcolor{comment}{// from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00513}00513     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00514}00514       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7abb23025e9cab7ab87f53e7c2c143b1bf}{NMEA\_VMGWP}}, atof(p)); \textcolor{comment}{// skip the rest}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00515}00515 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00516}00516   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}XTE"{}})) \{ \textcolor{comment}{//*****************************XTE}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00517}00517     \textcolor{comment}{// from Actisense NGW-\/1 from SH CP150C}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00518}00518     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// skip status 1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00519}00519     p = strchr(p, \textcolor{charliteral}{','}) + 1; \textcolor{comment}{// skip status 2}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00520}00520     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} xte = 100000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00521}00521     \textcolor{keywordtype}{char} xteDir = \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00522}00522     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00523}00523       xte = atof(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00524}00524     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00525}00525     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00526}00526       xteDir = *p;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00527}00527     p = strchr(p, \textcolor{charliteral}{','}) + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00528}00528     \textcolor{keywordflow}{if} (xte < 10000.0f \&\& xteDir != \textcolor{charliteral}{'X'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00529}00529       \textcolor{keywordflow}{if} (xteDir == \textcolor{charliteral}{'L'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00530}00530         xte *= -\/1.0f;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00531}00531       \mbox{\hyperlink{class_adafruit___g_p_s_adc65b4561fbde5b33497df8bded60d5c}{newDataValue}}(\mbox{\hyperlink{_n_m_e_a__data_8h_a8a308981a294c0b3640afd1c360822f7af355570bff473cb5cff6dd366e02bef9}{NMEA\_XTE}}, xte);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00532}00532     \} \textcolor{comment}{// skip units}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00533}00533 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00534}00534   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!strcmp(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, \textcolor{stringliteral}{"{}ZDA"{}})) \{ \textcolor{comment}{//*****************************ZDA}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00535}00535     \textcolor{comment}{// from Actisense NGW-\/1}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00536}00536     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00537}00537   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00538}00538 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// NMEA\_EXTENSIONS}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00539}00539 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00540}00540   \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00541}00541     \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// didn't find the required sentence definition}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00542}00542   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00543}00543 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00544}00544   \textcolor{comment}{// Record the successful parsing of where the last data came from and when}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00545}00545   strcpy(\mbox{\hyperlink{class_adafruit___g_p_s_a8c44f113dda3b54b41a7d05f516c9ec0}{lastSource}}, \mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00546}00546   strcpy(\mbox{\hyperlink{class_adafruit___g_p_s_a35d9d4c069a8ac93cbcbc98cf1c86ba0}{lastSentence}}, \mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00547}00547   lastUpdate = millis();}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00548}00548   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00549}00549 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00551}00551 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00559}00559 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00560}\mbox{\hyperlink{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}{00560}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}{Adafruit\_GPS::check}}(\textcolor{keywordtype}{char} *nmea) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00561}00561   \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} = 0; \textcolor{comment}{// new check}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00562}00562   *\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}} = *\mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}} = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00563}00563   \textcolor{keywordflow}{if} (*nmea != \textcolor{charliteral}{'\$'} \&\& *nmea != \textcolor{charliteral}{'!'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00564}00564     \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// doesn't start with \$ or !}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00565}00565   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00566}00566     \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} += \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa8d5fd241c3361bef95f143797347c887}{NMEA\_HAS\_DOLLAR}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00567}00567   \textcolor{comment}{// do checksum check -\/-\/ first look if we even have one -\/-\/ ignore all but last}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00568}00568   \textcolor{comment}{// *}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00569}00569   \textcolor{keywordtype}{char} *ast = nmea; \textcolor{comment}{// not strchr(nmea,'*'); for first *}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00570}00570   \textcolor{keywordflow}{while} (*ast)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00571}00571     ast++; \textcolor{comment}{// go to the end}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00572}00572   \textcolor{keywordflow}{while} (*ast != \textcolor{charliteral}{'*'} \&\& ast > nmea)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00573}00573     ast-\/-\/; \textcolor{comment}{// then back to * if it's there}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00574}00574   \textcolor{keywordflow}{if} (*ast != \textcolor{charliteral}{'*'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00575}00575     \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// there is no asterisk}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00576}00576   \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00577}00577     uint16\_t sum = \mbox{\hyperlink{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}{parseHex}}(*(ast + 1)) * 16; \textcolor{comment}{// extract checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00578}00578     sum += \mbox{\hyperlink{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}{parseHex}}(*(ast + 2));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00579}00579     \textcolor{keywordtype}{char} *p = nmea; \textcolor{comment}{// check checksum}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00580}00580     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{char} *p1 = p + 1; p1 < ast; p1++)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00581}00581       sum \string^= *p1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00582}00582     \textcolor{keywordflow}{if} (sum != 0)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00583}00583       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// bad checksum :(}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00584}00584     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00585}00585       \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} += \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa9ec09ffff6d9cb41a22d2780523646ba}{NMEA\_HAS\_CHECKSUM}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00586}00586   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00587}00587   \textcolor{comment}{// extract source of variable length}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00588}00588   \textcolor{keywordtype}{char} *p = nmea + 1;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00589}00589   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *src = tokenOnList(p, sources);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00590}00590   \textcolor{keywordflow}{if} (src) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00591}00591     strcpy(\mbox{\hyperlink{class_adafruit___g_p_s_a8db833810cb80048d883db2f4186bb3e}{thisSource}}, src);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00592}00592     \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} += \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa7c0a1e04c3963914ac2932555fc5d09f}{NMEA\_HAS\_SOURCE}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00593}00593   \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00594}00594     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00595}00595   p += strlen(src);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00596}00596   \textcolor{comment}{// extract sentence id and check if parsed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00597}00597   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *snc = tokenOnList(p, sentences\_parsed);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00598}00598   \textcolor{keywordflow}{if} (snc) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00599}00599     strcpy(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, snc);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00600}00600     \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} += \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaa0ef458647860d3924572da69d68c1c71}{NMEA\_HAS\_SENTENCE\_P}} + \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaafaa5f6941eeb84fa807dfcdbd7ab6d5a}{NMEA\_HAS\_SENTENCE}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00601}00601   \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{// check if known}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00602}00602     snc = tokenOnList(p, sentences\_known);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00603}00603     \textcolor{keywordflow}{if} (snc) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00604}00604       strcpy(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, snc);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00605}00605       \mbox{\hyperlink{class_adafruit___g_p_s_a45400c728d8f7e42a364ac7538e85be7}{thisCheck}} += \mbox{\hyperlink{_adafruit___g_p_s_8h_aea6700399d9215ce5ef0f450d1733dcaafaa5f6941eeb84fa807dfcdbd7ab6d5a}{NMEA\_HAS\_SENTENCE}};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00606}00606       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// known but not parsed}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00607}00607     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00608}00608       parseStr(\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}, p, \mbox{\hyperlink{_adafruit___g_p_s_8h_aaec49a2365b37bf9aa5c063076818a98}{NMEA\_MAX\_SENTENCE\_ID}});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00609}00609       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// unknown}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00610}00610     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00611}00611   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00612}00612   \textcolor{keywordflow}{return} \textcolor{keyword}{true}; \textcolor{comment}{// passed all the tests}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00613}00613 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00614}00614 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00615}00615 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00622}00622 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00623}00623 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *Adafruit\_GPS::tokenOnList(\textcolor{keywordtype}{char} *token, \textcolor{keyword}{const} \textcolor{keywordtype}{char} **list) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00624}00624   \textcolor{keywordtype}{int} i = 0; \textcolor{comment}{// index in the list}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00625}00625   \textcolor{keywordflow}{while} (strncmp(list[i], \textcolor{stringliteral}{"{}ZZ"{}}, 2) \&\&}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00626}00626          i < 1000) \{ \textcolor{comment}{// stop at terminator and don't crash without it}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00627}00627     \textcolor{comment}{// test for a match on the sentence name}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00628}00628     \textcolor{keywordflow}{if} (!strncmp((\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)list[i], (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)token, strlen(list[i])))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00629}00629       \textcolor{keywordflow}{return} list[i];}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00630}00630     i++;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00631}00631   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00632}00632   \textcolor{keywordflow}{return} NULL; \textcolor{comment}{// couldn't find a match}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00633}00633 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00634}00634 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00635}00635 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00643}00643 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00644}\mbox{\hyperlink{class_adafruit___g_p_s_ac8ccb298fe5b1d096dbdb39be46554e0}{00644}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_p_s_ac8ccb298fe5b1d096dbdb39be46554e0}{Adafruit\_GPS::onList}}(\textcolor{keywordtype}{char} *nmea, \textcolor{keyword}{const} \textcolor{keywordtype}{char} **list) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00645}00645   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{class_adafruit___g_p_s_ae4abe9822d8ca59866bbb44de7910881}{check}}(nmea)) \textcolor{comment}{// sets thisSentence if valid}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00646}00646     \textcolor{keywordflow}{return} \textcolor{keyword}{false};   \textcolor{comment}{// not a valid sentence}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00647}00647   \textcolor{comment}{// stop at terminator with first two letters ZZ and don't crash without it}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00648}00648   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; strncmp(list[i], \textcolor{stringliteral}{"{}ZZ"{}}, 2) \&\& i < 1000; i++) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00649}00649     \textcolor{comment}{// test for a match on the sentence name}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00650}00650     \textcolor{keywordflow}{if} (!strcmp((\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)list[i], (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *)\mbox{\hyperlink{class_adafruit___g_p_s_a5cc24c3c10eb383289db357cd69d14cc}{thisSentence}}))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00651}00651       \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00652}00652   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00653}00653   \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// couldn't find a match}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00654}00654 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00655}00655 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00656}00656 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00678}00678 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00679}00679 \textcolor{keywordtype}{bool} Adafruit\_GPS::parseCoord(\textcolor{keywordtype}{char} *pStart, \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} *angleDegrees,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00680}00680                               \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} *angle, int32\_t *angle\_fixed,}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00681}00681                               \textcolor{keywordtype}{char} *dir) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00682}00682   \textcolor{keywordtype}{char} *p = pStart;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00683}00683   \textcolor{keywordflow}{if} (!isEmpty(p)) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00684}00684     \textcolor{comment}{// get the number in DDDMM.mmmm format and break into components}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00685}00685     \textcolor{keywordtype}{char} degreebuff[10] = \{0\}; \textcolor{comment}{// Ensure string is terminated after strncpy}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00686}00686     \textcolor{keywordtype}{char} *e = strchr(p, \textcolor{charliteral}{'.'});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00687}00687     \textcolor{keywordflow}{if} (e == NULL || e -\/ p > 6)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00688}00688       \textcolor{keywordflow}{return} \textcolor{keyword}{false};                \textcolor{comment}{// no decimal point in range}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00689}00689     strncpy(degreebuff, p, e -\/ p); \textcolor{comment}{// get DDDMM}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00690}00690     \textcolor{keywordtype}{long} dddmm = atol(degreebuff);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00691}00691     \textcolor{keywordtype}{long} degrees = (dddmm / 100);         \textcolor{comment}{// truncate the minutes}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00692}00692     \textcolor{keywordtype}{long} minutes = dddmm -\/ degrees * 100; \textcolor{comment}{// remove the degrees}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00693}00693     p = e;                                \textcolor{comment}{// start from the decimal point}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00694}00694     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} decminutes = atof(e); \textcolor{comment}{// the fraction after the decimal point}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00695}00695     p = strchr(p, \textcolor{charliteral}{','}) + 1;            \textcolor{comment}{// go to the next field}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00696}00696 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00697}00697     \textcolor{comment}{// get the NSEW direction as a character}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00698}00698     \textcolor{keywordtype}{char} nsew = \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00699}00699     \textcolor{keywordflow}{if} (!isEmpty(p))}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00700}00700       nsew = *p; \textcolor{comment}{// field is not empty}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00701}00701     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00702}00702       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// no direction provided}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00703}00703 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00704}00704     \textcolor{comment}{// set the various numerical formats to their values}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00705}00705     \textcolor{keywordtype}{long} fixed = degrees * 10000000 + (minutes * 10000000) / 60 +}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00706}00706                  (decminutes * 10000000) / 60;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00707}00707     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} ang = degrees * 100 + minutes + decminutes;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00708}00708     \mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}} deg = fixed / (\mbox{\hyperlink{_n_m_e_a__data_8h_aee5c758e7db8567b181c71df68003368}{nmea\_float\_t}})10000000.;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00709}00709     \textcolor{keywordflow}{if} (nsew == \textcolor{charliteral}{'S'} ||}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00710}00710         nsew == \textcolor{charliteral}{'W'}) \{ \textcolor{comment}{// fixed and deg are signed, but DDDMM.mmmm is not}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00711}00711       fixed = -\/fixed;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00712}00712       deg = -\/deg;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00713}00713     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00714}00714 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00715}00715     \textcolor{comment}{// reject directions that are not NSEW}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00716}00716     \textcolor{keywordflow}{if} (nsew != \textcolor{charliteral}{'N'} \&\& nsew != \textcolor{charliteral}{'S'} \&\& nsew != \textcolor{charliteral}{'E'} \&\& nsew != \textcolor{charliteral}{'W'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00717}00717       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00718}00718 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00719}00719     \textcolor{comment}{// reject angles that are out of range}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00720}00720     \textcolor{keywordflow}{if} (nsew == \textcolor{charliteral}{'N'} || nsew == \textcolor{charliteral}{'S'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00721}00721       \textcolor{keywordflow}{if} (abs(deg) > 90)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00722}00722         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00723}00723     \textcolor{keywordflow}{if} (abs(deg) > 180)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00724}00724       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00725}00725 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00726}00726     \textcolor{comment}{// store in locations passed as args}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00727}00727     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}} != NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00728}00728       *\mbox{\hyperlink{class_adafruit___g_p_s_a0f60908101d728cfa3c12f7ae6a31018}{angle}} = ang;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00729}00729     \textcolor{keywordflow}{if} (angle\_fixed != NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00730}00730       *angle\_fixed = fixed;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00731}00731     \textcolor{keywordflow}{if} (angleDegrees != NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00732}00732       *angleDegrees = deg;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00733}00733     \textcolor{keywordflow}{if} (dir != NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00734}00734       *dir = nsew;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00735}00735   \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00736}00736     \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// no number}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00737}00737   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00738}00738 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00739}00739 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00740}00740 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00749}00749 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00750}00750 \textcolor{keywordtype}{char} *Adafruit\_GPS::parseStr(\textcolor{keywordtype}{char} *buff, \textcolor{keywordtype}{char} *p, \textcolor{keywordtype}{int} n) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00751}00751   \textcolor{keywordtype}{char} *e = strchr(p, \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00752}00752   \textcolor{keywordtype}{int} len = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00753}00753   \textcolor{keywordflow}{if} (e) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00754}00754     len = min(e -\/ p, n -\/ 1);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00755}00755     strncpy(buff, p, len); \textcolor{comment}{// copy up to the comma}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00756}00756     buff[len] = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00757}00757   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00758}00758     e = strchr(p, \textcolor{charliteral}{'*'});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00759}00759     \textcolor{keywordflow}{if} (e) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00760}00760       len = min(e -\/ p, n -\/ 1);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00761}00761       strncpy(buff, p, len); \textcolor{comment}{// or up to the *}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00762}00762       buff[e -\/ p] = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00763}00763     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00764}00764       len = min((\textcolor{keywordtype}{int})strlen(p), n -\/ 1);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00765}00765       strncpy(buff, p, len); \textcolor{comment}{// or to the end or max capacity}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00766}00766     \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00767}00767   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00768}00768   \textcolor{keywordflow}{return} buff;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00769}00769 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00770}00770 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00771}00771 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00778}00778 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00779}00779 \textcolor{keywordtype}{bool} Adafruit\_GPS::parseTime(\textcolor{keywordtype}{char} *p) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00780}00780   \textcolor{keywordflow}{if} (!isEmpty(p)) \{ \textcolor{comment}{// get time}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00781}00781     uint32\_t time = atol(p);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00782}00782     \mbox{\hyperlink{class_adafruit___g_p_s_a6030cb60c15e0b8a6f55655e8df94a2f}{hour}} = time / 10000;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00783}00783     \mbox{\hyperlink{class_adafruit___g_p_s_afe5b0d9d8cdd4351e9ef1be98192249f}{minute}} = (time \% 10000) / 100;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00784}00784     \mbox{\hyperlink{class_adafruit___g_p_s_a839da762454da25e2076a453706d5553}{seconds}} = (time \% 100);}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00785}00785     \textcolor{keywordtype}{char} *dec = strchr(p, \textcolor{charliteral}{'.'});}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00786}00786     \textcolor{keywordtype}{char} *comstar = min(strchr(p, \textcolor{charliteral}{','}), strchr(p, \textcolor{charliteral}{'*'}));}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00787}00787     \textcolor{keywordflow}{if} (dec != NULL \&\& comstar != NULL \&\& dec < comstar)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00788}00788       \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}} = atof(p) * 1000;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00789}00789     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00790}00790       \mbox{\hyperlink{class_adafruit___g_p_s_a19903b7505072a54a8dcdccf12e490d9}{milliseconds}} = 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00791}00791     lastTime = sentTime;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00792}00792     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00793}00793   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00794}00794   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00795}00795 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00796}00796 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00797}00797 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00803}00803 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00804}00804 \textcolor{keywordtype}{bool} Adafruit\_GPS::parseFix(\textcolor{keywordtype}{char} *p) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00805}00805   \textcolor{keywordflow}{if} (!isEmpty(p)) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00806}00806     \textcolor{keywordflow}{if} (p[0] == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00807}00807       \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00808}00808       lastFix = sentTime;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00809}00809     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (p[0] == \textcolor{charliteral}{'V'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00810}00810       \mbox{\hyperlink{class_adafruit___g_p_s_a550661272f22259d5c96759eee6458a2}{fix}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00811}00811     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00812}00812       \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00813}00813     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00814}00814   \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00815}00815   \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00816}00816 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00817}00817 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00818}00818 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00826}00826 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00827}00827 \textcolor{keywordtype}{bool} Adafruit\_GPS::isEmpty(\textcolor{keywordtype}{char} *pStart) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00828}00828   \textcolor{keywordflow}{if} (\textcolor{charliteral}{','} != *pStart \&\& \textcolor{charliteral}{'*'} != *pStart \&\& pStart != NULL)}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00829}00829     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00830}00830   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00831}00831     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00832}00832 \}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00833}00833 }
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00834}00834 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00841}00841 \textcolor{comment}{/**************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00842}00842 \textcolor{comment}{// read a Hex value and return the decimal equivalent}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00843}\mbox{\hyperlink{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}{00843}} uint8\_t \mbox{\hyperlink{class_adafruit___g_p_s_aabc3fe099a15bc672047f40e96270293}{Adafruit\_GPS::parseHex}}(\textcolor{keywordtype}{char} c) \{}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00844}00844   \textcolor{keywordflow}{if} (c < \textcolor{charliteral}{'0'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00845}00845     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00846}00846   \textcolor{keywordflow}{if} (c <= \textcolor{charliteral}{'9'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00847}00847     \textcolor{keywordflow}{return} c -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00848}00848   \textcolor{keywordflow}{if} (c < \textcolor{charliteral}{'A'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00849}00849     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00850}00850   \textcolor{keywordflow}{if} (c <= \textcolor{charliteral}{'F'})}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00851}00851     \textcolor{keywordflow}{return} (c -\/ \textcolor{charliteral}{'A'}) + 10;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00852}00852   \textcolor{comment}{// if (c > 'F')}}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00853}00853   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_n_m_e_a__parse_8cpp_source_l00854}00854 \}}
+
+\end{DoxyCode}

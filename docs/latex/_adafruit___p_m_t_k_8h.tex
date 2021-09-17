@@ -1,0 +1,449 @@
+\hypertarget{_adafruit___p_m_t_k_8h}{}\doxysection{lib/\+Adafruit\+\_\+\+GPS\+\_\+\+Library/src/\+Adafruit\+\_\+\+PMTK.h File Reference}
+\label{_adafruit___p_m_t_k_8h}\index{lib/Adafruit\_GPS\_Library/src/Adafruit\_PMTK.h@{lib/Adafruit\_GPS\_Library/src/Adafruit\_PMTK.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a3ab791da4ee0f06f23113aeed47e80cf}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+100\+\_\+\+MILLIHERTZ}}~  \char`\"{}\$PMTK220,10000$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Once every 10 seconds, 100 millihertz. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_aa6ac1789ed1c9e0abb27499867dbf1d3}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+200\+\_\+\+MILLIHERTZ}}~  \char`\"{}\$PMTK220,5000$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Once every 5 seconds, 200 millihertz. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a1a7102e1c13603381ba56656ae10d68c}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+1\+HZ}}~\char`\"{}\$PMTK220,1000$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 1 Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_af1d3f3c5b3c5613c52f18bb48bcbdf8f}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+2\+HZ}}~\char`\"{}\$PMTK220,500$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 2 Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a556ffc2a84d904cc0c4432c689444245}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+5\+HZ}}~\char`\"{}\$PMTK220,200$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 5 Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a7d6e7a31eec3d891ea928825c0248018}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+10\+HZ}}~\char`\"{}\$PMTK220,100$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 10 Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_af707de334bf9803a5b4972eb15a4cb95}{PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+100\+\_\+\+MILLIHERTZ}}~  \char`\"{}\$PMTK300,10000,0,0,0,0$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Once every 10 seconds, 100 millihertz. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_aa9443f1a429cd319d33c612aa58b3192}{PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+200\+\_\+\+MILLIHERTZ}}~  \char`\"{}\$PMTK300,5000,0,0,0,0$\ast$18\char`\"{}
+\begin{DoxyCompactList}\small\item\em Once every 5 seconds, 200 millihertz. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a2e204a667cc4757479fb23a1df5764af}{PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+1\+HZ}}~\char`\"{}\$PMTK300,1000,0,0,0,0$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 1 Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a0d5e08617fe677f5e2412635141d6128}{PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+5\+HZ}}~\char`\"{}\$PMTK300,200,0,0,0,0$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 5 Hz \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_af4786d88703fbfe424a3f19491d1c1a3}{PMTK\+\_\+\+SET\+\_\+\+BAUD\+\_\+115200}}~\char`\"{}\$PMTK251,115200$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 115200 bps \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a549460207c65eb13674930fdf6fc2bac}{PMTK\+\_\+\+SET\+\_\+\+BAUD\+\_\+57600}}~\char`\"{}\$PMTK251,57600$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em 57600 bps \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a139bab811447a6f82469032f71343717}{PMTK\+\_\+\+SET\+\_\+\+BAUD\+\_\+9600}}~\char`\"{}\$PMTK251,9600$\ast$17\char`\"{}
+\begin{DoxyCompactList}\small\item\em 9600 bps \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a8354e3e8bdca1ad8dd4b4e356e79a822}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GLLONLY}}~  \char`\"{}\$PMTK314,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a4c352344763c1ae0f1293dc15c51a824}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+RMCONLY}}~  \char`\"{}\$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a211f1db5c03fa0a0e7d307920e04b335}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+VTGONLY}}~  \char`\"{}\$PMTK314,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a7bbd33aebbc2c55557ea9c1f1c8ef2f4}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GGAONLY}}~  \char`\"{}\$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a299d233ba1cfee1693132a63c1bc0d6c}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GSAONLY}}~  \char`\"{}\$PMTK314,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_ab1ccddfffabbb66cf69872b728e1f69e}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GSVONLY}}~  \char`\"{}\$PMTK314,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_af29abbfb3588c15b2b6cd6c8e96a34e9}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+RMCGGA}}~  \char`\"{}\$PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$28\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a95ee80f53d11d05c6a593330679c89b2}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+RMCGGAGSA}}~  \char`\"{}\$PMTK314,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_ac31cfcc416ba69780e3894a559404914}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+ALLDATA}}~  \char`\"{}\$PMTK314,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$28\char`\"{}
+\begin{DoxyCompactList}\small\item\em turn on ALL THE DATA \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_aef371298391fd30cc08c4980f8502ce9}{PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+OFF}}~  \char`\"{}\$PMTK314,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$28\char`\"{}
+\begin{DoxyCompactList}\small\item\em turn off output \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a9d5efe2fb6c9312003116f35fff29dc9}{PMTK\+\_\+\+LOCUS\+\_\+\+STARTLOG}}~\char`\"{}\$PMTK185,0$\ast$22\char`\"{}
+\begin{DoxyCompactList}\small\item\em Start logging data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a4c44c7abcfe149f1d72bdbb207c86eeb}{PMTK\+\_\+\+LOCUS\+\_\+\+STOPLOG}}~\char`\"{}\$PMTK185,1$\ast$23\char`\"{}
+\begin{DoxyCompactList}\small\item\em Stop logging data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a5fa8379e8ed611060b16d5f02b1c1dd8}{PMTK\+\_\+\+LOCUS\+\_\+\+STARTSTOPACK}}~  \char`\"{}\$PMTK001,185,3$\ast$3\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Acknowledge the start or stop command. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a905517539269b7556f0b2f6277c646d6}{PMTK\+\_\+\+LOCUS\+\_\+\+QUERY\+\_\+\+STATUS}}~\char`\"{}\$PMTK183$\ast$38\char`\"{}
+\begin{DoxyCompactList}\small\item\em Query the logging status. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a025d0ccfe506309e4dda8240bbd67ff6}{PMTK\+\_\+\+LOCUS\+\_\+\+ERASE\+\_\+\+FLASH}}~\char`\"{}\$PMTK184,1$\ast$22\char`\"{}
+\begin{DoxyCompactList}\small\item\em Erase the log flash data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_ac3306296913b929db8cc8e0947ac5622}{LOCUS\+\_\+\+OVERLAP}}~  0
+\begin{DoxyCompactList}\small\item\em If flash is full, log will overwrite old data with new logs. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_ac61d2228d947ef7e4999a21a99d4df2f}{LOCUS\+\_\+\+FULLSTOP}}~1
+\begin{DoxyCompactList}\small\item\em If flash is full, logging will stop. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_af812234d17586abaa58c970c3186e047}{PMTK\+\_\+\+ENABLE\+\_\+\+SBAS}}~  \char`\"{}\$PMTK313,1$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}}\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_ad6a68543c991eb08e834186930c3f5b3}{PMTK\+\_\+\+ENABLE\+\_\+\+WAAS}}~\char`\"{}\$PMTK301,2$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Use WAAS for DGPS correction data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a9772abe32307f50632edef118f08454a}{PMTK\+\_\+\+STANDBY}}~  \char`\"{}\$PMTK161,0$\ast$28\char`\"{}
+\begin{DoxyCompactList}\small\item\em standby command \& boot successful message \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a1a07d9f206b33f00eb3ea26af4496f8b}{PMTK\+\_\+\+STANDBY\+\_\+\+SUCCESS}}~\char`\"{}\$PMTK001,161,3$\ast$36\char`\"{}
+\begin{DoxyCompactList}\small\item\em Not needed currently. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a8b3fa1db8c1110419f51c72c2b017009}{PMTK\+\_\+\+AWAKE}}~\char`\"{}\$PMTK010,002$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Wake up. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a5c77d38e1e8c50af3bd64a43fad53b57}{PMTK\+\_\+\+Q\+\_\+\+RELEASE}}~\char`\"{}\$PMTK605$\ast$31\char`\"{}
+\begin{DoxyCompactList}\small\item\em ask for the release and version \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_a023aa74aa861008be0aca4e1b5ebcf0d}{PGCMD\+\_\+\+ANTENNA}}~  \char`\"{}\$PGCMD,33,1$\ast$6\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em request for updates on antenna status \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_ad59a6393fd43906249bf102aac293fd8}{PGCMD\+\_\+\+NOANTENNA}}~\char`\"{}\$PGCMD,33,0$\ast$6\mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}}\char`\"{}
+\begin{DoxyCompactList}\small\item\em don\textquotesingle{}t show antenna status messages \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_adafruit___p_m_t_k_8h_aeebf6a58258596ef38bd7ea07e056a94}{MAXWAITSENTENCE}}~  10
+\begin{DoxyCompactList}\small\item\em how long to wait when we\textquotesingle{}re looking for a response \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the Adafruit GPS library -\/ the ultimate GPS library for the ultimate GPS module!
+
+Tested and works great with the Adafruit Ultimate GPS module using MTK33x9 chipset -\/-\/-\/---\texorpdfstring{$>$}{>} \href{http://www.adafruit.com/products/746}{\texttt{ http\+://www.\+adafruit.\+com/products/746}} Pick one up today at the Adafruit electronics shop and help support open source hardware \& software! -\/ada
+
+Adafruit invests time and resources providing this open source code, please support Adafruit and open-\/source hardware by purchasing products from Adafruit!
+
+Written by Limor Fried/\+Ladyada for Adafruit Industries. BSD license, check license.\+txt for more information All text above must be included in any redistribution 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_ac61d2228d947ef7e4999a21a99d4df2f}\label{_adafruit___p_m_t_k_8h_ac61d2228d947ef7e4999a21a99d4df2f}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!LOCUS\_FULLSTOP@{LOCUS\_FULLSTOP}}
+\index{LOCUS\_FULLSTOP@{LOCUS\_FULLSTOP}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_FULLSTOP}{LOCUS\_FULLSTOP}}
+{\footnotesize\ttfamily \#define LOCUS\+\_\+\+FULLSTOP~1}
+
+
+
+If flash is full, logging will stop. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_ac3306296913b929db8cc8e0947ac5622}\label{_adafruit___p_m_t_k_8h_ac3306296913b929db8cc8e0947ac5622}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!LOCUS\_OVERLAP@{LOCUS\_OVERLAP}}
+\index{LOCUS\_OVERLAP@{LOCUS\_OVERLAP}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{LOCUS\_OVERLAP}{LOCUS\_OVERLAP}}
+{\footnotesize\ttfamily \#define LOCUS\+\_\+\+OVERLAP~  0}
+
+
+
+If flash is full, log will overwrite old data with new logs. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_aeebf6a58258596ef38bd7ea07e056a94}\label{_adafruit___p_m_t_k_8h_aeebf6a58258596ef38bd7ea07e056a94}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!MAXWAITSENTENCE@{MAXWAITSENTENCE}}
+\index{MAXWAITSENTENCE@{MAXWAITSENTENCE}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{MAXWAITSENTENCE}{MAXWAITSENTENCE}}
+{\footnotesize\ttfamily \#define MAXWAITSENTENCE~  10}
+
+
+
+how long to wait when we\textquotesingle{}re looking for a response 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a023aa74aa861008be0aca4e1b5ebcf0d}\label{_adafruit___p_m_t_k_8h_a023aa74aa861008be0aca4e1b5ebcf0d}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PGCMD\_ANTENNA@{PGCMD\_ANTENNA}}
+\index{PGCMD\_ANTENNA@{PGCMD\_ANTENNA}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PGCMD\_ANTENNA}{PGCMD\_ANTENNA}}
+{\footnotesize\ttfamily \#define PGCMD\+\_\+\+ANTENNA~  \char`\"{}\$PGCMD,33,1$\ast$6\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}}
+
+
+
+request for updates on antenna status 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_ad59a6393fd43906249bf102aac293fd8}\label{_adafruit___p_m_t_k_8h_ad59a6393fd43906249bf102aac293fd8}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PGCMD\_NOANTENNA@{PGCMD\_NOANTENNA}}
+\index{PGCMD\_NOANTENNA@{PGCMD\_NOANTENNA}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PGCMD\_NOANTENNA}{PGCMD\_NOANTENNA}}
+{\footnotesize\ttfamily \#define PGCMD\+\_\+\+NOANTENNA~\char`\"{}\$PGCMD,33,0$\ast$6\mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}}\char`\"{}}
+
+
+
+don\textquotesingle{}t show antenna status messages 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_af707de334bf9803a5b4972eb15a4cb95}\label{_adafruit___p_m_t_k_8h_af707de334bf9803a5b4972eb15a4cb95}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ@{PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ}}
+\index{PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ@{PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ}{PMTK\_API\_SET\_FIX\_CTL\_100\_MILLIHERTZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+100\+\_\+\+MILLIHERTZ~  \char`\"{}\$PMTK300,10000,0,0,0,0$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}}
+
+
+
+Once every 10 seconds, 100 millihertz. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a2e204a667cc4757479fb23a1df5764af}\label{_adafruit___p_m_t_k_8h_a2e204a667cc4757479fb23a1df5764af}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_API\_SET\_FIX\_CTL\_1HZ@{PMTK\_API\_SET\_FIX\_CTL\_1HZ}}
+\index{PMTK\_API\_SET\_FIX\_CTL\_1HZ@{PMTK\_API\_SET\_FIX\_CTL\_1HZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_API\_SET\_FIX\_CTL\_1HZ}{PMTK\_API\_SET\_FIX\_CTL\_1HZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+1\+HZ~\char`\"{}\$PMTK300,1000,0,0,0,0$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}}
+
+
+
+1 Hz 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_aa9443f1a429cd319d33c612aa58b3192}\label{_adafruit___p_m_t_k_8h_aa9443f1a429cd319d33c612aa58b3192}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ@{PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ}}
+\index{PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ@{PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ}{PMTK\_API\_SET\_FIX\_CTL\_200\_MILLIHERTZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+200\+\_\+\+MILLIHERTZ~  \char`\"{}\$PMTK300,5000,0,0,0,0$\ast$18\char`\"{}}
+
+
+
+Once every 5 seconds, 200 millihertz. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a0d5e08617fe677f5e2412635141d6128}\label{_adafruit___p_m_t_k_8h_a0d5e08617fe677f5e2412635141d6128}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_API\_SET\_FIX\_CTL\_5HZ@{PMTK\_API\_SET\_FIX\_CTL\_5HZ}}
+\index{PMTK\_API\_SET\_FIX\_CTL\_5HZ@{PMTK\_API\_SET\_FIX\_CTL\_5HZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_API\_SET\_FIX\_CTL\_5HZ}{PMTK\_API\_SET\_FIX\_CTL\_5HZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+API\+\_\+\+SET\+\_\+\+FIX\+\_\+\+CTL\+\_\+5\+HZ~\char`\"{}\$PMTK300,200,0,0,0,0$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}}
+
+
+
+5 Hz 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a8b3fa1db8c1110419f51c72c2b017009}\label{_adafruit___p_m_t_k_8h_a8b3fa1db8c1110419f51c72c2b017009}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_AWAKE@{PMTK\_AWAKE}}
+\index{PMTK\_AWAKE@{PMTK\_AWAKE}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_AWAKE}{PMTK\_AWAKE}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+AWAKE~\char`\"{}\$PMTK010,002$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_af316c33cc298530f245e8b55330e86b5}{D}}\char`\"{}}
+
+
+
+Wake up. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_af812234d17586abaa58c970c3186e047}\label{_adafruit___p_m_t_k_8h_af812234d17586abaa58c970c3186e047}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_ENABLE\_SBAS@{PMTK\_ENABLE\_SBAS}}
+\index{PMTK\_ENABLE\_SBAS@{PMTK\_ENABLE\_SBAS}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_ENABLE\_SBAS}{PMTK\_ENABLE\_SBAS}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+ENABLE\+\_\+\+SBAS~  \char`\"{}\$PMTK313,1$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}}\char`\"{}}
+
+Enable search for SBAS satellite (only works with 1Hz output rate) \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_ad6a68543c991eb08e834186930c3f5b3}\label{_adafruit___p_m_t_k_8h_ad6a68543c991eb08e834186930c3f5b3}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_ENABLE\_WAAS@{PMTK\_ENABLE\_WAAS}}
+\index{PMTK\_ENABLE\_WAAS@{PMTK\_ENABLE\_WAAS}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_ENABLE\_WAAS}{PMTK\_ENABLE\_WAAS}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+ENABLE\+\_\+\+WAAS~\char`\"{}\$PMTK301,2$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a07484107e6d9fdf38b53edf631d6511d}{E}}\char`\"{}}
+
+
+
+Use WAAS for DGPS correction data. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a025d0ccfe506309e4dda8240bbd67ff6}\label{_adafruit___p_m_t_k_8h_a025d0ccfe506309e4dda8240bbd67ff6}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_LOCUS\_ERASE\_FLASH@{PMTK\_LOCUS\_ERASE\_FLASH}}
+\index{PMTK\_LOCUS\_ERASE\_FLASH@{PMTK\_LOCUS\_ERASE\_FLASH}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_LOCUS\_ERASE\_FLASH}{PMTK\_LOCUS\_ERASE\_FLASH}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+LOCUS\+\_\+\+ERASE\+\_\+\+FLASH~\char`\"{}\$PMTK184,1$\ast$22\char`\"{}}
+
+
+
+Erase the log flash data. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a905517539269b7556f0b2f6277c646d6}\label{_adafruit___p_m_t_k_8h_a905517539269b7556f0b2f6277c646d6}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_LOCUS\_QUERY\_STATUS@{PMTK\_LOCUS\_QUERY\_STATUS}}
+\index{PMTK\_LOCUS\_QUERY\_STATUS@{PMTK\_LOCUS\_QUERY\_STATUS}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_LOCUS\_QUERY\_STATUS}{PMTK\_LOCUS\_QUERY\_STATUS}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+LOCUS\+\_\+\+QUERY\+\_\+\+STATUS~\char`\"{}\$PMTK183$\ast$38\char`\"{}}
+
+
+
+Query the logging status. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a9d5efe2fb6c9312003116f35fff29dc9}\label{_adafruit___p_m_t_k_8h_a9d5efe2fb6c9312003116f35fff29dc9}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_LOCUS\_STARTLOG@{PMTK\_LOCUS\_STARTLOG}}
+\index{PMTK\_LOCUS\_STARTLOG@{PMTK\_LOCUS\_STARTLOG}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_LOCUS\_STARTLOG}{PMTK\_LOCUS\_STARTLOG}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+LOCUS\+\_\+\+STARTLOG~\char`\"{}\$PMTK185,0$\ast$22\char`\"{}}
+
+
+
+Start logging data. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a5fa8379e8ed611060b16d5f02b1c1dd8}\label{_adafruit___p_m_t_k_8h_a5fa8379e8ed611060b16d5f02b1c1dd8}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_LOCUS\_STARTSTOPACK@{PMTK\_LOCUS\_STARTSTOPACK}}
+\index{PMTK\_LOCUS\_STARTSTOPACK@{PMTK\_LOCUS\_STARTSTOPACK}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_LOCUS\_STARTSTOPACK}{PMTK\_LOCUS\_STARTSTOPACK}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+LOCUS\+\_\+\+STARTSTOPACK~  \char`\"{}\$PMTK001,185,3$\ast$3\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}}
+
+
+
+Acknowledge the start or stop command. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a4c44c7abcfe149f1d72bdbb207c86eeb}\label{_adafruit___p_m_t_k_8h_a4c44c7abcfe149f1d72bdbb207c86eeb}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_LOCUS\_STOPLOG@{PMTK\_LOCUS\_STOPLOG}}
+\index{PMTK\_LOCUS\_STOPLOG@{PMTK\_LOCUS\_STOPLOG}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_LOCUS\_STOPLOG}{PMTK\_LOCUS\_STOPLOG}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+LOCUS\+\_\+\+STOPLOG~\char`\"{}\$PMTK185,1$\ast$23\char`\"{}}
+
+
+
+Stop logging data. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a5c77d38e1e8c50af3bd64a43fad53b57}\label{_adafruit___p_m_t_k_8h_a5c77d38e1e8c50af3bd64a43fad53b57}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_Q\_RELEASE@{PMTK\_Q\_RELEASE}}
+\index{PMTK\_Q\_RELEASE@{PMTK\_Q\_RELEASE}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_Q\_RELEASE}{PMTK\_Q\_RELEASE}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+Q\+\_\+\+RELEASE~\char`\"{}\$PMTK605$\ast$31\char`\"{}}
+
+
+
+ask for the release and version 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_af4786d88703fbfe424a3f19491d1c1a3}\label{_adafruit___p_m_t_k_8h_af4786d88703fbfe424a3f19491d1c1a3}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_BAUD\_115200@{PMTK\_SET\_BAUD\_115200}}
+\index{PMTK\_SET\_BAUD\_115200@{PMTK\_SET\_BAUD\_115200}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_BAUD\_115200}{PMTK\_SET\_BAUD\_115200}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+BAUD\+\_\+115200~\char`\"{}\$PMTK251,115200$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}}
+
+
+
+115200 bps 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a549460207c65eb13674930fdf6fc2bac}\label{_adafruit___p_m_t_k_8h_a549460207c65eb13674930fdf6fc2bac}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_BAUD\_57600@{PMTK\_SET\_BAUD\_57600}}
+\index{PMTK\_SET\_BAUD\_57600@{PMTK\_SET\_BAUD\_57600}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_BAUD\_57600}{PMTK\_SET\_BAUD\_57600}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+BAUD\+\_\+57600~\char`\"{}\$PMTK251,57600$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}}
+
+
+
+57600 bps 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a139bab811447a6f82469032f71343717}\label{_adafruit___p_m_t_k_8h_a139bab811447a6f82469032f71343717}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_BAUD\_9600@{PMTK\_SET\_BAUD\_9600}}
+\index{PMTK\_SET\_BAUD\_9600@{PMTK\_SET\_BAUD\_9600}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_BAUD\_9600}{PMTK\_SET\_BAUD\_9600}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+BAUD\+\_\+9600~\char`\"{}\$PMTK251,9600$\ast$17\char`\"{}}
+
+
+
+9600 bps 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_ac31cfcc416ba69780e3894a559404914}\label{_adafruit___p_m_t_k_8h_ac31cfcc416ba69780e3894a559404914}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA@{PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA@{PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA}{PMTK\_SET\_NMEA\_OUTPUT\_ALLDATA}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+ALLDATA~  \char`\"{}\$PMTK314,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$28\char`\"{}}
+
+
+
+turn on ALL THE DATA 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a7bbd33aebbc2c55557ea9c1f1c8ef2f4}\label{_adafruit___p_m_t_k_8h_a7bbd33aebbc2c55557ea9c1f1c8ef2f4}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY}{PMTK\_SET\_NMEA\_OUTPUT\_GGAONLY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GGAONLY~  \char`\"{}\$PMTK314,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on just the GPGGA \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a8354e3e8bdca1ad8dd4b4e356e79a822}\label{_adafruit___p_m_t_k_8h_a8354e3e8bdca1ad8dd4b4e356e79a822}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY}{PMTK\_SET\_NMEA\_OUTPUT\_GLLONLY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GLLONLY~  \char`\"{}\$PMTK314,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on only the GPGLL sentence \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a299d233ba1cfee1693132a63c1bc0d6c}\label{_adafruit___p_m_t_k_8h_a299d233ba1cfee1693132a63c1bc0d6c}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY}{PMTK\_SET\_NMEA\_OUTPUT\_GSAONLY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GSAONLY~  \char`\"{}\$PMTK314,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on just the GPGSA \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_ab1ccddfffabbb66cf69872b728e1f69e}\label{_adafruit___p_m_t_k_8h_ab1ccddfffabbb66cf69872b728e1f69e}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY@{PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY}{PMTK\_SET\_NMEA\_OUTPUT\_GSVONLY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+GSVONLY~  \char`\"{}\$PMTK314,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on just the GPGSV \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_aef371298391fd30cc08c4980f8502ce9}\label{_adafruit___p_m_t_k_8h_aef371298391fd30cc08c4980f8502ce9}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_OFF@{PMTK\_SET\_NMEA\_OUTPUT\_OFF}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_OFF@{PMTK\_SET\_NMEA\_OUTPUT\_OFF}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_OFF}{PMTK\_SET\_NMEA\_OUTPUT\_OFF}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+OFF~  \char`\"{}\$PMTK314,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$28\char`\"{}}
+
+
+
+turn off output 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_af29abbfb3588c15b2b6cd6c8e96a34e9}\label{_adafruit___p_m_t_k_8h_af29abbfb3588c15b2b6cd6c8e96a34e9}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA@{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA@{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA}{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGA}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+RMCGGA~  \char`\"{}\$PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$28\char`\"{}}
+
+turn on GPRMC and GPGGA \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a95ee80f53d11d05c6a593330679c89b2}\label{_adafruit___p_m_t_k_8h_a95ee80f53d11d05c6a593330679c89b2}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA@{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA@{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA}{PMTK\_SET\_NMEA\_OUTPUT\_RMCGGAGSA}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+RMCGGAGSA~  \char`\"{}\$PMTK314,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on GPRMC, GPGGA and GPGSA \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a4c352344763c1ae0f1293dc15c51a824}\label{_adafruit___p_m_t_k_8h_a4c352344763c1ae0f1293dc15c51a824}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY@{PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY@{PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY}{PMTK\_SET\_NMEA\_OUTPUT\_RMCONLY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+RMCONLY~  \char`\"{}\$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on only the GPRMC sentence \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a211f1db5c03fa0a0e7d307920e04b335}\label{_adafruit___p_m_t_k_8h_a211f1db5c03fa0a0e7d307920e04b335}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY@{PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY}}
+\index{PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY@{PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY}{PMTK\_SET\_NMEA\_OUTPUT\_VTGONLY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+OUTPUT\+\_\+\+VTGONLY~  \char`\"{}\$PMTK314,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0$\ast$29\char`\"{}}
+
+turn on only the GPVTG \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a3ab791da4ee0f06f23113aeed47e80cf}\label{_adafruit___p_m_t_k_8h_a3ab791da4ee0f06f23113aeed47e80cf}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ@{PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ}}
+\index{PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ@{PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ}{PMTK\_SET\_NMEA\_UPDATE\_100\_MILLIHERTZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+100\+\_\+\+MILLIHERTZ~  \char`\"{}\$PMTK220,10000$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}}
+
+
+
+Once every 10 seconds, 100 millihertz. 
+
+Different commands to set the update rate from once a second (1 Hz) to 10 times a second (10Hz) Note that these only control the rate at which the position is echoed, to actually speed up the position fix you must also send one of the position fix rate commands below too. \mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a7d6e7a31eec3d891ea928825c0248018}\label{_adafruit___p_m_t_k_8h_a7d6e7a31eec3d891ea928825c0248018}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_UPDATE\_10HZ@{PMTK\_SET\_NMEA\_UPDATE\_10HZ}}
+\index{PMTK\_SET\_NMEA\_UPDATE\_10HZ@{PMTK\_SET\_NMEA\_UPDATE\_10HZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_UPDATE\_10HZ}{PMTK\_SET\_NMEA\_UPDATE\_10HZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+10\+HZ~\char`\"{}\$PMTK220,100$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}}
+
+
+
+10 Hz 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a1a7102e1c13603381ba56656ae10d68c}\label{_adafruit___p_m_t_k_8h_a1a7102e1c13603381ba56656ae10d68c}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_UPDATE\_1HZ@{PMTK\_SET\_NMEA\_UPDATE\_1HZ}}
+\index{PMTK\_SET\_NMEA\_UPDATE\_1HZ@{PMTK\_SET\_NMEA\_UPDATE\_1HZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_UPDATE\_1HZ}{PMTK\_SET\_NMEA\_UPDATE\_1HZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+1\+HZ~\char`\"{}\$PMTK220,1000$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_a42257a545daf5b7933d6e8f96adc74f2}{F}}\char`\"{}}
+
+
+
+1 Hz 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_aa6ac1789ed1c9e0abb27499867dbf1d3}\label{_adafruit___p_m_t_k_8h_aa6ac1789ed1c9e0abb27499867dbf1d3}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ@{PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ}}
+\index{PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ@{PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ}{PMTK\_SET\_NMEA\_UPDATE\_200\_MILLIHERTZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+200\+\_\+\+MILLIHERTZ~  \char`\"{}\$PMTK220,5000$\ast$1\mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}}\char`\"{}}
+
+
+
+Once every 5 seconds, 200 millihertz. 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_af1d3f3c5b3c5613c52f18bb48bcbdf8f}\label{_adafruit___p_m_t_k_8h_af1d3f3c5b3c5613c52f18bb48bcbdf8f}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_UPDATE\_2HZ@{PMTK\_SET\_NMEA\_UPDATE\_2HZ}}
+\index{PMTK\_SET\_NMEA\_UPDATE\_2HZ@{PMTK\_SET\_NMEA\_UPDATE\_2HZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_UPDATE\_2HZ}{PMTK\_SET\_NMEA\_UPDATE\_2HZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+2\+HZ~\char`\"{}\$PMTK220,500$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_a111da81ae5883147168bbb8366377b10}{B}}\char`\"{}}
+
+
+
+2 Hz 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a556ffc2a84d904cc0c4432c689444245}\label{_adafruit___p_m_t_k_8h_a556ffc2a84d904cc0c4432c689444245}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_SET\_NMEA\_UPDATE\_5HZ@{PMTK\_SET\_NMEA\_UPDATE\_5HZ}}
+\index{PMTK\_SET\_NMEA\_UPDATE\_5HZ@{PMTK\_SET\_NMEA\_UPDATE\_5HZ}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_SET\_NMEA\_UPDATE\_5HZ}{PMTK\_SET\_NMEA\_UPDATE\_5HZ}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+SET\+\_\+\+NMEA\+\_\+\+UPDATE\+\_\+5\+HZ~\char`\"{}\$PMTK220,200$\ast$2\mbox{\hyperlink{mavlink__sha256_8h_ac4cf4b2ab929bd23951a8676eeac086b}{C}}\char`\"{}}
+
+
+
+5 Hz 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a9772abe32307f50632edef118f08454a}\label{_adafruit___p_m_t_k_8h_a9772abe32307f50632edef118f08454a}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_STANDBY@{PMTK\_STANDBY}}
+\index{PMTK\_STANDBY@{PMTK\_STANDBY}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_STANDBY}{PMTK\_STANDBY}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+STANDBY~  \char`\"{}\$PMTK161,0$\ast$28\char`\"{}}
+
+
+
+standby command \& boot successful message 
+
+\mbox{\Hypertarget{_adafruit___p_m_t_k_8h_a1a07d9f206b33f00eb3ea26af4496f8b}\label{_adafruit___p_m_t_k_8h_a1a07d9f206b33f00eb3ea26af4496f8b}} 
+\index{Adafruit\_PMTK.h@{Adafruit\_PMTK.h}!PMTK\_STANDBY\_SUCCESS@{PMTK\_STANDBY\_SUCCESS}}
+\index{PMTK\_STANDBY\_SUCCESS@{PMTK\_STANDBY\_SUCCESS}!Adafruit\_PMTK.h@{Adafruit\_PMTK.h}}
+\doxysubsubsection{\texorpdfstring{PMTK\_STANDBY\_SUCCESS}{PMTK\_STANDBY\_SUCCESS}}
+{\footnotesize\ttfamily \#define PMTK\+\_\+\+STANDBY\+\_\+\+SUCCESS~\char`\"{}\$PMTK001,161,3$\ast$36\char`\"{}}
+
+
+
+Not needed currently. 
+
