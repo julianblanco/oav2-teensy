@@ -53,7 +53,7 @@ int NAVIGATION::start()
   float northErrorLast = 0;
   float eastErrorLast = 0;
   float downErrorLast = 0;
-  float mixer = 0;
+
   while (1)
   {
     if (g_armed)
@@ -270,10 +270,10 @@ void NAVIGATION::minimum_snap_trajectory()
         // check if this is the last index and if the quadcopter is there; then finish
         if(((idx_+2) == _ts.rows()) & ((_traj_setpoints.block(idx_+1, 0, 1, 3) - _sensor_pos).lpNorm<2>() < 0.2))
         {
-            std::cout );
-            Serial.println("*** Trajectory finished *** " );
-            Serial.println("Desired finish time: " << _ts(idx_+1) );
-            Serial.println("Actual finish time: " << _traj_time );
+            // Serial.println();
+            // Serial.println("*** Trajectory finished *** " );
+            // Serial.println("Desired finish time: " << _ts(idx_+1) );
+            // Serial.println("Actual finish time: " << _traj_time );
             _traj_finished = 1;
         }
 
@@ -298,7 +298,7 @@ void NAVIGATION::minimum_snap_trajectory()
 
 //// Generate time-series for the minimum snap trajectory
 // produces a nx1 array of times which the vehicle needs to waypoint
-void void NAVIGATION::generate_ts()
+void  NAVIGATION::generate_ts()
 {
     double speed_ = 1.75;         // m/s                    // 1.75 m/s is pretty much the limit with hover-envelope, final error increased to 0.2m
     int _path_max_size = _traj_setpoints.rows();
@@ -332,7 +332,7 @@ void void NAVIGATION::generate_ts()
 
 //// Minimum snap trajectory optimization
 // find the optimizing coefficients for the trajectory
-void void NAVIGATION::min_snap_optimization()
+void NAVIGATION::min_snap_optimization()
 {
     int m_ = _traj_setpoints.rows();            // wpts
     int n_ = _traj_setpoints.cols();            // x,y,z
@@ -348,8 +348,9 @@ void void NAVIGATION::min_snap_optimization()
     Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> A_;
     A_.resize(8*m_, 8*m_);
 
-    // https://stackoverflow.com/questions/31159196/can-we-create-a-vector-of-eigen-matrix
-    std::vector<Eigen::Matrix<double,Eigen::Dynamic,Eigen::Dynamic,Eigen::RowMajor> > A_vec_;
+ std::vector<int> xcx;
+//imu vector library from adafruit is this ok? @pat
+  std::vector<Eigen::Matrix<double,Eigen::Dynamic,Eigen::Dynamic,Eigen::RowMajor> > A_vec_;
 
     // zero the matrices
     X_.setZero();
@@ -594,7 +595,7 @@ void NAVIGATION::figure_eight_trajectory() {
     }
 
     if (!_start_traj & ((_desired_pos - _sensor_pos).lpNorm<2>() < 0.01)) {
-        std::cout << "Starting Figure-8 Trajectory... " << std::endl;
+        // std::cout << "Starting Figure-8 Trajectory... " << std::endl;
         _start_traj = 1;
         _traj_start_time = sim_time;
     } else if (_start_traj) {
@@ -628,7 +629,7 @@ void NAVIGATION::circling_trajectory()
 
     if(!_start_traj & ((_desired_pos - _sensor_pos).lpNorm<2>() < 0.01))
     {
-        std::cout << "Starting Circling Trajectory... " << std::endl;
+        Serial.println("Starting Circling Trajectory... ");
         _start_traj = 1;
         _traj_start_time = sim_time;
     } else if(_start_traj){

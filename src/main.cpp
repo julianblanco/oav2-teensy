@@ -32,7 +32,7 @@ int main()
   flag += g_telemetry.setup();
   if (flag)
   {
-    Serial.println("error starting a thread");
+    Serial.println("error starting telemtry thread");
     while (1)
       ;
   }

@@ -15,24 +15,21 @@
 #include "read_write_lock.hpp"
 #include "helper.h"
 
-
 class IMU : public Task
 {
   // Public interface methods
 public:
-  IMU(); // contstuctor
-  ~IMU(); // decontstuctor
-  float yaw; //yaw for the craft, in degrees
-  float roll; //roll for the craft, in degrees
-  float pitch; //pitch for the craft, in degrees
-  Adafruit_BNO055 bno055imu; //class object for the bno055, see adafruits documentation 
-  BNO080 bno080imu; //class object for the bno055, see sparkfuns documentation 
-  imu::Vector<3> euler; //vector to temporarily hold data coming from the bno055
+  IMU();                                        // contstuctor
+  ~IMU();                                       // decontstuctor
+  float yaw;                                    //yaw for the craft, in degrees
+  float roll;                                   //roll for the craft, in degrees
+  float pitch;                                  //pitch for the craft, in degrees
+  Adafruit_BNO055 bno055imu;                    //class object for the bno055, see adafruits documentation
+  BNO080 bno080imu;                             //class object for the bno055, see sparkfuns documentation
+  imu::Vector<3> euler;                         //vector to temporarily hold data coming from the bno055
   cpp_freertos::ReadWriteLockPreferWriter lock; //lock to prevent rw issues
+  float headingOffset;
 
-  
-float headingOffset;
-  
   /**
    * Setup the imu
    *
@@ -44,7 +41,7 @@ float headingOffset;
    * - 
    */
   int setup();
-    /**
+  /**
    * Start the IMU loop. This runs after the setup function and will lock the IMU Lock, call \n getIMUdata, then lock the IMU lock
    *
    * - 
@@ -54,7 +51,7 @@ float headingOffset;
   /**
   * This will begin sampling the IMUs based on what IMU (or IMUs) are declared
   */
- void getIMUdata();
+  void getIMUdata();
   /**
   * This will get data from the mpu6050 at the standard address and then call madgwick. roll, pitch and yaw come from the output of the madgwick filter. It is called  by getIMUdata in the imu sampling loop. \n\n This function updates the roll, pitch, yaw variables in the class object
   */
@@ -67,9 +64,6 @@ float headingOffset;
   * This will get roll, pitch, and yaw data from the bno055. It is called  by getIMUdata in the imu sampling loop. \n\n This function updates the roll, pitch, yaw variables in the class object
   */
   void getbno055data();
-
-
-
 
   // Private internal methods
 private:
@@ -178,7 +172,6 @@ private:
 
   // Private internal variables used directly by our imu
 
-
   // #if ! CONFIG_DISABLE_NETWORK
   //   FTP<EthernetClient> m_ftp;
 
@@ -193,5 +186,4 @@ private:
 };
 
 
-// extern IMU g_imu;
 #endif

@@ -1,11 +1,11 @@
 #include "imu.h"
- #include "config.h"
-IMU::IMU(){}
+#include "config.h"
+IMU::IMU() {}
 IMU::~IMU() {}
 
 int IMU::setup()
 {
-Wire.begin();
+  Wire.begin();
 #ifdef MPU6050
 
   mpu6050init();
@@ -41,7 +41,7 @@ int IMU::start()
     g_imu.lock.WriterLock();
     getIMUdata();
     g_imu.lock.WriterUnlock();
-    LOOPFREQ(500);//hz
+    LOOPFREQ(500); //hz
   }
 }
 
@@ -333,7 +333,7 @@ int IMU::calibratempu6050Attitude()
     dt = (current_time - prev_time) / 1000000.0;
     getIMUdata();
     Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt);
-    loopRate(2000,current_time); //do not exceed 2000Hz
+    loopRate(2000, current_time); //do not exceed 2000Hz
   }
   //Grab mean roll and pitch values after everything is warmed up
   for (int j = 1; j <= 2000; j++)
@@ -345,7 +345,7 @@ int IMU::calibratempu6050Attitude()
     Madgwick(GyroX, GyroY, GyroZ, AccX, AccY, AccZ, dt);
     roll_correction = roll_IMU + roll_correction;
     pitch_correction = pitch_IMU + pitch_correction;
-    loopRate(2000,current_time); //do not exceed 2000Hz
+    loopRate(2000, current_time); //do not exceed 2000Hz
   }
   //These are applied to roll and pitch after Madgwick filter in main loop if desired using correctRollPitch()
   roll_correction = roll_correction / 2000.0;

@@ -37,8 +37,8 @@
 #undef B2
 #endif
 
-#ifdef B2
-#undef B2
+#ifdef B3
+#undef B3
 #endif
 
 #endif

@@ -39,20 +39,15 @@
  *
  *  MIT license, all text above must be included in any redistribution
  */
-
+#include "attitude.h"
 #include "telemetry.h"
 #include "imu.h"
 #include "navigation.h"
 #include "actuators.h"
-#include "attitude.h"
+
 #include "sensors.h"
 #include <Arduino.h>
-// #include "Eigen/Eigen.h"
-// #inc
-#include "ArduinoMacroFix.hpp"
-#include <Eigen/Core>
-#include <Eigen/Cholesky>
-#include <Eigen/Dense>
+
 
 
   #define LOOPFREQ(frequency) vTaskDelay((configTICK_RATE_HZ) / (frequency));
@@ -79,9 +74,9 @@ extern int g_armed;
 extern int throttleIdle;
 extern int g_vehicle_type;
 extern TELEMETRY g_telemetry;
-extern ATTITUDE g_attitude;
 extern ACTUATORS g_actuators;
 extern IMU g_imu;
 extern NAVIGATION g_navigation;
 extern SENSORS g_sensors;
+extern ATTITUDE g_attitude;
 #endif

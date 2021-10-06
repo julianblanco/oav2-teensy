@@ -105,5 +105,5 @@ Hostcomm_struct_t   Host_comm =   {
                                   };
 };
 
-// extern ACTUATORS g_actuators;
+
 #endif
